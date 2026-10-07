@@ -3,12 +3,15 @@ const D=window.ZHOU_DATA,$=s=>document.querySelector(s),byId=id=>D.states.find(s
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=y=>'前'+y+'年',range=(a,b,approx=false)=>(approx?'约 ':'')+(a===b?fmt(a):'前'+a+'—'+b+'年');
 const links=arr=>'<div class="sourceLinks">'+arr.map(s=>'<a href="'+escapeHTML(s.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(s.title)+' ↗</a>').join('')+'</div>';
+let stateOrder=D.states.map(s=>s.id),rowHeight=64,fitRows=false,viewHeight=560,expanded=false,rowHeights={};
+try{const saved=JSON.parse(localStorage.getItem('zhou-layout-v2')||'null');if(saved){const ids=new Set(D.states.map(s=>s.id));if(Array.isArray(saved.order)){stateOrder=[...new Set(saved.order.filter(id=>ids.has(id))),...D.states.map(s=>s.id).filter(id=>!saved.order.includes(id))];}rowHeight=Math.max(36,Math.min(160,Number(saved.rowHeight)||64));viewHeight=Math.max(320,Math.min(1000,Number(saved.viewHeight)||560));fitRows=Boolean(saved.fitRows);rowHeights=saved.rowHeights||{};}}catch{}
+function saveLayout(){try{localStorage.setItem('zhou-layout-v2',JSON.stringify({order:stateOrder,rowHeight,viewHeight,fitRows,rowHeights}));}catch{}}
 let px=4,end=256,selected=new Set(D.states.map(s=>s.id)),query='',mode='both',category='all',cursor=770,visibleStates=[],rowLayouts=new Map();
 const vp=$('#viewport'),chart=$('#chart');
 const labelWidth=()=>window.matchMedia('(max-width:680px)').matches?88:124;
 const x=y=>(1046-y)*px;
 const includedEvents=s=>D.events.filter(e=>e.states.includes(s.id)&&e.year>=end&&(category==='all'||e.kind===category));
-const matchRuler=(r,q=query)=>[r.name,r.person,r.role,r.description].some(t=>String(t??'').includes(q));
+const matchRuler=(r,q=query)=>[r.name,r.person,r.role,r.description,r.biography?.summary,...(r.ministers||[]).map(m=>m.name+' '+m.summary)].some(t=>String(t??'').includes(q));
 const matches=s=>!query||[s.name,s.region].some(t=>t.includes(query))||s.rulers.some(r=>matchRuler(r))||s.undated.some(r=>matchRuler(r))||includedEvents(s).some(e=>[e.name,e.description].some(t=>t.includes(query)));
 function setPeriod(name){
  document.querySelectorAll('[data-period]').forEach(b=>b.classList.toggle('active',b.dataset.period===name));
@@ -24,7 +27,9 @@ function packRulers(s){
 }
 function render(){
  const oldScroll=vp.scrollLeft;const w=(1046-end+1)*px+160;
- visibleStates=D.states.filter(s=>selected.has(s.id)&&matches(s));
+ visibleStates=stateOrder.map(byId).filter(s=>s&&selected.has(s.id)&&matches(s));
+ const fitHeight=Math.max(36,Math.min(160,Math.floor(((vp.clientHeight||viewHeight)-64)/Math.max(1,visibleStates.length))));
+ $('#rowHeightValue').textContent=(fitRows?fitHeight:rowHeight)+'px';
  chart.style.width=(w+labelWidth())+'px';chart.className=mode==='overview'?'overview':'';
  const eras=[{a:1046,b:771,name:'西周',color:'#64796d'},{a:770,b:476,name:'春秋',color:'#355e68'},{a:475,b:256,name:'战国',color:'#8d734c'}];
  if(end===221)eras.push({a:255,b:221,name:'周亡后 · 秦统一',color:'#79696a'});
@@ -36,10 +41,10 @@ function render(){
  rowLayouts=new Map();
  for(const s of visibleStates){
   const packed=packRulers(s),isOverview=mode==='overview',rulerVisible=mode==='both'||mode==='rulers',eventVisible=mode==='both'||mode==='events';
-  const lanes=rulerVisible?packed.lanes:1,eventTop=(rulerVisible?32+lanes*36:35)+5;
-  const height=isOverview?72:Math.max(104,eventTop+36);
-  rowLayouts.set(s.id,{height,eventTop});
-  html+='<div class="stateRow" data-state="'+s.id+'" style="height:'+height+'px"><button class="stateLabel" data-action="state" data-id="'+s.id+'" aria-label="查看'+s.name+'的历史"><b style="color:'+s.color+'">'+s.name+'</b><small>'+ (s.id==='zhou'?'天子 · 参照':s.id==='liang'?'安邑 → 大梁':s.id==='yue'?'起源待考':s.id==='han'||s.id==='zhao'?'分晋 → 列侯':'点击查看世系')+'</small></button><div class="track" style="width:'+w+'px;height:'+height+'px;background-size:'+(step*px)+'px 100%;background-position:'+x(Math.floor(1046/step)*step)+'px 0">';
+  const height=Number(rowHeights[s.id])||(fitRows?fitHeight:rowHeight);
+  const lanes=rulerVisible?packed.lanes:1,rulerTop=6,bandHeight=Math.max(12,height-(eventVisible?27:12)),barHeight=Math.max(6,Math.min(28,bandHeight/lanes-1)),eventTop=height-21;
+  rowLayouts.set(s.id,{height,eventTop,lanes,barHeight});
+  html+='<div class="stateRow" data-state="'+s.id+'" style="height:'+height+'px;min-height:0"><button class="stateLabel" data-action="state" data-id="'+s.id+'" aria-label="查看'+s.name+'的历史"><b style="color:'+s.color+'">'+s.name+'</b><small>'+ (s.id==='zhou'?'天子 · 参照':s.id==='liang'?'安邑 → 大梁':s.id==='yue'?'起源待考':s.id==='han'||s.id==='zhao'?'分晋 → 列侯':'点击查看世系')+'</small></button><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*px)+'px 100%;background-position:'+x(Math.floor(1046/step)*step)+'px 0">';
   let segments=[{start:s.start,end:Math.max(s.end,end)}];
   for(const gap of s.interruptions){segments=segments.flatMap(seg=>gap.start<=seg.start&&gap.end>=seg.end?[{start:seg.start,end:gap.start+1},{start:gap.end-1,end:seg.end}]:[seg]);}
   for(const seg of segments){if(seg.start<end)continue;html+='<div class="lifeline '+(s.approxStart?'uncertainLife':'')+'" style="left:'+x(seg.start)+'px;width:'+Math.max(0,(seg.start-seg.end+1)*px)+'px;background:'+s.color+'"></div>';}
@@ -47,11 +52,11 @@ function render(){
    for(const r of packed.rulers){
     if(s.interruptions.some(g=>r.start<=g.start&&r.end>=g.end))continue;
     const b=Math.max(r.end,end),width=(r.start-b+1)*px;
-    const text=width>35?escapeHTML(r.name)+(width>140&&r.person?' · '+escapeHTML(r.person):''):'';
-    html+='<button class="ruler '+(r.approx?'approx ':'')+(query&&matchRuler(r)?'match':'')+'" data-action="ruler" data-id="'+r.id+'" style="left:'+x(r.start)+'px;width:'+Math.max(2,width)+'px;top:'+(32+r.displayLane*36)+'px;background-color:'+s.color+';opacity:'+(query&&!matchRuler(r)?'.35':'.94')+'" title="'+escapeHTML(r.name+' '+range(r.start,r.end,r.approx))+'" aria-label="'+escapeHTML(r.name+'，'+range(r.start,r.end,r.approx))+'">'+text+'</button>';
+    const text=width>35&&barHeight>=13?escapeHTML(r.name)+(width>140&&r.person?' · '+escapeHTML(r.person):''):'';
+    html+='<button class="ruler '+(r.approx?'approx ':'')+(query&&matchRuler(r)?'match':'')+'" data-action="ruler" data-id="'+r.id+'" style="left:'+x(r.start)+'px;width:'+Math.max(2,width)+'px;top:'+(rulerTop+r.displayLane*(barHeight+1))+'px;height:'+barHeight+'px;line-height:'+barHeight+'px;font-size:12px;background-color:'+s.color+';opacity:'+(query&&!matchRuler(r)?'.35':'.94')+'" title="'+escapeHTML(r.name+' '+range(r.start,r.end,r.approx))+'" aria-label="'+escapeHTML(r.name+'，'+range(r.start,r.end,r.approx))+'">'+text+'</button>';
    }
    const first=packed.rulers.reduce((a,r)=>Math.max(a,r.start),0);
-   if(first<s.start&&x(first)-x(s.start)>70)html+='<button class="event gap" data-action="state" data-id="'+s.id+'" style="left:'+(x(s.start)+8)+'px;top:36px">早期纪年待考</button>';
+   if(first<s.start&&x(first)-x(s.start)>70)html+='<button class="event gap" data-action="state" data-id="'+s.id+'" style="left:'+(x(s.start)+8)+'px;top:6px">早期纪年待考</button>';
   }
   if(eventVisible){
    const es=includedEvents(s).filter(e=>!query||e.name.includes(query)||e.description.includes(query)||s.name.includes(query)).sort((a,b)=>b.year-a.year);
@@ -62,7 +67,7 @@ function render(){
     else html+='<button class="event cluster" data-action="cluster" data-id="'+group.map(e=>e.id).join(',')+'" style="left:'+x(ev.year)+'px;top:'+eventTop+'px" title="'+group.length+'件事件"><i></i><span>'+escapeHTML(ev.name)+' · '+group.length+'</span></button>';
    }
   }
-  if(s.end>=end)html+='<button class="event termination" data-action="state" data-id="'+s.id+'" style="left:'+x(s.end)+'px;top:'+(isOverview?20:17)+'px;height:'+(isOverview?32:52)+'px">'+(s.approxEnd?'约 ':'')+'前'+s.end+' '+(s.id==='qin'?'称帝':s.id==='jin'?'终结争议':s.id==='yue'?'中心瓦解':'终止')+'</button>';
+  if(s.end>=end)html+='<button class="event termination" data-action="state" data-id="'+s.id+'" style="left:'+x(s.end)+'px;top:6px;height:'+Math.max(20,height-12)+'px">'+(s.approxEnd?'约 ':'')+'前'+s.end+' '+(s.id==='qin'?'称帝':s.id==='jin'?'终结争议':s.id==='yue'?'中心瓦解':'终止')+'</button>';
   else if(end===221&&(s.id==='wei'))html+='<div class="gap" style="left:'+(x(221)+8)+'px">延续至前209年</div>';
   html+='</div></div>';
  }
@@ -85,7 +90,10 @@ function show(tag,html){$('#detailTag').textContent=tag;$('#detailBody').innerHT
 function showRuler(id){
  const s=D.states.find(s=>s.rulers.some(r=>r.id===id));if(!s)return;const r=s.rulers.find(r=>r.id===id);
  const es=D.events.filter(e=>e.states.includes(s.id)&&e.year<=r.start&&e.year>=r.end);
- show(s.name+' · '+r.role,'<h3 class="detailTitle">'+escapeHTML(r.name)+'</h3><span class="datebadge">'+range(r.start,r.end,r.approx)+'</span>'+(r.person?'<p class="notice">本名 / 记载名：'+escapeHTML(r.person)+'</p>':'')+(r.description?'<p>'+escapeHTML(r.description)+'</p>':'')+'<div class="detailSection"><h4>起点与终点</h4><p>图示在位起点：'+range(r.start,r.start,r.approx)+'；终点：'+range(r.end,r.end,r.approx)+'。</p><p>'+escapeHTML(r.exit)+'</p>'+(r.note?'<p>'+escapeHTML(r.note)+'</p>':'')+'</div><div class="warning">'+(r.approx?'此区间含推定或争议年代。':'采用年级精度；同年更替不表示两人全年同时在位。')+' 多数区间采用元年纪年，实际即位可能在前一年。'+escapeHTML(s.note)+'</div><div class="detailSection"><h4>期间已收录事件 · '+es.length+'</h4>'+eventList(es)+'</div><div class="detailSection"><h4>核查来源</h4>'+links([{title:r.source.includes('wikisource')?'《史记》相关年表':'采用的君主纪年表（汇编，待逐条校勘）',url:r.source}])+ '</div><div class="related"><button data-action="state" data-id="'+s.id+'">查看'+s.name+'全部世系</button><button data-action="locate" data-id="'+r.start+'">定位在位起点</button></div>');
+ const bio=r.biography||{summary:r.description||'个人生平记载尚待补充。',sources:[]};
+ const ministers=(r.ministers||[]).map(m=>'<article class="ministerCard"><h5>'+escapeHTML(m.name)+' <span>'+escapeHTML(m.role)+'</span></h5><p class="relation">'+escapeHTML(m.relation||'')+'</p><p>'+escapeHTML(m.summary)+'</p>'+links(m.sources||[])+'</article>').join('');
+ const sources=[{title:r.source.includes('wikisource')?'《史记》相关年表':'采用的君主纪年表（汇编，待逐条校勘）',url:r.source},...(bio.sources||[])].filter((v,i,a)=>a.findIndex(w=>w.url===v.url)===i);
+ show(s.name+' · '+r.role,'<h3 class="detailTitle">'+escapeHTML(r.name)+'</h3><span class="datebadge">'+range(r.start,r.end,r.approx)+'</span>'+(r.person?'<p class="notice">本名 / 记载名：'+escapeHTML(r.person)+'</p>':'')+'<div class="detailSection"><h4>简要生平</h4><p class="bioScope">'+escapeHTML(bio.detailLevel||'记载摘要')+'</p><p>'+escapeHTML(bio.summary)+'</p>'+(bio.note?'<p class="notice">'+escapeHTML(bio.note)+'</p>':'')+'</div><div class="detailSection"><h4>关键臣子与将领</h4>'+ (ministers||'<p class="notice">'+escapeHTML(r.ministerCoverage||'尚未收录可靠的相关人物资料。')+'</p>')+'</div><div class="detailSection"><h4>起点与终点</h4><p>图示在位起点：'+range(r.start,r.start,r.approx)+'；终点：'+range(r.end,r.end,r.approx)+'。</p><p>'+escapeHTML(r.exit)+'</p>'+(r.note?'<p>'+escapeHTML(r.note)+'</p>':'')+'</div><div class="warning">'+(r.approx?'此区间含推定或争议年代。':'采用年级精度；同年更替不表示两人全年同时在位。')+' 多数区间采用元年纪年，实际即位可能在前一年。'+escapeHTML(s.note)+'</div><div class="detailSection"><h4>期间已收录事件 · '+es.length+'</h4>'+eventList(es)+'</div><div class="detailSection"><h4>核查来源</h4>'+links(sources)+'</div><div class="related"><button data-action="state" data-id="'+s.id+'">查看'+s.name+'全部世系</button><button data-action="locate" data-id="'+r.start+'">定位在位起点</button></div>');
 }
 const eventList=es=>es.length?es.sort((a,b)=>b.year-a.year).map(e=>'<button class="listitem" data-action="event" data-id="'+e.id+'">'+range(e.year,e.year,e.approx)+' · '+escapeHTML(e.name)+'<small>'+e.kind+' · '+e.states.map(id=>byId(id).name).join('、')+'</small></button>').join(''):'<p class="notice">这一时期的重大事件尚未收录。</p>';
 function showEvent(id){const e=D.events.find(e=>e.id===id);if(!e)return;
@@ -94,7 +102,7 @@ function showEvent(id){const e=D.events.find(e=>e.id===id);if(!e)return;
 function showState(id){const s=byId(id);if(!s)return;
  show(s.id==='zhou'?'周王室 · 参照':'列国 · '+s.region,'<h3 class="detailTitle">'+s.name+'</h3><span class="datebadge">'+range(s.start,s.end,s.approxStart||s.approxEnd)+'</span><p>'+escapeHTML(s.ending)+'</p><div class="warning">'+escapeHTML(s.note)+' 起点为约年时，线段左端仅为示意。</div><div class="detailSection"><h4>君主 / 领袖 · '+s.rulers.length+'个在位区间</h4>'+s.rulers.map(r=>'<button class="listitem" data-action="ruler" data-id="'+r.id+'">'+escapeHTML(r.name)+(r.person?' · '+escapeHTML(r.person):'')+'<small>'+range(r.start,r.end,r.approx)+' · '+r.role+'</small></button>').join('')+'</div>'+(s.undated.length?'<div class="detailSection"><h4>未定位的君主与前期领袖</h4>'+s.undated.map(r=>'<p class="notice">'+escapeHTML(r.name)+'：'+escapeHTML(r.known||'在位起讫不详')+'</p>').join('')+'</div>':'')+'<div class="detailSection"><h4>重大事件</h4>'+eventList(D.events.filter(e=>e.states.includes(s.id)))+'</div>'+links([D.sources[2],D.sources[3]]));
 }
-function showAbout(){show('资料与纪年','<h3 class="detailTitle">如何读这张对照图</h3><p>横向是共同年代，纵向是国家。相同年份上下对照；君主条是所采用年表的在位区间，菱形是精选事件，红色端点表示终结或身份转变。</p><div class="warning">这是可继续校勘的首版，不是无争议的完整年表。君主起讫以检索汇编为底表，重大事件参照《史记》相关篇目。君主结局尚未逐条核实，详情会明确标注。</div><div class="detailSection"><h4>范围与分期</h4><p>覆盖周王室与17个主要诸侯国；从约前1046年到前256年，可延伸到前221年。春秋段从前770年起，战国段从前475年起；前453年、前403年也是不同研究中的战国起点。本图分区是阅读约定。</p><p>西周前841年以前的精确年代多属推定。斜线君主条与虚线存续线表示约年、传统推定或争议。</p></div><div class="detailSection"><h4>即位、元年、同年更替</h4><p>元年常在实际即位的次年，不能把年表的第一年一概理解为即位日期。图按整年绘制，同年发生的短期君主分层显示，未尝试推断月份。</p></div><div class="detailSection"><h4>灭亡与复国</h4><p>陈、蔡的复国显示为线段中断；齐的姜氏与田氏、晋与曲沃分别分层。晋终结、越瓦解采用一系口径并标争议。赵、燕保留残余政权直到前222年。卫延续到前209年，超出图范围时显示延续标记。</p></div><div class="detailSection"><h4>覆盖情况</h4><p>'+D.states.reduce((n,s)=>n+s.rulers.length,0)+'个有起讫的在位区间，'+D.states.reduce((n,s)=>n+s.undated.length,0)+'项未定位君主 / 前期领袖，'+D.events.length+'条精选重大事件。空白与无事件提示表示未收录，不是历史空白。</p></div><div class="detailSection"><h4>来源</h4>'+links(D.sources)+'</div><p class="notice">资料整理：'+D.updated+' · '+D.version+'</p>');}
+function showAbout(){show('资料与纪年','<h3 class="detailTitle">如何读这张对照图</h3><p>横向是共同年代，纵向是国家。相同年份上下对照；君主条是所采用年表的在位区间，菱形是精选事件，红色端点表示终结或身份转变。</p><div class="warning">这是可继续校勘的资料集。君主起讫以检索汇编为底表，重大事件参照《史记》相关篇目。君主结局尚未逐条核实，详情会明确标注。</div><div class="detailSection"><h4>范围与分期</h4><p>覆盖周王室与17个主要诸侯国；从约前1046年到前256年，可延伸到前221年。春秋段从前770年起，战国段从前475年起；前453年、前403年也是不同研究中的战国起点。本图分区是阅读约定。</p><p>西周前841年以前的精确年代多属推定。斜线君主条与虚线存续线表示约年、传统推定或争议。</p></div><div class="detailSection"><h4>即位、元年、同年更替</h4><p>元年常在实际即位的次年，不能把年表的第一年一概理解为即位日期。图按整年绘制，同年发生的短期君主分层显示，未尝试推断月份。</p></div><div class="detailSection"><h4>灭亡与复国</h4><p>陈、蔡的复国显示为线段中断；齐的姜氏与田氏、晋与曲沃分别分层。晋终结、越瓦解采用一系口径并标争议。赵、燕保留残余政权直到前222年。卫延续到前209年，超出图范围时显示延续标记。</p></div><div class="detailSection"><h4>人物简介</h4><p>君主详情提供简要生平与关联臣子、将领的介绍，并标明任职或关联身份。已补充'+D.peopleCoverage.detailedRulerIntervals+'个在位区间的生平简介，'+D.peopleCoverage.ministerProfiles+'位臣子与将领；其他区间提供纪年与记载摘要。未收录人物不表示没有辅臣。</p></div><div class="detailSection"><h4>覆盖情况</h4><p>'+D.states.reduce((n,s)=>n+s.rulers.length,0)+'个有起讫的在位区间，'+D.states.reduce((n,s)=>n+s.undated.length,0)+'项未定位君主 / 前期领袖，'+D.events.length+'条精选重大事件。空白与无事件提示表示未收录，不是历史空白。</p></div><div class="detailSection"><h4>来源</h4>'+links(D.sources)+'</div><p class="notice">资料整理：'+D.updated+' · '+D.version+'</p>');}
 document.addEventListener('click',event=>{const target=event.target.closest('[data-action]');if(!target)return;const {action,id}=target.dataset;
  if(action==='state')showState(id);else if(action==='ruler')showRuler(id);else if(action==='event')showEvent(id);else if(action==='cluster'){const es=id.split(',').map(id=>D.events.find(e=>e.id===id));show('密集事件 · 按年代展开','<h3 class="detailTitle">'+es.length+'条事件</h3>'+eventList(es));}else if(action==='locate'){if(Number(id)<end){$('#extend').checked=true;setExtension(true);}if(!selected.size)selected=new Set(D.states.map(s=>s.id));setCursor(Number(id),true);$('#detail').close();}
 });
@@ -115,8 +123,24 @@ vp.addEventListener('scroll',updateRange,{passive:true});
 let dragging=null,moved=false;
 vp.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0||e.target.closest('button,input'))return;dragging={x:e.clientX,y:e.clientY,left:vp.scrollLeft,top:vp.scrollTop};moved=false;vp.setPointerCapture(e.pointerId);});
 vp.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-dragging.x,dy=e.clientY-dragging.y;if(Math.abs(dx)+Math.abs(dy)>5){moved=true;vp.classList.add('dragging');}if(moved){vp.scrollLeft=dragging.left-dx;vp.scrollTop=dragging.top-dy;}});
-vp.addEventListener('pointerup',e=>{if(dragging&&!moved&&!e.target.closest('button')&&e.clientY>vp.getBoundingClientRect().top+80)setCursor(1046-(e.clientX-vp.getBoundingClientRect().left+vp.scrollLeft-labelWidth())/px);dragging=null;vp.classList.remove('dragging');});vp.addEventListener('pointercancel',()=>{dragging=null;vp.classList.remove('dragging');});
+vp.addEventListener('pointerup',e=>{if(dragging&&!moved&&!e.target.closest('button')&&e.clientY>vp.getBoundingClientRect().top+64)setCursor(1046-(e.clientX-vp.getBoundingClientRect().left+vp.scrollLeft-labelWidth())/px);dragging=null;vp.classList.remove('dragging');});vp.addEventListener('pointercancel',()=>{dragging=null;vp.classList.remove('dragging');});
 window.addEventListener('resize',()=>{render();});
+
+function applyLayout(){vp.style.height=viewHeight+'px';vp.style.maxHeight='none';$('#rowHeight').value=rowHeight;$('#viewHeight').value=viewHeight;$('#viewHeightValue').textContent=viewHeight+'px';$('#fitRows').checked=fitRows;render();saveLayout();}
+$('#rowHeight').oninput=e=>{rowHeight=Math.max(36,Math.min(160,Number(e.target.value)));fitRows=false;$('#fitRows').checked=false;applyLayout();};
+$('#viewHeight').oninput=e=>{viewHeight=Math.max(320,Math.min(1000,Number(e.target.value)));applyLayout();};
+$('#fitRows').onchange=e=>{fitRows=e.target.checked;rowHeights={};applyLayout();};
+$('#sevenView').onclick=()=>{selected=new Set(['qin','qi','chu','yan','han','zhao','liang']);query='';$('#search').value='';mode='both';$('#mode').value='both';rowHeights={};fitRows=true;rowHeight=56;end=221;$('#extend').checked=true;$('#cursorYear').max=-221;applyLayout();vp.scrollTop=0;setPeriod('war');setCursor(300,true);};
+$('#maximize').onclick=()=>{expanded=!expanded;$('.workspace').classList.toggle('expanded',expanded);$('#maximize').textContent=expanded?'收起对比':'展开对比';document.body.classList.toggle('chartExpanded',expanded);requestAnimationFrame(()=>render());};
+function moveState(id,delta){const i=stateOrder.indexOf(id),j=i+delta;if(i<0||j<0||j>=stateOrder.length)return;[stateOrder[i],stateOrder[j]]=[stateOrder[j],stateOrder[i]];render();saveLayout();renderOrder();}
+function renderOrder(){const shown=stateOrder.filter(id=>selected.has(id));$('#orderList').innerHTML=shown.map((id,i)=>{const s=byId(id);return '<div class="orderRow" draggable="true" data-order-id="'+id+'"><span class="dragGrip" aria-hidden="true">⠿</span><strong style="color:'+s.color+'">'+s.name+'</strong><label>行高 <select data-row-size="'+id+'" aria-label="'+s.name+'行高">'+[0,40,56,64,96,128,160].map(h=>'<option value="'+h+'" '+(Number(rowHeights[id]||0)===h?'selected':'')+'>'+(h?h+'px':'跟随全局')+'</option>').join('')+'</select></label><button data-move="up" data-id="'+id+'" '+(i===0?'disabled':'')+' aria-label="上移'+s.name+'">上移</button><button data-move="down" data-id="'+id+'" '+(i===shown.length-1?'disabled':'')+' aria-label="下移'+s.name+'">下移</button></div>';}).join('');}
+$('#orderStates').onclick=()=>{renderOrder();$('#ordering').showModal();};$('#closeOrder').onclick=()=>$('#ordering').close();$('#doneOrder').onclick=()=>$('#ordering').close();$('#resetOrder').onclick=()=>{stateOrder=D.states.map(s=>s.id);rowHeights={};renderOrder();render();saveLayout();};
+$('#orderList').addEventListener('click',e=>{const b=e.target.closest('[data-move]');if(!b)return;const shown=stateOrder.filter(id=>selected.has(id)),i=shown.indexOf(b.dataset.id),other=shown[i+(b.dataset.move==='up'?-1:1)];if(!other)return;const a=stateOrder.indexOf(b.dataset.id),z=stateOrder.indexOf(other);[stateOrder[a],stateOrder[z]]=[stateOrder[z],stateOrder[a]];renderOrder();render();saveLayout();});
+$('#orderList').addEventListener('change',e=>{const id=e.target.dataset.rowSize;if(!id)return;const h=Number(e.target.value);if(![0,40,56,64,96,128,160].includes(h))return;if(h)rowHeights[id]=h;else delete rowHeights[id];render();saveLayout();});
+let draggingState=null;$('#orderList').addEventListener('dragstart',e=>{const row=e.target.closest('[data-order-id]');if(!row)return;draggingState=row.dataset.orderId;e.dataTransfer.setData('text/plain',draggingState);e.dataTransfer.effectAllowed='move';});
+$('#orderList').addEventListener('dragover',e=>{if(e.target.closest('[data-order-id]'))e.preventDefault();});
+$('#orderList').addEventListener('drop',e=>{e.preventDefault();const target=e.target.closest('[data-order-id]')?.dataset.orderId;if(!target||!draggingState||target===draggingState)return;stateOrder=stateOrder.filter(id=>id!==draggingState);stateOrder.splice(stateOrder.indexOf(target),0,draggingState);draggingState=null;renderOrder();render();saveLayout();});
+applyLayout();
 render();setCursor(770);vp.scrollLeft=Math.max(0,x(770)-40);
 // Browser agents use the same navigation and search state as the visible controls.
 if(document.modelContext?.registerTool){
