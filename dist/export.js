@@ -1,0 +1,78 @@
+'use strict';
+let exportObjectURL=null,exportBusy=false,exportStateIds=[];
+const exportWidth=1200,exportHeight=850;
+function exportFont(ctx,size=18,bold=false){ctx.font=(bold?'600 ':'')+size+'px "Noto Sans CJK SC", system-ui, "PingFang SC", "Microsoft YaHei", sans-serif';}
+function wrapExportText(ctx,text,width){
+ const lines=[];let line='';for(const c of String(text)){if(c==='\n'){lines.push(line);line='';continue;}if(line&&ctx.measureText(line+c).width>width){lines.push(line);line=c;}else line+=c;}if(line||!lines.length)lines.push(line);return lines;
+}
+function exportRulerLanes(s,from,to){
+ const ends=[],rulers=[];for(const r of s.rulers.filter(r=>r.start>=to&&r.end<=from).sort((a,b)=>b.start-a.start||(a.lane||0)-(b.lane||0))){let lane=r.lane||0;while(ends[lane]!=null&&r.start>=ends[lane])lane++;ends[lane]=r.end;rulers.push({...r,exportLane:lane});}return {rulers,lanes:Math.max(1,ends.length)};
+}
+function buildExportPlan(options,ctx){
+ const {from,to}=options;if(!Number.isInteger(from)||!Number.isInteger(to)||from<to||from>1046||to<221)throw new Error('请填写有效范围：前1046年至前221年，起始年份须大于或等于结束年份。');
+ const states=[...new Set(options.states)].map(byId).filter(Boolean);if(!states.length)throw new Error('当前没有显示的国家，请先筛选国家或清除搜索。');
+ const span=[100,150,300,1000].includes(options.span)?options.span:150,sources=[],addSource=s=>{if(!s?.url)return 0;let i=sources.findIndex(v=>v.url===s.url);if(i<0){sources.push(s);i=sources.length-1;}return i+1;};
+ const rulers=states.flatMap(s=>s.rulers.filter(r=>r.start>=to&&r.end<=from).map(r=>({state:s,r,ref:addSource({title:r.source.includes('wikisource')?'君主纪年表 · 原典':'君主纪年表 · 检索汇编，待逐条校勘',url:r.source})})));
+ const events=D.events.filter(e=>e.year<=from&&e.year>=to&&e.states.some(id=>states.some(s=>s.id===id))&&(options.category==='all'||e.kind===options.category)).sort((a,b)=>b.year-a.year).map((e,i)=>({e,number:i+1,refs:(e.sources||[]).map(addSource).filter(Boolean)}));
+ for(const s of states){for(const ref of s.dating?.sources||[])addSource(ref);}
+ const pages=[];for(let first=from;first>=to;){const last=Math.max(to,first-span+1);let group=[],weight=0;
+  for(const s of states){const packed=exportRulerLanes(s,first,last),height=80+packed.lanes*22;if(group.length&&weight+height>520){pages.push({type:'chart',from:first,to:last,rows:group});group=[];weight=0;}group.push({s,...packed,height});weight+=height;}
+  if(group.length)pages.push({type:'chart',from:first,to:last,rows:group});first=last-1;
+ }
+ // A complete text index accompanies small bars and dense event markers.
+ const items=[{text:'君主索引 · 完整在位区间（不将元年一概视为实际即位年）',kind:'heading'}];
+ for(const s of states){items.push({text:s.name+' · '+range(s.start,s.end,s.approxStart||s.approxEnd)+(s.id==='qin'?' · 前221年为称帝转制':s.id==='wei'?' · 延续至前209年，超出本图范围':''),kind:'heading'});const list=rulers.filter(v=>v.state.id===s.id);if(!list.length)items.push({text:'本导出范围没有已定位的在位区间；空白表示未收录或该阶段未存续。'});for(const {r,ref} of list)items.push({text:r.name+(r.person?'（'+r.person+'）':'')+' · '+range(r.start,r.end,r.approx)+' · '+certaintyLabel[r.dating?.level||'inferred']+' · 来源['+ref+']'});}
+ items.push({text:'事件索引 · 同一编号在相关国家行中对应同一事件',kind:'heading'});
+ for(const {e,number,refs} of events){items.push({text:'E'+number+' · '+range(e.year,e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>byId(id).name).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+refs.map(n=>'['+n+']').join('')});items.push({text:e.description});if(e.dating?.alternatives?.length)items.push({text:'异说：'+e.dating.alternatives.map(a=>a.label+(a.year?' '+fmt(a.year):'')).join('；')});}
+ if(!events.length)items.push({text:'当前范围与类别筛选下没有已收录事件。'});
+ items.push({text:'图例与采用口径',kind:'heading'},{text:'彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。'}, {text:'定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。'}, {text:'前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。'});
+ items.push({text:'核查来源 · 原典记载与纪年汇编分别标注',kind:'heading'});sources.forEach((s,i)=>{items.push({text:'['+(i+1)+'] '+s.title,kind:'source'});items.push({text:s.url,kind:'url'});});
+ let lines=[],used=0;const flush=()=>{if(lines.length)pages.push({type:'index',lines});lines=[];used=0;};
+ for(let itemIndex=0;itemIndex<items.length;itemIndex++){const item=items[itemIndex];if((item.kind==='heading'&&used+68>630)||(item.kind==='source'&&used+92>630))flush();exportFont(ctx,item.kind==='url'?15:18,item.kind==='heading');const wrapped=wrapExportText(ctx,item.text,1110);for(let i=0;i<wrapped.length;i++){const height=item.kind==='heading'?34:item.kind==='url'?24:27;if(used+height>630)flush();lines.push({text:wrapped[i],kind:item.kind,height});used+=height;}if(used+7>630)flush();else{lines.push({text:'',height:7});used+=7;}}
+ flush();return {pages,states,events,sources,from,to,cursor:options.cursor,category:options.category,date:new Date().toLocaleDateString('zh-CN'),query:options.query||''};
+}
+function drawExportPage(ctx,page,plan,index){
+ const W=exportWidth,H=exportHeight;ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);ctx.textBaseline='alphabetic';ctx.fillStyle='#19343d';exportFont(ctx,30,true);ctx.fillText('周代列国 · 历史对比笔记',40,54);exportFont(ctx,17);ctx.fillStyle='#65777c';ctx.fillText(range(plan.from,plan.to)+' · '+plan.states.map(s=>s.name).join('、'),40,86);ctx.fillText('事件类别：'+(plan.category==='all'?'全部':plan.category)+' · 参考年份：'+fmt(plan.cursor)+(plan.query?' · 按搜索结果所显示国家导出':''),40,112);
+ if(page.type==='index'){let y=151;for(const line of page.lines){exportFont(ctx,line.kind==='url'?15:18,line.kind==='heading');ctx.fillStyle=line.kind==='url'?'#315f79':line.kind==='heading'?'#19343d':'#42585e';ctx.fillText(line.text,44,y);y+=line.height;}}
+ else{
+  const left=132,right=1155,track=right-left,scale=track/(page.from-page.to+1),pos=y=>left+(page.from-y)*scale;
+  ctx.fillStyle='#edf3f3';ctx.fillRect(38,132,1124,43);exportFont(ctx,17,true);ctx.fillStyle='#19343d';ctx.fillText(range(page.from,page.to),48,159);
+  const span=page.from-page.to+1,step=span>200?50:span>100?25:span>50?10:5;exportFont(ctx,14);ctx.textAlign='center';for(let year=Math.floor(page.from/step)*step;year>=page.to;year-=step){const xx=pos(year);ctx.fillText('前'+year,xx,197);}ctx.textAlign='left';
+  let y=212;for(const row of page.rows){const {s,height}=row;ctx.fillStyle='#f8faf9';ctx.fillRect(38,y,1124,height);ctx.strokeStyle='#dce4e3';ctx.beginPath();ctx.moveTo(38,y+height);ctx.lineTo(1162,y+height);ctx.stroke();ctx.fillStyle=s.color;exportFont(ctx,22,true);ctx.fillText(s.name,55,y+35);
+   // Draw continuity, including recorded interruptions and restorations.
+   ctx.strokeStyle=s.color;ctx.lineWidth=4;ctx.setLineDash(s.approxStart||s.approxEnd?[7,4]:[]);const a=Math.min(page.from,s.start),b=Math.max(page.to,s.end);if(a>=b){const gaps=s.interruptions.filter(g=>g.start>=b&&g.end<=a).sort((g,h)=>h.start-g.start);let current=a;for(const gap of gaps){ctx.beginPath();ctx.moveTo(pos(current),y+14);ctx.lineTo(pos(Math.min(a,gap.start)),y+14);ctx.stroke();current=Math.max(b,gap.end);}ctx.beginPath();ctx.moveTo(pos(current),y+14);ctx.lineTo(pos(b)+scale,y+14);ctx.stroke();}ctx.setLineDash([]);ctx.lineWidth=1;
+   for(const r of row.rulers){const xx=pos(Math.min(page.from,r.start)),ww=(Math.min(page.from,r.start)-Math.max(page.to,r.end)+1)*scale,yy=y+28+r.exportLane*22;ctx.fillStyle=s.color;ctx.fillRect(xx,yy,Math.max(1,ww-1),19);const level=r.dating?.level||'inferred';if(level!=='certain'){ctx.strokeStyle='#19343d';ctx.setLineDash(level==='inferred'?[4,3]:[]);ctx.strokeRect(xx,yy,Math.max(1,ww-1),19);if(level==='disputed')ctx.strokeRect(xx+2,yy+2,Math.max(1,ww-5),15);ctx.setLineDash([]);}exportFont(ctx,14);ctx.fillStyle='#fff';if(ww>ctx.measureText(r.name).width+8)ctx.fillText(r.name,xx+4,yy+15);}
+   const events=plan.events.filter(v=>v.e.states.includes(s.id)&&v.e.year<=page.from&&v.e.year>=page.to);let markerEnd=-1;for(const v of events){const xx=pos(v.e.year),yy=y+height-29;ctx.fillStyle='#b68c47';ctx.beginPath();ctx.moveTo(xx,yy-6);ctx.lineTo(xx+6,yy);ctx.lineTo(xx,yy+6);ctx.lineTo(xx-6,yy);ctx.closePath();ctx.fill();exportFont(ctx,14);const text='E'+v.number;if(xx>=markerEnd){ctx.fillStyle='#73571e';const tx=Math.min(xx+8,right-ctx.measureText(text).width);ctx.fillText(text,tx,yy+23);markerEnd=tx+ctx.measureText(text).width+8;}}
+   if(s.end<=page.from&&s.end>=page.to){const xx=pos(s.end);ctx.strokeStyle='#a64139';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(xx,y+7);ctx.lineTo(xx,y+height-8);ctx.stroke();ctx.lineWidth=1;}
+   if(!row.rulers.length){exportFont(ctx,14);ctx.fillStyle='#65777c';ctx.fillText(a>=b?'君主纪年待考':'本时间段未存续',left+10,y+51);}y+=height;
+  }
+  if(plan.cursor<=page.from&&plan.cursor>=page.to){ctx.strokeStyle='#b68c47';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(pos(plan.cursor),204);ctx.lineTo(pos(plan.cursor),y);ctx.stroke();ctx.lineWidth=1;}
+  exportFont(ctx,15);ctx.fillStyle='#42585e';ctx.fillText('彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份',40,760);ctx.fillText('定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。',40,785);
+ }
+ ctx.strokeStyle='#dce4e3';ctx.beginPath();ctx.moveTo(40,809);ctx.lineTo(1160,809);ctx.stroke();exportFont(ctx,14);ctx.fillStyle='#65777c';ctx.fillText('周代列国 · 精选资料 / 年级精度 · 资料更新 '+D.updated+' · 导出 '+plan.date,40,835);ctx.textAlign='right';ctx.fillText('第 '+(index+1)+' / '+plan.pages.length+' 页',1160,835);ctx.textAlign='left';
+}
+function exportCanvas(page,plan,index){const canvas=document.createElement('canvas');canvas.width=exportWidth*2;canvas.height=exportHeight*2;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('当前浏览器无法生成图片，请换用支持Canvas的浏览器。');ctx.scale(2,2);drawExportPage(ctx,page,plan,index);return canvas;}
+function canvasExportBlob(canvas,type){return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(new Error('图片生成失败，请缩短范围后重试。')),type,type==='image/jpeg'?0.92:undefined));}
+function concatExportBytes(chunks){const size=chunks.reduce((n,c)=>n+c.length,0),bytes=new Uint8Array(size);let pos=0;for(const c of chunks){bytes.set(c,pos);pos+=c.length;}return bytes;}
+function buildImagePDF(images){
+ const encode=s=>new TextEncoder().encode(s),objects=[null,encode('<< /Type /Catalog /Pages 2 0 R >>')],kids=images.map((_,i)=>(3+i*3)+' 0 R').join(' ');objects.push(encode('<< /Type /Pages /Count '+images.length+' /Kids ['+kids+'] >>'));
+ images.forEach((bytes,i)=>{const pageId=3+i*3,imageId=pageId+1,contentId=pageId+2,content='q\n841.89 0 0 595.28 0 0 cm\n/Im0 Do\nQ\n';objects.push(encode('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 841.89 595.28] /Resources << /XObject << /Im0 '+imageId+' 0 R >> >> /Contents '+contentId+' 0 R >>'));objects.push(concatExportBytes([encode('<< /Type /XObject /Subtype /Image /Width 2400 /Height 1700 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+bytes.length+' >>\nstream\n'),bytes,encode('\nendstream')]));objects.push(encode('<< /Length '+encode(content).length+' >>\nstream\n'+content+'endstream'));});
+ const chunks=[encode('%PDF-1.4\n')],offsets=[0];let position=chunks[0].length;for(let i=1;i<objects.length;i++){offsets[i]=position;const obj=concatExportBytes([encode(i+' 0 obj\n'),objects[i],encode('\nendobj\n')]);chunks.push(obj);position+=obj.length;}const xref=position;chunks.push(encode('xref\n0 '+objects.length+'\n0000000000 65535 f \n'+offsets.slice(1).map(n=>String(n).padStart(10,'0')+' 00000 n \n').join('')+'trailer\n<< /Size '+objects.length+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF\n'));return new Blob(chunks,{type:'application/pdf'});
+}
+function exportCRC32(bytes){let crc=0xffffffff;for(const byte of bytes){crc^=byte;for(let i=0;i<8;i++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);}return (crc^0xffffffff)>>>0;}
+function buildImagesZIP(files){
+ const chunks=[],central=[];let offset=0;const header=(size,signature)=>{const b=new Uint8Array(size),v=new DataView(b.buffer);v.setUint32(0,signature,true);return {b,v};};
+ for(let i=0;i<files.length;i++){const bytes=files[i],name=new TextEncoder().encode('zhou-comparison-'+String(i+1).padStart(3,'0')+'.png'),crc=exportCRC32(bytes),h=header(30,0x04034b50);h.v.setUint16(4,20,true);h.v.setUint16(12,33,true);h.v.setUint32(14,crc,true);h.v.setUint32(18,bytes.length,true);h.v.setUint32(22,bytes.length,true);h.v.setUint16(26,name.length,true);chunks.push(h.b,name,bytes);const c=header(46,0x02014b50);c.v.setUint16(4,20,true);c.v.setUint16(6,20,true);c.v.setUint16(14,33,true);c.v.setUint32(16,crc,true);c.v.setUint32(20,bytes.length,true);c.v.setUint32(24,bytes.length,true);c.v.setUint16(28,name.length,true);c.v.setUint32(42,offset,true);central.push(c.b,name);offset+=30+name.length+bytes.length;}
+ const centralBytes=concatExportBytes(central),end=header(22,0x06054b50);end.v.setUint16(8,files.length,true);end.v.setUint16(10,files.length,true);end.v.setUint32(12,centralBytes.length,true);end.v.setUint32(16,offset,true);return new Blob([...chunks,centralBytes,end.b],{type:'application/zip'});
+}
+function clearExportDownload(){if(exportObjectURL){URL.revokeObjectURL(exportObjectURL);exportObjectURL=null;}$('#exportDownload').innerHTML='';}
+async function createComparisonExport(){
+ if(exportBusy)return;exportBusy=true;$('#createExport').disabled=true;document.querySelectorAll('#exportForm input,#exportForm select').forEach(e=>e.disabled=true);clearExportDownload();$('#exportStatus').textContent='正在准备导出…';
+ try{await document.fonts?.ready;const measure=document.createElement('canvas').getContext('2d');if(!measure)throw new Error('当前浏览器无法生成图片。');const plan=buildExportPlan({from:Number($('#exportFrom').value),to:Number($('#exportTo').value),span:Number($('#exportSpan').value),states:exportStateIds,cursor,category,query},measure),pdf=$('#exportFormat').value==='pdf',files=[];
+  for(let i=0;i<plan.pages.length;i++){$('#exportStatus').textContent='正在生成 '+(i+1)+' / '+plan.pages.length+' 页…';await new Promise(resolve=>setTimeout(resolve,0));const canvas=exportCanvas(plan.pages[i],plan,i);const blob=await canvasExportBlob(canvas,pdf?'image/jpeg':'image/png');files.push(new Uint8Array(await blob.arrayBuffer()));canvas.width=canvas.height=0;}
+  const blob=pdf?buildImagePDF(files):files.length===1?new Blob(files,{type:'image/png'}):buildImagesZIP(files),extension=pdf?'pdf':files.length===1?'png':'zip',filename='zhou-comparison-'+plan.from+'-'+plan.to+'.'+extension;exportObjectURL=URL.createObjectURL(blob);const a=document.createElement('a');a.href=exportObjectURL;a.download=filename;a.textContent='下载 '+(pdf?'PDF':files.length===1?'PNG图片':'PNG图片包')+'（'+plan.pages.length+'页）';$('#exportDownload').appendChild(a);$('#exportStatus').textContent='已生成 '+plan.states.length+' 个国家、'+range(plan.from,plan.to)+'的对比，含完整文字索引和来源。';
+ }catch(error){$('#exportStatus').textContent=error.message||'导出失败，请缩短时间范围后重试。';}finally{exportBusy=false;$('#createExport').disabled=false;document.querySelectorAll('#exportForm input,#exportForm select').forEach(e=>e.disabled=false);}
+}
+$('#exportCompare').onclick=()=>{if(exportBusy){$('#exportDialog').showModal();return;}exportStateIds=visibleStates.map(s=>s.id);const from=Math.round(Math.min(1046,Math.max(end,1046-vp.scrollLeft/px))),to=Math.round(Math.max(end,1046-(vp.scrollLeft+vp.clientWidth-labelWidth())/px));$('#exportFrom').value=from;$('#exportTo').value=to;$('#exportCountries').textContent='当前显示国家：'+(exportStateIds.map(id=>byId(id).name).join('、')||'无');if(!exportBusy){clearExportDownload();$('#exportStatus').textContent='';}$('#exportDialog').showModal();};
+$('#closeExport').onclick=()=>$('#exportDialog').close();$('#exportForm').onsubmit=e=>{e.preventDefault();createComparisonExport();};
+window.addEventListener('pagehide',()=>{if(exportObjectURL)URL.revokeObjectURL(exportObjectURL);});

@@ -1,0 +1,1141 @@
+{
+  "updated": "2026-10-07",
+  "note": "结构化阅读摘要据既有资料与所列原典整理；后续影响是阅读概括，不将时间先后自动解释为直接因果。",
+  "people": {
+    "吴起": {
+      "origin": "卫国；出身地不等同任职国家。",
+      "sources": [
+        {
+          "title": "《史记》·孙子吴起列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷065"
+        }
+      ],
+      "journey": [
+        {
+          "state": "lu",
+          "label": "在鲁为将",
+          "text": "早期事鲁，受任领兵对齐；离鲁年份未可靠定位。",
+          "year": null,
+          "event": null,
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "liang",
+          "label": "魏文侯、魏武侯时期",
+          "text": "在魏领兵并任西河守，参与西部边防；不把两位君主的完整在位区间当作其任期。",
+          "year": null,
+          "event": null,
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "chu",
+          "label": "楚悼王任用与改革",
+          "text": "进入楚国，整顿官职、公族待遇与军政。此处采用本图约前383年的活动节点。",
+          "year": 383,
+          "event": "e63",
+          "kind": "任职 / 活动",
+          "approx": true
+        },
+        {
+          "state": "chu",
+          "label": "悼王死后遇害",
+          "text": "前381年楚悼王去世后，吴起在贵族作乱中被杀。",
+          "year": 381,
+          "event": null,
+          "kind": "生涯终点",
+          "approx": false
+        }
+      ]
+    },
+    "商鞅": {
+      "aliases": [
+        "公孙鞅",
+        "卫鞅"
+      ],
+      "origin": "卫国宗室支系出身；在魏任职，后入秦。",
+      "sources": [
+        {
+          "title": "《史记》·商君列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷068"
+        }
+      ],
+      "journey": [
+        {
+          "state": "liang",
+          "label": "在魏任职",
+          "text": "早年事魏相公叔痤为中庶子；任职起讫未定位。",
+          "year": null,
+          "event": null,
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qin",
+          "label": "求贤背景下入秦",
+          "text": "秦孝公发布求贤令后，商鞅经景监引见；不将求贤年直接等同抵秦年。",
+          "year": null,
+          "event": "e67",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qin",
+          "label": "第一次变法",
+          "text": "秦孝公支持改革军功、户籍与农业等制度。",
+          "year": 356,
+          "event": "e68",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qin",
+          "label": "迁咸阳与再次变法",
+          "text": "继续整顿县制、土地与度量衡等制度。",
+          "year": 350,
+          "event": "e71",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qin",
+          "label": "被诛与制度延续",
+          "text": "孝公去世后被追捕、诛杀；个人结局与制度延续应分开看待。",
+          "year": 338,
+          "event": "e74",
+          "kind": "生涯终点",
+          "approx": false
+        }
+      ]
+    },
+    "孙膑": {
+      "origin": "齐地人；生卒年未可靠定位。",
+      "sources": [
+        {
+          "title": "《史记》·孙子吴起列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷065"
+        }
+      ],
+      "journey": [
+        {
+          "state": "liang",
+          "label": "在魏受刑",
+          "text": "与庞涓的经历见于列传；受刑年份未定位。",
+          "year": null,
+          "event": null,
+          "kind": "经历",
+          "approx": false
+        },
+        {
+          "state": "qi",
+          "label": "到齐辅佐田忌",
+          "text": "由齐使带回齐国，协助田忌并获齐王任用；到齐年份未定位。",
+          "year": null,
+          "event": null,
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qi",
+          "label": "桂陵战役叙事",
+          "text": "与齐救赵、攻击魏的战役相关联。",
+          "year": 353,
+          "event": "e70",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qi",
+          "label": "马陵战役叙事",
+          "text": "参与齐魏战争的谋划；图用前342年，另有前341年说。",
+          "year": 342,
+          "event": "e73",
+          "kind": "任职 / 活动",
+          "approx": true
+        }
+      ]
+    },
+    "乐毅": {
+      "origin": "赵地活动，先后事魏、燕，后往赵。",
+      "sources": [
+        {
+          "title": "《史记》·乐毅列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷080"
+        }
+      ],
+      "journey": [
+        {
+          "state": "zhao",
+          "label": "早期在赵",
+          "text": "在赵获举用；沙丘之乱后离赵。",
+          "year": null,
+          "event": null,
+          "kind": "经历",
+          "approx": false
+        },
+        {
+          "state": "liang",
+          "label": "事魏并使燕",
+          "text": "在魏任职，出使燕国时受到燕昭王礼遇。",
+          "year": null,
+          "event": null,
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "yan",
+          "label": "燕昭王招贤",
+          "text": "留燕为臣，参与燕国恢复与伐齐准备；不强定入燕年。",
+          "year": null,
+          "event": "e81",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "yan",
+          "label": "率联军伐齐",
+          "text": "联络诸侯并率军攻齐，随后燕军持续占领齐地。",
+          "year": 284,
+          "event": "e88",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "zhao",
+          "label": "去燕适赵",
+          "text": "燕惠王以骑劫代将后，乐毅避祸到赵；属复齐前后的阶段，不强定其离燕年。",
+          "year": null,
+          "event": "e89",
+          "kind": "任职 / 活动",
+          "approx": false
+        }
+      ]
+    },
+    "伍子胥": {
+      "aliases": [
+        "伍员"
+      ],
+      "origin": "楚人；出逃经历与后来在吴任职分别展示。",
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ],
+      "journey": [
+        {
+          "state": "chu",
+          "label": "楚国出身与家难",
+          "text": "父兄遭杀后出逃；离楚年月未定位。",
+          "year": null,
+          "event": null,
+          "kind": "出身 / 经历",
+          "approx": false
+        },
+        {
+          "state": "song",
+          "label": "奔宋",
+          "text": "逃亡途中投奔太子建，后因宋国内乱离开。",
+          "year": null,
+          "event": null,
+          "kind": "途经 / 流亡",
+          "approx": false
+        },
+        {
+          "state": "zheng",
+          "label": "奔郑",
+          "text": "与太子建到郑，太子建被杀后继续逃往吴。",
+          "year": null,
+          "event": null,
+          "kind": "途经 / 流亡",
+          "approx": false
+        },
+        {
+          "state": "wu",
+          "label": "辅佐阖闾",
+          "text": "到吴后参与公子光的政治与军事活动，阖闾即位后任用。",
+          "year": null,
+          "event": "e44",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "wu",
+          "label": "攻楚入郢",
+          "text": "参与吴攻楚的谋划与战争。",
+          "year": 506,
+          "event": "e45",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "wu",
+          "label": "劝谏夫差",
+          "text": "反对轻视越国威胁，后被赐死；本条不强填未校定的死年。",
+          "year": null,
+          "event": null,
+          "kind": "生涯终点",
+          "approx": false
+        }
+      ]
+    },
+    "管仲": {
+      "aliases": [
+        "管夷吾"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·管晏列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷062"
+        }
+      ],
+      "journey": [
+        {
+          "state": "qi",
+          "label": "先辅公子纠",
+          "text": "齐国内部继承争夺时辅佐公子纠。",
+          "year": null,
+          "event": null,
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qi",
+          "label": "鲍叔牙荐入齐桓公朝",
+          "text": "小白即位后获任用，推动富国强兵与诸侯外交。",
+          "year": 685,
+          "event": "e13",
+          "kind": "任职 / 活动",
+          "approx": false
+        },
+        {
+          "state": "qi",
+          "label": "齐楚会盟",
+          "text": "辅佐齐桓公的外交活动，与召陵会盟相联。",
+          "year": 656,
+          "event": "e19",
+          "kind": "任职 / 活动",
+          "approx": false
+        }
+      ]
+    }
+  },
+  "events": {
+    "e0": {
+      "background": "周与商的政治、军事矛盾进入决战阶段。",
+      "process": "周武王联合诸侯攻商，于牧野击败商军。",
+      "result": "商王帝辛败亡，周建立。",
+      "impact": "新的王朝须进一步安定东方秩序，随后发生周公东征。",
+      "related": [
+        "e1"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e1": {
+      "background": "周建立后，东方的三监与商遗民反叛。",
+      "process": "周公主持东征，平定叛乱；图示年份为约年节点。",
+      "result": "东方局势得到控制，分封秩序进一步建立。",
+      "impact": "周对东方的治理与分封继续推进；卫、宋初封是相关节点。",
+      "related": [
+        "e0",
+        "e3"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e5": {
+      "background": "周厉王时期的政治冲突积累。",
+      "process": "国人暴动，厉王出奔，王政进入共和阶段。",
+      "result": "厉王失去实际控制，朝廷由共和行政主持。",
+      "impact": "共和结束后宣王开始纪年；共和主持者及细节有异说。",
+      "related": [
+        "e6"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e8": {
+      "background": "王室内部继承冲突与申侯等外部力量介入交织。",
+      "process": "申侯联合犬戎等攻周，秦、郑参与救周。",
+      "result": "周幽王、郑桓公死于战乱，西部王室中心遭破坏。",
+      "impact": "平王东迁洛邑，王室与诸侯的关系进入新阶段。",
+      "related": [
+        "e9"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e9": {
+      "background": "幽王败亡后，西部王室中心受损。",
+      "process": "平王在诸侯支持下迁往洛邑。",
+      "result": "东周开始，秦获得诸侯身份。",
+      "impact": "王室在东方继续存在，诸侯在政治、军事上的作用扩大。",
+      "related": [
+        "e8",
+        "e12"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e13": {
+      "background": "齐国继承争夺结束，小白取得君位。",
+      "process": "齐桓公任用管仲，推进财政、军政与外交。",
+      "result": "齐国整合资源，逐步形成争霸基础。",
+      "impact": "诸侯会盟、召陵与葵丘等节点可接续阅读。",
+      "related": [
+        "e16",
+        "e19",
+        "e20"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·管晏列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷062"
+        }
+      ]
+    },
+    "e15": {
+      "background": "曲沃与晋国翼系长期争夺晋国统治权。",
+      "process": "曲沃武公最终统一晋，并取得周王承认。",
+      "result": "长期并立结束，晋由曲沃一系统治。",
+      "impact": "晋国随后仍面临继承危机与政治整合。",
+      "related": [
+        "e21",
+        "e24"
+      ]
+    },
+    "e19": {
+      "background": "齐桓公霸业发展，齐楚力量在中原相遇。",
+      "process": "齐率诸侯南下，与楚在召陵议盟。",
+      "result": "战争威胁转化为盟约，两国相互约束。",
+      "impact": "齐的诸侯协调地位得到体现，随后葵丘会盟延续其霸业。",
+      "related": [
+        "e13",
+        "e20"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·管晏列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷062"
+        }
+      ]
+    },
+    "e20": {
+      "background": "齐桓公已主持多次诸侯会盟。",
+      "process": "在葵丘召集诸侯，周王室代表参与。",
+      "result": "齐的霸主地位得到集中体现。",
+      "impact": "诸侯协调依赖具体强国与君主，不能视为稳定统一政权。",
+      "related": [
+        "e13",
+        "e19",
+        "e23"
+      ]
+    },
+    "e25": {
+      "background": "晋文公返晋后整合国力，晋楚在中原争衡。",
+      "process": "晋军与楚军在城濮交战，晋军获胜。",
+      "result": "晋随后举行践土会盟，取得中原霸主地位。",
+      "impact": "晋楚争衡继续，邲与鄢陵是后续重要战役。",
+      "related": [
+        "e24",
+        "e31",
+        "e33"
+      ]
+    },
+    "e31": {
+      "background": "晋楚继续争夺中原诸侯的支持。",
+      "process": "楚庄王与晋军在邲交战。",
+      "result": "楚军获胜，楚在中原的军事影响扩大。",
+      "impact": "晋楚优势反复变化，后有鄢陵之战与弭兵会盟。",
+      "related": [
+        "e25",
+        "e33",
+        "e37"
+      ]
+    },
+    "e37": {
+      "background": "晋楚长期争衡，各国承受反复战争。",
+      "process": "宋国向戌推动晋楚等诸侯议和会盟。",
+      "result": "诸侯尝试以会盟缓和争霸战争。",
+      "impact": "会盟改变部分交往方式，但不等于列国战争从此停止。",
+      "related": [
+        "e31",
+        "e33"
+      ]
+    },
+    "e39": {
+      "background": "子产执政后，郑国推进行政与社会秩序改革。",
+      "process": "郑将刑书铸于鼎，公开成文法。",
+      "result": "刑法由政治决策转为可公开知悉的文字规则。",
+      "impact": "引发关于礼、法与治理方式的讨论；后世评价应与当时记载分开。",
+      "related": [
+        "e38"
+      ]
+    },
+    "e45": {
+      "background": "吴楚冲突扩大，蔡、唐等与楚的关系紧张。",
+      "process": "吴与蔡、唐联合攻楚，在柏举获胜后进入郢都。",
+      "result": "楚昭王出奔，楚都失守。",
+      "impact": "秦援楚及吴国内部变化促成楚的恢复；入郢不等于楚灭亡。",
+      "related": [
+        "e44",
+        "e46"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ]
+    },
+    "e46": {
+      "background": "吴军占领郢都，楚昭王流亡。",
+      "process": "申包胥向秦求援，秦军赴楚作战。",
+      "result": "楚逐步收复失地，吴未能长期占领楚都。",
+      "impact": "楚国存续，吴随后更多卷入吴越与中原战争。",
+      "related": [
+        "e45",
+        "e50"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ]
+    },
+    "e50": {
+      "background": "吴越之间存在持续的边境与势力竞争。",
+      "process": "越王勾践与吴军在槜李交战。",
+      "result": "吴军受挫，阖闾受伤后死，夫差继位。",
+      "impact": "夫差整军报复，随后在夫椒击败越军。",
+      "related": [
+        "e51"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ]
+    },
+    "e51": {
+      "background": "夫差继位后准备对越报复。",
+      "process": "吴军击败越军，勾践退守并求和。",
+      "result": "越暂时臣服，吴取得优势。",
+      "impact": "越国并未灭亡，随后恢复力量并趁吴北上扩张反击。",
+      "related": [
+        "e50",
+        "e54",
+        "e58"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ]
+    },
+    "e54": {
+      "background": "吴在北方扩大军事影响，越在南方恢复力量。",
+      "process": "夫差北上与晋争盟主，越同时进攻吴。",
+      "result": "吴的争霸活动与本国安全危机交织。",
+      "impact": "吴越竞争继续，最终越灭吴。",
+      "related": [
+        "e51",
+        "e53",
+        "e58"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ]
+    },
+    "e57": {
+      "background": "孔子晚年回鲁，教学与经典传承持续。",
+      "process": "孔子在鲁去世；采用传统前479年纪年。",
+      "result": "其个人生涯结束，弟子群体继续传承学说。",
+      "impact": "儒家思想通过弟子和后学发展；不把后世经典定型归于单一事件。",
+      "related": [
+        "e47",
+        "e49",
+        "e78"
+      ]
+    },
+    "e58": {
+      "background": "夫椒后越国恢复力量，吴持续参与北方争霸。",
+      "process": "勾践率越军攻灭吴国。",
+      "result": "夫差死，吴国政权终止。",
+      "impact": "越的势力向北发展，后来又面临楚等国的压力。",
+      "related": [
+        "e51",
+        "e54",
+        "e84"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·伍子胥列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷066"
+        }
+      ]
+    },
+    "e59": {
+      "background": "晋国内部卿族争夺土地与政治主导权。",
+      "process": "赵与韩、魏联合，击败智氏。",
+      "result": "韩、赵、魏成为晋国内部的主导势力。",
+      "impact": "前403年列侯与分取晋余地是不同阶段，不能合并为同一次灭国。",
+      "related": [
+        "e61",
+        "e65"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e61": {
+      "background": "韩、赵、魏已在晋国内形成独立力量。",
+      "process": "周威烈王正式承认三家为诸侯。",
+      "result": "三家获得列侯名分。",
+      "impact": "晋宗室仍有余地，之后继续被分取；战国分期也有不同口径。",
+      "related": [
+        "e59",
+        "e65"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e62": {
+      "background": "田氏在齐逐步掌握实际统治权。",
+      "process": "田和获得周王室的诸侯承认。",
+      "result": "田齐取得正式名分。",
+      "impact": "姜齐宗室延续至前379年；实际夺权、列侯与宗室终结分别展示。",
+      "related": [
+        "e55",
+        "e64"
+      ]
+    },
+    "e63": {
+      "background": "楚悼王寻求加强军政，任用来自魏的吴起。",
+      "process": "吴起整顿官职与公族待遇，将资源用于战斗之士。",
+      "result": "改革触动贵族利益，并强化军政组织。",
+      "impact": "前381年悼王去世后吴起被杀，改革的政治支持中断。",
+      "related": [],
+      "sources": [
+        {
+          "title": "《史记》·孙子吴起列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷065"
+        }
+      ]
+    },
+    "e65": {
+      "background": "三家已列为诸侯，晋宗室只剩部分土地。",
+      "process": "韩、赵、魏进一步分取晋的余地。",
+      "result": "晋的领土与权力进一步收缩。",
+      "impact": "晋最终终结有前376年、前349年等记载口径，详情分别标注。",
+      "related": [
+        "e59",
+        "e61"
+      ]
+    },
+    "e66": {
+      "background": "韩国扩张至郑国所在的中原地区。",
+      "process": "韩哀侯攻灭郑国。",
+      "result": "郑国政权终止。",
+      "impact": "韩国将政治中心转向新郑；郑的文化与地域延续不同于国家存续。",
+      "related": []
+    },
+    "e67": {
+      "background": "秦孝公继位，寻求恢复和增强秦国实力。",
+      "process": "发布求贤令，吸引能提出强国方案的人才。",
+      "result": "为商鞅等人进入秦国政治提供条件。",
+      "impact": "商鞅获任用并先后推行两轮改革。",
+      "related": [
+        "e68",
+        "e71"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·商君列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷068"
+        }
+      ]
+    },
+    "e68": {
+      "background": "孝公求贤并支持改革，秦需整合战争与农业资源。",
+      "process": "商鞅推行军功、户籍与农业等制度改革。",
+      "result": "国家的动员、奖惩与基层组织发生变化。",
+      "impact": "前350年继续改革；前338年商鞅被诛不等于制度全部废除。",
+      "related": [
+        "e67",
+        "e71",
+        "e74"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·商君列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷068"
+        }
+      ]
+    },
+    "e69": {
+      "background": "魏国向赵扩大军事压力。",
+      "process": "魏军攻赵并围邯郸，齐介入援赵。",
+      "result": "魏赵冲突转为齐魏军事交锋。",
+      "impact": "次年桂陵之战可与本事件连读。",
+      "related": [
+        "e70"
+      ]
+    },
+    "e70": {
+      "background": "魏围邯郸，齐出兵援赵。",
+      "process": "齐军对魏展开军事行动，击败魏军。",
+      "result": "魏受到牵制，齐的军事影响扩大。",
+      "impact": "后世以围魏救赵概括战略；马陵之战是后续齐魏冲突。",
+      "related": [
+        "e69",
+        "e73"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·孙子吴起列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷065"
+        }
+      ]
+    },
+    "e71": {
+      "background": "首次改革已经展开，秦继续调整政治中心与行政。",
+      "process": "迁都咸阳，并整顿行政、土地等制度。",
+      "result": "秦的统治与资源组织进一步调整。",
+      "impact": "制度延续与人才个人结局应分开看；后续秦持续向外扩张。",
+      "related": [
+        "e68",
+        "e74",
+        "e79"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·商君列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷068"
+        }
+      ]
+    },
+    "e73": {
+      "background": "齐魏竞争持续，列传叙事亦将此役与魏攻韩相联。",
+      "process": "齐军在马陵击败魏军，孙膑、田忌、庞涓见于相关叙事。",
+      "result": "魏国军事与霸权遭重创。",
+      "impact": "魏仍存续；此后列国力量结构继续变化。纪年有前342、341年之别。",
+      "related": [
+        "e70",
+        "e75"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·孙子吴起列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷065"
+        }
+      ]
+    },
+    "e74": {
+      "background": "商鞅长期主持改革，贵族与政治对手积怨。",
+      "process": "孝公死后，新君统治下商鞅被追捕并诛杀。",
+      "result": "商鞅个人政治生命终止。",
+      "impact": "变法制度并未全部废除；个人下场不能直接替代制度成效判断。",
+      "related": [
+        "e68",
+        "e71",
+        "e76"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·商君列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷068"
+        }
+      ]
+    },
+    "e75": {
+      "background": "齐魏都已使用或争取王号，周王室权威下降。",
+      "process": "齐、魏在徐州相互承认王号。",
+      "result": "王号获得两国间的政治确认。",
+      "impact": "列国称王趋势继续；楚破越的争议纪年不与本事件强行合并。",
+      "related": [
+        "e72",
+        "e76",
+        "e77"
+      ]
+    },
+    "e79": {
+      "background": "秦在西部发展，继续谋求扩大资源基础。",
+      "process": "秦攻取巴、蜀。",
+      "result": "巴蜀地区进入秦的控制。",
+      "impact": "人口与物资为其后续战争提供基础；不是秦统一的唯一原因。",
+      "related": [
+        "e71",
+        "e90"
+      ]
+    },
+    "e80": {
+      "background": "燕王哙让国于子之，引发燕国内乱。",
+      "process": "齐军趁乱攻入燕国。",
+      "result": "燕国政权短暂中断。",
+      "impact": "燕昭王恢复政权并招贤，为后来伐齐积累力量。",
+      "related": [
+        "e81",
+        "e88"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·乐毅列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷080"
+        }
+      ]
+    },
+    "e81": {
+      "background": "齐破燕造成严重损失，燕需恢复政治秩序。",
+      "process": "燕昭王即位，招贤与整顿国力。",
+      "result": "燕国重新组织国家力量。",
+      "impact": "乐毅等参与伐齐准备，前284年出现联军攻齐。",
+      "related": [
+        "e80",
+        "e88"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·乐毅列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷080"
+        }
+      ]
+    },
+    "e83": {
+      "background": "赵武灵王面对边疆战争与军事组织调整需求。",
+      "process": "推行胡服骑射，改变服装、装备与作战方式。",
+      "result": "骑射力量得到加强。",
+      "impact": "军事改革与后来宫廷政变属于不同问题，不能以单一结局评价改革。",
+      "related": [
+        "e86"
+      ]
+    },
+    "e84": {
+      "background": "楚越力量关系变化，越的中心王权遭到攻击。",
+      "process": "楚击败越王无疆，图采用前306年口径，另有前334年等说。",
+      "result": "越的中心王国瓦解。",
+      "impact": "越地残余政权仍存在，不能把中心瓦解等同全部越人政治消失。",
+      "related": [
+        "e58",
+        "e75"
+      ]
+    },
+    "e86": {
+      "background": "赵武灵王已传位，宫廷中的权力分配仍不稳定。",
+      "process": "沙丘发生政变，已退位的武灵王受困。",
+      "result": "赵武灵王死，退位年与死亡年分开。",
+      "impact": "赵继续存在并参与列国战争；政变不能直接等同国家灭亡。",
+      "related": [
+        "e83",
+        "e91"
+      ]
+    },
+    "e87": {
+      "background": "齐国向外扩张，宋地成为争夺目标。",
+      "process": "齐军吞并宋国。",
+      "result": "宋国政权终止，齐领土扩大。",
+      "impact": "扩张加剧诸侯对齐的警惕，是后来联军伐齐的背景之一。",
+      "related": [
+        "e88"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·乐毅列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷080"
+        }
+      ]
+    },
+    "e88": {
+      "background": "齐扩张招致诸侯警惕，燕有复仇与恢复国力的目标。",
+      "process": "乐毅组织并率领联军攻齐，燕军随后持续进攻。",
+      "result": "齐失去大部分城邑，保留莒、即墨等少数据点。",
+      "impact": "燕国内换将后，田单反攻，齐得以复国。",
+      "related": [
+        "e80",
+        "e81",
+        "e87",
+        "e89"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·乐毅列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷080"
+        }
+      ]
+    },
+    "e89": {
+      "background": "齐保留莒、即墨据点，燕以骑劫代替乐毅。",
+      "process": "田单组织反攻，击败燕军并收复城邑。",
+      "result": "齐襄王返回临淄，齐重新控制大部分失地。",
+      "impact": "齐国存续，但此前战争造成的格局变化并未全部消失。",
+      "related": [
+        "e88",
+        "e104"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·乐毅列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷080"
+        }
+      ]
+    },
+    "e90": {
+      "background": "秦楚长期军事竞争，秦已在西南扩大资源。",
+      "process": "白起攻楚，夺取郢都。",
+      "result": "楚迁徙政治中心，秦取得重要据点。",
+      "impact": "楚继续存续至统一战争；失都不等于灭国。",
+      "related": [
+        "e79",
+        "e102"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·白起王翦列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+        }
+      ]
+    },
+    "e91": {
+      "background": "秦取韩地使上党通道中断，上党归赵引发秦赵争夺。",
+      "process": "廉颇防守后赵括代将，秦由白起主导包围、切断赵军补给。",
+      "result": "赵军大败并遭大规模杀降；古籍伤亡数字不作精确统计值。",
+      "impact": "赵国国力受损，但魏楚援赵后邯郸解围，秦并未立即灭赵。",
+      "related": [
+        "e92",
+        "e98"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·白起王翦列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+        }
+      ]
+    },
+    "e92": {
+      "background": "长平之后，秦继续围攻赵都邯郸。",
+      "process": "赵坚持守城，魏、楚出兵援助。",
+      "result": "秦军退却，赵都解围。",
+      "impact": "秦的灭赵进程暂受阻，赵仍持续抵抗至统一战争。",
+      "related": [
+        "e91",
+        "e98"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·白起王翦列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+        }
+      ]
+    },
+    "e93": {
+      "background": "周王室领地与政治力量已大为缩小，秦持续向东扩张。",
+      "process": "秦攻西周公，周赧王同年去世。",
+      "result": "周天子王室终结。",
+      "impact": "东周小国至前249年才被秦灭，两个节点不混为一谈。",
+      "related": [
+        "e95"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e94": {
+      "background": "鲁在列国竞争中处于弱势，楚向东方扩张。",
+      "process": "楚考烈王灭鲁。",
+      "result": "鲁国政权终止。",
+      "impact": "鲁地及其学术传统仍延续；国家终止不表示文化终止。",
+      "related": []
+    },
+    "e95": {
+      "background": "周天子王室已终结，仍有东周君封国。",
+      "process": "秦灭东周小国。",
+      "result": "最后的周系小国并入秦。",
+      "impact": "这不是周天子再次在位至前249年，应与王室终结区分。",
+      "related": [
+        "e93"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·周本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        }
+      ]
+    },
+    "e97": {
+      "background": "秦已形成持续向东进攻的条件，韩承受邻近压力。",
+      "process": "秦军攻韩并俘韩王安。",
+      "result": "韩国终止。",
+      "impact": "秦灭六国进入连续推进阶段，赵、魏、楚等随后覆亡。",
+      "related": [
+        "e98",
+        "e101",
+        "e102"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    },
+    "e98": {
+      "background": "秦在长平及后续战争之后继续对赵进攻。",
+      "process": "秦攻破邯郸，俘赵王迁。",
+      "result": "赵的都城政权终止。",
+      "impact": "赵公子嘉在代地继续抵抗，直到前222年；不在前228年截断全部赵系政权。",
+      "related": [
+        "e91",
+        "e92",
+        "e103"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    },
+    "e99": {
+      "background": "秦军已灭韩并攻破赵，燕感受直接威胁。",
+      "process": "太子丹派荆轲刺秦王政，行动失败。",
+      "result": "秦王政未被杀，秦燕关系进一步恶化。",
+      "impact": "秦随后攻取燕都蓟，燕退往辽东继续存在。",
+      "related": [
+        "e98",
+        "e100",
+        "e103"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    },
+    "e100": {
+      "background": "荆轲刺秦失败后，秦加强攻燕。",
+      "process": "秦军夺取燕都蓟。",
+      "result": "燕王喜退往辽东。",
+      "impact": "燕仍有残余政权，前222年才最终终结。",
+      "related": [
+        "e99",
+        "e103"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    },
+    "e101": {
+      "background": "韩、赵都城政权先后失陷，秦继续攻击魏。",
+      "process": "王贲等以引水攻大梁的方式迫魏投降。",
+      "result": "魏王假降，魏国终止。",
+      "impact": "秦继续对楚、燕、代和齐推进统一战争。",
+      "related": [
+        "e97",
+        "e98",
+        "e102",
+        "e104"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    },
+    "e102": {
+      "background": "秦已灭三晋并进逼楚，先前攻楚并非一路无阻。",
+      "process": "王翦等推进战争，楚王负刍被俘，余部继续被击败。",
+      "result": "楚的主要政权终止。",
+      "impact": "楚地转入秦的郡县治理；各篇关于灭楚阶段的纪年应分别核查。",
+      "related": [
+        "e90",
+        "e101",
+        "e104"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·白起王翦列传",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+        }
+      ]
+    },
+    "e103": {
+      "background": "赵都与燕都已失陷，代地和辽东仍有抵抗政权。",
+      "process": "秦俘代王嘉与燕王喜。",
+      "result": "赵、燕最后的抵抗政权终结。",
+      "impact": "次年秦灭齐，完成六国统一。",
+      "related": [
+        "e98",
+        "e100",
+        "e104"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    },
+    "e104": {
+      "background": "韩、赵、魏、楚及燕的政权先后覆亡。",
+      "process": "秦军从燕地南下攻齐，齐王建投降。",
+      "result": "六国全部终结，秦王政称始皇帝。",
+      "impact": "秦由诸侯国阶段进入帝国阶段，郡县与统一制度进一步推行。",
+      "related": [
+        "e97",
+        "e98",
+        "e101",
+        "e102",
+        "e103"
+      ],
+      "sources": [
+        {
+          "title": "《史记》·秦始皇本纪",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+        }
+      ]
+    }
+  }
+}
