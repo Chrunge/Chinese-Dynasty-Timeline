@@ -24984,6 +24984,10 @@
         {
           "title": "《史记》·周本纪",
           "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+        },
+        {
+          "title": "《史记》·管蔡世家",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷035"
         }
       ],
       "key": false,
@@ -25086,6 +25090,10 @@
         {
           "title": "《史记》·十二诸侯年表",
           "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+        },
+        {
+          "title": "《史记》·郑世家",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷042"
         }
       ],
       "key": false,
@@ -25295,6 +25303,10 @@
         {
           "title": "《史记》·十二诸侯年表",
           "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+        },
+        {
+          "title": "《左传》·庄公十年",
+          "url": "https://zh.wikisource.org/zh-hans/春秋左氏傳/莊公#莊公十年"
         }
       ],
       "key": false,
@@ -25959,6 +25971,10 @@
         {
           "title": "《史记》·十二诸侯年表",
           "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+        },
+        {
+          "title": "《史记》·郑世家",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷042"
         }
       ],
       "key": false,
@@ -27293,12 +27309,16 @@
         "chu"
       ],
       "kind": "战争",
-      "description": "秦击败楚，楚失去汉中等地，秦楚力量对比进一步改变。",
+      "description": "秦楚战于丹阳，楚军大败；同一轮战争中楚又失汉中，随后反击至蓝田再败。各战场和阶段须分别理解。",
       "approx": false,
       "sources": [
         {
           "title": "《史记》·秦本纪",
           "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+        },
+        {
+          "title": "《史记》·楚世家",
+          "url": "https://zh.wikisource.org/zh-hans/史記/卷040"
         }
       ],
       "key": false,
@@ -28153,7 +28173,7 @@
     }
   ],
   "updated": "2026-10-07",
-  "version": "第四版 · 人物轨迹 / 事件脉络 / 阅读历史 / 对比导出",
+  "version": "第四版 · 人物轨迹 / 事件脉络 / 阅读历史 / 对比导出 · 资料补全",
   "peopleCoverage": {
     "detailedRulerIntervals": 129,
     "rulerIntervalsWithMinisters": 78,
