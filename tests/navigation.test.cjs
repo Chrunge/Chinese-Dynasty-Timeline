@@ -22,8 +22,8 @@ for(const width of [1200,390]){
  // Search result navigation restores its original scope, list length, target and scroll.
  run("selected=new Set(['liang']);px=2;end=256;category='文化';mode='events';density='overview';searchScope='all';searchDescriptions=true;updateSearch('孙膑');searchLimit=18;render();vp.scrollLeft=730;vp.scrollTop=120;$('#searchPanel').scrollTop=130");
  const searchRoot=view(app),results=el('#searchResults').innerHTML;
- action('searchHit','person:孙膑');assert.equal(el('#detailBack').textContent,'返回搜索结果');el('#detail').scrollTop=270;const personHTML=body(app);
- const firstRuler=run("searchIndex.find(e=>e.key==='person:孙膑').data.rulerKeys[0]");assert(firstRuler);
+ action('searchHit','person:person-015');assert.equal(el('#detailBack').textContent,'返回搜索结果');el('#detail').scrollTop=270;const personHTML=body(app);
+ const firstRuler=run("searchIndex.find(e=>e.key==='person:person-015').data.rulerKeys[0]");assert(firstRuler);
  action('ruler',firstRuler.slice(6));el('#detailBack').onclick();assert.equal(body(app),personHTML);assert.equal(el('#detail').scrollTop,270);
  action('event','e73');assert.equal(run('query'),'');el('#detailBack').onclick();assert.equal(body(app),personHTML);assert.equal(run('query'),'孙膑');
  el('#detailBack').onclick();assert.equal(el('#detail').open,false);assert.deepEqual(view(app),searchRoot);assert.equal(el('#searchResults').innerHTML,results);assert.equal(el('#searchPanel').scrollTop,130);

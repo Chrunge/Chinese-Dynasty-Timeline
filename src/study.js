@@ -1,0 +1,72 @@
+'use strict';
+(function(root){
+ const Zhou=root.Zhou||(root.Zhou={});
+ // The controller owns persistence and UI wiring; the bridge owns application state.
+ Zhou.createStudyController=function(b){
+  const model=Zhou.createReadingModel(b),storage=b.storage,$=b.$;
+  const readingKey='zhou-reading-v4',visitsKey='zhou-visits-v4';
+  let ready=false,timer=null,visits=[];
+  function publish(){b.onVisits?.(visits);}
+  function rememberDetailProgress(){const item=visits.find(v=>v.key===b.getDetailKey());if(item&&$('#detail').open)item.top=$('#detail').scrollTop;}
+  function scheduleReadingSave(){if(!ready)return;b.clearTimeout(timer);timer=b.setTimeout(saveReadingPosition,400);}
+  function saveReadingPosition(){
+   if(!ready)return;rememberDetailProgress();
+   const view=b.getRootView()||b.getView(),width=b.getWidth(),from=Math.min(1046,Math.max(view.end,1046-view.left/view.px)),to=Math.max(view.end,from-(width-b.labelWidth())/view.px);
+   const data={version:4,view,range:{from,to},width,layout:b.getLayout(),at:b.now()};
+   const savedReading=storage.write(readingKey,data),savedVisits=storage.write(visitsKey,visits);
+   $('#readingStatus').textContent=savedReading&&savedVisits?'阅读位置已记住':'浏览器未允许保存阅读位置';
+  }
+  function recordStudyVisit(value){
+   const key=model.canonical(value);if(!ready||!model.validKey(key))return;
+   const entry=b.searchIndex.find(e=>e.key===key);
+   visits=[{key,title:entry?.title||'密集事件列表',view:b.getView(),top:0,at:b.now()},...visits.filter(v=>v.key!==key)].slice(0,50);
+   publish();updateStudyControls();scheduleReadingSave();
+  }
+  function updateStudyControls(){const previous=visits.find(v=>v.key!==b.getDetailKey());$('#lastRead').disabled=!previous;$('#lastRead').textContent=b.getDetailKey()?'上一条阅读':'继续上次详情';$('#historyCount').textContent=visits.length;}
+  function renderStudyHistory(){
+   const labels={country:'国家',ruler:'君主',person:'人物',event:'事件',undated:'君主',cluster:'事件组'};
+   $('#historyList').innerHTML=visits.length?visits.map((v,i)=>'<button class="listitem" data-study-index="'+i+'"><span>'+labels[v.key.split(':')[0]]+' · '+b.escapeHTML(v.title)+'</span><small>'+new Date(v.at).toLocaleString('zh-CN')+' · '+b.fmt(v.view.cursor)+'</small></button>').join(''):'<p class="notice">查看国家、君主、人物或事件后，会出现在这里。</p>';
+  }
+  function openStudyVisit(index){
+   const item=visits[index];if(!item)return;rememberDetailProgress();const key=item.key,top=item.top;
+   $('#history').close();b.prepareDetailNavigation();const view=model.sanitizeReading(item.view);if(view)b.restoreView(view);
+   b.openDetail(key);$('#detail').scrollTop=top;rememberDetailProgress();scheduleReadingSave();
+  }
+  function restoreSavedReading(data){const result=model.restoreReading(data,{width:b.getWidth(),labelWidth:b.labelWidth(),layout:b.getLayout()});if(!result)return false;b.setLayout(result.layout);b.applyLayout();b.restoreView(result.view);return true;}
+  visits=model.sanitizeVisits(storage.read(visitsKey,[]));publish();
+  if(restoreSavedReading(storage.read(readingKey,null)))$('#readingStatus').textContent='已恢复上次阅读位置';
+  ready=true;updateStudyControls();
+  $('#browseHistory').onclick=()=>{rememberDetailProgress();renderStudyHistory();$('#history').showModal();};$('#closeHistory').onclick=()=>$('#history').close();
+  $('#lastRead').onclick=()=>{const index=visits.findIndex(v=>v.key!==b.getDetailKey());if(index>=0)openStudyVisit(index);};
+  $('#historyList').addEventListener('click',e=>{const button=e.target.closest('[data-study-index]');if(button)openStudyVisit(Number(button.dataset.studyIndex));});
+  $('#clearHistory').onclick=()=>{visits=[];publish();renderStudyHistory();updateStudyControls();saveReadingPosition();};
+  $('#detail').addEventListener('scroll',scheduleReadingSave,{passive:true});$('#searchPanel').addEventListener('scroll',scheduleReadingSave,{passive:true});
+  b.window.addEventListener('pagehide',saveReadingPosition);b.document.addEventListener('visibilitychange',()=>{if(b.document.hidden)saveReadingPosition();});b.window.addEventListener('scroll',scheduleReadingSave,{passive:true});
+  return {rememberDetailProgress,scheduleReadingSave,saveReadingPosition,recordStudyVisit,updateStudyControls,renderStudyHistory,openStudyVisit,restoreSavedReading,sanitizeReading:model.sanitizeReading,validStudyKey:model.validKey,studyNumber:model.number,getVisits:()=>visits};
+ };
+})(globalThis);
+
+// Compatibility entry points used by application navigation and existing integrations.
+let studyController,studyVisits=[];
+function rememberDetailProgress(){studyController?.rememberDetailProgress();}
+function scheduleReadingSave(){studyController?.scheduleReadingSave();}
+function saveReadingPosition(){studyController?.saveReadingPosition();}
+function recordStudyVisit(key){studyController?.recordStudyVisit(key);}
+function updateStudyControls(){studyController?.updateStudyControls();}
+function renderStudyHistory(){studyController?.renderStudyHistory();}
+function openStudyVisit(index){studyController?.openStudyVisit(index);}
+function restoreSavedReading(value){return studyController?.restoreSavedReading(value);}
+function sanitizeReading(value){return studyController?.sanitizeReading(value);}
+function validStudyKey(value){return studyController?.validStudyKey(value);}
+function studyNumber(...args){return studyController?.studyNumber(...args);}
+studyController=Zhou.createStudyController({
+ data:D,searchIndex,normalizeDetailKey:typeof normalizeDetailKey==='function'?normalizeDetailKey:key=>key,
+ storage:Zhou.createStorage(()=>localStorage),$,window,document,clearTimeout,setTimeout,now:()=>Date.now(),
+ getView:()=>captureDetailFrame().view,getRootView:()=>navigation.frames[0]?.view,getDetailKey:()=>navigation.key,getWidth:()=>vp.clientWidth,labelWidth,
+ getLayout:()=>({order:appState.layout.stateOrder,pins:[...appState.layout.pinned],rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights}),
+ setLayout:l=>{appState.layout.stateOrder=l.order;appState.layout.pinned=new Set(l.pins);appState.layout.rowHeight=l.rowHeight;appState.layout.viewHeight=l.viewHeight;appState.layout.fitRows=l.fitRows;appState.layout.rowHeights=l.rowHeights;},
+ applyLayout,restoreView:restoreDetailView,prepareDetailNavigation,escapeHTML,fmt,onVisits:visits=>{studyVisits=visits;},
+ openDetail:key=>{
+  if(key.startsWith('person:'))showPerson(key.slice(7));else if(key.startsWith('ruler:'))showRuler(key.slice(6));else if(key.startsWith('event:'))showEvent(key.slice(6));else if(key.startsWith('country:'))showState(key.slice(8));else if(key.startsWith('cluster:')){const es=key.slice(8).split(',').map(id=>D.events.find(e=>e.id===id));show('密集事件 · 按年代展开','<h3 class="detailTitle">'+es.length+'条事件</h3>'+eventList(es),key);}else openSearchResult(key);
+ }
+});

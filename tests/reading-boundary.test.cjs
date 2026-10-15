@@ -1,0 +1,46 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const base=path.resolve(__dirname,'..');
+const ctx=vm.createContext({});
+for(const file of ['src/adapters/storage.js','src/core/reading.js'])vm.runInContext(fs.readFileSync(path.join(base,file),'utf8'),ctx);
+const plain=value=>JSON.parse(JSON.stringify(value));
+const data={states:[{id:'qin'},{id:'qi'}],events:[{id:'e1'}]};
+const searchIndex=[{key:'person:p1',title:'商鞅'},{key:'event:e1',title:'变法'}];
+const model=ctx.Zhou.createReadingModel({data,searchIndex,normalizeDetailKey:key=>key==='person:商鞅'?'person:p1':key,now:()=>1000});
+const input={selected:['qin','gone','qin'],searchTarget:'person:商鞅',px:Infinity,end:221,cursor:10000,left:-2,searchLimit:900,query:'a'.repeat(120),periods:['war','bad'],activeEventId:'gone'};
+const snapshot=JSON.stringify(input),view=model.sanitizeReading(input);
+assert.equal(JSON.stringify(input),snapshot,'sanitizing must not mutate its input');
+assert.deepEqual(plain(view.selected),['qin']);assert.equal(view.searchTarget,'person:p1');assert.equal(view.px,4);assert.equal(view.cursor,1046);assert.equal(view.left,0);assert.equal(view.searchLimit,200);assert.equal(view.query.length,100);assert.equal(view.activeEventId,null);assert.deepEqual(plain(view.periods),['war']);
+assert.equal(model.sanitizeReading({}),null);assert.equal(model.validKey('cluster:'),false);assert.equal(model.validKey('cluster:e1,missing'),false);assert.equal(model.validKey('cluster:e1'),true);
+for(const value of [null,true,false,[],{},JSON.parse('{"toString":null}'),JSON.parse('{"valueOf":null,"toString":{}}')]){
+ const malformed={selected:['qin'],px:value,cursor:value,searchLimit:value,left:value};
+ const sanitized=model.sanitizeReading(malformed);
+ assert.equal(sanitized.px,4);assert.equal(sanitized.cursor,770);assert.equal(sanitized.searchLimit,6);assert.equal(sanitized.left,0);
+ const saved=model.restoreReading({view:malformed,width:value,range:{from:value,to:value},layout:{rowHeight:value,viewHeight:value}},{width:400,labelWidth:100,layout:{rowHeight:64,viewHeight:560}});
+ assert.equal(saved.view.px,4);assert.equal(saved.layout.rowHeight,64);assert.equal(saved.layout.viewHeight,560);
+ assert.doesNotThrow(()=>model.sanitizeVisits([{key:'unknown',view:malformed}]));
+}
+assert.equal(model.number('3',0,10,8),3,'numeric strings remain compatible');
+const visits=model.sanitizeVisits([{key:'person:商鞅',title:'<script>',view:input,top:999999,at:-1},{key:'person:p1',view:input},{key:'person:unknown',view:input},{key:'event:e1',view:null}]);
+assert.equal(visits.length,1);assert.equal(visits[0].key,'person:p1');assert.equal(visits[0].title,'商鞅');assert.equal(visits[0].top,20000);assert.equal(visits[0].at,0);assert.equal(visits[0].view.searchTarget,'person:p1');
+const many=Array.from({length:65},(_,i)=>({key:'person:'+i,title:String(i)}));
+const bounded=ctx.Zhou.createReadingModel({data,searchIndex:many}).sanitizeVisits(many.map(e=>({...e,view:input})));
+assert.equal(bounded.length,50);
+const restored=model.restoreReading({view:input,width:1200,range:{from:800,to:600},layout:{order:['gone','qi','qi'],pins:['qin','bad'],rowHeight:500,viewHeight:1,rowHeights:{qin:64,qi:99,bad:40}}},{width:400,labelWidth:100,layout:{order:['qin','qi'],pins:[],rowHeight:56,viewHeight:560}});
+assert.equal(restored.view.px,1.5);assert.equal(restored.view.left,369);assert.deepEqual(plain(restored.layout.order),['qi','qin']);assert.deepEqual(plain(restored.layout.pins),['qin']);assert.deepEqual(plain(restored.layout.rowHeights),{qin:64});assert.equal(restored.layout.rowHeight,160);assert.equal(restored.layout.viewHeight,320);
+let accesses=0;
+const denied=ctx.Zhou.createStorage(()=>{accesses++;throw new Error('denied');});
+assert.equal(accesses,0,'storage access must be deferred');assert.equal(denied.read('x','fallback'),'fallback');assert.equal(denied.write('x',{}),false);
+const store={bad:'{oops',valid:'{"selected":["qin"]}'};
+const storage=ctx.Zhou.createStorage(()=>({getItem:key=>store[key]??null,setItem:(key,value)=>{store[key]=value;}}));
+assert.equal(storage.read('bad',null),null);assert.equal(storage.read('missing',17),17);assert.deepEqual(plain(storage.read('valid',null)),{selected:['qin']});assert.equal(storage.write('saved',{value:2}),true);assert.equal(store.saved,'{"value":2}');
+// Instantiate the UI controller with a bridge in a context with no application globals.
+const studySource=fs.readFileSync(path.join(base,'src/study.js'),'utf8').split('// Compatibility entry points')[0];
+vm.runInContext(studySource,ctx);
+const elements=new Map();const $=key=>{if(!elements.has(key))elements.set(key,{addEventListener(){},scrollTop:0});return elements.get(key);};
+const status=[];
+const controller=ctx.Zhou.createStudyController({data,searchIndex,normalizeDetailKey:key=>key==='person:商鞅'?'person:p1':key,storage:denied,$,getDetailKey:()=>null,getLayout:()=>({}),getWidth:()=>400,labelWidth:()=>100,getView:()=>view,getRootView:()=>null,now:()=>1000,clearTimeout(){},setTimeout(){},onVisits:v=>status.push(v.length),window:{addEventListener(){}},document:{addEventListener(){}}});
+controller.recordStudyVisit('person:商鞅');assert.equal(controller.getVisits()[0].key,'person:p1');controller.saveReadingPosition();assert.equal($('#readingStatus').textContent,'浏览器未允许保存阅读位置');assert.deepEqual(status,[0,1]);
+console.log('PASS reading boundary: pure sanitization, stable key migration, bounded visits, responsive restore, lazy/denied storage, injected UI controller.');
