@@ -63,7 +63,7 @@ function buildSearchIndex(){
  for(const s of D.states){
   entries.push({key:'country:'+s.id,type:'country',title:s.name+' · '+(s.id==='zhou'?'周王室':'国家'),aliases:countryAliases(s),states:[s.id],data:s,description:s.region+' '+s.note});
   for(const r of s.rulers)entries.push({key:'ruler:'+r.id,type:'ruler',title:r.name+(r.person?' · '+r.person:''),aliases:rulerAliases(r),states:[s.id],year:r.start,until:r.end,data:r,description:[r.description,r.biography?.summary].filter(Boolean).join(' ')});
-  s.undated.forEach((r,i)=>entries.push({key:'undated:'+s.id+':'+i,type:'ruler',title:r.name+(r.person?' · '+r.person:''),aliases:rulerAliases(r),states:[s.id],data:r,undated:true,description:r.known||'在位起讫未定位'}));
+   s.undated.forEach(r=>entries.push({key:'undated:'+r.id,type:'ruler',title:r.name+(r.person?' · '+r.person:''),aliases:rulerAliases(r),states:[s.id],data:r,undated:true,description:r.known||'在位起讫未定位'}));
  }
  const people=new Map((D.people||[]).map(p=>[p.id,{...p,states:[...(p.states||[])],rulerKeys:[],eventIds:[...(p.relatedEvents||[])]}]));
  for(const s of D.states)for(const r of s.rulers)for(const p of r.ministers||[]){if(!people.has(p.id))people.set(p.id,{...p,states:[],rulerKeys:[],eventIds:[]});const person=people.get(p.id);if(!person.states.includes(s.id))person.states.push(s.id);person.rulerKeys.push('ruler:'+r.id);}
@@ -74,6 +74,7 @@ function buildSearchIndex(){
 }
 
  const searchIndex=buildSearchIndex();
+  const legacyUndated=new Map(searchIndex.filter(e=>e.undated).flatMap(e=>(e.data.legacyKeys||[]).map(key=>[key,e.key])));
 function searchMatches(q, {scope="all", descriptions=false, states=[]} = {}){
  const selected = new Set(states);
  const needle=normalizeSearch(q);if(!needle)return [];
@@ -83,6 +84,7 @@ function searchMatches(q, {scope="all", descriptions=false, states=[]} = {}){
 }
 
  function normalizeKey(key) {
+   if(legacyUndated.has(key))return legacyUndated.get(key);
   if(typeof key!=='string'||!key.startsWith('person:'))return key;
   const value=key.slice(7);
   if(D.people.some(p=>p.id===value))return key;

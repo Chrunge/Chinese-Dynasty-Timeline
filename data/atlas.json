@@ -91,31 +91,51 @@
           "name": "唐叔虞",
           "person": "虞",
           "known": "前1042年",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-jin-001",
+          "legacyKeys": [
+            "undated:jin:0"
+          ]
         },
         {
           "name": "晋侯燮",
           "person": "燮",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-jin-002",
+          "legacyKeys": [
+            "undated:jin:1"
+          ]
         },
         {
           "name": "晋武侯",
           "person": "宁族",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-jin-003",
+          "legacyKeys": [
+            "undated:jin:2"
+          ]
         },
         {
           "name": "晋成侯",
           "person": "服人",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-jin-004",
+          "legacyKeys": [
+            "undated:jin:3"
+          ]
         },
         {
           "name": "晋厉侯",
           "person": "福",
           "known": "？-前859年",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-jin-005",
+          "legacyKeys": [
+            "undated:jin:4"
+          ]
         }
       ],
       "interruptions": [],
@@ -160,25 +180,41 @@
           "name": "齐丁公",
           "person": "伋（一說及）",
           "known": "前999年－前年",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-qi-001",
+          "legacyKeys": [
+            "undated:qi:0"
+          ]
         },
         {
           "name": "齐乙公",
           "person": "得",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-qi-002",
+          "legacyKeys": [
+            "undated:qi:1"
+          ]
         },
         {
           "name": "齐癸公",
           "person": "慈母",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-qi-003",
+          "legacyKeys": [
+            "undated:qi:2"
+          ]
         },
         {
           "name": "齐哀公",
           "person": "不辰（一說不臣）",
           "known": "前年—前863年",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-qi-004",
+          "legacyKeys": [
+            "undated:qi:3"
+          ]
         }
       ],
       "interruptions": [],
@@ -205,67 +241,111 @@
           "name": "鬻熊",
           "person": "鬻熊",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-001",
+          "legacyKeys": [
+            "undated:chu:0"
+          ]
         },
         {
           "name": "熊丽",
           "person": "熊丽",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-002",
+          "legacyKeys": [
+            "undated:chu:1"
+          ]
         },
         {
           "name": "熊狂",
           "person": "熊狂",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-003",
+          "legacyKeys": [
+            "undated:chu:2"
+          ]
         },
         {
           "name": "熊绎",
           "person": "熊绎",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-004",
+          "legacyKeys": [
+            "undated:chu:3"
+          ]
         },
         {
           "name": "熊艾",
           "person": "熊艾",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-005",
+          "legacyKeys": [
+            "undated:chu:4"
+          ]
         },
         {
           "name": "熊䵣",
           "person": "熊䵣",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-006",
+          "legacyKeys": [
+            "undated:chu:5"
+          ]
         },
         {
           "name": "熊胜",
           "person": "熊胜",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-007",
+          "legacyKeys": [
+            "undated:chu:6"
+          ]
         },
         {
           "name": "熊杨",
           "person": "熊杨",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-008",
+          "legacyKeys": [
+            "undated:chu:7"
+          ]
         },
         {
           "name": "熊渠",
           "person": "熊渠",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-009",
+          "legacyKeys": [
+            "undated:chu:8"
+          ]
         },
         {
           "name": "熊挚红",
           "person": "熊摯",
           "known": "  ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-010",
+          "legacyKeys": [
+            "undated:chu:9"
+          ]
         },
         {
           "name": "熊延",
           "person": "熊延",
           "known": " 前848年 ",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chu-011",
+          "legacyKeys": [
+            "undated:chu:10"
+          ]
         }
       ],
       "interruptions": [],
@@ -292,25 +372,41 @@
           "name": "燕召公",
           "person": "奭",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yan-001",
+          "legacyKeys": [
+            "undated:yan:0"
+          ]
         },
         {
           "name": "燕侯克",
           "person": "克",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yan-002",
+          "legacyKeys": [
+            "undated:yan:1"
+          ]
         },
         {
           "name": "燕侯旨",
           "person": "旨",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yan-003",
+          "legacyKeys": [
+            "undated:yan:2"
+          ]
         },
         {
           "name": "燕侯舞",
           "person": "舞",
           "known": "（前？年——前865年）",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yan-004",
+          "legacyKeys": [
+            "undated:yan:3"
+          ]
         }
       ],
       "interruptions": [
@@ -363,43 +459,71 @@
           "name": "宋微子",
           "person": "启",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-001",
+          "legacyKeys": [
+            "undated:song:0"
+          ]
         },
         {
           "name": "宋微仲",
           "person": "衍",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-002",
+          "legacyKeys": [
+            "undated:song:1"
+          ]
         },
         {
           "name": "宋公稽",
           "person": "稽",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-003",
+          "legacyKeys": [
+            "undated:song:2"
+          ]
         },
         {
           "name": "宋丁公",
           "person": "申",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-004",
+          "legacyKeys": [
+            "undated:song:3"
+          ]
         },
         {
           "name": "宋湣公",
           "person": "共",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-005",
+          "legacyKeys": [
+            "undated:song:4"
+          ]
         },
         {
           "name": "宋炀公",
           "person": "熙",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-006",
+          "legacyKeys": [
+            "undated:song:5"
+          ]
         },
         {
           "name": "宋厉公",
           "person": "鮒祀",
           "known": "？ - 前859年",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-song-007",
+          "legacyKeys": [
+            "undated:song:6"
+          ]
         }
       ],
       "interruptions": [],
@@ -426,43 +550,71 @@
           "name": "卫康叔",
           "person": "封",
           "known": "约前1040年以后 - ？",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-001",
+          "legacyKeys": [
+            "undated:wei:0"
+          ]
         },
         {
           "name": "卫康伯",
           "person": "代",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-002",
+          "legacyKeys": [
+            "undated:wei:1"
+          ]
         },
         {
           "name": "卫考伯",
           "person": "",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-003",
+          "legacyKeys": [
+            "undated:wei:2"
+          ]
         },
         {
           "name": "卫嗣伯",
           "person": "",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-004",
+          "legacyKeys": [
+            "undated:wei:3"
+          ]
         },
         {
           "name": "卫疌伯",
           "person": "",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-005",
+          "legacyKeys": [
+            "undated:wei:4"
+          ]
         },
         {
           "name": "卫靖伯",
           "person": "",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-006",
+          "legacyKeys": [
+            "undated:wei:5"
+          ]
         },
         {
           "name": "卫贞伯",
           "person": "",
           "known": "？ - 前867年",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wei-007",
+          "legacyKeys": [
+            "undated:wei:6"
+          ]
         }
       ],
       "interruptions": [],
@@ -526,31 +678,51 @@
           "name": "陈胡公",
           "person": "满",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chen-001",
+          "legacyKeys": [
+            "undated:chen:0"
+          ]
         },
         {
           "name": "陈申公",
           "person": "犀侯",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chen-002",
+          "legacyKeys": [
+            "undated:chen:1"
+          ]
         },
         {
           "name": "陈相公",
           "person": "皋羊",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chen-003",
+          "legacyKeys": [
+            "undated:chen:2"
+          ]
         },
         {
           "name": "陈孝公",
           "person": "突",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chen-004",
+          "legacyKeys": [
+            "undated:chen:3"
+          ]
         },
         {
           "name": "陈慎公",
           "person": "圉戎",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-chen-005",
+          "legacyKeys": [
+            "undated:chen:4"
+          ]
         }
       ],
       "interruptions": [
@@ -583,31 +755,51 @@
           "name": "蔡叔度",
           "person": "度",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cai-001",
+          "legacyKeys": [
+            "undated:cai:0"
+          ]
         },
         {
           "name": "蔡仲胡",
           "person": "胡",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cai-002",
+          "legacyKeys": [
+            "undated:cai:1"
+          ]
         },
         {
           "name": "蔡伯荒",
           "person": "荒",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cai-003",
+          "legacyKeys": [
+            "undated:cai:2"
+          ]
         },
         {
           "name": "蔡宫侯",
           "person": "（名字失傳）",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cai-004",
+          "legacyKeys": [
+            "undated:cai:3"
+          ]
         },
         {
           "name": "蔡厉侯",
           "person": "（名字失傳）",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cai-005",
+          "legacyKeys": [
+            "undated:cai:4"
+          ]
         }
       ],
       "interruptions": [
@@ -640,31 +832,51 @@
           "name": "曹叔振铎",
           "person": "振铎",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cao-001",
+          "legacyKeys": [
+            "undated:cao:0"
+          ]
         },
         {
           "name": "曹太伯",
           "person": "脾",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cao-002",
+          "legacyKeys": [
+            "undated:cao:1"
+          ]
         },
         {
           "name": "曹仲君",
           "person": "平",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cao-003",
+          "legacyKeys": [
+            "undated:cao:2"
+          ]
         },
         {
           "name": "曹宫伯",
           "person": "侯",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cao-004",
+          "legacyKeys": [
+            "undated:cao:3"
+          ]
         },
         {
           "name": "曹孝伯",
           "person": "云",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-cao-005",
+          "legacyKeys": [
+            "undated:cao:4"
+          ]
         }
       ],
       "interruptions": [],
@@ -691,43 +903,71 @@
           "name": "吴泰伯",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-001",
+          "legacyKeys": [
+            "undated:wu:0"
+          ]
         },
         {
           "name": "吴仲雍",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-002",
+          "legacyKeys": [
+            "undated:wu:1"
+          ]
         },
         {
           "name": "吴季简",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-003",
+          "legacyKeys": [
+            "undated:wu:2"
+          ]
         },
         {
           "name": "吴叔达",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-004",
+          "legacyKeys": [
+            "undated:wu:3"
+          ]
         },
         {
           "name": "吴周章",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-005",
+          "legacyKeys": [
+            "undated:wu:4"
+          ]
         },
         {
           "name": "吴熊遂",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-006",
+          "legacyKeys": [
+            "undated:wu:5"
+          ]
         },
         {
           "name": "吴柯相",
           "person": "",
           "known": "起讫年代不详",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-wu-007",
+          "legacyKeys": [
+            "undated:wu:6"
+          ]
         }
       ],
       "interruptions": [],
@@ -754,25 +994,41 @@
           "name": "越侯无余",
           "person": "无余",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yue-001",
+          "legacyKeys": [
+            "undated:yue:0"
+          ]
         },
         {
           "name": "越侯无壬",
           "person": "无壬",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yue-002",
+          "legacyKeys": [
+            "undated:yue:1"
+          ]
         },
         {
           "name": "越侯无瞫",
           "person": "无瞫",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yue-003",
+          "legacyKeys": [
+            "undated:yue:2"
+          ]
         },
         {
           "name": "越侯夫谭",
           "person": "夫谭",
           "known": "",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-yue-004",
+          "legacyKeys": [
+            "undated:yue:3"
+          ]
         }
       ],
       "interruptions": [],
@@ -816,37 +1072,61 @@
           "name": "韩万",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-han-001",
+          "legacyKeys": [
+            "undated:han:0"
+          ]
         },
         {
           "name": "韩厥",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-han-002",
+          "legacyKeys": [
+            "undated:han:1"
+          ]
         },
         {
           "name": "韩起",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-han-003",
+          "legacyKeys": [
+            "undated:han:2"
+          ]
         },
         {
           "name": "韩须",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-han-004",
+          "legacyKeys": [
+            "undated:han:3"
+          ]
         },
         {
           "name": "韩不信",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-han-005",
+          "legacyKeys": [
+            "undated:han:4"
+          ]
         },
         {
           "name": "韩庄子",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-han-006",
+          "legacyKeys": [
+            "undated:han:5"
+          ]
         }
       ],
       "interruptions": [],
@@ -873,31 +1153,51 @@
           "name": "赵衰",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-zhao-001",
+          "legacyKeys": [
+            "undated:zhao:0"
+          ]
         },
         {
           "name": "赵盾",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-zhao-002",
+          "legacyKeys": [
+            "undated:zhao:1"
+          ]
         },
         {
           "name": "赵朔",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-zhao-003",
+          "legacyKeys": [
+            "undated:zhao:2"
+          ]
         },
         {
           "name": "赵武",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-zhao-004",
+          "legacyKeys": [
+            "undated:zhao:3"
+          ]
         },
         {
           "name": "赵鞅",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-zhao-005",
+          "legacyKeys": [
+            "undated:zhao:4"
+          ]
         }
       ],
       "interruptions": [],
@@ -924,31 +1224,51 @@
           "name": "毕万",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-liang-001",
+          "legacyKeys": [
+            "undated:liang:0"
+          ]
         },
         {
           "name": "魏犨",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-liang-002",
+          "legacyKeys": [
+            "undated:liang:1"
+          ]
         },
         {
           "name": "魏绛",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-liang-003",
+          "legacyKeys": [
+            "undated:liang:2"
+          ]
         },
         {
           "name": "魏舒",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-liang-004",
+          "legacyKeys": [
+            "undated:liang:3"
+          ]
         },
         {
           "name": "魏侈",
           "person": "",
           "known": "分晋之前的家族领袖，未列作独立国家君主",
-          "sourceId": "source-003"
+          "sourceId": "source-003",
+          "id": "undated-liang-005",
+          "legacyKeys": [
+            "undated:liang:4"
+          ]
         }
       ],
       "interruptions": [],
