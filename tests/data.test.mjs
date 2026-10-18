@@ -56,6 +56,14 @@ test('人物更名不破坏 ID 关联；卡片内容均来自独立人物记录'
  assert(cards.length>1);assert(cards.every(v=>v.name===p.name));
  assert(d.people.find(v=>v.id===p.id).relatedEvents.includes('e91'));
 });
+test('生涯变化节点完整投影，空缺节点保留现有兼容口径',()=>{
+ const a=fresh(),r=a.rulers[0];
+ r.chronology.changes=[{year:1045,label:'特征测试节点'}];
+ assert.deepEqual(compileAtlas(a).states.flatMap(s=>s.rulers).find(v=>v.id===r.id).chronology.changes,r.chronology.changes);
+ r.chronology.changes=null;assert.doesNotThrow(()=>validateAtlas(a));
+ delete r.chronology.changes;assert.doesNotThrow(()=>validateAtlas(a));
+});
+
 const brokenCases = [
  ['重复实体 ID',a=>a.people.push({...a.people[0]}),/重复 ID/],
  ['悬空来源',a=>a.events[0].sourceIds.push('missing-source'),/未知 sources/],
