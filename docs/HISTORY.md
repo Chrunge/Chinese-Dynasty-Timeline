@@ -188,3 +188,11 @@ R04额外对照脚本曾将存储JSON字符串中的运行时间戳差异误判�
 | 2026-10-18 | R05 | 图形索引补齐君主纪年节点与君主/事件异说来源、解释和引用编号，按URL去重，完善使用和架构文档 | 68项测试、50个脚本语法检查与生成物一致性通过；长文本分页和JSON不可变检查通过；浏览器生成齐国前355年两页PDF | `6289899b37624639ea7bb37ecb73e29b4559d7c7`；特征测试 `2faef84` |
 
 最终资料核对：剔除本次为80项未定位君主新增的id与legacyKeys字段后，data/atlas.json与重构起点e6ac060完全相同。项目未增加第三方依赖；旧命令、全局兼容接口和Sites配置保留。全部改动停留在独立重构分支，未合并、推送或重新部署Pages。Git差异空白检查按CRLF换行口径执行；仓库原有Windows换行不作格式调整。真实触控设备和实际打印未另行验收。
+
+## 2026-10-18 合并、推送与Pages发布
+
+用户批准合并、推送并部署。获取远端后确认origin/master仍为9cf95359c3a872943dc59234a55be1bded1168a1，随后将清理与R01—R05重构的21项本地提交快进合并到master（73036a036a83b9b0feb271fe1c5ef30aacd01745）并推送，保留此前未推送的资料校核及全部分项提交。
+
+GitHub Actions [第4次运行](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39130371711)的检查构建和Pages部署作业均成功，提交产物一致性检查、自动化测试、构建及上传全部通过。线上index.html与app.js、data.js、export.js、share.js、study.js、style.css均返回HTTP 200，SHA-256与本地dist对应文件逐一相同。
+
+发布地址：https://chrunge.github.io/Zhou-Dynasty-Timeline/ 。本条为发布后补充的历史记录；记录提交仅更新本文件，发布目录内容保持上述已验证版本，由既有master工作流继续检查和部署。
