@@ -18,7 +18,6 @@ try{const p=storage.read('zhou-pins-v3',[]);if(Array.isArray(p))appState.layout.
 const vp=$('#viewport'),chart=$('#chart');
 const labelWidth=()=>window.matchMedia('(max-width:680px)').matches?88:124;
 const x=y=>(1046-y)*appState.layout.px;
-const includedEvents=s=>historyService.eventsInRange({from:1046,to:appState.conditions.end,states:[s.id],category:appState.conditions.category});
 const {normalizeSearch,rulerAliases,personAliases,countryAliases,narrativeText}=Zhou;
 const containsSearch=(texts,q=appState.search.query)=>Boolean(normalizeSearch(q))&&texts.some(t=>normalizeSearch(t).includes(normalizeSearch(q)));
 const matchRuler=(r,q=appState.search.query)=>containsSearch([...rulerAliases(r),...(r.ministers||[]).flatMap(m=>personAliases(m.name)),...(appState.search.searchDescriptions?[r.description,r.biography?.summary]:[])],q);

@@ -1,5 +1,5 @@
 const assert=require('node:assert');
-const {boot,attachStudy}=require('./helpers/browser.cjs');
+const {boot}=require('./helpers/browser.cjs');
 (async()=>{
  const app=boot(),{el,run,action}=app;const D=app.ctx.window.ZHOU_DATA;
  assert.equal(run('visibleStates.length'),18);

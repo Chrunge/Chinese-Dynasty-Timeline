@@ -1,7 +1,7 @@
 const fs=require('node:fs');
 const base=require('node:path').resolve(__dirname,'..')+'/';
 const assert=require('node:assert');
-const {boot,attachStudy}=require('./helpers/browser.cjs');
+const {boot}=require('./helpers/browser.cjs');
 function view(app){return JSON.parse(app.run('JSON.stringify(captureDetailFrame().view)'));}
 function body(app){return app.el('#detailBody').innerHTML;}
 for(const width of [1200,390]){

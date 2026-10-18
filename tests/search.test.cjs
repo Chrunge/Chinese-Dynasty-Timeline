@@ -1,7 +1,7 @@
 const fs=require('node:fs');
 const base=require('node:path').resolve(__dirname,'..')+'/';
 const assert=require('node:assert');
-const {boot,attachStudy}=require('./helpers/browser.cjs');
+const {boot}=require('./helpers/browser.cjs');
 const app=boot(),{el,run,action}=app;
 function input(q){el('#search').value=q;el('#search').oninput({target:{value:q}});}
 function keys(q){return JSON.parse(run(`JSON.stringify(searchMatches(${JSON.stringify(q)}).map(h=>h.entry.key))`));}
