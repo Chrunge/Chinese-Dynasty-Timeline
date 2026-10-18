@@ -1,6 +1,18 @@
 # GitHub Pages 部署
 
-站点工作流位于 `.github/workflows/site.yml`。2026年10月18日用户确认，Pages 的发布来源已设置为 GitHub Actions。实际部署结果以仓库 Actions 和 `github-pages` 环境中的最新记录为准。
+站点工作流位于 `.github/workflows/site.yml`。2026年10月18日已通过 GitHub Actions 成功部署至 [周朝时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。实际部署结果以仓库 Actions 和 `github-pages` 环境中的最新记录为准。
+
+## 已执行的发布步骤
+
+1. 确认时间线仓库启用 Pages，发布分支为 `master`。
+2. 本地运行全部46项自动检查及 `node build.mjs --check`。
+3. 将源码、测试、发布目录和 `.github/workflows/site.yml` 同步到时间线仓库，保留既有历史资料及备份。
+4. 推送触发 Actions，依次校验生成物、测试、构建、上传 `dist/`、部署 Pages。
+5. 在线检查页面、事件搜索、详情定位和分享入口。后续更新继续走相同工作流。
+
+首次成功发布记录：[Actions #39086309694](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39086309694)。后续修复与发布记录见 [Actions 列表](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions)。
+
+脚本和样式引用附带由文件内容计算的版本参数；更新资源后自动变更参数，避免浏览器沿用旧版本。`dist/index.html` 由构建生成，勿手工编辑这些参数。
 
 ## 仓库设置
 
@@ -44,4 +56,4 @@ node --test tests/*.test.mjs tests/*.test.cjs
 - Pages 未启用或权限受限：确认 Pages 的 Source 为 **GitHub Actions**，并检查仓库、组织及 `github-pages` 环境的策略。
 - 部署作业被跳过：确认触发来自 `master` 的推送，或手动运行时选择了 `master`。
 
-此说明和工作流不会修改 GitHub 仓库设置；Pages 是否已启用、工作流是否已运行及站点是否可访问，需要在实际仓库中核实。
+Pages 来源配置是仓库设置，不由本工作流修改。新仓库仍须先完成设置；本项目已经启用并部署。
