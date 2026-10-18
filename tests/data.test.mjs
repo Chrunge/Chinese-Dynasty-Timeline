@@ -65,6 +65,11 @@ test('生涯变化节点完整投影，空缺节点保留现有兼容口径',()=
 });
 
 const brokenCases = [
+ ['生涯变化节点类型',a=>a.rulers[0].chronology.changes={},/节点须为数组/],
+ ['生涯变化节点空值',a=>a.rulers[0].chronology.changes=[null],/节点年份无效/],
+ ['生涯变化节点零年份',a=>a.rulers[0].chronology.changes=[{year:0,label:'错误'}],/节点年份无效/],
+ ['生涯变化节点字符串年份',a=>a.rulers[0].chronology.changes=[{year:'1045',label:'错误'}],/节点年份无效/],
+ ['生涯变化节点说明',a=>a.rulers[0].chronology.changes=[{year:1045,label:'  '}],/节点说明缺失/],
  ['重复实体 ID',a=>a.people.push({...a.people[0]}),/重复 ID/],
  ['悬空来源',a=>a.events[0].sourceIds.push('missing-source'),/未知 sources/],
  ['悬空国家',a=>a.relations.eventStates[0].stateId='missing-state',/未知 states/],

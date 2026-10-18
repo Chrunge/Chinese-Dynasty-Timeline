@@ -31,6 +31,7 @@
 
 - `rulers.start/end`：采用的年表条带范围。`chronology.regnalStart` 与start一致，作为“元年／图示起点”，不保证所有原典均采用这一元年口径。
 - `chronology.accession/abdication/death`：分别为实际承位、退位或传位、去世。未核实保持null，不从条带端点自动推导。改元、称王、称帝等另写在changes中。
+- `chronology.changes`：有值时为数组，每项包含公元前正整数 `year` 和非空字符串 `label`；缺省或null表示未收录节点，不据此推算历史。
 - `events.year` 和 `events.yearRef` 二选一。明确对应已核实生涯节点的事件使用 `{rulerId, field}`，field支持accession、regnalStart、abdication、death。
 - 活动 `year` 与 `yearFromEvent: true` 二选一。后者须有eventId，自动继承事件年份、约年属性与纪年说明；仅“主题相关”的事件链接不强制继承日期。
 - `dating.level` 为certain／inferred／disputed，表示采用纪年的可信度，不能由是否约年自动覆盖编辑判断。
