@@ -36,4 +36,9 @@ const rulerComparisonStart=historyService.comparisonStart;
 const rulersAt=historyService.rulersAt;
 function participantCard(p){return '<article class="ministerCard eventPerson"><h5>'+personButton(p.id,p.name)+' <span>'+escapeHTML(byId(p.state)?.name||'')+'</span></h5><p class="relation">'+escapeHTML(p.relation)+'</p><p>'+escapeHTML(p.summary)+'</p>'+links(p.sources||[])+'</article>';}
 function buildSearchIndex(){return searchService.index;}
-function searchMatches(q=appState.search.query){return searchService.search(q,{scope:appState.search.searchScope,descriptions:appState.search.searchDescriptions,states:[...appState.conditions.selected,...appState.layout.pinned]});}
+let searchResultCache=null;
+function searchMatches(q=appState.search.query){
+ const states=[...new Set([...appState.conditions.selected,...appState.layout.pinned])],key=JSON.stringify([q,appState.search.searchScope,appState.search.searchDescriptions,appState.search.searchScope==='selected'?states:[]]);
+ if(searchResultCache?.key!==key)searchResultCache={key,hits:searchService.search(q,{scope:appState.search.searchScope,descriptions:appState.search.searchDescriptions,states})};
+ return searchResultCache.hits;
+}

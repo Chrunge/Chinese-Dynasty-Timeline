@@ -174,6 +174,94 @@ Object.assign(Zhou,{normalizeSearch,rulerAliases,personAliases,countryAliases,na
  };
 })(globalThis);
 
+// ---- src/core/view-link.js ----
+(function (Zhou) {
+  'use strict';
+  // This codec contains no DOM, storage or URL-history side effects.
+  Zhou.createViewLinkCodec = function (data, search) {
+    const ids = new Set(data.states.map(state => state.id));
+    const events = new Set(data.events.map(event => event.id));
+    const entries = new Set(search.index.map(entry => entry.key));
+    const categories = ['all','政治','战争','改革','外交','文化'];
+    const modes = ['both','rulers','events','overview'];
+    const densities = ['auto','full','overview'];
+    const validItem = value => entries.has(value) || typeof value === 'string' && value.startsWith('cluster:') && value.slice(8).split(',').every(id => events.has(id));
+    function parse(hash) {
+      if (typeof hash !== 'string' || hash.length > 10000) return null;
+      const params = new URLSearchParams(hash.replace(/^#/, ''));
+      if (params.has('v') && params.get('v') !== '1') return null;
+      const view = {}, result = {view};
+      const number = (name, min, max) => {
+        const raw = params.get(name);
+        if (raw === null || !raw.trim()) return undefined;
+        const value = Number(raw);
+        return Number.isFinite(value) && value >= min && value <= max ? value : undefined;
+      };
+      const list = name => {
+        if (!params.has(name)) return undefined;
+        const raw = params.get(name), values = [...new Set(raw.split(',').filter(id => ids.has(id)))];
+        return raw === '' || values.length ? values : undefined;
+      };
+      const year = number('year',221,1046), zoom = number('zoom',.8,24);
+      if (Number.isInteger(year)) view.cursor = year;
+      if (zoom !== undefined) view.px = zoom;
+      if (['221','256'].includes(params.get('end'))) view.end = Number(params.get('end'));
+      const selected = list('states'); if (selected !== undefined) view.selected = selected;
+      for (const name of ['pinned','order']) { const value = list(name); if (value !== undefined) result[name] = value; }
+      for (const [key, name, allowed] of [['category','category',categories],['mode','mode',modes],['density','density',densities],['searchScope','scope',['all','selected']]]) {
+        if (allowed.includes(params.get(name))) view[key] = params.get(name);
+      }
+      if (params.has('q')) view.query = params.get('q').slice(0,100);
+      if (['0','1'].includes(params.get('desc'))) view.searchDescriptions = params.get('desc') === '1';
+      if (params.has('event') && (params.get('event') === '' || events.has(params.get('event')))) view.activeEventId = params.get('event') || null;
+      if (params.has('target')) { const key = search.normalizeKey(params.get('target')); if (!key || entries.has(key)) view.searchTarget = key || null; }
+      if (params.has('item')) { const key = search.normalizeKey(params.get('item')); if (validItem(key)) result.item = key; }
+      const from = number('from',221,1046), to = number('to',221,1046), width = number('width',1,20000);
+      if (from !== undefined && (to === undefined || from >= to)) result.range = {from, ...(to !== undefined ? {to} : {}), ...(width !== undefined ? {width} : {})};
+      if (year < 256 || from < 256 || to < 256) view.end = 221;
+      return Object.keys(view).length || result.pinned || result.order || result.range || result.item ? result : null;
+    }
+    function encode(value) {
+      const {view, pinned, order, range, item} = value;
+      const params = new URLSearchParams({v:'1',year:String(view.cursor),end:String(view.end),states:view.selected.join(','),pinned:pinned.join(','),order:order.join(','),zoom:String(Number(view.px.toFixed(4))),category:view.category,mode:view.mode,density:view.density,scope:view.searchScope,q:view.query,desc:view.searchDescriptions?'1':'0',event:view.activeEventId||'',target:view.searchTarget||''});
+      if (range) for (const key of ['from','to','width']) if (Number.isFinite(range[key])) params.set(key,String(Number(range[key].toFixed(4))));
+      const key = search.normalizeKey(item); if (validItem(key)) params.set('item',key);
+      return '#' + params.toString();
+    }
+    return Object.freeze({parse,encode});
+  };
+
+  Zhou.createViewLinkController = function (bridge) {
+    const {codec, location, history} = bridge;
+    let ready = false, applying = false, timer = null, handled = null;
+    const fallback = codec.parse(codec.encode(bridge.read()));
+    function restore() {
+      if (handled === location.hash) return;
+      bridge.clearTimeout(timer); timer = null;
+      const value = location.hash ? codec.parse(location.hash) : fallback;
+      handled = location.hash;
+      if (!value) return;
+      applying = true;
+      try { bridge.apply(value); } finally { applying = false; }
+    }
+    function flush() {
+      if (!ready || applying) return;
+      bridge.clearTimeout(timer); timer = null;
+      const hash = codec.encode(bridge.read());
+      if (location.hash !== hash) {
+        try { history.replaceState(history.state,'',location.pathname + location.search + hash); handled = hash; } catch {}
+      }
+      return location.href.split('#')[0] + hash;
+    }
+    function schedule() {
+      if (!ready || applying) return;
+      bridge.clearTimeout(timer); timer = bridge.setTimeout(flush,200);
+    }
+    function start() { if(location.hash)restore();else handled='';ready = true; }
+    return Object.freeze({start,restore,schedule,flush});
+  };
+})(globalThis.Zhou ||= {});
+
 // ---- src/adapters/storage.js ----
 (function(root){
  'use strict';
@@ -186,6 +274,30 @@ Object.assign(Zhou,{normalizeSearch,rulerAliases,personAliases,countryAliases,na
   };
  };
 })(globalThis);
+
+// ---- src/adapters/timeline-dom.js ----
+(function(Zhou){
+ 'use strict';
+ // Rows are keyed independently of their position; moving a row preserves its subtree.
+ Zhou.createTimelineDOM=function(container,document){
+  const items=new Map();
+  return function reconcile(descriptors){
+   const wanted=new Set(descriptors.map(item=>item.key));
+   for(const [key,item] of items)if(!wanted.has(key)){container.removeChild(item.node);items.delete(key);}
+   descriptors.forEach((descriptor,index)=>{
+    let item=items.get(descriptor.key);
+    if(!item||item.html!==descriptor.html){
+     const template=document.createElement('template');template.innerHTML=descriptor.html;
+     const node=template.content.firstElementChild;
+     if(item)container.replaceChild(node,item.node);
+     item={node,html:descriptor.html};items.set(descriptor.key,item);
+    }
+    if(container.children[index]!==item.node)container.insertBefore(item.node,container.children[index]||null);
+    descriptor.update?.(item.node);
+   });
+  };
+ };
+})(globalThis.Zhou ||= {});
 
 // ---- src/app.js ----
 'use strict';
@@ -226,7 +338,12 @@ const rulerComparisonStart=historyService.comparisonStart;
 const rulersAt=historyService.rulersAt;
 function participantCard(p){return '<article class="ministerCard eventPerson"><h5>'+personButton(p.id,p.name)+' <span>'+escapeHTML(byId(p.state)?.name||'')+'</span></h5><p class="relation">'+escapeHTML(p.relation)+'</p><p>'+escapeHTML(p.summary)+'</p>'+links(p.sources||[])+'</article>';}
 function buildSearchIndex(){return searchService.index;}
-function searchMatches(q=appState.search.query){return searchService.search(q,{scope:appState.search.searchScope,descriptions:appState.search.searchDescriptions,states:[...appState.conditions.selected,...appState.layout.pinned]});}
+let searchResultCache=null;
+function searchMatches(q=appState.search.query){
+ const states=[...new Set([...appState.conditions.selected,...appState.layout.pinned])],key=JSON.stringify([q,appState.search.searchScope,appState.search.searchDescriptions,appState.search.searchScope==='selected'?states:[]]);
+ if(searchResultCache?.key!==key)searchResultCache={key,hits:searchService.search(q,{scope:appState.search.searchScope,descriptions:appState.search.searchDescriptions,states})};
+ return searchResultCache.hits;
+}
 
 // ---- src/ui/search-details.js ----
 function resultMeta(entry){const states=entry.states.map(id=>byId(id).name).join('、');return [states,entry.undated?'在位起讫待考':entry.type==='ruler'?range(entry.year,entry.until,entry.data.approx):entry.type==='event'?range(entry.year,entry.year,entry.data.approx):entry.type==='person'?entry.data.role:'国家世系与事件'].filter(Boolean).join(' · ');}
@@ -277,6 +394,8 @@ function packRulers(s){
  for(const r of ordered){let lane=r.lane||0;while(ends[lane]!=null&&r.start>=ends[lane])lane++;ends[lane]=r.end;result.push({...r,displayLane:lane});}
  return {rulers:result,lanes:Math.max(1,ends.length)};
 }
+const reconcileTimeline=Zhou.createTimelineDOM(chart,document),timelineRows=new Map();
+let timelineAxis={signature:null,html:''};
 function render(){
  const oldScroll=vp.scrollLeft,w=(1046-appState.conditions.end+1)*appState.layout.px+160,level=densityLevel(),focused=activeEvent();
  const ordered=appState.layout.stateOrder.map(byId).filter(Boolean);
@@ -285,18 +404,29 @@ function render(){
  $('#rowHeightValue').textContent=(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)+'px';
  chart.style.width=(w+labelWidth())+'px';chart.className=(appState.layout.mode==='overview'?'overview ':'')+'density-'+level+(focused?' hasFocus':'');
  $('#densityHint').textContent=level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件';
+ const descriptors=[],axisSignature=appState.conditions.end+':'+appState.layout.px;
+ const step=appState.layout.px>=12?5:appState.layout.px>=5?10:appState.layout.px>=2?25:50;
+ if(timelineAxis.signature!==axisSignature){
  const eras=[{a:1046,b:771,name:'西周',color:'#64796d'},{a:770,b:476,name:'春秋',color:'#355e68'},{a:475,b:256,name:'战国',color:'#8d734c'}];
  if(appState.conditions.end===221)eras.push({a:255,b:221,name:'周亡后 · 秦统一',color:'#79696a'});
  let html='<div class="axis"><div class="corner">国家 / 年代</div><div class="axisTrack" style="width:'+w+'px">';
  for(const era of eras)html+='<div class="era" style="left:'+x(era.a)+'px;width:'+((era.a-era.b+1)*appState.layout.px)+'px;background:'+era.color+'">'+era.name+'</div>';
- const step=appState.layout.px>=12?5:appState.layout.px>=5?10:appState.layout.px>=2?25:50;
  for(let year=1050;year>=appState.conditions.end;year-=step){if(year<=1046)html+='<div class="tick" style="left:'+x(year)+'px">前'+year+'</div>';}
  html+='</div></div>';
+ timelineAxis={signature:axisSignature,html};
+ }
+ descriptors.push({key:'axis',html:timelineAxis.html});
  appState.session.rowLayouts=new Map();let pinTop=64;
- const content=historyService.comparison({from:1046,to:appState.conditions.end,states:appState.session.visibleStates.map(s=>s.id),category:appState.conditions.category,cursor:appState.conditions.cursor});
- for(const s of content.states){
-  const packed=packRulers(s),rulerVisible=level!=='overview'&&(appState.layout.mode==='both'||appState.layout.mode==='rulers'),eventVisible=appState.layout.mode==='both'||appState.layout.mode==='events'||level==='overview'&&appState.layout.mode!=='overview';
+ // Only rendering inputs belong in this signature. Cursor and search-list paging
+ // update their own UI without regenerating the chart's historical content.
+ const rowSignature=JSON.stringify([appState.conditions.end,appState.layout.px,level,appState.layout.mode,appState.conditions.category,appState.search.query,appState.search.searchDescriptions,appState.search.searchTarget,appState.session.activeEventId]);
+ let events;
+ for(const s of appState.session.visibleStates){
   const height=Math.max(36,Math.min(160,Number(appState.layout.rowHeights[s.id])||(appState.layout.fitRows?fitHeight:appState.layout.rowHeight))),isPinned=appState.layout.pinned.has(s.id),related=focused?.states.includes(s.id);
+  const signature=rowSignature+':'+height+':'+isPinned+':'+(isPinned?pinTop:0),cached=timelineRows.get(s.id);
+  if(cached?.signature===signature){appState.session.rowLayouts.set(s.id,cached.layout);descriptors.push({key:'state:'+s.id,html:cached.html});if(isPinned)pinTop+=height;continue;}
+  let html='';
+  const packed=packRulers(s),rulerVisible=level!=='overview'&&(appState.layout.mode==='both'||appState.layout.mode==='rulers'),eventVisible=appState.layout.mode==='both'||appState.layout.mode==='events'||level==='overview'&&appState.layout.mode!=='overview';
   const lanes=rulerVisible?packed.lanes:1,rulerTop=6,bandHeight=Math.max(8,height-(eventVisible?27:12)),barHeight=Math.max(.5,Math.min(44,bandHeight/lanes-1)),eventTop=height-21;
   appState.session.rowLayouts.set(s.id,{height,eventTop,lanes,barHeight,level,pinned:isPinned});
   html+='<div class="stateRow '+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+s.id+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel"><button class="stateName" data-action="state" data-id="'+s.id+'" style="color:'+s.color+'" aria-label="查看'+s.name+'的历史">'+s.name+'</button><button class="pinState '+(isPinned?'isPinned':'')+'" data-action="pin" data-id="'+s.id+'" aria-pressed="'+isPinned+'" aria-label="'+(isPinned?'取消固定':'固定')+s.name+'" title="'+(isPinned?'取消固定':'固定到上方，滚动时保持可见')+'">钉</button></div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(1046/step)*step)+'px 0">';
@@ -321,7 +451,8 @@ function render(){
    if(first<s.start&&x(first)-x(s.start)>90)html+='<button class="event gap" data-action="state" data-id="'+s.id+'" style="left:'+(x(s.start)+8)+'px;top:6px">早期纪年待考</button>';
   }
   if(eventVisible){
-   const es=content.events.filter(e=>e.states.includes(s.id)).filter(e=>(level!=='overview'||e.key||e.id===appState.session.activeEventId||appState.search.query&&matchEvent(e))&&(e.id===appState.session.activeEventId||!appState.search.query||matchEvent(e)||containsSearch(countryAliases(s)))).sort((a,b)=>b.year-a.year);
+   events??=historyService.eventsInRange({from:1046,to:appState.conditions.end,states:appState.session.visibleStates.map(state=>state.id),category:appState.conditions.category});
+   const es=events.filter(e=>e.states.includes(s.id)).filter(e=>(level!=='overview'||e.key||e.id===appState.session.activeEventId||appState.search.query&&matchEvent(e))&&(e.id===appState.session.activeEventId||!appState.search.query||matchEvent(e)||containsSearch(countryAliases(s)))).sort((a,b)=>b.year-a.year);
    const groups=[];
    for(const ev of es){const last=groups.at(-1),previous=last?.[0];const need=previous?Math.min(210,previous.name.length*(level==='detail'?14:12)+35):0;if(last&&ev.id!==appState.session.activeEventId&&!last.some(e=>e.id===appState.session.activeEventId)&&x(ev.year)-x(previous.year)<need+8)last.push(ev);else groups.push([ev]);}
    for(let i=0;i<groups.length;i++){
@@ -333,15 +464,17 @@ function render(){
   if(s.end>=appState.conditions.end)html+='<button class="event termination" data-action="state" data-id="'+s.id+'" style="left:'+x(s.end)+'px;top:6px;height:'+Math.max(20,height-12)+'px">'+(s.approxEnd?'约 ':'')+'前'+s.end+' '+(s.id==='qin'?'称帝':s.id==='jin'?'终结争议':s.id==='yue'?'中心瓦解':'终止')+'</button>';
   else if(appState.conditions.end===221&&s.id==='wei')html+='<div class="gap" style="left:'+(x(221)+8)+'px">延续至前209年</div>';
   html+='</div></div>';
+  timelineRows.set(s.id,{signature,html,layout:appState.session.rowLayouts.get(s.id)});
+  descriptors.push({key:'state:'+s.id,html});
  }
- if(!appState.session.visibleStates.length)html+='<div class="empty">没有匹配的国家、君主或事件。请修改关键词或国家筛选。</div>';
- html+='<div class="cursorline" style="left:'+(x(appState.conditions.cursor)+labelWidth())+'px"><span class="cursorBadge">前'+appState.conditions.cursor+'</span></div>';
- chart.innerHTML=html;vp.scrollLeft=oldScroll;$('#zoomLabel').textContent=Number(appState.layout.px.toFixed(1))+' px / 年';$('#filterCount').textContent=new Set([...appState.conditions.selected,...appState.layout.pinned]).size;
+ if(!appState.session.visibleStates.length)descriptors.push({key:'empty',html:'<div class="empty">没有匹配的国家、君主或事件。请修改关键词或国家筛选。</div>'});
+ descriptors.push({key:'cursor',html:'<div class="cursorline"><span class="cursorBadge"></span></div>',update:line=>{line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent='前'+appState.conditions.cursor;}});
+ reconcileTimeline(descriptors);vp.scrollLeft=oldScroll;$('#zoomLabel').textContent=Number(appState.layout.px.toFixed(1))+' px / 年';$('#filterCount').textContent=new Set([...appState.conditions.selected,...appState.layout.pinned]).size;
  $('#stats').innerHTML=[['18','国家与王室'],[D.states.reduce((n,s)=>n+s.rulers.length,0),'在位区间'],[D.events.length,'精选事件']].map(([n,t])=>'<div class="number"><b>'+n+'</b><span>'+t+'</span></div>').join('');
- updateRange();updateCompare();renderEventFocus();renderSearchResults();if(typeof scheduleReadingSave==='function')scheduleReadingSave();
+ updateRange();updateCompare();renderEventFocus();renderSearchResults();if(typeof scheduleReadingSave==='function')scheduleReadingSave();if(typeof scheduleShareSync==='function')scheduleShareSync();
 }
-function updateRange(){const left=Math.min(1046,Math.max(appState.conditions.end,1046-Math.floor(vp.scrollLeft/appState.layout.px)));const right=Math.max(appState.conditions.end,1046-Math.floor((vp.scrollLeft+vp.clientWidth-labelWidth())/appState.layout.px));$('#visibleRange').textContent='可见：前'+left+'—'+right+'年 · '+appState.session.visibleStates.length+'行';if(typeof scheduleReadingSave==='function')scheduleReadingSave();}
-function setCursor(y,scroll=false){appState.conditions.cursor=Math.round(Math.min(1046,Math.max(appState.conditions.end,y)));$('#cursorYear').value=-appState.conditions.cursor;$('#cursorOutput').textContent=fmt(appState.conditions.cursor);$('#selectionYear').textContent='年份参考线：'+fmt(appState.conditions.cursor);$('#compareTitle').textContent=fmt(appState.conditions.cursor)+'的列国';const line=$('.cursorline');if(line){line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent='前'+appState.conditions.cursor;}updateCompare();if(scroll)vp.scrollLeft=Math.max(0,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2);if(typeof scheduleReadingSave==='function')scheduleReadingSave();}
+function updateRange(){const left=Math.min(1046,Math.max(appState.conditions.end,1046-Math.floor(vp.scrollLeft/appState.layout.px)));const right=Math.max(appState.conditions.end,1046-Math.floor((vp.scrollLeft+vp.clientWidth-labelWidth())/appState.layout.px));$('#visibleRange').textContent='可见：前'+left+'—'+right+'年 · '+appState.session.visibleStates.length+'行';if(typeof scheduleReadingSave==='function')scheduleReadingSave();if(typeof scheduleShareSync==='function')scheduleShareSync();}
+function setCursor(y,scroll=false){appState.conditions.cursor=Math.round(Math.min(1046,Math.max(appState.conditions.end,y)));$('#cursorYear').value=-appState.conditions.cursor;$('#cursorOutput').textContent=fmt(appState.conditions.cursor);$('#selectionYear').textContent='年份参考线：'+fmt(appState.conditions.cursor);$('#compareTitle').textContent=fmt(appState.conditions.cursor)+'的列国';const line=$('.cursorline');if(line){line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent='前'+appState.conditions.cursor;}updateCompare();if(scroll)vp.scrollLeft=Math.max(0,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2);if(typeof scheduleReadingSave==='function')scheduleReadingSave();if(typeof scheduleShareSync==='function')scheduleShareSync();}
 function updateCompare(){
  $('#compare').innerHTML=historyService.compareYear(appState.conditions.cursor,appState.session.visibleStates.map(s=>s.id)).map(({state:s,interruption:gap,rulers,events:es})=>{
   return '<button class="comparecard '+(activeEvent()?.states.includes(s.id)?'eventRelated':'')+'" data-action="state" data-id="'+s.id+'" style="--statecolor:'+s.color+'"><strong>'+s.name+'</strong><span>'+ (gap?escapeHTML(gap.note):rulers.length?rulers.map(r=>(r.approx?'约 · ':'')+escapeHTML(r.name)).join(' / '):'君主纪年待考')+'</span><small>'+ (es.length?escapeHTML(es.map(e=>e.name).join('；')):'该年无已收录大事')+'</small></button>';
@@ -370,14 +503,14 @@ function restoreDetailFocus(frame){
 }
 function show(tag,html,key=null){
  prepareDetailNavigation();navigation.enter(key);
- navigation.key=key;$('#detailTag').textContent=tag;$('#detailBody').innerHTML=html;updateDetailBack();if(!$('#detail').open)$('#detail').showModal();$('#detailBack').focus?.({preventScroll:true});$('#detail').scrollTop=0;$('#detailBody').scrollTop=0;if(typeof recordStudyVisit==='function')recordStudyVisit(key);
+ navigation.key=key;$('#detailTag').textContent=tag;$('#detailBody').innerHTML=html;updateDetailBack();if(!$('#detail').open)$('#detail').showModal();$('#detailBack').focus?.({preventScroll:true});$('#detail').scrollTop=0;$('#detailBody').scrollTop=0;if(typeof recordStudyVisit==='function')recordStudyVisit(key);if(typeof scheduleShareSync==='function')scheduleShareSync();
 }
 function backDetail(){
  if(typeof rememberDetailProgress==='function')rememberDetailProgress();const frame=navigation.back();if(!frame){closeDetail();return;}navigation.pending=null;restoreDetailView(frame.view);
  if(frame.detail){navigation.key=frame.detail.key;$('#detailTag').textContent=frame.detail.tag;$('#detailBody').innerHTML=frame.detail.html;updateDetailBack();restoreDetailFocus(frame);$('#detail').scrollTop=frame.detail.top;$('#detailBody').scrollTop=frame.detail.bodyTop;}
- else{navigation.key=null;$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}if(typeof updateStudyControls==='function')updateStudyControls();
+ else{navigation.key=null;$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}if(typeof updateStudyControls==='function')updateStudyControls();if(typeof scheduleShareSync==='function')scheduleShareSync();
 }
-function closeDetail(restore=true){if(typeof rememberDetailProgress==='function')rememberDetailProgress();navigation.key=null;const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});if(typeof updateStudyControls==='function')updateStudyControls();}
+function closeDetail(restore=true){if(typeof rememberDetailProgress==='function')rememberDetailProgress();navigation.key=null;const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});if(typeof updateStudyControls==='function')updateStudyControls();if(typeof scheduleShareSync==='function')scheduleShareSync();}
 function showRuler(id){
  const s=D.states.find(s=>s.rulers.some(r=>r.id===id));if(!s)return;const r=s.rulers.find(r=>r.id===id);
  const es=historyService.eventsInRange({from:rulerComparisonStart(r),to:r.end,states:[s.id]});

@@ -3,8 +3,9 @@ import {serializeAtlas} from './lib/atlas.mjs';
 
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
 const bundles = {
-  'app.js': ['src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/adapters/storage.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js'],
+  'app.js': ['src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js'],
   'study.js': ['src/study.js'],
+  'share.js': ['src/share.js'],
   'export.js': ['src/core/export-layout.js', 'src/outputs/canvas.js', 'src/adapters/export-files.js', 'src/export.js']
 };
 const outputs = new Map([['data.js', serializeAtlas(JSON.parse(read('./data/atlas.json')))]]);

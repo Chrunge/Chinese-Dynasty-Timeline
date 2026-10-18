@@ -10,7 +10,8 @@ flowchart TB
   C --> S["core/search.js 搜索与稳定ID"]
   U["core/state.js 对照条件、显示偏好、临时状态"] --> H
   H --> M["comparison 对照内容快照"]
-  M --> W["ui/timeline.js 网页时间线"]
+  H --> W["ui/timeline.js 网页时间线 · 共享查询"]
+  W --> K["adapters/timeline-dom.js 按国家行复用DOM"]
   M --> E["core/export-layout.js 分页与文字索引"]
   M --> J["JSON 结构化导出"]
   E --> P["outputs/canvas.js 图页绘制"]
@@ -21,6 +22,8 @@ flowchart TB
   R["core/reading.js 阅读记录校验、迁移、恢复"] <--> T["study.js 阅读控制器"]
   T <--> U
   T <--> L["adapters/storage.js 浏览器存储"]
+  U <--> V["share.js 链接同步与分享"]
+  V <--> X["core/view-link.js Hash编解码与浏览器历史"]
 ```
 
 `src/app.js` 负责服务创建和页面共享适配，`src/ui/` 负责页面呈现与交互。这些页面模块通过同一个 `appState` 交换状态；历史查询、搜索、阅读校验与输出编码均可在没有 DOM 的环境中单独使用。
@@ -55,7 +58,7 @@ flowchart TB
 
 `options` 包含 `from`、`to`、`states`、`category`、`cursor`。年份仍用公元前正整数，`from >= to`。
 
-条带采用年表范围；同年查询纳入已核实实际即位年。两种口径有意分开：晋悼公前573年实际即位，但条带从前572年开始。页面对照、事件联动与浏览器工具共用同年查询。网页和导出共用区间内容，显示密度、分页、文字测量分别由呈现模块处理。
+条带采用年表范围；同年查询纳入已核实实际即位年。两种口径有意分开：晋悼公前573年实际即位，但条带从前572年开始。页面对照、事件联动与浏览器工具共用同年查询。网页和导出共用区间查询口径；网页按需读取并缓存显示内容，导出使用独立快照。显示密度、分页、文字测量分别由呈现模块处理。
 
 快照包含 `schemaVersion`、资料 `version/updated`、查询条件、纪年口径、国家顺序、区间内君主和事件、国家名称字典与来源。事件涉及的其他国家关系不会因为导出只选一个国家而丢失。修改输出快照不会修改资料或其他输出。
 
@@ -66,6 +69,18 @@ flowchart TB
 阅读控制器只通过 bridge 读取或更新页面；存储适配只负责 JSON 读写。校验和旧记录迁移由阅读模型处理。已有 `zhou-layout-v2`、`zhou-pins-v3`、`zhou-comparisons-v3`、`zhou-reading-v4`、`zhou-visits-v4` 键继续使用。
 
 新人物路由使用 `person:person-xxx`。旧 `person:姓名` 在名称或别称唯一时迁移到稳定ID；同名不猜测匹配。改名时若还需迁移从未打开过的旧姓名记录，应将旧名保留为别称。损坏 JSON、非法字段或不可用存储不应阻止页面启动。
+
+## 渲染与分享
+
+时间线使用独立的时间轴、国家行和参考线节点。`adapters/timeline-dom.js` 按稳定国家ID协调节点：内容不变时保留，顺序变化时移动，内容变化时仅替换对应行。行内容缓存不包含参考年或搜索结果分页，因此这两类变化不会重新生成历史条带；同年对照仍独立更新。缩放会改变坐标，允许替换相关行。
+
+`core/view-link.js` 负责版本化Hash编解码、字段校验及浏览器历史同步，`share.js` 负责页面适配和复制链接。其脚本在 `study.js` 之后加载，确保恢复顺序为默认值、本地阅读记录、链接显式条件。
+
+链接包含 `v=1`、`year`、`end`、`states`、`pinned`、`order`、`zoom`、`from/to/width`、`category`、`mode`、`density`、搜索字段以及可选的稳定详情ID。不同宽度的屏幕根据分享的可见范围调整缩放。临时详情HTML、浏览记录和来源正文不会写入URL。
+
+连续操作在200毫秒防抖后通过 `replaceState` 更新当前历史项。手动Hash导航及前进后退会恢复相应条件，恢复过程中抑制反向写回。没有Hash时不改变本地恢复的滚动位置。文件模式仍支持Hash，但文件路径只能用于能够访问该文件的设备；跨设备分享应使用线上地址。
+
+CI和Pages的触发、权限及初次启用步骤见 [部署说明](DEPLOYMENT.md)。2026年10月18日用户确认，Pages 的发布来源已设置为 GitHub Actions；实际部署结果以仓库最新工作流记录为准。
 
 ## 构建与检查
 

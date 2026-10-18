@@ -19,14 +19,14 @@ function restoreDetailFocus(frame){
 }
 function show(tag,html,key=null){
  prepareDetailNavigation();navigation.enter(key);
- navigation.key=key;$('#detailTag').textContent=tag;$('#detailBody').innerHTML=html;updateDetailBack();if(!$('#detail').open)$('#detail').showModal();$('#detailBack').focus?.({preventScroll:true});$('#detail').scrollTop=0;$('#detailBody').scrollTop=0;if(typeof recordStudyVisit==='function')recordStudyVisit(key);
+ navigation.key=key;$('#detailTag').textContent=tag;$('#detailBody').innerHTML=html;updateDetailBack();if(!$('#detail').open)$('#detail').showModal();$('#detailBack').focus?.({preventScroll:true});$('#detail').scrollTop=0;$('#detailBody').scrollTop=0;if(typeof recordStudyVisit==='function')recordStudyVisit(key);if(typeof scheduleShareSync==='function')scheduleShareSync();
 }
 function backDetail(){
  if(typeof rememberDetailProgress==='function')rememberDetailProgress();const frame=navigation.back();if(!frame){closeDetail();return;}navigation.pending=null;restoreDetailView(frame.view);
  if(frame.detail){navigation.key=frame.detail.key;$('#detailTag').textContent=frame.detail.tag;$('#detailBody').innerHTML=frame.detail.html;updateDetailBack();restoreDetailFocus(frame);$('#detail').scrollTop=frame.detail.top;$('#detailBody').scrollTop=frame.detail.bodyTop;}
- else{navigation.key=null;$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}if(typeof updateStudyControls==='function')updateStudyControls();
+ else{navigation.key=null;$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}if(typeof updateStudyControls==='function')updateStudyControls();if(typeof scheduleShareSync==='function')scheduleShareSync();
 }
-function closeDetail(restore=true){if(typeof rememberDetailProgress==='function')rememberDetailProgress();navigation.key=null;const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});if(typeof updateStudyControls==='function')updateStudyControls();}
+function closeDetail(restore=true){if(typeof rememberDetailProgress==='function')rememberDetailProgress();navigation.key=null;const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});if(typeof updateStudyControls==='function')updateStudyControls();if(typeof scheduleShareSync==='function')scheduleShareSync();}
 function showRuler(id){
  const s=D.states.find(s=>s.rulers.some(r=>r.id===id));if(!s)return;const r=s.rulers.find(r=>r.id===id);
  const es=historyService.eventsInRange({from:rulerComparisonStart(r),to:r.end,states:[s.id]});
