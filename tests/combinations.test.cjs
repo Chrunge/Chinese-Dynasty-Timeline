@@ -15,3 +15,15 @@ test('合法组合的字段、国家顺序、导入与刷新保持一致',async(
  const reloaded=boot({...app.store});reloaded.run('applyCombo('+JSON.stringify(id)+')');
  assert.deepEqual(plain(reloaded.run('savedCombos[0]')),plain(app.run('savedCombos[0]')));
 });
+
+test('组合只接受已知字符串国家ID，导入错误顺序后仍能应用',async()=>{
+ const app=boot();
+ assert.equal(app.run("normalizeCombo({name:'无效',states:[{},1,true,null,{id:'qin'}]})"),null);
+ const input={name:'混合输入',states:['qin',{},null,1,true,'unknown'],order:[{id:'qin'},null,1,true,'qi'],pins:[{},'qin']};
+ await app.el('#importCombos').onchange({target:{files:[{size:100,text:async()=>JSON.stringify({format:'zhou-comparisons-v3',combinations:[input]})}],value:'file'}});
+ assert.equal(app.el('#comboNotice').textContent,'已导入1个有效组合。');
+ assert.deepEqual(plain(app.run('savedCombos[0].states')),['qin']);
+ assert(app.run('savedCombos[0].order.every(id=>typeof id==="string"&&D.states.some(s=>s.id===id))'));
+ assert.doesNotThrow(()=>app.run('applyCombo(savedCombos[0].id)'));
+ assert.equal(app.run('visibleStates.length'),1);
+});

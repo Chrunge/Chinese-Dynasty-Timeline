@@ -38,7 +38,7 @@ node --test tests/*.test.mjs tests/*.test.cjs
 
 编辑前端使用 `src/`，编辑历史资料使用 `data/atlas.json`；`dist/` 全部由构建生成，不直接修改。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
 
-受限Windows环境如出现父目录realpath的EPERM，可为Node命令添加 `--preserve-symlinks --preserve-symlinks-main`。当前自动化测试共50项；DOM桩检查不替代真实浏览器排版、触控或打印验收。
+受限Windows环境如出现父目录realpath的EPERM，可为Node命令添加 `--preserve-symlinks --preserve-symlinks-main`。自动化测试覆盖资料校验、查询、组合、导航、渲染、分享及导出；DOM桩检查不替代真实浏览器排版、触控或打印验收。
 
 兼容命令 `sync-data.mjs`、`enrich-context.mjs`、`enrich-people.mjs` 均转调统一构建，不另外补写历史资料。
 
