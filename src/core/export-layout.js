@@ -14,8 +14,12 @@ function buildExportPlan(model,options={},measureText){
  const {from,to}=model;if(!Number.isInteger(from)||!Number.isInteger(to)||from<to||from>1046||to<221)throw new Error('请填写有效范围：前1046年至前221年，起始年份须大于或等于结束年份。');
  const states=model.states;if(!states.length)throw new Error('当前没有显示的国家，请先筛选国家或清除搜索。');
  const span=[100,150,300,1000].includes(options.span)?options.span:150,sources=[],addSource=s=>{if(!s?.url)return 0;let i=sources.findIndex(v=>v.url===s.url);if(i<0){sources.push(s);i=sources.length-1;}return i+1;};
- const rulers=states.flatMap(s=>s.rulers.map(r=>({state:s,r,ref:addSource({title:r.source.includes('wikisource')?'君主纪年表 · 原典':'君主纪年表 · 检索汇编，待逐条校勘',url:r.source})})));
- const events=model.events.map((e,i)=>({e,number:i+1,refs:(e.sources||[]).map(addSource).filter(Boolean)}));
+ const sourceRefs=values=>[...new Set((values||[]).map(addSource).filter(Boolean))];
+ const alternatives=dating=>(dating?.alternatives||[]).map(a=>({a,refs:sourceRefs(a.sources)}));
+ const citations=refs=>refs.map(n=>'['+n+']').join('');
+ const opinionItems=values=>values.map(({a,refs})=>({text:'异说：'+a.label+(a.year?' '+fmt(a.year):'')+(a.explanation?' · '+a.explanation:'')+(refs.length?' · 来源'+citations(refs):'')}));
+ const rulers=states.flatMap(s=>s.rulers.map(r=>({state:s,r,ref:addSource({title:r.source.includes('wikisource')?'君主纪年表 · 原典':'君主纪年表 · 检索汇编，待逐条校勘',url:r.source}),datingRefs:sourceRefs(r.dating?.sources),chronologyRefs:sourceRefs(r.chronology?.sources),alternatives:alternatives(r.dating)})));
+ const events=model.events.map((e,i)=>({e,number:i+1,refs:sourceRefs(e.sources),alternatives:alternatives(e.dating)}));
  for(const s of states){for(const ref of s.dating?.sources||[])addSource(ref);}
  const pages=[];for(let first=from;first>=to;){const last=Math.max(to,first-span+1);let group=[],weight=0;
   for(const s of states){const packed=exportRulerLanes(s,first,last),height=80+packed.lanes*22;if(group.length&&weight+height>520){pages.push({type:'chart',from:first,to:last,rows:group});group=[];weight=0;}group.push({s,...packed,height});weight+=height;}
@@ -23,9 +27,19 @@ function buildExportPlan(model,options={},measureText){
  }
  // A complete text index accompanies small bars and dense event markers.
  const items=[{text:'君主索引 · 完整在位区间（不将元年一概视为实际即位年）',kind:'heading'}];
- for(const s of states){items.push({text:s.name+' · '+range(s.start,s.end,s.approxStart||s.approxEnd)+(s.id==='qin'?' · 前221年为称帝转制':s.id==='wei'?' · 延续至前209年，超出本图范围':''),kind:'heading'});const list=rulers.filter(v=>v.state.id===s.id);if(!list.length)items.push({text:'本导出范围没有已定位的在位区间；空白表示未收录或该阶段未存续。'});for(const {r,ref} of list)items.push({text:r.name+(r.person?'（'+r.person+'）':'')+' · '+range(r.start,r.end,r.approx)+' · '+certaintyLabel[r.dating?.level||'inferred']+' · 来源['+ref+']'});}
+ for(const s of states){
+  items.push({text:s.name+' · '+range(s.start,s.end,s.approxStart||s.approxEnd)+(s.id==='qin'?' · 前221年为称帝转制':s.id==='wei'?' · 延续至前209年，超出本图范围':''),kind:'heading'});
+  const list=rulers.filter(v=>v.state.id===s.id);
+  if(!list.length)items.push({text:'本导出范围没有已定位的在位区间；空白表示未收录或该阶段未存续。'});
+  for(const {r,ref,datingRefs,chronologyRefs,alternatives:opinions} of list){
+   items.push({text:r.name+(r.person?'（'+r.person+'）':'')+' · '+range(r.start,r.end,r.approx)+' · '+certaintyLabel[r.dating?.level||'inferred']+' · 来源'+citations([...new Set([ref,...datingRefs])])});
+   const chronology=chronologyRefs.filter(n=>n!==ref&&!datingRefs.includes(n));
+   if(chronology.length)items.push({text:'即位、元年与结局的纪年节点来源'+citations(chronology)});
+   items.push(...opinionItems(opinions));
+  }
+ }
  items.push({text:'事件索引 · 同一编号在相关国家行中对应同一事件',kind:'heading'});
- for(const {e,number,refs} of events){items.push({text:'E'+number+' · '+range(e.year,e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>model.stateNames?.[id]||states.find(s=>s.id===id)?.name||id).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+refs.map(n=>'['+n+']').join('')});items.push({text:e.description});if(e.dating?.alternatives?.length)items.push({text:'异说：'+e.dating.alternatives.map(a=>a.label+(a.year?' '+fmt(a.year):'')).join('；')});}
+ for(const {e,number,refs,alternatives:opinions} of events){items.push({text:'E'+number+' · '+range(e.year,e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>model.stateNames?.[id]||states.find(s=>s.id===id)?.name||id).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+citations(refs)});items.push({text:e.description});items.push(...opinionItems(opinions));}
  if(!events.length)items.push({text:'当前范围与类别筛选下没有已收录事件。'});
  items.push({text:'图例与采用口径',kind:'heading'},{text:'彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。'}, {text:'定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。'}, {text:'前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。'});
  items.push({text:'核查来源 · 原典记载与纪年汇编分别标注',kind:'heading'});sources.forEach((s,i)=>{items.push({text:'['+(i+1)+'] '+s.title,kind:'source'});items.push({text:s.url,kind:'url'});});
