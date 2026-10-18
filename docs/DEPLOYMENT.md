@@ -1,59 +1,42 @@
 # GitHub Pages 部署
 
-站点工作流位于 `.github/workflows/site.yml`。2026年10月18日已通过 GitHub Actions 成功部署至 [周朝时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。实际部署结果以仓库 Actions 和 `github-pages` 环境中的最新记录为准。
+在线地址：[周朝时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。
 
-## 已执行的发布步骤
+仓库为 [Chrunge/Zhou-Dynasty-Timeline](https://github.com/Chrunge/Zhou-Dynasty-Timeline)，Pages发布来源是GitHub Actions，发布分支为 `master`，发布目录为 `dist/`。个人博客使用域名根路径，时间线使用项目子路径，两者独立部署，无需复制时间线源码到博客目录。
 
-1. 确认时间线仓库启用 Pages，发布分支为 `master`。
-2. 本地运行全部46项自动检查及 `node build.mjs --check`。
-3. 将源码、测试、发布目录和 `.github/workflows/site.yml` 同步到时间线仓库，保留既有历史资料及备份。
-4. 推送触发 Actions，依次校验生成物、测试、构建、上传 `dist/`、部署 Pages。
-5. 在线检查页面、事件搜索、详情定位和分享入口。后续更新继续走相同工作流。
+## 工作流
 
-首次成功发布记录：[Actions #39086309694](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39086309694)。后续修复与发布记录见 [Actions 列表](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions)。
+工作流位于 [site.yml](../.github/workflows/site.yml)，使用Node.js 22和官方Actions：
 
-脚本和样式引用附带由文件内容计算的版本参数；更新资源后自动变更参数，避免浏览器沿用旧版本。`dist/index.html` 由构建生成，勿手工编辑这些参数。
+| 阶段 | 触发及行为 |
+|---|---|
+| 检查 | Pull request、master推送及手动运行均检查已提交生成物的一致性，运行全部测试，再构建 |
+| 上传 | 检查成功后，仅上传dist目录作为Pages产物 |
+| 部署 | 仅master推送或在master上手动运行时部署；PR及其他分支的手动运行不部署 |
+
+检查作业只有读取仓库内容的权限；部署作业申请 `pages: write` 和 `id-token: write`，使用 `github-pages` 环境。工作流按引用分组控制并发，不取消正在执行的部署。
 
 ## 仓库设置
 
-将项目文件提交到实际的 GitHub 仓库后，在仓库的 **Settings → Pages → Build and deployment → Source** 中选择 **GitHub Actions**。仓库必须已启用 GitHub Pages，且账户或组织策略允许 Actions 和 Pages 部署。
+在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。账户及组织策略须允许Actions和Pages，部署须满足 `github-pages` 环境的审批及分支限制。
 
-工作流以 `master` 为发布分支。如果仓库使用其他默认分支，需要同步修改工作流的 `push.branches`、部署条件中的分支名，以及 `github-pages` 环境的分支限制。手动运行时也必须选择 `master` 才会部署。
+工作流中的 `push.branches`、部署条件和环境分支限制须与发布分支一致。手动发布时选择 `master`。更改本地工作分支不会更改发布分支，也不会自动更新线上站点。
 
-部署作业使用 `github-pages` 环境。如果该环境设置了审批或部署分支限制，须满足相应规则。部署成功后的站点地址会显示在该环境和部署作业中。
+Pages来源配置属于仓库设置，工作流不代为修改。部署状态以[Actions列表](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions)和 `github-pages` 环境中的结果为准。
 
-## 检查和发布顺序
+## 提交与发布
 
-Pull request、向 `master` 推送，以及手动触发都会运行以下步骤，使用 Node.js 22：
+按[维护与检查](../README.md#维护与检查)运行本地命令，将源码、资料和生成的 `dist/` 一起提交。CI首先校验已提交产物，不能靠后续构建掩盖过期文件。
 
-1. 先运行 `node build.mjs --check`，检查已提交的 `dist/` 是否与源码和资料源一致。此步骤不会生成或修复发布文件。
-2. 运行 `node --test tests/*.test.mjs tests/*.test.cjs`。
-3. 检查和测试成功后，运行 `node build.mjs`。
-4. 使用官方 `actions/upload-pages-artifact` 上传 **仅 `dist/` 目录**。
+发布HTML引用的脚本和样式带内容散列参数；这些参数由构建维护。相同源码生成相同发布入口。源码、测试、资料源、文档和备份均不包含在Pages上传产物中。
 
-只有向 `master` 推送，或在 `master` 上手动运行工作流，才会继续使用官方 `actions/deploy-pages` 部署。Pull request 以及其他分支上的手动运行只检查和构建，不部署。
+## 排障
 
-工作流按引用分组控制并发，且不会取消正在执行的部署。Pull request 的检查不会挤占 `master` 的待部署任务。检查作业只具有读取仓库内容的权限；部署作业仅请求 `pages: write` 和 `id-token: write`，用于发布与身份验证。工作流使用官方 Actions 的主版本标签。
+| 现象 | 检查方式 |
+|---|---|
+| dist文件缺失或过期 | 本地重新构建并提交生成物 |
+| 测试失败 | 修复报告中的问题；失败的检查不会触发部署 |
+| Pages权限错误 | 检查Pages来源、Actions权限、组织策略及环境限制 |
+| 部署作业被跳过 | 检查是否由master推送，或手动运行时是否选择master |
 
-## 修改后的本地检查
-
-修改源码或资料后，在项目根目录运行：
-
-```sh
-node build.mjs
-node build.mjs --check
-node --test tests/*.test.mjs tests/*.test.cjs
-```
-
-将源码、资料和生成的 `dist/` 一起提交。若遗漏更新 `dist/`，CI 会在第一项检查失败；工作流不会先生成文件来掩盖已提交产物过期的问题。
-
-此项目不需要安装额外的 npm 依赖。Pages 发布内容来自 `dist/`，源码、测试、资料源和文档不会随站点产物上传。
-
-## 排查部署失败
-
-- `dist/... 缺失或已过期`：在本地重新运行 `node build.mjs`，并提交更新后的 `dist/`。
-- 测试失败：修复测试报告中的问题后再推送；失败的检查不会触发部署。
-- Pages 未启用或权限受限：确认 Pages 的 Source 为 **GitHub Actions**，并检查仓库、组织及 `github-pages` 环境的策略。
-- 部署作业被跳过：确认触发来自 `master` 的推送，或手动运行时选择了 `master`。
-
-Pages 来源配置是仓库设置，不由本工作流修改。新仓库仍须先完成设置；本项目已经启用并部署。
+原始Sites托管配置 `.openai/hosting.json` 保留在仓库中，不参与此Pages工作流。
