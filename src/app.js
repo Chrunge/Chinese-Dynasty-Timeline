@@ -1,5 +1,7 @@
 'use strict';
 const D=window.ZHOU_DATA,historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage);
+const combinationModel=Zhou.createCombinationModel(D);
+function normalizeCombo(value){return combinationModel.normalize(value);}
 const $=s=>document.querySelector(s),byId=historyService.state;
 const normalizeDetailKey=searchService.normalizeKey;
 const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
