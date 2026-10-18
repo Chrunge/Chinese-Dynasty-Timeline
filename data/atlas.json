@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "metadata": {
-    "updated": "2026-10-08",
-    "version": "第五版 · 统一资料源 / 显式关联 / 纪年校核",
+    "updated": "2026-10-18",
+    "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
     "sourceIds": [
       "source-001",
       "source-002",
@@ -37,21 +37,42 @@
     {
       "id": "qin",
       "name": "秦",
-      "start": 900,
+      "start": 890,
       "end": 221,
       "color": "#415663",
       "region": "关中 · 雍 / 咸阳",
       "ending": "前221年完成统一，转为帝国",
-      "note": "约前900年为非子受封秦邑的传统推定；前771年始列为诸侯。秦王政在位延续到前210年，图中前221年是诸侯国阶段的终点。",
+      "note": "非子受封秦邑定位于周孝王时期，起点采用约前890年，另存约前900年旧推定；与前771年始列诸侯分开。秦王政在位延续到前210年，图中前221年是诸侯国阶段的终点。",
       "approxStart": true,
       "approxEnd": false,
       "undated": [],
       "interruptions": [],
       "dating": {
-        "level": "inferred",
-        "reason": "约前900年为非子受封秦邑的传统推定；前771年始列为诸侯。秦王政在位延续到前210年，图中前221年是诸侯国阶段的终点。",
-        "alternatives": [],
-        "reviewStatus": "legacy"
+        "level": "disputed",
+        "reason": "起点只是非子封秦的时代约值，尚无确年；沿用约前900年会与本图周孝王时期冲突。国家终点的口径另见说明。",
+        "alternatives": [
+          {
+            "label": "本图采用的孝王时期约值",
+            "year": 890,
+            "explanation": "《秦本纪》仅定位于周孝王时期。天水市政府介绍换算为前890年，本图取其为约值，与本图孝王前891—886年的拟年相容；不能据此确立受封年。",
+            "sourceIds": [
+              "source-011",
+              "source-058",
+              "source-005"
+            ]
+          },
+          {
+            "label": "约前900年旧推定",
+            "year": 900,
+            "explanation": "甘肃档案网页转载百科，沿用约前900年起点，仅作旧说出处；并非原典明载的绝对年，且落在本图共王时期，不能与本图孝王拟年混配。",
+            "sourceIds": [
+              "source-059",
+              "source-011",
+              "source-005"
+            ]
+          }
+        ],
+        "reviewStatus": "partial"
       }
     },
     {
@@ -895,7 +916,7 @@
       "color": "#507494",
       "region": "河东 · 安邑 / 大梁",
       "ending": "前225年秦灭魏",
-      "note": "魏文侯的即位有前445年、前424年等说；采用前445年起掌魏氏的一系，标注有争议。前403年正式受封为诸侯。魏惠王前369年即位，称王时间另标为事件。",
+      "note": "魏文侯的即位有前445年、前424年等说；采用前445年起掌魏氏的一系，标注有争议。前403年正式受封为诸侯。魏惠王条带采用前369年元年，不能直接视为实际承位年；前370年起点、后元及称王见异说。",
       "approxStart": false,
       "approxEnd": false,
       "undated": [
@@ -933,7 +954,7 @@
       "interruptions": [],
       "dating": {
         "level": "disputed",
-        "reason": "魏文侯的即位有前445年、前424年等说；采用前445年起掌魏氏的一系，标注有争议。前403年正式受封为诸侯。魏惠王前369年即位，称王时间另标为事件。",
+        "reason": "魏文侯的即位有前445年、前424年等说；采用前445年起掌魏氏的一系，标注有争议。前403年正式受封为诸侯。魏惠王条带采用前369年元年，不能直接视为实际承位年；前370年起点、后元及称王见异说。",
         "alternatives": [
           {
             "label": "本图采用",
@@ -1171,7 +1192,7 @@
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
       "biography": {
-        "summary": "周共王，是周王室的周天子。现可定位的统治区间为前922—900年（含推定或异说）。这一时期的国家记载包括非子受封秦邑；这些国家事件不全部等同于君主亲自参与。",
+        "summary": "周共王，是周王室的周天子。本图采用前922—900年的拟定区间。个人生平与结局仍待逐条校勘；非子受封秦邑据《秦本纪》属于孝王时期，不列作共王事迹。",
         "detailLevel": "纪年与记载摘要",
         "sourceIds": [
           "source-010"
@@ -1251,10 +1272,11 @@
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
       "biography": {
-        "summary": "周孝王，是周王室的周天子。现可定位的统治区间为前891—886年（含推定或异说）。目前核对的资料以继承与在位纪年为主，早年经历、出生年份及寿数未能确认。",
+        "summary": "周孝王，是周王室的周天子。本图采用前891—886年的拟定区间。《秦本纪》记其命非子养马，后分土为附庸、封邑于秦；原文没有绝对年份，封秦事件采用约前890年的阅读定位。",
         "detailLevel": "纪年与记载摘要",
         "sourceIds": [
-          "source-010"
+          "source-010",
+          "source-011"
         ],
         "note": "个人生平资料尚不充分；这里明确区分已知纪年、国家背景与未确认的个人经历。"
       },
@@ -2480,14 +2502,14 @@
     {
       "name": "秦非子",
       "person": "",
-      "start": 900,
+      "start": 890,
       "end": 858,
       "approx": true,
       "lane": 0,
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 649,
-      "note": "",
+      "note": "起点与封秦事件同用约前890年，不是已核实的即位或受封年；前858年终点仍为沿用拟年，未据此推算寿数。",
       "id": "qin-r0",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -2500,20 +2522,44 @@
         "note": "依据所列史传整理；传闻、异说及现代换算纪年不视作无争议事实。"
       },
       "dating": {
-        "level": "inferred",
-        "reason": "采用约年、传统推定或年表拟定值，不能据此认定确切日期。",
-        "alternatives": [],
-        "reviewStatus": "legacy"
+        "level": "disputed",
+        "reason": "受封仅能按《秦本纪》定位于孝王时期；本图起点随封秦约值调整，前858年终点仍待逐项校勘。",
+        "alternatives": [
+          {
+            "label": "本图采用的孝王时期约值",
+            "year": 890,
+            "explanation": "《秦本纪》仅定位于周孝王时期。天水市政府介绍换算为前890年，本图取其为约值，与本图孝王前891—886年的拟年相容；不能据此确立受封年。",
+            "sourceIds": [
+              "source-011",
+              "source-058",
+              "source-005"
+            ]
+          },
+          {
+            "label": "约前900年旧推定",
+            "year": 900,
+            "explanation": "甘肃档案网页转载百科，沿用约前900年起点，仅作旧说出处；并非原典明载的绝对年，且落在本图共王时期，不能与本图孝王拟年混配。",
+            "sourceIds": [
+              "source-059",
+              "source-011",
+              "source-005"
+            ]
+          }
+        ],
+        "reviewStatus": "partial"
       },
       "chronology": {
         "accession": null,
-        "regnalStart": 900,
+        "regnalStart": 890,
         "abdication": null,
         "death": null,
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
+          "source-003",
+          "source-011",
+          "source-058",
+          "source-059"
         ]
       },
       "stateId": "qin"
@@ -6778,19 +6824,35 @@
       },
       "dating": {
         "level": "disputed",
-        "reason": "不同年表的起讫或世系方案存在差异；以下说明不把各方案混为一表。",
+        "reason": "采用现代校订的田齐年表，并与《史记·六国年表》旧表分列；君主起点与元年口径不能混配，所列异说不表示同等采信。",
+        "reviewStatus": "partial",
         "alternatives": [
           {
-            "label": "校勘说明",
-            "year": null,
-            "explanation": "姜齐与田齐分层展示。田和前404年起掌政，前386年受封为诸侯；前379年姜齐终结。齐威王等采用经战国纪年校订的一系，不能直接等同《史记》原表。",
+            "label": "本图采用的校订区间",
+            "year": 356,
+            "explanation": "本图采用前356—320年。此为现代校订年表口径，并非《史记·六国年表》原表的直接抄录。",
             "sourceIds": [
               "source-003",
+              "source-060"
+            ]
+          },
+          {
+            "label": "《六国年表》旧表",
+            "year": 378,
+            "explanation": "旧表换算为前378—343年，与本图所用的田齐系年有别；不能把旧表君名直接套入本图同年事件。",
+            "sourceIds": [
               "source-002"
             ]
+          },
+          {
+            "label": "继立与元年分开的现代校订",
+            "year": 355,
+            "explanation": "王政冬以《纪年》引文重考，置威王继立于前356年、元年于前355年，卒于前320年；说明本图前356年条带起点不应被当作唯一元年。",
+            "sourceIds": [
+              "source-056"
+            ]
           }
-        ],
-        "reviewStatus": "legacy"
+        ]
       },
       "chronology": {
         "accession": null,
@@ -6800,8 +6862,11 @@
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
-        ]
+          "source-003",
+          "source-002",
+          "source-060"
+        ],
+        "note": "本图条带起点前356年；另有前356年继立、前355年元年之说，见纪年异说。陈侯午敦所证为前代桓公午的相对年数，不能单凭铜器直接读出本王公元纪年。"
       },
       "stateId": "qi"
     },
@@ -6830,19 +6895,27 @@
       },
       "dating": {
         "level": "disputed",
-        "reason": "不同年表的起讫或世系方案存在差异；以下说明不把各方案混为一表。",
+        "reason": "采用现代校订的田齐年表，并与《史记·六国年表》旧表分列；君主起点与元年口径不能混配，所列异说不表示同等采信。",
+        "reviewStatus": "partial",
         "alternatives": [
           {
-            "label": "校勘说明",
-            "year": null,
-            "explanation": "姜齐与田齐分层展示。田和前404年起掌政，前386年受封为诸侯；前379年姜齐终结。齐威王等采用经战国纪年校订的一系，不能直接等同《史记》原表。",
+            "label": "本图采用的校订区间",
+            "year": 319,
+            "explanation": "本图采用前319—301年。此为现代校订年表口径，并非《史记·六国年表》原表的直接抄录。",
             "sourceIds": [
               "source-003",
+              "source-060"
+            ]
+          },
+          {
+            "label": "《六国年表》旧表",
+            "year": 342,
+            "explanation": "旧表换算为前342—324年，与本图所用的田齐系年有别；不能把旧表君名直接套入本图同年事件。",
+            "sourceIds": [
               "source-002"
             ]
           }
-        ],
-        "reviewStatus": "legacy"
+        ]
       },
       "chronology": {
         "accession": null,
@@ -6852,8 +6925,12 @@
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
-        ]
+          "source-003",
+          "source-002",
+          "source-060",
+          "source-056"
+        ],
+        "note": "本图前319年为条带起点；王政冬的研究表记前320年威王卒、宣王继立。实际继立与次年元年须分开，未统一为唯一口径。"
       },
       "stateId": "qi"
     },
@@ -6881,10 +6958,28 @@
         "note": "依据所列史传整理；传闻、异说及现代换算纪年不视作无争议事实。"
       },
       "dating": {
-        "level": "certain",
-        "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
-        "alternatives": [],
-        "reviewStatus": "legacy"
+        "level": "disputed",
+        "reason": "采用现代校订的田齐年表，并与《史记·六国年表》旧表分列；君主起点与元年口径不能混配，所列异说不表示同等采信。",
+        "reviewStatus": "partial",
+        "alternatives": [
+          {
+            "label": "本图采用的校订区间",
+            "year": 300,
+            "explanation": "本图采用前300—284年。此为现代校订年表口径，并非《史记·六国年表》原表的直接抄录。",
+            "sourceIds": [
+              "source-003",
+              "source-060"
+            ]
+          },
+          {
+            "label": "《六国年表》旧表",
+            "year": 323,
+            "explanation": "旧表换算为前323—284年，与本图所用的田齐系年有别；不能把旧表君名直接套入本图同年事件。",
+            "sourceIds": [
+              "source-002"
+            ]
+          }
+        ]
       },
       "chronology": {
         "accession": null,
@@ -6894,7 +6989,9 @@
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
+          "source-003",
+          "source-002",
+          "source-060"
         ]
       },
       "stateId": "qi"
@@ -9577,7 +9674,7 @@
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 1202,
-      "note": "",
+      "note": "前320—314年为本图比较区间，不代表全程亲政；让国子之另有纪年口径。",
       "id": "yan-r28",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -9591,19 +9688,36 @@
       },
       "dating": {
         "level": "disputed",
-        "reason": "不同年表的起讫或世系方案存在差异；以下说明不把各方案混为一表。",
+        "reason": "总区间与让国后实际执政终止应分开；《六国年表》五年让国与《燕世家》叙事层次须互校，不能把三年攻秦直接读作三年让国。",
+        "reviewStatus": "partial",
         "alternatives": [
           {
-            "label": "校勘说明",
-            "year": null,
-            "explanation": "西周早期世系有缺。燕孝公、燕简公等纪年存在年数与范围不合，统一标注待校。前314年齐军入燕后有政权中断，前312年燕昭王即位。",
+            "label": "本图沿用的比较区间",
+            "year": 320,
+            "explanation": "保留前320—314年区间，终点为齐破燕、王哙结局的比较节点；不把这七个年份全部视作王哙亲政。",
             "sourceIds": [
               "source-003",
+              "source-002",
+              "source-031"
+            ]
+          },
+          {
+            "label": "《六国年表》五年让国",
+            "year": 316,
+            "explanation": "《六国年表》在燕哙五年、前316年记让国子之。此为让国节点，不能与前314年齐破燕混作同一年。",
+            "sourceIds": [
               "source-002"
             ]
+          },
+          {
+            "label": "《燕世家》的叙事口径",
+            "year": null,
+            "explanation": "《燕世家》先记燕哙三年合纵攻秦，随后叙让国，再记子之执政三年后国乱；没有明确写燕哙三年让国，不能据此直接锁定前318年。",
+            "sourceIds": [
+              "source-031"
+            ]
           }
-        ],
-        "reviewStatus": "legacy"
+        ]
       },
       "chronology": {
         "accession": null,
@@ -9613,8 +9727,11 @@
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
-        ]
+          "source-003",
+          "source-002",
+          "source-031"
+        ],
+        "note": "让国依《六国年表》有前316年说；《燕世家》叙事须另校，故不把退位字段自动设为已核实的绝对年。"
       },
       "stateId": "yan"
     },
@@ -19950,7 +20067,7 @@
       "lane": 0,
       "role": "君主",
       "sourceId": "source-003",
-      "note": "前344年称王，亦称梁惠王。",
+      "note": "亦称梁惠王。前344年称王为有争议的沿用节点，不能与徐州相王、后元改元视为同一件事。",
       "id": "liang-r1",
       "description": "亦称梁惠王。魏在其统治期间由强盛转向承受齐、秦压力，是《孟子》对话的重要对象。",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -19965,10 +20082,30 @@
         "note": "依据所列史传整理；传闻、异说及现代换算纪年不视作无争议事实。"
       },
       "dating": {
-        "level": "certain",
-        "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
-        "alternatives": [],
-        "reviewStatus": "legacy"
+        "level": "disputed",
+        "reason": "保留前369—319年采用区间；《史记》旧表元年、后元改元和惠王卒年的分配存在校勘问题，不能把元年直接等同实际承位。",
+        "reviewStatus": "partial",
+        "alternatives": [
+          {
+            "label": "本图采用的校订区间",
+            "year": 369,
+            "explanation": "采用前369年为元年、前319年为末年；延长惠王纪年，接前318年魏襄王，不另列魏哀王。",
+            "sourceIds": [
+              "source-003",
+              "source-055",
+              "source-061"
+            ]
+          },
+          {
+            "label": "《史记》旧表及古注辨正",
+            "year": 370,
+            "explanation": "《六国年表》以惠王元年对应前370年，旧表另分惠王、襄王、哀王；《集解》引古文及《世本》质疑此分世。不能把旧表起点和校订后的后元年次直接拼接。",
+            "sourceIds": [
+              "source-002",
+              "source-055"
+            ]
+          }
+        ]
       },
       "chronology": {
         "accession": null,
@@ -19978,8 +20115,12 @@
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
-        ]
+          "source-003",
+          "source-002",
+          "source-055",
+          "source-061"
+        ],
+        "note": "《索隐》引《纪年》称惠王三十六年改元、并非去世；按本图前369元年换算为前334年。古注又有后元十六、十七年等差异；所谓五十二年及前370／369年起点须分口径理解。迁都大梁有前364、361等说，逢泽与称王也须分别考订，暂不填作无争议的身份转变年。"
       },
       "stateId": "liang"
     },
@@ -19992,7 +20133,7 @@
       "lane": 0,
       "role": "君主",
       "sourceId": "source-003",
-      "note": "",
+      "note": "本图采用惠王后元校订后的前318—296年区间，不另立魏哀王；《史记》旧表中的同名襄王不能直接套为本图各事件的参与君主。",
       "id": "liang-r4",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -20006,9 +20147,9 @@
       },
       "dating": {
         "level": "certain",
-        "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+        "reason": "采用校订后的前318—296年区间；已补旧表误分世的依据，但起讫与实际承位、卒年仍未逐项核定。",
         "alternatives": [],
-        "reviewStatus": "legacy"
+        "reviewStatus": "partial"
       },
       "chronology": {
         "accession": null,
@@ -20018,8 +20159,10 @@
         "changes": [],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
-          "source-003"
-        ]
+          "source-003",
+          "source-055"
+        ],
+        "note": "《魏世家》集解引《世本》说惠王生襄王、无哀王，并讨论惠王后元误分的问题；本图沿用校订世系。实际承位与去世年份未在本次逐项核定，仍不从条带端点自动填写。"
       },
       "stateId": "liang"
     },
@@ -21394,14 +21537,16 @@
       "approx": true,
       "sourceIds": [
         "source-010",
-        "source-041"
+        "source-041",
+        "source-038",
+        "source-037"
       ],
       "key": false,
       "dating": {
         "level": "inferred",
-        "reason": "采用约年、传统推定或年表拟定值，不能据此认定确切日期。",
+        "reason": "《卫康叔世家》《宋微子世家》及《管蔡世家》可证平乱后的分封叙事，未直接给出前1040年；该数值仅为成王初年的阅读约值，不保证两次分封同年。",
         "alternatives": [],
-        "reviewStatus": "legacy"
+        "reviewStatus": "partial"
       },
       "narrative": {
         "background": "周公平定叛乱后，需要重新安置和治理商遗民。",
@@ -21417,24 +21562,48 @@
     },
     {
       "id": "e4",
-      "year": 900,
+      "year": 890,
       "name": "非子受封秦邑",
       "kind": "政治",
-      "description": "非子因养马受周王封于秦邑。约前900年是传统推定，不等同秦正式列为诸侯。",
+      "description": "非子因养马获周孝王封秦邑、为附庸。本图采用约前890年定位；原典未记确年，也不等同秦正式列为诸侯。",
       "approx": true,
       "sourceIds": [
-        "source-011"
+        "source-011",
+        "source-058",
+        "source-059",
+        "source-005"
       ],
       "key": false,
       "dating": {
-        "level": "inferred",
-        "reason": "采用约年、传统推定或年表拟定值，不能据此认定确切日期。",
-        "alternatives": [],
-        "reviewStatus": "legacy"
+        "level": "disputed",
+        "reason": "原典明确为周孝王时期，绝对年份为后出推定。采用约前890年，避免将前900年旧值与本图孝王年表混用；保留旧说供比较。",
+        "alternatives": [
+          {
+            "label": "本图采用的孝王时期约值",
+            "year": 890,
+            "explanation": "《秦本纪》仅定位于周孝王时期。天水市政府介绍换算为前890年，本图取其为约值，与本图孝王前891—886年的拟年相容；不能据此确立受封年。",
+            "sourceIds": [
+              "source-011",
+              "source-058",
+              "source-005"
+            ]
+          },
+          {
+            "label": "约前900年旧推定",
+            "year": 900,
+            "explanation": "甘肃档案网页转载百科，沿用约前900年起点，仅作旧说出处；并非原典明载的绝对年，且落在本图共王时期，不能与本图孝王拟年混配。",
+            "sourceIds": [
+              "source-059",
+              "source-011",
+              "source-005"
+            ]
+          }
+        ],
+        "reviewStatus": "partial"
       },
       "narrative": {
-        "background": "周王室依靠西部族群承担养马等事务，秦先祖尚非正式诸侯。",
-        "process": "据《秦本纪》，非子因养马有功获封秦邑；约前900年为推定，不是原典明确的公元纪年。",
+        "background": "秦先祖尚非正式诸侯，非子以养马受到周孝王重用。",
+        "process": "《秦本纪》记孝王令非子主马，后分土为附庸、邑之秦；没有公元纪年。约前890年采用后出换算，前900年旧说见纪年栏。",
         "result": "秦的早期政治据点逐渐形成，仍须区分受邑与列侯。",
         "impact": "秦襄公援周、护送东迁后才正式列为诸侯；两阶段相隔一百多年。",
         "related": [
@@ -23437,33 +23606,44 @@
       "approx": true,
       "sourceIds": [
         "source-002",
-        "source-024"
+        "source-024",
+        "source-056",
+        "source-057"
       ],
       "key": true,
       "dating": {
         "level": "disputed",
-        "reason": "此事件有不同纪年或解释口径，展开查看本图采用值与另说。",
+        "reason": "前342与前341分属不同系年；《索隐》所引《纪年》又有二十七年十二月、二十八年之别，月份与换算不能混为定论。",
+        "reviewStatus": "partial",
         "alternatives": [
           {
-            "label": "本图采用",
+            "label": "本图采用 · 前342年校订说",
             "year": 342,
-            "explanation": "按现有事件表定位在前342年。",
+            "explanation": "按本图魏惠王前369年为元年，二十八年换算为前342年；王政冬采用将引文二十七年校为二十八年十二月的解释。此为校订意见，不是原简直接写有前342年。",
             "sourceIds": [
-              "source-002"
+              "source-056",
+              "source-057"
             ]
           },
           {
-            "label": "另说",
+            "label": "《六国年表》旧表 · 前341年",
             "year": 341,
-            "explanation": "另一常见换算将此战置于前341年；战国年表存在校订问题。",
+            "explanation": "《六国年表》在周显王二十八年、秦孝公二十一年及旧表齐宣王二年列马陵战事，换算为前341年；不能拿这一旧表君年套用本图田齐年表。",
             "sourceIds": [
               "source-002",
-              "source-011",
-              "source-024"
+              "source-011"
+            ]
+          },
+          {
+            "label": "月份及引文异文",
+            "year": null,
+            "explanation": "《古本竹书纪年辑证》汇录二十七年十二月与二十八年两种引文，并讨论分作战役起始、次年决战的解释；与校改七为八的意见并存，故不单列确定的公元前十二月。",
+            "sourceIds": [
+              "source-057",
+              "source-056"
             ]
           }
-        ],
-        "reviewStatus": "legacy"
+        ]
       },
       "narrative": {
         "background": "齐魏竞争持续，列传叙事亦将此役与魏攻韩相联。",
@@ -23687,7 +23867,10 @@
       "approx": false,
       "sourceIds": [
         "source-031",
-        "source-032"
+        "source-032",
+        "source-002",
+        "source-023",
+        "source-062"
       ],
       "key": false,
       "dating": {
@@ -23698,7 +23881,7 @@
       },
       "narrative": {
         "background": "燕王哙让国于子之，引发燕国内乱。",
-        "process": "齐军趁乱攻入燕国。",
+        "process": "齐军趁乱攻入燕国。本图校订系年下为齐宣王时期，与《孟子》所称宣王伐燕相应；《史记》旧表作齐湣王年间，不能混用两套田齐年表。",
         "result": "燕国政权短暂中断。",
         "impact": "燕昭王恢复政权并招贤，为后来伐齐积累力量。",
         "related": [
@@ -28199,7 +28382,7 @@
     },
     {
       "id": "source-029",
-      "title": "《史记》·相关篇目",
+      "title": "《史记》·屈原贾生列传",
       "url": "https://zh.wikisource.org/zh-hans/史記/卷084"
     },
     {
@@ -28304,7 +28487,7 @@
     },
     {
       "id": "source-050",
-      "title": "《孟子》·梁惠王",
+      "title": "《孟子》·梁惠王上",
       "url": "https://zh.wikisource.org/zh-hans/孟子/梁惠王上"
     },
     {
@@ -28326,6 +28509,46 @@
       "id": "source-054",
       "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
       "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+    },
+    {
+      "id": "source-055",
+      "title": "《史记三家注》·魏世家（惠王后元与魏哀王校勘）",
+      "url": "https://zh.wikisource.org/zh-hant/史記三家註/卷044"
+    },
+    {
+      "id": "source-056",
+      "title": "王政冬《田庄子至齐威王间田齐诸君年代考》（2017）",
+      "url": "https://www.fdgwz.org.cn/Web/Show/3072"
+    },
+    {
+      "id": "source-057",
+      "title": "《古本竹书纪年辑证》·魏纪（马陵引文及历法异说）",
+      "url": "https://book.pans.cn/史部/其他/竹书纪年/YEAR1.HTM"
+    },
+    {
+      "id": "source-058",
+      "title": "天水市人民政府《魅力天水》（非子封秦前890年说，后出换算）",
+      "url": "https://www.tianshui.gov.cn/mlts.htm"
+    },
+    {
+      "id": "source-059",
+      "title": "甘肃档案信息网·秦非子（转载百科，约前900年旧说）",
+      "url": "https://www.cngsda.net/mrda/32777.jhtml"
+    },
+    {
+      "id": "source-060",
+      "title": "齐国纪年（现代校订与《史记》旧表对照汇编）",
+      "url": "https://zh.wikipedia.org/wiki/齊國紀年"
+    },
+    {
+      "id": "source-061",
+      "title": "严可《魏国迁都大梁年代之争》（中国社会科学报，2021）",
+      "url": "https://www.cssn.cn/skgz/bwyc/202208/t20220803_5464162.shtml"
+    },
+    {
+      "id": "source-062",
+      "title": "《孟子》·梁惠王下（齐宣王伐燕）",
+      "url": "https://zh.wikisource.org/zh-hans/孟子/梁惠王下"
     }
   ]
 }
