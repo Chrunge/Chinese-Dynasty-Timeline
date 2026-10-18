@@ -61,7 +61,7 @@ function validStudyKey(value){return studyController?.validStudyKey(value);}
 function studyNumber(...args){return studyController?.studyNumber(...args);}
 studyController=Zhou.createStudyController({
  data:D,searchIndex,normalizeDetailKey:typeof normalizeDetailKey==='function'?normalizeDetailKey:key=>key,
- storage:Zhou.createStorage(()=>localStorage),$,window,document,clearTimeout,setTimeout,now:()=>Date.now(),
+ storage:Zhou.createStorage(()=>localStorage),$,window,document,clearTimeout:clearTimeout.bind(globalThis),setTimeout:setTimeout.bind(globalThis),now:()=>Date.now(),
  getView:()=>captureDetailFrame().view,getRootView:()=>navigation.frames[0]?.view,getDetailKey:()=>navigation.key,getWidth:()=>vp.clientWidth,labelWidth,
  getLayout:()=>({order:appState.layout.stateOrder,pins:[...appState.layout.pinned],rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights}),
  setLayout:l=>{appState.layout.stateOrder=l.order;appState.layout.pinned=new Set(l.pins);appState.layout.rowHeight=l.rowHeight;appState.layout.viewHeight=l.viewHeight;appState.layout.fitRows=l.fitRows;appState.layout.rowHeights=l.rowHeights;},

@@ -23,7 +23,7 @@ function applySharedView(shared){
  if(shared.item){openSharedItem(shared.item);restoreDetailView(view);}
 }
 if(window.location&&window.history){
- viewLinkController=Zhou.createViewLinkController({codec:Zhou.createViewLinkCodec(D,searchService),location:window.location,history:window.history,read:readSharedView,apply:applySharedView,setTimeout,clearTimeout});
+ viewLinkController=Zhou.createViewLinkController({codec:Zhou.createViewLinkCodec(D,searchService),location:window.location,history:window.history,read:readSharedView,apply:applySharedView,setTimeout:setTimeout.bind(globalThis),clearTimeout:clearTimeout.bind(globalThis)});
  viewLinkController.start();
  window.addEventListener('hashchange',()=>viewLinkController.restore());
  window.addEventListener('popstate',()=>viewLinkController.restore());

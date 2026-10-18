@@ -12,7 +12,8 @@ function share(app,url='https://chrunge.github.io/Zhou-Dynasty-Timeline/'){
  app.ctx.window.addEventListener=(name,fn)=>(listeners[name]||=[]).push(fn);
  app.ctx.URLSearchParams=URLSearchParams;
  app.ctx.navigator={clipboard:{async writeText(value){app.copied=value;}}};
- app.ctx.setTimeout=fn=>{timers.set(++timerId,fn);return timerId;};app.ctx.clearTimeout=id=>timers.delete(id);
+ app.ctx.timerOwner=true;
+ app.ctx.setTimeout=function(fn){assert.equal(this.timerOwner,true,'browser timer must keep its global receiver');timers.set(++timerId,fn);return timerId;};app.ctx.clearTimeout=function(id){assert.equal(this.timerOwner,true,'browser timer must keep its global receiver');timers.delete(id);};
  app.el('#shareLink').select=()=>{app.selectedLink=true;};
  vm.runInContext(fs.readFileSync(base+'/dist/share.js','utf8'),app.ctx);
  return Object.assign(app,{location,fire,flush(){const pending=[...timers.values()];timers.clear();pending.forEach(fn=>fn());},replacements:()=>replacements,historyLength:()=>stack.length});

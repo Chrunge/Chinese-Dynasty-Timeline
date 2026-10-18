@@ -61,6 +61,13 @@ test('损坏的布局和阅读字段不阻止页面启动',()=>{
   assert.equal(app.run('rowHeight'),64);assert.equal(app.run('Object.keys(rowHeights).length'),0);assert(app.el('#chart').innerHTML.includes('stateRow'));
  }
 });
+test('阅读自动保存使用绑定到浏览器全局的定时器',()=>{
+ const app=boot();app.ctx.timerOwner=true;
+ app.ctx.setTimeout=function(){assert.equal(this.timerOwner,true,'browser timer must keep its global receiver');return 1;};
+ app.ctx.clearTimeout=function(){assert.equal(this.timerOwner,true,'browser timer must keep its global receiver');};
+ attachStudy(app);app.run("updateSearch('长平之战');setCursor(260);saveReadingPosition()");
+ assert.equal(app.run('cursor'),260);assert.equal(JSON.parse(app.store['zhou-reading-v4']).view.cursor,260);
+});
 test('结构化导出不依赖Canvas，保留对照顺序和出处',async()=>{
  const app=boot();vm.runInContext(read('dist/export.js'),app.ctx);
  app.el('#exportDownload').appendChild=child=>{app.download=child;};
