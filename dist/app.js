@@ -99,6 +99,11 @@ Object.assign(Zhou,{normalizeSearch,rulerAliases,personAliases,countryAliases,na
 // ---- src/core/state.js ----
 (function (Zhou) {
   'use strict';
+  const viewFields=[['px','layout'],['end','conditions'],['selected','conditions'],['query','search'],['mode','layout'],['category','conditions'],['cursor','conditions'],['density','layout'],['activeEventId','session'],['searchScope','search'],['searchDescriptions','search'],['searchLimit','search'],['searchTarget','search']];
+  Zhou.captureViewState=state=>Object.fromEntries(viewFields.map(([key,group])=>[key,key==='selected'?[...state[group][key]]:state[group][key]]));
+  Zhou.applyViewState=(state,view)=>{for(const [key,group] of viewFields)state[group][key]=key==='selected'?new Set(view[key]):view[key];};
+  Zhou.captureLayoutState=state=>({order:state.layout.stateOrder,pins:[...state.layout.pinned],rowHeight:state.layout.rowHeight,viewHeight:state.layout.viewHeight,fitRows:state.layout.fitRows,rowHeights:state.layout.rowHeights});
+  Zhou.applyLayoutState=(state,layout)=>{state.layout.stateOrder=layout.order;state.layout.pinned=new Set(layout.pins);state.layout.rowHeight=layout.rowHeight;state.layout.viewHeight=layout.viewHeight;state.layout.fitRows=layout.fitRows;state.layout.rowHeights=layout.rowHeights;};
   // Mutable application state has one owner. Renderers and persistence receive
   // explicit snapshots; no domain query reads this state implicitly.
   Zhou.createApplicationState = data => ({
@@ -319,6 +324,26 @@ function normalizeCombo(c){
  };
 })(globalThis.Zhou ||= {});
 
+// ---- src/ui/view.js ----
+(function(Zhou){
+ 'use strict';
+ // Browser geometry and controls are supplied by the composition root.
+ Zhou.createViewAdapter=function({state,viewport,$,window,document,render,setCursor,updateRange}){
+  function capture(){
+   return {...Zhou.captureViewState(state),left:viewport.scrollLeft,top:viewport.scrollTop,searchTop:$('#searchPanel').scrollTop,pageX:window.scrollX||0,pageY:window.scrollY||0,periods:[...document.querySelectorAll('[data-period]')].filter(b=>b.classList.contains?.('active')).map(b=>b.dataset.period)};
+  }
+  function syncControls(){
+   $('#search').value=state.search.query;$('#mode').value=state.layout.mode;$('#category').value=state.conditions.category;$('#density').value=state.layout.density;$('#searchScope').value=state.search.searchScope;$('#searchDescriptions').checked=state.search.searchDescriptions;$('#extend').checked=state.conditions.end===221;$('#cursorYear').max=-state.conditions.end;
+  }
+  function restore(view){
+   Zhou.applyViewState(state,view);syncControls();
+   document.querySelectorAll('[data-period]').forEach(b=>b.classList.toggle('active',view.periods.includes(b.dataset.period)));
+   render();setCursor(state.conditions.cursor);viewport.scrollLeft=view.left;viewport.scrollTop=view.top;$('#searchPanel').scrollTop=view.searchTop;updateRange();window.scrollTo?.(view.pageX,view.pageY);
+  }
+  return Object.freeze({capture,restore,syncControls,getLayout:()=>Zhou.captureLayoutState(state),setLayout:layout=>Zhou.applyLayoutState(state,layout)});
+ };
+})(globalThis.Zhou ||= {});
+
 // ---- src/app.js ----
 'use strict';
 const D=window.ZHOU_DATA,historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage);
@@ -330,6 +355,10 @@ const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const fmt=y=>'前'+y+'年',range=(a,b,approx=false)=>(approx?'约 ':'')+(a===b?fmt(a):'前'+a+'—'+b+'年');
 const links=arr=>'<div class="sourceLinks">'+arr.map(s=>'<a href="'+escapeHTML(s.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(s.title)+' ↗</a>').join('')+'</div>';
 const appState=Zhou.createApplicationState(D),navigation=Zhou.createNavigation();
+let viewAdapter;
+const pageEffects={renderPanels(){},persist(){},share(){},rememberDetail(){},recordVisit(){},updateStudy(){}};
+function notifyViewChanged(){pageEffects.persist();pageEffects.share();}
+function syncViewControls(){viewAdapter.syncControls();}
 appState.layout=Zhou.readLayout(storage.read('zhou-layout-v2',null),appState.layout,D.states.map(s=>s.id));
 function saveLayout(){try{storage.write('zhou-layout-v2',{order:appState.layout.stateOrder,rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights});}catch{}}
 const builtInCombos=[
@@ -492,10 +521,10 @@ function render(){
  descriptors.push({key:'cursor',html:'<div class="cursorline"><span class="cursorBadge"></span></div>',update:line=>{line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent='前'+appState.conditions.cursor;}});
  reconcileTimeline(descriptors);vp.scrollLeft=oldScroll;$('#zoomLabel').textContent=Number(appState.layout.px.toFixed(1))+' px / 年';$('#filterCount').textContent=new Set([...appState.conditions.selected,...appState.layout.pinned]).size;
  $('#stats').innerHTML=[['18','国家与王室'],[D.states.reduce((n,s)=>n+s.rulers.length,0),'在位区间'],[D.events.length,'精选事件']].map(([n,t])=>'<div class="number"><b>'+n+'</b><span>'+t+'</span></div>').join('');
- updateRange();updateCompare();renderEventFocus();renderSearchResults();if(typeof scheduleReadingSave==='function')scheduleReadingSave();if(typeof scheduleShareSync==='function')scheduleShareSync();
+ updateRange();pageEffects.renderPanels();notifyViewChanged();
 }
-function updateRange(){const left=Math.min(1046,Math.max(appState.conditions.end,1046-Math.floor(vp.scrollLeft/appState.layout.px)));const right=Math.max(appState.conditions.end,1046-Math.floor((vp.scrollLeft+vp.clientWidth-labelWidth())/appState.layout.px));$('#visibleRange').textContent='可见：前'+left+'—'+right+'年 · '+appState.session.visibleStates.length+'行';if(typeof scheduleReadingSave==='function')scheduleReadingSave();if(typeof scheduleShareSync==='function')scheduleShareSync();}
-function setCursor(y,scroll=false){appState.conditions.cursor=Math.round(Math.min(1046,Math.max(appState.conditions.end,y)));$('#cursorYear').value=-appState.conditions.cursor;$('#cursorOutput').textContent=fmt(appState.conditions.cursor);$('#selectionYear').textContent='年份参考线：'+fmt(appState.conditions.cursor);$('#compareTitle').textContent=fmt(appState.conditions.cursor)+'的列国';const line=$('.cursorline');if(line){line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent='前'+appState.conditions.cursor;}updateCompare();if(scroll)vp.scrollLeft=Math.max(0,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2);if(typeof scheduleReadingSave==='function')scheduleReadingSave();if(typeof scheduleShareSync==='function')scheduleShareSync();}
+function updateRange(){const left=Math.min(1046,Math.max(appState.conditions.end,1046-Math.floor(vp.scrollLeft/appState.layout.px)));const right=Math.max(appState.conditions.end,1046-Math.floor((vp.scrollLeft+vp.clientWidth-labelWidth())/appState.layout.px));$('#visibleRange').textContent='可见：前'+left+'—'+right+'年 · '+appState.session.visibleStates.length+'行';notifyViewChanged();}
+function setCursor(y,scroll=false){appState.conditions.cursor=Math.round(Math.min(1046,Math.max(appState.conditions.end,y)));$('#cursorYear').value=-appState.conditions.cursor;$('#cursorOutput').textContent=fmt(appState.conditions.cursor);$('#selectionYear').textContent='年份参考线：'+fmt(appState.conditions.cursor);$('#compareTitle').textContent=fmt(appState.conditions.cursor)+'的列国';const line=$('.cursorline');if(line){line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent='前'+appState.conditions.cursor;}updateCompare();if(scroll)vp.scrollLeft=Math.max(0,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2);notifyViewChanged();}
 function updateCompare(){
  $('#compare').innerHTML=historyService.compareYear(appState.conditions.cursor,appState.session.visibleStates.map(s=>s.id)).map(({state:s,interruption:gap,rulers,events:es})=>{
   return '<button class="comparecard '+(activeEvent()?.states.includes(s.id)?'eventRelated':'')+'" data-action="state" data-id="'+s.id+'" style="--statecolor:'+s.color+'"><strong>'+s.name+'</strong><span>'+ (gap?escapeHTML(gap.note):rulers.length?rulers.map(r=>(r.approx?'约 · ':'')+escapeHTML(r.name)).join(' / '):'君主纪年待考')+'</span><small>'+ (es.length?escapeHTML(es.map(e=>e.name).join('；')):'该年无已收录大事')+'</small></button>';
@@ -506,15 +535,10 @@ function updateCompare(){
 function captureDetailFrame(){
  const dialog=$('#detail'),body=$('#detailBody'),focus=document.activeElement;
  const controls=[...(body.querySelectorAll?.('button,a,input,select,summary')||[])];
- return {view:{px:appState.layout.px,end:appState.conditions.end,selected:[...appState.conditions.selected],query:appState.search.query,mode:appState.layout.mode,category:appState.conditions.category,cursor:appState.conditions.cursor,density:appState.layout.density,activeEventId:appState.session.activeEventId,searchScope:appState.search.searchScope,searchDescriptions:appState.search.searchDescriptions,searchLimit:appState.search.searchLimit,searchTarget:appState.search.searchTarget,left:vp.scrollLeft,top:vp.scrollTop,searchTop:$('#searchPanel').scrollTop,pageX:window.scrollX||0,pageY:window.scrollY||0,periods:[...document.querySelectorAll('[data-period]')].filter(b=>b.classList.contains?.('active')).map(b=>b.dataset.period)},detail:dialog.open?{key:navigation.key,tag:$('#detailTag').textContent,html:body.innerHTML,top:dialog.scrollTop,bodyTop:body.scrollTop,focusIndex:controls.indexOf(focus)}:null,focus:focus?{element:focus,id:focus.id,action:focus.dataset?.action,key:focus.dataset?.id}:null};
+ return {view:viewAdapter.capture(),detail:dialog.open?{key:navigation.key,tag:$('#detailTag').textContent,html:body.innerHTML,top:dialog.scrollTop,bodyTop:body.scrollTop,focusIndex:controls.indexOf(focus)}:null,focus:focus?{element:focus,id:focus.id,action:focus.dataset?.action,key:focus.dataset?.id}:null};
 }
-function prepareDetailNavigation(){if(typeof rememberDetailProgress==='function')rememberDetailProgress();navigation.prepare(captureDetailFrame());}
-function restoreDetailView(v){
- appState.layout.px=v.px;appState.conditions.end=v.end;appState.conditions.selected=new Set(v.selected);appState.search.query=v.query;appState.layout.mode=v.mode;appState.conditions.category=v.category;appState.conditions.cursor=v.cursor;appState.layout.density=v.density;appState.session.activeEventId=v.activeEventId;appState.search.searchScope=v.searchScope;appState.search.searchDescriptions=v.searchDescriptions;appState.search.searchLimit=v.searchLimit;appState.search.searchTarget=v.searchTarget;
- $('#search').value=appState.search.query;$('#mode').value=appState.layout.mode;$('#category').value=appState.conditions.category;$('#density').value=appState.layout.density;$('#searchScope').value=appState.search.searchScope;$('#searchDescriptions').checked=appState.search.searchDescriptions;$('#extend').checked=appState.conditions.end===221;$('#cursorYear').max=-appState.conditions.end;
- document.querySelectorAll('[data-period]').forEach(b=>b.classList.toggle('active',v.periods.includes(b.dataset.period)));
- render();setCursor(appState.conditions.cursor);vp.scrollLeft=v.left;vp.scrollTop=v.top;$('#searchPanel').scrollTop=v.searchTop;updateRange();window.scrollTo?.(v.pageX,v.pageY);
-}
+function prepareDetailNavigation(){pageEffects.rememberDetail();navigation.prepare(captureDetailFrame());}
+function restoreDetailView(v){viewAdapter.restore(v);}
 function updateDetailBack(){const previous=navigation.frames[navigation.frames.length-1];$('#detailBack').textContent=previous?.detail?'返回上一级':previous?.view.query?'返回搜索结果':'返回时间线';}
 function restoreDetailFocus(frame){
  let target;
@@ -524,14 +548,14 @@ function restoreDetailFocus(frame){
 }
 function show(tag,html,key=null){
  prepareDetailNavigation();navigation.enter(key);
- navigation.key=key;$('#detailTag').textContent=tag;$('#detailBody').innerHTML=html;updateDetailBack();if(!$('#detail').open)$('#detail').showModal();$('#detailBack').focus?.({preventScroll:true});$('#detail').scrollTop=0;$('#detailBody').scrollTop=0;if(typeof recordStudyVisit==='function')recordStudyVisit(key);if(typeof scheduleShareSync==='function')scheduleShareSync();
+ navigation.key=key;$('#detailTag').textContent=tag;$('#detailBody').innerHTML=html;updateDetailBack();if(!$('#detail').open)$('#detail').showModal();$('#detailBack').focus?.({preventScroll:true});$('#detail').scrollTop=0;$('#detailBody').scrollTop=0;pageEffects.recordVisit(key);pageEffects.share();
 }
 function backDetail(){
- if(typeof rememberDetailProgress==='function')rememberDetailProgress();const frame=navigation.back();if(!frame){closeDetail();return;}navigation.pending=null;restoreDetailView(frame.view);
+ pageEffects.rememberDetail();const frame=navigation.back();if(!frame){closeDetail();return;}navigation.pending=null;restoreDetailView(frame.view);
  if(frame.detail){navigation.key=frame.detail.key;$('#detailTag').textContent=frame.detail.tag;$('#detailBody').innerHTML=frame.detail.html;updateDetailBack();restoreDetailFocus(frame);$('#detail').scrollTop=frame.detail.top;$('#detailBody').scrollTop=frame.detail.bodyTop;}
- else{navigation.key=null;$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}if(typeof updateStudyControls==='function')updateStudyControls();if(typeof scheduleShareSync==='function')scheduleShareSync();
+ else{navigation.key=null;$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}pageEffects.updateStudy();pageEffects.share();
 }
-function closeDetail(restore=true){if(typeof rememberDetailProgress==='function')rememberDetailProgress();navigation.key=null;const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});if(typeof updateStudyControls==='function')updateStudyControls();if(typeof scheduleShareSync==='function')scheduleShareSync();}
+function closeDetail(restore=true){pageEffects.rememberDetail();navigation.key=null;const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});pageEffects.updateStudy();pageEffects.share();}
 function showRuler(id){
  const s=D.states.find(s=>s.rulers.some(r=>r.id===id));if(!s)return;const r=s.rulers.find(r=>r.id===id);
  const es=historyService.eventsInRange({from:rulerComparisonStart(r),to:r.end,states:[s.id]});
@@ -551,6 +575,10 @@ function showState(id){const s=byId(id);if(!s)return;
  show(s.id==='zhou'?'周王室 · 参照':'列国 · '+s.region,'<h3 class="detailTitle">'+s.name+'</h3><span class="datebadge">'+range(s.start,s.end,s.approxStart||s.approxEnd)+'</span>'+datingDetails(s.dating)+'<p>'+escapeHTML(s.ending)+'</p><div class="warning">'+escapeHTML(s.note)+' 起点为约年时，线段左端仅为示意。</div><div class="detailSection"><h4>君主 / 领袖 · '+s.rulers.length+'个在位区间</h4>'+s.rulers.map(r=>'<button class="listitem" data-action="ruler" data-id="'+r.id+'">'+escapeHTML(r.name)+(r.person?' · '+escapeHTML(r.person):'')+'<small>'+range(r.start,r.end,r.approx)+' · '+r.role+'</small></button>').join('')+'</div>'+(s.undated.length?'<div class="detailSection"><h4>未定位的君主与前期领袖</h4>'+s.undated.map(r=>'<p class="notice">'+escapeHTML(r.name)+'：'+escapeHTML(r.known||'在位起讫不详')+'</p>').join('')+'</div>':'')+'<div class="detailSection"><h4>重大事件</h4>'+eventList(D.events.filter(e=>e.states.includes(s.id)))+'</div>'+links([D.sources[2],D.sources[3]]),'country:'+id);
 }
 function showAbout(){show('资料与纪年','<h3 class="detailTitle">如何读这张对照图</h3><p>横向是共同年代，纵向是国家。相同年份上下对照；君主条是所采用年表的在位区间，菱形是精选事件，红色端点表示终结或身份转变。</p><div class="warning">这是可继续校勘的资料集。君主起讫以检索汇编为底表，重大事件参照《史记》相关篇目。君主结局尚未逐条核实，详情会明确标注。</div><div class="detailSection"><h4>范围与分期</h4><p>覆盖周王室与17个主要诸侯国；从约前1046年到前256年，可延伸到前221年。春秋段从前770年起，战国段从前475年起；前453年、前403年也是不同研究中的战国起点。本图分区是阅读约定。</p><p>西周前841年以前的精确年代多属推定。斜线君主条与虚线存续线表示约年、传统推定或争议。</p></div><div class="detailSection"><h4>即位、元年、同年更替</h4><p>元年常在实际即位的次年，不能把年表的第一年一概理解为即位日期。图按整年绘制，同年发生的短期君主分层显示，未尝试推断月份。</p></div><div class="detailSection"><h4>灭亡与复国</h4><p>陈、蔡的复国显示为线段中断；齐的姜氏与田氏、晋与曲沃分别分层。晋终结、越瓦解采用一系口径并标争议。赵、燕保留残余政权直到前222年。卫延续到前209年，超出图范围时显示延续标记。</p></div><div class="detailSection"><h4>人物简介</h4><p>君主详情提供简要生平与关联臣子、将领的介绍，并标明任职或关联身份。已补充'+D.peopleCoverage.detailedRulerIntervals+'个在位区间的生平简介，'+D.peopleCoverage.ministerProfiles+'位已收录人物；其他区间提供纪年与记载摘要。未收录人物不表示没有辅臣。</p></div><div class="detailSection"><h4>覆盖情况</h4><p>'+D.states.reduce((n,s)=>n+s.rulers.length,0)+'个有起讫的在位区间，'+D.states.reduce((n,s)=>n+s.undated.length,0)+'项未定位君主 / 前期领袖，'+D.events.length+'条精选重大事件。空白与无事件提示表示未收录，不是历史空白。</p></div><div class="detailSection"><h4>缩放、事件与研究组合</h4><p>自动密度分为远景、常规、细节：缩小时保留国家兴亡与精选关键事件，放大后逐步显示君主姓名、年份与具体事件。点击事件会联动相关国家、当年君主与已核实的人物；在位不等于亲自参与。</p><p>国家旁的“钉”固定该行到上方，滚动时保持可见。研究组合保存选择、顺序、固定行、行高与时间范围，默认保存在当前浏览器，可导出、导入以跨设备使用。</p><p>可信度指图示年代：较确定表示年表定位较稳定，推定表示约年或传统推算，存在异说表示已有不同纪年或口径。人物结局的核实程度另列。</p></div><div class="detailSection"><h4>来源</h4>'+links(D.sources)+'</div><p class="notice">资料整理：'+D.updated+' · '+D.version+'</p>');}
+
+function openDetailKey(key){
+ if(key.startsWith('person:'))showPerson(key.slice(7));else if(key.startsWith('ruler:'))showRuler(key.slice(6));else if(key.startsWith('country:'))showState(key.slice(8));else if(key.startsWith('event:'))showEvent(key.slice(6));else if(key.startsWith('cluster:')){const events=key.slice(8).split(',').map(historyService.event);show('密集事件 · 按年代展开','<h3 class="detailTitle">'+events.length+'条事件</h3>'+eventList(events),key);}else openSearchResult(key);
+}
 
 // ---- src/ui/controls.js ----
 document.addEventListener('click',event=>{const target=event.target.closest('[data-action]');if(!target)return;const {action,id}=target.dataset;
@@ -591,7 +619,7 @@ function applyCombo(id){
  const preset=builtInCombos.find(c=>c.id===id),saved=appState.session.savedCombos.find(c=>c.id===id);if(!preset&&!saved)return;
  const c=saved||{...preset,order:preset.states,pins:[],rowHeight:64,viewHeight:appState.layout.viewHeight,fitRows:true,rowHeights:{},end:preset.to<256?221:256,cursor:preset.id==='builtin-seven'?300:preset.from,density:'auto',mode:'both',category:'all'};
  appState.conditions.selected=new Set(c.states);appState.layout.pinned=new Set(c.pins);appState.layout.stateOrder=[...c.order,...D.states.map(s=>s.id)].filter((id,i,a)=>a.indexOf(id)===i);appState.layout.rowHeight=c.rowHeight;appState.layout.viewHeight=c.viewHeight;appState.layout.fitRows=c.fitRows;appState.layout.rowHeights={...c.rowHeights};appState.layout.density=c.density;appState.layout.mode=c.mode;appState.conditions.category=c.category;appState.conditions.end=c.end;appState.search.query='';appState.search.searchTarget=null;appState.session.activeEventId=null;
- $('#search').value='';$('#mode').value=appState.layout.mode;$('#category').value=appState.conditions.category;$('#density').value=appState.layout.density;$('#extend').checked=appState.conditions.end===221;$('#cursorYear').max=-appState.conditions.end;appState.conditions.cursor=Math.max(appState.conditions.end,Math.min(1046,c.cursor));
+ syncViewControls();appState.conditions.cursor=Math.max(appState.conditions.end,Math.min(1046,c.cursor));
  appState.layout.px=Math.max(.8,Math.min(24,(vp.clientWidth-labelWidth()-18)/Math.max(1,c.from-c.to+1)));applyLayout();vp.scrollLeft=Math.max(0,x(c.from));vp.scrollTop=0;setCursor(appState.conditions.cursor);document.querySelectorAll('[data-period]').forEach(b=>b.classList.toggle('active',false));$('#comboSelect').value=id;
  try{storage.write('zhou-pins-v3',[...appState.layout.pinned]);}catch{}
 }
@@ -613,6 +641,12 @@ $('#orderList').addEventListener('change',e=>{const id=e.target.dataset.rowSize;
 let draggingState=null;$('#orderList').addEventListener('dragstart',e=>{const row=e.target.closest('[data-order-id]');if(!row)return;draggingState=row.dataset.orderId;e.dataTransfer.setData('text/plain',draggingState);e.dataTransfer.effectAllowed='move';});
 $('#orderList').addEventListener('dragover',e=>{if(e.target.closest('[data-order-id]'))e.preventDefault();});
 $('#orderList').addEventListener('drop',e=>{e.preventDefault();const target=e.target.closest('[data-order-id]')?.dataset.orderId;if(!target||!draggingState||target===draggingState)return;appState.layout.stateOrder=appState.layout.stateOrder.filter(id=>id!==draggingState);appState.layout.stateOrder.splice(appState.layout.stateOrder.indexOf(target),0,draggingState);draggingState=null;renderOrder();render();saveLayout();});
+
+// ---- src/startup.js ----
+'use strict';
+// Connect page modules only after every implementation has been loaded.
+viewAdapter=Zhou.createViewAdapter({state:appState,viewport:vp,$,window,document,render,setCursor,updateRange});
+pageEffects.renderPanels=()=>{updateCompare();renderEventFocus();renderSearchResults();};
 renderCombos();applyLayout();
 render();setCursor(770);vp.scrollLeft=Math.max(0,x(770)-40);
 // Browser agents use the same navigation and search state as the visible controls.

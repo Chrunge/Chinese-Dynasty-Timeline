@@ -8,6 +8,10 @@ const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const fmt=y=>'前'+y+'年',range=(a,b,approx=false)=>(approx?'约 ':'')+(a===b?fmt(a):'前'+a+'—'+b+'年');
 const links=arr=>'<div class="sourceLinks">'+arr.map(s=>'<a href="'+escapeHTML(s.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(s.title)+' ↗</a>').join('')+'</div>';
 const appState=Zhou.createApplicationState(D),navigation=Zhou.createNavigation();
+let viewAdapter;
+const pageEffects={renderPanels(){},persist(){},share(){},rememberDetail(){},recordVisit(){},updateStudy(){}};
+function notifyViewChanged(){pageEffects.persist();pageEffects.share();}
+function syncViewControls(){viewAdapter.syncControls();}
 appState.layout=Zhou.readLayout(storage.read('zhou-layout-v2',null),appState.layout,D.states.map(s=>s.id));
 function saveLayout(){try{storage.write('zhou-layout-v2',{order:appState.layout.stateOrder,rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights});}catch{}}
 const builtInCombos=[

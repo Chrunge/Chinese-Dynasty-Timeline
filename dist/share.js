@@ -4,15 +4,13 @@
 let viewLinkController = null;
 function scheduleShareSync(){viewLinkController?.schedule();}
 function readSharedView(){
- const view=captureDetailFrame().view,from=Math.min(1046,Math.max(view.end,1046-vp.scrollLeft/view.px)),width=Math.max(1,vp.clientWidth-labelWidth()),to=Math.max(view.end,from-width/view.px);
+ const view=viewAdapter.capture(),from=Math.min(1046,Math.max(view.end,1046-vp.scrollLeft/view.px)),width=Math.max(1,vp.clientWidth-labelWidth()),to=Math.max(view.end,from-width/view.px);
  return {view,pinned:[...appState.layout.pinned],order:[...appState.layout.stateOrder],range:{from,to,width},item:navigation.key};
 }
-function openSharedItem(key){
- if(key.startsWith('person:'))showPerson(key.slice(7));else if(key.startsWith('ruler:'))showRuler(key.slice(6));else if(key.startsWith('country:'))showState(key.slice(8));else if(key.startsWith('event:'))showEvent(key.slice(6));else if(key.startsWith('cluster:')){const events=key.slice(8).split(',').map(historyService.event);show('密集事件 · 按年代展开','<h3 class="detailTitle">'+events.length+'条事件</h3>'+eventList(events),key);}else openSearchResult(key);
-}
+function openSharedItem(key){openDetailKey(key);}
 function applySharedView(shared){
  closeDetail(false);
- const view={...captureDetailFrame().view,...shared.view,searchLimit:6,top:0,searchTop:0,periods:[]};
+ const view={...viewAdapter.capture(),...shared.view,searchLimit:6,top:0,searchTop:0,periods:[]};
  view.cursor=Math.max(view.end,Math.min(1046,view.cursor));
  if(shared.pinned)appState.layout.pinned=new Set(shared.pinned);
  if(shared.order)appState.layout.stateOrder=[...new Set([...shared.order,...D.states.map(s=>s.id)])];
@@ -26,6 +24,7 @@ function applySharedView(shared){
 }
 if(window.location&&window.history){
  viewLinkController=Zhou.createViewLinkController({codec:Zhou.createViewLinkCodec(D,searchService),location:window.location,history:window.history,read:readSharedView,apply:applySharedView,setTimeout:setTimeout.bind(globalThis),clearTimeout:clearTimeout.bind(globalThis)});
+ pageEffects.share=scheduleShareSync;
  viewLinkController.start();
  window.addEventListener('hashchange',()=>viewLinkController.restore());
  window.addEventListener('popstate',()=>viewLinkController.restore());

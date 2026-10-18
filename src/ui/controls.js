@@ -36,7 +36,7 @@ function applyCombo(id){
  const preset=builtInCombos.find(c=>c.id===id),saved=appState.session.savedCombos.find(c=>c.id===id);if(!preset&&!saved)return;
  const c=saved||{...preset,order:preset.states,pins:[],rowHeight:64,viewHeight:appState.layout.viewHeight,fitRows:true,rowHeights:{},end:preset.to<256?221:256,cursor:preset.id==='builtin-seven'?300:preset.from,density:'auto',mode:'both',category:'all'};
  appState.conditions.selected=new Set(c.states);appState.layout.pinned=new Set(c.pins);appState.layout.stateOrder=[...c.order,...D.states.map(s=>s.id)].filter((id,i,a)=>a.indexOf(id)===i);appState.layout.rowHeight=c.rowHeight;appState.layout.viewHeight=c.viewHeight;appState.layout.fitRows=c.fitRows;appState.layout.rowHeights={...c.rowHeights};appState.layout.density=c.density;appState.layout.mode=c.mode;appState.conditions.category=c.category;appState.conditions.end=c.end;appState.search.query='';appState.search.searchTarget=null;appState.session.activeEventId=null;
- $('#search').value='';$('#mode').value=appState.layout.mode;$('#category').value=appState.conditions.category;$('#density').value=appState.layout.density;$('#extend').checked=appState.conditions.end===221;$('#cursorYear').max=-appState.conditions.end;appState.conditions.cursor=Math.max(appState.conditions.end,Math.min(1046,c.cursor));
+ syncViewControls();appState.conditions.cursor=Math.max(appState.conditions.end,Math.min(1046,c.cursor));
  appState.layout.px=Math.max(.8,Math.min(24,(vp.clientWidth-labelWidth()-18)/Math.max(1,c.from-c.to+1)));applyLayout();vp.scrollLeft=Math.max(0,x(c.from));vp.scrollTop=0;setCursor(appState.conditions.cursor);document.querySelectorAll('[data-period]').forEach(b=>b.classList.toggle('active',false));$('#comboSelect').value=id;
  try{storage.write('zhou-pins-v3',[...appState.layout.pinned]);}catch{}
 }
@@ -58,12 +58,3 @@ $('#orderList').addEventListener('change',e=>{const id=e.target.dataset.rowSize;
 let draggingState=null;$('#orderList').addEventListener('dragstart',e=>{const row=e.target.closest('[data-order-id]');if(!row)return;draggingState=row.dataset.orderId;e.dataTransfer.setData('text/plain',draggingState);e.dataTransfer.effectAllowed='move';});
 $('#orderList').addEventListener('dragover',e=>{if(e.target.closest('[data-order-id]'))e.preventDefault();});
 $('#orderList').addEventListener('drop',e=>{e.preventDefault();const target=e.target.closest('[data-order-id]')?.dataset.orderId;if(!target||!draggingState||target===draggingState)return;appState.layout.stateOrder=appState.layout.stateOrder.filter(id=>id!==draggingState);appState.layout.stateOrder.splice(appState.layout.stateOrder.indexOf(target),0,draggingState);draggingState=null;renderOrder();render();saveLayout();});
-renderCombos();applyLayout();
-render();setCursor(770);vp.scrollLeft=Math.max(0,x(770)-40);
-// Browser agents use the same navigation and search state as the visible controls.
-if(document.modelContext?.registerTool){
- const lifecycle=new AbortController();
- const register=tool=>{try{Promise.resolve(document.modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch{}};
- register({name:'compare_zhou_year',title:'对照列国年份',description:'移动年份参考线并展示该年的列国君主与事件；year_bce 为公元前年份。',inputSchema:{type:'object',properties:{year_bce:{type:'integer',minimum:221,maximum:1046}},required:['year_bce'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input){if(!input||!Number.isInteger(input.year_bce)||input.year_bce<221||input.year_bce>1046)throw new Error('年份必须是221至1046之间的整数');if(input.year_bce<appState.conditions.end){$('#extend').checked=true;setExtension(true);}setCursor(input.year_bce,true);return {year_bce:appState.conditions.cursor,states:historyService.compareYear(appState.conditions.cursor,appState.session.visibleStates.map(s=>s.id)).map(({state,rulers})=>({state:state.name,rulers:rulers.map(r=>r.name)}))};}});
- window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
-}

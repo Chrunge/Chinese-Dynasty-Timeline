@@ -1,5 +1,10 @@
 (function (Zhou) {
   'use strict';
+  const viewFields=[['px','layout'],['end','conditions'],['selected','conditions'],['query','search'],['mode','layout'],['category','conditions'],['cursor','conditions'],['density','layout'],['activeEventId','session'],['searchScope','search'],['searchDescriptions','search'],['searchLimit','search'],['searchTarget','search']];
+  Zhou.captureViewState=state=>Object.fromEntries(viewFields.map(([key,group])=>[key,key==='selected'?[...state[group][key]]:state[group][key]]));
+  Zhou.applyViewState=(state,view)=>{for(const [key,group] of viewFields)state[group][key]=key==='selected'?new Set(view[key]):view[key];};
+  Zhou.captureLayoutState=state=>({order:state.layout.stateOrder,pins:[...state.layout.pinned],rowHeight:state.layout.rowHeight,viewHeight:state.layout.viewHeight,fitRows:state.layout.fitRows,rowHeights:state.layout.rowHeights});
+  Zhou.applyLayoutState=(state,layout)=>{state.layout.stateOrder=layout.order;state.layout.pinned=new Set(layout.pins);state.layout.rowHeight=layout.rowHeight;state.layout.viewHeight=layout.viewHeight;state.layout.fitRows=layout.fitRows;state.layout.rowHeights=layout.rowHeights;};
   // Mutable application state has one owner. Renderers and persistence receive
   // explicit snapshots; no domain query reads this state implicitly.
   Zhou.createApplicationState = data => ({

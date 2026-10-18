@@ -62,11 +62,10 @@ function studyNumber(...args){return studyController?.studyNumber(...args);}
 studyController=Zhou.createStudyController({
  data:D,searchIndex,normalizeDetailKey:typeof normalizeDetailKey==='function'?normalizeDetailKey:key=>key,
  storage:Zhou.createStorage(()=>localStorage),$,window,document,clearTimeout:clearTimeout.bind(globalThis),setTimeout:setTimeout.bind(globalThis),now:()=>Date.now(),
- getView:()=>captureDetailFrame().view,getRootView:()=>navigation.frames[0]?.view,getDetailKey:()=>navigation.key,getWidth:()=>vp.clientWidth,labelWidth,
- getLayout:()=>({order:appState.layout.stateOrder,pins:[...appState.layout.pinned],rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights}),
- setLayout:l=>{appState.layout.stateOrder=l.order;appState.layout.pinned=new Set(l.pins);appState.layout.rowHeight=l.rowHeight;appState.layout.viewHeight=l.viewHeight;appState.layout.fitRows=l.fitRows;appState.layout.rowHeights=l.rowHeights;},
+ getView:()=>viewAdapter.capture(),getRootView:()=>navigation.frames[0]?.view,getDetailKey:()=>navigation.key,getWidth:()=>vp.clientWidth,labelWidth,
+ getLayout:viewAdapter.getLayout,setLayout:viewAdapter.setLayout,
  applyLayout,restoreView:restoreDetailView,prepareDetailNavigation,escapeHTML,fmt,onVisits:visits=>{studyVisits=visits;},
- openDetail:key=>{
-  if(key.startsWith('person:'))showPerson(key.slice(7));else if(key.startsWith('ruler:'))showRuler(key.slice(6));else if(key.startsWith('event:'))showEvent(key.slice(6));else if(key.startsWith('country:'))showState(key.slice(8));else if(key.startsWith('cluster:')){const es=key.slice(8).split(',').map(id=>D.events.find(e=>e.id===id));show('密集事件 · 按年代展开','<h3 class="detailTitle">'+es.length+'条事件</h3>'+eventList(es),key);}else openSearchResult(key);
- }
+ openDetail:openDetailKey
 });
+
+Object.assign(pageEffects,{persist:scheduleReadingSave,rememberDetail:rememberDetailProgress,recordVisit:recordStudyVisit,updateStudy:updateStudyControls});
