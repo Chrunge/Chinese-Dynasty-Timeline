@@ -5,7 +5,7 @@ import {catalog,compileProduction} from './lib/production.mjs';
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
 const hash = content => createHash('sha256').update(content).digest('hex');
 const bundles = {
-  'app.js': ['src/core/time.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/view.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/startup.js'],
+  'app.js': ['src/core/time.js', 'src/core/presentation.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/view.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/startup.js'],
   'study.js': ['src/study.js'],
   'share.js': ['src/share.js'],
   'export.js': ['src/core/export-layout.js', 'src/outputs/canvas.js', 'src/adapters/export-files.js', 'src/export.js']

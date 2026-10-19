@@ -49,7 +49,7 @@
       for (const event of selectedEvents) for (const person of event.participants || []) personIds.add(person.id);
       for (const person of data.people) if (person.states?.some(id => selectedIds.has(id))) personIds.add(person.id);
       // Detached, additive v1 snapshot: existing consumers retain their fields and IDs.
-      return copy({schemaVersion: 1, timeEncoding: 'bce-axis', ...(data.datasetId ? {datasetId:data.datasetId} : {}), timeline, version: data.version, updated: data.updated, from, to, category, cursor,
+      return copy({schemaVersion: 1, timeEncoding: 'bce-axis', ...(data.datasetId ? {datasetId:data.datasetId} : {}), ...(data.presentation ? {presentation:{...data.presentation,rowGroups:data.presentation.rowGroups.map(g=>({...g,stateIds:g.stateIds.filter(id=>selectedIds.has(id))})).filter(g=>g.stateIds.length)}} : {}), timeline, version: data.version, updated: data.updated, from, to, category, cursor,
         title: data.title || '历史对照图', legend: data.metadata?.exportLegend, scopeNote: data.scopeNote || data.metadata?.scopeNote, chronology: {bars: 'adopted-table', yearQueries: 'verified-accession-and-interruptions'},
         states: selected.map(item => ({...item, rulers: rulersInRange(item, from, to)})),
         polities: selected.map(item => polities.get(item.id)), tenures: selectedTenures,

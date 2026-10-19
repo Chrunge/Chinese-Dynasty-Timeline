@@ -7,7 +7,7 @@ const read = path => fs.readFileSync(new URL('../'+path,import.meta.url),'utf8')
 const plain = value => JSON.parse(JSON.stringify(value));
 function services() {
   const ctx=vm.createContext({Date});
-  for(const path of ['src/core/time.js','src/core/history.js','src/core/export-layout.js','src/outputs/canvas.js']) vm.runInContext(read(path),ctx);
+  for(const path of ['src/core/time.js','src/core/presentation.js','src/core/history.js','src/core/export-layout.js','src/outputs/canvas.js']) vm.runInContext(read(path),ctx);
   return ctx.Zhou;
 }
 const Z=services();

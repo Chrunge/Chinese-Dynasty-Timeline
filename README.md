@@ -16,6 +16,8 @@
 
 内容密度可自动切换或手动设置：低于2.4px／年显示兴亡与关键事件，2.4—7px／年显示常规内容，更高缩放下在空间允许时显示详细年份。点击事件会联动相关国家、当年君主及已收录参与人物；在位不等于直接参与事件。
 
+秦汉的秦、西汉、新、玄汉、东汉共用接续主行，真实同年重叠分层；卫、张楚、西楚独立显示，三国仍保留并存政权行。秦汉／三国君主条带优先短名号＋姓名，名号复杂时只显示姓名；完整称谓、任职、生平与来源保留在提示和详情。筛选、固定、排序、分享、阅读和导出始终保留原政权／任期身份，详见[显示契约与权衡](<docs/PRESENTATION-CONTRACT.md>)。
+
 浏览器提供原生WebMCP API时，周朝页面保留 `compare_zhou_year`，新增专题注册 `compare_history_year` 工具；其他浏览器正常使用网页功能。
 
 ## 资料与采用口径
@@ -32,7 +34,7 @@
 
 正式资料为 [秦汉](<data/qin-han.json>) 和 [三国](<data/three-kingdoms.json>)，逐字节保存用户提供的原文件，不以结构样例替代。秦汉包含8个政权、78个人物、74段任期、32条事件；三国包含5个政权、51个人物、17段任期、23条事件（跨专题共享ID不能直接相加作为独立实体总数）。[结构样例](<data/examples/README.md>) 仍仅供演示，不参与生产构建。
 
-专题发布目标分别为原站根路径、[秦汉入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)。**本次新增入口尚未上线**，受限会话无法运行既有Git凭证程序；准确状态见[部署交接](<docs/DEPLOYMENT.md#2026-10-19-正式资料发布交接尚未上线>)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**。原文件散列、结构注释与架构权衡见[正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)。
+专题发布目标分别为原站根路径、[秦汉入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)。三个入口已部署至原站，正式资料部署证据见[部署记录](<docs/DEPLOYMENT.md#2026-10-19-正式资料上线与真实浏览器验收>)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**。原文件散列、结构注释与架构权衡见[正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)。
 
 ## 维护与检查
 

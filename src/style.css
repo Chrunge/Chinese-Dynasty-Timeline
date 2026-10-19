@@ -18,3 +18,7 @@
 #shareLink{display:block;width:100%;margin:10px 0 14px;padding:10px;border:1px solid var(--line);border-radius:5px;font-size:14px}#shareNotice{font-size:14px;color:var(--muted)}
 
 #shareDetail{font-size:13px;padding:6px 8px;white-space:nowrap;flex-shrink:0}
+
+/* Presentation groups retain independently actionable polity labels and inclusive lanes. */
+.memberLabel{display:flex;align-items:center;justify-content:space-between;gap:3px;width:100%;min-width:0}.groupedRow .stateLabel{flex-direction:column;align-items:stretch;justify-content:center;gap:0}.rowGroupTitle{font-size:13px;font-weight:600;padding:2px;color:var(--muted);white-space:nowrap}.rowGroupTitle small{display:block;font-size:10px;font-weight:400}.groupedRow .stateName{font-size:15px;min-height:23px;letter-spacing:0}.groupedRow .pinState{min-height:21px;height:21px;min-width:21px;padding:1px}.politySegment{position:absolute;display:block;overflow:hidden;white-space:nowrap;text-align:center;text-overflow:ellipsis;color:#fff;font-size:12px;line-height:19px;height:19px;min-height:0;padding:0 3px;border:0;border-radius:2px;z-index:2}.politySegment:hover{filter:brightness(.9)}
+@media(max-width:680px){.groupedRow .stateName{font-size:13px}.rowGroupTitle{font-size:11px}.groupedRow .pinState{font-size:10px;min-width:18px}.politySegment{font-size:11px}}
