@@ -41,12 +41,44 @@ Pages来源配置属于仓库设置，工作流不代为修改。部署状态以
 
 原始Sites托管配置 `.openai/hosting.json` 保留在仓库中，不参与此Pages工作流。
 
-## 2026-10-19 正式资料发布交接（尚未上线）
+## 2026-10-19 正式资料上线与真实浏览器验收
 
-- 本地完成秦汉、三国正式资料、三个入口及兼容适配。`node build.mjs --check` 通过，139项自动化测试通过；真实Chrome因当前会话权限阻止而未完成验收，详见[正式入库说明](<FORMAL-DATA-IMPORT.md>)。
-- 待发布[清单](<../dist/release.json>)：`releaseId=3935bf31fc3fe2ce4af28c40e69a49859fc379e9f0fbd677201ebc66e52023c2`。
-- 使用原远端进行 `git -c credential.interactive=false push --dry-run origin HEAD:master` 预检失败：`sh.exe: *** fatal error - couldn't create signal pipe, Win32 error 5`，继而 `fatal: unable to get password from user`。当前受限委派会话不可扩权，未改用绕过权限的认证路径。此结果不能证明用户没有凭证，仅说明既有凭证程序无法在此权限范围内运行。
-- **未实际推送、未触发本次部署、未创建替代站点**。部署访问检查：原站根路径HTTP200，新秦汉入口、新三国入口及远端 `release.json` 均HTTP404。
-- 检查时原仓库最新master工作流为[运行39130605997](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39130605997)，`head_sha=f0d566b101471f6bf8ab5aca841e5fd8a2de7f1f`、`conclusion=success`；该成功属于旧提交，不是本次交付的部署证据。
+### 部署身份与范围
 
-后续须由主会话在允许既有Git凭证程序运行的授权范围内推送最终提交至同一远端master；等待该提交对应的Actions检查/部署全部成功，再访问原站两个新入口并比对线上清单的releaseId及资源散列。若远端有并发更新，应先审查整合，不强制推送。部署成功后更新本节，不得将本地构建成功等同于上线成功。
+- 正式资料功能提交：`bbb695fe54d94c812713495dc1232def7f4766a4`，已推送原仓库 `master`（推送范围 `f0d566b..bbb695f`）。
+- 对应[Actions运行39254141518](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39254141518)的 `head_sha` 与上述提交完全一致，状态为 `completed / success`。检查构建作业于 `2026-10-19T12:42:36Z` 成功，Pages部署作业于 `2026-10-19T12:42:49Z` 成功（北京时间20:42:49）。
+- 先前的Git凭证程序、Chrome权限阻断与两个新入口404属于部署前状态，已被本次实际推送、部署及线上验收结果取代；没有创建替代站点。
+- 本轮仅做部署服务联网核验与文档收尾：未重新入库、未修改史料或应用代码、未安装依赖，未在本地重复运行139项测试。联网范围限于GitHub部署状态和原Pages站点，没有打开史源链接或联网校核史料。
+
+### 在线入口与发布完整性
+
+`2026-10-19T12:45:46Z` 实际通过HTTPS取回以下入口和[在线发布清单](https://chrunge.github.io/Zhou-Dynasty-Timeline/release.json)，均为HTTP200：
+
+| 专题 | 原站入口 | 入口SHA-256 |
+|---|---|---|
+| 周朝 | [根入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/) | `d093b7f479c04db5ba74b53259d4c69aa41c5354a39eea5fc839a39cac333926` |
+| 秦汉 | [秦汉入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html) | `bec1ad6cfa0f289322ac5c86fdf59d9dd639eae1063d9018e96d670671dfcced` |
+| 三国 | [三国入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html) | `2d985a0157c37916e9684d5cf228a0cbb42287d17352ccf8c5bb69ebc1237e7e` |
+
+- 发布标识：`releaseId=3935bf31fc3fe2ce4af28c40e69a49859fc379e9f0fbd677201ebc66e52023c2`。
+- 远端清单与[仓库清单](<../dist/release.json>)逐字节一致，清单本身SHA-256为 `21234668dd7fcb56d4abca77d5fc52e51ec7c4aee972e5a3431ca6216bbb4d78`。
+- 逐一取回清单列出的全部11项资源：三个入口、三个数据脚本、四个应用脚本、一个样式表。全部HTTP200，全部实际响应字节的SHA-256同时匹配清单和本地已提交产物；根入口的响应另与周朝入口散列一致。检查使用禁用缓存/唯一查询参数，非只核对资源名或HTTP头。
+
+### 真实Chrome在线验收
+
+验收完成时间 `2026-10-19T12:47:20Z`（北京时间20:47:20）。使用本机 `Chrome/155.0.8059.80`，以headless模式和CDP连接原站HTTPS地址，不使用DOM替身或本地替代服务。三页分别在1200×900与390×900视窗验收，共6个场景全部通过；现场读取了时间线、详情截图，确认两个新专题确有时间轴、任期条带及事件，不是空壳页面。
+
+| 专题 | 两种宽度下实际渲染 | 通过的关键路径 |
+|---|---|---|
+| 周朝 | 18行、449个任期条带、100个事件/聚合按钮 | 定位前770年、同年对照、周王室详情、周武王详情、关闭返回 |
+| 秦汉 | 8行、40个窗口内任期条带、16个事件/聚合按钮 | 定位公元1年（显示正确纪元，不显示公元0年）、秦政权→秦王政任期→嬴政档案、搜索“秦王政继位”→事件详情→图上联动、关闭返回 |
+| 三国 | 5行、17个任期条带、6个事件/聚合按钮 | 定位公元220年、汉末政权→汉献帝任期→刘协档案、搜索“董卓入京废立与关东联军讨董”→事件详情→图上联动、关闭返回 |
+
+- 上表为当前图上渲染数量；窗口外任期和同组聚合事件仍完整保留，不等于资料覆盖总数。资料计数见[正式入库说明](<FORMAL-DATA-IMPORT.md>)。
+- 六个场景均有正确的专题标题及当前导航标识，年份输出和同年对照更新正常，页面根节点无横向溢出（时间线内部允许滚动）。CDP记录的页面未捕获JS异常、`console.error`、错误级页面日志或网络加载失败。
+- Chrome进程stderr曾输出内置GCM注册诊断 `DEPRECATED_ENDPOINT`，它不是页面脚本异常，不影响上述通过结果。
+- 限制：本次为真实Chrome自动化与截图抽查，不等同于实体移动设备触控、全量人工视觉/无障碍检查或打印验收；没有据此宣称这些项目已经通过。
+
+### 文档收尾发布规则
+
+本节记录已成功上线的功能提交及线上证据。随后仅提交这份部署记录与[入库说明](<FORMAL-DATA-IMPORT.md>)的限制更新；文档不会进入Pages产物，预期发布标识保持不变。仍须等待该文档提交对应的末次Actions部署成功，再确认原站发布标识及资源一致；末次提交和运行链接随最终交付回报记录，避免通过追加自引用提交反复触发部署。
