@@ -2,21 +2,21 @@
 let viewLinkController = null;
 function scheduleShareSync(){viewLinkController?.schedule();}
 function readSharedView(){
- const view=viewAdapter.capture(),from=Math.min(1046,Math.max(view.end,1046-vp.scrollLeft/view.px)),width=Math.max(1,vp.clientWidth-labelWidth()),to=Math.max(view.end,from-width/view.px);
- return {view,pinned:[...appState.layout.pinned],order:[...appState.layout.stateOrder],range:{from,to,width},item:navigation.key};
+ const view=viewAdapter.capture(),from=Math.min(timelineBounds.start,Math.max(view.end,timelineBounds.start-vp.scrollLeft/view.px)),width=Math.max(1,vp.clientWidth-labelWidth()),to=Math.max(view.end,from-width/view.px);
+ return {timeEncoding:'bce-axis',view:{...view,timeEncoding:'bce-axis'},pinned:[...appState.layout.pinned],order:[...appState.layout.stateOrder],range:{from,to,width},item:navigation.key};
 }
 function openSharedItem(key){openDetailKey(key);}
 function applySharedView(shared){
  closeDetail(false);
  const view={...viewAdapter.capture(),...shared.view,searchLimit:6,top:0,searchTop:0,periods:[]};
- view.cursor=Math.max(view.end,Math.min(1046,view.cursor));
+ view.cursor=Math.max(view.end,Math.min(timelineBounds.start,view.cursor));
  if(shared.pinned)appState.layout.pinned=new Set(shared.pinned);
  if(shared.order)appState.layout.stateOrder=[...new Set([...shared.order,...D.states.map(s=>s.id)])];
  const range=shared.range,width=Math.max(1,vp.clientWidth-labelWidth());
  if(range){
   if(range.to!==undefined&&range.width&&Math.abs(range.width-width)>20)view.px=Math.min(24,Math.max(.8,width/Math.max(1,range.from-range.to)));
-  view.left=Math.max(0,(1046-range.from)*view.px);
- }else if(shared.view.cursor!==undefined)view.left=Math.max(0,(1046-view.cursor)*view.px-width/2);
+  view.left=Math.max(0,(timelineBounds.start-range.from)*view.px);
+ }else if(shared.view.cursor!==undefined)view.left=Math.max(0,(timelineBounds.start-view.cursor)*view.px-width/2);
  restoreDetailView(view);
  if(shared.item){openSharedItem(shared.item);restoreDetailView(view);}
 }

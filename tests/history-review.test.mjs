@@ -7,6 +7,7 @@ import {compileAtlas} from '../lib/atlas.mjs';
 const atlas = JSON.parse(readFileSync(new URL('../data/atlas.json', import.meta.url), 'utf8'));
 const data = compileAtlas(atlas);
 const context = {Zhou: {}};
+runInNewContext(readFileSync(new URL('../src/core/time.js', import.meta.url), 'utf8'), context);
 runInNewContext(readFileSync(new URL('../src/core/history.js', import.meta.url), 'utf8'), context);
 const history = context.Zhou.createHistory(data);
 

@@ -2,6 +2,7 @@
   'use strict';
   // This codec contains no DOM, storage or URL-history side effects.
   Zhou.createViewLinkCodec = function (data, search) {
+    const time = Zhou.Time, bounds = time.bounds(data);
     const ids = new Set(data.states.map(state => state.id));
     const events = new Set(data.events.map(event => event.id));
     const entries = new Set(search.index.map(entry => entry.key));
@@ -12,7 +13,8 @@
     function parse(hash) {
       if (typeof hash !== 'string' || hash.length > 10000) return null;
       const params = new URLSearchParams(hash.replace(/^#/, ''));
-      if (params.has('v') && params.get('v') !== '1') return null;
+      const version = params.has('v') ? params.get('v') : '1', encoding = params.get('time');
+      if (!['1','2'].includes(version) || encoding !== null && encoding !== time.encoding || version === '2' && encoding !== time.encoding) return null;
       const view = {}, result = {view};
       const number = (name, min, max) => {
         const raw = params.get(name);
@@ -25,10 +27,14 @@
         const raw = params.get(name), values = [...new Set(raw.split(',').filter(id => ids.has(id)))];
         return raw === '' || values.length ? values : undefined;
       };
-      const year = number('year',221,1046), zoom = number('zoom',.8,24);
-      if (Number.isInteger(year)) view.cursor = year;
+      const coordinate = name => {
+        const value = number(name,bounds.end,bounds.start);
+        return value !== undefined && (version === '2' || value > 0) ? value : undefined;
+      };
+      const year = coordinate('year'), zoom = number('zoom',.8,24), end = coordinate('end');
+      if (time.isYear(year)) view.cursor = year;
       if (zoom !== undefined) view.px = zoom;
-      if (['221','256'].includes(params.get('end'))) view.end = Number(params.get('end'));
+      if (time.isYear(end)) view.end = end;
       const selected = list('states'); if (selected !== undefined) view.selected = selected;
       for (const name of ['pinned','order']) { const value = list(name); if (value !== undefined) result[name] = value; }
       for (const [key, name, allowed] of [['category','category',categories],['mode','mode',modes],['density','density',densities],['searchScope','scope',['all','selected']]]) {
@@ -39,14 +45,16 @@
       if (params.has('event') && (params.get('event') === '' || events.has(params.get('event')))) view.activeEventId = params.get('event') || null;
       if (params.has('target')) { const key = search.normalizeKey(params.get('target')); if (!key || entries.has(key)) view.searchTarget = key || null; }
       if (params.has('item')) { const key = search.normalizeKey(params.get('item')); if (validItem(key)) result.item = key; }
-      const from = number('from',221,1046), to = number('to',221,1046), width = number('width',1,20000);
+      const from = coordinate('from'), to = coordinate('to'), width = number('width',1,20000);
       if (from !== undefined && (to === undefined || from >= to)) result.range = {from, ...(to !== undefined ? {to} : {}), ...(width !== undefined ? {width} : {})};
-      if (year < 256 || from < 256 || to < 256) view.end = 221;
+      if ([view.cursor,result.range?.from,result.range?.to].some(value => value !== undefined && value < (view.end ?? bounds.defaultEnd))) view.end = bounds.end;
       return Object.keys(view).length || result.pinned || result.order || result.range || result.item ? result : null;
     }
     function encode(value) {
       const {view, pinned, order, range, item} = value;
-      const params = new URLSearchParams({v:'1',year:String(view.cursor),end:String(view.end),states:view.selected.join(','),pinned:pinned.join(','),order:order.join(','),zoom:String(Number(view.px.toFixed(4))),category:view.category,mode:view.mode,density:view.density,scope:view.searchScope,q:view.query,desc:view.searchDescriptions?'1':'0',event:view.activeEventId||'',target:view.searchTarget||''});
+      const nonBCE = [view.cursor,view.end,range?.from,range?.to].some(coord => typeof coord === 'number' && Number.isFinite(coord) && coord <= 0);
+      const params = new URLSearchParams({v:nonBCE?'2':'1',year:String(view.cursor),end:String(view.end),states:view.selected.join(','),pinned:pinned.join(','),order:order.join(','),zoom:String(Number(view.px.toFixed(4))),category:view.category,mode:view.mode,density:view.density,scope:view.searchScope,q:view.query,desc:view.searchDescriptions?'1':'0',event:view.activeEventId||'',target:view.searchTarget||''});
+      if (nonBCE) params.set('time',time.encoding);
       if (range) for (const key of ['from','to','width']) if (Number.isFinite(range[key])) params.set(key,String(Number(range[key].toFixed(4))));
       const key = search.normalizeKey(item); if (validItem(key)) params.set('item',key);
       return '#' + params.toString();

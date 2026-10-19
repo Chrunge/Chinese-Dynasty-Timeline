@@ -1,6 +1,6 @@
 # 资料模型与维护约定
 
-`atlas.json` 是唯一历史资料维护入口。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。
+[atlas.json](./atlas.json) 是当前周朝生产资料的唯一维护入口。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。[examples](./examples/README.md) 是独立 schema 2 结构演示，不是第二份生产资料，也不参与默认构建。
 
 ## 集合与关系
 
@@ -29,7 +29,7 @@
 
 ## 纪年与来源
 
-年份使用正整数表示公元前年份，越大的数越早；未知年份用 `null`，禁止用0或当前年份填充。区间起点须大于或等于终点。超出图示范围的真实结局可留在资料中。
+**schema 1 保持原样**：年份使用正整数表示公元前年份，越大的数越早；未知年份用 `null`，禁止用0或当前年份填充。区间起点须大于或等于终点。超出图示范围的真实结局保留，不因专题图示终点裁切。schema 2 的作者日期与运行时坐标见下文，不能把两种格式混写。
 
 - `rulers.start/end`：采用的年表条带范围。`chronology.regnalStart` 与start一致，作为“元年／图示起点”，不保证所有原典均采用这一元年口径。
 - `chronology.accession/abdication/death`：分别为实际承位、退位或传位、去世。未核实保持null，不从条带端点自动推导。改元、称王、称帝等另写在changes中。
@@ -49,6 +49,52 @@
 本地构建和检查命令见[维护与检查](../README.md#维护与检查)。`--check` 校验主数据并比对全部生成物，不写入文件；过期生成物会使检查失败。
 
 `sync-data.mjs` 及两个enrich脚本均为统一构建的兼容入口，不持有第二份历史正文。不要建立平行编辑副本，也不要直接编辑dist。模块职责见[架构文档](../docs/ARCHITECTURE.md)。
+
+## schema 2：时期、政权、人物与任期
+
+作者入口指定 `schemaVersion: 2`。以下集合均为独立数组，即使为空也须列出；它们共用稳定 ID，而不是按显示姓名匹配。
+
+| 集合 | 最小结构与约束 |
+|---|---|
+| periods | `id/name/start/end/polityIds/sourceIds/dating`；可选 `parentId`、`structure`、`color`。时期是阅读分组，不拥有政权，也不表示其内所有政权全程存续。政权须与时期相交；子时期须在父时期内，不许父级循环 |
+| polities | `id/name/kind/start/end/sourceIds/dating`；可选 `interruptions`、`undated` 及旧国家显示字段。政权延续不因改帝号、专题切换或人物更替而自动复制 |
+| people | `id/name/summary/sourceIds`；人物身份独立于任期；同名必须保留各自 ID，不按姓名猜测合并 |
+| tenures | `id/polityId/personId/name/role/start/end/chronology/sourceIds/dating`；同一人物可以有多个任期；`personId` 必须明确给出，未知可为 `null`，非空时必须引用已收录人物。任期须在对应政权存续内 |
+| events | `id/name/kind`、`year` 或 `yearRef`、`dating/sourceIds/narrative`；`kind` 限政治／战争／改革／外交／文化，兼容 `category` 别名，二者同给时须一致；仍兼容点事件，不引入未经定义的区间事件语义 |
+| activities | `id/personId/polityId/sequence/kind/kindLabel/year` 或 `yearFromEvent:true`；来源和事件继承规则沿用 schema 1 |
+| sources | `id/title/url`；URL 去重。样例的 `reviewStatus:pending` 表示书目待核，不是正文已证实 |
+
+`chronology` 仍明确列出 `accession/regnalStart/abdication/death`，未核实节点为 `null`；`regnalStart` 与条带 `start` 相等，实际承位可与其不同。`changes` 仍为 `{year,label}` 数组。`dating` 的可信度、校核状态、异说要求与 schema 1 相同。schema 2 的所有日期（含异说与变化节点）均使用下述对象格式。
+
+关系表必须显式列出：
+
+| 原生关系表 | 字段 |
+|---|---|
+| eventPolities | `eventId/polityId/kind:involved` |
+| eventPeople | `eventId/personId/kind`、可选 `polityId`；participant 须引用该事件明确涉及的政权，并有来源和说明 |
+| tenurePeople | `tenureId/personId/kind:associated/description/sourceIds`；这是任期关联人物，不代替任期本人的 `personId` |
+| personPolities | `personId/polityId/kind/description/sourceIds`；活动类别沿用上表 |
+
+事件 `yearRef` 使用 `{tenureId,field}`，仅能引用已明确维护的生涯节点；schema 1 继续使用 `{rulerId,field}`。仅因为某年在位，不可自动推断其参加该年事件。
+
+### 日期、范围与投影
+
+- 作者日期：`{era:'BCE'|'CE',year:正整数}`（JSON 中使用双引号）；无公元零年，不接受运行时负数或 schema 1 裸年份。
+- 运行时：`timeEncoding:'bce-axis'`。BCE 年 `y` 原值保留；CE 年 `y` 转为 `1-y`。前1年为 `1`，公元1年为 `0`，公元2年为 `-1`。`0` 不是未知日期。
+- `timeline:{start,end,defaultEnd,cursor}` 是显式配置。schema 2 四个值均为作者日期，构建后均为运行时整数；`start >= defaultEnd >= end`，cursor 在总范围内。`topic` 等非日期元信息可选。
+- `periods.start/end` 是分组范围；`polities.start/end` 是政权采用的存续事实；`tenures.start/end` 是任期采用范围。三者不得混为一条“朝代记录”。
+- 周朝保留 `all/west/spring/war` 导航 ID；`post-zhou` 补足前255—221年延伸条带。`display:false` 不画条带、`button:false` 不生成按钮、`extendToViewEnd:true` 按当前终点定位，均只是 UI 提示。
+- 政权在当前图外仍可有真实起讫，构建不裁切实体端点。周朝秦旧条带的前221年是诸侯阶段转制，卫的真实终点仍为前209年；说明保留在 `ending/endNote` 中。
+
+[`compileAtlas`](../lib/atlas.mjs) 输出独立的 `periods/polities/tenures/people`，同时保留 `states`（内嵌 `rulers`）、`events`、`updated/version/sources`、`peopleCoverage/researchCoverage` 等旧 UI 投影。来源 ID 被水合为 `sources` 卡片，作者日期转为运行时坐标；`title` 来自 `metadata.title`，`metadata` 也保留。独立实体与旧投影不共享可变数组。
+
+schema 1 规范化严格保持 `states -> polities`、`rulers -> tenures` 的原 ID 与原年份；`tenure.polityId` 来自原 `stateId`，没有可靠的显式 `personId` 就输出 `null`。不通过君主姓名生成新人物或合并既有人物，因此现有116个人物与465个任期数量不变。
+
+### 稳定 ID 与生产迁移边界
+
+同一政权或人物被多个时期、专题引用时应复用其实体 ID，只增引用或有证据的任期。不得因出现“帝国”专题复制一个秦政权或秦始皇人物。将来把生产周朝扩展至秦汉时，应复用既有 `qin` 和已发布任期 ID，依据史料区分阶段显示范围与政权真实结局；这次只补配置、说明，不批量改写既有历史事实。
+
+样例的 `ex3k-`、`exqh-` 前缀仅为独立文件的演示命名空间，**不是生产迁移 ID**。尤其不覆盖旧 `wei`（卫）、`jin`（晋）、`wu`（吴）、`han`（韩）、`liang`（魏）。三国的曹魏、孙吴与战国同名字政权必须按真实实体区别，不能按简称复用 ID。
 
 ## 采用口径与待考事项
 

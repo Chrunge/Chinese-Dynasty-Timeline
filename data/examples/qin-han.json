@@ -1,0 +1,46 @@
+{
+  "schemaVersion":2,
+  "metadata":{"title":"秦汉帝国（结构样例）","updated":"2026-10-19","version":"schema2-example-1","sourceIds":["exqh-source-shiji","exqh-source-hanshu"],"researchNote":"小型结构演示，非完整史料或逐帝年表。书目与各条年代均待复核；大统一是阅读分组，不表示疆域、制度或统治连续不变。"},
+  "timeline":{"start":{"era":"BCE","year":247},"end":{"era":"CE","year":220},"defaultEnd":{"era":"CE","year":220},"cursor":{"era":"CE","year":1}},
+  "periods":[
+    {"id":"exqh-period-imperial","name":"秦王至秦汉帝国（教学分组）","start":{"era":"BCE","year":247},"end":{"era":"CE","year":220},"structure":"overview","color":"#64796d","polityIds":["exqh-polity-qin","exqh-polity-western-han","exqh-polity-xin","exqh-polity-eastern-han"],"sourceIds":["exqh-source-shiji","exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"教学分组，包含改朝、割据与中断；不表示整个区间一直统一，待复核。","alternatives":[]}},
+    {"id":"exqh-period-qin-kingdom","parentId":"exqh-period-imperial","name":"秦王政的诸侯阶段","start":{"era":"BCE","year":247},"end":{"era":"BCE","year":222},"structure":"coexistence","color":"#64796d","polityIds":["exqh-polity-qin"],"sourceIds":["exqh-source-shiji"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"样例从前247年实际承位口径起示，非完整诸侯年表，未列其他同期政权；待复核。","alternatives":[]}},
+    {"id":"exqh-period-qin","parentId":"exqh-period-imperial","name":"秦帝国","start":{"era":"BCE","year":221},"end":{"era":"BCE","year":206},"structure":"unified","color":"#415663","polityIds":["exqh-polity-qin"],"sourceIds":["exqh-source-shiji"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"采用称帝至秦亡的概略区间；晚期失控不另拆，待复核。","alternatives":[]}},
+    {"id":"exqh-period-western-han","parentId":"exqh-period-imperial","name":"西汉（跨公元）","start":{"era":"BCE","year":206},"end":{"era":"CE","year":9},"structure":"unified","color":"#8d734c","polityIds":["exqh-polity-western-han"],"sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"以汉王纪年为起点，不等同于前202年称帝；跨公元纪年无零年，待复核。","alternatives":[]}},
+    {"id":"exqh-period-xin","parentId":"exqh-period-imperial","name":"新及王朝转换","start":{"era":"CE","year":9},"end":{"era":"CE","year":23},"structure":"transition","color":"#79696a","polityIds":["exqh-polity-xin"],"sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"简化过渡区间，未列更始等政权，待复核。","alternatives":[]}},
+    {"id":"exqh-period-eastern-han","parentId":"exqh-period-imperial","name":"东汉","start":{"era":"CE","year":25},"end":{"era":"CE","year":220},"structure":"unified","color":"#355e68","polityIds":["exqh-polity-eastern-han"],"sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"王朝区间不等于各年已实际统一；所列书目不能替代东汉专门史料校核，待复核。","alternatives":[]}}
+  ],
+  "polities":[
+    {"id":"exqh-polity-qin","name":"秦（诸侯至帝国）","kind":"polity","start":{"era":"BCE","year":890},"end":{"era":"BCE","year":206},"color":"#415663","ending":"秦亡","sourceIds":["exqh-source-shiji"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"一个连续政权供诸侯与帝国时期共同引用；约前890年起点沿用周朝资料的待考口径，前206年为本独立样例采用的真实结局。exqh命名空间仅隔离演示文件；production扩展应复用旧qin并经史料复核延伸事实，不能因专题复制政权。","alternatives":[]}},
+    {"id":"exqh-polity-western-han","name":"西汉","kind":"empire","start":{"era":"BCE","year":206},"end":{"era":"CE","year":9},"color":"#8d734c","ending":"王莽代汉","sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"前206年采用汉王起点，前202年帝号另记；待复核。","alternatives":[]}},
+    {"id":"exqh-polity-xin","name":"新","kind":"empire","start":{"era":"CE","year":9},"end":{"era":"CE","year":23},"color":"#79696a","ending":"新亡","sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"示例过渡政权，待复核。","alternatives":[]}},
+    {"id":"exqh-polity-eastern-han","name":"东汉","kind":"empire","start":{"era":"CE","year":25},"end":{"era":"CE","year":220},"color":"#355e68","ending":"曹魏代汉","sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"示例区间，需补核《后汉书》等原典；待复核。","alternatives":[]}}
+  ],
+  "people":[
+    {"id":"exqh-person-ying-zheng","name":"嬴政","summary":"秦王政、秦始皇为同一人；一个person ID分别连接秦王和皇帝两段任期。诸侯与帝国专题均复用其人与政权，待复核。","sourceIds":["exqh-source-shiji"]},
+    {"id":"exqh-person-liu-bang","name":"刘邦","summary":"汉高祖。本例将汉王及皇帝阶段列于同一采用区间，帝号节点独立，待复核。","sourceIds":["exqh-source-shiji","exqh-source-hanshu"]},
+    {"id":"exqh-person-liu-kan","name":"刘衎","summary":"汉平帝。其采用任期跨越公元前后；终点采用公元6年口径，待复核。","sourceIds":["exqh-source-hanshu"]},
+    {"id":"exqh-person-liu-xiu","name":"刘秀","summary":"汉光武帝，示例只列建武以来任期，待复核。","sourceIds":["exqh-source-hanshu"]}
+  ],
+  "tenures":[
+    {"id":"exqh-tenure-qin-king","polityId":"exqh-polity-qin","personId":"exqh-person-ying-zheng","name":"秦王政（诸侯阶段）","role":"秦王","start":{"era":"BCE","year":247},"end":{"era":"BCE","year":222},"sourceIds":["exqh-source-shiji"],"chronology":{"accession":{"era":"BCE","year":247},"regnalStart":{"era":"BCE","year":247},"abdication":null,"death":null},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"为演示跨身份任期，以前247年实际承位口径起示，不等同于前246年元年口径；原典待复核，不改旧周朝条带。","alternatives":[]}},
+    {"id":"exqh-tenure-qin-emperor","polityId":"exqh-polity-qin","personId":"exqh-person-ying-zheng","name":"秦始皇（帝国阶段）","role":"皇帝","start":{"era":"BCE","year":221},"end":{"era":"BCE","year":210},"sourceIds":["exqh-source-shiji"],"chronology":{"accession":null,"regnalStart":{"era":"BCE","year":221},"abdication":null,"death":null},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"从称帝转制开始显示，不伪造其此前实际即位年；待复核。","alternatives":[]}},
+    {"id":"exqh-tenure-liu-bang","polityId":"exqh-polity-western-han","personId":"exqh-person-liu-bang","name":"汉高祖（汉王起示）","role":"君主","start":{"era":"BCE","year":206},"end":{"era":"BCE","year":195},"sourceIds":["exqh-source-shiji","exqh-source-hanshu"],"chronology":{"accession":null,"regnalStart":{"era":"BCE","year":206},"abdication":null,"death":null,"changes":[{"year":{"era":"BCE","year":202},"label":"称帝（待复核）"}]},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"区间起点采用汉王纪年，不同于皇帝承位；待复核。","alternatives":[]}},
+    {"id":"exqh-tenure-liu-kan","polityId":"exqh-polity-western-han","personId":"exqh-person-liu-kan","name":"汉平帝","role":"皇帝","start":{"era":"BCE","year":1},"end":{"era":"CE","year":6},"sourceIds":["exqh-source-hanshu"],"chronology":{"accession":{"era":"BCE","year":1},"regnalStart":{"era":"BCE","year":1},"abdication":null,"death":null},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"用前1年至公元6年展示跨公元任期；年次与公历换算待复核，不生成公元零年。","alternatives":[]}},
+    {"id":"exqh-tenure-liu-xiu","polityId":"exqh-polity-eastern-han","personId":"exqh-person-liu-xiu","name":"汉光武帝","role":"皇帝","start":{"era":"CE","year":25},"end":{"era":"CE","year":57},"sourceIds":["exqh-source-hanshu"],"chronology":{"accession":{"era":"CE","year":25},"regnalStart":{"era":"CE","year":25},"abdication":null,"death":null},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"示例任期，所列书目仅为入口，待补专门原典核实。","alternatives":[]}}
+  ],
+  "events":[
+    {"id":"exqh-event-qin-imperial","name":"秦统一后称帝","kind":"政治","year":{"era":"BCE","year":221},"sourceIds":["exqh-source-shiji"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"示例点事件，待核原典及措辞。","alternatives":[]},"narrative":{"background":"列国兼并（概略）。","process":"秦统一后议定帝号（待复核）。","result":"开启本例秦帝国阶段。","impact":"政权阶段与个人任期分离，不改写周朝旧秦ID。","related":[]}},
+    {"id":"exqh-event-ping-accession","name":"汉平帝即位","kind":"政治","yearRef":{"tenureId":"exqh-tenure-liu-kan","field":"accession"},"sourceIds":["exqh-source-hanshu"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"年份继承独立维护的承位节点；待复核。","alternatives":[]},"narrative":{"background":"西汉末皇位更替（概略）。","process":"刘衎被立为帝（待复核）。","result":"开始一段跨越公元前后的任期。","impact":"跨公元转换由构建完成，不把作者日期写成运行时负数。","related":[]}}
+  ],
+  "activities":[{"id":"exqh-activity-liu-kan","personId":"exqh-person-liu-kan","polityId":"exqh-polity-western-han","eventId":"exqh-event-ping-accession","sequence":1,"kind":"activity","kindLabel":"即位","label":"即位节点（待复核）","text":"仅继承事件日期，不推断整段任期中的其他活动。","yearFromEvent":true,"sourceIds":["exqh-source-hanshu"]}],
+  "relations":{
+    "eventPolities":[{"eventId":"exqh-event-qin-imperial","polityId":"exqh-polity-qin","kind":"involved"},{"eventId":"exqh-event-ping-accession","polityId":"exqh-polity-western-han","kind":"involved"}],
+    "eventPeople":[{"eventId":"exqh-event-qin-imperial","personId":"exqh-person-ying-zheng","polityId":"exqh-polity-qin","kind":"participant","description":"采用帝号者（待复核）。","sourceIds":["exqh-source-shiji"]},{"eventId":"exqh-event-ping-accession","personId":"exqh-person-liu-kan","polityId":"exqh-polity-western-han","kind":"participant","description":"即位者（待复核）。","sourceIds":["exqh-source-hanshu"]}],
+    "tenurePeople":[],"personPolities":[]
+  },
+  "sources":[
+    {"id":"exqh-source-shiji","title":"《史记》目录（样例待复核书目）","url":"https://zh.wikisource.org/wiki/史記","reviewStatus":"pending","note":"只作原典入口，非逐条核实声明。"},
+    {"id":"exqh-source-hanshu","title":"《汉书》目录（样例待复核书目）","url":"https://zh.wikisource.org/wiki/漢書","reviewStatus":"pending","note":"西汉及王莽相关书目入口；东汉部分尚须补核《后汉书》等，非完整史料。"}
+  ]
+}

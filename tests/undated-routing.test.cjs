@@ -4,7 +4,7 @@ const fresh=()=>JSON.parse(fs.readFileSync(path.join(root,'data/atlas.json'),'ut
 async function services(atlas=fresh()){
  const {compileAtlas}=await import('../lib/atlas.mjs');
  const data=compileAtlas(atlas),ctx=vm.createContext({URLSearchParams});
- for(const file of ['search','reading','view-link'])vm.runInContext(fs.readFileSync(path.join(root,'src/core/'+file+'.js'),'utf8'),ctx);
+ for(const file of ['time','search','reading','view-link'])vm.runInContext(fs.readFileSync(path.join(root,'src/core/'+file+'.js'),'utf8'),ctx);
  const search=ctx.Zhou.createSearch(data);
  return {data,search,codec:ctx.Zhou.createViewLinkCodec(data,search),reading:ctx.Zhou.createReadingModel({data,searchIndex:search.index,normalizeDetailKey:search.normalizeKey})};
 }

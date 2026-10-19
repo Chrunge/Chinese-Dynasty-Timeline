@@ -1,6 +1,23 @@
 {
   "schemaVersion": 1,
+  "timeline": {"start":1046,"end":221,"defaultEnd":256,"cursor":770,"topic":"zhou"},
+  "periods": [
+    {"id":"all","name":"全部","start":1046,"end":221,"color":"#64796d","structure":"overview","polityIds":[],"display":false},
+    {"id":"west","name":"西周","start":1046,"end":771,"color":"#64796d","structure":"coexistence","polityIds":["zhou"]},
+    {"id":"spring","name":"春秋","start":770,"end":476,"color":"#355e68","structure":"coexistence","polityIds":["zhou"]},
+    {"id":"war","name":"战国","start":475,"end":256,"color":"#8d734c","structure":"coexistence","polityIds":["qin","qi","chu","yan","han","zhao","liang"],"extendToViewEnd":true,"note":"前256年为周王室终点；按钮可延伸至前221年秦统一，不代表各国均存续到区间终点。"},
+    {"id":"post-zhou","name":"周亡后 · 秦统一","start":255,"end":221,"color":"#79696a","structure":"transition","polityIds":["qin"],"button":false}
+  ],
+  "combinations": [
+    {"id":"builtin-seven","name":"战国七雄","states":["qin","qi","chu","yan","han","zhao","liang"],"from":475,"to":221,"cursor":300,"timeEncoding":"bce-axis"},
+    {"id":"builtin-reform","name":"秦—魏变法","states":["qin","liang"],"from":453,"to":300,"cursor":453,"timeEncoding":"bce-axis"},
+    {"id":"builtin-hegemony","name":"晋—楚争霸","states":["jin","chu"],"from":700,"to":500,"cursor":700,"timeEncoding":"bce-axis"},
+    {"id":"builtin-confucius","name":"鲁—卫—齐","states":["lu","wei","qi"],"from":600,"to":450,"cursor":600,"timeEncoding":"bce-axis"}
+  ],
   "metadata": {
+    "title": "周代列国",
+    "exportLegend": "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+    "scopeNote": "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
     "updated": "2026-10-18",
     "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
     "sourceIds": [
@@ -42,6 +59,8 @@
       "color": "#415663",
       "region": "关中 · 雍 / 咸阳",
       "ending": "前221年完成统一，转为帝国",
+      "endNote": "前221年为称帝转制",
+      "endLabel": "称帝",
       "note": "非子受封秦邑定位于周孝王时期，起点采用约前890年，另存约前900年旧推定；与前771年始列诸侯分开。秦王政在位延续到前210年，图中前221年是诸侯国阶段的终点。",
       "approxStart": true,
       "approxEnd": false,
@@ -83,6 +102,7 @@
       "color": "#786952",
       "region": "河东 · 绛 / 新田",
       "ending": "前376年分其余地；宗室终结另有前349年说",
+      "endLabel": "终结争议",
       "note": "前1042年为唐叔虞受封的推定。曲沃与翼的君主并存，以第二层展示。前三家从前453年势力分立开始显示，前403年获周王承认为诸侯。晋亡年存在前376年与前349年等不同口径。",
       "approxStart": true,
       "approxEnd": true,
@@ -542,6 +562,8 @@
       "color": "#7d7695",
       "region": "河内 · 朝歌 / 帝丘",
       "ending": "前209年君角被废；秦统一后仍存",
+      "endNote": "延续至前209年，超出本图范围",
+      "continuationNote": "延续至前209年",
       "note": "卫并非秦统一时即亡。君角始年在不同年表中不一致，暂采用前229年改元口径，保留前241年另说。前660年失国及复建单独标注。",
       "approxStart": true,
       "approxEnd": false,
@@ -986,6 +1008,8 @@
       "color": "#488273",
       "region": "会稽 · 江浙",
       "ending": "终结纪年有前334年 / 前306年等说；此后越地诸部仍存",
+      "endLabel": "中心瓦解",
+      "startLabel": "起源示意",
       "note": "起源不详，图左虚线仅示意周初已有传统起源叙述，不能视为前1046年建国。无疆在位及楚破越纪年有争议，图示采用约前306年结束中心王国的一系，不代表越地所有政权同时灭亡。",
       "approxStart": true,
       "approxEnd": true,

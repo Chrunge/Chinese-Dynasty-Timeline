@@ -2,7 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..');
 async function comparison(){
  const {compileAtlas}=await import('../lib/atlas.mjs'),ctx=vm.createContext({});
- for(const file of ['history','export-layout'])vm.runInContext(fs.readFileSync(path.join(root,'src/core/'+file+'.js'),'utf8'),ctx);
+ for(const file of ['time','history','export-layout'])vm.runInContext(fs.readFileSync(path.join(root,'src/core/'+file+'.js'),'utf8'),ctx);
  const data=compileAtlas(JSON.parse(fs.readFileSync(path.join(root,'data/atlas.json'),'utf8')));
  return {model:ctx.Zhou.createHistory(data).comparison({states:['qi'],from:355,to:355,cursor:355}),layout:ctx.Zhou.buildExportPlan};
 }

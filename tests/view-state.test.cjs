@@ -4,8 +4,9 @@ const plain=value=>JSON.parse(JSON.stringify(value));
 
 test('视图状态可以脱离浏览器采集与应用，临时状态不进入快照',()=>{
  const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),ctx=vm.createContext({});
+ vm.runInContext(fs.readFileSync(path.join(__dirname,'../src/core/time.js'),'utf8'),ctx);
  vm.runInContext(fs.readFileSync(path.join(__dirname,'../src/core/state.js'),'utf8'),ctx);
- const state=ctx.Zhou.createApplicationState({states:[{id:'qin'},{id:'qi'}]}),view=ctx.Zhou.captureViewState(state);
+ const state=ctx.Zhou.createApplicationState({timeline:{start:1046,end:221,defaultEnd:256,cursor:770},states:[{id:'qin'},{id:'qi'}]}),view=ctx.Zhou.captureViewState(state);
  assert.deepEqual(plain(view.selected),['qin','qi']);assert(!('savedCombos' in view));assert(!('rowLayouts' in view));
  view.selected.push('chu');assert.equal(state.conditions.selected.size,2);
  ctx.Zhou.applyViewState(state,{...view,px:7,cursor:632});assert.equal(state.layout.px,7);assert.equal(state.conditions.cursor,632);

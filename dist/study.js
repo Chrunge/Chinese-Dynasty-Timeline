@@ -5,7 +5,7 @@
  const Zhou=root.Zhou||(root.Zhou={});
  // The controller owns persistence and UI wiring; the bridge owns application state.
  Zhou.createStudyController=function(b){
-  const model=Zhou.createReadingModel(b),storage=b.storage,$=b.$;
+  const model=Zhou.createReadingModel(b),storage=b.storage,$=b.$,bounds=Zhou.Time.bounds(b.data);
   const readingKey='zhou-reading-v4',visitsKey='zhou-visits-v4';
   let ready=false,timer=null,visits=[];
   function publish(){b.onVisits?.(visits);}
@@ -13,15 +13,15 @@
   function scheduleReadingSave(){if(!ready)return;b.clearTimeout(timer);timer=b.setTimeout(saveReadingPosition,400);}
   function saveReadingPosition(){
    if(!ready)return;rememberDetailProgress();
-   const view=b.getRootView()||b.getView(),width=b.getWidth(),from=Math.min(1046,Math.max(view.end,1046-view.left/view.px)),to=Math.max(view.end,from-(width-b.labelWidth())/view.px);
-   const data={version:4,view,range:{from,to},width,layout:b.getLayout(),at:b.now()};
+   const view=b.getRootView()||b.getView(),width=b.getWidth(),from=Math.min(bounds.start,Math.max(view.end,bounds.start-view.left/view.px)),to=Math.max(view.end,from-(width-b.labelWidth())/view.px);
+   const data={version:4,timeEncoding:'bce-axis',view:{...view,timeEncoding:'bce-axis'},range:{from,to},width,layout:b.getLayout(),at:b.now()};
    const savedReading=storage.write(readingKey,data),savedVisits=storage.write(visitsKey,visits);
    $('#readingStatus').textContent=savedReading&&savedVisits?'阅读位置已记住':'浏览器未允许保存阅读位置';
   }
   function recordStudyVisit(value){
    const key=model.canonical(value);if(!ready||!model.validKey(key))return;
    const entry=b.searchIndex.find(e=>e.key===key);
-   visits=[{key,title:entry?.title||'密集事件列表',view:b.getView(),top:0,at:b.now()},...visits.filter(v=>v.key!==key)].slice(0,50);
+   visits=[{key,timeEncoding:'bce-axis',title:entry?.title||'密集事件列表',view:{...b.getView(),timeEncoding:'bce-axis'},top:0,at:b.now()},...visits.filter(v=>v.key!==key)].slice(0,50);
    publish();updateStudyControls();scheduleReadingSave();
   }
   function updateStudyControls(){const previous=visits.find(v=>v.key!==b.getDetailKey());$('#lastRead').disabled=!previous;$('#lastRead').textContent=b.getDetailKey()?'上一条阅读':'继续上次详情';$('#historyCount').textContent=visits.length;}

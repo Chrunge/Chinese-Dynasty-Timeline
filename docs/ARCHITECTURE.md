@@ -31,7 +31,9 @@ flowchart TB
 ## 源码与成果
 
 - `data/atlas.json`：历史正文、关系、来源与纪年，仍是唯一资料编辑入口。
-- `lib/atlas.mjs`：资料校验与投影，保持纯函数。
+- `lib/atlas.mjs`：schema 1/2资料校验与投影，保持纯函数；时期／政权／人物／任期独立集合，输出旧 `states/rulers` 兼容接口。
+- `lib/time.mjs`：构建期明确纪元日期与运行时坐标转换；`src/core/time.js`：浏览器时间计算与持久化边界。
+- `data/examples/`：独立结构样例，不自动合入周朝发布资料。
 - `src/core/`：查询、搜索、状态、导航、阅读校验、输出分页。
 - `src/ui/`：网页时间线、搜索详情、导航详情、页面控件。
 - `src/ui/view.js`：通过注入的状态、控件与浏览器接口采集和恢复完整视图；导航、阅读与分享共用该入口。
@@ -51,18 +53,20 @@ flowchart TB
 
 | 接口 | 含义 |
 |---|---|
-| `state(id)` / `event(id)` / `person(id)` | 按稳定ID查找 |
+| `state(id)` / `event(id)` / `person(id)` | 按稳定ID查找，保留旧入口 |
+| `polity(id)` / `tenure(id)` / `period(id)` | 按独立实体ID查找 |
+| `tenuresForPerson(personId)` / `periodsInRange(from,to)` | 同一人物任期／相交专题查询 |
 | `rulersAt(stateOrId, year)` | 实际即位与条带起点取较早者，考虑国家范围和中断 |
 | `compareYear(year, stateIds)` | 返回国家、当年君主、事件和中断说明 |
 | `rulersInRange(stateOrId, from, to)` | 采用年表条带与指定范围的交集 |
 | `eventsInRange(options)` | 按时间范围、国家和事件类别查询 |
 | `comparison(options)` | 生成可序列化、与原始资料分离的对照快照 |
 
-`options` 包含 `from`、`to`、`states`、`category`、`cursor`。年份仍用公元前正整数，`from >= to`。
+`options` 包含 `from`、`to`、`states`、`category`、`cursor`。运行时年份为 `bce-axis` 安全整数，`from >= to`：BCE y → y，CE y → 1-y，未知为null；0合法且表示公元1年。时间线边界来自资料 `timeline`，无配置的旧资料由国家日期推导，不回退到周朝常量。显示、导出、持久化和链接共用 `Zhou.Time`。
 
 条带采用年表范围；同年查询纳入已核实实际即位年。两种口径有意分开：晋悼公前573年实际即位，但条带从前572年开始。页面对照、事件联动与浏览器工具共用同年查询。网页和导出共用区间查询口径；网页按需读取并缓存显示内容，导出使用独立快照。显示密度、分页、文字测量分别由呈现模块处理。
 
-快照包含 `schemaVersion`、资料 `version/updated`、查询条件、纪年口径、国家顺序、区间内君主和事件、国家名称字典与来源。事件涉及的其他国家关系不会因为导出只选一个国家而丢失。修改输出快照不会修改资料或其他输出。
+快照保留 `schemaVersion:1` 及既有字段，增补 `timeEncoding:'bce-axis'`、`timeline`、`polities/tenures/people/periods`。包含资料 `version/updated`、查询条件、纪年口径、国家顺序、区间内君主和事件、国家名称字典与来源。事件涉及的其他国家关系不会因为导出只选一个国家而丢失。修改输出快照不会修改资料或其他输出。
 
 ## 状态与旧记录
 
@@ -70,7 +74,7 @@ flowchart TB
 
 `core/state.js` 定义共享视图字段的采集和应用规则，以及布局快照入口。`ui/view.js` 补充滚动位置、页面坐标、时代按钮并同步控件；`openDetailKey` 为阅读和分享提供统一详情分派。原有页面全局函数作为兼容入口继续保留，状态字段和存储格式保持既有口径。
 
-阅读控制器只通过 bridge 读取或更新页面；存储适配只负责 JSON 读写。校验和旧记录迁移由阅读模型处理。已有 `zhou-layout-v2`、`zhou-pins-v3`、`zhou-comparisons-v3`、`zhou-reading-v4`、`zhou-visits-v4` 键继续使用。
+阅读控制器只通过 bridge 读取或更新页面；存储适配只负责 JSON 读写。校验和旧记录迁移由阅读模型处理。已有 `zhou-layout-v2`、`zhou-pins-v3`、`zhou-comparisons-v3`、`zhou-reading-v4`、`zhou-visits-v4` 键继续使用。新视图、阅读记录与组合显式带 `timeEncoding:'bce-axis'`；无标记旧记录只把正整数解释为BCE，旧0／负数不会误迁移成CE。
 
 `core/combinations.js` 独立校验组合，不读取页面或存储。组合导入和本地组合恢复只接受已知国家的字符串ID，忽略未知或错误类型的国家与顺序项；没有有效国家的组合不予保存。`app.js` 创建组合模型后加载本地组合，控件层负责交互和存储提示。
 
@@ -84,7 +88,7 @@ flowchart TB
 
 `core/view-link.js` 负责版本化Hash编解码、字段校验及浏览器历史同步，`share.js` 负责页面适配和复制链接。其脚本在 `study.js` 之后加载，确保恢复顺序为默认值、本地阅读记录、链接显式条件。
 
-链接包含 `v=1`、`year`、`end`、`states`、`pinned`、`order`、`zoom`、`from/to/width`、`category`、`mode`、`density`、搜索字段以及可选的稳定详情ID。不同宽度的屏幕根据分享的可见范围调整缩放。临时详情HTML、浏览记录和来源正文不会写入URL。
+纯BCE链接继续生成原有 `v=1` 格式，已有固定Hash可原样恢复。任一时间字段包含0或负坐标时生成 `v=2&time=bce-axis`；未知版本／时间编码拒绝恢复，不猜测解释。链接包含 `year`、`end`、`states`、`pinned`、`order`、`zoom`、`from/to/width`、`category`、`mode`、`density`、搜索字段以及可选的稳定详情ID。不同宽度的屏幕根据分享的可见范围调整缩放。临时详情HTML、浏览记录和来源正文不会写入URL。
 
 连续操作在200毫秒防抖后通过 `replaceState` 更新当前历史项。手动Hash导航及前进后退会恢复相应条件，恢复过程中抑制反向写回。没有Hash时不改变本地恢复的滚动位置。文件模式仍支持Hash，但文件路径只能用于能够访问该文件的设备；跨设备分享应使用线上地址。
 

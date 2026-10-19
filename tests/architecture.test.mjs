@@ -11,7 +11,7 @@ const plain=value=>JSON.parse(JSON.stringify(value));
 const freeze=value=>{if(value&&typeof value==='object'){Object.freeze(value);Object.values(value).forEach(freeze);}return value;};
 function core(){
  const context=vm.createContext({});
- for(const file of ['history','search','state','navigation','reading'])vm.runInContext(read('src/core/'+file+'.js'),context);
+ for(const file of ['time','history','search','state','navigation','reading'])vm.runInContext(read('src/core/'+file+'.js'),context);
  const data=freeze(compileAtlas(JSON.parse(read('data/atlas.json'))));
  return {Zhou:context.Zhou,data,history:context.Zhou.createHistory(data)};
 }

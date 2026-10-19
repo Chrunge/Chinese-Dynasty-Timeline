@@ -3,6 +3,7 @@ const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const ctx=vm.createContext({console,Date,Blob,TextEncoder,Uint8Array,DataView});
 const load=file=>vm.runInContext(fs.readFileSync(path.join(root,file),'utf8'),ctx,{filename:file});
+load('src/core/time.js');
 load('src/core/export-layout.js');
 load('src/adapters/export-files.js');
 load('src/outputs/canvas.js');

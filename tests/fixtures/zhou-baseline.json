@@ -1,0 +1,5358 @@
+{
+  "provenance": {
+    "kind": "Captured once from user existing dist before lead rebuild",
+    "captured": "2026-10-19",
+    "coordinate": "BCE unchanged; CE uses 1-y"
+  },
+  "inputs": {
+    "legacyStore": {
+      "zhou-layout-v2": "{\"order\":[\"qin\",\"liang\",\"zhou\",\"jin\",\"qi\",\"chu\",\"yan\",\"lu\",\"song\",\"wei\",\"zheng\",\"chen\",\"cai\",\"cao\",\"wu\",\"yue\",\"han\",\"zhao\"],\"rowHeight\":64,\"viewHeight\":560,\"fitRows\":true,\"rowHeights\":{}}",
+      "zhou-reading-v4": "{\"version\":4,\"view\":{\"px\":5,\"end\":221,\"selected\":[\"qin\",\"liang\"],\"query\":\"\",\"mode\":\"events\",\"category\":\"改革\",\"cursor\":350,\"density\":\"full\",\"activeEventId\":null,\"searchScope\":\"all\",\"searchDescriptions\":false,\"searchLimit\":6,\"searchTarget\":null,\"left\":3010,\"top\":88,\"searchTop\":0,\"pageX\":0,\"pageY\":420,\"periods\":[]},\"range\":{\"from\":444,\"to\":228.8},\"width\":1200,\"layout\":{\"order\":[\"qin\",\"liang\",\"zhou\",\"jin\",\"qi\",\"chu\",\"yan\",\"lu\",\"song\",\"wei\",\"zheng\",\"chen\",\"cai\",\"cao\",\"wu\",\"yue\",\"han\",\"zhao\"],\"pins\":[\"qin\"],\"rowHeight\":64,\"viewHeight\":560,\"fitRows\":true,\"rowHeights\":{}},\"at\":1700000000000}",
+      "zhou-visits-v4": "[{\"key\":\"person:商鞅\",\"title\":\"商鞅\",\"view\":{\"px\":5,\"end\":221,\"selected\":[\"qin\",\"liang\"],\"query\":\"\",\"mode\":\"events\",\"category\":\"改革\",\"cursor\":350,\"density\":\"full\",\"activeEventId\":null,\"searchScope\":\"all\",\"searchDescriptions\":false,\"searchLimit\":6,\"searchTarget\":null,\"left\":3010,\"top\":88,\"searchTop\":0,\"pageX\":0,\"pageY\":420,\"periods\":[]},\"top\":318,\"at\":1700000000000}]",
+      "zhou-pins-v3": "[\"qin\"]"
+    },
+    "hashes": [
+      "#v=1&year=400&end=221&states=qin%2Cliang&pinned=qin&order=qin%2Cliang&zoom=3&category=%E6%94%B9%E9%9D%A9&mode=both&density=auto&scope=all&q=&desc=0&event=&target=person%3A%E5%95%86%E9%9E%85&from=420&to=330&width=1076&item=person%3A%E5%95%86%E9%9E%85",
+      "#v=1&year=260&end=221&states=qin%2Czhao&pinned=zhao&order=zhao%2Cqin&zoom=4&category=all&mode=both&density=full&scope=all&q=&desc=0&event=e91&target=event%3Ae91&from=280&to=240&width=1076&item=event%3Ae91"
+    ]
+  },
+  "expected": {
+    "queries": {
+      "齐桓公": [
+        {
+          "key": "ruler:qi-r11",
+          "title": "齐桓公 · 小白",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "ruler:qi-r30",
+          "title": "齐桓公 · 田午",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "event:e16",
+          "title": "齐桓公会诸侯",
+          "reason": "名称匹配"
+        }
+      ],
+      "長平之戰": [
+        {
+          "key": "event:e91",
+          "title": "长平之战",
+          "reason": "名称匹配"
+        }
+      ],
+      "长平之战": [
+        {
+          "key": "event:e91",
+          "title": "长平之战",
+          "reason": "名称匹配"
+        }
+      ],
+      "秦灭楚": [
+        {
+          "key": "event:e102",
+          "title": "秦灭楚",
+          "reason": "名称匹配"
+        }
+      ],
+      "嬴政": [
+        {
+          "key": "ruler:qin-r35",
+          "title": "秦王政 · 政",
+          "reason": "名称匹配"
+        }
+      ],
+      "秦始皇": [
+        {
+          "key": "ruler:qin-r35",
+          "title": "秦王政 · 政",
+          "reason": "名称匹配"
+        }
+      ],
+      "商鞅": [
+        {
+          "key": "person:person-033",
+          "title": "商鞅",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "event:e68",
+          "title": "商鞅第一次变法",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "event:e74",
+          "title": "孝公卒 · 商鞅被杀",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "event:e71",
+          "title": "秦迁咸阳 · 再次变法",
+          "reason": "事件关联人物"
+        }
+      ],
+      "孫臏": [
+        {
+          "key": "person:person-015",
+          "title": "孙膑",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "event:e70",
+          "title": "桂陵之战",
+          "reason": "事件关联人物"
+        },
+        {
+          "key": "event:e73",
+          "title": "马陵之战",
+          "reason": "事件关联人物"
+        }
+      ],
+      "赵成子": [
+        {
+          "key": "person:person-021",
+          "title": "赵衰",
+          "reason": "名称匹配"
+        }
+      ],
+      " 周 赧 王 ": [
+        {
+          "key": "ruler:zhou-r37",
+          "title": "周赧王",
+          "reason": "名称匹配"
+        }
+      ],
+      "唐叔虞": [
+        {
+          "key": "undated:undated-jin-001",
+          "title": "唐叔虞 · 虞",
+          "reason": "名称匹配"
+        },
+        {
+          "key": "event:e2",
+          "title": "唐叔虞受封",
+          "reason": "名称匹配"
+        }
+      ],
+      "陶朱公": [
+        {
+          "key": "person:person-108",
+          "title": "范蠡",
+          "reason": "名称匹配"
+        }
+      ],
+      "完全不存在的姓名XYZ": []
+    },
+    "selectedQuery": [],
+    "years": [
+      {
+        "id": "qin",
+        "year": 251,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r32",
+          "qin-r33"
+        ],
+        "bars": [
+          "qin-r32"
+        ],
+        "events": []
+      },
+      {
+        "id": "qin",
+        "year": 250,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r33",
+          "qin-r34"
+        ],
+        "bars": [
+          "qin-r33"
+        ],
+        "events": []
+      },
+      {
+        "id": "qin",
+        "year": 249,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r34"
+        ],
+        "bars": [
+          "qin-r34"
+        ],
+        "events": [
+          "e95"
+        ]
+      },
+      {
+        "id": "qin",
+        "year": 247,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r34",
+          "qin-r35"
+        ],
+        "bars": [
+          "qin-r34"
+        ],
+        "events": []
+      },
+      {
+        "id": "qin",
+        "year": 246,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r35"
+        ],
+        "bars": [
+          "qin-r35"
+        ],
+        "events": [
+          "e96"
+        ]
+      },
+      {
+        "id": "qin",
+        "year": 222,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r35"
+        ],
+        "bars": [
+          "qin-r35"
+        ],
+        "events": [
+          "e103"
+        ]
+      },
+      {
+        "id": "qin",
+        "year": 221,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qin-r35"
+        ],
+        "bars": [
+          "qin-r35"
+        ],
+        "events": [
+          "e104"
+        ]
+      },
+      {
+        "id": "qin",
+        "year": 220,
+        "exists": false,
+        "interruption": null,
+        "actual": [],
+        "bars": [],
+        "events": []
+      },
+      {
+        "id": "jin",
+        "year": 574,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "jin-r23"
+        ],
+        "bars": [
+          "jin-r23"
+        ],
+        "events": []
+      },
+      {
+        "id": "jin",
+        "year": 573,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "jin-r23",
+          "jin-r24"
+        ],
+        "bars": [
+          "jin-r23"
+        ],
+        "events": [
+          "e34"
+        ]
+      },
+      {
+        "id": "jin",
+        "year": 572,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "jin-r24"
+        ],
+        "bars": [
+          "jin-r24"
+        ],
+        "events": []
+      },
+      {
+        "id": "qi",
+        "year": 356,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qi-r31"
+        ],
+        "bars": [
+          "qi-r31"
+        ],
+        "events": []
+      },
+      {
+        "id": "qi",
+        "year": 355,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "qi-r31"
+        ],
+        "bars": [
+          "qi-r31"
+        ],
+        "events": []
+      },
+      {
+        "id": "yan",
+        "year": 314,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "yan-r28"
+        ],
+        "bars": [
+          "yan-r28"
+        ],
+        "events": [
+          "e80"
+        ]
+      },
+      {
+        "id": "yan",
+        "year": 313,
+        "exists": true,
+        "interruption": {
+          "start": 313,
+          "end": 313,
+          "note": "齐军占燕后的中断"
+        },
+        "actual": [],
+        "bars": [],
+        "events": []
+      },
+      {
+        "id": "yan",
+        "year": 312,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "yan-r29"
+        ],
+        "bars": [
+          "yan-r29"
+        ],
+        "events": [
+          "e81"
+        ]
+      },
+      {
+        "id": "chen",
+        "year": 535,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "chen-r14"
+        ],
+        "bars": [
+          "chen-r14"
+        ],
+        "events": []
+      },
+      {
+        "id": "chen",
+        "year": 534,
+        "exists": true,
+        "interruption": {
+          "start": 534,
+          "end": 530,
+          "note": "楚占陈，前529年复国"
+        },
+        "actual": [],
+        "bars": [
+          "chen-r14",
+          "chen-r15"
+        ],
+        "events": [
+          "e40"
+        ]
+      },
+      {
+        "id": "chen",
+        "year": 530,
+        "exists": true,
+        "interruption": {
+          "start": 534,
+          "end": 530,
+          "note": "楚占陈，前529年复国"
+        },
+        "actual": [],
+        "bars": [],
+        "events": []
+      },
+      {
+        "id": "chen",
+        "year": 529,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "chen-r16"
+        ],
+        "bars": [
+          "chen-r16"
+        ],
+        "events": [
+          "e42"
+        ]
+      },
+      {
+        "id": "cai",
+        "year": 532,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "cai-r12"
+        ],
+        "bars": [
+          "cai-r12"
+        ],
+        "events": []
+      },
+      {
+        "id": "cai",
+        "year": 531,
+        "exists": true,
+        "interruption": {
+          "start": 531,
+          "end": 530,
+          "note": "楚灭蔡，前529年复国"
+        },
+        "actual": [],
+        "bars": [
+          "cai-r12"
+        ],
+        "events": [
+          "e41"
+        ]
+      },
+      {
+        "id": "cai",
+        "year": 530,
+        "exists": true,
+        "interruption": {
+          "start": 531,
+          "end": 530,
+          "note": "楚灭蔡，前529年复国"
+        },
+        "actual": [],
+        "bars": [],
+        "events": []
+      },
+      {
+        "id": "cai",
+        "year": 529,
+        "exists": true,
+        "interruption": null,
+        "actual": [
+          "cai-r13"
+        ],
+        "bars": [
+          "cai-r13"
+        ],
+        "events": [
+          "e42"
+        ]
+      }
+    ],
+    "qinPhase": {
+      "id": "qin-r35",
+      "name": "秦王政",
+      "person": "政",
+      "start": 246,
+      "end": 221,
+      "lane": 0,
+      "role": "君主",
+      "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+      "description": "图示采用前246年元年口径，其实际继位在前247年；前221年转称始皇帝，统治延续到前210年。",
+      "exit": "前221年为称帝节点，非去世或退位。",
+      "dating": {
+        "level": "certain",
+        "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+        "reviewStatus": "legacy",
+        "sources": [],
+        "alternatives": []
+      },
+      "chronology": {
+        "accession": 247,
+        "regnalStart": 246,
+        "abdication": null,
+        "death": 210,
+        "changes": [
+          {
+            "year": 221,
+            "label": "称帝；诸侯国阶段结束"
+          }
+        ],
+        "endKind": "身份转变",
+        "sources": [
+          {
+            "id": "source-011",
+            "title": "《史记》·秦本纪",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+          },
+          {
+            "id": "source-019",
+            "title": "《史记》·秦始皇本纪",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+          }
+        ]
+      }
+    },
+    "eventOpinions": [
+      {
+        "id": "e35",
+        "name": "孔子生于鲁",
+        "year": 551,
+        "states": [
+          "lu"
+        ],
+        "kind": "文化",
+        "description": "传统纪年将孔子出生置于前551年；亦有前552年说，显示为约年。",
+        "sources": [
+          {
+            "id": "source-036",
+            "title": "《史记》·孔子世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷047"
+          },
+          {
+            "id": "source-052",
+            "title": "《春秋穀梁传》·襄公二十一年",
+            "url": "https://zh.wikisource.org/zh-hans/春秋穀梁傳/襄公"
+          }
+        ],
+        "dating": {
+          "level": "disputed",
+          "reason": "出生年存在前551年与前552年两种传统系年，本图采用前551年；原典的鲁君纪年须换算为公元前年份。",
+          "reviewStatus": "reviewed",
+          "sources": [],
+          "alternatives": [
+            {
+              "label": "本图采用 · 《史记》系年",
+              "year": 551,
+              "explanation": "《孔子世家》系于鲁襄公二十二年，按传统换算为前551年。",
+              "sources": [
+                {
+                  "id": "source-036",
+                  "title": "《史记》·孔子世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷047"
+                }
+              ]
+            },
+            {
+              "label": "另说 · 《穀梁传》系年",
+              "year": 552,
+              "explanation": "《穀梁传》襄公二十一年记孔子出生，按传统换算为前552年。",
+              "sources": [
+                {
+                  "id": "source-052",
+                  "title": "《春秋穀梁传》·襄公二十一年",
+                  "url": "https://zh.wikisource.org/zh-hans/春秋穀梁傳/襄公"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "e72",
+        "name": "魏惠王称王",
+        "year": 344,
+        "states": [
+          "liang"
+        ],
+        "kind": "政治",
+        "description": "魏惠王使用王号，反映列国君主地位的变化。本图沿用约前344年节点，称王、相王与追尊的记载口径须继续校勘。",
+        "sources": [
+          {
+            "id": "source-009",
+            "title": "《史记》·魏世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷044"
+          },
+          {
+            "id": "source-054",
+            "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+            "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+          }
+        ],
+        "dating": {
+          "level": "disputed",
+          "reason": "称王与相互承认王号不是同一节点。前344年是沿用的图示定位，尚未完成与原典年次的逐项校勘；不标为较确定。",
+          "reviewStatus": "partial",
+          "sources": [],
+          "alternatives": [
+            {
+              "label": "本图沿用 · 待校勘",
+              "year": 344,
+              "explanation": "沿用原底表节点，仅作近似定位；所列原典用于核对记载差异，并非已证实前344年的直接依据。",
+              "sources": [
+                {
+                  "id": "source-009",
+                  "title": "《史记》·魏世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷044"
+                },
+                {
+                  "id": "source-054",
+                  "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+                  "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+                }
+              ]
+            },
+            {
+              "label": "原典记载口径差异",
+              "year": null,
+              "explanation": "《魏世家》叙徐州相王及追尊父惠王；《战国策》中山篇注释区分先前称王与后来相王，并讨论不同年次。不得把称王、相王、改元和追尊合并为同一时间点。",
+              "sources": [
+                {
+                  "id": "source-009",
+                  "title": "《史记》·魏世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷044"
+                },
+                {
+                  "id": "source-054",
+                  "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+                  "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "e77",
+        "name": "五国相王",
+        "year": 323,
+        "states": [
+          "han",
+          "zhao",
+          "yan",
+          "liang"
+        ],
+        "kind": "外交",
+        "description": "列国相互承认王号的活动。图示约前323年；参加国家名单与年次存在异说，赵又有拒称王而称君的记载。",
+        "sources": [
+          {
+            "id": "source-002",
+            "title": "《史记》卷十五 · 六国年表（原典）",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+          },
+          {
+            "id": "source-045",
+            "title": "《史记》·赵世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷043"
+          },
+          {
+            "id": "source-054",
+            "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+            "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+          }
+        ],
+        "dating": {
+          "level": "disputed",
+          "reason": "本图保留约前323年的比较节点；不同传本和注释对名单、年次及“相王”的含义有分歧，不表示各国均在这一年正式称王。",
+          "reviewStatus": "partial",
+          "sources": [],
+          "alternatives": [
+            {
+              "label": "本图采用的比较节点",
+              "year": 323,
+              "explanation": "沿用前323年节点，展示韩、赵、燕及相关的魏；中山尚未单列。图上相关国家不等于已确定的五国名单。",
+              "sources": [
+                {
+                  "id": "source-002",
+                  "title": "《史记》卷十五 · 六国年表（原典）",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+                },
+                {
+                  "id": "source-054",
+                  "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+                  "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+                }
+              ]
+            },
+            {
+              "label": "参加名单的不同说法",
+              "year": null,
+              "explanation": "《战国策》中山篇注释所列名单不一：姚说列齐、赵、魏、燕、中山，鲍说列秦、韩、燕、宋、中山，补正又认为其中一国不可考。不可拼接为同一次活动的确定名单。",
+              "sources": [
+                {
+                  "id": "source-054",
+                  "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+                  "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+                }
+              ]
+            },
+            {
+              "label": "赵的王号与年次问题",
+              "year": null,
+              "explanation": "《赵世家》记五国相王而赵独不称王、令国人称君；《战国策》注释另讨论年次。事件年份不能直接填作赵君的称王年。",
+              "sources": [
+                {
+                  "id": "source-045",
+                  "title": "《史记》·赵世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷043"
+                },
+                {
+                  "id": "source-054",
+                  "title": "《战国策》·中山（士礼居本，含姚、鲍及补正诸说）",
+                  "url": "https://zh.wikisource.org/zh-hant/戰國策/卷33"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "shares": [
+      {
+        "hash": "#v=1&year=400&end=221&states=qin%2Cliang&pinned=qin&order=qin%2Cliang&zoom=3&category=%E6%94%B9%E9%9D%A9&mode=both&density=auto&scope=all&q=&desc=0&event=&target=person%3A%E5%95%86%E9%9E%85&from=420&to=330&width=1076&item=person%3A%E5%95%86%E9%9E%85",
+        "parsed": {
+          "view": {
+            "cursor": 400,
+            "px": 3,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "category": "改革",
+            "mode": "both",
+            "density": "auto",
+            "searchScope": "all",
+            "query": "",
+            "searchDescriptions": false,
+            "activeEventId": null,
+            "searchTarget": "person:person-033"
+          },
+          "pinned": [
+            "qin"
+          ],
+          "order": [
+            "qin",
+            "liang"
+          ],
+          "item": "person:person-033",
+          "range": {
+            "from": 420,
+            "to": 330,
+            "width": 1076
+          }
+        },
+        "view": {
+          "view": {
+            "px": 3,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "both",
+            "category": "改革",
+            "cursor": 400,
+            "density": "auto",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": "person:person-033",
+            "left": 1878,
+            "top": 0,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 0,
+            "periods": []
+          },
+          "pinned": [
+            "qin"
+          ],
+          "order": [
+            "qin",
+            "liang",
+            "zhou",
+            "jin",
+            "qi",
+            "chu",
+            "yan",
+            "lu",
+            "song",
+            "wei",
+            "zheng",
+            "chen",
+            "cai",
+            "cao",
+            "wu",
+            "yue",
+            "han",
+            "zhao"
+          ],
+          "item": "person:person-033",
+          "detailOpen": true
+        },
+        "detailText": "商鞅变法重臣出身：卫国宗室支系出身；在魏任职，后入秦。简要生平与主要事迹卫人，亦称公孙鞅、卫鞅。在秦孝公支持下改革军功、户籍、行政与土地制度；孝公死后被诛，制度影响仍延续。已收录任职 / 活动国家秦魏包含任职、游说、流亡及事件活动；具体身份以各阶段标注为准。活动轨迹年份未定 · 依阶段记载在魏任职任职 / 活动 · 魏早年事魏相公叔痤为中庶子；任职起讫未定位。查看魏年份未定 · 依阶段记载求贤背景下入秦任职 / 活动 · 秦秦孝公发布求贤令后，商鞅经景监引见；不将求贤年直接等同抵秦年。查看秦相关事件前356年第一次变法任职 / 活动 · 秦秦孝公支持改革军功、户籍与农业等制度。查看秦相关事件前350年迁咸阳与再次变法任职 / 活动 · 秦继续整顿县制、土地与度量衡等制度。查看秦相关事件前338年被诛与制度延续生涯终点 · 秦孝公去世后被追捕、诛杀；个人结局与制度延续应分开看待。查看秦相关事件已收录的君主关联这些是在位区间中的人物关联，不表示此人全程任职，也不是生卒年。秦孝公秦 · 前361—338年已收录相关事件商鞅第一次变法：主持变法秦迁咸阳 · 再次变法：推行县制与土地制度改革前361年 · 秦孝公求贤政治 · 秦前356年 · 商鞅第一次变法改革 · 秦前350年 · 秦迁咸阳 · 再次变法改革 · 秦前338年 · 孝公卒 · 商鞅被杀政治 · 秦《史记》·商君列传 ↗"
+      },
+      {
+        "hash": "#v=1&year=260&end=221&states=qin%2Czhao&pinned=zhao&order=zhao%2Cqin&zoom=4&category=all&mode=both&density=full&scope=all&q=&desc=0&event=e91&target=event%3Ae91&from=280&to=240&width=1076&item=event%3Ae91",
+        "parsed": {
+          "view": {
+            "cursor": 260,
+            "px": 4,
+            "end": 221,
+            "selected": [
+              "qin",
+              "zhao"
+            ],
+            "category": "all",
+            "mode": "both",
+            "density": "full",
+            "searchScope": "all",
+            "query": "",
+            "searchDescriptions": false,
+            "activeEventId": "e91",
+            "searchTarget": "event:e91"
+          },
+          "pinned": [
+            "zhao"
+          ],
+          "order": [
+            "zhao",
+            "qin"
+          ],
+          "item": "event:e91",
+          "range": {
+            "from": 280,
+            "to": 240,
+            "width": 1076
+          }
+        },
+        "view": {
+          "view": {
+            "px": 4,
+            "end": 221,
+            "selected": [
+              "qin",
+              "zhao"
+            ],
+            "query": "",
+            "mode": "both",
+            "category": "all",
+            "cursor": 260,
+            "density": "full",
+            "activeEventId": "e91",
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": "event:e91",
+            "left": 3064,
+            "top": 0,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 0,
+            "periods": []
+          },
+          "pinned": [
+            "zhao"
+          ],
+          "order": [
+            "zhao",
+            "qin",
+            "zhou",
+            "jin",
+            "qi",
+            "chu",
+            "yan",
+            "lu",
+            "song",
+            "wei",
+            "zheng",
+            "chen",
+            "cai",
+            "cao",
+            "wu",
+            "yue",
+            "han",
+            "liang"
+          ],
+          "item": "event:e91",
+          "detailOpen": true
+        },
+        "detailText": "长平之战前260年较确定所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。沿用资料：尚未逐条复核。背景秦取韩地使上党通道中断，上党归赵引发秦赵争夺。经过廉颇防守后赵括代将，秦由白起主导包围、切断赵军补给。结果赵军大败并遭大规模杀降；古籍伤亡数字不作精确统计值。后续影响赵国国力受损，但魏楚援赵后邯郸解围，秦并未立即灭赵。前后事件按主题整理的阅读线索；关联并不一律表示直接因果。后续节点前257年 · 邯郸解围战争 · 秦、赵、魏、楚前228年 · 秦破邯郸战争 · 秦、赵当年在位君主用于同年对照；已核实的实际即位年一并纳入，条带仍采用年表起点。在位不等于亲自参战或参与此事。秦秦昭襄王 · 前306—251年赵赵孝成王 · 前265—245年已收录的相关人物仅列已收录且有明确关系记载的人物；同年在位不等于亲自参与。廉颇 赵赵军前期主将赵惠文王、孝成王时期名将，参与对齐、魏、燕等作战，长平初期采取持重战略；悼襄王时离赵。《史记》·廉颇蔺相如列传 ↗赵括 赵继任赵军主将赵奢之子，在长平之战中替换廉颇，最终兵败身死。“纸上谈兵”是后世概括，不宜替代对史料与战争条件的分析。《史记》·廉颇蔺相如列传 ↗王龁 秦秦军前期主将，后为裨将长平之战初期率秦军作战；秦任命白起为上将军后，他改任裨将。《史记》·白起王翦列传 ↗白起 秦秦军后期主将秦昭襄王时期名将，参与伊阙、郢都、长平等战争；晚年与王室及国相关系破裂，被赐死。《史记》·白起王翦列传 ↗范雎 秦主持反间；政治谋划魏人，入秦后获昭襄王重用，主张远交近攻，协助削弱外戚权力；后让位于蔡泽。《史记》·范雎蔡泽列传 ↗原典与纪年核查原典提供记载，公元前年份由纪年表换算；有异说时分别列明。《史记》·白起王翦列传 ↗查看图上联动"
+      }
+    ],
+    "reading": {
+      "390": {
+        "root": {
+          "view": {
+            "px": 1.4033457249070633,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "events",
+            "category": "改革",
+            "cursor": 350,
+            "density": "full",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": null,
+            "left": 844.8141263940521,
+            "top": 88,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 420,
+            "periods": []
+          },
+          "layout": {
+            "order": [
+              "qin",
+              "liang",
+              "zhou",
+              "jin",
+              "qi",
+              "chu",
+              "yan",
+              "lu",
+              "song",
+              "wei",
+              "zheng",
+              "chen",
+              "cai",
+              "cao",
+              "wu",
+              "yue",
+              "han",
+              "zhao"
+            ],
+            "pins": [
+              "qin"
+            ],
+            "rowHeight": 64,
+            "viewHeight": 560,
+            "fitRows": true,
+            "rowHeights": {}
+          },
+          "detail": null,
+          "detailOpen": false,
+          "detailTop": 0,
+          "visits": [
+            {
+              "key": "person:person-033",
+              "title": "商鞅",
+              "top": 318
+            }
+          ]
+        },
+        "detail": {
+          "view": {
+            "px": 5,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "events",
+            "category": "改革",
+            "cursor": 350,
+            "density": "full",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": null,
+            "left": 3010,
+            "top": 88,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 420,
+            "periods": []
+          },
+          "layout": {
+            "order": [
+              "qin",
+              "liang",
+              "zhou",
+              "jin",
+              "qi",
+              "chu",
+              "yan",
+              "lu",
+              "song",
+              "wei",
+              "zheng",
+              "chen",
+              "cai",
+              "cao",
+              "wu",
+              "yue",
+              "han",
+              "zhao"
+            ],
+            "pins": [
+              "qin"
+            ],
+            "rowHeight": 64,
+            "viewHeight": 560,
+            "fitRows": true,
+            "rowHeights": {}
+          },
+          "detail": "person:person-033",
+          "detailOpen": true,
+          "detailTop": 318,
+          "visits": [
+            {
+              "key": "person:person-033",
+              "title": "商鞅",
+              "top": 318
+            }
+          ]
+        },
+        "closed": {
+          "view": {
+            "px": 1.4033457249070633,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "events",
+            "category": "改革",
+            "cursor": 350,
+            "density": "full",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": null,
+            "left": 844.8141263940521,
+            "top": 88,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 420,
+            "periods": []
+          },
+          "layout": {
+            "order": [
+              "qin",
+              "liang",
+              "zhou",
+              "jin",
+              "qi",
+              "chu",
+              "yan",
+              "lu",
+              "song",
+              "wei",
+              "zheng",
+              "chen",
+              "cai",
+              "cao",
+              "wu",
+              "yue",
+              "han",
+              "zhao"
+            ],
+            "pins": [
+              "qin"
+            ],
+            "rowHeight": 64,
+            "viewHeight": 560,
+            "fitRows": true,
+            "rowHeights": {}
+          },
+          "detail": null,
+          "detailOpen": false,
+          "detailTop": 318,
+          "visits": [
+            {
+              "key": "person:person-033",
+              "title": "商鞅",
+              "top": 318
+            }
+          ]
+        }
+      },
+      "1200": {
+        "root": {
+          "view": {
+            "px": 5,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "events",
+            "category": "改革",
+            "cursor": 350,
+            "density": "full",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": null,
+            "left": 3010,
+            "top": 88,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 420,
+            "periods": []
+          },
+          "layout": {
+            "order": [
+              "qin",
+              "liang",
+              "zhou",
+              "jin",
+              "qi",
+              "chu",
+              "yan",
+              "lu",
+              "song",
+              "wei",
+              "zheng",
+              "chen",
+              "cai",
+              "cao",
+              "wu",
+              "yue",
+              "han",
+              "zhao"
+            ],
+            "pins": [
+              "qin"
+            ],
+            "rowHeight": 64,
+            "viewHeight": 560,
+            "fitRows": true,
+            "rowHeights": {}
+          },
+          "detail": null,
+          "detailOpen": false,
+          "detailTop": 0,
+          "visits": [
+            {
+              "key": "person:person-033",
+              "title": "商鞅",
+              "top": 318
+            }
+          ]
+        },
+        "detail": {
+          "view": {
+            "px": 5,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "events",
+            "category": "改革",
+            "cursor": 350,
+            "density": "full",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": null,
+            "left": 3010,
+            "top": 88,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 420,
+            "periods": []
+          },
+          "layout": {
+            "order": [
+              "qin",
+              "liang",
+              "zhou",
+              "jin",
+              "qi",
+              "chu",
+              "yan",
+              "lu",
+              "song",
+              "wei",
+              "zheng",
+              "chen",
+              "cai",
+              "cao",
+              "wu",
+              "yue",
+              "han",
+              "zhao"
+            ],
+            "pins": [
+              "qin"
+            ],
+            "rowHeight": 64,
+            "viewHeight": 560,
+            "fitRows": true,
+            "rowHeights": {}
+          },
+          "detail": "person:person-033",
+          "detailOpen": true,
+          "detailTop": 318,
+          "visits": [
+            {
+              "key": "person:person-033",
+              "title": "商鞅",
+              "top": 318
+            }
+          ]
+        },
+        "closed": {
+          "view": {
+            "px": 5,
+            "end": 221,
+            "selected": [
+              "qin",
+              "liang"
+            ],
+            "query": "",
+            "mode": "events",
+            "category": "改革",
+            "cursor": 350,
+            "density": "full",
+            "activeEventId": null,
+            "searchScope": "all",
+            "searchDescriptions": false,
+            "searchLimit": 6,
+            "searchTarget": null,
+            "left": 3010,
+            "top": 88,
+            "searchTop": 0,
+            "pageX": 0,
+            "pageY": 420,
+            "periods": []
+          },
+          "layout": {
+            "order": [
+              "qin",
+              "liang",
+              "zhou",
+              "jin",
+              "qi",
+              "chu",
+              "yan",
+              "lu",
+              "song",
+              "wei",
+              "zheng",
+              "chen",
+              "cai",
+              "cao",
+              "wu",
+              "yue",
+              "han",
+              "zhao"
+            ],
+            "pins": [
+              "qin"
+            ],
+            "rowHeight": 64,
+            "viewHeight": 560,
+            "fitRows": true,
+            "rowHeights": {}
+          },
+          "detail": null,
+          "detailOpen": false,
+          "detailTop": 318,
+          "visits": [
+            {
+              "key": "person:person-033",
+              "title": "商鞅",
+              "top": 318
+            }
+          ]
+        }
+      }
+    },
+    "exports": [
+      {
+        "options": {
+          "states": [
+            "qi"
+          ],
+          "from": 355,
+          "to": 355,
+          "cursor": 355,
+          "category": "all",
+          "span": 150
+        },
+        "json": {
+          "schemaVersion": 1,
+          "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
+          "updated": "2026-10-18",
+          "from": 355,
+          "to": 355,
+          "category": "all",
+          "cursor": 355,
+          "chronology": {
+            "bars": "adopted-table",
+            "yearQueries": "verified-accession-and-interruptions"
+          },
+          "states": [
+            {
+              "id": "qi",
+              "name": "齐",
+              "start": 1046,
+              "end": 221,
+              "interruptions": [],
+              "dating": {
+                "level": "inferred",
+                "reason": "姜齐与田齐分层展示。田和前404年起掌政，前386年受封为诸侯；前379年姜齐终结。齐威王等采用经战国纪年校订的一系，不能直接等同《史记》原表。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              },
+              "rulers": [
+                {
+                  "id": "qi-r31",
+                  "name": "齐威王",
+                  "person": "田因齐",
+                  "start": 356,
+                  "end": 320,
+                  "lane": 1,
+                  "role": "田齐君主 / 掌政者",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "disputed",
+                    "reason": "采用现代校订的田齐年表，并与《史记·六国年表》旧表分列；君主起点与元年口径不能混配，所列异说不表示同等采信。",
+                    "reviewStatus": "partial",
+                    "sources": [],
+                    "alternatives": [
+                      {
+                        "label": "本图采用的校订区间",
+                        "year": 356,
+                        "explanation": "本图采用前356—320年。此为现代校订年表口径，并非《史记·六国年表》原表的直接抄录。",
+                        "sources": [
+                          {
+                            "id": "source-003",
+                            "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                          },
+                          {
+                            "id": "source-060",
+                            "title": "齐国纪年（现代校订与《史记》旧表对照汇编）",
+                            "url": "https://zh.wikipedia.org/wiki/齊國紀年"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "《六国年表》旧表",
+                        "year": 378,
+                        "explanation": "旧表换算为前378—343年，与本图所用的田齐系年有别；不能把旧表君名直接套入本图同年事件。",
+                        "sources": [
+                          {
+                            "id": "source-002",
+                            "title": "《史记》卷十五 · 六国年表（原典）",
+                            "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "继立与元年分开的现代校订",
+                        "year": 355,
+                        "explanation": "王政冬以《纪年》引文重考，置威王继立于前356年、元年于前355年，卒于前320年；说明本图前356年条带起点不应被当作唯一元年。",
+                        "sources": [
+                          {
+                            "id": "source-056",
+                            "title": "王政冬《田庄子至齐威王间田齐诸君年代考》（2017）",
+                            "url": "https://www.fdgwz.org.cn/Web/Show/3072"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 356,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "note": "本图条带起点前356年；另有前356年继立、前355年元年之说，见纪年异说。陈侯午敦所证为前代桓公午的相对年数，不能单凭铜器直接读出本王公元纪年。",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      },
+                      {
+                        "id": "source-002",
+                        "title": "《史记》卷十五 · 六国年表（原典）",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+                      },
+                      {
+                        "id": "source-060",
+                        "title": "齐国纪年（现代校订与《史记》旧表对照汇编）",
+                        "url": "https://zh.wikipedia.org/wiki/齊國紀年"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [],
+          "stateNames": {
+            "zhou": "周王室",
+            "qin": "秦",
+            "jin": "晋",
+            "qi": "齐",
+            "chu": "楚",
+            "yan": "燕",
+            "lu": "鲁",
+            "song": "宋",
+            "wei": "卫",
+            "zheng": "郑",
+            "chen": "陈",
+            "cai": "蔡",
+            "cao": "曹",
+            "wu": "吴",
+            "yue": "越",
+            "han": "韩",
+            "zhao": "赵",
+            "liang": "魏"
+          },
+          "sources": [
+            {
+              "id": "source-001",
+              "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+            },
+            {
+              "id": "source-002",
+              "title": "《史记》卷十五 · 六国年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+            },
+            {
+              "id": "source-003",
+              "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+              "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+            },
+            {
+              "id": "source-004",
+              "title": "周代诸侯国列表（国家存续与终点比较）",
+              "url": "https://zh.wikipedia.org/wiki/周代諸侯國列表"
+            },
+            {
+              "id": "source-005",
+              "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+              "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+            },
+            {
+              "id": "source-006",
+              "title": "Yue (state)（楚越与残余政权问题）",
+              "url": "https://en.wikipedia.org/wiki/Yue_(state)"
+            }
+          ]
+        },
+        "pages": [
+          {
+            "type": "chart",
+            "from": 355,
+            "to": 355,
+            "rows": [
+              {
+                "id": "qi",
+                "lanes": 2,
+                "rulers": [
+                  {
+                    "id": "qi-r31",
+                    "start": 356,
+                    "end": 320,
+                    "lane": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "齐 · 约 前1046—221年",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "齐威王（田因齐） · 前356—320年 · 存在异说 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "即位、元年与结局的纪年节点来源[2][3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "异说：本图采用的校订区间 前356年 · 本图采用前356—320年。此为现代校订年表口径，并非《史记·六国年表》原表的直",
+                "height": 27
+              },
+              {
+                "text": "接抄录。 · 来源[1][3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "异说：《六国年表》旧表 前378年 · 旧表换算为前378—343年，与本图所用的田齐系年有别；不能把旧表君名直接套入本图",
+                "height": 27
+              },
+              {
+                "text": "同年事件。 · 来源[2]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "异说：继立与元年分开的现代校订 前355年 · 王政冬以《纪年》引文重考，置威王继立于前356年、元年于前355年，卒于前",
+                "height": 27
+              },
+              {
+                "text": "320年；说明本图前356年条带起点不应被当作唯一元年。 · 来源[4]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "事件索引 · 同一编号在相关国家行中对应同一事件",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "当前范围与类别筛选下没有已收录事件。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "图例与采用口径",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "核查来源 · 原典记载与纪年汇编分别标注",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[2] 《史记》卷十五 · 六国年表（原典）",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷015",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[3] 齐国纪年（现代校订与《史记》旧表对照汇编）",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikipedia.org/wiki/齊國紀年",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[4] 王政冬《田庄子至齐威王间田齐诸君年代考》（2017）",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://www.fdgwz.org.cn/Web/Show/3072",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          }
+        ],
+        "events": [],
+        "sources": [
+          {
+            "title": "君主纪年表 · 检索汇编，待逐条校勘",
+            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+          },
+          {
+            "id": "source-002",
+            "title": "《史记》卷十五 · 六国年表（原典）",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+          },
+          {
+            "id": "source-060",
+            "title": "齐国纪年（现代校订与《史记》旧表对照汇编）",
+            "url": "https://zh.wikipedia.org/wiki/齊國紀年"
+          },
+          {
+            "id": "source-056",
+            "title": "王政冬《田庄子至齐威王间田齐诸君年代考》（2017）",
+            "url": "https://www.fdgwz.org.cn/Web/Show/3072"
+          }
+        ],
+        "drawn": [
+          "周代列国 · 历史对比笔记",
+          "前355年 · 齐",
+          "事件类别：全部 · 参考年份：前355年",
+          "前355年",
+          "前355",
+          "齐",
+          "齐威王",
+          "彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份",
+          "定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 1 / 3 页",
+          "周代列国 · 历史对比笔记",
+          "前355年 · 齐",
+          "事件类别：全部 · 参考年份：前355年",
+          "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+          "",
+          "齐 · 约 前1046—221年",
+          "",
+          "齐威王（田因齐） · 前356—320年 · 存在异说 · 来源[1]",
+          "",
+          "即位、元年与结局的纪年节点来源[2][3]",
+          "",
+          "异说：本图采用的校订区间 前356年 · 本图采用前356—320年。此为现代校订年表口径，并非《史记·六国年表》原表的直",
+          "接抄录。 · 来源[1][3]",
+          "",
+          "异说：《六国年表》旧表 前378年 · 旧表换算为前378—343年，与本图所用的田齐系年有别；不能把旧表君名直接套入本图",
+          "同年事件。 · 来源[2]",
+          "",
+          "异说：继立与元年分开的现代校订 前355年 · 王政冬以《纪年》引文重考，置威王继立于前356年、元年于前355年，卒于前",
+          "320年；说明本图前356年条带起点不应被当作唯一元年。 · 来源[4]",
+          "",
+          "事件索引 · 同一编号在相关国家行中对应同一事件",
+          "",
+          "当前范围与类别筛选下没有已收录事件。",
+          "",
+          "图例与采用口径",
+          "",
+          "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+          "",
+          "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+          "",
+          "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+          "",
+          "核查来源 · 原典记载与纪年汇编分别标注",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 2 / 3 页",
+          "周代列国 · 历史对比笔记",
+          "前355年 · 齐",
+          "事件类别：全部 · 参考年份：前355年",
+          "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+          "",
+          "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+          "",
+          "[2] 《史记》卷十五 · 六国年表（原典）",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷015",
+          "",
+          "[3] 齐国纪年（现代校订与《史记》旧表对照汇编）",
+          "",
+          "https://zh.wikipedia.org/wiki/齊國紀年",
+          "",
+          "[4] 王政冬《田庄子至齐威王间田齐诸君年代考》（2017）",
+          "",
+          "https://www.fdgwz.org.cn/Web/Show/3072",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 3 / 3 页"
+        ]
+      },
+      {
+        "options": {
+          "states": [
+            "qin"
+          ],
+          "from": 260,
+          "to": 221,
+          "cursor": 221,
+          "category": "all",
+          "span": 100
+        },
+        "json": {
+          "schemaVersion": 1,
+          "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
+          "updated": "2026-10-18",
+          "from": 260,
+          "to": 221,
+          "category": "all",
+          "cursor": 221,
+          "chronology": {
+            "bars": "adopted-table",
+            "yearQueries": "verified-accession-and-interruptions"
+          },
+          "states": [
+            {
+              "id": "qin",
+              "name": "秦",
+              "start": 890,
+              "end": 221,
+              "interruptions": [],
+              "dating": {
+                "level": "disputed",
+                "reason": "起点只是非子封秦的时代约值，尚无确年；沿用约前900年会与本图周孝王时期冲突。国家终点的口径另见说明。",
+                "reviewStatus": "partial",
+                "sources": [],
+                "alternatives": [
+                  {
+                    "label": "本图采用的孝王时期约值",
+                    "year": 890,
+                    "explanation": "《秦本纪》仅定位于周孝王时期。天水市政府介绍换算为前890年，本图取其为约值，与本图孝王前891—886年的拟年相容；不能据此确立受封年。",
+                    "sources": [
+                      {
+                        "id": "source-011",
+                        "title": "《史记》·秦本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                      },
+                      {
+                        "id": "source-058",
+                        "title": "天水市人民政府《魅力天水》（非子封秦前890年说，后出换算）",
+                        "url": "https://www.tianshui.gov.cn/mlts.htm"
+                      },
+                      {
+                        "id": "source-005",
+                        "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+                        "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "约前900年旧推定",
+                    "year": 900,
+                    "explanation": "甘肃档案网页转载百科，沿用约前900年起点，仅作旧说出处；并非原典明载的绝对年，且落在本图共王时期，不能与本图孝王拟年混配。",
+                    "sources": [
+                      {
+                        "id": "source-059",
+                        "title": "甘肃档案信息网·秦非子（转载百科，约前900年旧说）",
+                        "url": "https://www.cngsda.net/mrda/32777.jhtml"
+                      },
+                      {
+                        "id": "source-011",
+                        "title": "《史记》·秦本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                      },
+                      {
+                        "id": "source-005",
+                        "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+                        "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "rulers": [
+                {
+                  "id": "qin-r32",
+                  "name": "秦昭襄王",
+                  "person": "",
+                  "start": 306,
+                  "end": 251,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": 307,
+                    "regnalStart": 306,
+                    "abdication": null,
+                    "death": 251,
+                    "changes": [],
+                    "endKind": "去世",
+                    "sources": [
+                      {
+                        "id": "source-011",
+                        "title": "《史记》·秦本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "qin-r33",
+                  "name": "秦孝文王",
+                  "person": "",
+                  "start": 250,
+                  "end": 250,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": 251,
+                    "regnalStart": 250,
+                    "abdication": null,
+                    "death": 250,
+                    "changes": [
+                      {
+                        "year": 250,
+                        "label": "除丧后正式即位仪式"
+                      }
+                    ],
+                    "endKind": "去世",
+                    "note": "昭襄王卒后继承王位；除丧正式即位仪式与次年元年另行区分。",
+                    "sources": [
+                      {
+                        "id": "source-011",
+                        "title": "《史记》·秦本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "qin-r34",
+                  "name": "秦庄襄王",
+                  "person": "異人，后改名子楚",
+                  "start": 249,
+                  "end": 247,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": 250,
+                    "regnalStart": 249,
+                    "abdication": null,
+                    "death": 247,
+                    "changes": [],
+                    "endKind": "去世",
+                    "sources": [
+                      {
+                        "id": "source-011",
+                        "title": "《史记》·秦本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "qin-r35",
+                  "name": "秦王政",
+                  "person": "政",
+                  "start": 246,
+                  "end": 221,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "图示采用前246年元年口径，其实际继位在前247年；前221年转称始皇帝，统治延续到前210年。",
+                  "exit": "前221年为称帝节点，非去世或退位。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": 247,
+                    "regnalStart": 246,
+                    "abdication": null,
+                    "death": 210,
+                    "changes": [
+                      {
+                        "year": 221,
+                        "label": "称帝；诸侯国阶段结束"
+                      }
+                    ],
+                    "endKind": "身份转变",
+                    "sources": [
+                      {
+                        "id": "source-011",
+                        "title": "《史记》·秦本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                      },
+                      {
+                        "id": "source-019",
+                        "title": "《史记》·秦始皇本纪",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "e91",
+              "name": "长平之战",
+              "year": 260,
+              "states": [
+                "qin",
+                "zhao"
+              ],
+              "kind": "战争",
+              "description": "秦赵决战，赵军大败，赵国国力严重受损。",
+              "sources": [
+                {
+                  "id": "source-016",
+                  "title": "《史记》·白起王翦列传",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e92",
+              "name": "邯郸解围",
+              "year": 257,
+              "states": [
+                "qin",
+                "zhao",
+                "liang",
+                "chu"
+              ],
+              "kind": "战争",
+              "description": "赵在魏、楚援助下解除秦军对邯郸的围攻，秦统一进程暂受阻。",
+              "sources": [
+                {
+                  "id": "source-002",
+                  "title": "《史记》卷十五 · 六国年表（原典）",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+                },
+                {
+                  "id": "source-016",
+                  "title": "《史记》·白起王翦列传",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e93",
+              "name": "周王室终结",
+              "year": 256,
+              "states": [
+                "zhou",
+                "qin"
+              ],
+              "kind": "政治",
+              "description": "秦攻西周公，周赧王同年死，周朝王室终结。东周小国到前249年才被秦灭，并非周天子继续在位。",
+              "sources": [
+                {
+                  "id": "source-010",
+                  "title": "《史记》·周本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e95",
+              "name": "秦灭东周小国",
+              "year": 249,
+              "states": [
+                "qin"
+              ],
+              "kind": "战争",
+              "description": "秦灭东周君的封国，结束最后的周系小国；应与前256年周王室终结区分。",
+              "sources": [
+                {
+                  "id": "source-011",
+                  "title": "《史记》·秦本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                },
+                {
+                  "id": "source-010",
+                  "title": "《史记》·周本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e96",
+              "name": "秦王政元年",
+              "year": 246,
+              "states": [
+                "qin"
+              ],
+              "kind": "政治",
+              "description": "秦王政开始纪年；实际继位发生在前247年，图中采用元年口径。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e97",
+              "name": "秦灭韩",
+              "year": 230,
+              "states": [
+                "qin",
+                "han"
+              ],
+              "kind": "战争",
+              "description": "秦军俘韩王安，韩国终止，是秦灭六国的第一个完成节点。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e98",
+              "name": "秦破邯郸",
+              "year": 228,
+              "states": [
+                "qin",
+                "zhao"
+              ],
+              "kind": "战争",
+              "description": "秦俘赵王迁，赵公子嘉在代地继续抵抗，至前222年才终结。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e99",
+              "name": "荆轲刺秦",
+              "year": 227,
+              "states": [
+                "yan",
+                "qin"
+              ],
+              "kind": "政治",
+              "description": "燕太子丹遣荆轲刺秦王政，未成。秦随后加紧攻燕。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e100",
+              "name": "秦取蓟",
+              "year": 226,
+              "states": [
+                "qin",
+                "yan"
+              ],
+              "kind": "战争",
+              "description": "秦夺取燕都蓟，燕王喜退往辽东；燕国尚未完全终结。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e101",
+              "name": "秦灭魏",
+              "year": 225,
+              "states": [
+                "qin",
+                "liang"
+              ],
+              "kind": "战争",
+              "description": "秦军引水攻大梁，魏王假降，魏国终止。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e102",
+              "name": "秦灭楚",
+              "year": 223,
+              "states": [
+                "qin",
+                "chu"
+              ],
+              "kind": "战争",
+              "description": "王翦等破楚，楚王负刍被俘，昌平君领导的余部也遭击败。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                },
+                {
+                  "id": "source-016",
+                  "title": "《史记》·白起王翦列传",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e103",
+              "name": "燕、代余部终结",
+              "year": 222,
+              "states": [
+                "qin",
+                "yan",
+                "zhao"
+              ],
+              "kind": "战争",
+              "description": "秦俘燕王喜与代王嘉，燕及赵的最后抵抗政权终结。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e104",
+              "name": "秦灭齐 · 完成统一",
+              "year": 221,
+              "states": [
+                "qin",
+                "qi"
+              ],
+              "kind": "政治",
+              "description": "齐王建降秦，六国全部终结，秦王政称始皇帝，诸侯国秦转为帝国。",
+              "sources": [
+                {
+                  "id": "source-019",
+                  "title": "《史记》·秦始皇本纪",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            }
+          ],
+          "stateNames": {
+            "zhou": "周王室",
+            "qin": "秦",
+            "jin": "晋",
+            "qi": "齐",
+            "chu": "楚",
+            "yan": "燕",
+            "lu": "鲁",
+            "song": "宋",
+            "wei": "卫",
+            "zheng": "郑",
+            "chen": "陈",
+            "cai": "蔡",
+            "cao": "曹",
+            "wu": "吴",
+            "yue": "越",
+            "han": "韩",
+            "zhao": "赵",
+            "liang": "魏"
+          },
+          "sources": [
+            {
+              "id": "source-001",
+              "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+            },
+            {
+              "id": "source-002",
+              "title": "《史记》卷十五 · 六国年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+            },
+            {
+              "id": "source-003",
+              "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+              "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+            },
+            {
+              "id": "source-004",
+              "title": "周代诸侯国列表（国家存续与终点比较）",
+              "url": "https://zh.wikipedia.org/wiki/周代諸侯國列表"
+            },
+            {
+              "id": "source-005",
+              "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+              "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+            },
+            {
+              "id": "source-006",
+              "title": "Yue (state)（楚越与残余政权问题）",
+              "url": "https://en.wikipedia.org/wiki/Yue_(state)"
+            }
+          ]
+        },
+        "pages": [
+          {
+            "type": "chart",
+            "from": 260,
+            "to": 221,
+            "rows": [
+              {
+                "id": "qin",
+                "lanes": 1,
+                "rulers": [
+                  {
+                    "id": "qin-r32",
+                    "start": 306,
+                    "end": 251,
+                    "lane": 0
+                  },
+                  {
+                    "id": "qin-r33",
+                    "start": 250,
+                    "end": 250,
+                    "lane": 0
+                  },
+                  {
+                    "id": "qin-r34",
+                    "start": 249,
+                    "end": 247,
+                    "lane": 0
+                  },
+                  {
+                    "id": "qin-r35",
+                    "start": 246,
+                    "end": 221,
+                    "lane": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦 · 约 前890—221年 · 前221年为称帝转制",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦昭襄王 · 前306—251年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "即位、元年与结局的纪年节点来源[2]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦孝文王 · 前250年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "即位、元年与结局的纪年节点来源[2]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦庄襄王（異人，后改名子楚） · 前249—247年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "即位、元年与结局的纪年节点来源[2]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦王政（政） · 前246—221年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "即位、元年与结局的纪年节点来源[2][3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "事件索引 · 同一编号在相关国家行中对应同一事件",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E1 · 前260年 · 长平之战 · 秦、赵 · 较确定 · 来源[4]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦赵决战，赵军大败，赵国国力严重受损。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E2 · 前257年 · 邯郸解围 · 秦、赵、魏、楚 · 较确定 · 来源[5][4]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "赵在魏、楚援助下解除秦军对邯郸的围攻，秦统一进程暂受阻。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E3 · 前256年 · 周王室终结 · 周王室、秦 · 较确定 · 来源[6]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦攻西周公，周赧王同年死，周朝王室终结。东周小国到前249年才被秦灭，并非周天子继续在位。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E4 · 前249年 · 秦灭东周小国 · 秦 · 较确定 · 来源[2][6]",
+                "height": 27
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "秦灭东周君的封国，结束最后的周系小国；应与前256年周王室终结区分。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E5 · 前246年 · 秦王政元年 · 秦 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦王政开始纪年；实际继位发生在前247年，图中采用元年口径。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E6 · 前230年 · 秦灭韩 · 秦、韩 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦军俘韩王安，韩国终止，是秦灭六国的第一个完成节点。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E7 · 前228年 · 秦破邯郸 · 秦、赵 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦俘赵王迁，赵公子嘉在代地继续抵抗，至前222年才终结。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E8 · 前227年 · 荆轲刺秦 · 燕、秦 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "燕太子丹遣荆轲刺秦王政，未成。秦随后加紧攻燕。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E9 · 前226年 · 秦取蓟 · 秦、燕 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦夺取燕都蓟，燕王喜退往辽东；燕国尚未完全终结。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E10 · 前225年 · 秦灭魏 · 秦、魏 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦军引水攻大梁，魏王假降，魏国终止。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E11 · 前223年 · 秦灭楚 · 秦、楚 · 较确定 · 来源[3][4]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "王翦等破楚，楚王负刍被俘，昌平君领导的余部也遭击败。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E12 · 前222年 · 燕、代余部终结 · 秦、燕、赵 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "秦俘燕王喜与代王嘉，燕及赵的最后抵抗政权终结。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E13 · 前221年 · 秦灭齐 · 完成统一 · 秦、齐 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "齐王建降秦，六国全部终结，秦王政称始皇帝，诸侯国秦转为帝国。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "图例与采用口径",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "核查来源 · 原典记载与纪年汇编分别标注",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[2] 《史记》·秦本纪",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷005",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[3] 《史记》·秦始皇本纪",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷006",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[4] 《史记》·白起王翦列传",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷073",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[5] 《史记》卷十五 · 六国年表（原典）",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷015",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "[6] 《史记》·周本纪",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷004",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": "e91",
+            "number": 1,
+            "refs": [
+              4
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e92",
+            "number": 2,
+            "refs": [
+              5,
+              4
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e93",
+            "number": 3,
+            "refs": [
+              6
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e95",
+            "number": 4,
+            "refs": [
+              2,
+              6
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e96",
+            "number": 5,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e97",
+            "number": 6,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e98",
+            "number": 7,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e99",
+            "number": 8,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e100",
+            "number": 9,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e101",
+            "number": 10,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e102",
+            "number": 11,
+            "refs": [
+              3,
+              4
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e103",
+            "number": 12,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e104",
+            "number": 13,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          }
+        ],
+        "sources": [
+          {
+            "title": "君主纪年表 · 检索汇编，待逐条校勘",
+            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+          },
+          {
+            "id": "source-011",
+            "title": "《史记》·秦本纪",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+          },
+          {
+            "id": "source-019",
+            "title": "《史记》·秦始皇本纪",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+          },
+          {
+            "id": "source-016",
+            "title": "《史记》·白起王翦列传",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+          },
+          {
+            "id": "source-002",
+            "title": "《史记》卷十五 · 六国年表（原典）",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+          },
+          {
+            "id": "source-010",
+            "title": "《史记》·周本纪",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+          }
+        ],
+        "drawn": [
+          "周代列国 · 历史对比笔记",
+          "前260—221年 · 秦",
+          "事件类别：全部 · 参考年份：前221年",
+          "前260—221年",
+          "前260",
+          "前255",
+          "前250",
+          "前245",
+          "前240",
+          "前235",
+          "前230",
+          "前225",
+          "秦",
+          "秦昭襄王",
+          "秦庄襄王",
+          "秦王政",
+          "E1",
+          "E2",
+          "E4",
+          "E5",
+          "E6",
+          "E7",
+          "E9",
+          "E11",
+          "彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份",
+          "定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 1 / 5 页",
+          "周代列国 · 历史对比笔记",
+          "前260—221年 · 秦",
+          "事件类别：全部 · 参考年份：前221年",
+          "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+          "",
+          "秦 · 约 前890—221年 · 前221年为称帝转制",
+          "",
+          "秦昭襄王 · 前306—251年 · 较确定 · 来源[1]",
+          "",
+          "即位、元年与结局的纪年节点来源[2]",
+          "",
+          "秦孝文王 · 前250年 · 较确定 · 来源[1]",
+          "",
+          "即位、元年与结局的纪年节点来源[2]",
+          "",
+          "秦庄襄王（異人，后改名子楚） · 前249—247年 · 较确定 · 来源[1]",
+          "",
+          "即位、元年与结局的纪年节点来源[2]",
+          "",
+          "秦王政（政） · 前246—221年 · 较确定 · 来源[1]",
+          "",
+          "即位、元年与结局的纪年节点来源[2][3]",
+          "",
+          "事件索引 · 同一编号在相关国家行中对应同一事件",
+          "",
+          "E1 · 前260年 · 长平之战 · 秦、赵 · 较确定 · 来源[4]",
+          "",
+          "秦赵决战，赵军大败，赵国国力严重受损。",
+          "",
+          "E2 · 前257年 · 邯郸解围 · 秦、赵、魏、楚 · 较确定 · 来源[5][4]",
+          "",
+          "赵在魏、楚援助下解除秦军对邯郸的围攻，秦统一进程暂受阻。",
+          "",
+          "E3 · 前256年 · 周王室终结 · 周王室、秦 · 较确定 · 来源[6]",
+          "",
+          "秦攻西周公，周赧王同年死，周朝王室终结。东周小国到前249年才被秦灭，并非周天子继续在位。",
+          "",
+          "E4 · 前249年 · 秦灭东周小国 · 秦 · 较确定 · 来源[2][6]",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 2 / 5 页",
+          "周代列国 · 历史对比笔记",
+          "前260—221年 · 秦",
+          "事件类别：全部 · 参考年份：前221年",
+          "秦灭东周君的封国，结束最后的周系小国；应与前256年周王室终结区分。",
+          "",
+          "E5 · 前246年 · 秦王政元年 · 秦 · 较确定 · 来源[3]",
+          "",
+          "秦王政开始纪年；实际继位发生在前247年，图中采用元年口径。",
+          "",
+          "E6 · 前230年 · 秦灭韩 · 秦、韩 · 较确定 · 来源[3]",
+          "",
+          "秦军俘韩王安，韩国终止，是秦灭六国的第一个完成节点。",
+          "",
+          "E7 · 前228年 · 秦破邯郸 · 秦、赵 · 较确定 · 来源[3]",
+          "",
+          "秦俘赵王迁，赵公子嘉在代地继续抵抗，至前222年才终结。",
+          "",
+          "E8 · 前227年 · 荆轲刺秦 · 燕、秦 · 较确定 · 来源[3]",
+          "",
+          "燕太子丹遣荆轲刺秦王政，未成。秦随后加紧攻燕。",
+          "",
+          "E9 · 前226年 · 秦取蓟 · 秦、燕 · 较确定 · 来源[3]",
+          "",
+          "秦夺取燕都蓟，燕王喜退往辽东；燕国尚未完全终结。",
+          "",
+          "E10 · 前225年 · 秦灭魏 · 秦、魏 · 较确定 · 来源[3]",
+          "",
+          "秦军引水攻大梁，魏王假降，魏国终止。",
+          "",
+          "E11 · 前223年 · 秦灭楚 · 秦、楚 · 较确定 · 来源[3][4]",
+          "",
+          "王翦等破楚，楚王负刍被俘，昌平君领导的余部也遭击败。",
+          "",
+          "E12 · 前222年 · 燕、代余部终结 · 秦、燕、赵 · 较确定 · 来源[3]",
+          "",
+          "秦俘燕王喜与代王嘉，燕及赵的最后抵抗政权终结。",
+          "",
+          "E13 · 前221年 · 秦灭齐 · 完成统一 · 秦、齐 · 较确定 · 来源[3]",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 3 / 5 页",
+          "周代列国 · 历史对比笔记",
+          "前260—221年 · 秦",
+          "事件类别：全部 · 参考年份：前221年",
+          "齐王建降秦，六国全部终结，秦王政称始皇帝，诸侯国秦转为帝国。",
+          "",
+          "图例与采用口径",
+          "",
+          "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+          "",
+          "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+          "",
+          "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+          "",
+          "核查来源 · 原典记载与纪年汇编分别标注",
+          "",
+          "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+          "",
+          "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+          "",
+          "[2] 《史记》·秦本纪",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷005",
+          "",
+          "[3] 《史记》·秦始皇本纪",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷006",
+          "",
+          "[4] 《史记》·白起王翦列传",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷073",
+          "",
+          "[5] 《史记》卷十五 · 六国年表（原典）",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷015",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 4 / 5 页",
+          "周代列国 · 历史对比笔记",
+          "前260—221年 · 秦",
+          "事件类别：全部 · 参考年份：前221年",
+          "[6] 《史记》·周本纪",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷004",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 5 / 5 页"
+        ]
+      },
+      {
+        "options": {
+          "states": [
+            "jin"
+          ],
+          "from": 580,
+          "to": 570,
+          "cursor": 573,
+          "category": "all",
+          "span": 150
+        },
+        "json": {
+          "schemaVersion": 1,
+          "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
+          "updated": "2026-10-18",
+          "from": 580,
+          "to": 570,
+          "category": "all",
+          "cursor": 573,
+          "chronology": {
+            "bars": "adopted-table",
+            "yearQueries": "verified-accession-and-interruptions"
+          },
+          "states": [
+            {
+              "id": "jin",
+              "name": "晋",
+              "start": 1042,
+              "end": 349,
+              "interruptions": [],
+              "dating": {
+                "level": "disputed",
+                "reason": "前1042年为唐叔虞受封的推定。曲沃与翼的君主并存，以第二层展示。前三家从前453年势力分立开始显示，前403年获周王承认为诸侯。晋亡年存在前376年与前349年等不同口径。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": [
+                  {
+                    "label": "本图采用的終点",
+                    "year": 349,
+                    "explanation": "采用晋公室延续至前349年的一系。",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "另一终结口径",
+                    "year": 376,
+                    "explanation": "采用前376年三分晋余地的终结口径；不同方案的君主世系也须整体对照。",
+                    "sources": [
+                      {
+                        "id": "source-007",
+                        "title": "《史记》·晋世家",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷039"
+                      },
+                      {
+                        "id": "source-002",
+                        "title": "《史记》卷十五 · 六国年表（原典）",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "rulers": [
+                {
+                  "id": "jin-r23",
+                  "name": "晋厉公",
+                  "person": "寿曼",
+                  "start": 580,
+                  "end": 573,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 580,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "jin-r24",
+                  "name": "晋悼公",
+                  "person": "周",
+                  "start": 572,
+                  "end": 558,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "disputed",
+                    "reason": "实际即位与所采用条带起点不同；元年记法需区分原典叙事与底表口径。",
+                    "reviewStatus": "partial",
+                    "sources": [],
+                    "alternatives": [
+                      {
+                        "label": "实际即位",
+                        "year": 573,
+                        "explanation": "《左传》成公十八年记即位，传统换算前573年；《晋世家》亦叙该次迎立。",
+                        "sources": [
+                          {
+                            "id": "source-053",
+                            "title": "《春秋左氏传》·成公十八年",
+                            "url": "https://zh.wikisource.org/zh-hans/春秋左氏傳/成公"
+                          },
+                          {
+                            "id": "source-007",
+                            "title": "《史记》·晋世家",
+                            "url": "https://zh.wikisource.org/zh-hans/史記/卷039"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "本图年表起点",
+                        "year": 572,
+                        "explanation": "沿用君主列表底表的区间起点；不据此否定前573年已即位，也不宣称所有原典均以此为元年。",
+                        "sources": [
+                          {
+                            "id": "source-003",
+                            "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "chronology": {
+                    "accession": 573,
+                    "regnalStart": 572,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "note": "实际即位系于鲁成公十八年，换算前573年。条带沿用原年表的前572年起点；《晋世家》叙即位时亦称悼公元年，故不可把前572年称作无争议的唯一元年。",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      },
+                      {
+                        "id": "source-007",
+                        "title": "《史记》·晋世家",
+                        "url": "https://zh.wikisource.org/zh-hans/史記/卷039"
+                      },
+                      {
+                        "id": "source-053",
+                        "title": "《春秋左氏传》·成公十八年",
+                        "url": "https://zh.wikisource.org/zh-hans/春秋左氏傳/成公"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "e33",
+              "name": "鄢陵之战",
+              "year": 575,
+              "states": [
+                "jin",
+                "chu",
+                "zheng"
+              ],
+              "kind": "战争",
+              "description": "晋军击败楚、郑军，晋楚争衡持续。",
+              "sources": [
+                {
+                  "id": "source-001",
+                  "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e34",
+              "name": "晋悼公即位",
+              "year": 573,
+              "states": [
+                "jin"
+              ],
+              "kind": "政治",
+              "description": "晋厉公被杀后，公孙周被迎立，是为晋悼公。实际即位在前573年，须与本图沿用的前572年条带起点分开。",
+              "sources": [
+                {
+                  "id": "source-007",
+                  "title": "《史记》·晋世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷039"
+                },
+                {
+                  "id": "source-053",
+                  "title": "《春秋左氏传》·成公十八年",
+                  "url": "https://zh.wikisource.org/zh-hans/春秋左氏傳/成公"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "实际即位依据《左传》成公十八年及《晋世家》迎立记载；本事件引用君主的实际即位字段，不引用年表条带起点。",
+                "reviewStatus": "reviewed",
+                "sources": [],
+                "alternatives": []
+              }
+            }
+          ],
+          "stateNames": {
+            "zhou": "周王室",
+            "qin": "秦",
+            "jin": "晋",
+            "qi": "齐",
+            "chu": "楚",
+            "yan": "燕",
+            "lu": "鲁",
+            "song": "宋",
+            "wei": "卫",
+            "zheng": "郑",
+            "chen": "陈",
+            "cai": "蔡",
+            "cao": "曹",
+            "wu": "吴",
+            "yue": "越",
+            "han": "韩",
+            "zhao": "赵",
+            "liang": "魏"
+          },
+          "sources": [
+            {
+              "id": "source-001",
+              "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+            },
+            {
+              "id": "source-002",
+              "title": "《史记》卷十五 · 六国年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+            },
+            {
+              "id": "source-003",
+              "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+              "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+            },
+            {
+              "id": "source-004",
+              "title": "周代诸侯国列表（国家存续与终点比较）",
+              "url": "https://zh.wikipedia.org/wiki/周代諸侯國列表"
+            },
+            {
+              "id": "source-005",
+              "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+              "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+            },
+            {
+              "id": "source-006",
+              "title": "Yue (state)（楚越与残余政权问题）",
+              "url": "https://en.wikipedia.org/wiki/Yue_(state)"
+            }
+          ]
+        },
+        "pages": [
+          {
+            "type": "chart",
+            "from": 580,
+            "to": 570,
+            "rows": [
+              {
+                "id": "jin",
+                "lanes": 1,
+                "rulers": [
+                  {
+                    "id": "jin-r23",
+                    "start": 580,
+                    "end": 573,
+                    "lane": 0
+                  },
+                  {
+                    "id": "jin-r24",
+                    "start": 572,
+                    "end": 558,
+                    "lane": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "晋 · 约 前1042—349年",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "晋厉公（寿曼） · 前580—573年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "晋悼公（周） · 前572—558年 · 存在异说 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "即位、元年与结局的纪年节点来源[2][3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "异说：实际即位 前573年 · 《左传》成公十八年记即位，传统换算前573年；《晋世家》亦叙该次迎立。 · 来源[3][2",
+                "height": 27
+              },
+              {
+                "text": "]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "异说：本图年表起点 前572年 · 沿用君主列表底表的区间起点；不据此否定前573年已即位，也不宣称所有原典均以此为元年。",
+                "height": 27
+              },
+              {
+                "text": " · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "事件索引 · 同一编号在相关国家行中对应同一事件",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E1 · 前575年 · 鄢陵之战 · 晋、楚、郑 · 较确定 · 来源[4]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "晋军击败楚、郑军，晋楚争衡持续。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E2 · 前573年 · 晋悼公即位 · 晋 · 较确定 · 来源[2][3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "晋厉公被杀后，公孙周被迎立，是为晋悼公。实际即位在前573年，须与本图沿用的前572年条带起点分开。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "图例与采用口径",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "核查来源 · 原典记载与纪年汇编分别标注",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[2] 《史记》·晋世家",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷039",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[3] 《春秋左氏传》·成公十八年",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/春秋左氏傳/成公",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[4] 《史记》卷十四 · 十二诸侯年表（原典）",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷014",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": "e33",
+            "number": 1,
+            "refs": [
+              4
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e34",
+            "number": 2,
+            "refs": [
+              2,
+              3
+            ],
+            "alternatives": []
+          }
+        ],
+        "sources": [
+          {
+            "title": "君主纪年表 · 检索汇编，待逐条校勘",
+            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+          },
+          {
+            "id": "source-007",
+            "title": "《史记》·晋世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷039"
+          },
+          {
+            "id": "source-053",
+            "title": "《春秋左氏传》·成公十八年",
+            "url": "https://zh.wikisource.org/zh-hans/春秋左氏傳/成公"
+          },
+          {
+            "id": "source-001",
+            "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+          }
+        ],
+        "drawn": [
+          "周代列国 · 历史对比笔记",
+          "前580—570年 · 晋",
+          "事件类别：全部 · 参考年份：前573年",
+          "前580—570年",
+          "前580",
+          "前575",
+          "前570",
+          "晋",
+          "晋厉公",
+          "晋悼公",
+          "E1",
+          "E2",
+          "彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份",
+          "定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 1 / 3 页",
+          "周代列国 · 历史对比笔记",
+          "前580—570年 · 晋",
+          "事件类别：全部 · 参考年份：前573年",
+          "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+          "",
+          "晋 · 约 前1042—349年",
+          "",
+          "晋厉公（寿曼） · 前580—573年 · 较确定 · 来源[1]",
+          "",
+          "晋悼公（周） · 前572—558年 · 存在异说 · 来源[1]",
+          "",
+          "即位、元年与结局的纪年节点来源[2][3]",
+          "",
+          "异说：实际即位 前573年 · 《左传》成公十八年记即位，传统换算前573年；《晋世家》亦叙该次迎立。 · 来源[3][2",
+          "]",
+          "",
+          "异说：本图年表起点 前572年 · 沿用君主列表底表的区间起点；不据此否定前573年已即位，也不宣称所有原典均以此为元年。",
+          " · 来源[1]",
+          "",
+          "事件索引 · 同一编号在相关国家行中对应同一事件",
+          "",
+          "E1 · 前575年 · 鄢陵之战 · 晋、楚、郑 · 较确定 · 来源[4]",
+          "",
+          "晋军击败楚、郑军，晋楚争衡持续。",
+          "",
+          "E2 · 前573年 · 晋悼公即位 · 晋 · 较确定 · 来源[2][3]",
+          "",
+          "晋厉公被杀后，公孙周被迎立，是为晋悼公。实际即位在前573年，须与本图沿用的前572年条带起点分开。",
+          "",
+          "图例与采用口径",
+          "",
+          "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+          "",
+          "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+          "",
+          "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 2 / 3 页",
+          "周代列国 · 历史对比笔记",
+          "前580—570年 · 晋",
+          "事件类别：全部 · 参考年份：前573年",
+          "核查来源 · 原典记载与纪年汇编分别标注",
+          "",
+          "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+          "",
+          "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+          "",
+          "[2] 《史记》·晋世家",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷039",
+          "",
+          "[3] 《春秋左氏传》·成公十八年",
+          "",
+          "https://zh.wikisource.org/zh-hans/春秋左氏傳/成公",
+          "",
+          "[4] 《史记》卷十四 · 十二诸侯年表（原典）",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷014",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 3 / 3 页"
+        ]
+      },
+      {
+        "options": {
+          "states": [
+            "cai",
+            "chen"
+          ],
+          "from": 535,
+          "to": 529,
+          "cursor": 530,
+          "category": "all",
+          "span": 150
+        },
+        "json": {
+          "schemaVersion": 1,
+          "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
+          "updated": "2026-10-18",
+          "from": 535,
+          "to": 529,
+          "category": "all",
+          "cursor": 530,
+          "chronology": {
+            "bars": "adopted-table",
+            "yearQueries": "verified-accession-and-interruptions"
+          },
+          "states": [
+            {
+              "id": "cai",
+              "name": "蔡",
+              "start": 1046,
+              "end": 447,
+              "interruptions": [
+                {
+                  "start": 531,
+                  "end": 530,
+                  "note": "楚灭蔡，前529年复国"
+                }
+              ],
+              "dating": {
+                "level": "inferred",
+                "reason": "前531年楚灭蔡，前529年复国；蔡平侯从复国后的前529年显示。蔡初封与蔡仲复封不强行给定精确时间。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              },
+              "rulers": [
+                {
+                  "id": "cai-r12",
+                  "name": "蔡灵侯",
+                  "person": "般",
+                  "start": 542,
+                  "end": 531,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 542,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "cai-r13",
+                  "name": "蔡平侯",
+                  "person": "廬",
+                  "start": 529,
+                  "end": 522,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 529,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "chen",
+              "name": "陈",
+              "start": 1046,
+              "end": 479,
+              "interruptions": [
+                {
+                  "start": 534,
+                  "end": 530,
+                  "note": "楚占陈，前529年复国"
+                }
+              ],
+              "dating": {
+                "level": "inferred",
+                "reason": "前534年楚灭陈，前529年复国；图中该段显示政权中断，不将楚派驻者画作陈国连续君主。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              },
+              "rulers": [
+                {
+                  "id": "chen-r14",
+                  "name": "陈哀公",
+                  "person": "弱",
+                  "start": 568,
+                  "end": 534,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 568,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "chen-r15",
+                  "name": "陈君留",
+                  "person": "留",
+                  "start": 534,
+                  "end": 534,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 534,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "chen-r16",
+                  "name": "陈惠公",
+                  "person": "吴",
+                  "start": 529,
+                  "end": 506,
+                  "lane": 0,
+                  "role": "君主",
+                  "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                  "description": "",
+                  "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                  "dating": {
+                    "level": "certain",
+                    "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                    "reviewStatus": "legacy",
+                    "sources": [],
+                    "alternatives": []
+                  },
+                  "chronology": {
+                    "accession": null,
+                    "regnalStart": 529,
+                    "abdication": null,
+                    "death": null,
+                    "changes": [],
+                    "endKind": "在位区间结束；具体性质待核实",
+                    "sources": [
+                      {
+                        "id": "source-003",
+                        "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+                        "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "id": "e40",
+              "name": "楚灭陈",
+              "year": 534,
+              "states": [
+                "chu",
+                "chen"
+              ],
+              "kind": "战争",
+              "description": "楚灵王灭陈并派人管理其地，陈政权中断；前529年再获恢复。",
+              "sources": [
+                {
+                  "id": "source-040",
+                  "title": "《史记》·陈杞世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷036"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e41",
+              "name": "楚灭蔡",
+              "year": 531,
+              "states": [
+                "chu",
+                "cai"
+              ],
+              "kind": "战争",
+              "description": "楚灵王诱杀蔡灵侯并灭蔡；蔡随后于前529年复国。",
+              "sources": [
+                {
+                  "id": "source-041",
+                  "title": "《史记》·管蔡世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷035"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            },
+            {
+              "id": "e42",
+              "name": "陈、蔡复国",
+              "year": 529,
+              "states": [
+                "chen",
+                "cai",
+                "chu"
+              ],
+              "kind": "政治",
+              "description": "楚灵王覆亡，楚平王恢复陈、蔡，是列国历史中灭亡与复国须分开表示的例子。",
+              "sources": [
+                {
+                  "id": "source-027",
+                  "title": "《史记》·楚世家",
+                  "url": "https://zh.wikisource.org/zh-hans/史記/卷040"
+                }
+              ],
+              "dating": {
+                "level": "certain",
+                "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                "reviewStatus": "legacy",
+                "sources": [],
+                "alternatives": []
+              }
+            }
+          ],
+          "stateNames": {
+            "zhou": "周王室",
+            "qin": "秦",
+            "jin": "晋",
+            "qi": "齐",
+            "chu": "楚",
+            "yan": "燕",
+            "lu": "鲁",
+            "song": "宋",
+            "wei": "卫",
+            "zheng": "郑",
+            "chen": "陈",
+            "cai": "蔡",
+            "cao": "曹",
+            "wu": "吴",
+            "yue": "越",
+            "han": "韩",
+            "zhao": "赵",
+            "liang": "魏"
+          },
+          "sources": [
+            {
+              "id": "source-001",
+              "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+            },
+            {
+              "id": "source-002",
+              "title": "《史记》卷十五 · 六国年表（原典）",
+              "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+            },
+            {
+              "id": "source-003",
+              "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+              "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+            },
+            {
+              "id": "source-004",
+              "title": "周代诸侯国列表（国家存续与终点比较）",
+              "url": "https://zh.wikipedia.org/wiki/周代諸侯國列表"
+            },
+            {
+              "id": "source-005",
+              "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+              "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+            },
+            {
+              "id": "source-006",
+              "title": "Yue (state)（楚越与残余政权问题）",
+              "url": "https://en.wikipedia.org/wiki/Yue_(state)"
+            }
+          ]
+        },
+        "pages": [
+          {
+            "type": "chart",
+            "from": 535,
+            "to": 529,
+            "rows": [
+              {
+                "id": "cai",
+                "lanes": 1,
+                "rulers": [
+                  {
+                    "id": "cai-r12",
+                    "start": 542,
+                    "end": 531,
+                    "lane": 0
+                  },
+                  {
+                    "id": "cai-r13",
+                    "start": 529,
+                    "end": 522,
+                    "lane": 0
+                  }
+                ]
+              },
+              {
+                "id": "chen",
+                "lanes": 2,
+                "rulers": [
+                  {
+                    "id": "chen-r14",
+                    "start": 568,
+                    "end": 534,
+                    "lane": 0
+                  },
+                  {
+                    "id": "chen-r15",
+                    "start": 534,
+                    "end": 534,
+                    "lane": 1
+                  },
+                  {
+                    "id": "chen-r16",
+                    "start": 529,
+                    "end": 506,
+                    "lane": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "蔡 · 约 前1046—447年",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "蔡灵侯（般） · 前542—531年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "蔡平侯（廬） · 前529—522年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "陈 · 约 前1046—479年",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "陈哀公（弱） · 前568—534年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "陈君留（留） · 前534年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "陈惠公（吴） · 前529—506年 · 较确定 · 来源[1]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "事件索引 · 同一编号在相关国家行中对应同一事件",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E1 · 前534年 · 楚灭陈 · 楚、陈 · 较确定 · 来源[2]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "楚灵王灭陈并派人管理其地，陈政权中断；前529年再获恢复。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E2 · 前531年 · 楚灭蔡 · 楚、蔡 · 较确定 · 来源[3]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "楚灵王诱杀蔡灵侯并灭蔡；蔡随后于前529年复国。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "E3 · 前529年 · 陈、蔡复国 · 陈、蔡、楚 · 较确定 · 来源[4]",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "楚灵王覆亡，楚平王恢复陈、蔡，是列国历史中灭亡与复国须分开表示的例子。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "图例与采用口径",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          },
+          {
+            "type": "index",
+            "lines": [
+              {
+                "text": "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "核查来源 · 原典记载与纪年汇编分别标注",
+                "kind": "heading",
+                "height": 34
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[2] 《史记》·陈杞世家",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷036",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[3] 《史记》·管蔡世家",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷035",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "[4] 《史记》·楚世家",
+                "kind": "source",
+                "height": 27
+              },
+              {
+                "text": "",
+                "height": 7
+              },
+              {
+                "text": "https://zh.wikisource.org/zh-hans/史記/卷040",
+                "kind": "url",
+                "height": 24
+              },
+              {
+                "text": "",
+                "height": 7
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": "e40",
+            "number": 1,
+            "refs": [
+              2
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e41",
+            "number": 2,
+            "refs": [
+              3
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e42",
+            "number": 3,
+            "refs": [
+              4
+            ],
+            "alternatives": []
+          }
+        ],
+        "sources": [
+          {
+            "title": "君主纪年表 · 检索汇编，待逐条校勘",
+            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+          },
+          {
+            "id": "source-040",
+            "title": "《史记》·陈杞世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷036"
+          },
+          {
+            "id": "source-041",
+            "title": "《史记》·管蔡世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷035"
+          },
+          {
+            "id": "source-027",
+            "title": "《史记》·楚世家",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷040"
+          }
+        ],
+        "drawn": [
+          "周代列国 · 历史对比笔记",
+          "前535—529年 · 蔡、陈",
+          "事件类别：全部 · 参考年份：前530年",
+          "前535—529年",
+          "前535",
+          "前530",
+          "蔡",
+          "蔡灵侯",
+          "蔡平侯",
+          "E2",
+          "E3",
+          "陈",
+          "陈哀公",
+          "陈君留",
+          "陈惠公",
+          "E1",
+          "E3",
+          "彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份",
+          "定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 1 / 3 页",
+          "周代列国 · 历史对比笔记",
+          "前535—529年 · 蔡、陈",
+          "事件类别：全部 · 参考年份：前530年",
+          "君主索引 · 完整在位区间（不将元年一概视为实际即位年）",
+          "",
+          "蔡 · 约 前1046—447年",
+          "",
+          "蔡灵侯（般） · 前542—531年 · 较确定 · 来源[1]",
+          "",
+          "蔡平侯（廬） · 前529—522年 · 较确定 · 来源[1]",
+          "",
+          "陈 · 约 前1046—479年",
+          "",
+          "陈哀公（弱） · 前568—534年 · 较确定 · 来源[1]",
+          "",
+          "陈君留（留） · 前534年 · 较确定 · 来源[1]",
+          "",
+          "陈惠公（吴） · 前529—506年 · 较确定 · 来源[1]",
+          "",
+          "事件索引 · 同一编号在相关国家行中对应同一事件",
+          "",
+          "E1 · 前534年 · 楚灭陈 · 楚、陈 · 较确定 · 来源[2]",
+          "",
+          "楚灵王灭陈并派人管理其地，陈政权中断；前529年再获恢复。",
+          "",
+          "E2 · 前531年 · 楚灭蔡 · 楚、蔡 · 较确定 · 来源[3]",
+          "",
+          "楚灵王诱杀蔡灵侯并灭蔡；蔡随后于前529年复国。",
+          "",
+          "E3 · 前529年 · 陈、蔡复国 · 陈、蔡、楚 · 较确定 · 来源[4]",
+          "",
+          "楚灵王覆亡，楚平王恢复陈、蔡，是列国历史中灭亡与复国须分开表示的例子。",
+          "",
+          "图例与采用口径",
+          "",
+          "彩色条：采用年表的君主在位区间；细线：国家存续；E编号菱形：事件；红色端点：国家终止或秦称帝转制；金色竖线：参考年份。",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 2 / 3 页",
+          "周代列国 · 历史对比笔记",
+          "前535—529年 · 蔡、陈",
+          "事件类别：全部 · 参考年份：前530年",
+          "定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。",
+          "",
+          "前841年以前及部分终点存在争议；国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。",
+          "",
+          "核查来源 · 原典记载与纪年汇编分别标注",
+          "",
+          "[1] 君主纪年表 · 检索汇编，待逐条校勘",
+          "",
+          "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+          "",
+          "[2] 《史记》·陈杞世家",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷036",
+          "",
+          "[3] 《史记》·管蔡世家",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷035",
+          "",
+          "[4] 《史记》·楚世家",
+          "",
+          "https://zh.wikisource.org/zh-hans/史記/卷040",
+          "",
+          "周代列国 · 精选资料 / 年级精度 · 资料更新 2026-10-18 · 导出 <DATE>",
+          "第 3 / 3 页"
+        ]
+      }
+    ],
+    "download": {
+      "name": "zhou-comparison-260-221.json",
+      "type": "application/json",
+      "json": {
+        "schemaVersion": 1,
+        "version": "第五版 · 统一资料源 / 2026-10-18专项纪年校核",
+        "updated": "2026-10-18",
+        "from": 260,
+        "to": 221,
+        "category": "all",
+        "cursor": 770,
+        "chronology": {
+          "bars": "adopted-table",
+          "yearQueries": "verified-accession-and-interruptions"
+        },
+        "states": [
+          {
+            "id": "qin",
+            "name": "秦",
+            "start": 890,
+            "end": 221,
+            "interruptions": [],
+            "dating": {
+              "level": "disputed",
+              "reason": "起点只是非子封秦的时代约值，尚无确年；沿用约前900年会与本图周孝王时期冲突。国家终点的口径另见说明。",
+              "reviewStatus": "partial",
+              "sources": [],
+              "alternatives": [
+                {
+                  "label": "本图采用的孝王时期约值",
+                  "year": 890,
+                  "explanation": "《秦本纪》仅定位于周孝王时期。天水市政府介绍换算为前890年，本图取其为约值，与本图孝王前891—886年的拟年相容；不能据此确立受封年。",
+                  "sources": [
+                    {
+                      "id": "source-011",
+                      "title": "《史记》·秦本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                    },
+                    {
+                      "id": "source-058",
+                      "title": "天水市人民政府《魅力天水》（非子封秦前890年说，后出换算）",
+                      "url": "https://www.tianshui.gov.cn/mlts.htm"
+                    },
+                    {
+                      "id": "source-005",
+                      "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+                      "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+                    }
+                  ]
+                },
+                {
+                  "label": "约前900年旧推定",
+                  "year": 900,
+                  "explanation": "甘肃档案网页转载百科，沿用约前900年起点，仅作旧说出处；并非原典明载的绝对年，且落在本图共王时期，不能与本图孝王拟年混配。",
+                  "sources": [
+                    {
+                      "id": "source-059",
+                      "title": "甘肃档案信息网·秦非子（转载百科，约前900年旧说）",
+                      "url": "https://www.cngsda.net/mrda/32777.jhtml"
+                    },
+                    {
+                      "id": "source-011",
+                      "title": "《史记》·秦本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                    },
+                    {
+                      "id": "source-005",
+                      "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+                      "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+                    }
+                  ]
+                }
+              ]
+            },
+            "rulers": [
+              {
+                "id": "qin-r32",
+                "name": "秦昭襄王",
+                "person": "",
+                "start": 306,
+                "end": 251,
+                "lane": 0,
+                "role": "君主",
+                "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "description": "",
+                "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                "dating": {
+                  "level": "certain",
+                  "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                  "reviewStatus": "legacy",
+                  "sources": [],
+                  "alternatives": []
+                },
+                "chronology": {
+                  "accession": 307,
+                  "regnalStart": 306,
+                  "abdication": null,
+                  "death": 251,
+                  "changes": [],
+                  "endKind": "去世",
+                  "sources": [
+                    {
+                      "id": "source-011",
+                      "title": "《史记》·秦本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "qin-r33",
+                "name": "秦孝文王",
+                "person": "",
+                "start": 250,
+                "end": 250,
+                "lane": 0,
+                "role": "君主",
+                "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "description": "",
+                "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                "dating": {
+                  "level": "certain",
+                  "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                  "reviewStatus": "legacy",
+                  "sources": [],
+                  "alternatives": []
+                },
+                "chronology": {
+                  "accession": 251,
+                  "regnalStart": 250,
+                  "abdication": null,
+                  "death": 250,
+                  "changes": [
+                    {
+                      "year": 250,
+                      "label": "除丧后正式即位仪式"
+                    }
+                  ],
+                  "endKind": "去世",
+                  "note": "昭襄王卒后继承王位；除丧正式即位仪式与次年元年另行区分。",
+                  "sources": [
+                    {
+                      "id": "source-011",
+                      "title": "《史记》·秦本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "qin-r34",
+                "name": "秦庄襄王",
+                "person": "異人，后改名子楚",
+                "start": 249,
+                "end": 247,
+                "lane": 0,
+                "role": "君主",
+                "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "description": "",
+                "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
+                "dating": {
+                  "level": "certain",
+                  "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                  "reviewStatus": "legacy",
+                  "sources": [],
+                  "alternatives": []
+                },
+                "chronology": {
+                  "accession": 250,
+                  "regnalStart": 249,
+                  "abdication": null,
+                  "death": 247,
+                  "changes": [],
+                  "endKind": "去世",
+                  "sources": [
+                    {
+                      "id": "source-011",
+                      "title": "《史记》·秦本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "qin-r35",
+                "name": "秦王政",
+                "person": "政",
+                "start": 246,
+                "end": 221,
+                "lane": 0,
+                "role": "君主",
+                "source": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表",
+                "description": "图示采用前246年元年口径，其实际继位在前247年；前221年转称始皇帝，统治延续到前210年。",
+                "exit": "前221年为称帝节点，非去世或退位。",
+                "dating": {
+                  "level": "certain",
+                  "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+                  "reviewStatus": "legacy",
+                  "sources": [],
+                  "alternatives": []
+                },
+                "chronology": {
+                  "accession": 247,
+                  "regnalStart": 246,
+                  "abdication": null,
+                  "death": 210,
+                  "changes": [
+                    {
+                      "year": 221,
+                      "label": "称帝；诸侯国阶段结束"
+                    }
+                  ],
+                  "endKind": "身份转变",
+                  "sources": [
+                    {
+                      "id": "source-011",
+                      "title": "《史记》·秦本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+                    },
+                    {
+                      "id": "source-019",
+                      "title": "《史记》·秦始皇本纪",
+                      "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "events": [
+          {
+            "id": "e91",
+            "name": "长平之战",
+            "year": 260,
+            "states": [
+              "qin",
+              "zhao"
+            ],
+            "kind": "战争",
+            "description": "秦赵决战，赵军大败，赵国国力严重受损。",
+            "sources": [
+              {
+                "id": "source-016",
+                "title": "《史记》·白起王翦列传",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e92",
+            "name": "邯郸解围",
+            "year": 257,
+            "states": [
+              "qin",
+              "zhao",
+              "liang",
+              "chu"
+            ],
+            "kind": "战争",
+            "description": "赵在魏、楚援助下解除秦军对邯郸的围攻，秦统一进程暂受阻。",
+            "sources": [
+              {
+                "id": "source-002",
+                "title": "《史记》卷十五 · 六国年表（原典）",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+              },
+              {
+                "id": "source-016",
+                "title": "《史记》·白起王翦列传",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e93",
+            "name": "周王室终结",
+            "year": 256,
+            "states": [
+              "zhou",
+              "qin"
+            ],
+            "kind": "政治",
+            "description": "秦攻西周公，周赧王同年死，周朝王室终结。东周小国到前249年才被秦灭，并非周天子继续在位。",
+            "sources": [
+              {
+                "id": "source-010",
+                "title": "《史记》·周本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e95",
+            "name": "秦灭东周小国",
+            "year": 249,
+            "states": [
+              "qin"
+            ],
+            "kind": "战争",
+            "description": "秦灭东周君的封国，结束最后的周系小国；应与前256年周王室终结区分。",
+            "sources": [
+              {
+                "id": "source-011",
+                "title": "《史记》·秦本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷005"
+              },
+              {
+                "id": "source-010",
+                "title": "《史记》·周本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷004"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e96",
+            "name": "秦王政元年",
+            "year": 246,
+            "states": [
+              "qin"
+            ],
+            "kind": "政治",
+            "description": "秦王政开始纪年；实际继位发生在前247年，图中采用元年口径。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e97",
+            "name": "秦灭韩",
+            "year": 230,
+            "states": [
+              "qin",
+              "han"
+            ],
+            "kind": "战争",
+            "description": "秦军俘韩王安，韩国终止，是秦灭六国的第一个完成节点。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e98",
+            "name": "秦破邯郸",
+            "year": 228,
+            "states": [
+              "qin",
+              "zhao"
+            ],
+            "kind": "战争",
+            "description": "秦俘赵王迁，赵公子嘉在代地继续抵抗，至前222年才终结。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e99",
+            "name": "荆轲刺秦",
+            "year": 227,
+            "states": [
+              "yan",
+              "qin"
+            ],
+            "kind": "政治",
+            "description": "燕太子丹遣荆轲刺秦王政，未成。秦随后加紧攻燕。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e100",
+            "name": "秦取蓟",
+            "year": 226,
+            "states": [
+              "qin",
+              "yan"
+            ],
+            "kind": "战争",
+            "description": "秦夺取燕都蓟，燕王喜退往辽东；燕国尚未完全终结。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e101",
+            "name": "秦灭魏",
+            "year": 225,
+            "states": [
+              "qin",
+              "liang"
+            ],
+            "kind": "战争",
+            "description": "秦军引水攻大梁，魏王假降，魏国终止。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e102",
+            "name": "秦灭楚",
+            "year": 223,
+            "states": [
+              "qin",
+              "chu"
+            ],
+            "kind": "战争",
+            "description": "王翦等破楚，楚王负刍被俘，昌平君领导的余部也遭击败。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              },
+              {
+                "id": "source-016",
+                "title": "《史记》·白起王翦列传",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷073"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e103",
+            "name": "燕、代余部终结",
+            "year": 222,
+            "states": [
+              "qin",
+              "yan",
+              "zhao"
+            ],
+            "kind": "战争",
+            "description": "秦俘燕王喜与代王嘉，燕及赵的最后抵抗政权终结。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          },
+          {
+            "id": "e104",
+            "name": "秦灭齐 · 完成统一",
+            "year": 221,
+            "states": [
+              "qin",
+              "qi"
+            ],
+            "kind": "政治",
+            "description": "齐王建降秦，六国全部终结，秦王政称始皇帝，诸侯国秦转为帝国。",
+            "sources": [
+              {
+                "id": "source-019",
+                "title": "《史记》·秦始皇本纪",
+                "url": "https://zh.wikisource.org/zh-hans/史記/卷006"
+              }
+            ],
+            "dating": {
+              "level": "certain",
+              "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+              "reviewStatus": "legacy",
+              "sources": [],
+              "alternatives": []
+            }
+          }
+        ],
+        "stateNames": {
+          "zhou": "周王室",
+          "qin": "秦",
+          "jin": "晋",
+          "qi": "齐",
+          "chu": "楚",
+          "yan": "燕",
+          "lu": "鲁",
+          "song": "宋",
+          "wei": "卫",
+          "zheng": "郑",
+          "chen": "陈",
+          "cai": "蔡",
+          "cao": "曹",
+          "wu": "吴",
+          "yue": "越",
+          "han": "韩",
+          "zhao": "赵",
+          "liang": "魏"
+        },
+        "sources": [
+          {
+            "id": "source-001",
+            "title": "《史记》卷十四 · 十二诸侯年表（原典）",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷014"
+          },
+          {
+            "id": "source-002",
+            "title": "《史记》卷十五 · 六国年表（原典）",
+            "url": "https://zh.wikisource.org/zh-hans/史記/卷015"
+          },
+          {
+            "id": "source-003",
+            "title": "周朝诸侯国君主列表（检索汇编；纪年须继续校勘）",
+            "url": "https://zh.wikipedia.org/wiki/周朝諸侯國君主列表"
+          },
+          {
+            "id": "source-004",
+            "title": "周代诸侯国列表（国家存续与终点比较）",
+            "url": "https://zh.wikipedia.org/wiki/周代諸侯國列表"
+          },
+          {
+            "id": "source-005",
+            "title": "Zhou dynasty · Kings（含西周不同纪年方案）",
+            "url": "https://en.wikipedia.org/wiki/Zhou_dynasty"
+          },
+          {
+            "id": "source-006",
+            "title": "Yue (state)（楚越与残余政权问题）",
+            "url": "https://en.wikipedia.org/wiki/Yue_(state)"
+          }
+        ]
+      }
+    }
+  }
+}

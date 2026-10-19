@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "metadata": {"title":"三国并存（结构样例）","updated":"2026-10-19","version":"schema2-example-1","sourceIds":["ex3k-source-chronicles"],"researchNote":"小型模型演示，非完整史料；所列原典为待复核书目，不声称已逐条校勘。"},
+  "timeline": {"start":{"era":"CE","year":220},"end":{"era":"CE","year":280},"defaultEnd":{"era":"CE","year":280},"cursor":{"era":"CE","year":230}},
+  "periods": [
+    {"id":"ex3k-period-coexistence","name":"三国并存","start":{"era":"CE","year":220},"end":{"era":"CE","year":280},"structure":"coexistence","color":"#64796d","polityIds":["ex3k-polity-cao-wei","ex3k-polity-shu-han","ex3k-polity-sun-wu"],"sourceIds":["ex3k-source-chronicles"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"采用220—280年的教学分期；蜀汉与孙吴建立时间不同，须按政权区间查询。年表及原典待复核。","alternatives":[]}}
+  ],
+  "polities": [
+    {"id":"ex3k-polity-cao-wei","name":"曹魏","kind":"kingdom","start":{"era":"CE","year":220},"end":{"era":"CE","year":265},"color":"#415663","region":"洛阳","ending":"禅代为晋；样例未收晋政权","sourceIds":["ex3k-source-chronicles"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"概略年表，待复核原典及改朝换代口径。","alternatives":[]}},
+    {"id":"ex3k-polity-shu-han","name":"蜀汉","kind":"kingdom","start":{"era":"CE","year":221},"end":{"era":"CE","year":263},"color":"#64796d","region":"成都","ending":"魏灭蜀汉","sourceIds":["ex3k-source-chronicles"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"概略年表，待复核。","alternatives":[]}},
+    {"id":"ex3k-polity-sun-wu","name":"孙吴","kind":"kingdom","start":{"era":"CE","year":222},"end":{"era":"CE","year":280},"color":"#8d734c","region":"建业","ending":"晋灭吴","note":"本例以222年建元为起点，229年称帝另记于任期changes，不据此否认此前政治组织。","sourceIds":["ex3k-source-chronicles"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"采用222年建元口径；称帝为229年，均待复核。","alternatives":[]}}
+  ],
+  "people": [
+    {"id":"ex3k-person-cao-pi","name":"曹丕","summary":"曹魏开国皇帝。仅演示人物与任期分离，生平待复核。","sourceIds":["ex3k-source-chronicles"]},
+    {"id":"ex3k-person-liu-bei","name":"刘备","summary":"蜀汉开国皇帝。仅演示稳定人物ID，生平待复核。","sourceIds":["ex3k-source-chronicles"]},
+    {"id":"ex3k-person-sun-quan","name":"孙权","summary":"孙吴建立者。以一人连接采用特定起点的政治任期，非完整生涯。","sourceIds":["ex3k-source-chronicles"]}
+  ],
+  "tenures": [
+    {"id":"ex3k-tenure-cao-pi","polityId":"ex3k-polity-cao-wei","personId":"ex3k-person-cao-pi","name":"魏文帝","role":"皇帝","start":{"era":"CE","year":220},"end":{"era":"CE","year":226},"sourceIds":["ex3k-source-chronicles"],"chronology":{"accession":{"era":"CE","year":220},"regnalStart":{"era":"CE","year":220},"abdication":null,"death":null},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"示例任期，待复核。","alternatives":[]}},
+    {"id":"ex3k-tenure-liu-bei","polityId":"ex3k-polity-shu-han","personId":"ex3k-person-liu-bei","name":"汉昭烈帝","role":"皇帝","start":{"era":"CE","year":221},"end":{"era":"CE","year":223},"sourceIds":["ex3k-source-chronicles"],"chronology":{"accession":{"era":"CE","year":221},"regnalStart":{"era":"CE","year":221},"abdication":null,"death":null},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"示例任期，待复核。","alternatives":[]}},
+    {"id":"ex3k-tenure-sun-quan","polityId":"ex3k-polity-sun-wu","personId":"ex3k-person-sun-quan","name":"孙权（吴王至吴帝）","role":"君主","start":{"era":"CE","year":222},"end":{"era":"CE","year":252},"sourceIds":["ex3k-source-chronicles"],"chronology":{"accession":null,"regnalStart":{"era":"CE","year":222},"abdication":null,"death":null,"changes":[{"year":{"era":"CE","year":229},"label":"称帝（待复核）"}]},"dating":{"level":"inferred","reviewStatus":"legacy","reason":"222年建元起示，不等于实际开始执政；待复核。","alternatives":[]}}
+  ],
+  "events": [
+    {"id":"ex3k-event-wei-establishment","name":"曹丕称帝","kind":"政治","yearRef":{"tenureId":"ex3k-tenure-cao-pi","field":"accession"},"sourceIds":["ex3k-source-chronicles"],"dating":{"level":"inferred","reviewStatus":"legacy","reason":"引用明确维护的承位节点，不从条带端点推断；原典待复核。","alternatives":[]},"narrative":{"background":"东汉末政治分裂（概略）。","process":"曹丕受禅称帝（待复核）。","result":"曹魏建立。","impact":"本例将其作为三国分期起点，不表示三国同年建立。","related":[]}}
+  ],
+  "activities": [],
+  "relations": {
+    "eventPolities":[{"eventId":"ex3k-event-wei-establishment","polityId":"ex3k-polity-cao-wei","kind":"involved"}],
+    "eventPeople":[{"eventId":"ex3k-event-wei-establishment","personId":"ex3k-person-cao-pi","polityId":"ex3k-polity-cao-wei","kind":"participant","description":"称帝者（待复核）。","sourceIds":["ex3k-source-chronicles"]}],
+    "tenurePeople":[],
+    "personPolities":[]
+  },
+  "sources": [{"id":"ex3k-source-chronicles","title":"《三国志》目录（样例待复核书目）","url":"https://zh.wikisource.org/wiki/三國志","reviewStatus":"pending","note":"仅提供待核原典入口；未经逐条校勘，不视为本例所有年代均已获直接证明。"}]
+}
