@@ -22,7 +22,7 @@
     };
     const rulersAt = (value, year) => {
       const item = state(value);
-      return !existsAt(item, year) || interruptionAt(item, year) ? [] : item.rulers.filter(ruler => overlaps(comparisonStart(ruler), ruler.end, year, year));
+      return !existsAt(item, year) || interruptionAt(item, year) ? [] : item.rulers.filter(ruler => ruler.polityAssociation !== 'contextual' && overlaps(comparisonStart(ruler), ruler.end, year, year));
     };
     function eventsInRange({from = timeline.start, to = timeline.end, states: ids = [...states.keys()], category = 'all'} = {}) {
       const selected = new Set(ids);
@@ -49,7 +49,7 @@
       for (const event of selectedEvents) for (const person of event.participants || []) personIds.add(person.id);
       for (const person of data.people) if (person.states?.some(id => selectedIds.has(id))) personIds.add(person.id);
       // Detached, additive v1 snapshot: existing consumers retain their fields and IDs.
-      return copy({schemaVersion: 1, timeEncoding: 'bce-axis', timeline, version: data.version, updated: data.updated, from, to, category, cursor,
+      return copy({schemaVersion: 1, timeEncoding: 'bce-axis', ...(data.datasetId ? {datasetId:data.datasetId} : {}), timeline, version: data.version, updated: data.updated, from, to, category, cursor,
         title: data.title || '历史对照图', legend: data.metadata?.exportLegend, scopeNote: data.scopeNote || data.metadata?.scopeNote, chronology: {bars: 'adopted-table', yearQueries: 'verified-accession-and-interruptions'},
         states: selected.map(item => ({...item, rulers: rulersInRange(item, from, to)})),
         polities: selected.map(item => polities.get(item.id)), tenures: selectedTenures,

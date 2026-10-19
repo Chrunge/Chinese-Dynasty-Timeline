@@ -13,6 +13,7 @@
     function parse(hash) {
       if (typeof hash !== 'string' || hash.length > 10000) return null;
       const params = new URLSearchParams(hash.replace(/^#/, ''));
+      if(params.has('dataset') && params.get('dataset') !== (data.datasetId||'zhou'))return null;
       const version = params.has('v') ? params.get('v') : '1', encoding = params.get('time');
       if (!['1','2'].includes(version) || encoding !== null && encoding !== time.encoding || version === '2' && encoding !== time.encoding) return null;
       const view = {}, result = {view};
@@ -55,6 +56,7 @@
       const nonBCE = [view.cursor,view.end,range?.from,range?.to].some(coord => typeof coord === 'number' && Number.isFinite(coord) && coord <= 0);
       const params = new URLSearchParams({v:nonBCE?'2':'1',year:String(view.cursor),end:String(view.end),states:view.selected.join(','),pinned:pinned.join(','),order:order.join(','),zoom:String(Number(view.px.toFixed(4))),category:view.category,mode:view.mode,density:view.density,scope:view.searchScope,q:view.query,desc:view.searchDescriptions?'1':'0',event:view.activeEventId||'',target:view.searchTarget||''});
       if (nonBCE) params.set('time',time.encoding);
+      if(data.datasetId && data.datasetId!=='zhou')params.set('dataset',data.datasetId);
       if (range) for (const key of ['from','to','width']) if (Number.isFinite(range[key])) params.set(key,String(Number(range[key].toFixed(4))));
       const key = search.normalizeKey(item); if (validItem(key)) params.set('item',key);
       return '#' + params.toString();

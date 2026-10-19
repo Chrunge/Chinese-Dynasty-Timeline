@@ -35,7 +35,8 @@ function buildExportPlan(model,options={},measureText){
   if(!list.length)items.push({text:'本导出范围没有已定位的在位区间；空白表示未收录或该阶段未存续。'});
   for(const {r,ref,refs,datingRefs,chronologyRefs,alternatives:opinions} of list){
    items.push({text:r.name+(r.person?'（'+r.person+'）':'')+' · '+range(r.start,r.end,r.approx)+' · '+certaintyLabel[r.dating?.level||'inferred']+' · 来源'+citations([...new Set([ref,...refs,...datingRefs].filter(Boolean))])});
-   const chronology=chronologyRefs.filter(n=>n!==ref&&!datingRefs.includes(n));
+   if(r.associationNote)items.push({text:'任期身份说明：'+r.associationNote});
+    const chronology=chronologyRefs.filter(n=>n!==ref&&!datingRefs.includes(n));
    if(chronology.length)items.push({text:'即位、元年与结局的纪年节点来源'+citations(chronology)});
    items.push(...opinionItems(opinions));
   }

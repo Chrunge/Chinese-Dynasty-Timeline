@@ -53,7 +53,7 @@ function installTimelineDOM(document,chart){
  const createElement=document.createElement;
  document.createElement=tag=>tag==='template'?{content:{},set innerHTML(html){this.content.firstElementChild=parse(String(html))[0]||null;}}:createElement(tag);
 }
-function boot(store={},width=1200,modelContext){
+function boot(store={},width=1200,modelContext,dataAsset='data.js'){
  const elements=new Map(),listeners={};
  const el=id=>{if(!elements.has(id))elements.set(id,{id,style:{},classList:{values:new Set(),toggle(k,value){if(value??!this.values.has(k))this.values.add(k);else this.values.delete(k)},add(k){this.values.add(k)},remove(k){this.values.delete(k)},contains(k){return this.values.has(k)}},firstChild:{textContent:''},dataset:{},innerHTML:'',textContent:'',value:'',scrollLeft:0,scrollTop:0,clientWidth:width,clientHeight:560,hidden:false,addEventListener(name,f){if(name==='close')this.onclose=f;else this[name]=f},showModal(){this.open=true},close(){this.open=false;this.onclose?.()},focus(){ctx.document.activeElement=this},querySelectorAll(){return this.controls||[]},isConnected:true,setPointerCapture(){},getBoundingClientRect(){return {top:0,left:0,right:width,bottom:800}},click(){}});return elements.get(id)};
  const periods=['all','west','spring','war'].map(p=>{let e=el(p);e.dataset.period=p;return e});
@@ -62,7 +62,7 @@ function boot(store={},width=1200,modelContext){
  installTimelineDOM(ctx.document,el('#chart'));
  const querySelector=ctx.document.querySelector;
  ctx.document.querySelector=selector=>selector==='.cursorline'?el('#chart').querySelector(selector)||querySelector(selector):querySelector(selector);
- vm.createContext(ctx);vm.runInContext(fs.readFileSync(base+'dist/data.js','utf8'),ctx);vm.runInContext(fs.readFileSync(base+'dist/app.js','utf8'),ctx);
+ vm.createContext(ctx);vm.runInContext(fs.readFileSync(base+'dist/'+dataAsset,'utf8'),ctx);vm.runInContext(fs.readFileSync(base+'dist/app.js','utf8'),ctx);
  const run=s=>vm.runInContext(s,ctx);
  for(const [name,path] of Object.entries(require('./state-aliases.cjs')))run(`Object.defineProperty(globalThis,${JSON.stringify(name)},{get:()=>${path},set:value=>{${path}=value},configurable:true})`);
  const action=(action,id)=>listeners.click({target:{closest:()=>({dataset:{action,id}})}});

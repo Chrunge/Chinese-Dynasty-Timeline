@@ -81,7 +81,7 @@
     };
     const rulersAt = (value, year) => {
       const item = state(value);
-      return !existsAt(item, year) || interruptionAt(item, year) ? [] : item.rulers.filter(ruler => overlaps(comparisonStart(ruler), ruler.end, year, year));
+      return !existsAt(item, year) || interruptionAt(item, year) ? [] : item.rulers.filter(ruler => ruler.polityAssociation !== 'contextual' && overlaps(comparisonStart(ruler), ruler.end, year, year));
     };
     function eventsInRange({from = timeline.start, to = timeline.end, states: ids = [...states.keys()], category = 'all'} = {}) {
       const selected = new Set(ids);
@@ -108,7 +108,7 @@
       for (const event of selectedEvents) for (const person of event.participants || []) personIds.add(person.id);
       for (const person of data.people) if (person.states?.some(id => selectedIds.has(id))) personIds.add(person.id);
       // Detached, additive v1 snapshot: existing consumers retain their fields and IDs.
-      return copy({schemaVersion: 1, timeEncoding: 'bce-axis', timeline, version: data.version, updated: data.updated, from, to, category, cursor,
+      return copy({schemaVersion: 1, timeEncoding: 'bce-axis', ...(data.datasetId ? {datasetId:data.datasetId} : {}), timeline, version: data.version, updated: data.updated, from, to, category, cursor,
         title: data.title || '历史对照图', legend: data.metadata?.exportLegend, scopeNote: data.scopeNote || data.metadata?.scopeNote, chronology: {bars: 'adopted-table', yearQueries: 'verified-accession-and-interruptions'},
         states: selected.map(item => ({...item, rulers: rulersInRange(item, from, to)})),
         polities: selected.map(item => polities.get(item.id)), tenures: selectedTenures,
@@ -206,6 +206,7 @@ Object.assign(Zhou,{normalizeSearch,rulerAliases,personAliases,countryAliases,na
  const time=Zhou.Time,bounds=time.bounds(D);
 function normalizeCombo(c){
  if(!c||typeof c!=='object'||typeof c.name!=='string'||!c.name.trim()||!Array.isArray(c.states)||c.timeEncoding!==undefined&&c.timeEncoding!==time.encoding)return null;
+ if(c.datasetId!==undefined&&c.datasetId!==(D.datasetId||'zhou'))return null;
  const validId=id=>typeof id==='string'&&D.states.some(s=>s.id===id);
  const states=[...new Set(c.states.filter(validId))];if(!states.length)return null;
  const number=(v,low,high,fallback)=>(typeof v==='number'||typeof v==='string'&&v.trim())&&Number.isFinite(Number(v))?Math.max(low,Math.min(high,Number(v))):fallback;
@@ -214,7 +215,7 @@ function normalizeCombo(c){
  const from=year(c.from,bounds.start),to=year(c.to,bounds.defaultEnd);if(from<to)return null;
  const end=to<year(c.end,bounds.defaultEnd)?bounds.end:year(c.end,bounds.defaultEnd);
  const sizes={};for(const id of states){const h=c.rowHeights?.[id];if([40,56,64,96,128,160].includes(h))sizes[id]=h;}
- return {timeEncoding:time.encoding,id:typeof c.id==='string'&&/^saved-[\w-]{1,90}$/.test(c.id)?c.id:'saved-'+Date.now()+'-'+Math.random().toString(36).slice(2,9),name:c.name.trim().slice(0,40),states,order,pins:Array.isArray(c.pins)?[...new Set(c.pins.filter(id=>states.includes(id)))]:[],from,to,end,cursor:Math.max(end,year(c.cursor,from)),rowHeight:number(c.rowHeight,36,160,64),viewHeight:number(c.viewHeight,320,1000,560),fitRows:Boolean(c.fitRows),rowHeights:sizes,density:['auto','full','overview'].includes(c.density)?c.density:'auto',mode:['both','rulers','events','overview'].includes(c.mode)?c.mode:'both',category:['all','战争','政治','改革','外交','文化'].includes(c.category)?c.category:'all'};
+ return {...(D.datasetId?{datasetId:D.datasetId}:{}),timeEncoding:time.encoding,id:typeof c.id==='string'&&/^saved-[\w-]{1,90}$/.test(c.id)?c.id:'saved-'+Date.now()+'-'+Math.random().toString(36).slice(2,9),name:c.name.trim().slice(0,40),states,order,pins:Array.isArray(c.pins)?[...new Set(c.pins.filter(id=>states.includes(id)))]:[],from,to,end,cursor:Math.max(end,year(c.cursor,from)),rowHeight:number(c.rowHeight,36,160,64),viewHeight:number(c.viewHeight,320,1000,560),fitRows:Boolean(c.fitRows),rowHeights:sizes,density:['auto','full','overview'].includes(c.density)?c.density:'auto',mode:['both','rulers','events','overview'].includes(c.mode)?c.mode:'both',category:['all','战争','政治','改革','外交','文化'].includes(c.category)?c.category:'all'};
 }
  return Object.freeze({normalize:normalizeCombo});
  };
@@ -305,6 +306,7 @@ function normalizeCombo(c){
     function parse(hash) {
       if (typeof hash !== 'string' || hash.length > 10000) return null;
       const params = new URLSearchParams(hash.replace(/^#/, ''));
+      if(params.has('dataset') && params.get('dataset') !== (data.datasetId||'zhou'))return null;
       const version = params.has('v') ? params.get('v') : '1', encoding = params.get('time');
       if (!['1','2'].includes(version) || encoding !== null && encoding !== time.encoding || version === '2' && encoding !== time.encoding) return null;
       const view = {}, result = {view};
@@ -347,6 +349,7 @@ function normalizeCombo(c){
       const nonBCE = [view.cursor,view.end,range?.from,range?.to].some(coord => typeof coord === 'number' && Number.isFinite(coord) && coord <= 0);
       const params = new URLSearchParams({v:nonBCE?'2':'1',year:String(view.cursor),end:String(view.end),states:view.selected.join(','),pinned:pinned.join(','),order:order.join(','),zoom:String(Number(view.px.toFixed(4))),category:view.category,mode:view.mode,density:view.density,scope:view.searchScope,q:view.query,desc:view.searchDescriptions?'1':'0',event:view.activeEventId||'',target:view.searchTarget||''});
       if (nonBCE) params.set('time',time.encoding);
+      if(data.datasetId && data.datasetId!=='zhou')params.set('dataset',data.datasetId);
       if (range) for (const key of ['from','to','width']) if (Number.isFinite(range[key])) params.set(key,String(Number(range[key].toFixed(4))));
       const key = search.normalizeKey(item); if (validItem(key)) params.set('item',key);
       return '#' + params.toString();
@@ -390,10 +393,11 @@ function normalizeCombo(c){
  'use strict';
  const Zhou=root.Zhou||(root.Zhou={});
  // Resolve storage lazily: merely accessing localStorage can throw in file/private contexts.
- Zhou.createStorage=function(getStorage){
+ Zhou.createStorage=function(getStorage,namespace=''){
+  const scoped=key=>namespace?namespace+':'+key:key;
   return {
-   read(key,fallback){try{const raw=getStorage().getItem(key);return raw===null?fallback:JSON.parse(raw);}catch{return fallback;}},
-   write(key,value){try{getStorage().setItem(key,JSON.stringify(value));return true;}catch{return false;}}
+   read(key,fallback){try{const raw=getStorage().getItem(scoped(key));return raw===null?fallback:JSON.parse(raw);}catch{return fallback;}},
+   write(key,value){try{getStorage().setItem(scoped(key),JSON.stringify(value));return true;}catch{return false;}}
   };
  };
 })(globalThis);
@@ -444,7 +448,7 @@ function normalizeCombo(c){
 
 // ---- src/app.js ----
 'use strict';
-const D=window.ZHOU_DATA,historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage);
+const D=window.ZHOU_DATA,historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage,D.datasetId&&D.datasetId!=='zhou'?D.datasetId:'');
 const combinationModel=Zhou.createCombinationModel(D);
 function normalizeCombo(value){return combinationModel.normalize(value);}
 const $=s=>document.querySelector(s),byId=historyService.state;
@@ -477,11 +481,11 @@ const activeEvent=()=>D.events.find(e=>e.id===appState.session.activeEventId);
 const certaintyLabel={certain:'较确定',inferred:'推定',disputed:'存在异说'};
 const certaintyShort={certain:'定',inferred:'推',disputed:'异'};
 function certaintyBadge(d,short=false){const level=d?.level||'inferred';return '<span class="certainty '+level+'" title="'+escapeHTML(d?.reason||'尚待校勘')+'">'+(short?certaintyShort[level]:certaintyLabel[level])+'</span>';}
-function datingDetails(d){return '<div class="datingBlock">'+certaintyBadge(d)+'<p class="notice">'+escapeHTML(d?.reason||'纪年依据尚待补充')+'</p><p class="notice">'+({legacy:'沿用资料：尚未逐条复核。',partial:'部分校核：差异已列明，仍有待考事项。',reviewed:'本条纪年及所列依据已核对；不代表相关生平已全部核实。'}[d?.reviewStatus]||'校核状态待补充。')+'</p>'+(d?.alternatives?.length?'<details class="dateOpinions"><summary>展开不同纪年与口径 · '+d.alternatives.length+'项</summary>'+d.alternatives.map(a=>'<article><b>'+escapeHTML(a.label)+(Zhou.Time.isYear(a.year)?' · '+fmt(a.year):'')+'</b><p>'+escapeHTML(a.explanation)+'</p>'+links(a.sources||[])+'</article>').join('')+'</details>':'')+'</div>';}
-function chronologyDetails(r){const c=r.chronology||{};return '<div class="chronologyGrid">'+[['实际即位 / 承位',c.accession],['元年 / 图示起点',c.regnalStart??r.start],['退位 / 传位',c.abdication],['去世',c.death]].map(([name,year])=>'<div><span>'+name+'</span><strong>'+(Zhou.Time.isYear(year)?fmt(year):'尚未核实 / 未收录')+'</strong></div>').join('')+'</div><p>图示终点：'+fmt(r.end)+' · '+escapeHTML(c.endKind||'具体性质待核实')+'</p>'+(c.changes||[]).map(m=>'<p>'+fmt(m.year)+' · '+escapeHTML(m.label)+'</p>').join('')+(c.note?'<p class="notice">'+escapeHTML(c.note)+'</p>':'')+'<p class="notice">元年是所采用年表的纪年起点；空缺日期不会由图示区间自动推算。去世日期可在本图范围之外。</p>'+links(c.sources||[]);}
+function datingDetails(d){return '<div class="datingBlock">'+certaintyBadge(d)+'<p class="notice">'+escapeHTML(d?.reason||'纪年依据尚待补充')+'</p><p class="notice">'+({legacy:'沿用资料：尚未逐条复核。',partial:'部分校核：差异已列明，仍有待考事项。',reviewed:isZhouTopic?'本条纪年及所列依据已核对；不代表相关生平已全部核实。':'用户提供的资料标记为已核对；本次导入仅做结构与引用校验，未联网核验史实。'}[d?.reviewStatus]||'校核状态待补充。')+'</p>'+(d?.alternatives?.length?'<details class="dateOpinions"><summary>展开不同纪年与口径 · '+d.alternatives.length+'项</summary>'+d.alternatives.map(a=>'<article><b>'+escapeHTML(a.label)+(Zhou.Time.isYear(a.year)?' · '+fmt(a.year):'')+'</b><p>'+escapeHTML(a.explanation)+'</p>'+links(a.sources||[])+'</article>').join('')+'</details>':'')+'</div>';}
+function chronologyDetails(r){const c=r.chronology||{};return '<div class="chronologyGrid">'+[['实际即位 / 承位',c.accession],[isZhouTopic?'元年 / 图示起点':'元年（可晚于承位）',c.regnalStart??r.start],['退位 / 传位',c.abdication],['去世',c.death]].map(([name,year])=>'<div><span>'+name+'</span><strong>'+(Zhou.Time.isYear(year)?fmt(year):'尚未核实 / 未收录')+'</strong></div>').join('')+'</div><p>图示终点：'+fmt(r.end)+' · '+escapeHTML(c.endKind||'具体性质待核实')+'</p>'+(c.changes||[]).map(m=>'<p>'+fmt(m.year)+' · '+escapeHTML(m.label)+'</p>').join('')+(c.note?'<p class="notice">'+escapeHTML(c.note)+'</p>':'')+'<p class="notice">元年是所采用年表的纪年起点；空缺日期不会由图示区间自动推算。去世日期可在本图范围之外。</p>'+links(c.sources||[]);}
 const rulerComparisonStart=historyService.comparisonStart;
 const rulersAt=historyService.rulersAt;
-function participantCard(p){return '<article class="ministerCard eventPerson"><h5>'+personButton(p.id,p.name)+' <span>'+escapeHTML(byId(p.state)?.name||'')+'</span></h5><p class="relation">'+escapeHTML(p.relation)+'</p><p>'+escapeHTML(p.summary)+'</p>'+links(p.sources||[])+'</article>';}
+function participantCard(p){return '<article class="ministerCard eventPerson"><h5>'+personButton(p.id,p.name)+' <span>'+escapeHTML(byId(p.state)?.name||'')+'</span></h5><p class="relation">'+escapeHTML(p.relation)+'</p>'+(p.affiliationNote?'<p class="notice">'+escapeHTML(p.affiliationNote)+'</p>':'')+'<p>'+escapeHTML(p.summary)+'</p>'+links(p.sources||[])+'</article>';}
 function buildSearchIndex(){return searchService.index;}
 let searchResultCache=null;
 function searchMatches(q=appState.search.query){
@@ -589,7 +593,7 @@ function render(){
     const labelNeeded=(r.name.length+(r.dating?.level!=='certain'?1:0))*14+14;
     let text='';
     if(width>=labelNeeded&&barHeight>=14){text='<span class="rulerName">'+escapeHTML(r.name)+(r.dating?.level!=='certain'?' · '+certaintyShort[r.dating?.level||'inferred']:'')+'</span>';if(level==='detail'&&width>=110&&barHeight>=30)text+='<small class="rulerYears">'+range(r.start,r.end,r.approx)+'</small>';else if(level==='detail'&&width>=labelNeeded+145)text+='<small class="rulerYears inlineYears">'+range(r.start,r.end,r.approx)+'</small>';}
-    html+='<button class="ruler '+(r.approx?'approx ':'')+(r.dating?.level==='disputed'?'disputedBar ':'')+(appState.search.searchTarget==='ruler:'+r.id||appState.search.query&&matchRuler(r)?'match ':'')+(isCurrent?'eventRuler':'')+'" data-action="ruler" data-id="'+r.id+'" style="left:'+x(r.start)+'px;width:'+width+'px;top:'+(rulerTop+r.displayLane*(barHeight+1))+'px;height:'+barHeight+'px;line-height:'+Math.min(18,barHeight)+'px;background-color:'+s.color+';opacity:'+(appState.search.query&&!matchRuler(r)&&appState.search.searchTarget!=='ruler:'+r.id?'.35':'.94')+'" title="'+escapeHTML(r.name+' '+range(r.start,r.end,r.approx)+' · '+certaintyLabel[r.dating?.level||'inferred'])+'" aria-label="'+escapeHTML(r.name+'，'+range(r.start,r.end,r.approx))+'">'+text+'</button>';
+    html+='<button class="ruler '+(r.polityAssociation==='contextual'?'contextualTenure ':'')+(r.approx?'approx ':'')+(r.dating?.level==='disputed'?'disputedBar ':'')+(appState.search.searchTarget==='ruler:'+r.id||appState.search.query&&matchRuler(r)?'match ':'')+(isCurrent?'eventRuler':'')+'" data-action="ruler" data-id="'+r.id+'" style="left:'+x(r.start)+'px;width:'+width+'px;top:'+(rulerTop+r.displayLane*(barHeight+1))+'px;height:'+barHeight+'px;line-height:'+Math.min(18,barHeight)+'px;background-color:'+s.color+';opacity:'+(appState.search.query&&!matchRuler(r)&&appState.search.searchTarget!=='ruler:'+r.id?'.35':'.94')+'" title="'+escapeHTML(r.name+' '+range(r.start,r.end,r.approx)+(r.associationNote?' · '+r.associationNote:'')+' · '+certaintyLabel[r.dating?.level||'inferred'])+'" aria-label="'+escapeHTML(r.name+'，'+range(r.start,r.end,r.approx))+'">'+text+'</button>';
    }
    const first=packed.rulers.reduce((a,r)=>Math.max(a,r.start),-Infinity);
    if(Number.isFinite(first)&&first<s.start&&x(first)-x(s.start)>90)html+='<button class="event gap" data-action="state" data-id="'+s.id+'" style="left:'+(x(s.start)+8)+'px;top:6px">早期纪年待考</button>';
@@ -653,10 +657,11 @@ function closeDetail(restore=true){pageEffects.rememberDetail();navigation.key=n
 function showRuler(id){
  const s=D.states.find(s=>s.rulers.some(r=>r.id===id));if(!s)return;const r=s.rulers.find(r=>r.id===id);
  const es=historyService.eventsInRange({from:rulerComparisonStart(r),to:r.end,states:[s.id]});
- const bio=r.biography||{summary:r.description||'个人生平记载尚待补充。',sources:[]};
+ const linkedPerson=r.personId?historyService.person(r.personId):null;
+  const bio=r.biography||{summary:r.description||linkedPerson?.summary||'个人生平记载尚待补充。',sources:linkedPerson?.sources||[]};
  const ministers=(r.ministers||[]).map(m=>'<article class="ministerCard"><h5>'+personButton(m.id,m.name)+' <span>'+escapeHTML(m.role)+'</span></h5><p class="relation">'+escapeHTML(m.relation||'')+'</p><p>'+escapeHTML(m.summary)+'</p>'+links(m.sources||[])+'</article>').join('');
  const sources=[...(r.source?[{title:isZhouTopic&&r.source.includes('wikisource')?'《史记》相关年表':'采用的君主纪年表（汇编，待逐条校勘）',url:r.source}]:[]),...(r.sources||[]),...(bio.sources||[])].filter(v=>v?.url).filter((v,i,a)=>a.findIndex(w=>w.url===v.url)===i);
- show(s.name+' · '+r.role,'<h3 class="detailTitle">'+escapeHTML(r.name)+'</h3><span class="datebadge">'+range(r.start,r.end,r.approx)+'</span>'+(r.person?'<p class="notice">本名 / 记载名：'+escapeHTML(r.person)+'</p>':'')+'<div class="detailSection"><h4>简要生平</h4><p class="bioScope">'+escapeHTML(bio.detailLevel||'记载摘要')+'</p><p>'+escapeHTML(bio.summary)+'</p>'+(bio.note?'<p class="notice">'+escapeHTML(bio.note)+'</p>':'')+'</div><div class="detailSection"><h4>关键臣子与将领</h4>'+ (ministers||'<p class="notice">'+escapeHTML(r.ministerCoverage||'尚未收录可靠的相关人物资料。')+'</p>')+'</div><div class="detailSection"><h4>纪年可信度与不同说法</h4>'+datingDetails(r.dating)+'</div><div class="detailSection"><h4>即位、元年与结局</h4>'+chronologyDetails(r)+(r.note?'<p>'+escapeHTML(r.note)+'</p>':'')+'</div><div class="warning">'+(r.approx?'此区间含推定或争议年代。':'采用年级精度；同年更替不表示两人全年同时在位。')+' 多数区间采用元年纪年，实际即位可能在前一年。'+escapeHTML(s.note)+'</div><div class="detailSection"><h4>期间已收录事件 · '+es.length+'</h4>'+eventList(es)+'</div><div class="detailSection"><h4>核查来源</h4>'+links(sources)+'</div><div class="related"><button data-action="state" data-id="'+s.id+'">查看'+s.name+'全部世系</button><button data-action="locate" data-id="'+r.start+'">定位在位起点</button></div>','ruler:'+id);
+ show(s.name+' · '+r.role,'<h3 class="detailTitle">'+escapeHTML(r.name)+'</h3>'+(r.associationNote?'<p class="notice">'+escapeHTML(r.associationNote)+'</p>':'')+'<span class="datebadge">'+range(r.start,r.end,r.approx)+'</span>'+(linkedPerson?'<p class="notice">人物档案：'+personButton(linkedPerson.id,linkedPerson.name)+'</p>':'')+(r.person?'<p class="notice">本名 / 记载名：'+escapeHTML(r.person)+'</p>':'')+'<div class="detailSection"><h4>简要生平</h4><p class="bioScope">'+escapeHTML(bio.detailLevel||'记载摘要')+'</p><p>'+escapeHTML(bio.summary)+'</p>'+(bio.note?'<p class="notice">'+escapeHTML(bio.note)+'</p>':'')+'</div><div class="detailSection"><h4>关键臣子与将领</h4>'+ (ministers||'<p class="notice">'+escapeHTML(r.ministerCoverage||'尚未收录可靠的相关人物资料。')+'</p>')+'</div><div class="detailSection"><h4>纪年可信度与不同说法</h4>'+datingDetails(r.dating)+'</div><div class="detailSection"><h4>即位、元年与结局</h4>'+chronologyDetails(r)+(r.note?'<p>'+escapeHTML(r.note)+'</p>':'')+'</div><div class="warning">'+(r.approx?'此区间含推定或争议年代。':'采用年级精度；同年更替不表示两人全年同时在位。')+' 多数区间采用元年纪年，实际即位可能在前一年。'+escapeHTML(s.note)+'</div><div class="detailSection"><h4>期间已收录事件 · '+es.length+'</h4>'+eventList(es)+'</div><div class="detailSection"><h4>核查来源</h4>'+links(sources)+'</div><div class="related"><button data-action="state" data-id="'+s.id+'">查看'+s.name+'全部世系</button><button data-action="locate" data-id="'+r.start+'">定位在位起点</button></div>','ruler:'+id);
 }
 const eventList=es=>es.length?es.sort((a,b)=>b.year-a.year).map(e=>'<button class="listitem" data-action="event" data-id="'+e.id+'">'+range(e.year,e.year,e.approx)+' · '+escapeHTML(e.name)+'<small>'+e.kind+' · '+e.states.map(id=>byId(id).name).join('、')+'</small></button>').join(''):'<p class="notice">这一时期的重大事件尚未收录。</p>';
 function focusEvent(id){const e=D.events.find(e=>e.id===id);if(!e)return;appState.session.activeEventId=id;appState.search.searchTarget=null;if(appState.layout.density==='overview'){appState.layout.density='auto';$('#density').value='auto';}appState.search.query='';$('#search').value='';appState.conditions.category='all';$('#category').value='all';appState.layout.mode='both';$('#mode').value='both';for(const state of e.states)appState.conditions.selected.add(state);if(e.year<appState.conditions.end){appState.conditions.end=timelineBounds.end;syncViewControls();}appState.layout.px=Math.max(7,appState.layout.px);setCursor(e.year);render();setCursor(e.year,true);}
@@ -720,8 +725,8 @@ function applyCombo(id){
 $('#density').onchange=e=>{appState.layout.density=e.target.value;render();};
 $('#manageCombos').onclick=()=>{renderCombos();$('#comboNotice').textContent='';$('#combinations').showModal();};$('#closeCombos').onclick=()=>$('#combinations').close();$('#comboSelect').onchange=e=>{if(e.target.value)applyCombo(e.target.value);};
 $('#saveComboForm').onsubmit=e=>{e.preventDefault();if(appState.session.savedCombos.length>=30&&!appState.session.savedCombos.some(c=>c.name===$('#comboName').value.trim())){$('#comboNotice').textContent='最多保存30个组合，请删除不用的组合后再保存。';return;}const c=captureCombo($('#comboName').value);if(!c){$('#comboNotice').textContent='请填写名称并至少选择一个国家。';return;}const old=appState.session.savedCombos.findIndex(v=>v.name===c.name);if(old>=0){c.id=appState.session.savedCombos[old].id;appState.session.savedCombos[old]=c;}else appState.session.savedCombos.push(c);saveCombos();renderCombos();$('#comboName').value='';$('#comboSelect').value=c.id;};
-$('#exportCombos').onclick=()=>{const blob=new Blob([JSON.stringify({format:'zhou-comparisons-v3',timeEncoding:'bce-axis',combinations:appState.session.savedCombos},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='zhou-research-combinations.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-$('#importCombos').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{if(file.size>1048576)throw new Error('too large');const data=JSON.parse(await file.text());if(data.format!=='zhou-comparisons-v3'||!Array.isArray(data.combinations))throw new Error('format');let added=0;for(const item of data.combinations){if(appState.session.savedCombos.length>=30)break;const c=normalizeCombo(item);if(c){c.id='saved-'+Date.now()+'-'+Math.random().toString(36).slice(2,9);appState.session.savedCombos.push(c);added++;}}saveCombos();renderCombos();$('#comboNotice').textContent='已导入'+added+'个有效组合。';}catch{$('#comboNotice').textContent='无法导入，请选择本网站导出的组合 JSON 文件（不超过1MB）。';}finally{e.target.value='';}};
+$('#exportCombos').onclick=()=>{const blob=new Blob([JSON.stringify({format:'zhou-comparisons-v3',datasetId:D.datasetId||'zhou',timeEncoding:'bce-axis',combinations:appState.session.savedCombos},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='zhou-research-combinations.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+$('#importCombos').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{if(file.size>1048576)throw new Error('too large');const data=JSON.parse(await file.text());if(data.format!=='zhou-comparisons-v3'||(data.datasetId||'zhou')!==(D.datasetId||'zhou')||!Array.isArray(data.combinations))throw new Error('format');let added=0;for(const item of data.combinations){if(appState.session.savedCombos.length>=30)break;const c=normalizeCombo(item);if(c){c.id='saved-'+Date.now()+'-'+Math.random().toString(36).slice(2,9);appState.session.savedCombos.push(c);added++;}}saveCombos();renderCombos();$('#comboNotice').textContent='已导入'+added+'个有效组合。';}catch{$('#comboNotice').textContent='无法导入，请选择本网站导出的组合 JSON 文件（不超过1MB）。';}finally{e.target.value='';}};
 
 function applyLayout(){vp.style.height=appState.layout.viewHeight+'px';vp.style.maxHeight='none';$('#rowHeight').value=appState.layout.rowHeight;$('#viewHeight').value=appState.layout.viewHeight;$('#viewHeightValue').textContent=appState.layout.viewHeight+'px';$('#fitRows').checked=appState.layout.fitRows;render();saveLayout();}
 $('#rowHeight').oninput=e=>{appState.layout.rowHeight=Math.max(36,Math.min(160,Number(e.target.value)));appState.layout.fitRows=false;$('#fitRows').checked=false;applyLayout();};
@@ -746,10 +751,12 @@ const initialDate=Zhou.Time.decode(timelineBounds.cursor);
 $('#yearEra').value=initialDate.era;$('#year').value=initialDate.year;$('#year').min=1;
 if(!isZhouTopic){
  document.title=D.title||'历史对照图';$('.brand h1').textContent=document.title;$('.brand .seal').textContent='史';$('.brand .smallcaps').textContent=range(timelineBounds.start,timelineBounds.end);
+ $('.intro p').textContent='用户正式资料导入；点击任期、人物与事件阅读详情。虚线纹理表示汉末任职阶段，不等于东汉皇帝在位。';
  $('.intro .eyebrow').textContent=timelinePeriods.map(p=>p.name).join(' · ');$('.intro h2').textContent='同一时刻，政权之间。';$('.workspace').setAttribute?.('aria-label',document.title+'时间线');
  $('.searchHelp').textContent='按名称匹配，点击结果查看详情并定位；简介中的提及会单独标注。全站搜索包含当前未选政权及完整资料范围。';
  $('#filters > p').textContent='已固定的政权始终参与对比，取消固定后可隐藏。';
 }
+document.querySelectorAll('[data-topic]').forEach(a=>{if(a.dataset.topic===(D.datasetId||'zhou'))a.setAttribute?.('aria-current','page');});
 viewAdapter=Zhou.createViewAdapter({state:appState,viewport:vp,$,window,document,render,setCursor,updateRange,bounds:timelineBounds});
 viewAdapter.syncControls();
 pageEffects.renderPanels=()=>{updateCompare();renderEventFocus();renderSearchResults();};

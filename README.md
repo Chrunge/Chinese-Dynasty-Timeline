@@ -1,6 +1,6 @@
 # 周代列国 · 历史对照图
 
-纯静态中文历史对照网页，在共同年代轴上展示周王室与17个主要诸侯国的君主、人物和事件。默认范围为约前1046年至前256年，可延伸至前221年；卫国延续至前209年的情况在资料中保留。
+纯静态中文历史资料库，提供周朝、秦汉、三国三个专题入口，支持同年对照、搜索、详情、阅读恢复、分享和导出。周朝原范围与链接保持不变；秦汉覆盖前247年至公元220年，三国覆盖公元189—280年。专题窗口不裁切实体本身的历史起讫。
 
 在线访问：[周朝时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。个人博客使用域名根路径，时间线使用独立的项目子路径。离线使用时，直接打开 `dist/index.html`；独立复制或部署时使用完整的 `dist/` 目录。
 
@@ -16,7 +16,7 @@
 
 内容密度可自动切换或手动设置：低于2.4px／年显示兴亡与关键事件，2.4—7px／年显示常规内容，更高缩放下在空间允许时显示详细年份。点击事件会联动相关国家、当年君主及已收录参与人物；在位不等于直接参与事件。
 
-浏览器提供原生WebMCP API时，页面注册 `compare_zhou_year` 工具；其他浏览器正常使用网页功能。
+浏览器提供原生WebMCP API时，周朝页面保留 `compare_zhou_year`，新增专题注册 `compare_history_year` 工具；其他浏览器正常使用网页功能。
 
 ## 资料与采用口径
 
@@ -30,7 +30,9 @@
 
 时期是专题窗口，不是政权实体：`periods` 引用共享 `polities`；`tenures` 通过 `personId` 连接自然人，同一人物可有多段任期，不按姓名自动合并。现有国家／君主ID继续保留，旧接口仍可读取 `states/rulers` 兼容投影。
 
-两份可独立校验的最小结构样例位于 `data/examples/`：三国演示并行政权，秦汉演示统一、过渡与跨公元、同一人物多段任期。样例不参与默认周朝发布，不是完整史料库；本轮不新增专题切换器、帝国人物轨道或批量录入后续朝代。设计、兼容约定与验收范围见[迁移说明](docs/TIME-DOMAIN-MIGRATION.md)。
+正式资料为 [秦汉](<data/qin-han.json>) 和 [三国](<data/three-kingdoms.json>)，逐字节保存用户提供的原文件，不以结构样例替代。秦汉包含8个政权、78个人物、74段任期、32条事件；三国包含5个政权、51个人物、17段任期、23条事件（跨专题共享ID不能直接相加作为独立实体总数）。[结构样例](<data/examples/README.md>) 仍仅供演示，不参与生产构建。
+
+专题发布目标分别为原站根路径、[秦汉入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)。**本次新增入口尚未上线**，受限会话无法运行既有Git凭证程序；准确状态见[部署交接](<docs/DEPLOYMENT.md#2026-10-19-正式资料发布交接尚未上线>)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**。原文件散列、结构注释与架构权衡见[正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)。
 
 ## 维护与检查
 
@@ -44,7 +46,7 @@ node --test tests/*.test.mjs tests/*.test.cjs
 node --test --test-isolation=none tests/*.test.mjs tests/*.test.cjs
 ```
 
-编辑前端使用 `src/`，编辑历史资料使用 `data/atlas.json`；`dist/` 全部由构建生成，不直接修改。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
+编辑前端使用 `src/`；周朝、秦汉、三国分别使用 `data/atlas.json`、`data/qin-han.json`、`data/three-kingdoms.json`。`dist/` 全部由构建生成，不直接修改。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
 
 受限Windows环境如出现父目录realpath的EPERM，可为Node命令添加 `--preserve-symlinks --preserve-symlinks-main`。自动化测试覆盖资料校验、查询、组合、导航、渲染、分享及导出；DOM桩检查不替代真实浏览器排版、触控或打印验收。
 

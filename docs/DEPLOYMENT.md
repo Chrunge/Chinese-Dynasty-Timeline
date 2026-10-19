@@ -40,3 +40,13 @@ Pages来源配置属于仓库设置，工作流不代为修改。部署状态以
 | 部署作业被跳过 | 检查是否由master推送，或手动运行时是否选择master |
 
 原始Sites托管配置 `.openai/hosting.json` 保留在仓库中，不参与此Pages工作流。
+
+## 2026-10-19 正式资料发布交接（尚未上线）
+
+- 本地完成秦汉、三国正式资料、三个入口及兼容适配。`node build.mjs --check` 通过，139项自动化测试通过；真实Chrome因当前会话权限阻止而未完成验收，详见[正式入库说明](<FORMAL-DATA-IMPORT.md>)。
+- 待发布[清单](<../dist/release.json>)：`releaseId=3935bf31fc3fe2ce4af28c40e69a49859fc379e9f0fbd677201ebc66e52023c2`。
+- 使用原远端进行 `git -c credential.interactive=false push --dry-run origin HEAD:master` 预检失败：`sh.exe: *** fatal error - couldn't create signal pipe, Win32 error 5`，继而 `fatal: unable to get password from user`。当前受限委派会话不可扩权，未改用绕过权限的认证路径。此结果不能证明用户没有凭证，仅说明既有凭证程序无法在此权限范围内运行。
+- **未实际推送、未触发本次部署、未创建替代站点**。部署访问检查：原站根路径HTTP200，新秦汉入口、新三国入口及远端 `release.json` 均HTTP404。
+- 检查时原仓库最新master工作流为[运行39130605997](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39130605997)，`head_sha=f0d566b101471f6bf8ab5aca841e5fd8a2de7f1f`、`conclusion=success`；该成功属于旧提交，不是本次交付的部署证据。
+
+后续须由主会话在允许既有Git凭证程序运行的授权范围内推送最终提交至同一远端master；等待该提交对应的Actions检查/部署全部成功，再访问原站两个新入口并比对线上清单的releaseId及资源散列。若远端有并发更新，应先审查整合，不强制推送。部署成功后更新本节，不得将本地构建成功等同于上线成功。

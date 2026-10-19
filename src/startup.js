@@ -7,10 +7,12 @@ const initialDate=Zhou.Time.decode(timelineBounds.cursor);
 $('#yearEra').value=initialDate.era;$('#year').value=initialDate.year;$('#year').min=1;
 if(!isZhouTopic){
  document.title=D.title||'历史对照图';$('.brand h1').textContent=document.title;$('.brand .seal').textContent='史';$('.brand .smallcaps').textContent=range(timelineBounds.start,timelineBounds.end);
+ $('.intro p').textContent='用户正式资料导入；点击任期、人物与事件阅读详情。虚线纹理表示汉末任职阶段，不等于东汉皇帝在位。';
  $('.intro .eyebrow').textContent=timelinePeriods.map(p=>p.name).join(' · ');$('.intro h2').textContent='同一时刻，政权之间。';$('.workspace').setAttribute?.('aria-label',document.title+'时间线');
  $('.searchHelp').textContent='按名称匹配，点击结果查看详情并定位；简介中的提及会单独标注。全站搜索包含当前未选政权及完整资料范围。';
  $('#filters > p').textContent='已固定的政权始终参与对比，取消固定后可隐藏。';
 }
+document.querySelectorAll('[data-topic]').forEach(a=>{if(a.dataset.topic===(D.datasetId||'zhou'))a.setAttribute?.('aria-current','page');});
 viewAdapter=Zhou.createViewAdapter({state:appState,viewport:vp,$,window,document,render,setCursor,updateRange,bounds:timelineBounds});
 viewAdapter.syncControls();
 pageEffects.renderPanels=()=>{updateCompare();renderEventFocus();renderSearchResults();};

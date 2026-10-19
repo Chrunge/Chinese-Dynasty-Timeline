@@ -1,0 +1,63 @@
+{
+  "releaseId": "3935bf31fc3fe2ce4af28c40e69a49859fc379e9f0fbd677201ebc66e52023c2",
+  "datasets": [
+    {
+      "id": "zhou",
+      "name": "周朝",
+      "page": "index.html",
+      "file": "atlas.json",
+      "asset": "data.js",
+      "sourceSha256": "978e9ddd9985abc98816bb554ce6753a5fa028382b2a457e6dd2c8b507e03ed8",
+      "counts": {
+        "polities": 18,
+        "people": 116,
+        "tenures": 465,
+        "events": 105,
+        "activities": 62
+      }
+    },
+    {
+      "id": "qin-han",
+      "name": "秦汉",
+      "page": "qin-han.html",
+      "file": "qin-han.json",
+      "asset": "data-qin-han.js",
+      "sourceSha256": "472c34323d4595b549c4a5beaf16cb02cc0954c96666464b7f52c35f6fe369b2",
+      "counts": {
+        "polities": 8,
+        "people": 78,
+        "tenures": 74,
+        "events": 32,
+        "activities": 19
+      }
+    },
+    {
+      "id": "three-kingdoms",
+      "name": "三国",
+      "page": "three-kingdoms.html",
+      "file": "three-kingdoms.json",
+      "asset": "data-three-kingdoms.js",
+      "sourceSha256": "123db0ae57aea7a0319d540cc52313acd455575d7e6d07b644898ce16ead4fa2",
+      "counts": {
+        "polities": 5,
+        "people": 51,
+        "tenures": 17,
+        "events": 23,
+        "activities": 19
+      }
+    }
+  ],
+  "assets": {
+    "data.js": "7cdbe197882e7685efd185a09f2a84e3ff8bb4806c1d784529b58ff07709019d",
+    "data-qin-han.js": "42639d341323391987e20355c40be31568a7d32779d4239ff7c81492de4d909f",
+    "data-three-kingdoms.js": "85db29b46560656aa98863a1727a981759604074e83ec1d2e75823c2f263416c",
+    "app.js": "4625b60fc1027a9ed9bf203cd44140685921ebc5105e958a4c3051963587e7a0",
+    "study.js": "25ecb8e81f45b4bf4dcf316b294b1ac4d12aefd7e91c8fd1491a5c0c5fdfca66",
+    "share.js": "5d283e1239c8680768f6db2eaded5581d08e88b384dbfd7f86307dcf4c2696a8",
+    "export.js": "d13e94e024b3350079fb53c0f80f0b4fca3a32904dfea2d748d2293bc98efa94",
+    "style.css": "c399052df1a06002a61a3f1c694b37fbb9594dd5517b4b21345060b4fe7c8344",
+    "index.html": "d093b7f479c04db5ba74b53259d4c69aa41c5354a39eea5fc839a39cac333926",
+    "qin-han.html": "bec1ad6cfa0f289322ac5c86fdf59d9dd639eae1063d9018e96d670671dfcced",
+    "three-kingdoms.html": "2d985a0157c37916e9684d5cf228a0cbb42287d17352ccf8c5bb69ebc1237e7e"
+  }
+}

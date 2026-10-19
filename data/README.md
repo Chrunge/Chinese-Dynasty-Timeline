@@ -1,6 +1,6 @@
 # 资料模型与维护约定
 
-[atlas.json](./atlas.json) 是当前周朝生产资料的唯一维护入口。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。[examples](./examples/README.md) 是独立 schema 2 结构演示，不是第二份生产资料，也不参与默认构建。
+[atlas.json](<./atlas.json>) 是周朝生产资料的唯一维护入口。正式秦汉与三国分别维护在 [qin-han.json](<./qin-han.json>) 和 [three-kingdoms.json](<./three-kingdoms.json>)，均参与默认构建；[入库说明](<../docs/FORMAL-DATA-IMPORT.md>) 记录原文件散列和显式结构注释。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。[examples](./examples/README.md) 是独立 schema 2 结构演示，不是第二份生产资料，也不参与默认构建。
 
 ## 集合与关系
 
@@ -59,19 +59,19 @@
 | periods | `id/name/start/end/polityIds/sourceIds/dating`；可选 `parentId`、`structure`、`color`。时期是阅读分组，不拥有政权，也不表示其内所有政权全程存续。政权须与时期相交；子时期须在父时期内，不许父级循环 |
 | polities | `id/name/kind/start/end/sourceIds/dating`；可选 `interruptions`、`undated` 及旧国家显示字段。政权延续不因改帝号、专题切换或人物更替而自动复制 |
 | people | `id/name/summary/sourceIds`；人物身份独立于任期；同名必须保留各自 ID，不按姓名猜测合并 |
-| tenures | `id/polityId/personId/name/role/start/end/chronology/sourceIds/dating`；同一人物可以有多个任期；`personId` 必须明确给出，未知可为 `null`，非空时必须引用已收录人物。任期须在对应政权存续内 |
+| tenures | `id/polityId/personId/name/role/start/end/chronology/sourceIds/dating`；同一人物可以有多个任期；`personId` 必须明确给出，未知可为 `null`，非空时必须引用已收录人物。默认须在对应政权存续内；显式 `polityAssociation:contextual` 表示关联任职/执政阶段而非君主统治，可有窗口外端点但必须与政权相交并提供 `associationNote`，不进入同年君主查询 |
 | events | `id/name/kind`、`year` 或 `yearRef`、`dating/sourceIds/narrative`；`kind` 限政治／战争／改革／外交／文化，兼容 `category` 别名，二者同给时须一致；仍兼容点事件，不引入未经定义的区间事件语义 |
 | activities | `id/personId/polityId/sequence/kind/kindLabel/year` 或 `yearFromEvent:true`；来源和事件继承规则沿用 schema 1 |
 | sources | `id/title/url`；URL 去重。样例的 `reviewStatus:pending` 表示书目待核，不是正文已证实 |
 
-`chronology` 仍明确列出 `accession/regnalStart/abdication/death`，未核实节点为 `null`；`regnalStart` 与条带 `start` 相等，实际承位可与其不同。`changes` 仍为 `{year,label}` 数组。`dating` 的可信度、校核状态、异说要求与 schema 1 相同。schema 2 的所有日期（含异说与变化节点）均使用下述对象格式。
+`chronology` 仍明确列出 `accession/regnalStart/abdication/death`，未核实节点为 `null`；通常 `regnalStart` 与条带 `start` 相等，实际承位可与其不同；正式 schema 2 也允许 `start === accession` 且 `regnalStart` 在任期内，分别展示实际承位与次年改元，不改写原始日期。schema 1 校验不放宽。`changes` 仍为 `{year,label}` 数组。`dating` 的可信度、校核状态、异说要求与 schema 1 相同。schema 2 的所有日期（含异说与变化节点）均使用下述对象格式。
 
 关系表必须显式列出：
 
 | 原生关系表 | 字段 |
 |---|---|
 | eventPolities | `eventId/polityId/kind:involved` |
-| eventPeople | `eventId/personId/kind`、可选 `polityId`；participant 须引用该事件明确涉及的政权，并有来源和说明 |
+| eventPeople | `eventId/personId/kind`、可选 `polityId`；participant 默认须引用该事件明确涉及的政权，并有来源和说明；显式 `affiliationScope:contextual` 与 `affiliationNote` 仅保留人物关联身份，不把该身份政权反推为参战方 |
 | tenurePeople | `tenureId/personId/kind:associated/description/sourceIds`；这是任期关联人物，不代替任期本人的 `personId` |
 | personPolities | `personId/polityId/kind/description/sourceIds`；活动类别沿用上表 |
 
