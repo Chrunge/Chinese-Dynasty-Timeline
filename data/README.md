@@ -1,6 +1,8 @@
 # 资料模型与维护约定
 
-[atlas.json](<./atlas.json>) 是周朝生产资料的唯一维护入口。正式秦汉与三国分别维护在 [qin-han.json](<./qin-han.json>) 和 [three-kingdoms.json](<./three-kingdoms.json>)；[入库说明](<../docs/FORMAL-DATA-IMPORT.md>) 记录其原文件散列和显式结构注释。新增[魏晋南北朝](<./wei-jin-nan-bei.json>)、[隋唐](<./sui-tang.json>)、[辽金宋](<./liao-jin-song.json>)、[明朝](<./ming.json>) 也均参与默认构建，原件字节不改；类别适配、全部偏差及限制见[四卷入库记录](<../docs/DYNASTY-INTAKE.md>)。七卷共享ID的原始位置、内容散列与字段差异由[出处索引](<../dist/corpus.json>)登记，不按姓名合并，不用一卷覆盖另一卷。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。周朝资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。[examples](./examples/README.md) 是独立 schema 2 结构演示，不是第二份生产资料，也不参与默认构建。
+[atlas.json](<./atlas.json>) 是周朝生产资料的唯一维护入口。正式秦汉与三国分别维护在 [qin-han.json](<./qin-han.json>) 和 [three-kingdoms.json](<./three-kingdoms.json>)；[入库说明](<../docs/FORMAL-DATA-IMPORT.md>) 记录其原文件散列和显式结构注释。新增[魏晋南北朝](<./wei-jin-nan-bei.json>)、[隋唐](<./sui-tang.json>)、[辽金宋](<./liao-jin-song.json>)、[明朝](<./ming.json>) 也均参与默认构建，原件字节不改；类别适配、全部偏差及限制见[四卷入库记录](<../docs/DYNASTY-INTAKE.md>)。十一卷原始ID的出处、内容散列与字段差异由[出处索引](<../dist/corpus.json>)登记，不按姓名合并，不用一卷覆盖另一卷。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。周朝资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。[examples](./examples/README.md) 是独立 schema 2 结构演示，不是第二份生产资料，也不参与默认构建。
+
+夏商、五代十国、元、清新增原件分别维护在[夏商](<./xia-shang.json>)、[五代十国](<./five-dynasties.json>)、[元朝](<./yuan.json>)、[清朝](<./qing.json>)。原件不改；[入库记录](<../docs/EXPANSION-INTAKE.md>)列明全部技术投影、原字节散列及待考限制。夏商18条异说不足的纪年仅按legacy继承，不补造第二观点；`sourceDating`保留原标注。后凉／后梁与武周／吴周复用了ID但不是同一政权，出处索引明确以dataset作用域分开，不能仅按ID全局去重；原件的校核标签不代表本次联网验证。
 
 ## 集合与关系
 

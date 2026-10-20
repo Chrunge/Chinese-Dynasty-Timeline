@@ -4,7 +4,7 @@
 
 ```mermaid
 flowchart TB
-  A["data/*.json 七专题原始资料"] --> Q["lib/production.mjs 技术适配与专题目录"]
+  A["data/*.json 十一专题原始资料"] --> Q["lib/production.mjs 技术适配与专题目录"]
   Q --> B["lib/atlas.mjs 统一校验与资料投影"]
   B --> C["dist/data*.js 各卷发布数据"]
   A --> I["lib/corpus.mjs 跨卷ID及原始出处索引"]

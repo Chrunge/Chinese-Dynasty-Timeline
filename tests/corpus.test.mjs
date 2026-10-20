@@ -7,7 +7,7 @@ import {catalog} from '../lib/production.mjs';
 const entries=()=>catalog.map(t=>{const bytes=fs.readFileSync(new URL('../data/'+t.file,import.meta.url));return {...t,file:'data/'+t.file,sourceSha256:createHash('sha256').update(bytes).digest('hex'),atlas:JSON.parse(bytes)};});
 test('资料索引保留稳定ID、原始出处、同ID多卷差异，不按名字合并',()=>{
  const input=entries(),before=JSON.stringify(input),corpus=buildCorpus(input);
- assert.equal(JSON.stringify(input),before);assert.equal(corpus.topics.length,7);
+ assert.equal(JSON.stringify(input),before);assert.equal(corpus.topics.length,11);
  const jin=corpus.entities.polities.find(p=>p.id==='western-jin');assert.equal(jin.appearances.length,2);assert(jin.differingFields.length>0);
  const wendi=corpus.entities.tenures.find(p=>p.id==='st-tenure-sui-wendi');assert.equal(wendi.appearances.length,2);
  for(const collection of Object.values(corpus.entities))for(const entity of collection){

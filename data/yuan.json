@@ -1,0 +1,3604 @@
+{
+  "schemaVersion": 2,
+  "metadata": {
+    "title": "元朝专卷（大蒙古国与大元十八汗帝及监国称制全谱系、行省宣政院建制与元末群雄）",
+    "exportLegend": "彩色条：采用年表的君主/监国称制在位区间；细线：政权存续；E编号菱形：重大事件；红色端点：政权终止或改制；金色竖线：参考年份。",
+    "scopeNote": "涵盖1206年铁木真建立大蒙古国至1368年元顺帝北奔上都（含太祖成吉思汗、拖雷监国、太宗窝阔台、乃马真后称制、定宗贵由、海迷失后称制、宪宗蒙哥、世祖忽必烈、成宗铁穆耳、武宗海山、仁宗爱育黎拔力八达、英宗硕德八剌、泰定帝也孙铁木儿、天顺帝阿速吉八、文宗图帖睦尔、明宗和世琜、宁宗懿璘质班、顺帝妥懽贴睦尔共十八位最高统治者全谱系），以及元末韩宋、天完徐寿辉、陈友谅大汉、张士诚平江吴、明玉珍大夏与朱元璋西吴/建明北伐。",
+    "updated": "2026-10-20",
+    "version": "Schema 2 生产完整版 · 2026-10-20 元史与明史全帝系及列传校核",
+    "sourceIds": [
+      "ymq-source-yuanshi-001",
+      "ymq-source-yuanshi-002",
+      "ymq-source-yuanshi-003",
+      "ymq-source-yuanshi-004",
+      "ymq-source-yuanshi-018",
+      "ymq-source-yuanshi-022",
+      "ymq-source-yuanshi-024",
+      "ymq-source-yuanshi-027",
+      "ymq-source-yuanshi-029",
+      "ymq-source-yuanshi-031",
+      "ymq-source-yuanshi-038",
+      "ymq-source-yuanshi-058",
+      "ymq-source-yuanshi-119",
+      "ymq-source-yuanshi-127",
+      "ymq-source-yuanshi-138",
+      "ymq-source-yuanshi-146",
+      "ymq-source-yuanshi-157",
+      "ymq-source-yuanshi-164",
+      "ymq-source-mingshi-1",
+      "ymq-source-mingshi-122",
+      "ymq-source-mingshi-125"
+    ],
+    "researchNote": "依据《元史》二百一十卷与《明史》元末群雄列传整理。完整补齐大蒙古国与元朝全部十八位大汗/皇帝/监国称制后妃在位区间（含元文宗图帖睦尔天历让位前与复辟后两段任期），以及元末六大群雄政权。向上与辽金宋专卷（song-liao-jin.json）无缝共享大蒙古国/元朝（mongol-yuan）、西夏、金、大理、南宋及成吉思汗、窝阔台、蒙哥、忽必烈、伯颜、张弘范ID；向下与明朝专卷（ming.json）无缝共享明朝（ming）、元顺帝妥懽贴睦尔、扩廓帖木儿、朱元璋、徐达等ID。"
+  },
+  "timeline": {
+    "start": {
+      "era": "CE",
+      "year": 1206
+    },
+    "end": {
+      "era": "CE",
+      "year": 1368
+    },
+    "defaultEnd": {
+      "era": "CE",
+      "year": 1368
+    },
+    "cursor": {
+      "era": "CE",
+      "year": 1280
+    }
+  },
+  "periods": [
+    {
+      "id": "yuan-period-all",
+      "name": "大蒙古国与元朝全览（成吉思汗建国至元顺帝北奔）",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "structure": "overview",
+      "color": "#264653",
+      "polityIds": [
+        "mongol-yuan",
+        "western-xia",
+        "jin-jurchen",
+        "dali",
+        "southern-song",
+        "tianwan-xu",
+        "zhang-zhou",
+        "red-turban-song",
+        "chen-han",
+        "ming-xia",
+        "ming"
+      ],
+      "sourceIds": [
+        "ymq-source-yuanshi-001",
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-024",
+        "ymq-source-yuanshi-038",
+        "ymq-source-mingshi-1"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "自1206年铁木真于斡难河源建立大蒙古国、1271年忽必烈定国号为大元、1279年统一全国，至1368年八月明军徐达攻克元大都、元顺帝北奔上都（共162年，涵盖大蒙古国与元朝全部十八位大汗/皇帝及监国称制）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-period-mongol-empire",
+      "parentId": "yuan-period-all",
+      "name": "大蒙古国扩张期（成吉思汗至蒙哥汗：灭夏灭金平大理与三次西征）",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1259
+      },
+      "structure": "coexistence",
+      "color": "#3d5a6c",
+      "polityIds": [
+        "mongol-yuan",
+        "western-xia",
+        "jin-jurchen",
+        "dali",
+        "southern-song"
+      ],
+      "sourceIds": [
+        "ymq-source-yuanshi-001",
+        "ymq-source-yuanshi-002",
+        "ymq-source-yuanshi-003",
+        "ymq-source-yuanshi-146"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖成吉思汗（1206—1227）、拖雷监国、窝阔台汗（1229—1241）、乃马真后称制、贵由汗、海迷失后称制及蒙哥汗（1251—1259）；期间灭西辽、灭西夏、联宋灭金、平大理、招抚吐蕃，并完成三次横跨欧亚的西征。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-period-kublai-unification",
+      "parentId": "yuan-period-all",
+      "name": "世祖忽必烈建元大一统与成宗大德守成",
+      "start": {
+        "era": "CE",
+        "year": 1260
+      },
+      "end": {
+        "era": "CE",
+        "year": 1307
+      },
+      "structure": "coexistence",
+      "color": "#24596b",
+      "polityIds": [
+        "mongol-yuan",
+        "southern-song"
+      ],
+      "sourceIds": [
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-018",
+        "ymq-source-yuanshi-058",
+        "ymq-source-yuanshi-164"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1260年忽必烈即位建元中统，击败阿里不哥、平李璮，1271年定国号大元，1272年建大都，1279年崖山灭南宋完成大一统；创立行省制、宣政院与澎湖巡检司，颁《授时历》；元成宗铁穆耳（1294—1307）守成息兵。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-period-mid-yuan-reforms-coups",
+      "parentId": "yuan-period-all",
+      "name": "元中叶汉法改革与宫廷政变期（武仁之治、至治新政与天历之变）",
+      "start": {
+        "era": "CE",
+        "year": 1307
+      },
+      "end": {
+        "era": "CE",
+        "year": 1333
+      },
+      "structure": "dynasty",
+      "color": "#4f6d82",
+      "polityIds": [
+        "mongol-yuan"
+      ],
+      "sourceIds": [
+        "ymq-source-yuanshi-022",
+        "ymq-source-yuanshi-024",
+        "ymq-source-yuanshi-027",
+        "ymq-source-yuanshi-029",
+        "ymq-source-yuanshi-031"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖武宗海山、仁宗（1313年延祐复科）、英宗（至治新政、颁《大元通制》与1323年南坡之变）、泰定帝、天顺帝与文宗/明宗（1328—1329两都之战与天历之变、建奎章阁修《经世大典》）及宁宗，26年间九易君主。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-period-shundi-red-turban",
+      "parentId": "yuan-period-all",
+      "name": "元顺帝至正新政、红巾军大起义与江南群雄逐鹿",
+      "start": {
+        "era": "CE",
+        "year": 1333
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "structure": "coexistence",
+      "color": "#8c4a3e",
+      "polityIds": [
+        "mongol-yuan",
+        "tianwan-xu",
+        "zhang-zhou",
+        "red-turban-song",
+        "chen-han",
+        "ming-xia",
+        "ming"
+      ],
+      "sourceIds": [
+        "ymq-source-yuanshi-038",
+        "ymq-source-yuanshi-138",
+        "ymq-source-mingshi-1",
+        "ymq-source-mingshi-122"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "元顺帝前期脱脱驱逐伯颜推行“至正新政”、修成辽金宋三史；1351年贾鲁治河激起韩山童刘福通红巾军大起义，韩宋、天完、陈汉、张士诚、明玉珍与朱元璋并起，至1368年朱元璋建明、徐达北伐攻克大都。",
+        "alternatives": []
+      }
+    }
+  ],
+  "polities": [
+    {
+      "id": "mongol-yuan",
+      "name": "大蒙古国 / 元朝",
+      "kind": "empire",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "color": "#264653",
+      "region": "哈拉和林 / 上都开平府（正蓝旗） / 大都（北京）",
+      "ending": "至正二十八年（1368年）八月明军徐达攻克大都，元顺帝北走上都（退居漠北延续为北元）",
+      "note": "跨期共用政权ID（mongol-yuan）。1206年铁木真建大蒙古国，历四汗二监国称制，1260年忽必烈即位，1271年取《易经》“大哉乾元”改国号大元，1279年灭南宋完成全国大一统；创行省制度，将西藏（宣政院）、云南、台湾澎湖纳入中央直接行政管辖，元曲、农学与天文历法臻于极盛。",
+      "sourceIds": [
+        "ymq-source-yuanshi-001",
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-038",
+        "ymq-source-yuanshi-058"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1206年铁木真称成吉思汗，1271年定国号大元，至1368年八月明军克大都。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "western-xia",
+      "name": "西夏（亡于蒙古阶段）",
+      "kind": "empire",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1227
+      },
+      "color": "#8c6239",
+      "region": "中兴府（银川）",
+      "ending": "1227年六月成吉思汗蒙古大军攻灭西夏",
+      "note": "跨期共用政权ID（western-xia，完整谱系见辽金宋专卷 song-liao-jin.json）。1205—1227年间遭受蒙古六次征讨，1227年六月末帝李睍出降被杀。",
+      "sourceIds": [
+        "ymq-source-yuanshi-001"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "本卷呈现1206—1227年蒙夏战争至西夏灭亡阶段。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "jin-jurchen",
+      "name": "金朝（蒙金战争阶段）",
+      "kind": "empire",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1234
+      },
+      "color": "#7a493d",
+      "region": "中都（北京） / 南京汴京（开封） / 蔡州",
+      "ending": "天兴三年（1234年）正月窝阔台汗与南宋联军攻破蔡州，金亡",
+      "note": "跨期共用政权ID（jin-jurchen，完整谱系见辽金宋专卷 song-liao-jin.json）。1211年野狐岭惨败，1214年南迁汴京，1232年三峰山主力覆没，1234年正月亡于蔡州。",
+      "sourceIds": [
+        "ymq-source-yuanshi-001",
+        "ymq-source-yuanshi-002"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "本卷呈现1206—1234年蒙金战争至金朝灭亡阶段。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "dali",
+      "name": "大理国（忽必烈平大理阶段）",
+      "kind": "state",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1253
+      },
+      "color": "#5a7a60",
+      "region": "羊苴咩城（云南大理）",
+      "ending": "1253年十二月忽必烈、兀良哈台革囊渡江攻克大理城",
+      "note": "跨期共用政权ID（dali，见辽金宋专卷）。1253年底忽必烈灭大理，后设云南行省。",
+      "sourceIds": [
+        "ymq-source-yuanshi-003",
+        "ymq-source-yuanshi-004"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "本卷呈现大理国晚期至1253年并入蒙元阶段。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "southern-song",
+      "name": "南宋（宋蒙战争阶段）",
+      "kind": "empire",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1279
+      },
+      "color": "#2d6a5e",
+      "region": "临安府（杭州） / 崖山",
+      "ending": "1279年二月崖山海战元军张弘范击败宋军，陆秀夫负幼帝赵昺投海，南宋亡",
+      "note": "跨期共用政权ID（southern-song，完整谱系见辽金宋专卷 song-liao-jin.json）。1234—1279年独立抗击蒙元四十五年，经钓鱼城、襄樊、临安、崖山四阶段覆亡。",
+      "sourceIds": [
+        "ymq-source-yuanshi-003",
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-127"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "本卷呈现南宋晚期抗蒙至1279年崖山灭亡阶段。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "tianwan-xu",
+      "name": "徐宋（天完红巾军政权）",
+      "kind": "rebel",
+      "start": {
+        "era": "CE",
+        "year": 1351
+      },
+      "end": {
+        "era": "CE",
+        "year": 1360
+      },
+      "color": "#9e5b40",
+      "region": "蕲水（湖北浠水） / 汉阳 / 江州（九江）",
+      "ending": "1360年五月权臣陈友谅于采石舟中弑杀徐寿辉，改建陈汉",
+      "note": "1351年八月彭莹玉、邹普胜于湖北蕲水拥立布贩徐寿辉称帝，国号天完，改元治平，席卷湖广、江西、江浙，后大权旁落于倪文俊、陈友谅，1360年为陈友谅篡代。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1351年八月徐寿辉于蕲水称帝，至1360年五月被陈友谅所杀。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "zhang-zhou",
+      "name": "张周 / 平江吴政权",
+      "kind": "rebel",
+      "start": {
+        "era": "CE",
+        "year": 1354
+      },
+      "end": {
+        "era": "CE",
+        "year": 1367
+      },
+      "color": "#5e6e54",
+      "region": "高邮 / 平江（今江苏苏州）",
+      "ending": "1367年九月明将徐达、常遇春攻破平江城，张士诚被俘押至应天自缢",
+      "note": "泰州白驹场盐贩张士诚于1353年起兵，1354年正月于高邮称诚王，国号大周，建元天祐；1356年渡江据平江（苏州）及浙西富庶之地，1363年自称吴王，1367年为朱元璋攻灭。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1354年正月张士诚建号大周，至1367年九月平江城破被俘。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "red-turban-song",
+      "name": "韩宋（北方红巾军龙凤政权）",
+      "kind": "rebel",
+      "start": {
+        "era": "CE",
+        "year": 1355
+      },
+      "end": {
+        "era": "CE",
+        "year": 1366
+      },
+      "color": "#9e473b",
+      "region": "亳州 / 汴梁（开封） / 安丰（寿县） / 滁州",
+      "ending": "龙凤十二年（1366年）十二月小明王韩林儿渡江赴应天途中于瓜步沉船去世",
+      "note": "1351年五月韩山童、刘福通于颍州起义，1355年二月刘福通在亳州拥立韩山童之子韩林儿为小明王，国号大宋，改元龙凤；三路北伐一度攻克汴梁、焚元上都；朱元璋长期奉龙凤年号以安北方。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1355年二月韩林儿于亳州称帝，至1366年十二月瓜步溺亡。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "chen-han",
+      "name": "陈汉",
+      "kind": "rebel",
+      "start": {
+        "era": "CE",
+        "year": 1360
+      },
+      "end": {
+        "era": "CE",
+        "year": 1364
+      },
+      "color": "#7d5243",
+      "region": "江州（九江） / 武昌",
+      "ending": "1363年八月陈友谅于鄱阳湖突围中流矢身亡，1364年二月朱元璋攻克武昌，陈理出降",
+      "note": "天完大将陈友谅于1360年五月杀徐寿辉称帝，国号大汉，改元大义，拥有湖广江西巨舰水师，1363年在鄱阳湖决战中败于朱元璋，次年其子陈理降。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1360年五月陈友谅称帝，至1364年二月陈理出降。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ming-xia",
+      "name": "明夏（大夏）",
+      "kind": "rebel",
+      "start": {
+        "era": "CE",
+        "year": 1363
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "color": "#78624d",
+      "region": "重庆 / 成都",
+      "ending": "1366年明玉珍病卒子明升继位（洪武四年1371年明军汤和、傅友德平蜀，明升出降）",
+      "note": "随州人明玉珍原为徐寿辉天完部将，1357年入蜀据重庆，1363年正月于重庆称帝，国号大夏，改元天统，保境息民、开科取士，延续至1371年归明。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1363年正月明玉珍称帝建大夏（本卷截取至1368年元亡，1371年降明）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ming",
+      "name": "西吴 / 明朝（平定江南与北伐驱元阶段）",
+      "kind": "empire",
+      "start": {
+        "era": "CE",
+        "year": 1356
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "color": "#8c3b32",
+      "region": "应天府（南京）",
+      "ending": "跨期政权（1368年正月称帝建大明、八月克元大都，完整1368—1644年谱系接续明朝专卷 ming.json）",
+      "note": "跨期共用政权ID（ming）。朱元璋于1356年攻克集庆（改应天府），1364年称吴王（史称西吴），先后消灭陈友谅、张士诚，1368年正月称帝建大明，八月徐达攻克元大都结束元朝中原统治。",
+      "sourceIds": [
+        "ymq-source-mingshi-1",
+        "ymq-source-mingshi-125"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "本卷呈现1356年朱元璋克集庆至1368年建明驱元阶段，完整明朝谱系见 ming.json。",
+        "alternatives": []
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "ymq-person-temujin",
+      "name": "铁木真（成吉思汗 / 元太祖）",
+      "role": "大蒙古国开国大汗",
+      "summary": "跨期共用人物ID（ymq-person-temujin）。统一蒙古草原诸部，1206年于斡难河源忽里勒台大会尊号“成吉思汗”，创千户百户十户军政合一制与怯薛宿卫军，颁行《大扎撒》法典，发动第一次西征（灭西辽、花剌子模），南下伐金并于1227年灭西夏。",
+      "sourceIds": [
+        "ymq-source-yuanshi-001"
+      ]
+    },
+    {
+      "id": "yuan-person-tolui",
+      "name": "拖雷（元睿宗）",
+      "role": "大蒙古国监国、成吉思汗第四子",
+      "summary": "蒙哥、忽必烈、旭烈兀、阿里不哥生父，按蒙古“幼子守产”习俗掌蒙古主力军，1227—1229年监国，1232年正月于钧州三峰山之战全歼金哀宗十五万精锐。",
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ]
+    },
+    {
+      "id": "ymq-person-ogedei",
+      "name": "窝阔台（元太宗）",
+      "role": "大蒙古国第二任大汗",
+      "summary": "跨期共用人物ID（ymq-person-ogedei）。成吉思汗第三子，1229—1241年在位，任耶律楚材为中书令定赋税仪制，营建哈拉和林，1234年正月联宋攻灭金朝，1235年发动“长子西征”（拔都西征钦察与罗斯）。",
+      "sourceIds": [
+        "ymq-source-yuanshi-002",
+        "ymq-source-yuanshi-146"
+      ]
+    },
+    {
+      "id": "yuan-person-toregene",
+      "name": "乃马真后（脱列哥那 / 昭慈皇后）",
+      "role": "大蒙古国称制皇后",
+      "summary": "窝阔台第六皇后、贵由汗生母，1241—1246年临朝称制五年，宠信奥都剌合蛮，压抑耶律楚材，筹备忽里勒台大会拥立长子贵由即汗位。",
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ]
+    },
+    {
+      "id": "yuan-person-guyuk",
+      "name": "贵由（元定宗）",
+      "role": "大蒙古国第三任大汗",
+      "summary": "窝阔台长子，1246—1248年在位，整顿母后称制期弊政，命阔端经略吐蕃（1247年凉州会盟），率军西行途中病崩于横相乙儿。",
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ]
+    },
+    {
+      "id": "yuan-person-oghul-qaimish",
+      "name": "海迷失后（斡兀立海迷失 / 钦淑皇后）",
+      "role": "大蒙古国称制皇后",
+      "summary": "定宗贵由皇后，1248—1251年抱失烈门听政，期间汗庭权威衰落，1251年拔都与兀良哈台拥立拖雷长子蒙哥夺取汗位。",
+      "sourceIds": [
+        "ymq-source-yuanshi-002",
+        "ymq-source-yuanshi-003"
+      ]
+    },
+    {
+      "id": "ymq-person-mongke",
+      "name": "蒙哥（元宪宗）",
+      "role": "大蒙古国第四任大汗",
+      "summary": "跨期共用人物ID（ymq-person-mongke）。拖雷长子，1251—1259年在位，使大汗位由窝阔台系转入拖雷系；命弟旭烈兀发动第三次西征（灭木剌夷与阿拔斯王朝），命弟忽必烈平定大理（1253），1258年亲率大军攻宋，1259年七月崩于合州钓鱼城下。",
+      "sourceIds": [
+        "ymq-source-yuanshi-003"
+      ]
+    },
+    {
+      "id": "ymq-person-kublai",
+      "name": "忽必烈（元世祖薛禅汗）",
+      "role": "元朝开国皇帝",
+      "summary": "跨期共用人物ID（ymq-person-kublai）。拖雷第四子，1260年于开平即汗位建元中统，击败幼弟阿里不哥、平李璮之乱；采纳刘秉忠、许衡、姚枢汉法方略，1271年定国号为“大元”，1272年建大都，1279年灭南宋统一全国；创立中书省—十行中书省体制，设宣政院管辖西藏、澎湖巡检司管辖台湾，颁行《授时历》并开通惠河与海运。",
+      "sourceIds": [
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-058"
+      ]
+    },
+    {
+      "id": "ymq-person-temur",
+      "name": "铁穆耳（元成宗完泽笃汗）",
+      "role": "元朝第二任皇帝",
+      "summary": "忽必烈嫡孙、裕宗真金第三子，1294—1307年在位，即位后停止征日本与安南、整饬纲纪、约法轻赋，并于1303年与西北窝阔台汗国、察合台汗国达成全面和平，为元代守成贤君。",
+      "sourceIds": [
+        "ymq-source-yuanshi-018"
+      ]
+    },
+    {
+      "id": "yuan-person-haishan",
+      "name": "海山（元武宗曲律汗）",
+      "role": "元朝第三任皇帝",
+      "summary": "顺宗答剌麻八剌长子、成宗侄，早年统军镇守漠北击败海都，1307年与弟爱育黎拔力八达平定阿难答之变即位（1307—1311年在位），与弟达成“兄终弟及、叔侄相传”之武仁之约，营建元中都（张北）、复设尚书省滥发至大银钞。",
+      "sourceIds": [
+        "ymq-source-yuanshi-022"
+      ]
+    },
+    {
+      "id": "ymq-person-ayurbarwada",
+      "name": "爱育黎拔力八达（元仁宗普颜笃汗）",
+      "role": "元朝第四任皇帝",
+      "summary": "武宗海山同母弟，1311—1320年在位，即位即罢尚书省、停建中都，倾心儒学，于皇庆二年（1313年）下诏恢复中断近八十年的科举制度（1315年首开延祐科举），规定四书采用朱熹《四书章句集注》，推行“延祐经理”清查田赋。",
+      "sourceIds": [
+        "ymq-source-yuanshi-024"
+      ]
+    },
+    {
+      "id": "yuan-person-shidebala",
+      "name": "硕德八剌（元英宗格坚汗）",
+      "role": "元朝第五任皇帝",
+      "summary": "仁宗嫡子，1320—1323年在位，起用名臣拜住为右丞相，力行“至治新政”，裁减冗官与佛事开支、颁行完备法典《大元通制》；因触犯铁木迭儿旧党利益，于1323年八月自上都南返驻跸南坡店时被御史大夫铁失等弑杀（南坡之变）。",
+      "sourceIds": [
+        "ymq-source-yuanshi-027"
+      ]
+    },
+    {
+      "id": "yuan-person-yesun-temur",
+      "name": "也孙铁木儿（元泰定帝）",
+      "role": "元朝第六任皇帝",
+      "summary": "显宗甘麻剌长子、忽必烈曾孙（镇守漠北晋王），1323年南坡之变后即汗位于龙居河（1323—1328年在位），诛除铁失逆党、为英宗与拜住昭雪，保持政局平稳。",
+      "sourceIds": [
+        "ymq-source-yuanshi-029"
+      ]
+    },
+    {
+      "id": "yuan-person-ragibagh",
+      "name": "阿速吉八（元天顺帝）",
+      "role": "元朝第七任皇帝",
+      "summary": "泰定帝嫡子，致和元年（1328年）九月由左丞相倒剌沙在上都拥立即位，与大都燕铁木儿拥立的元文宗爆发“两都之战”，十月上都陷落不知所终。",
+      "sourceIds": [
+        "ymq-source-yuanshi-029"
+      ]
+    },
+    {
+      "id": "yuan-person-tugh-temur",
+      "name": "图帖睦尔（元文宗札牙笃汗）",
+      "role": "元朝第八、十任皇帝",
+      "summary": "武宗海山次子，1328年九月在大都由燕铁木儿拥立（前任1328—1329，复辟1329—1332），击败上都天顺帝；1329年让位于兄明宗和世琜，明宗暴崩后复位（天历之变）；在位期间创立奎章阁学士院，命虞集等编纂巨著《经世大典》。",
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ]
+    },
+    {
+      "id": "yuan-person-kusala",
+      "name": "和世琜（元明宗忽都笃汗）",
+      "role": "元朝第九任皇帝",
+      "summary": "武宗海山长子、文宗兄，早年流亡察合台汗国，1329年正月在和林北称帝，八月南下至上都北旺忽察都与弟文宗会晤时离奇暴崩（在位仅六个月）。",
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ]
+    },
+    {
+      "id": "yuan-person-rinchinbal",
+      "name": "懿璘质班（元宁宗）",
+      "role": "元朝第十一任皇帝",
+      "summary": "明宗次子，1332年十月由卜答失里太后与燕铁木儿拥立，十一月病逝，年仅7岁，在位五十三日。",
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ]
+    },
+    {
+      "id": "ymq-person-toghon-temur",
+      "name": "妥懽贴睦尔（元顺帝 / 元惠宗乌哈噶图汗）",
+      "role": "元朝末代皇帝、北元首任可汗",
+      "summary": "明宗长子，1333—1368年在元帝位（在位三十六年，为元代最久）；1340年支持脱脱铲除权臣伯颜、推行“至正新政”并修成辽金宋三史；后期沉迷宫廷天魔舞与佛事，1351年爆发红巾军大起义，1368年八月明军徐达逼近大都时北奔上都。",
+      "sourceIds": [
+        "ymq-source-yuanshi-038"
+      ]
+    },
+    {
+      "id": "yuan-person-muqali",
+      "name": "木华黎（太师国王）",
+      "role": "大蒙古国太师、国王",
+      "summary": "成吉思汗麾下“四杰”之一，1217年受封太师、国王全权统帅华北经略，改变屠城旧习招抚汉人世侯（史天泽、张柔等），攻取金朝辽东、河北、山西、山东。",
+      "sourceIds": [
+        "ymq-source-yuanshi-119"
+      ]
+    },
+    {
+      "id": "yuan-person-subutai",
+      "name": "速不台",
+      "role": "大蒙古国名将",
+      "summary": "成吉思汗“四獒”之一，参与灭花剌子模、迦尔迦河之战，1232—1234年围攻汴京灭金，1235—1242年任拔都长子西征实际军事总指挥，横扫钦察、罗斯、波兰与匈牙利。",
+      "sourceIds": [
+        "ymq-source-yuanshi-119"
+      ]
+    },
+    {
+      "id": "ymq-person-yelv-chucai",
+      "name": "耶律楚材",
+      "role": "大蒙古国中书令",
+      "summary": "辽皇族东丹王后裔，历事成吉思汗与窝阔台近三十年，力劝止杀保民、阻止改华北农田为牧场，创立燕京等十路征收课税所，1238年主持“戊戌选试”拯救儒士四千余人。",
+      "sourceIds": [
+        "ymq-source-yuanshi-146"
+      ]
+    },
+    {
+      "id": "yuan-person-liu-bingzhong",
+      "name": "刘秉忠",
+      "role": "元世祖首席谋臣、太保",
+      "summary": "邢州人，博通儒佛道与天文律历，1242年入忽必烈潜邸，献万言策，随征大理力劝止杀，主持规划设计元上都（开平）与元大都（北京）城郭宫室，拟定“大元”国号与中书省官制。",
+      "sourceIds": [
+        "ymq-source-yuanshi-157"
+      ]
+    },
+    {
+      "id": "yuan-person-xu-heng",
+      "name": "许衡（鲁斋先生）",
+      "role": "元朝中书左丞、国子祭酒、理学家",
+      "summary": "元初北方程朱理学领袖，助忽必烈制定朝仪官制，长期任集贤大学士兼国子祭酒，教导蒙古色目汉人子弟，与刘因、吴澄并推元代理学宗师，参修《授时历》。",
+      "sourceIds": [
+        "ymq-source-yuanshi-157"
+      ]
+    },
+    {
+      "id": "yuan-person-phagspa",
+      "name": "八思巴（大宝法王）",
+      "role": "元朝首任帝师、宣政院统领",
+      "summary": "藏传佛教萨迦派第五祖，1247年随叔父萨迦班智达参加凉州会盟，1260年受忽必烈尊为国师、1270年创制“八思巴字”（蒙古新字）晋封帝师，总领总制院（宣政院）管理全国佛教与吐蕃（西藏）军政事务。",
+      "sourceIds": [
+        "ymq-source-yuanshi-164"
+      ]
+    },
+    {
+      "id": "ymq-person-bayan",
+      "name": "伯颜（巴延）",
+      "role": "元朝中书左丞相、伐宋大元帅",
+      "summary": "跨期共用人物ID（ymq-person-bayan）。1274年统率二十万水陆大军南下伐宋，突破阳逻堡、丁家洲，1276年二月兵不血刃进驻临安接受南宋朝廷出降。",
+      "sourceIds": [
+        "ymq-source-yuanshi-127"
+      ]
+    },
+    {
+      "id": "ymq-person-zhang-hongfan",
+      "name": "张弘范",
+      "role": "元朝蒙古汉军都元帅",
+      "summary": "跨期共用人物ID（ymq-person-zhang-hongfan）。汉人世侯张柔第九子，1278年底于五坡岭生擒文天祥，1279年二月指挥崖山海战消灭南宋最后抵抗力量。",
+      "sourceIds": [
+        "ymq-source-yuanshi-127"
+      ]
+    },
+    {
+      "id": "ymq-person-guo-shoujing",
+      "name": "郭守敬",
+      "role": "元朝太史令、都水监、科学家",
+      "summary": "研制简仪、仰仪、高表等十余种天文仪器，主持北起铁勒、南至南海二十七处观测点的“四海测验”，1280年编成中国古代最精密历法《授时历》，并主持开凿大都通惠河贯通京杭大运河。",
+      "sourceIds": [
+        "ymq-source-yuanshi-164"
+      ]
+    },
+    {
+      "id": "yuan-person-zhao-mengfu",
+      "name": "赵孟頫（松雪道人）",
+      "role": "元朝翰林学士承旨、书画巨匠",
+      "summary": "宋太祖十一世孙，元仁宗朝官至翰林学士承旨；倡导“书画同源”与托古改制，楷书居“楷书四大家”（欧颜柳赵）之一，开创元代文人山水画新风。",
+      "sourceIds": [
+        "ymq-source-yuanshi-164"
+      ]
+    },
+    {
+      "id": "yuan-person-guan-hanqing",
+      "name": "关汉卿（已斋叟）",
+      "role": "元代杂剧奠基人、“元曲四大家”之首",
+      "summary": "大都人，终身于勾栏瓦舍编撰杂剧六十余种，代表作《窦娥冤》《救风尘》《单刀会》，与马致远、郑光祖、白朴并称“元曲四大家”（另王实甫著《西厢记》）。",
+      "sourceIds": [
+        "ymq-source-yuanshi-164"
+      ]
+    },
+    {
+      "id": "ymq-person-toqto",
+      "name": "脱脱",
+      "role": "元朝中书右丞相",
+      "summary": "康里氏，1340年大义灭亲助元顺帝铲除专权排汉的伯父伯颜，主持“至正新政”恢复科举、任辽金宋三史都总裁官，1351年任用贾鲁治河，1354年督师围困高邮张士诚时遭哈麻进谗被贬毒杀。",
+      "sourceIds": [
+        "ymq-source-yuanshi-138"
+      ]
+    },
+    {
+      "id": "yuan-person-koke-temur",
+      "name": "扩廓帖木儿（王保保）",
+      "role": "元末太傅、中书左丞相、河南王",
+      "summary": "元末名将察罕帖木儿外甥兼养子，1362年继统父军平定山东红巾军，为元末最强劲的军事统帅，朱元璋赞为“天下奇男子”，1368年后随元廷北撤成为北元中流砥柱。",
+      "sourceIds": [
+        "ymq-source-yuanshi-138",
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "yuan-person-liu-futong",
+      "name": "刘福通",
+      "role": "北方红巾军首领、韩宋太保丞相",
+      "summary": "颍州人，1351年五月与白莲教首韩山童发动红巾军起义，1355年立韩林儿建大宋龙凤政权，主持三路北伐并于1358年攻占汴梁（开封），1363年安丰被张士诚部将吕珍攻破时战死。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "ymq-person-han-liner",
+      "name": "韩林儿（小明王）",
+      "role": "韩宋龙凤皇帝",
+      "summary": "韩山童之子，1355年二月于亳州称帝，国号大宋，改元龙凤（1355—1366年在位），1366年十二月渡江赴应天途中于瓜步沉船去世。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "yuan-person-xu-shouhui",
+      "name": "徐寿辉",
+      "role": "天完红巾军皇帝",
+      "summary": "罗田布贩，1351年八月于蕲水被彭莹玉、邹普胜拥立称帝，国号天完，改元治平（1351—1360年在位），1360年五月在采石舟中被部将陈友谅锤杀。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "ymq-person-chen-youliang",
+      "name": "陈友谅",
+      "role": "陈汉皇帝",
+      "summary": "沔阳渔家子，1360年杀徐寿辉于江州称帝，国号大汉（1360—1363年在位），拥巨舰水师六十万与朱元璋决战于鄱阳湖，1363年八月突围时中流矢身亡。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "yuan-person-zhang-shicheng",
+      "name": "张士诚",
+      "role": "张周诚王、平江吴王",
+      "summary": "泰州白驹场盐工，1354年于高邮称诚王、国号大周，1356年据平江（苏州）及浙西富庶之地，1363年自称吴王，1367年九月平江城破被徐达俘送应天自缢。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "yuan-person-ming-yuzhen",
+      "name": "明玉珍",
+      "role": "明夏（大夏）开国皇帝",
+      "summary": "随州人，原徐寿辉部将，1357年入蜀据重庆，1363年正月称帝建国号大夏，改元天统（1363—1366年在位），轻徭薄赋，病卒后子明升继位至1371年归明。",
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "ymq-person-zhu-yuanzhang",
+      "name": "朱元璋（西吴王 / 明太祖）",
+      "role": "明朝开国皇帝",
+      "summary": "跨期共用人物ID（ymq-person-zhu-yuanzhang）。1352年投郭子兴濠州红巾军，1356年攻占集庆（改应天府），1363年鄱阳湖破陈友谅、1367年灭张士诚，1368年正月称帝建大明，八月派徐达北伐攻克元大都。",
+      "sourceIds": [
+        "ymq-source-mingshi-1"
+      ]
+    },
+    {
+      "id": "ymq-person-xu-da",
+      "name": "徐达",
+      "role": "明朝征虏大将军、魏国公",
+      "summary": "跨期共用人物ID（ymq-person-xu-da）。1367年十月受命为征虏大将军与常遇春率二十五万大军北伐，平山东、下汴梁，1368年八月攻克元大都。",
+      "sourceIds": [
+        "ymq-source-mingshi-125"
+      ]
+    }
+  ],
+  "tenures": [
+    {
+      "id": "ymq-tenure-temujin",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-temujin",
+      "name": "元太祖成吉思汗铁木真",
+      "role": "大汗",
+      "start": {
+        "era": "CE",
+        "year": 1206
+      },
+      "end": {
+        "era": "CE",
+        "year": 1227
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-001"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1206
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1206
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1227
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1206年于斡难河源即大汗位，1227年七月崩于六盘山。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-tolui",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-tolui",
+      "name": "元睿宗拖雷监国",
+      "role": "监国",
+      "start": {
+        "era": "CE",
+        "year": 1227
+      },
+      "end": {
+        "era": "CE",
+        "year": 1229
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1227
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1227
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1229
+        },
+        "death": {
+          "era": "CE",
+          "year": 1232
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1227年七月成吉思汗崩后以幼子监国，1229年八月窝阔台即汗位。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-ogedei",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-ogedei",
+      "name": "元太宗窝阔台汗",
+      "role": "大汗",
+      "start": {
+        "era": "CE",
+        "year": 1229
+      },
+      "end": {
+        "era": "CE",
+        "year": 1241
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1229
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1229
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1241
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1229年八月即大汗位，1234年灭金，1241年十一月崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-toregene",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-toregene",
+      "name": "昭慈皇后乃马真氏（脱列哥那）称制",
+      "role": "称制皇后",
+      "start": {
+        "era": "CE",
+        "year": 1241
+      },
+      "end": {
+        "era": "CE",
+        "year": 1246
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1241
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1241
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1246
+        },
+        "death": {
+          "era": "CE",
+          "year": 1246
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1241年十一月太宗崩后临朝称制，1246年七月贵由即汗位。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-guyuk",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-guyuk",
+      "name": "元定宗贵由汗",
+      "role": "大汗",
+      "start": {
+        "era": "CE",
+        "year": 1246
+      },
+      "end": {
+        "era": "CE",
+        "year": 1248
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1246
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1246
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1248
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1246年七月即大汗位，1248年三月崩于横相乙儿。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-qaimish",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-oghul-qaimish",
+      "name": "钦淑皇后斡兀立海迷失称制",
+      "role": "称制皇后",
+      "start": {
+        "era": "CE",
+        "year": 1248
+      },
+      "end": {
+        "era": "CE",
+        "year": 1251
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002",
+        "ymq-source-yuanshi-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1248
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1248
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1251
+        },
+        "death": {
+          "era": "CE",
+          "year": 1252
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1248年四月定宗崩后称制，1251年六月蒙哥即汗位。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-mongke",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-mongke",
+      "name": "元宪宗蒙哥汗",
+      "role": "大汗",
+      "start": {
+        "era": "CE",
+        "year": 1251
+      },
+      "end": {
+        "era": "CE",
+        "year": 1259
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1251
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1251
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1259
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1251年六月即大汗位，1259年七月崩于合州钓鱼城下。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-kublai",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-kublai",
+      "name": "元世祖薛禅汗忽必烈",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1260
+      },
+      "end": {
+        "era": "CE",
+        "year": 1294
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-004"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1260
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1260
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1294
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "中统元年（1260年）三月于开平即位，至元八年（1271年）十一月定国号大元，1279年灭南宋，至元三十一年（1294年）正月崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-temur",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-temur",
+      "name": "元成宗完泽笃汗铁穆耳",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1294
+      },
+      "end": {
+        "era": "CE",
+        "year": 1307
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-018"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1294
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1295
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1307
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1294年四月于上都即位，大德十一年（1307年）正月崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-haishan",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-haishan",
+      "name": "元武宗曲律汗海山",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1307
+      },
+      "end": {
+        "era": "CE",
+        "year": 1311
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-022"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1307
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1308
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1311
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1307年五月于上都即位，至大四年（1311年）正月崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-ayurbarwada",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-ayurbarwada",
+      "name": "元仁宗普颜笃汗爱育黎拔力八达",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1311
+      },
+      "end": {
+        "era": "CE",
+        "year": 1320
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-024"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1311
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1312
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1320
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1311年三月即位，1313年恢复科举，延祐七年（1320年）正月崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-shidebala",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-shidebala",
+      "name": "元英宗格坚汗硕德八剌",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1320
+      },
+      "end": {
+        "era": "CE",
+        "year": 1323
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-027"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1320
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1321
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1323
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1320年三月即位推行至治新政，至治三年（1323年）八月于南坡之变遇弑。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-yesun-temur",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-yesun-temur",
+      "name": "元泰定帝也孙铁木儿",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1323
+      },
+      "end": {
+        "era": "CE",
+        "year": 1328
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-029"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1323
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1324
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1328
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1323年九月于龙居河即位，致和元年（1328年）七月崩于上都。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-ragibagh",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-ragibagh",
+      "name": "元天顺帝阿速吉八",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1328
+      },
+      "end": {
+        "era": "CE",
+        "year": 1328
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-029"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1328
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1328
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1328
+        },
+        "death": {
+          "era": "CE",
+          "year": 1328
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1328年九月于上都即位，十月上都城破失踪。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-wenzong-1",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-tugh-temur",
+      "name": "元文宗图帖睦尔（天历初任）",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1328
+      },
+      "end": {
+        "era": "CE",
+        "year": 1329
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1328
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1328
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1329
+        },
+        "death": null,
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "天历元年（1328年）九月于大都即位，1329年二月让位于兄明宗。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-kusala",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-kusala",
+      "name": "元明宗忽都笃汗和世琜",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1329
+      },
+      "end": {
+        "era": "CE",
+        "year": 1329
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1329
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1329
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1329
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "天历二年（1329年）正月于和林北即位，八月于旺忽察都暴崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-wenzong-2",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-tugh-temur",
+      "name": "元文宗图帖睦尔（复辟）",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1329
+      },
+      "end": {
+        "era": "CE",
+        "year": 1332
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1329
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1329
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1332
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1329年八月于上都复位，至顺三年（1332年）八月崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-rinchinbal",
+      "polityId": "mongol-yuan",
+      "personId": "yuan-person-rinchinbal",
+      "name": "元宁宗懿璘质班",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1332
+      },
+      "end": {
+        "era": "CE",
+        "year": 1332
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-031"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1332
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1332
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1332
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1332年十月即位，十一月崩，在位五十三日。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-toghon-temur",
+      "polityId": "mongol-yuan",
+      "personId": "ymq-person-toghon-temur",
+      "name": "元顺帝（惠宗）妥懽贴睦尔",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1333
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-038"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1333
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1333
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1368
+        },
+        "death": {
+          "era": "CE",
+          "year": 1370
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1333年六月于上都即位，至正二十八年（1368年）八月明军克大都时北奔上都（北元任期接续 ming.json）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-xushouhui",
+      "polityId": "tianwan-xu",
+      "personId": "yuan-person-xu-shouhui",
+      "name": "天完皇帝徐寿辉",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1351
+      },
+      "end": {
+        "era": "CE",
+        "year": 1360
+      },
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1351
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1351
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1360
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1351年八月于蕲水称帝，1360年五月于采石被陈友谅所弑。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-zhangshicheng",
+      "polityId": "zhang-zhou",
+      "personId": "yuan-person-zhang-shicheng",
+      "name": "诚王 / 平江吴王张士诚",
+      "role": "诚王/吴王",
+      "start": {
+        "era": "CE",
+        "year": 1354
+      },
+      "end": {
+        "era": "CE",
+        "year": 1367
+      },
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1354
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1354
+        },
+        "abdication": {
+          "era": "CE",
+          "year": 1367
+        },
+        "death": {
+          "era": "CE",
+          "year": 1367
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1354年正月称诚王建号大周，1356年据苏州，1363年称吴王，1367年九月城破被俘。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-han-liner",
+      "polityId": "red-turban-song",
+      "personId": "ymq-person-han-liner",
+      "name": "韩宋小明王韩林儿",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1355
+      },
+      "end": {
+        "era": "CE",
+        "year": 1366
+      },
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1355
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1355
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1366
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "龙凤元年（1355年）二月于亳州称帝，1366年十二月瓜步溺亡。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "ymq-tenure-chen-youliang",
+      "polityId": "chen-han",
+      "personId": "ymq-person-chen-youliang",
+      "name": "陈汉皇帝陈友谅",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1360
+      },
+      "end": {
+        "era": "CE",
+        "year": 1363
+      },
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1360
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1360
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1363
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1360年五月称帝建号汉，1363年八月于鄱阳湖战死。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-mingyuzhen",
+      "polityId": "ming-xia",
+      "personId": "yuan-person-ming-yuzhen",
+      "name": "明夏太祖明玉珍",
+      "role": "皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1363
+      },
+      "end": {
+        "era": "CE",
+        "year": 1366
+      },
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1363
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1363
+        },
+        "abdication": null,
+        "death": {
+          "era": "CE",
+          "year": 1366
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "天统元年（1363年）正月于重庆称帝建大夏，1366年二月崩（子明升继位至1371年）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "yuan-tenure-zhuyuanzhang-wu",
+      "polityId": "ming",
+      "personId": "ymq-person-zhu-yuanzhang",
+      "name": "西吴王 / 明太祖朱元璋（平江南驱元段）",
+      "role": "吴国公/吴王/皇帝",
+      "start": {
+        "era": "CE",
+        "year": 1356
+      },
+      "end": {
+        "era": "CE",
+        "year": 1368
+      },
+      "sourceIds": [
+        "ymq-source-mingshi-1"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "CE",
+          "year": 1356
+        },
+        "regnalStart": {
+          "era": "CE",
+          "year": 1368
+        },
+        "abdication": null,
+        "death": null,
+        "changes": []
+      },
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1356年克集庆称吴国公，1364年正月称吴王，洪武元年（1368年）正月称帝建大明、八月克元大都（完整洪武帝任期见 ming.json）。",
+        "alternatives": []
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "yuan-event-01-temujin-kurultai-yassa",
+      "name": "铁木真斡难河称成吉思汗、创千户制与第一次西征、灭西夏",
+      "kind": "政治",
+      "year": {
+        "era": "CE",
+        "year": 1206
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-001",
+        "ymq-source-yuanshi-119"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1206年春铁木真于斡难河源忽里勒台大会称成吉思汗；1211年野狐岭破金；1219—1225年第一次西征；1227年六月灭西夏。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "铁木真历经十三翼之战、阔亦田之战，先后统一克烈、乃蛮、篾儿乞、塔塔儿诸部，结束蒙古草原数百年分裂。",
+        "process": "1206年于斡难河源召开忽里勒台大会，建大蒙古国（Yeke Mongghol Ulus），上尊号“成吉思汗”；将全民族编组为九十五千户（军政合一）与一万怯薛宿卫军，命塔塔统阿以畏兀儿字拼写蒙古语，颁行《大扎撒》法典；1211年起大举伐金，命太师国王木华黎经略华北；1218年灭西辽，1219—1225年亲率大军发动第一次西征攻灭花剌子模；1226—1227年六征西夏，于六盘山病逝前夕攻灭西夏。",
+        "result": "建立横跨蒙古高原、中亚与华北的草原帝国。",
+        "impact": "奠定了大蒙古国与元朝的军事组织基石，打通欧亚大陆陆路交通。",
+        "related": [
+          "yuan-event-02-ogedei-chucai-conquer-jin"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-02-ogedei-chucai-conquer-jin",
+      "name": "窝阔台汗营建和林、耶律楚材戊戌选试、联宋灭金与长子西征",
+      "kind": "军事",
+      "year": {
+        "era": "CE",
+        "year": 1234
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002",
+        "ymq-source-yuanshi-119",
+        "ymq-source-yuanshi-146"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1229年窝阔台即位；1232年正月三峰山之战；1234年正月蔡州灭金；1235年营建哈拉和林并发起拔都长子西征；1238年戊戌选试。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "成吉思汗崩后，幼子拖雷监国两年，1229年窝阔台即大汗位，全面推进灭金与中原治理。",
+        "process": "窝阔台重用契丹名臣耶律楚材，阻止别迭等将华北农田尽数改为牧场，设立燕京等十路征收课税所；1232年正月拖雷在钧州三峰山全歼金哀宗十五万主力，速不台围攻汴京；1234年正月蒙宋联军攻破蔡州灭亡金朝；1235年窝阔台营建国都哈拉和林，命拔都、速不台统率诸王长子发动第二次西征（长子西征，建立钦察汗国）；1238年采耶律楚材之议举行“戊戌选试”，在华北考选儒士四千零三十人免为奴隶。",
+        "result": "彻底取代金朝统治整个北方中原，中原农耕赋税体制与儒士阶层得以保全。",
+        "impact": "开启了蒙古帝国由单纯游牧征服向定居财税体制转型的关键一步。",
+        "related": [
+          "yuan-event-01-temujin-kurultai-yassa",
+          "yuan-event-03-liangzhou-dali-diaoyucheng"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-03-liangzhou-dali-diaoyucheng",
+      "name": "凉州会盟吐蕃归附、忽必烈平大理与蒙哥汗合州钓鱼城之战",
+      "kind": "军事",
+      "year": {
+        "era": "CE",
+        "year": 1259
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-002",
+        "ymq-source-yuanshi-003",
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-164"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1247年阔端与萨迦班智达凉州会盟；1251年蒙哥即位；1253年十二月忽必烈灭大理；1259年七月蒙哥汗死于合州钓鱼城下。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "定宗贵由在位期间（1247年），皇子阔端与藏传佛教萨迦派领袖萨迦班智达（偕侄八思巴）在凉州会晤，萨迦班智达致信卫藏僧俗归顺蒙古；1251年拖雷长子蒙哥即大汗位。",
+        "process": "蒙哥汗命弟旭烈兀发动第三次西征（灭木剌夷与巴格达阿拔斯王朝，建伊利汗国），命弟忽必烈总领漠南汉地军国庶事；1253年忽必烈偕兀良哈台率军自临洮南下，革囊渡金沙江攻克大理城，平定云南；1258年蒙哥亲统主力入蜀攻宋，1259年二月起受阻于宋将王坚据守的合州钓鱼城，围攻五个月不下，七月蒙哥汗崩于钓鱼城下。",
+        "result": "吐蕃与云南正式纳入蒙元版图，而蒙哥汗猝死迫使攻宋与西征大军全面停顿，引发忽必烈与幼弟阿里不哥的汗位争夺战。",
+        "impact": "统治中心自此由漠北哈拉和林彻底转移至漠南开平（上都）与燕京（大都）。",
+        "related": [
+          "yuan-event-02-ogedei-chucai-conquer-jin",
+          "yuan-event-04-kublai-found-yuan-unification"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-04-kublai-found-yuan-unification",
+      "name": "忽必烈建元中统、定国号大元、营建大都与1279年崖山灭南宋大一统",
+      "kind": "政治",
+      "year": {
+        "era": "CE",
+        "year": 1271
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-127",
+        "ymq-source-yuanshi-157"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1260年三月忽必烈即位建元中统；至元八年（1271年）十一月乙亥颁《建国号诏》定国号大元；1272年建大都；1276年下临安；1279年二月崖山海战灭宋。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "忽必烈采纳刘秉忠、姚枢、许衡等“金莲川幕府”汉儒建议，以“附会汉法”为立国方针。",
+        "process": "1260年三月忽必烈在开平即位，首建年号“中统”、设中书省，1264年击败阿里不哥、平定山东李璮叛乱；1267年命刘秉忠、也黑迭儿在金中都东北规划营建新城（1272年定名大都）；1271年十一月颁《建国号诏》，取《易经》“大哉乾元”定国号为“大元”；在攻破坚守六年的襄樊后，1274年命伯颜统军渡江，1276年二月受南宋临安出降，1279年二月张弘范于崖山海战消灭南宋残军。",
+        "result": "结束自唐末五代以来长达372年的多政权分裂局面，完成全国大一统。",
+        "impact": "元大都奠定了现代北京城市中轴线与棋盘格局，开启元明清三代以北京为国都的大一统传统。",
+        "related": [
+          "yuan-event-03-liangzhou-dali-diaoyucheng",
+          "yuan-event-05-province-xuanzhengyuan-shoushili"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-05-province-xuanzhengyuan-shoushili",
+      "name": "元朝创设行省制度、宣政院辖吐蕃、澎湖巡检司与颁行《授时历》",
+      "kind": "制度",
+      "year": {
+        "era": "CE",
+        "year": 1280
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-004",
+        "ymq-source-yuanshi-058",
+        "ymq-source-yuanshi-164"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "至元十七年（1280年）颁郭守敬《授时历》；至元二十五年（1288年）改总制院为宣政院；至元二十七年（1290年）十行中书省定制。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "元朝统一空前辽阔的疆域后，亟需建立兼顾中央集权与地方行政效率的治理体系。",
+        "process": "在中央设中书省总领政务、枢密院掌兵、御史台掌监察，设宣政院（由帝师八思巴等统领）直接管辖吐蕃（西藏）军政宗教事务并清查户口、设驿站；在地方除中书省直辖“腹里”（河北、山东、山西）外，分设岭北、辽阳、河南江北、陕西、四川、甘肃、云南、江浙、江西、湖广十个行中书省（行省制），并于福建泉州路澎湖设巡检司管辖台湾澎湖；1280年颁行郭守敬主持二十七处“四海测验”编成的《授时历》（定回归年为365.2425日，与现行公历完全相同而早三百余年），1293年开成大都通惠河。",
+        "result": "构建起严密的省制、驿传、海运与边疆行政管辖网络。",
+        "impact": "行省制成为中国延续至今的省级行政区划开端，西藏、云南、台湾在中央政权下的直接行政管辖自此确立。",
+        "related": [
+          "yuan-event-04-kublai-found-yuan-unification",
+          "yuan-event-06-yanyou-keju-zhizhi-tianli"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+      "name": "元仁宗延祐复科、英宗至治新政《大元通制》与两都之战、天历之变",
+      "kind": "制度",
+      "year": {
+        "era": "CE",
+        "year": 1315
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-024",
+        "ymq-source-yuanshi-027",
+        "ymq-source-yuanshi-029",
+        "ymq-source-yuanshi-031",
+        "ymq-source-yuanshi-138"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "皇庆二年（1313年）十月诏行科举，延祐二年（1315年）首开会试殿试；1323年颁《大元通制》与八月南坡之变；1328—1329年两都之战与天历之变。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "元成宗大德守成后，元武宗与元仁宗兄弟相继即位，汉法派儒臣积极推动恢复科举与法典编纂。",
+        "process": "元仁宗于1313年十月颁诏恢复科举，1315年春首次举行会试与殿试（“延祐复科”），分蒙古色目人与汉人南人两榜，规定四书试义统一以朱熹《四书章句集注》为准绳；元英宗即位后任拜住推行“至治新政”，于1323年颁行完备法典《大元通制》，同年八月在南坡店遭铁失政变弑杀（南坡之变）；1328年泰定帝崩于上都，签书枢密院事燕铁木儿在大都发动政变拥立武宗次子图帖睦尔（元文宗），击败上都天顺帝（两都之战），1329年明宗和世琜南下于旺忽察都暴崩，文宗复位（天历之变），设奎章阁并修成《经世大典》。",
+        "result": "程朱理学通过延祐复科正式确立为此后元明清六百年科举官方标准，但频繁的宫廷政变严重削弱了元廷中枢权威。",
+        "impact": "蒙古贵族草原保守派与大都汉法派的分裂为元末统治危机埋下伏笔；同期关汉卿元杂剧与赵孟頫文人书画臻于极盛。",
+        "related": [
+          "yuan-event-05-province-xuanzhengyuan-shoushili",
+          "yuan-event-07-toqto-zhizheng-three-histories"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-07-toqto-zhizheng-three-histories",
+      "name": "元顺帝与脱脱“至正新政”、修撰辽金宋三史及贾鲁治河",
+      "kind": "政治",
+      "year": {
+        "era": "CE",
+        "year": 1343
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-038",
+        "ymq-source-yuanshi-138"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "1340年二月脱脱助顺帝逐伯颜；至正三年（1343年）三月诏修辽金宋三史（1345年成书）；至正十一年（1351年）四月贾鲁治河。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "元顺帝初年，太师右丞相伯颜（蔑儿乞氏）独断专行，废除科举、排斥汉人甚至图谋杀光张王刘李赵五姓汉人。",
+        "process": "1340年二月伯颜侄、御史大夫脱脱大义灭亲，协同元顺帝趁伯颜出猎将其罢黜流放；脱脱拜右丞相主持“至正更化”（至正新政）：立即恢复科举取士、平反冤狱、减免盐额、开放马禁；1343年解决长达数十年的“正统之辨”（确定辽、金、宋三朝各自独立修史、同尊正统），由脱脱任都总裁官、欧阳玄等主笔，仅用两年半于1345年修成《辽史》《金史》《宋史》共七百四十七卷；1350年发行“至正交钞”，1351年命工部尚书贾鲁征发民工十五万、军士二万堵塞黄河白茅口决口。",
+        "result": "辽金宋三史得以完整保存，贾鲁成功使黄河复归故道，但滥发交钞与治河苦役成为元末大起义的直接导火索。",
+        "impact": "《宋史》《辽史》《金史》确立了多民族王朝并列正统的中国官修史学范式。",
+        "related": [
+          "yuan-event-06-yanyou-keju-zhizhi-tianli",
+          "yuan-event-08-red-turban-ming-conquer-dadu"
+        ]
+      }
+    },
+    {
+      "id": "yuan-event-08-red-turban-ming-conquer-dadu",
+      "name": "元末红巾军大起义、江南群雄逐鹿与1368年明军北伐攻克元大都",
+      "kind": "军事",
+      "year": {
+        "era": "CE",
+        "year": 1368
+      },
+      "sourceIds": [
+        "ymq-source-yuanshi-038",
+        "ymq-source-yuanshi-138",
+        "ymq-source-mingshi-1",
+        "ymq-source-mingshi-122",
+        "ymq-source-mingshi-125"
+      ],
+      "dating": {
+        "level": "certain",
+        "reviewStatus": "reviewed",
+        "reason": "至正十一年（1351年）五月韩山童刘福通颍州起义；1355年韩林儿称帝；1363年鄱阳湖之战；至正二十八年（洪武元年，1368年）正月朱元璋称帝建明，八月庚午徐达攻克大都。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "1351年五月韩山童、刘福通借黄河工地聚众以“石人一只眼，挑动黄河天下反”发动红巾军起义，同年八月徐寿辉于蕲水建天完政权，1354年张士诚于高邮建大周；脱脱于1354年底围困高邮即将破城时被元顺帝听谗临阵换帅毒杀，元朝中央军彻底瓦解。",
+        "process": "1355年刘福通立韩林儿建大宋龙凤政权，分三路北伐攻克汴梁、焚元上都，元廷依靠察罕帖木儿、扩廓帖木儿（王保保）与李思齐等地方军阀勉强支撑，后陷入内战；南方朱元璋于1356年攻克集庆（应天府），奉“高筑墙、广积粮、缓称王”方略，1363年在鄱阳湖水战击毙陈汉皇帝陈友谅（同年明玉珍在重庆建大夏），1367年攻破苏州灭张士诚，随即命徐达、常遇春率二十五万大军北伐；1368年正月初四朱元璋于应天府称帝建立大明，八月初二徐达攻入元大都（改北平府），元顺帝携后妃太子开健德门北奔上都。",
+        "result": "元朝在全国的统治结束，退居漠北延续为北元。",
+        "impact": "开启明代近三百年统治，元朝创立的行省制度、大都城址与多民族疆域版图被明清两代继承发展。",
+        "related": [
+          "yuan-event-07-toqto-zhizheng-three-histories"
+        ]
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "yuan-act-temujin-01",
+      "personId": "ymq-person-temujin",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-01-temujin-kurultai-yassa",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "建国西征",
+      "label": "1206年于斡难河源建大蒙古国称成吉思汗，创千户制，西征花剌子模并灭西夏",
+      "text": "统一蒙古草原，建立军政合一的千户体制与怯薛军，奠定横跨欧亚的帝国基业。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-001"
+      ]
+    },
+    {
+      "id": "yuan-act-chucai-01",
+      "personId": "ymq-person-yelv-chucai",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "止杀定税",
+      "label": "辅佐窝阔台汗阻止改农田为牧场，立十路课税所并主持1238年戊戌选试",
+      "text": "以儒治国保全华北农耕文明与千万生灵，选拔四千余名儒士重建文教。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-146"
+      ]
+    },
+    {
+      "id": "yuan-act-kublai-01",
+      "personId": "ymq-person-kublai",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-04-kublai-found-yuan-unification",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "建元一统",
+      "label": "1253年平大理，1271年定国号大元、营建大都，1279年灭南宋完成全国大一统",
+      "text": "推行汉法创立中书省与十行省体制，结束近四百年南北多政权并立。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-004"
+      ]
+    },
+    {
+      "id": "yuan-act-liubingzhong-01",
+      "personId": "yuan-person-liu-bingzhong",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-04-kublai-found-yuan-unification",
+      "sequence": 2,
+      "kind": "politics",
+      "kindLabel": "规划两都",
+      "label": "主持规划设计元上都（开平）与元大都（北京）城址宫室，拟定“大元”国号与官制",
+      "text": "作为忽必烈金莲川幕府首席谋臣，奠定元朝典章制度与北京都城中轴线格局。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-157"
+      ]
+    },
+    {
+      "id": "yuan-act-phagspa-01",
+      "personId": "yuan-person-phagspa",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "帝师治藏",
+      "label": "受尊为大元帝师，创制八思巴字，统领总制院（宣政院）管辖吐蕃政教事务",
+      "text": "确立西藏正式纳入中央政府直接行政管辖的历史制度。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-164"
+      ]
+    },
+    {
+      "id": "yuan-act-guoshoujing-01",
+      "personId": "ymq-person-guo-shoujing",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+      "sequence": 2,
+      "kind": "culture",
+      "kindLabel": "授时通惠",
+      "label": "研制简仪仰仪，主持四海测验编成1280年《授时历》，并主持开凿大都通惠河",
+      "text": "测得回归年365.2425日，贯通京杭大运河最后航段直抵大都积水潭。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-164"
+      ]
+    },
+    {
+      "id": "yuan-act-renzong-01",
+      "personId": "ymq-person-ayurbarwada",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "延祐复科",
+      "label": "1313年颁诏恢复科举，1315年首开延祐会试殿试，定朱熹《四书章句集注》为科举标准",
+      "text": "恢复中断近八十年的科举取士，推动蒙元文治与儒学合流。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-024"
+      ]
+    },
+    {
+      "id": "yuan-act-toqto-01",
+      "personId": "ymq-person-toqto",
+      "polityId": "mongol-yuan",
+      "eventId": "yuan-event-07-toqto-zhizheng-three-histories",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "至正修史",
+      "label": "1340年大义灭亲铲除伯颜推行至正新政，任都总裁官修成《辽史》《金史》《宋史》",
+      "text": "恢复科举与汉法，两年半修成三朝正史747卷，主持贾鲁治河。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-yuanshi-138"
+      ]
+    },
+    {
+      "id": "yuan-act-liufutong-01",
+      "personId": "yuan-person-liu-futong",
+      "polityId": "red-turban-song",
+      "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "红巾北伐",
+      "label": "1351年发动颍州红巾军起义，1355年立韩林儿建大宋龙凤政权并主持三路北伐",
+      "text": "攻克汴梁、焚元上都，吸引并消耗元朝北方主力，掩护江南朱元璋壮大。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-mingshi-122"
+      ]
+    },
+    {
+      "id": "yuan-act-xuda-01",
+      "personId": "ymq-person-xu-da",
+      "polityId": "ming",
+      "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+      "sequence": 2,
+      "kind": "military",
+      "kindLabel": "北伐克元",
+      "label": "1367年十月统率二十五万大军北伐，平山东、下汴梁，1368年八月攻克元大都",
+      "text": "严格军纪秋毫无犯，终结元朝在中原九十八年的统治。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "ymq-source-mingshi-125"
+      ]
+    }
+  ],
+  "relations": {
+    "eventPolities": [
+      {
+        "eventId": "yuan-event-01-temujin-kurultai-yassa",
+        "polityId": "mongol-yuan",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-01-temujin-kurultai-yassa",
+        "polityId": "western-xia",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "polityId": "mongol-yuan",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "polityId": "jin-jurchen",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "polityId": "southern-song",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-03-liangzhou-dali-diaoyucheng",
+        "polityId": "mongol-yuan",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-03-liangzhou-dali-diaoyucheng",
+        "polityId": "dali",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-03-liangzhou-dali-diaoyucheng",
+        "polityId": "southern-song",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-04-kublai-found-yuan-unification",
+        "polityId": "mongol-yuan",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-04-kublai-found-yuan-unification",
+        "polityId": "southern-song",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+        "polityId": "mongol-yuan",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+        "polityId": "mongol-yuan",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-07-toqto-zhizheng-three-histories",
+        "polityId": "mongol-yuan",
+        "kind": "involved"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "tianwan-xu",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "tianwan-xu",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "zhang-zhou",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "zhang-zhou",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "red-turban-song",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "red-turban-song",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "chen-han",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "chen-han",
+        "kind": "ended"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "ming-xia",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "ming",
+        "kind": "founded"
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "polityId": "mongol-yuan",
+        "kind": "ended"
+      }
+    ],
+    "eventPeople": [
+      {
+        "eventId": "yuan-event-01-temujin-kurultai-yassa",
+        "personId": "ymq-person-temujin",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "建大蒙古国、创千户制、西征并灭西夏",
+        "sourceIds": [
+          "ymq-source-yuanshi-001"
+        ]
+      },
+      {
+        "eventId": "yuan-event-01-temujin-kurultai-yassa",
+        "personId": "yuan-person-muqali",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "受封太师国王经略华北",
+        "sourceIds": [
+          "ymq-source-yuanshi-119"
+        ]
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "personId": "ymq-person-ogedei",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "联宋灭金、建和林并发起长子西征",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "personId": "yuan-person-tolui",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "三峰山之战歼灭金军主力",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "personId": "yuan-person-subutai",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "围攻汴京并指挥长子西征",
+        "sourceIds": [
+          "ymq-source-yuanshi-119"
+        ]
+      },
+      {
+        "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
+        "personId": "ymq-person-yelv-chucai",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "立十路课税所并主持戊戌选试",
+        "sourceIds": [
+          "ymq-source-yuanshi-146"
+        ]
+      },
+      {
+        "eventId": "yuan-event-03-liangzhou-dali-diaoyucheng",
+        "personId": "ymq-person-mongke",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "派兵西征平大理，亲征南宋死于钓鱼城",
+        "sourceIds": [
+          "ymq-source-yuanshi-003"
+        ]
+      },
+      {
+        "eventId": "yuan-event-03-liangzhou-dali-diaoyucheng",
+        "personId": "ymq-person-kublai",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "率军跨金沙江平定大理国",
+        "sourceIds": [
+          "ymq-source-yuanshi-004"
+        ]
+      },
+      {
+        "eventId": "yuan-event-03-liangzhou-dali-diaoyucheng",
+        "personId": "yuan-person-phagspa",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "随叔父参加凉州会盟促成吐蕃归附",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "eventId": "yuan-event-04-kublai-found-yuan-unification",
+        "personId": "ymq-person-kublai",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "定国号大元、建大都并灭南宋统一全国",
+        "sourceIds": [
+          "ymq-source-yuanshi-004"
+        ]
+      },
+      {
+        "eventId": "yuan-event-04-kublai-found-yuan-unification",
+        "personId": "yuan-person-liu-bingzhong",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "规划上都与大都并拟定大元国号",
+        "sourceIds": [
+          "ymq-source-yuanshi-157"
+        ]
+      },
+      {
+        "eventId": "yuan-event-04-kublai-found-yuan-unification",
+        "personId": "ymq-person-bayan",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "统军渡江进驻临安受降",
+        "sourceIds": [
+          "ymq-source-yuanshi-127"
+        ]
+      },
+      {
+        "eventId": "yuan-event-04-kublai-found-yuan-unification",
+        "personId": "ymq-person-zhang-hongfan",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "指挥崖山海战灭亡南宋",
+        "sourceIds": [
+          "ymq-source-yuanshi-127"
+        ]
+      },
+      {
+        "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+        "personId": "ymq-person-kublai",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "创设行省制、宣政院与澎湖巡检司",
+        "sourceIds": [
+          "ymq-source-yuanshi-004"
+        ]
+      },
+      {
+        "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+        "personId": "yuan-person-phagspa",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "任首任帝师统领宣政院辖吐蕃",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+        "personId": "ymq-person-guo-shoujing",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "编成《授时历》并主持开凿通惠河",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
+        "personId": "yuan-person-xu-heng",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "任国子祭酒兴学并参修《授时历》",
+        "sourceIds": [
+          "ymq-source-yuanshi-157"
+        ]
+      },
+      {
+        "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+        "personId": "ymq-person-ayurbarwada",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "下诏恢复科举（延祐复科）",
+        "sourceIds": [
+          "ymq-source-yuanshi-024"
+        ]
+      },
+      {
+        "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+        "personId": "yuan-person-shidebala",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "推行至治新政颁《大元通制》，死于南坡之变",
+        "sourceIds": [
+          "ymq-source-yuanshi-027"
+        ]
+      },
+      {
+        "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+        "personId": "yuan-person-tugh-temur",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "天历之变即位，建奎章阁修《经世大典》",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
+        "personId": "yuan-person-zhao-mengfu",
+        "polityId": "mongol-yuan",
+        "kind": "participant",
+        "description": "任翰林学士承旨领衔书画艺坛",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "eventId": "yuan-event-07-toqto-zhizheng-three-histories",
+        "personId": "ymq-person-toghon-temur",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "支持脱脱铲除伯颜推行至正新政",
+        "sourceIds": [
+          "ymq-source-yuanshi-038"
+        ]
+      },
+      {
+        "eventId": "yuan-event-07-toqto-zhizheng-three-histories",
+        "personId": "ymq-person-toqto",
+        "polityId": "mongol-yuan",
+        "kind": "leader",
+        "description": "主持至正新政、总裁辽金宋三史并治河",
+        "sourceIds": [
+          "ymq-source-yuanshi-138"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "yuan-person-liu-futong",
+        "polityId": "red-turban-song",
+        "kind": "leader",
+        "description": "发动红巾军起义并主持三路北伐",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "ymq-person-han-liner",
+        "polityId": "red-turban-song",
+        "kind": "leader",
+        "description": "称韩宋小明王建元龙凤",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "ymq-person-chen-youliang",
+        "polityId": "chen-han",
+        "kind": "victim",
+        "description": "鄱阳湖决战中箭身亡",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "yuan-person-zhang-shicheng",
+        "polityId": "zhang-zhou",
+        "kind": "victim",
+        "description": "平江城破被俘自缢",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "ymq-person-zhu-yuanzhang",
+        "polityId": "ming",
+        "kind": "leader",
+        "description": "平定陈友谅张士诚，1368年称帝建明",
+        "sourceIds": [
+          "ymq-source-mingshi-1"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "ymq-person-xu-da",
+        "polityId": "ming",
+        "kind": "commander",
+        "description": "统北伐军于1368年八月攻克元大都",
+        "sourceIds": [
+          "ymq-source-mingshi-125"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "ymq-person-toghon-temur",
+        "polityId": "mongol-yuan",
+        "kind": "victim",
+        "description": "弃大都北奔上都",
+        "sourceIds": [
+          "ymq-source-yuanshi-038"
+        ]
+      },
+      {
+        "eventId": "yuan-event-08-red-turban-ming-conquer-dadu",
+        "personId": "yuan-person-koke-temur",
+        "polityId": "mongol-yuan",
+        "kind": "commander",
+        "description": "统元廷主力抗击红巾军与明军",
+        "sourceIds": [
+          "ymq-source-yuanshi-138"
+        ]
+      }
+    ],
+    "tenurePeople": [
+      {
+        "tenureId": "ymq-tenure-temujin",
+        "personId": "ymq-person-temujin",
+        "kind": "holder",
+        "description": "元太祖成吉思汗铁木真在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-001"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-tolui",
+        "personId": "yuan-person-tolui",
+        "kind": "holder",
+        "description": "元睿宗拖雷监国在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-ogedei",
+        "personId": "ymq-person-ogedei",
+        "kind": "holder",
+        "description": "元太宗窝阔台汗在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-toregene",
+        "personId": "yuan-person-toregene",
+        "kind": "holder",
+        "description": "昭慈皇后乃马真氏（脱列哥那）称制在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-guyuk",
+        "personId": "yuan-person-guyuk",
+        "kind": "holder",
+        "description": "元定宗贵由汗在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-qaimish",
+        "personId": "yuan-person-oghul-qaimish",
+        "kind": "holder",
+        "description": "钦淑皇后斡兀立海迷失称制在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-002",
+          "ymq-source-yuanshi-003"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-mongke",
+        "personId": "ymq-person-mongke",
+        "kind": "holder",
+        "description": "元宪宗蒙哥汗在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-003"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-kublai",
+        "personId": "ymq-person-kublai",
+        "kind": "holder",
+        "description": "元世祖薛禅汗忽必烈在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-004"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-temur",
+        "personId": "ymq-person-temur",
+        "kind": "holder",
+        "description": "元成宗完泽笃汗铁穆耳在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-018"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-haishan",
+        "personId": "yuan-person-haishan",
+        "kind": "holder",
+        "description": "元武宗曲律汗海山在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-022"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-ayurbarwada",
+        "personId": "ymq-person-ayurbarwada",
+        "kind": "holder",
+        "description": "元仁宗普颜笃汗爱育黎拔力八达在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-024"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-shidebala",
+        "personId": "yuan-person-shidebala",
+        "kind": "holder",
+        "description": "元英宗格坚汗硕德八剌在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-027"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-yesun-temur",
+        "personId": "yuan-person-yesun-temur",
+        "kind": "holder",
+        "description": "元泰定帝也孙铁木儿在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-029"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-ragibagh",
+        "personId": "yuan-person-ragibagh",
+        "kind": "holder",
+        "description": "元天顺帝阿速吉八在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-029"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-wenzong-1",
+        "personId": "yuan-person-tugh-temur",
+        "kind": "holder",
+        "description": "元文宗图帖睦尔（天历初任）在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-kusala",
+        "personId": "yuan-person-kusala",
+        "kind": "holder",
+        "description": "元明宗忽都笃汗和世琜在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-wenzong-2",
+        "personId": "yuan-person-tugh-temur",
+        "kind": "holder",
+        "description": "元文宗图帖睦尔（复辟）在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-rinchinbal",
+        "personId": "yuan-person-rinchinbal",
+        "kind": "holder",
+        "description": "元宁宗懿璘质班在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-toghon-temur",
+        "personId": "ymq-person-toghon-temur",
+        "kind": "holder",
+        "description": "元顺帝（惠宗）妥懽贴睦尔在位/监国期",
+        "sourceIds": [
+          "ymq-source-yuanshi-038"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-xushouhui",
+        "personId": "yuan-person-xu-shouhui",
+        "kind": "holder",
+        "description": "天完皇帝徐寿辉在位/监国期",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-zhangshicheng",
+        "personId": "yuan-person-zhang-shicheng",
+        "kind": "holder",
+        "description": "诚王 / 平江吴王张士诚在位/监国期",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-han-liner",
+        "personId": "ymq-person-han-liner",
+        "kind": "holder",
+        "description": "韩宋小明王韩林儿在位/监国期",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-chen-youliang",
+        "personId": "ymq-person-chen-youliang",
+        "kind": "holder",
+        "description": "陈汉皇帝陈友谅在位/监国期",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-mingyuzhen",
+        "personId": "yuan-person-ming-yuzhen",
+        "kind": "holder",
+        "description": "明夏太祖明玉珍在位/监国期",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-zhuyuanzhang-wu",
+        "personId": "ymq-person-zhu-yuanzhang",
+        "kind": "holder",
+        "description": "西吴王 / 明太祖朱元璋（平江南驱元段）在位/监国期",
+        "sourceIds": [
+          "ymq-source-mingshi-1"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-temujin",
+        "personId": "yuan-person-muqali",
+        "kind": "associated",
+        "description": "太师国王经略华北",
+        "sourceIds": [
+          "ymq-source-yuanshi-119"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-ogedei",
+        "personId": "ymq-person-yelv-chucai",
+        "kind": "associated",
+        "description": "中书令定赋税仪制",
+        "sourceIds": [
+          "ymq-source-yuanshi-146"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-ogedei",
+        "personId": "yuan-person-subutai",
+        "kind": "associated",
+        "description": "灭金与长子西征主帅",
+        "sourceIds": [
+          "ymq-source-yuanshi-119"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-kublai",
+        "personId": "yuan-person-liu-bingzhong",
+        "kind": "associated",
+        "description": "太保参预中书省事规划两都",
+        "sourceIds": [
+          "ymq-source-yuanshi-157"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-kublai",
+        "personId": "yuan-person-xu-heng",
+        "kind": "associated",
+        "description": "中书左丞、国子祭酒",
+        "sourceIds": [
+          "ymq-source-yuanshi-157"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-kublai",
+        "personId": "yuan-person-phagspa",
+        "kind": "associated",
+        "description": "帝师统领宣政院",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-kublai",
+        "personId": "ymq-person-bayan",
+        "kind": "associated",
+        "description": "伐宋大元帅、中书左丞相",
+        "sourceIds": [
+          "ymq-source-yuanshi-127"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-kublai",
+        "personId": "ymq-person-guo-shoujing",
+        "kind": "associated",
+        "description": "太史令编《授时历》、都水监开通惠河",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-ayurbarwada",
+        "personId": "yuan-person-zhao-mengfu",
+        "kind": "associated",
+        "description": "翰林学士承旨",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-toghon-temur",
+        "personId": "ymq-person-toqto",
+        "kind": "associated",
+        "description": "中书右丞相主持至正新政与修三史",
+        "sourceIds": [
+          "ymq-source-yuanshi-138"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-toghon-temur",
+        "personId": "yuan-person-koke-temur",
+        "kind": "associated",
+        "description": "太傅、河南王统军平乱",
+        "sourceIds": [
+          "ymq-source-yuanshi-138"
+        ]
+      },
+      {
+        "tenureId": "ymq-tenure-han-liner",
+        "personId": "yuan-person-liu-futong",
+        "kind": "associated",
+        "description": "太保、丞相执掌韩宋军政",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "tenureId": "yuan-tenure-zhuyuanzhang-wu",
+        "personId": "ymq-person-xu-da",
+        "kind": "associated",
+        "description": "左相国、征虏大将军平吴灭元",
+        "sourceIds": [
+          "ymq-source-mingshi-125"
+        ]
+      }
+    ],
+    "personPolities": [
+      {
+        "personId": "ymq-person-temujin",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元太祖成吉思汗铁木真",
+        "sourceIds": [
+          "ymq-source-yuanshi-001"
+        ]
+      },
+      {
+        "personId": "yuan-person-tolui",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元睿宗拖雷监国",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "personId": "ymq-person-ogedei",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元太宗窝阔台汗",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "personId": "yuan-person-toregene",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "昭慈皇后乃马真氏（脱列哥那）称制",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "personId": "yuan-person-guyuk",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元定宗贵由汗",
+        "sourceIds": [
+          "ymq-source-yuanshi-002"
+        ]
+      },
+      {
+        "personId": "yuan-person-oghul-qaimish",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "钦淑皇后斡兀立海迷失称制",
+        "sourceIds": [
+          "ymq-source-yuanshi-002",
+          "ymq-source-yuanshi-003"
+        ]
+      },
+      {
+        "personId": "ymq-person-mongke",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元宪宗蒙哥汗",
+        "sourceIds": [
+          "ymq-source-yuanshi-003"
+        ]
+      },
+      {
+        "personId": "ymq-person-kublai",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元世祖薛禅汗忽必烈",
+        "sourceIds": [
+          "ymq-source-yuanshi-004"
+        ]
+      },
+      {
+        "personId": "ymq-person-temur",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元成宗完泽笃汗铁穆耳",
+        "sourceIds": [
+          "ymq-source-yuanshi-018"
+        ]
+      },
+      {
+        "personId": "yuan-person-haishan",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元武宗曲律汗海山",
+        "sourceIds": [
+          "ymq-source-yuanshi-022"
+        ]
+      },
+      {
+        "personId": "ymq-person-ayurbarwada",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元仁宗普颜笃汗爱育黎拔力八达",
+        "sourceIds": [
+          "ymq-source-yuanshi-024"
+        ]
+      },
+      {
+        "personId": "yuan-person-shidebala",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元英宗格坚汗硕德八剌",
+        "sourceIds": [
+          "ymq-source-yuanshi-027"
+        ]
+      },
+      {
+        "personId": "yuan-person-yesun-temur",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元泰定帝也孙铁木儿",
+        "sourceIds": [
+          "ymq-source-yuanshi-029"
+        ]
+      },
+      {
+        "personId": "yuan-person-ragibagh",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元天顺帝阿速吉八",
+        "sourceIds": [
+          "ymq-source-yuanshi-029"
+        ]
+      },
+      {
+        "personId": "yuan-person-tugh-temur",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元文宗图帖睦尔（天历初任）",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "personId": "yuan-person-kusala",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元明宗忽都笃汗和世琜",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "personId": "yuan-person-rinchinbal",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元宁宗懿璘质班",
+        "sourceIds": [
+          "ymq-source-yuanshi-031"
+        ]
+      },
+      {
+        "personId": "ymq-person-toghon-temur",
+        "polityId": "mongol-yuan",
+        "kind": "monarch",
+        "description": "元顺帝（惠宗）妥懽贴睦尔",
+        "sourceIds": [
+          "ymq-source-yuanshi-038"
+        ]
+      },
+      {
+        "personId": "yuan-person-xu-shouhui",
+        "polityId": "tianwan-xu",
+        "kind": "monarch",
+        "description": "天完皇帝徐寿辉",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "yuan-person-zhang-shicheng",
+        "polityId": "zhang-zhou",
+        "kind": "monarch",
+        "description": "诚王 / 平江吴王张士诚",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "ymq-person-han-liner",
+        "polityId": "red-turban-song",
+        "kind": "monarch",
+        "description": "韩宋小明王韩林儿",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "ymq-person-chen-youliang",
+        "polityId": "chen-han",
+        "kind": "monarch",
+        "description": "陈汉皇帝陈友谅",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "yuan-person-ming-yuzhen",
+        "polityId": "ming-xia",
+        "kind": "monarch",
+        "description": "明夏太祖明玉珍",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "ymq-person-zhu-yuanzhang",
+        "polityId": "ming",
+        "kind": "monarch",
+        "description": "西吴王 / 明太祖朱元璋（平江南驱元段）",
+        "sourceIds": [
+          "ymq-source-mingshi-1"
+        ]
+      },
+      {
+        "personId": "yuan-person-muqali",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "大蒙古国太师、国王",
+        "sourceIds": [
+          "ymq-source-yuanshi-119"
+        ]
+      },
+      {
+        "personId": "yuan-person-subutai",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "大蒙古国大将",
+        "sourceIds": [
+          "ymq-source-yuanshi-119"
+        ]
+      },
+      {
+        "personId": "ymq-person-yelv-chucai",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "大蒙古国中书令",
+        "sourceIds": [
+          "ymq-source-yuanshi-146"
+        ]
+      },
+      {
+        "personId": "yuan-person-liu-bingzhong",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "元朝太保、参预中书省事",
+        "sourceIds": [
+          "ymq-source-yuanshi-157"
+        ]
+      },
+      {
+        "personId": "yuan-person-xu-heng",
+        "polityId": "mongol-yuan",
+        "kind": "cultural",
+        "description": "元朝中书左丞、国子祭酒、理学家",
+        "sourceIds": [
+          "ymq-source-yuanshi-157"
+        ]
+      },
+      {
+        "personId": "yuan-person-phagspa",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "元朝首任帝师、大宝法王",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "personId": "ymq-person-bayan",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "元朝伐宋统帅、中书左丞相",
+        "sourceIds": [
+          "ymq-source-yuanshi-127"
+        ]
+      },
+      {
+        "personId": "ymq-person-zhang-hongfan",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "元朝蒙古汉军都元帅",
+        "sourceIds": [
+          "ymq-source-yuanshi-127"
+        ]
+      },
+      {
+        "personId": "ymq-person-guo-shoujing",
+        "polityId": "mongol-yuan",
+        "kind": "cultural",
+        "description": "元朝太史令、都水监、天文学与水利学家",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "personId": "yuan-person-zhao-mengfu",
+        "polityId": "mongol-yuan",
+        "kind": "cultural",
+        "description": "元朝翰林学士承旨、书画宗师",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "personId": "yuan-person-guan-hanqing",
+        "polityId": "mongol-yuan",
+        "kind": "cultural",
+        "description": "元代杂剧奠基人（元曲四大家之首）",
+        "sourceIds": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "personId": "ymq-person-toqto",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "元朝太师、中书右丞相",
+        "sourceIds": [
+          "ymq-source-yuanshi-138"
+        ]
+      },
+      {
+        "personId": "yuan-person-koke-temur",
+        "polityId": "mongol-yuan",
+        "kind": "service",
+        "description": "元朝太傅、中书左丞相、河南王",
+        "sourceIds": [
+          "ymq-source-yuanshi-138",
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "yuan-person-liu-futong",
+        "polityId": "red-turban-song",
+        "kind": "service",
+        "description": "韩宋太保、中书平章、丞相",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "ymq-person-chen-youliang",
+        "polityId": "tianwan-xu",
+        "kind": "service",
+        "description": "原天完红巾军平章政事、汉王",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "yuan-person-ming-yuzhen",
+        "polityId": "tianwan-xu",
+        "kind": "service",
+        "description": "原天完陇蜀行省右丞",
+        "sourceIds": [
+          "ymq-source-mingshi-122"
+        ]
+      },
+      {
+        "personId": "ymq-person-zhu-yuanzhang",
+        "polityId": "red-turban-song",
+        "kind": "service",
+        "description": "早年奉韩宋龙凤正朔任江南等处行中书省平章、吴国公",
+        "sourceIds": [
+          "ymq-source-mingshi-1"
+        ]
+      },
+      {
+        "personId": "ymq-person-xu-da",
+        "polityId": "ming",
+        "kind": "service",
+        "description": "西吴左相国、明朝征虏大将军、魏国公",
+        "sourceIds": [
+          "ymq-source-mingshi-125"
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "ymq-source-yuanshi-001",
+      "title": "《元史》卷一 · 太祖本纪（成吉思汗铁木真）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷001",
+      "reviewStatus": "reviewed",
+      "note": "跨期共用史源ID：1206年铁木真建大蒙古国、创千户制、西征花剌子模、伐金与1227年灭西夏史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-002",
+      "title": "《元史》卷二 · 太宗（窝阔台）、定宗（贵由）本纪（附卷一百一十五睿宗拖雷传、卷一百一十四后妃传）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷002",
+      "reviewStatus": "reviewed",
+      "note": "跨期共用史源ID：拖雷监国、窝阔台联宋灭金与建和林、乃马真后称制、贵由汗及海迷失后称制史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-003",
+      "title": "《元史》卷三 · 宪宗本纪（蒙哥）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷003",
+      "reviewStatus": "reviewed",
+      "note": "蒙哥汗即位、旭烈兀西征、忽必烈征大理及1259年合州钓鱼城之战史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-004",
+      "title": "《元史》卷四至卷十七 · 世祖本纪（忽必烈）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷004",
+      "reviewStatus": "reviewed",
+      "note": "跨期共用史源ID：1260年忽必烈中统建元、平阿里不哥与李璮、1271年建国号大元、1272年建大都、1279年灭南宋统一全国史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-018",
+      "title": "《元史》卷十八至卷二十一 · 成宗本纪（铁穆耳）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷018",
+      "reviewStatus": "reviewed",
+      "note": "元成宗（1294—1307）守成息兵、整饬吏治与西北诸王议和史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-022",
+      "title": "《元史》卷二十二至卷二十三 · 武宗本纪（海山）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷022",
+      "reviewStatus": "reviewed",
+      "note": "元武宗海山（1307—1311）立弟爱育黎拔力八达为皇太弟（武仁之约）、建中都史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-024",
+      "title": "《元史》卷二十四至卷二十六 · 仁宗本纪（爱育黎拔力八达）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷024",
+      "reviewStatus": "reviewed",
+      "note": "元仁宗（1311—1320）废尚书省、皇庆二年（1313）下诏恢复科举（延祐复科）、推行延祐经理史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-027",
+      "title": "《元史》卷二十七至卷二十八 · 英宗本纪（硕德八剌）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷027",
+      "reviewStatus": "reviewed",
+      "note": "元英宗（1320—1323）任拜住推行“至治新政”、颁《大元通制》及1323年八月“南坡之变”遇弑史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-029",
+      "title": "《元史》卷二十九至卷三十 · 泰定帝本纪（也孙铁木儿，附天顺帝阿速吉八）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷029",
+      "reviewStatus": "reviewed",
+      "note": "泰定帝（1323—1328）在位及1328年上都天顺帝与大都文宗“两都之战”史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-031",
+      "title": "《元史》卷三十一至卷三十七 · 明宗（和世琜）、文宗（图帖睦尔）、宁宗（懿璘质班）本纪",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷031",
+      "reviewStatus": "reviewed",
+      "note": "1328—1329年天历之变、明宗暴崩、元文宗建奎章阁与编纂《经世大典》、宁宗在位史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-038",
+      "title": "《元史》卷三十八至卷四十七 · 顺帝本纪（妥懽贴睦尔）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷038",
+      "reviewStatus": "reviewed",
+      "note": "元顺帝在位（1333—1368）、诛伯颜、脱脱至正新政、1351年红巾军起义及1368年八月北奔上都史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-058",
+      "title": "《元史》卷五十八至卷六十三 · 地理志（中书省腹里、十行中书省、澎湖巡检司）及卷八十五百官志（宣政院）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷058",
+      "reviewStatus": "reviewed",
+      "note": "元朝行省制度、宣政院辖吐蕃（西藏）、澎湖巡检司辖台湾澎湖及驿站制度史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-119",
+      "title": "《元史》卷一百一十九 · 木华黎传（附卷一百二十一速不台传）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷119",
+      "reviewStatus": "reviewed",
+      "note": "大蒙古国太师国王木华黎经略华北、速不台两次西征与灭金史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-127",
+      "title": "《元史》卷一百二十七 · 伯颜传（附卷一百二十八阿术传、卷一百五十六张弘范传）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷127",
+      "reviewStatus": "reviewed",
+      "note": "跨期共用史源ID：阿术围攻襄樊、伯颜统军渡江受临安降、张弘范崖山海战灭宋史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-138",
+      "title": "《元史》卷一百三十八 · 燕铁木儿、伯颜（蔑儿乞氏）、脱脱传（附卷一百四十一察罕帖木儿、扩廓帖木儿传）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷138",
+      "reviewStatus": "reviewed",
+      "note": "燕铁木儿发动天历之变、脱脱主持至正新政与修辽金宋三史、察罕帖木儿与王保保（扩廓帖木儿）镇压红巾军史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-146",
+      "title": "《元史》卷一百四十六 · 耶律楚材传",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷146",
+      "reviewStatus": "reviewed",
+      "note": "耶律楚材辅佐成吉思汗与窝阔台止杀保民、立十路征收课税所、主持1238年戊戌选试史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-157",
+      "title": "《元史》卷一百五十七至一百五十八 · 刘秉忠、张文谦、许衡、姚枢传",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷157",
+      "reviewStatus": "reviewed",
+      "note": "刘秉忠规划开平上都与大都城、建国号大元，许衡任国子祭酒兴办儒学史源。"
+    },
+    {
+      "id": "ymq-source-yuanshi-164",
+      "title": "《元史》卷一百六十四 · 郭守敬传（附卷一百七十二赵孟頫传、卷二百零二八思巴传）",
+      "url": "https://zh.wikisource.org/zh-hans/元史/卷164",
+      "reviewStatus": "reviewed",
+      "note": "郭守敬四海测验编《授时历》与开通惠河、帝师八思巴创蒙古新字并统领吐蕃、赵孟頫书画复古史源。"
+    },
+    {
+      "id": "ymq-source-mingshi-1",
+      "title": "《明史》卷一 · 太祖本纪一（朱元璋起兵至洪武建元）",
+      "url": "https://zh.wikisource.org/zh-hans/明史/卷1",
+      "reviewStatus": "reviewed",
+      "note": "跨期共用史源ID：朱元璋1356年克集庆、1363年鄱阳湖破陈友谅、1367年灭张士诚、1368年称帝建明并派徐达北伐克大都史源。"
+    },
+    {
+      "id": "ymq-source-mingshi-122",
+      "title": "《明史》卷一百二十二至一百二十四 · 韩林儿、郭子兴、徐寿辉、陈友谅、张士诚、方国珍、明玉珍、扩廓帖木儿传",
+      "url": "https://zh.wikisource.org/zh-hans/明史/卷122",
+      "reviewStatus": "reviewed",
+      "note": "元末北方红巾军韩宋龙凤政权、南方天完徐寿辉、陈友谅大汉、张士诚平江吴政权、四川明玉珍大夏政权全谱系史源。"
+    },
+    {
+      "id": "ymq-source-mingshi-125",
+      "title": "《明史》卷一百二十五 · 徐达常遇春传",
+      "url": "https://zh.wikisource.org/zh-hans/明史/卷125",
+      "reviewStatus": "reviewed",
+      "note": "跨期共用史源ID：1367—1368年徐达、常遇春率明军北伐驱逐元顺帝攻克大都史源。"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 周代列国 · 历史对照图
 
-纯静态中文历史资料库，提供周朝、秦汉、三国、魏晋南北朝、隋唐、辽金宋、明朝七个专题入口，支持同年对照、搜索、详情、阅读恢复、分享和导出。旧专题范围、链接和存储兼容；专题窗口不裁切实体本身的历史起讫。
+纯静态中文历史资料库，提供夏商、周朝、秦汉、三国、魏晋南北朝、隋唐、五代十国、辽金宋、元朝、明朝、清朝十一个专题入口，支持同年对照、搜索、详情、阅读恢复、分享和导出。旧专题范围、链接和存储兼容；专题窗口不裁切实体本身的历史起讫。
 
 在线访问：[周朝时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。个人博客使用域名根路径，时间线使用独立的项目子路径。离线使用时，直接打开 `dist/index.html`；独立复制或部署时使用完整的 `dist/` 目录。
 
@@ -36,7 +36,11 @@
 
 新增正式资料：[魏晋南北朝](<data/wei-jin-nan-bei.json>)、[隋唐](<data/sui-tang.json>)、[辽金宋](<data/liao-jin-song.json>)、[明朝](<data/ming.json>)，均逐字节保留原件。对应政权／任期／人物／事件数量为28／99／140／21、10／36／67／16、8／58／97／12、6／31／54／9。跨卷共享ID保留原名，各卷描述或来源差异不互相覆盖；构建生成[统一出处索引](<dist/corpus.json>)，按类型与稳定ID列出所有原始位置及字段差异，不按姓名猜测合并。
 
-专题发布目标为原站根路径、[秦汉](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)、[魏晋南北朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/wei-jin-nan-bei.html)、[隋唐](https://chrunge.github.io/Zhou-Dynasty-Timeline/sui-tang.html)、[辽金宋](https://chrunge.github.io/Zhou-Dynasty-Timeline/liao-jin-song.html)、[明朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/ming.html)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**；原件中的“已校核”不代表本次入库背书。原文件散列、结构注释与限制见[原正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)及[四专题入库记录](<docs/DYNASTY-INTAKE.md>)，发布证据见[部署记录](<docs/DEPLOYMENT.md>)。
+新增正式原件：[夏商](<data/xia-shang.json>)、[五代十国](<data/five-dynasties.json>)、[元朝](<data/yuan.json>)、[清朝](<data/qing.json>)，政权／任期／人物／事件分别为6／53／67／13、17／59／69／7、11／25／39／8、7／19／39／9。夏商的夏→商、五代主线与杨吴→南唐、清卷明→南明接续共行，其他并存政权各自保留；元监国、称制及复位任期不合并，完整称谓和资料不因短标签省略。详见[新增四卷入库](<docs/EXPANSION-INTAKE.md>)与[展示契约](<docs/EXPANSION-DISPLAY.md>)。
+
+夏商18条争议纪年未列足独立异说，投影明确按legacy继承并保留sourceDating；不编造第二观点。跨卷有两处不同政权复用ID（后凉／后梁、武周／吴周），索引显式标记dataset作用域，各卷查询、链接和存储严格隔离，不误并为同一实体。
+
+新专题入口：[夏商](https://chrunge.github.io/Zhou-Dynasty-Timeline/xia-shang.html)、[五代十国](https://chrunge.github.io/Zhou-Dynasty-Timeline/five-dynasties.html)、[元朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/yuan.html)、[清朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/qing.html)。此前专题入口为原站根路径、[秦汉](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)、[魏晋南北朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/wei-jin-nan-bei.html)、[隋唐](https://chrunge.github.io/Zhou-Dynasty-Timeline/sui-tang.html)、[辽金宋](https://chrunge.github.io/Zhou-Dynasty-Timeline/liao-jin-song.html)、[明朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/ming.html)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**；原件中的“已校核”不代表本次入库背书。原文件散列、结构注释与限制见[原正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)及[四专题入库记录](<docs/DYNASTY-INTAKE.md>)，发布证据见[部署记录](<docs/DEPLOYMENT.md>)。
 
 ## 维护与检查
 
@@ -50,9 +54,9 @@ node --test tests/*.test.mjs tests/*.test.cjs
 node --test --test-isolation=none tests/*.test.mjs tests/*.test.cjs
 ```
 
-编辑前端使用 `src/`；七专题原件及适配说明见[资料目录约定](<data/README.md>)、[生产目录](<lib/production.mjs>)和上述入库记录。`dist/` 全部由构建生成，不直接修改；统一生成导航、数据脚本、出处索引与发布清单。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
+编辑前端使用 `src/`；十一专题原件及适配说明见[资料目录约定](<data/README.md>)、[生产目录](<lib/production.mjs>)和上述入库记录。`dist/` 全部由构建生成，不直接修改；统一生成导航、数据脚本、出处索引与发布清单。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
 
-安装了Chrome的Windows环境可运行 `node tests/browser-presentation.mjs`，以真实浏览器验收七页×两种宽度；传入原站HTTPS根地址可验收线上版本。浏览器只访问被测页面和资源，不打开历史来源链接。截图与执行报告位于忽略提交的 `.validation/`。
+安装了Chrome的Windows环境可运行 `node tests/browser-presentation.mjs`，以真实浏览器验收十一页×两种宽度；传入原站HTTPS根地址可验收线上版本。浏览器只访问被测页面和资源，不打开历史来源链接。截图与执行报告位于忽略提交的 `.validation/`。
 
 受限Windows环境如出现父目录realpath的EPERM，可为Node命令添加 `--preserve-symlinks --preserve-symlinks-main`。自动化测试覆盖资料校验、查询、组合、导航、渲染、分享及导出；DOM桩检查不替代真实浏览器排版、触控或打印验收。
 

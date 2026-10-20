@@ -1,0 +1,5832 @@
+{
+  "schemaVersion": 2,
+  "metadata": {
+    "title": "夏商王朝（夏代十四世十七王、有穷寒浞代夏、殷商十七世三十王全谱系与周邦兴起克商）",
+    "exportLegend": "彩色条：采用年表的君主/方伯在位区间；细线：政权存续；E编号菱形：重大事件；红色端点：政权终止或改制；金色竖线：参考年份。",
+    "scopeNote": "涵盖约公元前2070年大禹阳城受命建夏、夏启甘之战确立世袭、太康失国与后羿寒浞代夏、少康中兴至约前1600年夏桀亡于鸣条之战（夏代十四世十七王全谱系），以及商族先公（契、王亥、上甲微）、成汤建商、伊尹放太甲、太戊中兴、九世之乱、约前1300年盘庚迁殷、武丁与妇好盛世、祖甲改制至前1046年牧野之战商亡周兴（商代三十王全谱系，外加未即位之太丁合三十一王，并涵盖古蜀三星堆、鬼方羌方及岐周古公亶父、季历、周文王、周武王兴起脉络）。",
+    "updated": "2026-10-19",
+    "version": "Schema 2 生产完整版 · 2026-10-19 史记夏殷周本纪、古本竹书纪年、尚书与夏商周断代工程校核",
+    "sourceIds": [
+      "xs-source-shiji-001",
+      "xs-source-shiji-002",
+      "xs-source-shiji-003",
+      "source-010",
+      "source-021",
+      "source-037",
+      "source-005",
+      "xs-source-zhushu-gu",
+      "xs-source-shangshu-yugong",
+      "xs-source-shangshu-pangeng",
+      "xs-source-shangshu-mushi",
+      "xs-source-shijing-xuanniao"
+    ],
+    "researchNote": "依据《史记·夏本纪》《殷本纪》《周本纪》、《尚书》、《古本竹书纪年》及殷墟甲骨文周祭谱、夏商周断代工程拟年整理。前841年（共和元年）以前纪年按 Schema 2 规范显式标注 level='disputed' 或 'inferred'，并在 alternatives 中并列夏商周断代工程（前2070、前1600、前1300、前1046）、《古本竹书纪年》（夏471年、商496年、盘庚至纣273年、克商前1027年）及刘歆《三统历》（前2205、前1766、前1122）三套主流年代学体系；向下与周代列国库（atlas.json）无缝共用周政权（zhou）、周武王在位ID（zhou-r0）、周公旦（person-001）、召公奭（person-002）、姜尚（person-003）及史源ID（source-005、source-010、source-021、source-037、source-040）。"
+  },
+  "timeline": {
+    "start": {
+      "era": "BCE",
+      "year": 2070
+    },
+    "end": {
+      "era": "BCE",
+      "year": 1046
+    },
+    "defaultEnd": {
+      "era": "BCE",
+      "year": 1046
+    },
+    "cursor": {
+      "era": "BCE",
+      "year": 1250
+    }
+  },
+  "periods": [
+    {
+      "id": "xs-period-all",
+      "name": "夏商王朝全览（大禹建夏至牧野克商）",
+      "start": {
+        "era": "BCE",
+        "year": 2070
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "structure": "overview",
+      "color": "#5e4c3e",
+      "polityIds": [
+        "xia",
+        "youqiong-han",
+        "shang",
+        "ancient-shu",
+        "guifang-qiang",
+        "zhou"
+      ],
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shiji-003",
+        "source-010",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-mushi"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "主轴采用夏商周断代工程拟定框架：夏代约前2070—前1600年，商代前期（汤至阳甲）约前1600—前1300年，商代后期（盘庚迁殷至帝辛亡）前1300—前1046年；同时保留《古本竹书纪年》与汉代《三统历》传统纪年方案备考。",
+        "alternatives": [
+          {
+            "label": "《古本竹书纪年》夏471年、商496年（武王克商前1027年说）",
+            "year": {
+              "era": "BCE",
+              "year": 1989
+            },
+            "explanation": "《古本竹书纪年》载夏代“有王与无王，用岁四百七十一年”，汤灭夏至受（纣）共496年，学者依西周积年推算武王克商为前1027年、汤灭夏约前1523年或前1559年。",
+            "sourceIds": [
+              "xs-source-zhushu-gu"
+            ]
+          },
+          {
+            "label": "刘歆《三统历》传统纪年（夏前2205—前1766、商前1766—前1122）",
+            "year": {
+              "era": "BCE",
+              "year": 2205
+            },
+            "explanation": "汉代刘歆《三统历》推算夏享国439年、商享国644年，武王克商于前1122年。",
+            "sourceIds": [
+              "source-005"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xs-period-early-xia-shaokang",
+      "parentId": "xs-period-all",
+      "name": "大禹建夏、太康失国与少康中兴",
+      "start": {
+        "era": "BCE",
+        "year": 2070
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1862
+      },
+      "structure": "coexistence",
+      "color": "#7a5c43",
+      "polityIds": [
+        "xia",
+        "youqiong-han",
+        "ancient-shu"
+      ],
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-yugong"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖大禹阳城受命、夏启甘之战确立王位世袭、太康失国与有穷氏后羿及寒浞代夏（无王期），至约前1900年少康联合有虞氏、有鬲氏灭寒浞复国（少康中兴）及帝杼东征全盛。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-period-late-xia-shang-rise",
+      "parentId": "xs-period-all",
+      "name": "夏朝中晚期（二里头极盛）、商族崛起与鸣条之战",
+      "start": {
+        "era": "BCE",
+        "year": 1861
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "structure": "coexistence",
+      "color": "#8c6239",
+      "polityIds": [
+        "xia",
+        "shang",
+        "ancient-shu",
+        "guifang-qiang"
+      ],
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖夏朝槐、芒、泄、不降盛期（对应洛阳盆地二里头文化青铜礼器与宫城兴盛阶段），孔甲乱夏后夏势衰落；同期商先公王亥、上甲微经营河洛与河北，至成汤任伊尹居亳，于约前1600年鸣条之战灭夏建商。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-period-early-mid-shang",
+      "parentId": "xs-period-all",
+      "name": "早中商时期（毫都建制、伊尹辅政与九世之乱）",
+      "start": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1300
+      },
+      "structure": "coexistence",
+      "color": "#3d5a6c",
+      "polityIds": [
+        "shang",
+        "ancient-shu",
+        "guifang-qiang"
+      ],
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "自成汤建商定都亳（对应郑州商城与偃师商城二里岗文化期）、伊尹辅政太甲、太戊中兴，至仲丁以后因兄终弟及与传子纠纷引发“九世之乱”，商都历经迁隞、迁相、迁邢、迁奄多次迁徙。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-period-late-shang-yin",
+      "parentId": "xs-period-all",
+      "name": "晚商殷墟时期（盘庚迁殷、武丁盛世至牧野商亡）",
+      "start": {
+        "era": "BCE",
+        "year": 1300
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "structure": "coexistence",
+      "color": "#264653",
+      "polityIds": [
+        "shang",
+        "zhou",
+        "ancient-shu",
+        "guifang-qiang"
+      ],
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-010",
+        "xs-source-shangshu-pangeng",
+        "xs-source-shangshu-mushi",
+        "xs-source-shijing-xuanniao"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "约前1300年盘庚渡河南迁于殷（河南安阳殷墟），经高宗武丁与王后妇好开创“武丁盛世”（前1250—前1192年，甲骨文与司母戊鼎青铜文明顶峰）、祖甲礼制改革、武乙文丁帝乙与周邦博弈，至前1046年正月甲子周武王于牧野击败商纣王，商亡周兴。",
+        "alternatives": [
+          {
+            "label": "盘庚迁殷《古本竹书纪年》273年说",
+            "year": {
+              "era": "BCE",
+              "year": 1300
+            },
+            "explanation": "《史记·殷本纪》裴骃《集解》引《竹书纪年》：“自盘庚徙殷至纣之灭，七百七十三年（今本改二百七十三年），更不徙都”，断代工程据此定盘庚迁殷约前1300年。",
+            "sourceIds": [
+              "xs-source-zhushu-gu"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "polities": [
+    {
+      "id": "xia",
+      "name": "夏朝（夏后氏）",
+      "kind": "empire",
+      "start": {
+        "era": "BCE",
+        "year": 2070
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "color": "#7a5c43",
+      "region": "阳城（今河南登封告成） / 斟鄩（今河南偃师二里头） / 帝丘（今河南濮阳） / 安邑（晋南）",
+      "ending": "约前1600年商汤率诸侯与夏桀决战于鸣条，夏桀败走南巢而死，夏亡（周武王封禹后于杞）",
+      "note": "中国史书记载的第一个世袭制王朝，姒姓，自大禹传至履癸（桀）共十四世十七王；期间经历太康失国、后羿寒浞代夏与少康中兴，考古学上主要与伊洛河流域二里头文化及嵩山周围龙山晚期城址相印证。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-yugong",
+        "source-040"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "采用夏商周断代工程拟定夏代起讫区间（约前2070—前1600年）。",
+        "alternatives": [
+          {
+            "label": "《古本竹书纪年》471年说（约前1989—前1559年）",
+            "year": {
+              "era": "BCE",
+              "year": 1989
+            },
+            "explanation": "《古本竹书纪年》记载自禹至桀十七世，有王与无王，用岁471年。",
+            "sourceIds": [
+              "xs-source-zhushu-gu"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "youqiong-han",
+      "name": "有穷氏 / 寒浞代夏政权",
+      "kind": "state",
+      "start": {
+        "era": "BCE",
+        "year": 1968
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1900
+      },
+      "color": "#8f4e45",
+      "region": "穷石 / 斟鄩（今河南洛阳偃师一带）",
+      "ending": "约前1900年少康联合有虞氏、夏遗臣靡及有鬲氏起兵，攻灭寒浞及其子浇、豷，恢复夏祀",
+      "note": "东夷有穷氏首领后羿趁夏王太康盘游无度，“因夏民以代夏政”（距太康于河）；后羿寒浞杀羿自立，并命子浇灭夏后相，造成夏朝约四十年的“无王”中断期，最终为少康所灭。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-yugong"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "据《左传·襄公四年》及《古本竹书纪年》后羿代夏、寒浞杀相至少康中兴约七十年区间拟定。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "shang",
+      "name": "商朝（殷 / 殷商）",
+      "kind": "empire",
+      "start": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "color": "#264653",
+      "region": "商丘（先商） / 亳（郑州商城、偃师商城） / 隞 / 相 / 邢 / 奄 / 殷（今河南安阳殷墟）",
+      "ending": "前1046年正月甲子周武王率联军于牧野击溃商军，商王帝辛（纣）登鹿台自焚，商亡（微子启后封于宋）",
+      "note": "子姓，始祖契佐禹治水受封于商，历先公十四世至成汤于约前1600年鸣条灭夏建商；传十七世三十一王，以盘庚迁殷（约前1300年）分为早中商与晚商（殷）两期，创造了成熟的甲骨文体系与灿烂的青铜礼器文明。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu",
+        "xs-source-zhushu-jin-yin",
+        "xs-source-shangshu-pangeng",
+        "xs-source-shijing-xuanniao"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "起点采用断代工程拟定成汤灭夏约前1600年（先公自契追溯至约前2070年），终点采用断代工程拟定前1046年牧野之战。",
+        "alternatives": [
+          {
+            "label": "《古本竹书纪年》汤至受496年说",
+            "year": {
+              "era": "BCE",
+              "year": 1523
+            },
+            "explanation": "《古本竹书纪年》载汤灭夏以至于受，用岁496年（一作508年或629年）。",
+            "sourceIds": [
+              "xs-source-zhushu-gu"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ancient-shu",
+      "name": "古蜀（宝墩—三星堆方国）",
+      "kind": "state",
+      "start": {
+        "era": "BCE",
+        "year": 2000
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "color": "#4d7868",
+      "region": "成都平原（今四川广汉三星堆遗址、成都金沙遗址）",
+      "ending": "前1046年作为“牧誓八国”之一随周武王伐纣；春秋战国延续为开明氏蜀国直至前316年为秦所灭",
+      "note": "夏商时期位于四川盆地的独立青铜文明中心（三星堆文化），与中原夏商王朝既有青铜尊、罍与玉璋礼器交流，又保有独特的神权祭祀体系（青铜大立人、纵目面具、青铜神树），商末从周武王会师牧野。",
+      "sourceIds": [
+        "xs-source-shangshu-mushi"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "结合三星堆一期至四期碳十四测年（约前2000—前1000年）及《尚书·牧誓》“庸、蜀、羌、髳、微、卢、彭、濮”文献记载拟定。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "guifang-qiang",
+      "name": "鬼方 / 羌方（西北方国联盟）",
+      "kind": "state",
+      "start": {
+        "era": "BCE",
+        "year": 1800
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "color": "#6e657a",
+      "region": "晋北、陕北、河套至陇右甘青地区",
+      "ending": "晚商帝乙、帝辛时期部分融于北狄与西戎，羌人一部于前1046年随周武王参加牧野伐纣",
+      "note": "夏商时期活跃于中原王朝西北边缘的强大方国部族。殷墟甲骨文频繁记载商王与妇好征伐羌方、土方、鬼方；商高宗武丁曾用兵三年平定鬼方（《周易·既济》：“高宗伐鬼方，三年克之”）。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin",
+        "xs-source-shangshu-mushi"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "据殷墟甲骨卜辞、《古本竹书纪年》武丁伐鬼方及《尚书·牧誓》羌人助周伐商记载拟定。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "zhou",
+      "name": "周（岐周方邦至西周王朝）",
+      "kind": "empire",
+      "start": {
+        "era": "BCE",
+        "year": 1150
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "color": "#64796d",
+      "region": "豳（今陕西旬邑） / 周原岐山（今陕西岐山、扶风） / 丰镐（今陕西西安长安区）",
+      "ending": "前1046年正月牧野之战克商，由商之西方方伯正式跃升为西周天下共主（完整周代谱系接续周朝库 zhou）",
+      "note": "复用周代库政权ID（zhou）。姬姓，始祖后稷，公刘迁豳，商武乙时期古公亶父（周太王）率族迁于岐山周原筑城建邦；经季历开拓、周文王姬昌“三分天下有其二”营建丰京，至前1046年周武王姬发牧野克商建立周朝。",
+      "sourceIds": [
+        "source-010",
+        "source-005",
+        "xs-source-shangshu-mushi"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "本卷收录周自古公亶父迁岐（约前1150年）至前1046年牧野克商建周阶段；前1046—前256年完整三十七王谱系无缝接续周代库（atlas.json）。",
+        "alternatives": []
+      }
+    }
+  ],
+  "people": [
+    {
+      "id": "xs-person-yu",
+      "name": "禹（大禹 / 夏后氏）",
+      "role": "夏朝开国君主",
+      "summary": "姒姓，名文命，鲧之子。奉舜命采用“疏川导滞”之法历时十三载平定洪水，划定九州、铸九鼎，讨平三苗，受舜禅位，于阳城建夏后氏政权（约前2070—前2025年在位），大会诸侯于涂山、会稽。",
+      "sourceIds": [
+        "xs-source-shiji-001",
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ]
+    },
+    {
+      "id": "xs-person-bo-yi",
+      "name": "伯益（大费）",
+      "role": "大禹辅臣、东夷首领",
+      "summary": "嬴姓始祖，佐大禹治水有大功，禹临终授政于益；禹崩后三年之丧毕，益避启于箕山之阳，天下诸侯朝启，开启夏代世袭。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-qi-xia",
+      "name": "启（夏后启）",
+      "role": "夏朝第二任君主",
+      "summary": "大禹之子，禹崩后诸侯去益而朝启，遂即夏王位（约前2024—前1986年在位），标志“公天下”禅让制向“家天下”世袭制转变；于甘之战击败反抗的西方有扈氏（作《尚书·甘誓》），钧台大享诸侯。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ]
+    },
+    {
+      "id": "xs-person-tai-kang",
+      "name": "太康",
+      "role": "夏朝第三任君主",
+      "summary": "夏后启长子，即位后盘游无度、田猎于洛水之南百日不归，东夷有穷氏首领后羿“因夏民弗忍，距于河”，太康失国退居阳夏。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ]
+    },
+    {
+      "id": "xs-person-zhong-kang",
+      "name": "仲康",
+      "role": "夏朝第四任君主",
+      "summary": "太康之弟，太康失国后立于外，命胤侯统师征讨废时乱日的羲氏、和氏（《尚书·胤征》）。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ]
+    },
+    {
+      "id": "xs-person-xiang",
+      "name": "相（夏后相）",
+      "role": "夏朝第五任君主",
+      "summary": "仲康之子，避有穷氏居于商丘、帝丘（今河南濮阳），依赖同姓诸侯斟灌氏、斟鄩氏；后被寒浞之子浇攻破杀害，其妻后缗逃归有仍氏生遗腹子少康。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-hou-yi",
+      "name": "后羿（夷羿）",
+      "role": "有穷氏君主、代夏执政者",
+      "summary": "东夷有穷氏首领，善射，乘太康田猎失政进据夏都斟鄩，“因夏民以代夏政”；晚年荒于游猎、信任寒浞，被寒浞唆使家众杀害。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-han-zhuo",
+      "name": "寒浞",
+      "role": "寒国与代夏统治者",
+      "summary": "伯明氏谗子，任后羿相，杀后羿夺其权与妻纯狐，命长子浇（奡）灭斟灌、斟鄩并弑夏后相，使夏统中断约四十年，后为少康与夏臣靡攻灭。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-shao-kang",
+      "name": "少康",
+      "role": "夏朝第六任君主",
+      "summary": "夏后相遗腹子，幼历劫难，先后任有仍氏牧正、奔有虞氏（虞思妻以二姚并授纶邑田一成、众一旅），联络夏遗臣靡与有鬲氏起兵，灭寒浞及浇、豷父子恢复夏朝，史称“少康中兴”。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-zhu",
+      "name": "予（季杼 / 帝杼）",
+      "role": "夏朝第七任君主",
+      "summary": "少康之子，早年佐父灭寒浞之子豷于戈；即位后发明皮甲用于实战，大举东征彻底折服东夷，使夏朝国势达到极盛（《国语》载“杼能帅禹者也，夏后氏报焉”）。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-huai",
+      "name": "槐（帝芬）",
+      "role": "夏朝第八任君主",
+      "summary": "帝杼之子，在位期间夏室强盛，“九夷来御”。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-mang",
+      "name": "芒（帝荒）",
+      "role": "夏朝第九任君主",
+      "summary": "帝槐之子，在位期间东狩于海，获大鱼。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-xie-xia",
+      "name": "泄（帝泄）",
+      "role": "夏朝第十任君主",
+      "summary": "帝芒之子，始加爵命于畎夷、白夷、赤夷、玄夷、风夷、阳夷等六夷，商先公上甲微在其在位时灭有易。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-bu-jiang",
+      "name": "不降",
+      "role": "夏朝第十一任君主",
+      "summary": "帝泄之子，在位五十九年，伐九苑；晚年内禅王位于弟扃，为夏代传弟之特例。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-jiong",
+      "name": "扃",
+      "role": "夏朝第十二任君主",
+      "summary": "不降之弟，受兄禅即位。",
+      "sourceIds": [
+        "xs-source-shiji-002"
+      ]
+    },
+    {
+      "id": "xs-person-jin",
+      "name": "廑（胤甲）",
+      "role": "夏朝第十三任君主",
+      "summary": "帝扃之子，迁居西河，在位期间天有十日并出之异象记载，崩后还政于不降之子孔甲。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-kong-jia",
+      "name": "孔甲",
+      "role": "夏朝第十四任君主",
+      "summary": "不降之子，复归大宗即位，“好方鬼神，事淫乱”，夏后氏德衰，诸侯多畔（史称“孔甲乱夏”）。",
+      "sourceIds": [
+        "xs-source-shiji-002"
+      ]
+    },
+    {
+      "id": "xs-person-gao",
+      "name": "皋",
+      "role": "夏朝第十五任君主",
+      "summary": "孔甲之子，在位期间曾使诸侯复修夏政，墓在崤南陵。",
+      "sourceIds": [
+        "xs-source-shiji-002"
+      ]
+    },
+    {
+      "id": "xs-person-fa",
+      "name": "发（后敬）",
+      "role": "夏朝第十六任君主",
+      "summary": "帝皋之子，即位初年诸夷曾宾于王门，末年发生泰山震（中国最早地震记载之一）。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-jie",
+      "name": "桀（履癸 / 夏桀）",
+      "role": "夏朝末代君主",
+      "summary": "帝发之子，武勇能伸铁钩索，但荒淫暴虐，伐有施氏得妺喜，大兴倾宫瑶台、杀谏臣关龙逢、囚商汤于夏台；约前1600年在鸣条之战被商汤击败，奔南巢而死，夏朝灭亡。",
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-guan-longfeng",
+      "name": "关龙逢",
+      "role": "夏末贤臣",
+      "summary": "夏桀重臣，因多次犯颜直谏夏桀荒淫虐民（献黄图劝谏），被夏桀杀害，与商末比干并称忠谏典范。",
+      "sourceIds": [
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-xie-shang",
+      "name": "契（商始祖玄王）",
+      "role": "商族始祖、舜帝司徒",
+      "summary": "子姓始祖（传说母简狄吞玄鸟卵而生），佐大禹治水有功，舜命其任司徒敷五教，封于商（今河南商丘）。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shijing-xuanniao"
+      ]
+    },
+    {
+      "id": "xs-person-wang-hai",
+      "name": "王亥（振 / 高祖亥）",
+      "role": "商先公（第七任）",
+      "summary": "相土曾孙、冥之子，殷墟卜辞尊为“高祖王亥”；驯养牛马（“服牛乘马”），率族人载货远赴河北有易氏（易水流域）经商贸易（后世“商人”“商业”之语源），被有易君绵臣杀害并夺牛。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-shangjia-wei",
+      "name": "上甲微",
+      "role": "商先公（第八任）",
+      "summary": "王亥之子，为报父仇借河伯之师攻灭有易氏、杀其君绵臣，使商族势力大振；殷墟周祭卜辞中为报甲之首。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-cheng-tang",
+      "name": "汤（成汤 / 天乙 / 大乙）",
+      "role": "商朝开国君主",
+      "summary": "主癸之子，始居毫（约前1617年嗣商侯位），任用伊尹、仲虺，网开三面修德怀柔诸侯，先后剪除夏羽翼葛、韦、顾、昆吾，约前1600年作《汤誓》于鸣条之战击败夏桀，建立商朝（约前1600—前1588年在商王位）。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng",
+        "xs-source-shijing-xuanniao"
+      ]
+    },
+    {
+      "id": "xs-person-yi-yin",
+      "name": "伊尹（伊挚 / 阿衡）",
+      "role": "商朝开国元勋、四朝元老",
+      "summary": "原为有莘氏陪嫁庖人，以“割烹要汤”论治国之道获成汤拜为右相，协汤灭夏；历辅汤、外丙、仲壬、太甲四王，因太甲颠覆汤之典刑将其放于桐宫三年，待太甲悔过迎归复政，作《伊训》《太甲》。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-wai-bing",
+      "name": "外丙（卜丙）",
+      "role": "商朝第二任君主",
+      "summary": "成汤次子（太子太丁早卒），继汤位在位三年。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-zhong-ren",
+      "name": "仲壬（外壬兄）",
+      "role": "商朝第三任君主",
+      "summary": "外丙之弟，在位四年，伊尹执政。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-tai-jia",
+      "name": "太甲（大甲 / 商太宗）",
+      "role": "商朝第四任君主",
+      "summary": "成汤嫡长孙、太丁之子。即位初不明暴虐，被伊尹放于成汤墓地桐宫居忧三年；悔过自责后由伊尹迎回亲政，修德勤政、诸侯归殷，庙号太宗。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-wo-ding",
+      "name": "沃丁",
+      "role": "商朝第五任君主",
+      "summary": "太甲之子，在位期间元老伊尹去世，以天子之礼葬伊尹于亳。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-tai-geng",
+      "name": "太庚（大庚）",
+      "role": "商朝第六任君主",
+      "summary": "沃丁之弟，兄终弟及即位。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-xiao-jia",
+      "name": "小甲",
+      "role": "商朝第七任君主",
+      "summary": "太庚之子（卜辞作大庚弟）。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-yong-ji",
+      "name": "雍己",
+      "role": "商朝第八任君主",
+      "summary": "小甲之弟，在位期间“殷道衰，诸侯或不至”。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-tai-wu",
+      "name": "太戊（大戊 / 商中宗）",
+      "role": "商朝第九任君主",
+      "summary": "雍己之弟，因桑谷共生于朝而修德畏天，任用伊尹之子伊陟、臣扈、巫咸整顿朝政，重振商威，远方重译来朝七十六国，在位七十五年，尊为中宗。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-zhong-ding",
+      "name": "仲丁（中丁）",
+      "role": "商朝第十任君主",
+      "summary": "太戊之子，因水患将国都自亳迁往隞（嚣，今河南郑州荥阳一带），征蓝夷；自仲丁以后废嫡立诸弟争位，引发“九世之乱”。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-wai-ren",
+      "name": "外壬（卜壬）",
+      "role": "商朝第十一任君主",
+      "summary": "仲丁之弟。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-hedanjia",
+      "name": "河亶甲（戋甲）",
+      "role": "商朝第十二任君主",
+      "summary": "外壬之弟，将国都自隞迁往相（今河南内黄），征班方。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-zu-yi",
+      "name": "祖乙（且乙）",
+      "role": "商朝第十三任君主",
+      "summary": "河亶甲之子，因相都遭水患迁都于邢（耿，后又居庇），任用巫贤辅政，商朝一度复兴，甲骨卜辞中享祀极隆。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-zu-xin",
+      "name": "祖辛",
+      "role": "商朝第十四任君主",
+      "summary": "祖乙之子。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-wo-jia",
+      "name": "沃甲（羌甲）",
+      "role": "商朝第十五任君主",
+      "summary": "祖辛之弟。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-zu-ding",
+      "name": "祖丁",
+      "role": "商朝第十六任君主",
+      "summary": "祖辛之子。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-nan-geng",
+      "name": "南庚",
+      "role": "商朝第十七任君主",
+      "summary": "沃甲之子，将商都自庇迁往奄（今山东曲阜），为商都最东端。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-yang-jia",
+      "name": "阳甲（象甲）",
+      "role": "商朝第十八任君主",
+      "summary": "祖丁之子，在位期间“九世之乱”达于极点，诸侯莫朝。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-pan-geng",
+      "name": "盘庚（般庚）",
+      "role": "商朝第十九任君主",
+      "summary": "阳甲之弟，约前1300年克服贵族阻力，率臣民渡黄河自奄迁于北蒙（殷，今河南安阳小屯殷墟，作《尚书·盘庚》三篇），复行成汤节俭恤民之政，终结九世之乱，商朝自此又称“殷”。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-xiao-xin",
+      "name": "小辛",
+      "role": "商朝第二十任君主",
+      "summary": "盘庚之弟。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-xiao-yi",
+      "name": "小乙",
+      "role": "商朝第二十一任君主",
+      "summary": "小辛之弟，命太子武丁早年深入民间稼穑知民疾苦、师从甘盘。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-wu-ding",
+      "name": "武丁（商高宗）",
+      "role": "商朝第二十二任君主",
+      "summary": "小乙之子，断代工程拟定前1250—前1192年在位（五十九年）。即位后三年不言，拔擢版筑胥靡傅说为相，与王后妇好、大将雀与禽等南征荆楚虎方、北平鬼方土方舌方羌方，使晚商疆域与甲骨文、青铜文明达于极盛，尊为高宗，史称“武丁盛世”。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng",
+        "xs-source-shijing-xuanniao"
+      ]
+    },
+    {
+      "id": "xs-person-fu-hao",
+      "name": "妇好（母辛）",
+      "role": "商王武丁王后、军事统帅、大祭司",
+      "summary": "中国有文字记载的第一位女性军事统帅。多次受武丁命主持祭祀并统兵征讨羌方、土方、巴方、夷方（征羌方一役统兵一万三千人，为殷墟卜辞最大单次动员），设伏与武丁夹击巴方；1976年安阳殷墟妇好墓完好出土青铜器468件（含妇好鸮尊）。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-fu-yue",
+      "name": "傅说",
+      "role": "商高宗武丁贤相",
+      "summary": "原为傅险（今山西平陆）版筑工匠，武丁托梦访得后拜为相，朝夕纳诲（《尚书·说命》），辅佐武丁实现殷道大兴。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-zu-geng",
+      "name": "祖庚",
+      "role": "商朝第二十三任君主",
+      "summary": "武丁之子，在位期间尊武丁为高宗（《高宗肜日》），并为祭祀生母妇妌（戊）铸造重达832.84公斤的“后母戊鼎”（司母戊鼎）。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-zu-jia",
+      "name": "祖甲（帝甲）",
+      "role": "商朝第二十四任君主",
+      "summary": "祖庚之弟、武丁之子，早年亦曾居于民间知小人之依（《尚书·无逸》与太戊、武丁并称贤王），在位三十三年，推行严整的“周祭”礼制与历法改革（卜辞新派与旧派分水岭）。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-lin-xin",
+      "name": "廪辛（冯辛）",
+      "role": "商朝第二十五任君主",
+      "summary": "祖甲之子。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-geng-ding",
+      "name": "庚丁（康丁）",
+      "role": "商朝第二十六任君主",
+      "summary": "廪辛之弟，在位期间晚期甲骨卜辞记录丰富。",
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-person-wu-yi",
+      "name": "武乙",
+      "role": "商朝第二十七任君主",
+      "summary": "庚丁之子，在位期间尝试打破神权束缚（“为偶人谓之天神，与之博，令人为行，天神不胜乃僇辱之；为革囊盛血，仰而射之，命曰射天”），晚年经略渭水周原一带，猎于河渭之间暴雷震死。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-wen-ding",
+      "name": "文丁（《史记》作太丁）",
+      "role": "商朝第二十八任君主",
+      "summary": "武乙之子，最初封周侯季历为“牧师”，后因忌惮周邦在克余无之戎、翳徒之戎后势力膨胀，诱囚并杀害季历。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-di-yi",
+      "name": "帝乙",
+      "role": "商朝第二十九任君主",
+      "summary": "文丁之子，在位期间多次亲征东南人方（夷方），对周采取怀柔联姻策略（“帝乙归妹”，嫁宗女于周文王姬昌）。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ]
+    },
+    {
+      "id": "xs-person-di-xin",
+      "name": "帝辛（商纣王 / 受）",
+      "role": "商朝末代君主",
+      "summary": "帝乙少子，资辨捷疾、膂力过人，在位期间大举用兵平定东南人方（东夷），拓展淮河长江流域，但消耗国力导致殷都空虚；重用费仲、恶来，严刑重敛、杀比干、囚箕子；前1046年正月在牧野之战中前线临时武装的奴隶倒戈，帝辛登鹿台衣宝玉自焚而死，商亡。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-mushi"
+      ]
+    },
+    {
+      "id": "xs-person-bi-gan",
+      "name": "比干",
+      "role": "商末少师、“殷末三仁”之一",
+      "summary": "帝乙之弟、帝辛叔父，见纣王淫乱暴虐，叹曰“为人臣者不得不以死争”，强谏三日不去，被纣王剖心杀害。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-037"
+      ]
+    },
+    {
+      "id": "xs-person-ji-zi",
+      "name": "箕子（胥余）",
+      "role": "商末太师、“殷末三仁”之一",
+      "summary": "帝辛叔父，谏纣不听后被发佯狂为奴，被纣王囚禁；周武王克商后释箕子之囚并向其访求治国大法，箕子陈《尚书·洪范》九畴，后受封于朝鲜而不臣。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-037",
+        "xs-source-shangshu-mushi"
+      ]
+    },
+    {
+      "id": "xs-person-weizi-qi",
+      "name": "微子启",
+      "role": "商末宗室重臣、宋国始封君",
+      "summary": "帝乙长子、帝辛同母庶兄，“殷末三仁”之一；数谏不听后与太师、少师谋议抱殷宗庙祭器出走保宗祀，周武王克商及周公平三监之乱后封微子启于宋（都商丘）以奉汤祀。",
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-037",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-gugong-danfu",
+      "name": "古公亶父（周太王）",
+      "role": "周族迁岐建邦领袖",
+      "summary": "公刘后裔，商武乙时期因北狄熏育侵逼，率周族自豳（旬邑）越梁山迁于岐山脚下周原（今陕西岐山、扶风），贬戎狄之俗、营筑城郭宫室、设官司徒司马司空，周邦由此兴起。",
+      "sourceIds": [
+        "source-010"
+      ]
+    },
+    {
+      "id": "xs-person-ji-li",
+      "name": "季历（王季 / 周公季）",
+      "role": "周方伯、商朝牧师",
+      "summary": "古公亶父少子（太伯、虞仲奔吴让位），娶挚任氏太任生姬昌；多次征讨西落鬼戎、余无之戎、始呼之戎、翳徒之戎，受商王文丁封为“牧师”，后遭文丁猜忌遇害。",
+      "sourceIds": [
+        "source-010",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-person-ji-chang",
+      "name": "姬昌（周文王 / 西伯昌）",
+      "role": "周方伯、西周奠基者",
+      "summary": "季历之子，笃仁敬老礼贤下士（渭水迎姜尚），曾被商纣王囚于羑里（演《周易》），获释后受赐弓矢斧钺得专征伐；先后平定犬戎、密须、耆（黎，见《西伯戡黎》）、邘、崇侯虎，自岐下迁都丰京，“三分天下有其二”。",
+      "sourceIds": [
+        "source-010",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-person-ji-fa",
+      "name": "姬发（周武王）",
+      "role": "西周开国天子",
+      "summary": "周文王次子，嗣位后以太公望姜尚为师、周公旦为辅，前1048年盟津观兵八百诸侯会同，前1046年正月率戎车三百乘、虎贲三千人及庸蜀羌髳微卢彭濮八国联军于牧野击溃商军，建立西周王朝（在位任期复用周代库 zhou-r0）。",
+      "sourceIds": [
+        "source-010",
+        "source-005",
+        "xs-source-shangshu-mushi"
+      ]
+    },
+    {
+      "id": "person-003",
+      "name": "姜尚（吕尚 / 太公望 / 齐太公）",
+      "role": "周太师、齐国始封君",
+      "summary": "复用周代库人物ID（person-003）。姜姓吕氏，钓于渭水遇周文王尊为“太公望”，辅佐武王筹划伐商，牧野之战率百夫冲阵克殷，受封于齐（营丘）。",
+      "sourceIds": [
+        "source-021",
+        "source-010"
+      ]
+    },
+    {
+      "id": "person-001",
+      "name": "周公旦（姬旦）",
+      "role": "西周王室辅政者",
+      "summary": "复用周代库人物ID（person-001）。周文王第四子、武王同母弟，参与制定伐纣方略，牧野之战秉旄麾师，成王初年摄政东征平定武庚与三监之乱，制礼作乐。",
+      "sourceIds": [
+        "source-010"
+      ]
+    },
+    {
+      "id": "person-002",
+      "name": "召公奭（姬奭）",
+      "role": "西周太保、王室重臣",
+      "summary": "复用周代库人物ID（person-002）。周宗室重臣，佐武王牧野克商，后封于北燕，与周公旦分陕而治。",
+      "sourceIds": [
+        "source-010"
+      ]
+    }
+  ],
+  "tenures": [
+    {
+      "id": "xs-tenure-xia-01-yu",
+      "polityId": "xia",
+      "personId": "xs-person-yu",
+      "name": "夏后禹（大禹）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 2070
+      },
+      "end": {
+        "era": "BCE",
+        "year": 2025
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 2070
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 2070
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 2025
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "依断代工程夏代始年约前2070年与《竹书纪年》禹居阳城、在位四十五年综合拟定；东巡会稽崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-02-qi",
+      "polityId": "xia",
+      "personId": "xs-person-qi-xia",
+      "name": "夏后启",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 2024
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1986
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 2024
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 2024
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1986
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "大禹之子，击败有扈氏确立世袭王权，《古本竹书纪年》载在位三十九年（一作十六年）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-03-taikang",
+      "polityId": "xia",
+      "personId": "xs-person-tai-kang",
+      "name": "夏后太康",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1985
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1968
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1985
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1985
+        },
+        "abdication": {
+          "era": "BCE",
+          "year": 1968
+        },
+        "death": {
+          "era": "BCE",
+          "year": 1958
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "启长子，盘游洛表为有穷氏后羿距于河（太康失国），退居阳夏。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-04-zhongkang",
+      "polityId": "xia",
+      "personId": "xs-person-zhong-kang",
+      "name": "夏后仲康",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1967
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1955
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1967
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1967
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1955
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "太康之弟，命胤侯征羲和。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-05-xiang",
+      "polityId": "xia",
+      "personId": "xs-person-xiang",
+      "name": "夏后相",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1954
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1927
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1954
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1954
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1927
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "仲康之子，居帝丘依同姓斟灌、斟鄩，为寒浞之子浇攻灭，其后约前1926—前1900年为寒浞代夏无王期。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-yq-houyi",
+      "polityId": "youqiong-han",
+      "personId": "xs-person-hou-yi",
+      "name": "有穷后羿",
+      "role": "代夏执政",
+      "start": {
+        "era": "BCE",
+        "year": 1968
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1940
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1968
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1968
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1940
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "距太康于河，入据斟鄩“因夏民以代夏政”，后为寒浞所弑。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-yq-hanzhuo",
+      "polityId": "youqiong-han",
+      "personId": "xs-person-han-zhuo",
+      "name": "寒浞",
+      "role": "代夏君主",
+      "start": {
+        "era": "BCE",
+        "year": 1940
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1900
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1940
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1940
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1900
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "杀后羿并命子浇灭夏后相，代夏统治数十年，约前1900年为少康与夏遗臣靡攻灭。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-06-shaokang",
+      "polityId": "xia",
+      "personId": "xs-person-shao-kang",
+      "name": "夏后少康",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1900
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1879
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1900
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1900
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1879
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "相遗腹子，联有虞氏、夏臣靡、有鬲氏灭寒浞复夏祀（少康中兴），在位约二十一年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-07-zhu",
+      "polityId": "xia",
+      "personId": "xs-person-zhu",
+      "name": "夏后予（帝杼）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1878
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1862
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1878
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1878
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1862
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "少康之子，迁原与老丘，大征东夷，在位十七年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-08-huai",
+      "polityId": "xia",
+      "personId": "xs-person-huai",
+      "name": "夏后槐（帝芬）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1861
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1836
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1861
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1861
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1836
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "帝杼之子，九夷来宾，在位二十六年（一作四十四年）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-09-mang",
+      "polityId": "xia",
+      "personId": "xs-person-mang",
+      "name": "夏后芒（帝荒）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1835
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1818
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1835
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1835
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1818
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "帝槐之子，东狩于海，在位十八年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-10-xie",
+      "polityId": "xia",
+      "personId": "xs-person-xie-xia",
+      "name": "夏后泄",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1817
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1802
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1817
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1817
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1802
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "帝芒之子，加爵命于六夷，在位十六年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-11-bujiang",
+      "polityId": "xia",
+      "personId": "xs-person-bu-jiang",
+      "name": "夏后不降",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1801
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1743
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1801
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1801
+        },
+        "abdication": {
+          "era": "BCE",
+          "year": 1743
+        },
+        "death": {
+          "era": "BCE",
+          "year": 1733
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "帝泄之子，在位五十九年，为夏代在位最久君主，内禅于弟扃。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-12-jiong",
+      "polityId": "xia",
+      "personId": "xs-person-jiong",
+      "name": "夏后扃",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1742
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1722
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1742
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1742
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1722
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "不降之弟，在位二十一年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-13-jin",
+      "polityId": "xia",
+      "personId": "xs-person-jin",
+      "name": "夏后廑（胤甲）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1721
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1701
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1721
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1721
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1701
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "帝扃之子，居西河，在位二十一年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-14-kongjia",
+      "polityId": "xia",
+      "personId": "xs-person-kong-jia",
+      "name": "夏后孔甲",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1700
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1670
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1700
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1700
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1670
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "不降之子，好鬼神事淫乱，夏道始衰（孔甲乱夏），在位三十一年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-15-gao",
+      "polityId": "xia",
+      "personId": "xs-person-gao",
+      "name": "夏后皋",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1669
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1659
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1669
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1669
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1659
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "孔甲之子，在位十一年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-16-fa",
+      "polityId": "xia",
+      "personId": "xs-person-fa",
+      "name": "夏后发（敬）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1658
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1640
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1658
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1658
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1640
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "帝皋之子，在位十九年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-xia-17-jie",
+      "polityId": "xia",
+      "personId": "xs-person-jie",
+      "name": "夏后履癸（夏桀）",
+      "role": "夏王",
+      "start": {
+        "era": "BCE",
+        "year": 1639
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1639
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1639
+        },
+        "abdication": {
+          "era": "BCE",
+          "year": 1600
+        },
+        "death": {
+          "era": "BCE",
+          "year": 1600
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "帝发之子，荒淫暴虐杀关龙逢，约前1600年鸣条之战为商汤所败，奔南巢死，夏亡。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-01-tang",
+      "polityId": "shang",
+      "personId": "xs-person-cheng-tang",
+      "name": "商王成汤（天乙/大乙）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1588
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1600
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1600
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1588
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "嗣商侯位十七年，约前1600年鸣条灭夏建商王朝，为商王十三年崩。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-02-waibing",
+      "polityId": "shang",
+      "personId": "xs-person-wai-bing",
+      "name": "商王外丙（卜丙）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1587
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1585
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1587
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1587
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1585
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "成汤次子（长子太丁未立早卒），在位三年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-03-zhongren",
+      "polityId": "shang",
+      "personId": "xs-person-zhong-ren",
+      "name": "商王仲壬",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1584
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1581
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1584
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1584
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1581
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "外丙之弟，在位四年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-04-taijia",
+      "polityId": "shang",
+      "personId": "xs-person-tai-jia",
+      "name": "商太宗太甲（大甲）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1580
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1558
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1580
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1580
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1558
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "太丁之子，初立被伊尹放于桐宫三年悔过复政，尊为太宗，在位约二十三年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-05-woding",
+      "polityId": "shang",
+      "personId": "xs-person-wo-ding",
+      "name": "商王沃丁",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1557
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1539
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1557
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1557
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1539
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "太甲之子，在位期间葬伊尹于亳。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-06-taigeng",
+      "polityId": "shang",
+      "personId": "xs-person-tai-geng",
+      "name": "商王太庚（大庚）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1538
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1514
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1538
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1538
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1514
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "沃丁之弟，在位二十五年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-07-xiaojia",
+      "polityId": "shang",
+      "personId": "xs-person-xiao-jia",
+      "name": "商王小甲",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1513
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1497
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1513
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1513
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1497
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "太庚子（或弟），在位十七年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-08-yongji",
+      "polityId": "shang",
+      "personId": "xs-person-yong-ji",
+      "name": "商王雍己",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1496
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1485
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1496
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1496
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1485
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "小甲之弟，殷道一度衰落，在位十二年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-09-taiwu",
+      "polityId": "shang",
+      "personId": "xs-person-tai-wu",
+      "name": "商中宗太戊（大戊）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1484
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1410
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1484
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1484
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1410
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "雍己之弟，任伊陟、巫咸实现太戊中兴，《尚书·无逸》载在位七十五年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-10-zhongding",
+      "polityId": "shang",
+      "personId": "xs-person-zhong-ding",
+      "name": "商王仲丁（中丁）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1409
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1399
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1409
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1409
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1399
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "太戊之子，自亳迁都于隞（嚣），九世之乱始，在位十一年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-11-wairen",
+      "polityId": "shang",
+      "personId": "xs-person-wai-ren",
+      "name": "商王外壬（卜壬）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1398
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1384
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1398
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1398
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1384
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "仲丁之弟，在位十五年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-12-hedanjia",
+      "polityId": "shang",
+      "personId": "xs-person-hedanjia",
+      "name": "商王河亶甲（戋甲）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1383
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1375
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1383
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1383
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1375
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "外壬之弟，迁都于相，在位九年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-13-zuyi",
+      "polityId": "shang",
+      "personId": "xs-person-zu-yi",
+      "name": "商王祖乙（且乙）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1374
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1356
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1374
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1374
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1356
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "河亶甲之子，迁于邢（耿）、庇，巫贤任职，殷道复兴，在位十九年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-14-zuxin",
+      "polityId": "shang",
+      "personId": "xs-person-zu-xin",
+      "name": "商王祖辛",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1355
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1340
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1355
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1355
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1340
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "祖乙之子，在位十六年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-15-wojia",
+      "polityId": "shang",
+      "personId": "xs-person-wo-jia",
+      "name": "商王沃甲（羌甲）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1339
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1325
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1339
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1339
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1325
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "祖辛之弟，在位十五年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-16-zuding",
+      "polityId": "shang",
+      "personId": "xs-person-zu-ding",
+      "name": "商王祖丁",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1324
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1315
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1324
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1324
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1315
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "祖辛之子，在位约十年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-17-nangeng",
+      "polityId": "shang",
+      "personId": "xs-person-nan-geng",
+      "name": "商王南庚",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1314
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1309
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1314
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1314
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1309
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "沃甲之子，自庇迁于奄（山东曲阜），在位六年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-18-yangjia",
+      "polityId": "shang",
+      "personId": "xs-person-yang-jia",
+      "name": "商王阳甲（象甲）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1308
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1301
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1308
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1308
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1301
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "祖丁长子，九世之乱末期，在位约八年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-19-pangeng",
+      "polityId": "shang",
+      "personId": "xs-person-pan-geng",
+      "name": "商王盘庚（般庚）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1300
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1273
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-pangeng"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1300
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1300
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1273
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "断代工程拟定盘庚迁殷为约前1300年（盘庚、小辛、小乙三王合50年：前1300—前1251年），盘庚在位二十八年，渡河南迁于殷（安阳殷墟）终结九世之乱。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-20-xiaoxin",
+      "polityId": "shang",
+      "personId": "xs-person-xiao-xin",
+      "name": "商王小辛",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1272
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1260
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1272
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1272
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1260
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "盘庚之弟，在位约十三年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-21-xiaoyi",
+      "polityId": "shang",
+      "personId": "xs-person-xiao-yi",
+      "name": "商王小乙",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1259
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1251
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1259
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1259
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1251
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "小辛之弟、武丁之父，在位约九年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-22-wuding",
+      "polityId": "shang",
+      "personId": "xs-person-wu-ding",
+      "name": "商高宗武丁",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1250
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1192
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng",
+        "xs-source-shijing-xuanniao"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1250
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1250
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1192
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "夏商周断代工程依据《尚书·无逸》“肆高宗之享国五十有九年”及月食卜辞定为前1250—前1192年，开创武丁盛世。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-23-zugeng",
+      "polityId": "shang",
+      "personId": "xs-person-zu-geng",
+      "name": "商王祖庚",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1191
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1185
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1191
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1191
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1185
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "武丁之子，断代工程拟定祖庚、祖甲、廪辛、康丁四王合为前1191—前1123年，祖庚在位七年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-24-zujia",
+      "polityId": "shang",
+      "personId": "xs-person-zu-jia",
+      "name": "商王祖甲（帝甲）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1184
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1152
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1184
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1184
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1152
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "祖庚之弟，《尚书·无逸》载“肆祖甲之享国三十有三年”，改革周祭礼制。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-25-linxin",
+      "polityId": "shang",
+      "personId": "xs-person-lin-xin",
+      "name": "商王廪辛",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1151
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1148
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1151
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1151
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1148
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "祖甲之子，在位四年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-26-gengding",
+      "polityId": "shang",
+      "personId": "xs-person-geng-ding",
+      "name": "商王庚丁（康丁）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1147
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1123
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1147
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1147
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1123
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "廪辛之弟，在位约二十五年。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-27-wuyi",
+      "polityId": "shang",
+      "personId": "xs-person-wu-yi",
+      "name": "商王武乙",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1122
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1119
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1122
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1122
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1119
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "夏商周断代工程正式公布武乙在位年代：前1147—前1113年（或依《古本竹书纪年》三十五年、今本四年折算，此处衔接康丁与文丁定为前1122—前1119年，另备断代工程前1147—前1113年说于异说）。",
+        "alternatives": [
+          {
+            "label": "夏商周断代工程武乙前1147—前1113年说",
+            "year": {
+              "era": "BCE",
+              "year": 1147
+            },
+            "explanation": "断代工程依据《古本竹书纪年》武乙三十五年拟定为前1147—前1113年，文丁十三年为前1112—前1102年。",
+            "sourceIds": [
+              "xs-source-zhushu-gu"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xs-tenure-shang-28-wending",
+      "polityId": "shang",
+      "personId": "xs-person-wen-ding",
+      "name": "商王文丁（太丁）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1118
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1102
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1118
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1118
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1102
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "断代工程拟定文丁终年为前1102年，在位期间杀周季历。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-29-diyi",
+      "polityId": "shang",
+      "personId": "xs-person-di-yi",
+      "name": "商王帝乙",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1101
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1076
+      },
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1101
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1101
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1076
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "夏商周断代工程拟定帝乙在位二十六年（前1101—前1076年）。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-shang-30-dixin",
+      "polityId": "shang",
+      "personId": "xs-person-di-xin",
+      "name": "商王帝辛（商纣王）",
+      "role": "商王",
+      "start": {
+        "era": "BCE",
+        "year": 1075
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-mushi"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1075
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1075
+        },
+        "abdication": {
+          "era": "BCE",
+          "year": 1046
+        },
+        "death": {
+          "era": "BCE",
+          "year": 1046
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "夏商周断代工程拟定帝辛（纣）在位三十年（前1075—前1046年），前1046年正月甲子牧野兵败登鹿台自焚，商亡。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-zhou-taiwang",
+      "polityId": "zhou",
+      "personId": "xs-person-gugong-danfu",
+      "name": "周太王古公亶父",
+      "role": "周方伯",
+      "start": {
+        "era": "BCE",
+        "year": 1150
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1126
+      },
+      "sourceIds": [
+        "source-010"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1150
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1150
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1126
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "商武乙年间自豳迁于岐山周原筑城建邦。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-zhou-jili",
+      "polityId": "zhou",
+      "personId": "xs-person-ji-li",
+      "name": "周王季（季历）",
+      "role": "周方伯/商牧师",
+      "start": {
+        "era": "BCE",
+        "year": 1125
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1102
+      },
+      "sourceIds": [
+        "source-010",
+        "xs-source-zhushu-gu"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1125
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1125
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1102
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "多次击败西戎鬼戎，前1102年为商王文丁所杀。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "xs-tenure-zhou-wenwang",
+      "polityId": "zhou",
+      "personId": "xs-person-ji-chang",
+      "name": "周文王姬昌（西伯昌）",
+      "role": "周西伯/文王",
+      "start": {
+        "era": "BCE",
+        "year": 1101
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1051
+      },
+      "sourceIds": [
+        "source-010",
+        "xs-source-shangshu-pangeng"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1101
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1101
+        },
+        "abdication": null,
+        "death": {
+          "era": "BCE",
+          "year": 1051
+        },
+        "changes": []
+      },
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "《尚书·无逸》载“文王受命惟中身，厥享国五十年”（前1101—前1051年），灭崇迁丰，三分天下有其二。",
+        "alternatives": []
+      }
+    },
+    {
+      "id": "zhou-r0",
+      "polityId": "zhou",
+      "personId": "xs-person-ji-fa",
+      "name": "周武王姬发",
+      "role": "周王/天子",
+      "start": {
+        "era": "BCE",
+        "year": 1050
+      },
+      "end": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "sourceIds": [
+        "source-010",
+        "source-005",
+        "xs-source-shangshu-mushi"
+      ],
+      "chronology": {
+        "accession": {
+          "era": "BCE",
+          "year": 1050
+        },
+        "regnalStart": {
+          "era": "BCE",
+          "year": 1046
+        },
+        "abdication": null,
+        "death": null,
+        "changes": []
+      },
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "复用周代库在位ID（zhou-r0）。前1050年嗣西伯位，前1048年盟津观兵，前1046年正月牧野克商建立西周王朝（周代库接续前1046—前1043年周天子任期）。",
+        "alternatives": []
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "xs-event-01-yu-flood-founding-xia",
+      "name": "大禹平水土、划九州铸九鼎与阳城建夏",
+      "kind": "政治",
+      "year": {
+        "era": "BCE",
+        "year": 2070
+      },
+      "sourceIds": [
+        "xs-source-shiji-001",
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "采用夏商周断代工程拟定夏代始年约前2070年；另备《古本竹书纪年》约前1989年与《三统历》前2205年异说。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "尧舜时期黄河泛滥成灾，禹父鲧采取“障水”堵截之法九年无功被殛于羽山，舜举禹续父业治水。",
+        "process": "大禹改堵为疏，“劳身焦思，居外十三年，过家门不敢入”，联合伯益、后稷、契疏导九川、平定水土，依山川形势划定冀、兖、青、徐、扬、荆、豫、梁、雍九州及五服贡赋（《尚书·禹贡》）；受舜禅位后居阳城（河南登封王城岗），于涂山大会诸侯（“执玉帛者万国”），收九牧之金铸造九鼎作为王权象征。",
+        "result": "建立起超越部落联盟的早期广域王权国家基业。",
+        "impact": "“九州”成为华夏地理与大一统文化共同体的代名词，九鼎成为夏商周三代传国礼器。",
+        "related": [
+          "xs-event-02-qi-battle-of-gan-hereditary"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-02-qi-battle-of-gan-hereditary",
+      "name": "夏启代益继位、甘之战与钧台之享确立世袭制",
+      "kind": "军事",
+      "year": {
+        "era": "BCE",
+        "year": 2024
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-yugong"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "约前2024年禹崩启立，随后于甘（今陕西户县或河南洛阳西南）讨平有扈氏，于钧台（河南禹州）大享诸侯。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "大禹东巡会稽崩前按禅让惯例授政于东夷首领伯益，但禹之子启已培植深厚势力，诸侯皆去益而朝启（《古本竹书纪年》则载“益干启位，启杀之”）。",
+        "process": "夏启正式即位后，西方同姓部族有扈氏以维护禅让旧制为由拒绝臣服（“威侮五行，怠弃三正”）；启率六卿统领大军与有扈氏大战于甘，战前发布中国历史首篇军法誓师词《甘誓》；击败并剿灭有扈氏后，启在阳翟钧台举行盛大盟会（钧台之享）。",
+        "result": "天下诸侯悉数臣服，王位父死子继、兄终弟及的“家天下”世袭制度正式确立。",
+        "impact": "标志着中国历史由原始部落联盟民主推举制跨入世袭王朝国家时代。",
+        "related": [
+          "xs-event-01-yu-flood-founding-xia",
+          "xs-event-03-taikang-loss-shaokang-restoration"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-03-taikang-loss-shaokang-restoration",
+      "name": "太康失国、后羿寒浞代夏与少康中兴",
+      "kind": "政治",
+      "year": {
+        "era": "BCE",
+        "year": 1900
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-yugong"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖约前1968年太康失国后羿代夏、寒浞杀夏后相造成四十年无王期，至约前1900年少康灭寒浞复国与帝杼东征。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "夏王太康即位后沉湎田猎，于洛水之南盘游百日不归，东夷有穷氏首领后羿率军进据夏都斟鄩，距太康于河（太康失国）。",
+        "process": "后羿“因夏民以代夏政”，立仲康、相为傀儡；后羿宠臣寒浞杀后羿自立，并派长子浇攻灭斟灌、斟鄩，杀死夏后相；相妻后缗由墙洞逃归娘家有仍氏生下遗腹子少康；少康长大后逃奔有虞氏（今河南虞城），获虞君妻以二姚并授纶邑“有田一成，有众一旅”；少康布德抚民，联合逃奔有鬲氏的夏朝遗臣靡起兵，里应外合攻灭寒浞，少康之子季杼又攻灭浇于过、灭豷于戈。",
+        "result": "中断近四十年的夏王朝得以光复（史称“少康中兴”），继任的帝杼发明皮甲大举东征，彻底平定东夷。",
+        "impact": "巩固了夏王朝在中原与东方夷夏交融区的统治，开启夏代中期（对应二里头文化兴盛期）的百余年繁荣。",
+        "related": [
+          "xs-event-02-qi-battle-of-gan-hereditary",
+          "xs-event-04-erlitou-kongjia-wanghai"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-04-erlitou-kongjia-wanghai",
+      "name": "二里头礼制极盛、王亥上甲微兴商与孔甲乱夏",
+      "kind": "文化",
+      "year": {
+        "era": "BCE",
+        "year": 1700
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖夏代槐、芒、泄、不降盛期（前1861—前1743年），商先公王亥、上甲微灭有易，及约前1700年孔甲即位乱夏。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "少康、帝杼以后，夏朝在槐、芒、泄、不降四代达到极盛，伊洛盆地中心都邑（河南偃师二里头遗址）形成严整的井字形大道、宫城建筑群、官营青铜铸造作坊与绿松石龙形器礼制。",
+        "process": "夏不降晚年内禅于弟扃，传至扃之子廑崩后，复立不降之子孔甲（约前1700年）；孔甲“好方鬼神，事淫乱”，夏后氏德衰，诸侯多畔（孔甲乱夏）；与此同时，东方商族在先公王亥时“服牛乘马”远赴河北易水有易氏经商，王亥遇害后其子上甲微借河伯之师攻灭有易氏，商族在璋河、黄河流域迅速崛起。",
+        "result": "夏王朝对东方与北方诸侯的控制力显著削弱，商族完成了由部族向方国强权的跨越。",
+        "impact": "形成“夷夏东西”向“夏商鼎革”演进的战略态势。",
+        "related": [
+          "xs-event-03-taikang-loss-shaokang-restoration",
+          "xs-event-05-mingtiao-tang-founding-shang"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-05-mingtiao-tang-founding-shang",
+      "name": "商汤居亳任伊尹与鸣条之战灭夏建商",
+      "kind": "军事",
+      "year": {
+        "era": "BCE",
+        "year": 1600
+      },
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "采用夏商周断代工程拟定成汤灭夏约前1600年；另备《古本竹书纪年》约前1559年/前1523年与传统前1766年说。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "夏朝末代君主履癸（夏桀）骄奢暴虐，大兴土木、杀谏臣关龙逢，并曾将商侯成汤囚禁于夏台（钧台）；民众咒骂夏桀“时日曷丧，予及汝偕亡”。",
+        "process": "成汤获释后定居于亳（今河南郑州商城/偃师商城），拜有莘氏贤臣伊尹为右相、仲虺为左相，以“网开三面”修德怀柔天下诸侯；采取剪除羽翼战略，先后攻灭亲夏的葛伯、韦国、顾国与昆吾氏；约前1600年成汤发布《汤誓》，统率诸侯联军与夏桀主力决战于鸣条之野（今山西运城夏县或河南封丘东），冒大雨疾雷大破夏军，夏桀败走南巢（安徽巢湖）死。",
+        "result": "享国四百七十余年的夏朝灭亡，商汤于亳建立商王朝，三千诸侯大会于亳，汤作《汤诰》、改正朔易服色（尚白）。",
+        "impact": "开启中国历史上第一个有同期文字（甲骨文与早商陶文金文）和大型都城遗址群双重印证的商王朝。",
+        "related": [
+          "xs-event-04-erlitou-kongjia-wanghai",
+          "xs-event-06-yiyin-taijia-taiwu"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-06-yiyin-taijia-taiwu",
+      "name": "伊尹放太甲训政与中宗太戊中兴",
+      "kind": "政治",
+      "year": {
+        "era": "BCE",
+        "year": 1580
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖约前1580年太甲即位与桐宫之放，及约前1484—前1410年商中宗太戊在位七十五年中兴。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "成汤崩后，太子太丁早死，次子外丙、三子仲壬相继短命在位，四朝元老伊尹立汤嫡长孙太甲即位。",
+        "process": "太甲即位三年不明暴虐，不遵汤法；伊尹作《伊训》《肆命》《徂后》规劝无效，遂将太甲放逐于成汤墓地桐宫（今河南虞城或偃师），由伊尹摄政当国朝诸侯；太甲在桐宫居忧三年悔过自责，伊尹乃迎太甲归亳还政，作《太甲》三篇褒扬，太甲勤政修德被尊为商太宗（《古本竹书纪年》另有伊尹自立、太甲潜出杀伊尹之战国异说）；传至第九王太戊（约前1484年），任用伊尹之子伊陟、臣扈、巫咸整顿朝纲，远方重译来朝者七十六国。",
+        "result": "早商统治秩序高度稳固，二里岗期商文化向北抵河北燕山、南跨长江达湖北盘龙城、西入关中、东至山东济南大辛庄。",
+        "impact": "“伊尹放太甲”成为后世儒家讨论权臣摄政与君臣道义关系的经典范式（“有伊尹之志则可，无伊尹之志则篡也”）。",
+        "related": [
+          "xs-event-05-mingtiao-tang-founding-shang",
+          "xs-event-07-nine-generations-turmoil"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-07-nine-generations-turmoil",
+      "name": "仲丁至阳甲“九世之乱”与早中商五次迁都",
+      "kind": "政治",
+      "year": {
+        "era": "BCE",
+        "year": 1409
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "自约前1409年仲丁迁隞起，经外壬、河亶甲、祖乙、祖辛、沃甲、祖丁、南庚至前1301年阳甲崩，历九王百余年。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "商代王位继承并行“兄终弟及”与“父死子继”，未确立严格的嫡长子继承制；自太戊之子仲丁以后，王室诸弟子侄围绕王位继承展开激烈内斗。",
+        "process": "《史记·殷本纪》载：“自中丁以来，废适而更立诸弟子，弟子或争相代立，比九世乱，于是诸侯莫朝”；在此百余年间，商都频繁迁徙：仲丁自亳迁于隞（嚣，郑州西北），河亶甲自隞迁于相（河南内黄），祖乙迁于邢（耿，后居庇）并任巫贤一度实现复兴，南庚又自庇东迁于奄（山东曲阜），至阳甲时王室威权极度衰落。",
+        "result": "频繁迁都与宗室内讧消耗了中商国力，周边方国纷纷脱离商廷朝贡。",
+        "impact": "直接迫使阳甲之弟盘庚断然推行渡河北迁于殷的战略改革。",
+        "related": [
+          "xs-event-06-yiyin-taijia-taiwu",
+          "xs-event-08-pangeng-move-to-yin"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-08-pangeng-move-to-yin",
+      "name": "盘庚迁殷与晚商殷墟定都",
+      "kind": "政治",
+      "year": {
+        "era": "BCE",
+        "year": 1300
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "采用夏商周断代工程拟定盘庚迁殷约前1300年（据《古本竹书纪年》“自盘庚徙殷至纣之灭二百七十三年更不徙都”推算）。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "商王盘庚即位时，旧都奄地贵族奢侈腐化、社会矛盾尖锐且水患频仍，盘庚决意渡黄河迁都于洹水之滨的北蒙（即殷，今河南安阳小屯殷墟）。",
+        "process": "旧贵族与臣民留恋故土、抱怨震动，盘庚先后发表《盘庚上》《盘庚中》《盘庚下》三篇训辞（载入《尚书》），晓以“若网在纲，有条而不紊”及追随成汤先王迁都兴邦之大义，严斥贵族浮言怠傲；最终率臣民渡河定居于殷，茅茨不剪、复行成汤德政。",
+        "result": "“百姓由宁，殷道复兴，诸侯来朝”，商朝自此稳定定都于安阳殷墟直至灭亡，不再迁都，故商朝又称“殷”或“殷商”。",
+        "impact": "开启了长达254年的晚商殷墟文明，为随后武丁盛世的到来奠定了政治与地理根基。",
+        "related": [
+          "xs-event-07-nine-generations-turmoil",
+          "xs-event-09-wuding-fuhao-golden-age"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-09-wuding-fuhao-golden-age",
+      "name": "武丁盛世、傅说拜相与妇好南征北伐",
+      "kind": "军事",
+      "year": {
+        "era": "BCE",
+        "year": 1250
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-jin-yin",
+        "xs-source-shangshu-pangeng",
+        "xs-source-shijing-xuanniao"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "夏商周断代工程拟定商高宗武丁在位五十九年（前1250—前1192年）。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "盘庚迁殷后经小辛、小乙两代蓄力，小乙命太子武丁自幼深入河洛民间劳作知稼穑艰难，并师从甘盘。",
+        "process": "前1250年武丁即位，三年不言，观察国风后拔擢傅险版筑工匠傅说为相，“朝夕纳诲”整顿朝政；军事上，武丁与王后妇好、大将雀、望乘等四面出击：妇好率军一万三千人北破羌方，与武丁设伏夹击西南巴方，平定北方土方、舌方；武丁亲统大军历时三年攻克西北强敌鬼方（《周易》“高宗伐鬼方，三年克之”），并南下深入江汉流域“奋伐荆楚”（《诗经·商颂·殷武》）。",
+        "result": "晚商版图与国力达到巅峰，方国林立来朝，史称“武丁中兴”或“武丁盛世”。",
+        "impact": "安阳殷墟出土的十五万片甲骨文中过半属于武丁时期（宾组、师组卜辞），展现了高度成熟的中国文字体系与国家治理。",
+        "related": [
+          "xs-event-08-pangeng-move-to-yin",
+          "xs-event-10-oracle-bone-bronze-sanxingdui"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-10-oracle-bone-bronze-sanxingdui",
+      "name": "殷墟甲骨文、后母戊鼎青铜高峰与祖甲改制、三星堆交融",
+      "kind": "文化",
+      "year": {
+        "era": "BCE",
+        "year": 1184
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-mushi"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "涵盖武丁晚期至祖庚、祖甲在位期（约前1200—前1152年），及同期四川广汉三星堆祭祀坑青铜文明高峰。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "晚商时期王室神权与王权高度结合，“国之大事，在祀与戎”，青铜铸造技术与汉字书写系统全面成熟。",
+        "process": "商王室贞人集团通过钻凿灼龟甲牛肩胛骨占卜军国大事并契刻卜辞，形成具备六书完备结构的甲骨文；武丁之子祖庚为祭祀生母妇妌（庙号戊）铸造高133厘米、重832.84公斤的“后母戊鼎”（司母戊鼎），代表中国古代青铜范铸工艺巅峰；前1184年祖甲即位后推行“周祭”制度改革，以熠、翌、祭、肜、恊五种祭祀按严格周期轮祀先王先妣，取消对山川自然神的滥祀；同期成都平原古蜀国（三星堆遗址）吸收中原商式青铜尊罍技艺并铸造青铜大立人、神树与黄金面具。",
+        "result": "确立了汉字一脉相承的文字基因与严整的宗法祭祀礼制，形成了中原殷商与四方青铜文明多元一体的格局。",
+        "impact": "1899年王懿荣发现甲骨文与1928年起中央研究院发掘安阳殷墟，使商代信史得到考古学铁证。",
+        "related": [
+          "xs-event-09-wuding-fuhao-golden-age",
+          "xs-event-11-zhou-danfu-jili-rise"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-11-zhou-danfu-jili-rise",
+      "name": "古公亶父迁岐建周、武乙射天与文丁杀季历",
+      "kind": "政治",
+      "year": {
+        "era": "BCE",
+        "year": 1102
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-010",
+        "xs-source-zhushu-gu"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "古公亶父迁岐约前1150年，武乙暴雷震死约前1119年，文丁杀周侯季历定于断代工程文丁末年（前1102年）。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "晚商武乙、文丁时期，商廷内部王权与神权贵族矛盾激化（武乙“射天”辱偶人），而西方渭水流域的姬姓周族迅速崛起。",
+        "process": "周族领袖古公亶父（周太王）为避戎狄侵扰，率族人自豳迁于岐山脚下肥沃的周原，营筑城郭宫室、设官分职；少子季历（王季）继位后与商贵族联姻（娶挚任氏太任），连破西落鬼戎、余无之戎、始呼之戎、翳徒之戎，商王文丁初封季历为“牧师”（西方方伯）；前1102年季历入朝报捷，文丁忌惮周族强盛，将季历囚禁于塞库致死。",
+        "result": "季历之子姬昌（周文王）继位，商周由封贡从属转为深层战略对抗。",
+        "impact": "周族立下克商雪恨之志，开启了文王、武王两代剪商进程。",
+        "related": [
+          "xs-event-10-oracle-bone-bronze-sanxingdui",
+          "xs-event-12-wenwang-youli-fengjing"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-12-wenwang-youli-fengjing",
+      "name": "文王羑里演易、西伯戡黎与迁都丰京",
+      "kind": "军事",
+      "year": {
+        "era": "BCE",
+        "year": 1056
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-010",
+        "source-021",
+        "xs-source-shangshu-pangeng"
+      ],
+      "dating": {
+        "level": "inferred",
+        "reviewStatus": "reviewed",
+        "reason": "周文王姬昌在位五十年（前1101—前1051年），晚期自约前1059—前1051年受命称王、灭崇迁丰、戡黎。",
+        "alternatives": []
+      },
+      "narrative": {
+        "background": "商王帝乙末年至帝辛（纣王）时期，商军主力长期东征东南人方（夷方），西方周侯姬昌（西伯）礼贤下士，伯夷、叔齐、太颠、闳夭、散宜生、鬻熊、辛甲等皆归周。",
+        "process": "崇侯虎向商纣王进谗，纣王将西伯昌囚于羑里（今河南汤阴，文王于狱中推演六十四卦成《周易》）；散宜生、闳夭献有莘氏美女与骏马珍宝赎出文王，纣王赐文王弓矢斧钺得专征伐；文王于渭水之阳访得姜尚（太公望）拜为师，采取“剪商羽翼”战略，先后攻灭犬戎、密须（甘肃灵台）、阮、共、邘（河南沁阳）、黎（山西长治，见《尚书·西伯戡黎》，震动殷都），并攻灭亲商重镇崇国（今陕西户县），自岐山迁都于渭水南岸丰京。",
+        "result": "周邦控制关中、陇右、晋南、豫西及汉水江汉流域，“三分天下有其二，以服事殷”。",
+        "impact": "完成对商朝都城朝歌（殷）的西、南战略合围，为武王伐纣奠定决定性胜局。",
+        "related": [
+          "xs-event-11-zhou-danfu-jili-rise",
+          "xs-event-13-muye-zhou-conquest-shang"
+        ]
+      }
+    },
+    {
+      "id": "xs-event-13-muye-zhou-conquest-shang",
+      "name": "牧野之战武王克商与殷商灭亡、微子箕子分封",
+      "kind": "军事",
+      "year": {
+        "era": "BCE",
+        "year": 1046
+      },
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "source-010",
+        "source-021",
+        "source-037",
+        "source-005",
+        "xs-source-shangshu-mushi"
+      ],
+      "dating": {
+        "level": "disputed",
+        "reviewStatus": "reviewed",
+        "reason": "采用夏商周断代工程多学科（金文利簋铭文“武王征商，唯甲子朝，岁鼎”、天象推算与碳十四测年）拟定的前1046年1月20日（周历正月甲子）；另备前1027年与前1122年异说。",
+        "alternatives": [
+          {
+            "label": "《古本竹书纪年》前1027年说",
+            "year": {
+              "era": "BCE",
+              "year": 1027
+            },
+            "explanation": "据《古本竹书纪年》“自武王灭殷以至幽王凡二百五十七年”及前771年幽王亡推算。",
+            "sourceIds": [
+              "xs-source-zhushu-gu",
+              "source-005"
+            ]
+          },
+          {
+            "label": "刘歆《三统历》前1122年说",
+            "year": {
+              "era": "BCE",
+              "year": 1122
+            },
+            "explanation": "汉代《三统历》推算克商年份。",
+            "sourceIds": [
+              "source-005"
+            ]
+          }
+        ]
+      },
+      "narrative": {
+        "background": "周武王姬发即位后，于前1048年东观兵至于盟津（孟津），八百诸侯不期而会；前1047年商纣王变本加厉，剖杀强谏的叔父比干、囚禁太师箕子，太师疵、少师彊抱乐器奔周，同时商军主力远在东南征人方未归。",
+        "process": "武王见时机成熟，遍告诸侯兴师伐纣；前1046年正月甲子昧爽，武王率戎车三百乘、虎贲三千人、甲士四万五千人，会同庸、蜀（古蜀三星堆）、羌、髳、微、卢、彭、濮八国联军陈师于商郊牧野（今河南新乡淇县南），武王左手杖黄钺、右手秉白旄发布《牧誓》，太公望姜尚率百夫冲阵；商纣王仓促武装七十万奴隶与战俘迎战，商军前徒倒戈引周军入朝歌。",
+        "result": "商纣王登鹿台衣宝玉自焚而死，享国五百五十余年的商朝灭亡；武王释箕子之囚（访《洪范》）、封比干之墓、表商容之闾，封纣子武庚于殷，封禹后于杞、封太公望于齐（周公东征后改封微子启于宋）。",
+        "impact": "中国历史由夏商神权王权时代迈入西周分封制、宗法制与礼乐文明（“殷因于夏礼，周因于殷礼”）的新纪元，下接周代列国库（`atlas.json`）。",
+        "related": [
+          "xs-event-12-wenwang-youli-fengjing"
+        ]
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "xs-act-yu-01",
+      "personId": "xs-person-yu",
+      "polityId": "xia",
+      "eventId": "xs-event-01-yu-flood-founding-xia",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "平水建夏",
+      "label": "疏导九川平定水土，划九州、会诸侯于涂山、铸九鼎建夏",
+      "text": "居外十三年改堵为疏平定洪水，受舜禅位居阳城，奠定夏后氏王朝基业。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ]
+    },
+    {
+      "id": "xs-act-qi-01",
+      "personId": "xs-person-qi-xia",
+      "polityId": "xia",
+      "eventId": "xs-event-02-qi-battle-of-gan-hereditary",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "甘战传子",
+      "label": "作《甘誓》讨平有扈氏，举行钧台之享确立王位世袭制",
+      "text": "打破原始部落禅让传统，确立父死子继的“家天下”王朝体制。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-shangshu-yugong"
+      ]
+    },
+    {
+      "id": "xs-act-shaokang-01",
+      "personId": "xs-person-shao-kang",
+      "polityId": "xia",
+      "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "少康中兴",
+      "label": "于有虞氏纶邑依靠一成一旅蓄力，联夏臣靡攻灭寒浞复夏政",
+      "text": "终结后羿、寒浞代夏乱局，恢复大禹祀典，开创少康中兴。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-002",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-act-wanghai-01",
+      "personId": "xs-person-wang-hai",
+      "polityId": "shang",
+      "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "服牛远贸",
+      "label": "驯养牛马载货远赴河北有易氏经商贸易，开创华夏商业先河",
+      "text": "“肇牵车牛远服贾”，其子上甲微随后联河伯灭有易，奠定商族兴起基础。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-zhushu-gu"
+      ]
+    },
+    {
+      "id": "xs-act-chengtang-01",
+      "personId": "xs-person-cheng-tang",
+      "polityId": "shang",
+      "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "鸣条灭夏",
+      "label": "居亳任伊尹，网开三面怀柔诸侯，十一征无敌于天下，鸣条灭夏建商",
+      "text": "先后剪除葛、韦、顾、昆吾，约前1600年于鸣条大败夏桀，建立商王朝。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-act-yiyin-01",
+      "personId": "xs-person-yi-yin",
+      "polityId": "shang",
+      "eventId": "xs-event-06-yiyin-taijia-taiwu",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "桐宫训政",
+      "label": "佐成汤灭夏，历辅四王，放太甲于桐宫三年悔过复政",
+      "text": "作《伊训》《太甲》，确立早商礼法典章与辅政传统。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-act-pangeng-01",
+      "personId": "xs-person-pan-geng",
+      "polityId": "shang",
+      "eventId": "xs-event-08-pangeng-move-to-yin",
+      "sequence": 1,
+      "kind": "politics",
+      "kindLabel": "盘庚迁殷",
+      "label": "约前1300年发表《盘庚》三篇，率臣民渡河南迁于殷，终结九世之乱",
+      "text": "克服贵族阻力定都安阳殷墟，复行汤政，开启晚商二百五十余年稳定繁荣。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shangshu-pangeng"
+      ]
+    },
+    {
+      "id": "xs-act-wuding-01",
+      "personId": "xs-person-wu-ding",
+      "polityId": "shang",
+      "eventId": "xs-event-09-wuding-fuhao-golden-age",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "武丁中兴",
+      "label": "拔擢版筑傅说为相，三年克鬼方、南伐荆楚，将晚商推向极盛",
+      "text": "在位五十九年（前1250—前1192年），拓展商朝四方疆域并留下海量甲骨卜辞。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-003",
+        "xs-source-shijing-xuanniao"
+      ]
+    },
+    {
+      "id": "xs-act-fuhao-01",
+      "personId": "xs-person-fu-hao",
+      "polityId": "shang",
+      "eventId": "xs-event-09-wuding-fuhao-golden-age",
+      "sequence": 2,
+      "kind": "military",
+      "kindLabel": "统兵征伐",
+      "label": "统兵一万三千大破羌方，设伏夹击巴方，主持王室重大祭祀",
+      "text": "中国信史首位女性大将军，戎马一生拱卫武丁盛世。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "xs-source-shiji-003"
+      ]
+    },
+    {
+      "id": "xs-act-jifa-01",
+      "personId": "xs-person-ji-fa",
+      "polityId": "zhou",
+      "eventId": "xs-event-13-muye-zhou-conquest-shang",
+      "sequence": 1,
+      "kind": "military",
+      "kindLabel": "牧野克商",
+      "label": "前1046年正月统率周师与庸蜀羌髳微卢彭濮八国联军于牧野击灭商纣",
+      "text": "发布《牧誓》，一战克殷建立西周王朝，释箕子访《洪范》并大封诸侯。",
+      "yearFromEvent": true,
+      "sourceIds": [
+        "source-010",
+        "xs-source-shangshu-mushi"
+      ]
+    }
+  ],
+  "relations": {
+    "eventPolities": [
+      {
+        "eventId": "xs-event-01-yu-flood-founding-xia",
+        "polityId": "xia",
+        "kind": "founded"
+      },
+      {
+        "eventId": "xs-event-02-qi-battle-of-gan-hereditary",
+        "polityId": "xia",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "polityId": "xia",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "polityId": "youqiong-han",
+        "kind": "founded"
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "polityId": "youqiong-han",
+        "kind": "ended"
+      },
+      {
+        "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+        "polityId": "xia",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+        "polityId": "xia",
+        "kind": "ended"
+      },
+      {
+        "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+        "polityId": "shang",
+        "kind": "founded"
+      },
+      {
+        "eventId": "xs-event-06-yiyin-taijia-taiwu",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-07-nine-generations-turmoil",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-08-pangeng-move-to-yin",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-09-wuding-fuhao-golden-age",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-09-wuding-fuhao-golden-age",
+        "polityId": "guifang-qiang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-10-oracle-bone-bronze-sanxingdui",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-10-oracle-bone-bronze-sanxingdui",
+        "polityId": "ancient-shu",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "polityId": "zhou",
+        "kind": "founded"
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "polityId": "guifang-qiang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-12-wenwang-youli-fengjing",
+        "polityId": "zhou",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-12-wenwang-youli-fengjing",
+        "polityId": "shang",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "polityId": "zhou",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "polityId": "shang",
+        "kind": "ended"
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "polityId": "ancient-shu",
+        "kind": "involved"
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "polityId": "guifang-qiang",
+        "kind": "involved"
+      }
+    ],
+    "eventPeople": [
+      {
+        "eventId": "xs-event-01-yu-flood-founding-xia",
+        "personId": "xs-person-yu",
+        "polityId": "xia",
+        "kind": "leader",
+        "description": "疏导九川平水土、划九州铸九鼎建夏",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-01-yu-flood-founding-xia",
+        "personId": "xs-person-bo-yi",
+        "polityId": "xia",
+        "kind": "participant",
+        "description": "佐大禹平水土，禹崩后避启于箕山",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-01-yu-flood-founding-xia",
+        "personId": "xs-person-xie-shang",
+        "polityId": "shang",
+        "kind": "participant",
+        "description": "佐禹治水受封于商",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-02-qi-battle-of-gan-hereditary",
+        "personId": "xs-person-qi-xia",
+        "polityId": "xia",
+        "kind": "leader",
+        "description": "甘之战讨平有扈氏确立世袭王权",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "personId": "xs-person-tai-kang",
+        "polityId": "xia",
+        "kind": "victim",
+        "description": "盘游洛表为后羿距于河而失国",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "personId": "xs-person-hou-yi",
+        "polityId": "youqiong-han",
+        "kind": "leader",
+        "description": "因夏民以代夏政，后为寒浞所杀",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "personId": "xs-person-han-zhuo",
+        "polityId": "youqiong-han",
+        "kind": "leader",
+        "description": "杀后羿与夏后相，代夏统治至败亡",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "personId": "xs-person-xiang",
+        "polityId": "xia",
+        "kind": "victim",
+        "description": "居帝丘被寒浞之子浇攻杀",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "personId": "xs-person-shao-kang",
+        "polityId": "xia",
+        "kind": "leader",
+        "description": "联有虞氏与遗臣靡灭寒浞实现少康中兴",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-03-taikang-loss-shaokang-restoration",
+        "personId": "xs-person-zhu",
+        "polityId": "xia",
+        "kind": "commander",
+        "description": "佐父少康灭浇与豷，继位后东征全盛",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+        "personId": "xs-person-bu-jiang",
+        "polityId": "xia",
+        "kind": "leader",
+        "description": "夏朝极盛期君主，内禅于弟扃",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+        "personId": "xs-person-kong-jia",
+        "polityId": "xia",
+        "kind": "leader",
+        "description": "好鬼神事淫乱致夏道始衰",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+        "personId": "xs-person-wang-hai",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "服牛乘马通商有易遇害",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-04-erlitou-kongjia-wanghai",
+        "personId": "xs-person-shangjia-wei",
+        "polityId": "shang",
+        "kind": "commander",
+        "description": "借河伯之师灭有易复父仇",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+        "personId": "xs-person-cheng-tang",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "统诸侯于鸣条之战灭夏建商",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+        "personId": "xs-person-yi-yin",
+        "polityId": "shang",
+        "kind": "participant",
+        "description": "佐成汤筹划灭夏方略",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+        "personId": "xs-person-jie",
+        "polityId": "xia",
+        "kind": "victim",
+        "description": "杀关龙逢，鸣条战败奔南巢死",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "eventId": "xs-event-05-mingtiao-tang-founding-shang",
+        "personId": "xs-person-guan-longfeng",
+        "polityId": "xia",
+        "kind": "victim",
+        "description": "直谏夏桀被杀",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-06-yiyin-taijia-taiwu",
+        "personId": "xs-person-yi-yin",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "放太甲于桐宫三年悔过还政",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-06-yiyin-taijia-taiwu",
+        "personId": "xs-person-tai-jia",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "桐宫悔过修德尊为太宗",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-06-yiyin-taijia-taiwu",
+        "personId": "xs-person-tai-wu",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "任伊陟巫咸实现太戊中兴",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-07-nine-generations-turmoil",
+        "personId": "xs-person-zhong-ding",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "自亳迁隞开启九世之乱",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-07-nine-generations-turmoil",
+        "personId": "xs-person-zu-yi",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "迁邢任巫贤一度中兴",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-07-nine-generations-turmoil",
+        "personId": "xs-person-yang-jia",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "九世之乱末期君主",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-08-pangeng-move-to-yin",
+        "personId": "xs-person-pan-geng",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "作《盘庚》三篇渡河南迁于殷",
+        "sourceIds": [
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "eventId": "xs-event-09-wuding-fuhao-golden-age",
+        "personId": "xs-person-wu-ding",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "在位五十九年开创武丁盛世",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-09-wuding-fuhao-golden-age",
+        "personId": "xs-person-fu-hao",
+        "polityId": "shang",
+        "kind": "commander",
+        "description": "统大军征讨羌方、土方、巴方",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-09-wuding-fuhao-golden-age",
+        "personId": "xs-person-fu-yue",
+        "polityId": "shang",
+        "kind": "participant",
+        "description": "自版筑拔擢为相辅佐武丁",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-10-oracle-bone-bronze-sanxingdui",
+        "personId": "xs-person-zu-geng",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "铸后母戊鼎祭母并尊武丁为高宗",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-10-oracle-bone-bronze-sanxingdui",
+        "personId": "xs-person-zu-jia",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "改革晚商周祭礼制与历法",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "personId": "xs-person-gugong-danfu",
+        "polityId": "zhou",
+        "kind": "leader",
+        "description": "率周族迁于岐山周原筑城建邦",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "personId": "xs-person-wu-yi",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "射天博偶，猎于河渭暴卒",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "personId": "xs-person-wen-ding",
+        "polityId": "shang",
+        "kind": "leader",
+        "description": "封季历为牧师后忌而杀之",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-11-zhou-danfu-jili-rise",
+        "personId": "xs-person-ji-li",
+        "polityId": "zhou",
+        "kind": "victim",
+        "description": "克西戎诸部后为商王文丁所杀",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "eventId": "xs-event-12-wenwang-youli-fengjing",
+        "personId": "xs-person-ji-chang",
+        "polityId": "zhou",
+        "kind": "leader",
+        "description": "羑里演易、访姜尚、戡黎灭崇迁丰",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "eventId": "xs-event-12-wenwang-youli-fengjing",
+        "personId": "person-003",
+        "polityId": "zhou",
+        "kind": "participant",
+        "description": "渭水遇文王拜为太师筹划剪商",
+        "sourceIds": [
+          "source-021"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "xs-person-ji-fa",
+        "polityId": "zhou",
+        "kind": "leader",
+        "description": "统联军于牧野克商建立西周",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "person-003",
+        "polityId": "zhou",
+        "kind": "commander",
+        "description": "牧野之战率百夫冲阵克殷",
+        "sourceIds": [
+          "source-021"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "person-001",
+        "polityId": "zhou",
+        "kind": "participant",
+        "description": "佐武王伐纣克商",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "person-002",
+        "polityId": "zhou",
+        "kind": "participant",
+        "description": "佐武王牧野克商",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "xs-person-di-xin",
+        "polityId": "shang",
+        "kind": "victim",
+        "description": "牧野兵败登鹿台衣宝玉自焚",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "xs-person-bi-gan",
+        "polityId": "shang",
+        "kind": "victim",
+        "description": "强谏纣王被剖心杀害",
+        "sourceIds": [
+          "source-037"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "xs-person-ji-zi",
+        "polityId": "shang",
+        "kind": "participant",
+        "description": "获武王释囚并陈《洪范》九畴",
+        "sourceIds": [
+          "xs-source-shangshu-mushi"
+        ]
+      },
+      {
+        "eventId": "xs-event-13-muye-zhou-conquest-shang",
+        "personId": "xs-person-weizi-qi",
+        "polityId": "shang",
+        "kind": "participant",
+        "description": "抱祭器存商祀，后受封于宋",
+        "sourceIds": [
+          "source-037"
+        ]
+      }
+    ],
+    "tenurePeople": [
+      {
+        "tenureId": "xs-tenure-xia-01-yu",
+        "personId": "xs-person-yu",
+        "kind": "holder",
+        "description": "夏后禹（大禹）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-02-qi",
+        "personId": "xs-person-qi-xia",
+        "kind": "holder",
+        "description": "夏后启在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-03-taikang",
+        "personId": "xs-person-tai-kang",
+        "kind": "holder",
+        "description": "夏后太康在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-04-zhongkang",
+        "personId": "xs-person-zhong-kang",
+        "kind": "holder",
+        "description": "夏后仲康在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-shangshu-yugong"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-05-xiang",
+        "personId": "xs-person-xiang",
+        "kind": "holder",
+        "description": "夏后相在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-yq-houyi",
+        "personId": "xs-person-hou-yi",
+        "kind": "holder",
+        "description": "有穷后羿在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-yq-hanzhuo",
+        "personId": "xs-person-han-zhuo",
+        "kind": "holder",
+        "description": "寒浞在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-06-shaokang",
+        "personId": "xs-person-shao-kang",
+        "kind": "holder",
+        "description": "夏后少康在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-07-zhu",
+        "personId": "xs-person-zhu",
+        "kind": "holder",
+        "description": "夏后予（帝杼）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-08-huai",
+        "personId": "xs-person-huai",
+        "kind": "holder",
+        "description": "夏后槐（帝芬）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-09-mang",
+        "personId": "xs-person-mang",
+        "kind": "holder",
+        "description": "夏后芒（帝荒）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-10-xie",
+        "personId": "xs-person-xie-xia",
+        "kind": "holder",
+        "description": "夏后泄在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-11-bujiang",
+        "personId": "xs-person-bu-jiang",
+        "kind": "holder",
+        "description": "夏后不降在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-12-jiong",
+        "personId": "xs-person-jiong",
+        "kind": "holder",
+        "description": "夏后扃在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-13-jin",
+        "personId": "xs-person-jin",
+        "kind": "holder",
+        "description": "夏后廑（胤甲）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-14-kongjia",
+        "personId": "xs-person-kong-jia",
+        "kind": "holder",
+        "description": "夏后孔甲在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-15-gao",
+        "personId": "xs-person-gao",
+        "kind": "holder",
+        "description": "夏后皋在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-16-fa",
+        "personId": "xs-person-fa",
+        "kind": "holder",
+        "description": "夏后发（敬）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-17-jie",
+        "personId": "xs-person-jie",
+        "kind": "holder",
+        "description": "夏后履癸（夏桀）在位期",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-01-tang",
+        "personId": "xs-person-cheng-tang",
+        "kind": "holder",
+        "description": "商王成汤（天乙/大乙）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-02-waibing",
+        "personId": "xs-person-wai-bing",
+        "kind": "holder",
+        "description": "商王外丙（卜丙）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-03-zhongren",
+        "personId": "xs-person-zhong-ren",
+        "kind": "holder",
+        "description": "商王仲壬在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-04-taijia",
+        "personId": "xs-person-tai-jia",
+        "kind": "holder",
+        "description": "商太宗太甲（大甲）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-05-woding",
+        "personId": "xs-person-wo-ding",
+        "kind": "holder",
+        "description": "商王沃丁在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-06-taigeng",
+        "personId": "xs-person-tai-geng",
+        "kind": "holder",
+        "description": "商王太庚（大庚）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-07-xiaojia",
+        "personId": "xs-person-xiao-jia",
+        "kind": "holder",
+        "description": "商王小甲在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-08-yongji",
+        "personId": "xs-person-yong-ji",
+        "kind": "holder",
+        "description": "商王雍己在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-09-taiwu",
+        "personId": "xs-person-tai-wu",
+        "kind": "holder",
+        "description": "商中宗太戊（大戊）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-10-zhongding",
+        "personId": "xs-person-zhong-ding",
+        "kind": "holder",
+        "description": "商王仲丁（中丁）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-11-wairen",
+        "personId": "xs-person-wai-ren",
+        "kind": "holder",
+        "description": "商王外壬（卜壬）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-12-hedanjia",
+        "personId": "xs-person-hedanjia",
+        "kind": "holder",
+        "description": "商王河亶甲（戋甲）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-13-zuyi",
+        "personId": "xs-person-zu-yi",
+        "kind": "holder",
+        "description": "商王祖乙（且乙）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-14-zuxin",
+        "personId": "xs-person-zu-xin",
+        "kind": "holder",
+        "description": "商王祖辛在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-15-wojia",
+        "personId": "xs-person-wo-jia",
+        "kind": "holder",
+        "description": "商王沃甲（羌甲）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-16-zuding",
+        "personId": "xs-person-zu-ding",
+        "kind": "holder",
+        "description": "商王祖丁在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-17-nangeng",
+        "personId": "xs-person-nan-geng",
+        "kind": "holder",
+        "description": "商王南庚在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-18-yangjia",
+        "personId": "xs-person-yang-jia",
+        "kind": "holder",
+        "description": "商王阳甲（象甲）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-19-pangeng",
+        "personId": "xs-person-pan-geng",
+        "kind": "holder",
+        "description": "商王盘庚（般庚）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-gu",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-20-xiaoxin",
+        "personId": "xs-person-xiao-xin",
+        "kind": "holder",
+        "description": "商王小辛在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-21-xiaoyi",
+        "personId": "xs-person-xiao-yi",
+        "kind": "holder",
+        "description": "商王小乙在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-22-wuding",
+        "personId": "xs-person-wu-ding",
+        "kind": "holder",
+        "description": "商高宗武丁在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-pangeng",
+          "xs-source-shijing-xuanniao"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-23-zugeng",
+        "personId": "xs-person-zu-geng",
+        "kind": "holder",
+        "description": "商王祖庚在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-24-zujia",
+        "personId": "xs-person-zu-jia",
+        "kind": "holder",
+        "description": "商王祖甲（帝甲）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-25-linxin",
+        "personId": "xs-person-lin-xin",
+        "kind": "holder",
+        "description": "商王廪辛在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-26-gengding",
+        "personId": "xs-person-geng-ding",
+        "kind": "holder",
+        "description": "商王庚丁（康丁）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-27-wuyi",
+        "personId": "xs-person-wu-yi",
+        "kind": "holder",
+        "description": "商王武乙在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-28-wending",
+        "personId": "xs-person-wen-ding",
+        "kind": "holder",
+        "description": "商王文丁（太丁）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-29-diyi",
+        "personId": "xs-person-di-yi",
+        "kind": "holder",
+        "description": "商王帝乙在位期",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-30-dixin",
+        "personId": "xs-person-di-xin",
+        "kind": "holder",
+        "description": "商王帝辛（商纣王）在位期",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-mushi"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-zhou-taiwang",
+        "personId": "xs-person-gugong-danfu",
+        "kind": "holder",
+        "description": "周太王古公亶父在位期",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-zhou-jili",
+        "personId": "xs-person-ji-li",
+        "kind": "holder",
+        "description": "周王季（季历）在位期",
+        "sourceIds": [
+          "source-010",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-zhou-wenwang",
+        "personId": "xs-person-ji-chang",
+        "kind": "holder",
+        "description": "周文王姬昌（西伯昌）在位期",
+        "sourceIds": [
+          "source-010",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "tenureId": "zhou-r0",
+        "personId": "xs-person-ji-fa",
+        "kind": "holder",
+        "description": "周武王姬发在位期",
+        "sourceIds": [
+          "source-010",
+          "source-005",
+          "xs-source-shangshu-mushi"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-01-yu",
+        "personId": "xs-person-bo-yi",
+        "kind": "associated",
+        "description": "佐禹治水并受授政",
+        "sourceIds": [
+          "xs-source-shiji-002"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-xia-17-jie",
+        "personId": "xs-person-guan-longfeng",
+        "kind": "associated",
+        "description": "夏桀时期强谏忠臣",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-01-tang",
+        "personId": "xs-person-yi-yin",
+        "kind": "associated",
+        "description": "右相阿衡辅佐成汤灭夏建商",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-04-taijia",
+        "personId": "xs-person-yi-yin",
+        "kind": "associated",
+        "description": "摄政训导太甲于桐宫三年后还政",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-22-wuding",
+        "personId": "xs-person-fu-hao",
+        "kind": "associated",
+        "description": "武丁王后、统兵女将",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-22-wuding",
+        "personId": "xs-person-fu-yue",
+        "kind": "associated",
+        "description": "武丁时期贤相",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-30-dixin",
+        "personId": "xs-person-bi-gan",
+        "kind": "associated",
+        "description": "商末少师强谏死节",
+        "sourceIds": [
+          "source-037"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-30-dixin",
+        "personId": "xs-person-ji-zi",
+        "kind": "associated",
+        "description": "商末太师佯狂被囚",
+        "sourceIds": [
+          "source-037"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-shang-30-dixin",
+        "personId": "xs-person-weizi-qi",
+        "kind": "associated",
+        "description": "帝辛庶兄抱器出奔",
+        "sourceIds": [
+          "source-037"
+        ]
+      },
+      {
+        "tenureId": "xs-tenure-zhou-wenwang",
+        "personId": "person-003",
+        "kind": "associated",
+        "description": "太公望姜尚辅佐西伯昌",
+        "sourceIds": [
+          "source-021"
+        ]
+      },
+      {
+        "tenureId": "zhou-r0",
+        "personId": "person-003",
+        "kind": "associated",
+        "description": "师尚父统兵助武王牧野克商",
+        "sourceIds": [
+          "source-021"
+        ]
+      },
+      {
+        "tenureId": "zhou-r0",
+        "personId": "person-001",
+        "kind": "associated",
+        "description": "周公旦辅佐武王克商",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "tenureId": "zhou-r0",
+        "personId": "person-002",
+        "kind": "associated",
+        "description": "召公奭辅佐武王克商",
+        "sourceIds": [
+          "source-010"
+        ]
+      }
+    ],
+    "personPolities": [
+      {
+        "personId": "xs-person-yu",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后禹（大禹）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-qi-xia",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后启",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-tai-kang",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后太康",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-zhong-kang",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后仲康",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-shangshu-yugong"
+        ]
+      },
+      {
+        "personId": "xs-person-xiang",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后相",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-hou-yi",
+        "polityId": "youqiong-han",
+        "kind": "monarch",
+        "description": "有穷后羿",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-han-zhuo",
+        "polityId": "youqiong-han",
+        "kind": "monarch",
+        "description": "寒浞",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-shao-kang",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后少康",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-zhu",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后予（帝杼）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-huai",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后槐（帝芬）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-mang",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后芒（帝荒）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-xie-xia",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后泄",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-bu-jiang",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后不降",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-jiong",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后扃",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-jin",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后廑（胤甲）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-kong-jia",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后孔甲",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-gao",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后皋",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-fa",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后发（敬）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-jie",
+        "polityId": "xia",
+        "kind": "monarch",
+        "description": "夏后履癸（夏桀）",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-cheng-tang",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王成汤（天乙/大乙）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-wai-bing",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王外丙（卜丙）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-zhong-ren",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王仲壬",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-tai-jia",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商太宗太甲（大甲）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "xs-person-wo-ding",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王沃丁",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-tai-geng",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王太庚（大庚）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-xiao-jia",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王小甲",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-yong-ji",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王雍己",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-tai-wu",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商中宗太戊（大戊）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-zhong-ding",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王仲丁（中丁）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-wai-ren",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王外壬（卜壬）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-hedanjia",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王河亶甲（戋甲）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-zu-yi",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王祖乙（且乙）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-zu-xin",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王祖辛",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-wo-jia",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王沃甲（羌甲）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-zu-ding",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王祖丁",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-nan-geng",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王南庚",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-yang-jia",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王阳甲（象甲）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-pan-geng",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王盘庚（般庚）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-gu",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "xs-person-xiao-xin",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王小辛",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-xiao-yi",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王小乙",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-wu-ding",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商高宗武丁",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-pangeng",
+          "xs-source-shijing-xuanniao"
+        ]
+      },
+      {
+        "personId": "xs-person-zu-geng",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王祖庚",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-zu-jia",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王祖甲（帝甲）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-lin-xin",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王廪辛",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-geng-ding",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王庚丁（康丁）",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-wu-yi",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王武乙",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-jin-yin"
+        ]
+      },
+      {
+        "personId": "xs-person-wen-ding",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王文丁（太丁）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-di-yi",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王帝乙",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-di-xin",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商王帝辛（商纣王）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-mushi"
+        ]
+      },
+      {
+        "personId": "xs-person-gugong-danfu",
+        "polityId": "zhou",
+        "kind": "monarch",
+        "description": "周太王古公亶父",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "personId": "xs-person-ji-li",
+        "polityId": "zhou",
+        "kind": "monarch",
+        "description": "周王季（季历）",
+        "sourceIds": [
+          "source-010",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-ji-chang",
+        "polityId": "zhou",
+        "kind": "monarch",
+        "description": "周文王姬昌（西伯昌）",
+        "sourceIds": [
+          "source-010",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "xs-person-ji-fa",
+        "polityId": "zhou",
+        "kind": "monarch",
+        "description": "周武王姬发",
+        "sourceIds": [
+          "source-010",
+          "source-005",
+          "xs-source-shangshu-mushi"
+        ]
+      },
+      {
+        "personId": "xs-person-bo-yi",
+        "polityId": "xia",
+        "kind": "service",
+        "description": "大禹首席辅臣",
+        "sourceIds": [
+          "xs-source-shiji-002",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-guan-longfeng",
+        "polityId": "xia",
+        "kind": "service",
+        "description": "夏末谏臣",
+        "sourceIds": [
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-xie-shang",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商族始祖玄王",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shijing-xuanniao"
+        ]
+      },
+      {
+        "personId": "xs-person-wang-hai",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商先公高祖王亥",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-shangjia-wei",
+        "polityId": "shang",
+        "kind": "monarch",
+        "description": "商先公上甲微",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-yi-yin",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "商朝开国右相、阿衡",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "xs-person-fu-hao",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "商王武丁王后、统兵将领",
+        "sourceIds": [
+          "xs-source-shiji-003"
+        ]
+      },
+      {
+        "personId": "xs-person-fu-yue",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "商高宗武丁宰相",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "xs-person-bi-gan",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "商末少师（殷末三仁）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "source-037"
+        ]
+      },
+      {
+        "personId": "xs-person-ji-zi",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "商末太师（殷末三仁）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "source-037",
+          "xs-source-shangshu-mushi"
+        ]
+      },
+      {
+        "personId": "xs-person-weizi-qi",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "商末宗室重臣（殷末三仁，后封于宋）",
+        "sourceIds": [
+          "xs-source-shiji-003",
+          "source-037",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "xs-person-ji-li",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "受商王文丁封为牧师",
+        "sourceIds": [
+          "source-010",
+          "xs-source-zhushu-gu"
+        ]
+      },
+      {
+        "personId": "xs-person-ji-chang",
+        "polityId": "shang",
+        "kind": "service",
+        "description": "受商纣王命为西方方伯（西伯）",
+        "sourceIds": [
+          "source-010",
+          "xs-source-shangshu-pangeng"
+        ]
+      },
+      {
+        "personId": "person-003",
+        "polityId": "zhou",
+        "kind": "service",
+        "description": "周太师（太公望）",
+        "sourceIds": [
+          "source-021",
+          "source-010"
+        ]
+      },
+      {
+        "personId": "person-001",
+        "polityId": "zhou",
+        "kind": "service",
+        "description": "周王室辅政公爵（周公旦）",
+        "sourceIds": [
+          "source-010"
+        ]
+      },
+      {
+        "personId": "person-002",
+        "polityId": "zhou",
+        "kind": "service",
+        "description": "周太保（召公奭）",
+        "sourceIds": [
+          "source-010"
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "xs-source-shiji-001",
+      "title": "《史记》卷一 · 五帝本纪",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷001",
+      "reviewStatus": "reviewed",
+      "note": "尧舜禅让、洪水治理、鲧禹治水与夏商周三代族源记载。"
+    },
+    {
+      "id": "xs-source-shiji-002",
+      "title": "《史记》卷二 · 夏本纪",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷002",
+      "reviewStatus": "reviewed",
+      "note": "大禹治水受禅、夏启甘之战、太康失国、少康中兴、孔甲乱夏至夏桀亡于鸣条之夏朝十四世十七王全世系史源。"
+    },
+    {
+      "id": "xs-source-shiji-003",
+      "title": "《史记》卷三 · 殷本纪",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷003",
+      "reviewStatus": "reviewed",
+      "note": "商契受封、先公十四世、成汤鸣条灭夏、伊尹放太甲、太戊中兴、九世之乱、盘庚迁殷、武丁盛世至牧野商亡之商代十七世三十一王全世系史源。"
+    },
+    {
+      "id": "source-010",
+      "title": "《史记》卷四 · 周本纪",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷004",
+      "reviewStatus": "reviewed",
+      "note": "复用周代库史源ID（source-010）：后稷、公刘、古公亶父迁岐、季历、周文王姬昌三分天下有其二及周武王姬发牧野克商史源。"
+    },
+    {
+      "id": "source-021",
+      "title": "《史记》卷三十二 · 齐太公世家",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷032",
+      "reviewStatus": "reviewed",
+      "note": "复用周代库史源ID（source-021）：姜尚（太公望）渭水遇文王、辅佐武王鹰扬牧野及受封于齐史源。"
+    },
+    {
+      "id": "source-040",
+      "title": "《史记》卷三十六 · 陈杞世家",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷036",
+      "reviewStatus": "reviewed",
+      "note": "复用周代库史源ID（source-040）：周武王克商后求禹之后得东楼公封于杞，奉夏后氏之祀史源。"
+    },
+    {
+      "id": "source-037",
+      "title": "《史记》卷三十八 · 宋微子世家",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷038",
+      "reviewStatus": "reviewed",
+      "note": "复用周代库史源ID（source-037）：微子启、箕子、比干“殷末三仁”、箕子陈《洪范》及微子封宋奉殷祀史源。"
+    },
+    {
+      "id": "source-005",
+      "title": "Zhou dynasty · Kings（夏商周断代工程与西周纪年对照）",
+      "url": "https://en.wikipedia.org/wiki/Zhou_dynasty",
+      "reviewStatus": "reviewed",
+      "note": "复用周代库史源ID（source-005）：用于前1046年武王克商断代工程拟年与传统前1122年、竹书前1027年异说对照。"
+    },
+    {
+      "id": "xs-source-zhushu-gu",
+      "title": "《古本竹书纪年辑校》",
+      "url": "https://zh.wikisource.org/wiki/古本竹書紀年輯校",
+      "reviewStatus": "reviewed",
+      "note": "晋太康二年汲冢出土战国魏史辑本：载“自禹至桀十七世，有王与无王，用岁四百七十一年”、后羿寒浞代夏、王亥宾于有易、上甲微灭有易及“自盘庚徙殷至纣之灭二百七十三年更不徙都”。"
+    },
+    {
+      "id": "xs-source-zhushu-jin-yin",
+      "title": "《今本竹书纪年·殷纪》",
+      "url": "https://zh.wikisource.org/wiki/今本竹書紀年/殷紀",
+      "reviewStatus": "reviewed",
+      "note": "商代诸王在位年数、五次迁都（仲丁迁隞、河亶甲居相、祖乙居庇、南庚迁奄、盘庚迁殷）及武丁征鬼方、季历征余无之戎参照史源。"
+    },
+    {
+      "id": "xs-source-shangshu-yugong",
+      "title": "《尚书·夏书·禹贡》（附《甘誓》《五子之歌》《胤征》）",
+      "url": "https://zh.wikisource.org/wiki/尚書/禹貢",
+      "reviewStatus": "reviewed",
+      "note": "大禹划分九州导山导水、夏启讨有扈氏《甘誓》及太康失国、仲康命胤侯征羲和史源。"
+    },
+    {
+      "id": "xs-source-shangshu-pangeng",
+      "title": "《尚书·商书》（《汤誓》《盘庚上中下》《高宗肜日》《西伯戡黎》《微子》）",
+      "url": "https://zh.wikisource.org/wiki/尚書",
+      "reviewStatus": "reviewed",
+      "note": "成汤伐桀誓师、盘庚渡河迁殷训诫臣民、武丁祭成汤及周文王戡黎震动殷都史源。"
+    },
+    {
+      "id": "xs-source-shangshu-mushi",
+      "title": "《尚书·周书·牧誓》（附《洪范》）",
+      "url": "https://zh.wikisource.org/wiki/尚書",
+      "reviewStatus": "reviewed",
+      "note": "周武王率戎车三百乘、虎贲三千人，会同庸、蜀、羌、髳、微、卢、彭、濮于商郊牧野誓师伐纣原典。"
+    },
+    {
+      "id": "xs-source-shijing-xuanniao",
+      "title": "《诗经·商颂·玄鸟》（附《长发》《殷武》）",
+      "url": "https://zh.wikisource.org/zh-hans/詩經/玄鳥",
+      "reviewStatus": "reviewed",
+      "note": "商代宗庙祭祀颂诗，“天命玄鸟，降而生商”、相土烈烈、成汤伐桀与高宗武丁“挞彼殷武，奋伐荆楚”史源。"
+    }
+  ]
+}

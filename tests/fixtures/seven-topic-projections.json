@@ -1,0 +1,12 @@
+{
+  "description": "Fixed before the Xia/Shang, Five Dynasties, Yuan and Qing expansion; root catalog excluded only.",
+  "sha256": {
+    "zhou": "b275d5c00dbf1af050dc8e48ff1ac6a4973f7f24c92d8732df02ba046d033a52",
+    "qin-han": "557122b7118a0e395ecf6d3ad5a1708883ddb4cbaefb15ae7c61e9619077987e",
+    "three-kingdoms": "a50550130c683f52d017be305fff7bef0c766354046ca516676d4a608e8d5374",
+    "wei-jin-nan-bei": "6e1f16fac780908e832502ad976caea30ce56b360764796c1a1bc8c7dd922ba4",
+    "sui-tang": "546ee5022db57a76e8d4a908624ee8836fa592e2d44b50ffb1edfd800e797173",
+    "liao-jin-song": "5d6f17cc53739f89dc4f07098be7d72e0ed6c704414de0a9752b5e78ca9be791",
+    "ming": "44e82c1cf6170cd6a3cafc2640ac219837c2e3e051e9661fbd7bf4302542196e"
+  }
+}
