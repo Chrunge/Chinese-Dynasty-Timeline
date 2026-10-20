@@ -599,7 +599,7 @@ function render(){
  const fitHeight=Math.max(36,Math.min(160,Math.floor(((vp.clientHeight||appState.layout.viewHeight)-64)/Math.max(1,rows.length))));
  $('#rowHeightValue').textContent=(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)+'px';
  chart.style.width=(w+labelWidth())+'px';chart.className=(appState.layout.mode==='overview'?'overview ':'')+'density-'+level+(focused?' hasFocus':'');
- $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件')+(D.presentation?.rowGroups.length?' · 秦汉分段共用主行，同年重叠分层；并存政权另行。':'');
+ $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件')+(D.presentation?.rowGroups?.length?' · 接续政权分段共用主行，同年重叠分层；并存政权另行。':'');
  const descriptors=[],axisSignature=appState.conditions.end+':'+appState.layout.px;
  const step=appState.layout.px>=12?5:appState.layout.px>=5?10:appState.layout.px>=2?25:50;
  if(timelineAxis.signature!==axisSignature){
@@ -808,7 +808,7 @@ const initialDate=Zhou.Time.decode(timelineBounds.cursor);
 $('#yearEra').value=initialDate.era;$('#year').value=initialDate.year;$('#year').min=1;
 if(!isZhouTopic){
  document.title=D.title||'历史对照图';$('.brand h1').textContent=document.title;$('.brand .seal').textContent='史';$('.brand .smallcaps').textContent=range(timelineBounds.start,timelineBounds.end);
- $('.intro p').textContent='用户正式资料导入；点击任期、人物与事件阅读详情。虚线纹理表示汉末任职阶段，不等于东汉皇帝在位。';
+ $('.intro p').textContent='用户正式资料导入；点击任期、人物与事件阅读详情。'+(D.datasetId==='three-kingdoms'?'虚线纹理表示汉末任职阶段，不等于东汉皇帝在位。':'接续共行仅是排版分组，并存与同年更替仍按原资料分层；本次未联网核验史实。');
  $('.intro .eyebrow').textContent=timelinePeriods.map(p=>p.name).join(' · ');$('.intro h2').textContent='同一时刻，政权之间。';$('.workspace').setAttribute?.('aria-label',document.title+'时间线');
  $('.searchHelp').textContent='按名称匹配，点击结果查看详情并定位；简介中的提及会单独标注。全站搜索包含当前未选政权及完整资料范围。';
  $('#filters > p').textContent='已固定的政权始终参与对比，取消固定后可隐藏。';

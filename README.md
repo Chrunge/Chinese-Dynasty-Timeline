@@ -1,6 +1,6 @@
 # 周代列国 · 历史对照图
 
-纯静态中文历史资料库，提供周朝、秦汉、三国三个专题入口，支持同年对照、搜索、详情、阅读恢复、分享和导出。周朝原范围与链接保持不变；秦汉覆盖前247年至公元220年，三国覆盖公元189—280年。专题窗口不裁切实体本身的历史起讫。
+纯静态中文历史资料库，提供周朝、秦汉、三国、魏晋南北朝、隋唐、辽金宋、明朝七个专题入口，支持同年对照、搜索、详情、阅读恢复、分享和导出。旧专题范围、链接和存储兼容；专题窗口不裁切实体本身的历史起讫。
 
 在线访问：[周朝时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。个人博客使用域名根路径，时间线使用独立的项目子路径。离线使用时，直接打开 `dist/index.html`；独立复制或部署时使用完整的 `dist/` 目录。
 
@@ -16,13 +16,13 @@
 
 内容密度可自动切换或手动设置：低于2.4px／年显示兴亡与关键事件，2.4—7px／年显示常规内容，更高缩放下在空间允许时显示详细年份。点击事件会联动相关国家、当年君主及已收录参与人物；在位不等于直接参与事件。
 
-秦汉的秦、西汉、新、玄汉、东汉共用接续主行，真实同年重叠分层；卫、张楚、西楚独立显示，三国仍保留并存政权行。秦汉／三国君主条带优先短名号＋姓名，名号复杂时只显示姓名；完整称谓、任职、生平与来源保留在提示和详情。筛选、固定、排序、分享、阅读和导出始终保留原政权／任期身份，详见[显示契约与权衡](<docs/PRESENTATION-CONTRACT.md>)。
+秦汉的秦、西汉、新、玄汉、东汉共用接续主行；魏晋的两晋、南朝及北朝两条接续支系分别共行；隋唐主线、两宋、明与南明分别接续分组。并存政权独立显示，所有真实同年重叠分层，武周不吞并进唐行。新增专题君主条带优先短名号＋姓名，名号复杂时只显示姓名；完整称谓、任职、生平与来源保留在提示和详情。筛选、固定、排序、分享、阅读和导出始终保留原政权／任期身份，详见[原显示契约](<docs/PRESENTATION-CONTRACT.md>)与[四专题展示分组](<docs/DYNASTY-DISPLAY.md>)。
 
 浏览器提供原生WebMCP API时，周朝页面保留 `compare_zhou_year`，新增专题注册 `compare_history_year` 工具；其他浏览器正常使用网页功能。
 
 ## 资料与采用口径
 
-资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。129个在位区间有专门生平简介，78个区间关联人物，12位人物有结构化活动轨迹，20条事件有明确参与人物。
+周朝资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。129个在位区间有专门生平简介，78个区间关联人物，12位人物有结构化活动轨迹，20条事件有明确参与人物。
 
 `data/atlas.json` 是周朝发布资料的唯一编辑入口；`lib/atlas.mjs` 校验资料并生成浏览器投影。既有schema 1继续使用公元前正整数；新schema 2用 `{era:"BCE"|"CE",year:正整数}` 编写日期。运行时统一转换为 `bce-axis` 坐标：前1年=1、公元1年=0、公元2年=-1，不存在历史上的公元0年；未知日期仍为 `null`。采用年表起点与实际即位分开记录，未核实结局不从条带端点推算。纪年区分较确定、推定、存在异说，并注明校核状态。资料为精选，西周早期及部分战国纪年仍有待考事项。
 
@@ -34,7 +34,9 @@
 
 正式资料为 [秦汉](<data/qin-han.json>) 和 [三国](<data/three-kingdoms.json>)，逐字节保存用户提供的原文件，不以结构样例替代。秦汉包含8个政权、78个人物、74段任期、32条事件；三国包含5个政权、51个人物、17段任期、23条事件（跨专题共享ID不能直接相加作为独立实体总数）。[结构样例](<data/examples/README.md>) 仍仅供演示，不参与生产构建。
 
-专题发布目标分别为原站根路径、[秦汉入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国入口](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)。三个入口已部署至原站，正式资料部署证据见[部署记录](<docs/DEPLOYMENT.md#2026-10-19-正式资料上线与真实浏览器验收>)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**。原文件散列、结构注释与架构权衡见[正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)。
+新增正式资料：[魏晋南北朝](<data/wei-jin-nan-bei.json>)、[隋唐](<data/sui-tang.json>)、[辽金宋](<data/liao-jin-song.json>)、[明朝](<data/ming.json>)，均逐字节保留原件。对应政权／任期／人物／事件数量为28／99／140／21、10／36／67／16、8／58／97／12、6／31／54／9。跨卷共享ID保留原名，各卷描述或来源差异不互相覆盖；构建生成[统一出处索引](<dist/corpus.json>)，按类型与稳定ID列出所有原始位置及字段差异，不按姓名猜测合并。
+
+专题发布目标为原站根路径、[秦汉](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)、[魏晋南北朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/wei-jin-nan-bei.html)、[隋唐](https://chrunge.github.io/Zhou-Dynasty-Timeline/sui-tang.html)、[辽金宋](https://chrunge.github.io/Zhou-Dynasty-Timeline/liao-jin-song.html)、[明朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/ming.html)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**；原件中的“已校核”不代表本次入库背书。原文件散列、结构注释与限制见[原正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)及[四专题入库记录](<docs/DYNASTY-INTAKE.md>)，发布证据见[部署记录](<docs/DEPLOYMENT.md>)。
 
 ## 维护与检查
 
@@ -48,7 +50,9 @@ node --test tests/*.test.mjs tests/*.test.cjs
 node --test --test-isolation=none tests/*.test.mjs tests/*.test.cjs
 ```
 
-编辑前端使用 `src/`；周朝、秦汉、三国分别使用 `data/atlas.json`、`data/qin-han.json`、`data/three-kingdoms.json`。`dist/` 全部由构建生成，不直接修改。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
+编辑前端使用 `src/`；七专题原件及适配说明见[资料目录约定](<data/README.md>)、[生产目录](<lib/production.mjs>)和上述入库记录。`dist/` 全部由构建生成，不直接修改；统一生成导航、数据脚本、出处索引与发布清单。构建为发布HTML添加资源内容版本参数，`--check` 只校验，不写文件。
+
+安装了Chrome的Windows环境可运行 `node tests/browser-presentation.mjs`，以真实浏览器验收七页×两种宽度；传入原站HTTPS根地址可验收线上版本。浏览器只访问被测页面和资源，不打开历史来源链接。截图与执行报告位于忽略提交的 `.validation/`。
 
 受限Windows环境如出现父目录realpath的EPERM，可为Node命令添加 `--preserve-symlinks --preserve-symlinks-main`。自动化测试覆盖资料校验、查询、组合、导航、渲染、分享及导出；DOM桩检查不替代真实浏览器排版、触控或打印验收。
 

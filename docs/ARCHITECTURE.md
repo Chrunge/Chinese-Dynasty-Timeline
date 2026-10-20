@@ -4,8 +4,11 @@
 
 ```mermaid
 flowchart TB
-  A["data/atlas.json 唯一历史编辑源"] --> B["lib/atlas.mjs 校验与资料投影"]
-  B --> C["dist/data.js 发布数据"]
+  A["data/*.json 七专题原始资料"] --> Q["lib/production.mjs 技术适配与专题目录"]
+  Q --> B["lib/atlas.mjs 统一校验与资料投影"]
+  B --> C["dist/data*.js 各卷发布数据"]
+  A --> I["lib/corpus.mjs 跨卷ID及原始出处索引"]
+  I --> O["dist/corpus.json 不裁决字段差异"]
   C --> H["core/history.js 历史查询"]
   C --> S["core/search.js 搜索与稳定ID"]
   U["core/state.js 对照条件、显示偏好、临时状态"] --> H
@@ -30,7 +33,10 @@ flowchart TB
 
 ## 源码与成果
 
-- `data/atlas.json`：历史正文、关系、来源与纪年，仍是唯一资料编辑入口。
+- [周朝资料](<../data/atlas.json>)：周朝正文、关系、来源与纪年；其他六个专题从各自原件构建，不写入周朝库。
+- [生产专题目录](<../lib/production.mjs>)：统一登记七个专题、标题、入口及数据资源；共用单一HTML模板，构建自动生成导航。
+- [四卷技术适配](<../lib/production-annotations.mjs>)：归一化不支持的类别，保留原值、全部注释及明朝重复逻辑边的原始出处，不修改源文件或放宽校验。
+- [跨卷出处索引](<../lib/corpus.mjs>)：按实体类型和稳定ID连接各卷原始JSON位置、源文件及记录散列，字段不同只列差异；不按姓名合并、不给任何卷覆盖优先级。[发布索引](<../dist/corpus.json>)与数据脚本一起纳入发布清单。
 - `lib/atlas.mjs`：schema 1/2资料校验与投影，保持纯函数；时期／政权／人物／任期独立集合，输出旧 `states/rulers` 兼容接口。
 - `lib/time.mjs`：构建期明确纪元日期与运行时坐标转换；`src/core/time.js`：浏览器时间计算与持久化边界。
 - `data/examples/`：独立结构样例，不自动合入周朝发布资料。
@@ -74,7 +80,7 @@ flowchart TB
 
 `core/state.js` 定义共享视图字段的采集和应用规则，以及布局快照入口。`ui/view.js` 补充滚动位置、页面坐标、时代按钮并同步控件；`openDetailKey` 为阅读和分享提供统一详情分派。原有页面全局函数作为兼容入口继续保留，状态字段和存储格式保持既有口径。
 
-阅读控制器只通过 bridge 读取或更新页面；存储适配只负责 JSON 读写。校验和旧记录迁移由阅读模型处理。已有 `zhou-layout-v2`、`zhou-pins-v3`、`zhou-comparisons-v3`、`zhou-reading-v4`、`zhou-visits-v4` 键继续使用。新视图、阅读记录与组合显式带 `timeEncoding:'bce-axis'`；无标记旧记录只把正整数解释为BCE，旧0／负数不会误迁移成CE。
+阅读控制器只通过 bridge 读取或更新页面；存储适配只负责 JSON 读写。校验和旧记录迁移由阅读模型处理。周朝已有 `zhou-layout-v2`、`zhou-pins-v3`、`zhou-comparisons-v3`、`zhou-reading-v4`、`zhou-visits-v4` 键继续使用；其余专题由存储适配附加专题前缀隔离，分享与组合附datasetId并拒绝跨卷误读。新视图、阅读记录与组合显式带 `timeEncoding:'bce-axis'`；无标记旧记录只把正整数解释为BCE，旧0／负数不会误迁移成CE。
 
 `core/combinations.js` 独立校验组合，不读取页面或存储。组合导入和本地组合恢复只接受已知国家的字符串ID，忽略未知或错误类型的国家与顺序项；没有有效国家的组合不予保存。`app.js` 创建组合模型后加载本地组合，控件层负责交互和存储提示。
 
@@ -84,7 +90,7 @@ flowchart TB
 
 ## 渲染与分享
 
-秦汉／三国新增独立的[显示契约](<PRESENTATION-CONTRACT.md>)：投影附加 display 与 presentation.rowGroups；[呈现核心](<../src/core/presentation.js>)负责短标签、视觉分组及保真重叠分层，不改领域身份或日期。秦汉接续视觉行使用组键，分享／阅读／查询／导出继续使用政权和任期 ID。
+秦汉／三国原有[显示契约](<PRESENTATION-CONTRACT.md>)扩展至[魏晋、隋唐、辽金宋、明朝](<DYNASTY-DISPLAY.md>)：投影附加 display 与 presentation.rowGroups；[呈现核心](<../src/core/presentation.js>)负责短标签、视觉分组及保真重叠分层，不改领域身份或日期。所有接续视觉行使用组键，分享／阅读／查询／导出继续使用政权和任期 ID。分支并存、武周与唐重叠、南明诸任期同时存在均不被合并或裁剪；长政权名称在侧栏单行省略，完整名称由提示、无障碍标签及详情保留。
 
 时间线使用独立的时间轴、国家行和参考线节点。`adapters/timeline-dom.js` 按稳定国家ID协调节点：内容不变时保留，顺序变化时移动，内容变化时仅替换对应行。行内容缓存不包含参考年或搜索结果分页，因此这两类变化不会重新生成历史条带；同年对照仍独立更新。缩放会改变坐标，允许替换相关行。
 

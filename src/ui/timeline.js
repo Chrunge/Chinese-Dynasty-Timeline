@@ -18,7 +18,7 @@ function render(){
  const fitHeight=Math.max(36,Math.min(160,Math.floor(((vp.clientHeight||appState.layout.viewHeight)-64)/Math.max(1,rows.length))));
  $('#rowHeightValue').textContent=(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)+'px';
  chart.style.width=(w+labelWidth())+'px';chart.className=(appState.layout.mode==='overview'?'overview ':'')+'density-'+level+(focused?' hasFocus':'');
- $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件')+(D.presentation?.rowGroups.length?' · 秦汉分段共用主行，同年重叠分层；并存政权另行。':'');
+ $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件')+(D.presentation?.rowGroups?.length?' · 接续政权分段共用主行，同年重叠分层；并存政权另行。':'');
  const descriptors=[],axisSignature=appState.conditions.end+':'+appState.layout.px;
  const step=appState.layout.px>=12?5:appState.layout.px>=5?10:appState.layout.px>=2?25:50;
  if(timelineAxis.signature!==axisSignature){
