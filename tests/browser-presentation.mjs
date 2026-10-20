@@ -27,7 +27,33 @@ try{
   check(info.id===id&&info.rows===({zhou:18,'qin-han':4,'three-kingdoms':5})[id]&&info.bars>0,'wrong timeline '+JSON.stringify(info));check(!info.overflow,'page horizontal overflow');
   if(id==='qin-han'){check(info.groups===1&&info.segments.length===5,'missing succession segments');check(new Set(info.segments.map(s=>s.top)).size>1,'overlapping polities flattened');const bounds=await evaluate(`(()=>{const parent=document.querySelector('.groupedRow .stateLabel').getBoundingClientRect();return {parent:{top:parent.top,bottom:parent.bottom,height:parent.height},labels:[...document.querySelectorAll('.groupedRow .stateName')].map(e=>{const b=e.getBoundingClientRect();return {text:e.textContent,top:b.top,bottom:b.bottom};})};})()`);check(bounds.labels.every(b=>b.top>=bounds.parent.top-1&&b.bottom<=bounds.parent.bottom+1),'group country labels clipped '+JSON.stringify(bounds));}
   await evaluate(`document.querySelector('#viewport').scrollIntoView({block:'center'})`);await screenshot(page+'-timeline');
-  // Actual rulers and names are independently actionable; tooltips retain full titles.
+  // Increasing row height spends spare space on events before clustering.
+   // Audit real CSS rectangles: opaque-DOM tests cannot detect text overflow.
+   info.events=await evaluate(`(()=>{
+    appState.layout.px=.8;appState.layout.density='full';appState.layout.mode='both';appState.layout.fitRows=false;appState.layout.rowHeights={};
+    const inspect=()=>[...document.querySelectorAll('#chart .stateRow')].map(row=>{
+     const buttons=[...row.querySelectorAll('[data-event-lane]')],bars=[...row.querySelectorAll('.ruler')],rect=e=>e.getBoundingClientRect(),inside=rect(row);
+     const collisions=[];
+     const overlaps=(a,b)=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5;
+     for(let i=0;i<buttons.length;i++){
+      const a=rect(buttons[i]);
+      if(a.top<inside.top-.5||a.bottom>inside.bottom+.5)collisions.push('row bounds '+buttons[i].dataset.id);
+      for(const bar of bars)if(overlaps(a,rect(bar)))collisions.push('ruler '+buttons[i].dataset.id+'/'+bar.dataset.id);
+      for(let j=i+1;j<buttons.length;j++)if(overlaps(a,rect(buttons[j])))collisions.push('event '+buttons[i].dataset.id+'/'+buttons[j].dataset.id);
+     }
+     const members=appState.session.visibleRows.find(r=>r.key===row.dataset.row).members.map(s=>s.id);
+     const expected=historyService.eventsInRange({from:timelineBounds.start,to:appState.conditions.end,states:members}).map(e=>e.id).sort();
+     const actual=buttons.flatMap(b=>b.dataset.id.split(',')).sort();
+     return {key:row.dataset.row,markers:buttons.length,singles:buttons.filter(b=>b.dataset.action==='event').length,lanes:[...new Set(buttons.map(b=>b.dataset.eventLane))],idsMatch:JSON.stringify(expected)===JSON.stringify(actual),collisions};
+    });
+    const input=document.querySelector('#rowHeight');input.value='36';input.dispatchEvent(new Event('input',{bubbles:true}));const compact=inspect();
+    input.value='160';input.dispatchEvent(new Event('input',{bubbles:true}));const expanded=inspect();
+    return {compact,expanded};
+   })()`);
+   check([...info.events.compact,...info.events.expanded].every(r=>r.idsMatch&&!r.collisions.length),'events missing or overlapping '+JSON.stringify(info.events));
+   check(info.events.expanded.some((r,i)=>r.markers>info.events.compact[i].markers&&r.lanes.length>1),'extra row height did not expand events');
+   await screenshot(page+'-expanded-events');
+   // Actual rulers and names are independently actionable; tooltips retain full titles.
   info.labels=await evaluate(`(()=>{appState.layout.px=6;appState.layout.density='auto';appState.layout.rowHeight=128;appState.layout.fitRows=false;render();return {years:document.querySelectorAll('.rulerYears').length,visible:[...document.querySelectorAll('.rulerName')].map(e=>e.textContent),accessible:[...document.querySelectorAll('.ruler')].every(e=>e.getAttribute('aria-label')===e.title&&e.title.length>10)};})()`);
   check(info.labels.years===0&&info.labels.accessible,'name/year hierarchy or accessible full title');
   if(id!=='zhou')check(info.labels.visible.every(s=>!/[（(／/]|基础期|执政|任职/.test(s)),'long role leaked into bar');

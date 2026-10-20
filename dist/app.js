@@ -71,6 +71,26 @@
    }
    return {items,lanes:Math.max(1,ends.length)};
   },
+  // Pixel-space event packing: spend available height before folding neighbours.
+  // Obstacles are rendered tenure rectangles, not altered historical intervals.
+  events(records,{position,measure,top,bottom,focusedId,obstacles=[]}){
+   const lanes=Math.max(1,Math.floor((bottom-top)/22)+1),groups=[];
+   const ordered=[...records].sort((a,b)=>position(a)-position(b)),focused=ordered.find(e=>e.id===focusedId);
+   // Reserve the selected event before placing its neighbours, including earlier
+   // years. With spare lanes it remains independently actionable.
+   for(const ev of focused?[focused,...ordered.filter(e=>e!==focused)]:ordered){
+    const left=position(ev),width=Math.max(18,Math.min(210,measure(ev)));
+    const intersects=g=>left<g.left+g.width+8&&left+width+8>g.left;
+    const lane=Array.from({length:lanes},(_,i)=>i).find(i=>!groups.some(g=>g.lane===i&&intersects(g))&&!obstacles.some(o=>left<o.right+2&&left+width>o.left-2&&bottom-i*22<o.bottom+1&&bottom-i*22+18>o.top-1));
+    if(lane!==undefined){groups.push({events:[ev],left,width,top:bottom-lane*22,lane});continue;}
+    // The caller reserves the bottom lane for events. When all usable slots are
+    // occupied, fold into a neighbouring marker, preserving every event ID.
+    const neighbours=groups.filter(intersects),ordinary=neighbours.filter(g=>!g.events.some(e=>e.id===focusedId));
+    const group=(ordinary.length?ordinary:neighbours).at(-1);
+    group.events.push(ev);group.events.sort((a,b)=>position(a)-position(b));group.left=position(group.events[0]);
+   }
+   return {groups:groups.sort((a,b)=>a.left-b.left||a.lane-b.lane),lanes};
+  },
   rows(states,presentation,pins=new Set()){
    const definitions=presentation?.version===1?presentation.rowGroups||[]:[],rows=[],seen=new Set();
    for(const s of states){
@@ -603,9 +623,11 @@ function render(){
   const packed=grouped?Zhou.Presentation.pack(records,timelineBounds.start,appState.conditions.end):{lanes:single.lanes,items:single.rulers.map(r=>({...r,stateId:members[0].id}))},segments=Zhou.Presentation.pack(members,timelineBounds.start,appState.conditions.end);
   const rulerVisible=level!=='overview'&&(appState.layout.mode==='both'||appState.layout.mode==='rulers'),eventVisible=appState.layout.mode==='both'||appState.layout.mode==='events'||level==='overview'&&appState.layout.mode!=='overview';
   const lanes=rulerVisible?packed.lanes:1,rulerTop=grouped?segments.lanes*22+6:6;
-  const height=Math.max(36,Math.min(160,requested),grouped?Math.max(38+members.length*23,rulerTop+(rulerVisible?lanes*19:0)+(eventVisible?27:12)):0);
+  const minBarHeight=packed.items.some(r=>r.polityAssociation==='contextual'||r.dating?.level==='disputed')?4:2;
+  const height=Math.max(36,Math.min(160,requested),rulerVisible?rulerTop+lanes*(minBarHeight+1)+(eventVisible?21:6):0,grouped?Math.max(38+members.length*23,rulerTop+(rulerVisible?lanes*19:0)+(eventVisible?27:12)):0);
   const bandHeight=Math.max(8,height-rulerTop-(eventVisible?21:6)),barHeight=Math.max(.5,Math.min(44,bandHeight/lanes-1)),eventTop=height-21;
-  const layout={height,eventTop,lanes,barHeight,level,pinned:isPinned,rowKey:row.key,offset:rowOffset};
+  const eventAreaTop=Math.min(eventTop,grouped?rulerTop:26),rulerObstacles=[];
+  const layout={height,eventTop,eventAreaTop,lanes,barHeight,level,pinned:isPinned,rowKey:row.key,offset:rowOffset};
   for(const s of members)appState.session.rowLayouts.set(s.id,layout);
   rowOffset+=height;
   let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.note)+'">'+row.name+'<small>重叠分层</small></strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
@@ -623,6 +645,9 @@ function render(){
    for(const r of packed.items){
     const s=byId(r.stateId);if(s.interruptions.some(g=>r.start<=g.start&&r.end>=g.end))continue;
     const width=Math.max(2,(r.start-Math.max(r.end,appState.conditions.end)+1)*appState.layout.px),isCurrent=related&&rulersAt(s,focused.year).some(v=>v.id===r.id);
+    // CSS border-box cannot shrink below padding + borders, even on short reigns.
+    const borderSize=r.polityAssociation==='contextual'||r.dating?.level==='disputed'?4:2;
+    rulerObstacles.push({left:x(r.start),right:x(r.start)+Math.max(10+borderSize,width),top:rulerTop+r.displayLane*(barHeight+1),bottom:rulerTop+r.displayLane*(barHeight+1)+Math.max(borderSize,barHeight)});
     const label=Zhou.Presentation.rulerLabel(r),labelNeeded=(label.length+(r.dating?.level!=='certain'?1:0))*14+14;
     let text='';
     if(width>=labelNeeded&&barHeight>=14){text='<span class="rulerName">'+escapeHTML(label)+(r.dating?.level!=='certain'?' · '+certaintyShort[r.dating?.level||'inferred']:'')+'</span>';if(level==='detail'&&width>=110&&barHeight>=30)text+='<small class="rulerYears">'+range(r.start,r.end,r.approx)+'</small>';else if(level==='detail'&&width>=labelNeeded+145)text+='<small class="rulerYears inlineYears">'+range(r.start,r.end,r.approx)+'</small>';}
@@ -634,12 +659,13 @@ function render(){
   if(eventVisible){
    events??=historyService.eventsInRange({from:timelineBounds.start,to:appState.conditions.end,states:appState.session.visibleStates.map(state=>state.id),category:appState.conditions.category});
    const es=events.filter(e=>members.some(s=>e.states.includes(s.id))).filter(e=>(level!=='overview'||e.key||e.id===appState.session.activeEventId||appState.search.query&&matchEvent(e))&&(e.id===appState.session.activeEventId||!appState.search.query||matchEvent(e)||members.some(s=>containsSearch(countryAliases(s))))).sort((a,b)=>b.year-a.year);
-   const groups=[];
-   for(const ev of es){const last=groups.at(-1),previous=last?.[0];const need=previous?Math.min(210,previous.name.length*(level==='detail'?14:12)+35):0;if(last&&ev.id!==appState.session.activeEventId&&!last.some(e=>e.id===appState.session.activeEventId)&&x(ev.year)-x(previous.year)<need+8)last.push(ev);else groups.push([ev]);}
-   for(let i=0;i<groups.length;i++){
-    const group=groups[i],ev=group[0],maxWidth=Math.max(18,Math.min(210,(groups[i+1]?x(groups[i+1][0].year)-x(ev.year)-8:210))),highlight=group.some(e=>e.id===appState.session.activeEventId);
+   const eventLayout=Zhou.Presentation.events(es,{position:e=>x(e.year),measure:e=>(e.name.length+(e.dating?.level!=='certain'?3:0))*(level==='detail'?14:12)+35,top:eventAreaTop,bottom:eventTop,focusedId:appState.session.activeEventId,obstacles:rulerObstacles});
+   layout.eventLanes=eventLayout.lanes;
+   for(const marker of eventLayout.groups){
+    const group=marker.events,ev=group[0],highlight=group.some(e=>e.id===appState.session.activeEventId);
     const label=(ev.dating?.level!=='certain'?certaintyShort[ev.dating?.level||'inferred']+' · ':'')+ev.name+(group.length>1?' · '+group.length:'');
-    html+='<button class="event date-'+(ev.dating?.level||'inferred')+' '+(group.length>1?'cluster ':'')+(highlight?'linkedEvent ':'')+'" data-action="'+(group.length>1?'cluster':'event')+'" data-id="'+(group.length>1?group.map(e=>e.id).join(','):ev.id)+'" style="left:'+x(ev.year)+'px;top:'+eventTop+'px;max-width:'+maxWidth+'px" title="'+escapeHTML(fmt(ev.year)+' · '+label+' · '+certaintyLabel[ev.dating?.level||'inferred'])+'"><i></i><span>'+escapeHTML(label)+'</span></button>';
+    const title=group.map(e=>fmt(e.year)+' · '+e.name+' · '+certaintyLabel[e.dating?.level||'inferred']).join('；');
+    html+='<button class="event date-'+(ev.dating?.level||'inferred')+' '+(group.length>1?'cluster ':'')+(highlight?'linkedEvent ':'')+'" data-action="'+(group.length>1?'cluster':'event')+'" data-id="'+group.map(e=>e.id).join(',')+'" data-event-lane="'+marker.lane+'" style="left:'+marker.left+'px;top:'+marker.top+'px;max-width:'+marker.width+'px" title="'+escapeHTML(title)+'"><i></i><span>'+escapeHTML(label)+'</span></button>';
    }
   }
   if(!grouped){const s=members[0];if(s.end>=appState.conditions.end)html+='<button class="event termination" data-action="state" data-id="'+s.id+'" style="left:'+x(s.end)+'px;top:6px;height:'+Math.max(20,height-12)+'px">'+(s.approxEnd?'约 ':'')+fmt(s.end).replace(/年$/,'')+' '+escapeHTML(s.endLabel||'终止')+'</button>';else if(s.continuationNote&&appState.conditions.end===timelineBounds.end)html+='<div class="gap" style="left:'+(x(timelineBounds.end)+8)+'px">'+escapeHTML(s.continuationNote)+'</div>';}
