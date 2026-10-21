@@ -31,7 +31,11 @@ try{
   if(id==='qin-han'){check(info.groups===1&&info.segments.length===5,'missing succession segments');check(new Set(info.segments.map(s=>s.top)).size>1,'overlapping polities flattened');const bounds=await evaluate(`(()=>{const parent=document.querySelector('.groupedRow .stateLabel').getBoundingClientRect();return {parent:{top:parent.top,bottom:parent.bottom,height:parent.height},labels:[...document.querySelectorAll('.groupedRow .stateName')].map(e=>{const b=e.getBoundingClientRect();return {text:e.textContent,top:b.top,bottom:b.bottom};})};})()`);check(bounds.labels.every(b=>b.top>=bounds.parent.top-1&&b.bottom<=bounds.parent.bottom+1),'group country labels clipped '+JSON.stringify(bounds));}
   {info.groupBounds=await evaluate(`([...document.querySelectorAll('.stateRow .stateLabel')].map(parent=>{const p=parent.getBoundingClientRect();return [...parent.querySelectorAll('.stateName')].map(e=>{const r=e.getBoundingClientRect();return {text:e.textContent,inside:r.top>=p.top-1&&r.bottom<=p.bottom+1};});})).flat()`);check(info.groupBounds.every(b=>b.inside),'group labels clipped '+JSON.stringify(info.groupBounds));}
    await evaluate(`document.querySelector('#viewport').scrollIntoView({block:'center'})`);await screenshot(page+'-timeline');
-  // Increasing row height spends spare space on events before clustering.
+  // P0 disclosure keeps existing controls behind Advanced. Use the real UI,
+   // while remaining compatible with earlier deployed pages without this panel.
+   if(await evaluate(`!!document.querySelector('#onboarding:not([hidden])')`))await click('#onboardingSkip');
+   if(await evaluate(`document.querySelector('#advancedSettings')?.hidden===true`))await click('#advancedToggle');
+   // Increasing row height spends spare space on events before clustering.
    // Audit real CSS rectangles: opaque-DOM tests cannot detect text overflow.
    info.events=await evaluate(`(()=>{
     appState.layout.px=.8;appState.layout.density='full';appState.layout.mode='both';appState.layout.fitRows=false;appState.layout.rowHeights={};

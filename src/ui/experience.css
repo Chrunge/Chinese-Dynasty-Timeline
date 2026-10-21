@@ -1,0 +1,32 @@
+/* P0 interface only. Dense historical glyph geometry remains unchanged. */
+[hidden]{display:none!important}
+.primaryToolbar{gap:10px;align-items:center;padding:12px 16px}
+.primaryToolbar>*{min-width:0}
+.primaryToolbar .search{margin:0;flex:1 1 240px;min-height:44px}
+.primaryToolbar .search input{width:100%;min-width:0;background:transparent;border:0}
+.primaryToolbar .zooms{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin:0}
+.primaryToolbar .yearTools{display:flex;flex-direction:column;gap:3px;max-width:100%}
+#jump{flex-wrap:wrap;max-width:100%}#year{width:86px;min-width:0}#toolbarCursor{font-size:12px;color:var(--muted)}
+.topicTools{flex:1 0 100%;max-width:100%}.topicStrip{display:flex;align-items:center;gap:6px;min-width:0}
+.topicStrip .topicNav{min-width:0;flex:1;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-behavior:smooth;padding:3px;gap:6px;border:0;scroll-padding-inline:12px;-webkit-overflow-scrolling:touch}
+.topicNav a{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap;padding:7px 12px}
+.topicNav span{display:none}.topicStep{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;max-width:70px;text-align:center;font-size:12px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:4px;flex-shrink:0}
+.topicStep[aria-disabled=true]{opacity:.4;pointer-events:none}.topicTools .periods{max-width:100%;overflow-x:auto;margin-top:6px;width:max-content;white-space:nowrap}.periods button{flex:0 0 auto}
+#advancedSettings{border-bottom:1px solid var(--line);background:#f7faf8}.helpbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:10px 20px;font-size:14px}#uiStatus{font-size:12px;color:var(--muted)}
+/* Override legacy ID-level compact-button minima, never the dense glyphs. */
+button:not(.ruler):not(.event):not(.politySegment):not(.stateName):not(.pinState):not(.lifeStart){min-height:44px!important;min-width:44px!important}
+.importButton{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}input:not([type=checkbox]):not([type=range]),select{min-height:44px;max-width:100%}.searchHead label,.extension,.layoutbar label,.researchbar label,#stateChecks label{min-height:44px}
+#advancedSettings .viewControl{margin-left:0}#advancedSettings .layoutbar,#advancedSettings .subtoolbar,#advancedSettings .researchbar,#advancedSettings .readingbar{gap:10px}
+.onboarding{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 18px;background:#fff9e9;border-bottom:1px solid #d6bc7d}.onboarding h3{font-size:17px;margin:4px 0}.onboarding p{margin:4px 0;font-size:14px}.onboarding .eyebrow{font-size:12px}.onboardingActions{display:flex;gap:8px;flex-shrink:0}.onboardingTarget{outline:2px solid var(--gold);outline-offset:2px}
+/* The 44px handle belongs in the axis, not over the first polity's controls.
+   Keep the line/relations at their original 64px origin; sticky+translation
+   retains the handle inside the axis when the chart scrolls vertically. */
+.cursorline{border-color:var(--gold);pointer-events:none;z-index:13}.cursorline .cursorHandle{pointer-events:auto;touch-action:none;position:sticky;top:44px;transform:translate(-50%,-100%);display:block;width:44px;height:44px;padding:0;color:transparent;background:transparent;border:0;font-size:0;white-space:nowrap;z-index:9;cursor:ew-resize}.cursorHandle::after{content:attr(data-year);position:absolute;top:0;left:50%;transform:translateX(-50%);padding:3px 5px;color:var(--ink);background:#f9e9bc;border:1px solid var(--gold);border-radius:4px;font-size:11px;line-height:18px;pointer-events:none}.cursorBadge{position:static;background:transparent;transform:none;padding:0;color:inherit}
+.primaryToolbar:focus-within{position:relative;z-index:11}.workspace.expanded .primaryToolbar{flex-shrink:0}.workspace.expanded #advancedSettings{max-height:45dvh;overflow:auto;flex-shrink:1}.workspace.expanded .onboarding{max-height:30dvh;overflow:auto;flex-shrink:1}
+@media(max-width:1000px){.primaryToolbar .search{flex-basis:200px}.primaryToolbar{gap:8px}}
+@media(max-width:767px){
+ header{padding:14px 16px}.brand h1{font-size:22px}.smallcaps{display:none}main{padding:16px 12px}.intro{margin-bottom:12px;gap:8px}.intro h2{font-size:23px;margin:6px 0}.intro .numbers{display:none}.intro p{font-size:12px;margin:4px 0}.intro .eyebrow{font-size:11px}
+ .primaryToolbar{padding:10px;gap:8px}.primaryToolbar .search{flex:1 1 155px}.primaryToolbar #advancedToggle{font-size:12px;padding:6px;order:0}.primaryToolbar .zooms{flex:1 0 100%;order:1;justify-content:center}.primaryToolbar .yearTools{flex:1 0 100%;order:2;align-items:center}.topicTools{order:3}.topicStep{max-width:44px}.topicNav a{padding:7px 10px}.topicTools .periods{width:100%}.onboarding{padding:12px;align-items:flex-start;flex-wrap:wrap;gap:8px}.onboardingActions{margin-left:auto}.helpbar{padding:10px 12px}.legend{padding:8px 10px;gap:8px}.legend .hint{display:none}.status{flex-wrap:wrap;gap:5px}#advancedSettings select{min-width:0}#advancedSettings .modes{flex-wrap:wrap}#advancedSettings .layoutbar label{flex-wrap:wrap}.referenceControl{flex-wrap:wrap}.referenceControl input{min-width:0;max-width:100%}
+ #detail>.dialogHead{flex-wrap:wrap;gap:6px}#detailTag{flex-basis:calc(100% - 70px);order:-1}#detail #close{order:-1}#detailBack,#shareDetail{flex:1}.searchHead select{max-width:100%}.exportFields label{min-width:0}.dialogHead{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.topicStrip .topicNav{scroll-behavior:auto}.onboardingTarget{transition:none}}

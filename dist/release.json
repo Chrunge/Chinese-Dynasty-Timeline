@@ -1,5 +1,6 @@
 {
-  "releaseId": "eb15bc9b4129f50a67d0188786f36e7b8c01886d9a70b8e12ae5363f1f49b4ad",
+  "releaseId": "7a0c6c9da8bfdba41c9641f22544295057500422d15e13bcd10d97606f8ae38e",
+  "socialImageFormat": "svg",
   "datasets": [
     {
       "id": "xia-shang",
@@ -22,13 +23,13 @@
       "page": "index.html",
       "file": "atlas.json",
       "asset": "data.js",
-      "sourceSha256": "978e9ddd9985abc98816bb554ce6753a5fa028382b2a457e6dd2c8b507e03ed8",
+      "sourceSha256": "2d7bcb12bbdfc188110cd4d1e0c175896770915fb6f9e0e69e016ba4594c4e24",
       "counts": {
         "polities": 18,
         "people": 116,
         "tenures": 465,
         "events": 105,
-        "activities": 62
+        "activities": 135
       }
     },
     {
@@ -168,33 +169,45 @@
     }
   ],
   "assets": {
+    "social-xia-shang.svg": "d42a71e78c7d8945767b14c31bcbbd86f74092909fc75bccdab63a6a24c7fef0",
     "data-xia-shang.js": "993ef0fe807a4354fb586b7fd34b7a96c69f4241d56d76d55d71f8de8fbd7f90",
-    "data.js": "7cdbe197882e7685efd185a09f2a84e3ff8bb4806c1d784529b58ff07709019d",
+    "social-zhou.svg": "13f98b7753f4d7622a4668f0eaec64593b432fa874851c42671214c04593ab83",
+    "data.js": "105be38fb4b8170cd3ea4996bb8ceb5bd268fdc8f88ee0b73de17568cd54a48f",
+    "social-qin-han.svg": "226b8da725398a2f48278f34dec1cfe585c0d833444d9f28acfe2676e0557001",
     "data-qin-han.js": "4a683ffd1fc09f17adafafa4258a0b4550fab5757df47d186c904903d80500b4",
+    "social-three-kingdoms.svg": "7b0fce5edd73188d19e3c6f16eb567397a8b17af57e1f8f1942f77fb37578089",
     "data-three-kingdoms.js": "16d1d655403f445c4cbc013af5f4d18a4004c69a070ca662991727234b2e0a7b",
+    "social-wei-jin-nan-bei.svg": "947e5f9ec72f20d04c9b1d8b5ece859000efa5967bf4f621dfca44f6d527d3f4",
     "data-wei-jin-nan-bei.js": "1113b8a8223040daf8bf5313c97f8217d59e735950e6b26c2b01b142e82f4935",
+    "social-sui-tang.svg": "8c3fafaf8da69e1a95350a6fbb1582e72a13a87579706a2a3ad3fe2a42ffd855",
     "data-sui-tang.js": "098d387a2c4bd8c358d11ba50b67ab16dd0ef671579d680e0b48d41505c294c5",
+    "social-five-dynasties.svg": "f0ec05aa902f77838af8815df7069484fb3bd1948a3233528d2f72bfbafc856a",
     "data-five-dynasties.js": "bea3bad6fe6ee36755f9d9d36d04628a02306daca996bb67c3e3b71fa2b76b62",
+    "social-liao-jin-song.svg": "60968cbf340339e13e1d1de5be090dbdf379d19b89b5101dbdf673e61a22a6d7",
     "data-liao-jin-song.js": "d69b2e1ffde2344d11da03b9f314707bdaffdf46f9d2be058ae6c83458560868",
+    "social-yuan.svg": "92654b6b825e752aae168b3c9c5cb202fcb503218dfebaacf2175886fdf1244a",
     "data-yuan.js": "063932bd9b06706d02c6bdd939736d6ca22f10fb896aa93678fe5e21cf0b6a86",
+    "social-ming.svg": "694f979804fa2a41bed247f0c6795d940e56068c9f012da44dfa84edd84e19a4",
     "data-ming.js": "06a395052d1829290c130ad7b4ea3a3cf2fcd0600d1e15a8ed19540253bc6579",
+    "social-qing.svg": "2c2fa2b07de6d9a362167979172696449f756ec6bfeec6a9c10b0c647c8bee71",
     "data-qing.js": "8cbe3223cc766698ca30507f121ce52d69b49f63a7e3fab281c7c5db55473a4d",
-    "corpus.json": "3599569afe0c4757a27c525a96a5dde3bf989b35a453da904c17c05a01754d89",
-    "app.js": "9c5c202117723566a51bfea54091ddef5b62dc70ccf9a5fa76f10a360cb2f506",
+    "corpus.json": "f60fce43a85ad96263b97ec786777bee40bd37655f0572780cb4a4a141194403",
+    "entity-links.js": "581dc18b3127678f3bfd18d210236271006e9e044171fa37add87e40e456ec3a",
+    "app.js": "9590f2ca7ce81a217140d09e2114b4cda7b37fe5e8b29bc5888ba0385f3be9b3",
     "study.js": "25ecb8e81f45b4bf4dcf316b294b1ac4d12aefd7e91c8fd1491a5c0c5fdfca66",
-    "share.js": "5d283e1239c8680768f6db2eaded5581d08e88b384dbfd7f86307dcf4c2696a8",
-    "export.js": "eee7cdb5742624a49c20175265bd3b5ad3089d03f5b08bbd3be8f8c1ec89b3ce",
-    "style.css": "dfa6f3825682a31bae19fbb10b06dadf008bfe5d7acd7795718cc6833e4ff005",
-    "xia-shang.html": "f8345e5b63e93bcb3240540c677f61fb66331802ef540fab2da769f2620ebaaa",
-    "index.html": "45b4430022c18ddaf1cdcf3ba37e471e7ef391734ec3067bb2522973363577d8",
-    "qin-han.html": "751176502bb2a2fccc6e150ed2d30cad850781b4dc6ddd1633ed545df528281f",
-    "three-kingdoms.html": "6478a57c5bba89bf57fabd1f7bd04c8ef8af8e33b4af1be5b076bae416c8b986",
-    "wei-jin-nan-bei.html": "d46c2f6ce2e72afde1d10661915ab549308e2593b6806766e9c72e5ef07a1b41",
-    "sui-tang.html": "cc29f3700c73bdc730d2275706d6a26ae5c13bf1a4710b6442d3c08a8aadc377",
-    "five-dynasties.html": "e4763cdc05770ab66ae01715c2864d78288d1ebbf2b9b8851ad65f6901782e89",
-    "liao-jin-song.html": "83d58b996e13fe9bccf9779b0d17c1ff1bdb7b6db275d20cfa7722f239ca9f2a",
-    "yuan.html": "13aa5e652b8248de56b54f13915a8b4c6faf53834683821ea64e4ed8c00ecaa3",
-    "ming.html": "265c553d26363dd9bc1fb701f71c3fd64a31db21f96e38fd84050744c600b16e",
-    "qing.html": "43106dce215f2194a333a76026dbac7c8b0e3fdb4d3df7ce54c6026992273544"
+    "share.js": "42f69a53e88e5933f97a3f926d98f085a61db2da930c325c6bed6bd7de99715e",
+    "export.js": "074f0bd15a8bf25f41064dab73c0a9ddec30b078d525e4c864383ba7e6c78aa8",
+    "style.css": "06d188f595ab68fc51e803ce812cb811c0eacd1e0ed37a3f6291003ac9eff713",
+    "xia-shang.html": "5dcb14924543db9a36d50dccd4d63a99588be4361c7fe2183363a00ba79dcbf5",
+    "index.html": "07a44b2540345f0ba1b2d0993227881e867ef8aa5e274a1fb18fc77365d134dd",
+    "qin-han.html": "e34970feceb6fa392ff7eda9a37f7877d742dd3d06bcfe36637e9a3e7b68d4ea",
+    "three-kingdoms.html": "ec6463a7b7d91e88e250a086f2a0f6c0bd6db37578ca08feda57b1ae58e47992",
+    "wei-jin-nan-bei.html": "78a3f0852ce16a99892787ae3466e8e5516f5d277b9f22c731c787d1cae09947",
+    "sui-tang.html": "39836f0fb8cf6237e2c19c18913e65467c1efb7a4f01da64b943c845d31a1cb8",
+    "five-dynasties.html": "fa254e816e406010526ac9f94c218a0d16ee95b0ebd8348eeef7cce71ffa5bcf",
+    "liao-jin-song.html": "4f0f55d526c2ebf79ab11275d9f206ad3cd139034745db95e5a40518194f25b0",
+    "yuan.html": "f792be62d573a4aaf5a0d815857d75e5bbe5fa32130efe1106dc4bd889cccd49",
+    "ming.html": "36a18983c4240e5680e28e2dca039d10b7db45fc1ff75fb5458e61743db13d92",
+    "qing.html": "23a915a876ee118934d1c1a21ebc1f27bd1d744cefecbbb001b6aab635f67ce8"
   }
 }

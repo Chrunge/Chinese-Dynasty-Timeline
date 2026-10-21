@@ -1,0 +1,10 @@
+/* Gesture ownership stays on the timeline canvas. Dense buttons keep their
+   original rectangles; 44px touch hit regions exist only in gestures.js. */
+.timelineGestureCanvas{touch-action:none;overscroll-behavior:contain}
+.timelineGestureCanvas.dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.timelineGestureCandidates{position:fixed;z-index:1000;box-sizing:border-box;width:min(360px,calc(100vw - 16px));max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);overflow:auto;overscroll-behavior:contain;padding:8px;border:1px solid #c5b695;border-radius:10px;background:#fffdf7;color:#342b20;box-shadow:0 6px 30px #0004;font:14px/1.45 system-ui,sans-serif}
+.timelineGestureCandidatesTitle{margin:4px 6px 8px;font-weight:700}
+.timelineGestureCandidate{display:block;box-sizing:border-box;width:100%;min-width:44px;min-height:44px;margin:4px 0;padding:10px 12px;border:1px solid #d9cfbc;border-radius:6px;background:#fffdf7;color:inherit;font:inherit;line-height:1.5;text-align:left;white-space:normal;overflow-wrap:anywhere;cursor:pointer;touch-action:manipulation}
+.timelineGestureCandidate:hover{background:#f3ecdc}
+.timelineGestureCandidate:focus-visible{outline:3px solid #79552b;outline-offset:1px}
+.timelineGestureCandidateClose{font-weight:700;text-align:center}

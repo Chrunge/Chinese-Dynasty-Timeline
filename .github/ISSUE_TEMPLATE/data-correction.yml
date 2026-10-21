@@ -1,0 +1,52 @@
+name: 资料纠错
+description: 请指出具体条目、问题与可核查依据；不会自动提交。
+title: "[资料纠错] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢帮助校勘。下方专题、原始 ID、条目名称和参考线年份由详情页预填，请核对后补充问题与依据，再自行提交。
+        参考线年份是当前阅读位置，不是条目的在位、生卒或事件日期；“年份未定”不表示公元 0 年。
+        本表用于反馈已有资料，不会直接修改史料。请勿填写个人敏感信息。
+  - type: input
+    id: topic
+    attributes:
+      label: 专题名称
+      description: 例如周朝、秦汉、三国；保留预填的专题名称。
+    validations:
+      required: true
+  - type: input
+    id: record_id
+    attributes:
+      label: 稳定原始 ID
+      description: 原资料条目 ID；不是显示分组、搜索序号或人物姓名。
+    validations:
+      required: true
+  - type: input
+    id: record_name
+    attributes:
+      label: 条目名称
+      description: 详情中的完整名称；同名不同任期仍以原始 ID 区分。
+    validations:
+      required: true
+  - type: input
+    id: reference_year
+    attributes:
+      label: 当前参考线年份
+      description: 仅说明反馈时的阅读位置；公元前年份和公元年份分别标明，没有公元 0 年。
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: 问题与建议
+      description: 请说明哪处记载、纪年或展示需要更正，以及建议内容；如存在不同口径请分别列明。
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 可核查依据
+      description: 请提供原典篇目、版本与页码，或可访问的来源链接；尚无依据时请明确说明待核查，不要臆造日期。
+    validations:
+      required: true

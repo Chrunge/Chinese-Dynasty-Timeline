@@ -1,0 +1,36 @@
+/* P1 detail-only presentation. Keep the native dialog and its scroll owner. */
+#detail .detailSectionNav { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+#detail .detailSectionNav input[type="button"] {
+ min-height: 44px; min-width: 44px; max-width: 100%; padding: 8px 12px;
+ border: 1px solid var(--line, #c9d4d3); border-radius: 6px;
+ background: #fff; color: var(--ink, #19343d); font: inherit; cursor: pointer;
+}
+#detail .detailSectionNav input:focus-visible,
+#detail .sourceLinks a:focus-visible,
+#detail #detail-dating:focus-visible,
+#detail #detail-sources:focus-visible,
+#detail #undated-lineage:focus-visible { outline: 3px solid var(--gold, #b68c47); outline-offset: 3px; }
+#detail #detail-dating, #detail #detail-sources, #detail #undated-lineage { scroll-margin-top: 100px; }
+#detail .chronologyComparison {
+ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 14px 0;
+}
+#detail .chronologyComparison article { min-width: 0; padding: 14px; border: 1px solid var(--line, #c9d4d3); border-radius: 8px; overflow-wrap: anywhere; }
+#detail .chronologyComparison h5 { margin: 0 0 8px; font-size: 15px; }
+#detail .chronologyAdopted { grid-column: 1 / -1; border-inline-start: 4px solid var(--gold, #b68c47) !important; background: #fffaf0; }
+#detail .chronologyDate { display: block; font-size: 17px; line-height: 1.5; }
+#detail .chronologyComparison p { margin: 8px 0; }
+#detail .chronologyCoverage { border-inline-start: 3px solid var(--gold, #b68c47); padding-inline-start: 12px; }
+#detail .dateOpinions summary { min-height: 44px; display: list-item; padding-block: 10px; cursor: pointer; }
+#detail .sourceLinks { flex-wrap: wrap; min-width: 0; }
+#detail .sourceLinks a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
+#detail .undatedLineage { padding-inline-start: 26px; }
+#detail .undatedLineage > li { margin-block: 8px; padding-inline-start: 4px; }
+#detail .undatedLineage .listitem { width: 100%; text-align: start; white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+ #detail .chronologyComparison { grid-template-columns: minmax(0, 1fr); }
+ #detail #detail-dating, #detail #detail-sources, #detail #undated-lineage { scroll-margin-top: 12px; }
+ #detail .detailSectionNav input[type="button"] { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+ #detail #detail-dating, #detail #detail-sources, #detail #undated-lineage { scroll-behavior: auto; }
+}

@@ -1,5 +1,7 @@
 'use strict';
-const D=window.ZHOU_DATA,historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage,D.datasetId&&D.datasetId!=='zhou'?D.datasetId:'');
+const D=window.ZHOU_DATA;
+Zhou.Biography?.enrichDataset?.(D);
+const historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage,D.datasetId&&D.datasetId!=='zhou'?D.datasetId:'');
 const combinationModel=Zhou.createCombinationModel(D);
 function normalizeCombo(value){return combinationModel.normalize(value);}
 const $=s=>document.querySelector(s),byId=historyService.state;
@@ -10,7 +12,7 @@ const isZhouTopic=D.timeline?.topic==='zhou';
 const timelinePeriods=(D.periods||[]).filter(p=>p.display!==false&&Zhou.Time.isYear(p.start)&&Zhou.Time.isYear(p.end));
 const links=arr=>'<div class="sourceLinks">'+(arr||[]).filter(s=>s?.url).map(s=>'<a href="'+escapeHTML(s.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(s.title)+' ↗</a>').join('')+'</div>';
 const appState=Zhou.createApplicationState(D),navigation=Zhou.createNavigation();
-let viewAdapter;
+let viewAdapter,detailSheet;
 const pageEffects={renderPanels(){},persist(){},share(){},rememberDetail(){},recordVisit(){},updateStudy(){}};
 function notifyViewChanged(){pageEffects.persist();pageEffects.share();}
 function syncViewControls(){viewAdapter.syncControls();}

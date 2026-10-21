@@ -1,2 +1,5 @@
 # Local validation logs and temporary browser profiles
 .validation/
+node_modules/
+Microsoft/
+scratch/

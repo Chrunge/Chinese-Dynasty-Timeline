@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import vm from 'node:vm';
 import {compileAtlas, validateAtlas} from '../lib/atlas.mjs';
 import {toAxis, fromAxis} from '../lib/time.mjs';
@@ -141,3 +142,131 @@ const invalid = [
   ['schema2拒绝时间线默认值越界',a=>a.timeline.cursor={era:'CE',year:500},/默认值越界/]
 ];
 for(const [name,mutate,message] of invalid) test(name,()=>{const a=qinHan();mutate(a);assert.throws(()=>validateAtlas(a),message);});
+
+// Stage-four optional endYear: fixed pre-change baselines cover every compiled
+// property, not just event shape. Endpoints must never leak into point events.
+test('旧点事件的完整编译JSON逐字节保持兼容且不添加区间字段',()=>{
+  const hashes = {
+    'atlas.json':'6f26c95db782587ffe8784fe6ef370a49655d3995bc335f9f2b6316e5ad5795e',
+    'examples/qin-han.json':'c248784599a195e65d1e90406f4d4cfdf5f1f6189a8dd8017c0fd67b837f2334',
+    'examples/three-kingdoms.json':'4e41f8084c06b68818b2c3256064bbc5b7daf0c4771389caada1fecfcf5694f0'
+  };
+  for(const [name,hash] of Object.entries(hashes)){
+    const a=freeze(load(name)),before=JSON.stringify(a),compiled=compileAtlas(a);
+    assert.equal(createHash('sha256').update(JSON.stringify(compiled)).digest('hex'),hash,name);
+    assert.equal(JSON.stringify(a),before);
+    assert(compiled.events.every(e=>!['start','end','endYear'].some(key=>Object.hasOwn(e,key))));
+  }
+});
+
+test('schema1区间事件沿用正整数BCE，直接日期与yearRef允许等年或后续终点',()=>{
+  const a=load('atlas.json'),pointBaseline=compileAtlas(a);
+  const direct=a.events.find(e=>Object.hasOwn(e,'year'));
+  const referenced=a.events.find(e=>e.yearRef);
+  const start=a.rulers.find(r=>r.id===referenced.yearRef.rulerId).chronology[referenced.yearRef.field];
+  direct.endYear=direct.year-1;referenced.endYear=start;
+  const before=JSON.stringify(a),compiled=compileAtlas(freeze(a));
+  assert.equal(JSON.stringify(a),before);
+  assert.equal(compiled.events.find(e=>e.id===direct.id).endYear,direct.year-1);
+  assert.equal(compiled.events.find(e=>e.id===referenced.id).year,start);
+  assert.equal(compiled.events.find(e=>e.id===referenced.id).endYear,start);
+  const withoutEndpoints=compiled.events.map(({endYear,...event})=>event);
+  assert.deepEqual(withoutEndpoints,pointBaseline.events);
+  assert(compiled.events.every(e=>!Object.hasOwn(e,'start')&&!Object.hasOwn(e,'end')));
+});
+
+test('schema2区间事件转换BCE/CE与零坐标，yearRef和活动仍只继承解析起点',()=>{
+  const a=qinHan(),direct=a.events[0],referenced=a.events.find(e=>e.yearRef);
+  direct.endYear={era:'CE',year:2};referenced.endYear={era:'CE',year:1};
+  const before=JSON.stringify(a),compiled=compileAtlas(freeze(a));
+  assert.equal(JSON.stringify(a),before);
+  const interval=compiled.events.find(e=>e.id===direct.id),ref=compiled.events.find(e=>e.id===referenced.id);
+  assert.equal(interval.year,221);assert.equal(interval.endYear,-1);
+  assert.equal(ref.year,1);assert.equal(ref.endYear,0);
+  assert(!Object.hasOwn(ref,'start')&&!Object.hasOwn(ref,'end'));
+  const journey=compiled.people.flatMap(p=>p.journey||[]).find(j=>j.eventId===ref.id&&j.yearFromEvent);
+  assert(journey);assert.equal(journey.year,1);
+  assert(!Object.hasOwn(journey,'endYear')&&!Object.hasOwn(journey,'start')&&!Object.hasOwn(journey,'end'));
+});
+
+test('schema2支持CE起点和同年显式区间，判定使用解析后的yearRef而非未定义year',()=>{
+  const a=qinHan(),referenced=a.events.find(e=>e.yearRef);
+  const tenure=a.tenures.find(t=>t.id===referenced.yearRef.tenureId);
+  tenure.chronology[referenced.yearRef.field]={era:'CE',year:1};
+  referenced.endYear={era:'CE',year:1};
+  const same=compileAtlas(freeze(a)).events.find(e=>e.id===referenced.id);
+  assert.equal(same.year,0);assert.equal(same.endYear,0);
+  const reversed=qinHan(),event=reversed.events.find(e=>e.yearRef);
+  reversed.tenures.find(t=>t.id===event.yearRef.tenureId).chronology[event.yearRef.field]={era:'CE',year:1};
+  event.endYear={era:'BCE',year:1};
+  assert.throws(()=>validateAtlas(freeze(reversed)),/事件区间倒置/);
+});
+
+for(const value of [null,undefined,0,-1,1.5,'1',false,{era:'BCE',year:1},Number.MAX_SAFE_INTEGER+1]){
+  test('schema1拒绝非法显式endYear：'+String(value),()=>{
+    const a=load('atlas.json');a.events[0].endYear=value;
+    assert.throws(()=>validateAtlas(freeze(a)),/事件终点年份无效/);
+  });
+}
+for(const value of [null,undefined,0,1,-1,'1',false,{era:'CE',year:0},{era:'CE',year:1.5},{era:'AD',year:1},{era:'CE',year:1,extra:true}]){
+  test('schema2拒绝非法显式endYear：'+JSON.stringify(value),()=>{
+    const a=qinHan();a.events[0].endYear=value;
+    assert.throws(()=>validateAtlas(freeze(a)),/年份/);
+  });
+}
+for(const useReference of [false,true]) test('schema1拒绝终点早于'+(useReference?'yearRef解析起点':'year'),()=>{
+  const a=load('atlas.json'),event=a.events.find(e=>useReference?e.yearRef:Object.hasOwn(e,'year'));
+  const start=useReference?a.rulers.find(r=>r.id===event.yearRef.rulerId).chronology[event.yearRef.field]:event.year;
+  event.endYear=start+1;
+  assert.throws(()=>validateAtlas(freeze(a)),/事件区间倒置/);
+});
+test('schema2拒绝直接区间倒置且仍拒绝year/yearRef并存',()=>{
+  const a=qinHan();a.events[0].endYear={era:'BCE',year:222};
+  assert.throws(()=>validateAtlas(freeze(a)),/事件区间倒置/);
+  const both=qinHan();both.events[1].year={era:'BCE',year:1};both.events[1].endYear={era:'CE',year:1};
+  assert.throws(()=>validateAtlas(freeze(both)),/year 或 yearRef/);
+});
+test('schema2扫描endYear且拒绝临时验证坐标offset导致安全整数溢出',()=>{
+  const a=qinHan();a.events[0].endYear={era:'CE',year:Number.MAX_SAFE_INTEGER};
+  assert.throws(()=>validateAtlas(freeze(a)),/安全整数/);
+});
+
+test('合成短祚：三个同年零坐标任期保留ID/原序，跨政权与跨期的同一人物不合并职务',()=>{
+  // Structural fixture only: invented names/roles are not historical records.
+  const ce=year=>({era:'CE',year}),bce=year=>({era:'BCE',year});
+  const dating=()=>({level:'certain',reviewStatus:'partial',reason:'仅用于领域结构测试的同年占位。',alternatives:[]});
+  const sourceIds=['test-source'];
+  const a={schemaVersion:2,
+    metadata:{updated:'2026-10-21',version:'test',title:'合成短祚与跨期人物',sourceIds,scopeNote:'非史料，仅测试显式实体关系。'},
+    timeline:{start:bce(2),end:ce(3),defaultEnd:ce(3),cursor:ce(1)},
+    sources:[{id:'test-source',title:'合成结构测试，非史料',url:'https://example.org/synthetic-domain-fixture',reviewStatus:'pending'}],
+    polities:[
+      {id:'test-polity-a',name:'测试甲政权',kind:'kingdom',start:bce(2),end:ce(2),dating:dating(),sourceIds},
+      {id:'test-polity-b',name:'测试乙政权',kind:'empire',start:ce(1),end:ce(3),dating:dating(),sourceIds}
+    ],
+    periods:[
+      {id:'test-period-before',name:'测试前期',start:bce(2),end:ce(1),polityIds:['test-polity-a'],structure:'overview',dating:dating(),sourceIds},
+      {id:'test-period-after',name:'测试后期',start:ce(1),end:ce(3),polityIds:['test-polity-a','test-polity-b'],structure:'coexistence',dating:dating(),sourceIds}
+    ],
+    people:[{id:'test-cross-period-person',name:'测试人物',summary:'同一人物的三个独立职务；不按姓名合并任期。',sourceIds}],
+    tenures:[['test-short-third','test-polity-a','王'],['test-short-first','test-polity-b','摄政'],['test-short-second','test-polity-a','皇帝']].map(([id,polityId,role])=>({
+      id,polityId,personId:'test-cross-period-person',name:'测试人物',role,start:ce(1),end:ce(1),
+      chronology:{accession:ce(1),regnalStart:ce(1),abdication:null,death:null},dating:dating(),sourceIds
+    })),
+    events:[],activities:[],relations:{eventPolities:[],eventPeople:[],tenurePeople:[],personPolities:[
+      {personId:'test-cross-period-person',polityId:'test-polity-a',kind:'service',description:'明确的甲政权关联。',sourceIds},
+      {personId:'test-cross-period-person',polityId:'test-polity-b',kind:'service',description:'明确的乙政权关联。',sourceIds}
+    ]}
+  };
+  const before=JSON.stringify(a);assert.doesNotThrow(()=>validateAtlas(freeze(a)));
+  const d=compileAtlas(a);assert.equal(JSON.stringify(a),before);
+  assert.deepEqual(d.tenures.map(t=>t.id),a.tenures.map(t=>t.id));
+  assert.deepEqual(d.tenures.map(t=>[t.start,t.end,t.chronology.regnalStart]),[[0,0,0],[0,0,0],[0,0,0]]);
+  assert.deepEqual(d.tenures.map(t=>[t.personId,t.polityId,t.role]),a.tenures.map(t=>[t.personId,t.polityId,t.role]));
+  assert.deepEqual(d.states.map(s=>s.rulers.map(r=>r.id)),[['test-short-third','test-short-second'],['test-short-first']]);
+  assert.equal(d.people.length,1);assert.equal(d.tenures.length,3);assert.equal(d.polities.length,2);assert.equal(d.periods.length,2);
+  assert.deepEqual(d.people[0].states,['test-polity-a','test-polity-b']);
+  assert.deepEqual(d.periods.map(p=>[p.id,p.polityIds]),a.periods.map(p=>[p.id,p.polityIds]));
+  assert.deepEqual(d.relations.personPolities.map(r=>[r.personId,r.polityId]),a.relations.personPolities.map(r=>[r.personId,r.polityId]));
+  assert(!d.people[0].journey); // Office links do not invent continuous activities.
+});

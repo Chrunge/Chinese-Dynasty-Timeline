@@ -29,6 +29,13 @@
   function overlaps(start, end, from, to) {
     return isYear(start) && isYear(end) && start >= end && typeof from === 'number' && Number.isFinite(from) && typeof to === 'number' && Number.isFinite(to) && from >= to && start >= to && end <= from;
   }
+  // An explicitly supplied unknown/invalid end is not a point event. Keep the
+  // original dates untouched; callers skip null ranges rather than invent dates.
+  function eventRange(event) {
+    if (!event || typeof event !== 'object') return null;
+    const start = event.year, end = Object.prototype.hasOwnProperty.call(event, 'endYear') ? event.endYear : start;
+    return isYear(start) && isYear(end) && start >= end ? {start, end} : null;
+  }
   function bounds(data = {}) {
     const dates = (data.states || []).flatMap(state => [state.start, state.end]).map(value => typeof value === 'object' ? encode(value) : value).filter(isYear);
     const timeline = data.timeline || {};
@@ -51,5 +58,5 @@
     const coord = Number(value);
     return isYear(coord) && (timeEncoding === encoding || coord > 0) ? coord : null;
   }
-  Zhou.Time = Object.freeze({encoding, encode, decode, format, range, isYear, overlaps, bounds, recordYear});
+  Zhou.Time = Object.freeze({encoding, encode, decode, format, range, isYear, overlaps, eventRange, bounds, recordYear});
 })(globalThis.Zhou ||= {});

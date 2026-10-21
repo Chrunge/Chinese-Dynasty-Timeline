@@ -1,0 +1,5 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync('src/ui/accessibility.js','utf8'),ctx);const A=ctx.Zhou.Accessibility;
+test('AA contrast uses WCAG relative luminance and composited alpha',()=>{assert.equal(A.contrast([0,0,0],[255,255,255]),21);assert.equal(A.contrast([50,50,50],[50,50,50]),1);assert.ok(A.contrast([78,98,104],[244,246,245])>=4.5);assert.deepEqual(Array.from(A.composite([0,0,0,.5],[255,255,255])),[127.5,127.5,127.5]);});
+test('computed color parser supports opaque and alpha channels',()=>{assert.deepEqual(Array.from(A.parseColor('rgb(25, 52, 61)')),[25,52,61,1]);assert.deepEqual(Array.from(A.parseColor('rgba(255, 255, 255, 0.5)')),[255,255,255,.5]);assert.equal(A.parseColor('not-a-color'),null);});
+test('non-browser boundaries do not require accessibility DOM APIs',()=>{const api=ctx.Zhou.createAccessibility({document:{},window:{}});assert.doesNotThrow(()=>{api.cursorChanged(0);api.refresh();api.destroy();});});

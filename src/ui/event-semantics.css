@@ -1,0 +1,21 @@
+/* Event semantics are additive. Preserve 18px markers, 22px lane pitch and the
+   gesture module's separate 44px hit testing; never enlarge dense rectangles. */
+.event.semanticEvent{display:inline-flex;align-items:center;gap:3px;min-width:0;min-height:18px;height:18px;line-height:16px;padding:0 3px;overflow:hidden;white-space:nowrap;box-sizing:border-box}
+.event.semanticEvent .eventKindIcons{display:inline-flex;align-items:center;flex:0 0 auto;gap:1px;padding:0;overflow:visible}
+.eventKindIcon{display:inline-block;width:12px;height:12px;min-width:12px;flex:0 0 12px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.event.semanticEvent .eventShortTitle{display:block;min-width:0;flex:1 1 auto;padding:0;overflow:hidden;text-overflow:ellipsis}
+.event.semanticEvent .eventCertainty{flex:0 0 12px;padding:0;font-size:11px;text-align:center}
+.event.semanticEvent.compactEvent .eventShortTitle{display:none}
+.event.semanticEvent.keyEvent .eventShortTitle{font-weight:700}
+.event.semanticEvent .eventCount{flex:0 0 auto;padding:0 1px;font-variant-numeric:tabular-nums}
+.event.semanticEvent:focus-visible{z-index:15;outline:2px solid var(--accessible-ink,#243d41);outline-offset:2px}
+.event.undatedCapsule{height:18px;min-height:18px;max-width:128px;padding:0 6px;border:1px dashed currentColor;border-radius:10px;background:var(--paper,#fffdf7);color:var(--accessible-ink,#243d41);font-size:11px;line-height:16px;white-space:nowrap}
+/* Overlays do not receive clicks or affect scroll extents. The endpoint dots
+   identify related visible rows; the dashed stem may pass unrelated rows. */
+.eventRelations{position:absolute;top:-64px;bottom:0;pointer-events:none;z-index:12;overflow:clip}
+.eventRelationStem{position:absolute;width:0;border-left:2px dashed var(--accessible-ink,#243d41);opacity:.8}
+.eventRelationDot{position:absolute;width:7px;height:7px;border:2px solid var(--accessible-ink,#243d41);border-radius:50%;background:var(--paper,#fffdf7);transform:translate(-2.5px,-3.5px)}
+.eventRelationHint{position:absolute;max-width:260px;padding:2px 6px;border:1px solid var(--line,#cbd7d5);border-radius:4px;background:var(--paper,#fffdf7);color:var(--accessible-ink,#243d41);font-size:11px;line-height:16px;white-space:normal;box-shadow:0 1px 4px #0002}
+/* Inference softness stays strictly within the original tenure rectangle.
+   Certainty border patterns and contextual association markers remain intact. */
+.ruler.inferredBar::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#ffffff66 0,transparent 2px,transparent calc(100% - 2px),#ffffff66 100%)}

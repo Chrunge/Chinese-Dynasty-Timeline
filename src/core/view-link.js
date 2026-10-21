@@ -16,7 +16,7 @@
       if(params.has('dataset') && params.get('dataset') !== (data.datasetId||'zhou'))return null;
       const version = params.has('v') ? params.get('v') : '1', encoding = params.get('time');
       if (!['1','2'].includes(version) || encoding !== null && encoding !== time.encoding || version === '2' && encoding !== time.encoding) return null;
-      const view = {}, result = {view};
+      const view = {}, result = {view, version};
       const number = (name, min, max) => {
         const raw = params.get(name);
         if (raw === null || !raw.trim()) return undefined;

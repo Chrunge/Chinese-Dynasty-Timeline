@@ -18,7 +18,12 @@ function applySharedView(shared){
   view.left=Math.max(0,(timelineBounds.start-range.from)*view.px);
  }else if(shared.view.cursor!==undefined)view.left=Math.max(0,(timelineBounds.start-view.cursor)*view.px-width/2);
  restoreDetailView(view);
- if(shared.item){openSharedItem(shared.item);restoreDetailView(view);}
+ if(shared.item){
+  if(shared.version==='1')appState.session.legacyShareV1=true;
+  openSharedItem(shared.item);
+  appState.session.legacyShareV1=false;
+  restoreDetailView(view);
+ }
 }
 if(window.location&&window.history){
  viewLinkController=Zhou.createViewLinkController({codec:Zhou.createViewLinkCodec(D,searchService),location:window.location,history:window.history,read:readSharedView,apply:applySharedView,setTimeout:setTimeout.bind(globalThis),clearTimeout:clearTimeout.bind(globalThis)});
@@ -28,9 +33,11 @@ if(window.location&&window.history){
  window.addEventListener('popstate',()=>viewLinkController.restore());
  window.addEventListener('pagehide',()=>viewLinkController.flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)viewLinkController.flush();});
+ const shareText=$('#shareText'),copyShareText=$('#copyShareText');
  const showShare=()=>{
-  $('#shareLink').value=viewLinkController.flush();
-  $('#shareNotice').textContent=window.location.protocol==='file:'?'此链接用于当前文件；在线分享请使用网站地址。':'复制链接，可分享当前对照与详情。';
+  const link=viewLinkController.flush();$('#shareLink').value=link;
+  if(shareText&&typeof Zhou.describeSharedView==='function')shareText.value=Zhou.describeSharedView(D,readSharedView())+'\n'+link;
+  $('#shareNotice').textContent=window.location.protocol==='file:'?'此链接用于当前文件；在线分享请使用网站地址。':'可复制纯链接，或复制带专题、政权组合与年份的摘要及链接。';
   $('#shareDialog').showModal();$('#shareLink').focus();$('#shareLink').select();
  };
  $('#shareView').onclick=showShare;
@@ -39,5 +46,9 @@ if(window.location&&window.history){
  $('#copyShare').onclick=async()=>{
   try{if(!navigator.clipboard?.writeText)throw new Error('clipboard');await navigator.clipboard.writeText($('#shareLink').value);$('#shareNotice').textContent='链接已复制。';}
   catch{$('#shareLink').focus();$('#shareLink').select();$('#shareNotice').textContent='请复制上方已选中的链接。';}
+ };
+ if(copyShareText&&shareText)copyShareText.onclick=async()=>{
+  try{if(!navigator.clipboard?.writeText)throw new Error('clipboard');await navigator.clipboard.writeText(shareText.value);$('#shareNotice').textContent='摘要及链接已复制。';}
+  catch{shareText.focus();shareText.select();$('#shareNotice').textContent='浏览器未允许复制，请手动复制上方已选中的完整摘要及链接。';}
  };
 }

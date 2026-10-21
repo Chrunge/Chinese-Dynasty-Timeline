@@ -1,0 +1,20 @@
+/* P1 AA foregrounds and keyboard cues; polity/event hues and date geometry stay authored. */
+:root{--muted:#4e6268;--gold:#806025}
+#detail .relation,.eyebrow{color:#806025}.seal{color:#e5c68f}.onboarding .eyebrow{color:#71521d}
+a{color:#245777}.sourceLinks a{color:#245777!important;text-decoration:underline;text-underline-offset:3px}
+.era,.ruler,.ruler .rulerName,.ruler .rulerYears,.politySegment,.comparecard h4,.stateName,.orderRow strong,.event,.event span{color:var(--accessible-ink,#19343d)!important}
+.ruler{--accessible-ink:#fff;opacity:1!important}
+.eventDim,.eventDim .ruler,.eventDim .event{opacity:1!important}
+.ruler .rulerName,.ruler .rulerYears{background-color:inherit}.politySegment{--accessible-ink:#fff}
+/* Search uses the existing match outline, not low-opacity unreadable text. */
+.keyboardHint{font-size:12px;color:var(--muted)}
+:is(button,a,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid #174f9b!important;outline-offset:3px!important;box-shadow:0 0 0 2px #fff!important}
+.ruler:focus-visible,.event:focus-visible,.politySegment:focus-visible{z-index:15;outline-offset:1px!important}
+.srOnly{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+#skipToTimeline{position:fixed;top:8px;left:8px;z-index:200;background:#fff;padding:12px;transform:translateY(-180%)}#skipToTimeline:focus{transform:none}
+#advancedSettings:focus-visible{outline-offset:-4px!important}
+#advancedClose{margin:8px 16px}
+.cursorline{border-color:#806025}.cursorHandle::after{color:#19343d;border-color:#806025}
+#eventKindLegend{display:inline-flex;align-items:center;flex-wrap:wrap;gap:12px}.eventLegendItem{display:inline-flex;align-items:center;gap:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media(forced-colors:active){.ruler,.event,.politySegment{forced-color-adjust:auto;border:1px solid ButtonText}.eventKindIcon{fill:Canvas;stroke:CanvasText}.cursorline{border-color:Highlight}}

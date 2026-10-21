@@ -16,6 +16,10 @@
 
 检查作业只有读取仓库内容的权限；部署作业申请 `pages: write` 和 `id-token: write`，使用 `github-pages` 环境。工作流按引用分组控制并发，不取消正在执行的部署。
 
+### 可选社交PNG产物
+
+手动运行工作流时可开启 `social_png`，默认关闭。开启后才安装开发工具、Chromium及中文字体，在暂存目录渲染PNG，再由构建入口统一更新十一页元信息和发布清单；常规push／PR仍使用零依赖SVG成果。工作流先检查已提交的默认生成物，不用可选PNG掩盖过期源码。该配置尚未在本轮触发远端部署；本地隔离验证与完整命令见[阶段三说明](STAGE3-PUBLICATION.md#可选png社交图)。
+
 ## 仓库设置
 
 在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。账户及组织策略须允许Actions和Pages，部署须满足 `github-pages` 环境的审批及分支限制。

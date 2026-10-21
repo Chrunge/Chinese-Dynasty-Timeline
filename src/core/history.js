@@ -26,7 +26,10 @@
     };
     function eventsInRange({from = timeline.start, to = timeline.end, states: ids = [...states.keys()], category = 'all'} = {}) {
       const selected = new Set(ids);
-      return data.events.filter(event => overlaps(event.year, event.year, from, to) && event.states.some(id => selected.has(id)) && (category === 'all' || event.kind === category)).sort((a, b) => b.year - a.year);
+      return data.events.filter(event => {
+        const span = Zhou.Time.eventRange(event);
+        return span && overlaps(span.start, span.end, from, to) && event.states.some(id => selected.has(id)) && (category === 'all' || event.kind === category);
+      }).sort((a, b) => b.year - a.year);
     }
     function rulersInRange(value, from = timeline.start, to = timeline.end) {
       return (state(value)?.rulers || []).filter(ruler => overlaps(ruler.start, ruler.end, from, to));

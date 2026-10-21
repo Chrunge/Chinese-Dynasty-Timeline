@@ -1,0 +1,91 @@
+/* Appended after the shared stylesheet. Native dialog modality and its original
+   scroll container/header/IDs remain intact; desktop layout is not replaced. */
+#detail > .detailSheetControls { display: none; }
+@media (max-width: 767px) {
+ #detail.hasDetailSheet {
+  position: fixed;
+  inset: auto 0 0;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: var(--detail-sheet-drag-height, var(--detail-sheet-height-fallback, 60vh));
+  max-height: 90vh;
+  padding: 0;
+  border: 1px solid var(--line, #dce4e3);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-padding-top: 132px;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 -8px 36px #19343d26;
+  transition: height 160ms ease-out;
+ }
+ @supports (height: 1dvh) {
+  #detail.hasDetailSheet {
+   height: var(--detail-sheet-drag-height, var(--detail-sheet-height, 60dvh));
+   max-height: 90dvh;
+  }
+ }
+ #detail.hasDetailSheet[open] { display: block; }
+ #detail.hasDetailSheet.isSheetDragging { transition: none; }
+ #detail.hasDetailSheet > .detailSheetControls {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 52px;
+  padding: 4px max(8px, env(safe-area-inset-right, 0px)) 4px max(8px, env(safe-area-inset-left, 0px));
+  background: #fff;
+  border-bottom: 1px solid var(--line, #dce4e3);
+ }
+ #detail.hasDetailSheet > .detailSheetControls[hidden] { display: none; }
+ #detail .detailSheetHandle {
+  display: grid;
+  place-items: center;
+  flex: 1 1 auto;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+ }
+ #detail .detailSheetHandle > span {
+  width: 36px;
+  height: 5px;
+  border-radius: 8px;
+  background: var(--muted, #65777c);
+  pointer-events: none;
+ }
+ #detail .detailSheetHandle:focus-visible { outline: 3px solid #b68c47; outline-offset: -3px; }
+ #detail .detailSheetSnap {
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 8px;
+  font-size: 13px;
+ }
+ #detail .detailSheetSnap[aria-pressed="true"] { background: var(--ink, #19343d); color: #fff; }
+ #detail.hasDetailSheet > .dialogHead {
+  top: 52px;
+  padding-left: max(12px, env(safe-area-inset-left, 0px));
+  padding-right: max(12px, env(safe-area-inset-right, 0px));
+ }
+ #detail.hasDetailSheet > #detailBody {
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  overflow-wrap: anywhere;
+ }
+ #detail.hasDetailSheet > #detailBody img { max-width: 100%; height: auto; }
+ #detail.hasDetailSheet > #detailBody pre { overflow-x: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+ #detail.hasDetailSheet { transition: none; scroll-behavior: auto; }
+}

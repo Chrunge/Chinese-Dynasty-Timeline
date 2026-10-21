@@ -1,7 +1,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {createRequire}=require('node:module');
 const root=path.resolve(__dirname,'..'),helper=path.join(__dirname,'helpers/browser.cjs');
-const sourceFiles=['core/time.js','core/presentation.js','core/history.js','core/search.js','core/state.js','core/combinations.js','core/navigation.js','core/reading.js','core/view-link.js','adapters/storage.js','adapters/timeline-dom.js','ui/view.js','app.js','ui/search-details.js','ui/timeline.js','ui/navigation-details.js','ui/controls.js','startup.js'];
+const sourceFiles=['core/time.js','core/correction.js','core/presentation.js','core/history.js','core/search.js','core/state.js','core/combinations.js','core/navigation.js','core/reading.js','core/view-link.js','adapters/storage.js','adapters/timeline-dom.js','ui/experience.js','ui/accessibility.js','core/time-slice.js','ui/time-slice.js','ui/gestures.js','ui/detail-sheet.js','ui/view.js','app.js','ui/search-details.js','ui/timeline.js','ui/navigation-details.js','ui/controls.js','startup.js'];
 const source=sourceFiles.map(file=>fs.readFileSync(path.join(root,'src',file),'utf8')).join('\n');
 const plain=value=>JSON.parse(JSON.stringify(value));
 async function dataset(name='qin-han'){

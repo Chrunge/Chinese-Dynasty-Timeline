@@ -21,10 +21,19 @@ function buildExportPlan(model,options={},measureText){
  const citations=refs=>refs.map(n=>'['+n+']').join('');
  const opinionItems=values=>values.map(({a,refs})=>({text:'异说：'+a.label+(a.year!=null?' '+fmt(a.year):'')+(a.explanation?' · '+a.explanation:'')+(refs.length?' · 来源'+citations(refs):'')}));
  const rulers=states.flatMap(s=>s.rulers.map(r=>({state:s,r,ref:addSource({title:(r.source||'').includes('wikisource')?'君主纪年表 · 原典':'君主纪年表 · 检索汇编，待逐条校勘',url:r.source}),refs:sourceRefs(r.sources),datingRefs:sourceRefs(r.dating?.sources),chronologyRefs:sourceRefs(r.chronology?.sources),alternatives:alternatives(r.dating)})));
- const events=model.events.map((e,i)=>({e,number:i+1,refs:sourceRefs(e.sources),alternatives:alternatives(e.dating)}));
+ const events=model.events.flatMap((e,i)=>{
+  const span=Zhou.Time.eventRange(e);
+  return span?[{e,number:i+1,refs:sourceRefs(e.sources),alternatives:alternatives(e.dating),...(span.start!==span.end?{interval:span}:{})}]:[];
+ });
+ const hasIntervals=events.some(v=>v.interval);
  for(const s of states){for(const ref of s.dating?.sources||[])addSource(ref);}
  const pages=[];for(let first=from;first>=to;){const last=Math.max(to,first-span+1);let group=[],weight=0;
-  for(const s of states){const packed=exportRulerLanes(s,first,last),height=80+packed.lanes*22;if(group.length&&weight+height>520){pages.push({type:'chart',from:first,to:last,rows:group});group=[];weight=0;}group.push({s,...packed,height});weight+=height;}
+  for(const s of states){
+   const packed=exportRulerLanes(s,first,last),height=80+packed.lanes*22;
+   if(group.length&&weight+height>520){pages.push({type:'chart',from:first,to:last,rows:group});group=[];weight=0;}
+   const intervalEvents=events.filter(v=>v.interval&&v.e.states.includes(s.id)&&Zhou.Time.overlaps(v.interval.start,v.interval.end,first,last)).map(v=>({event:v,from:Math.min(first,v.interval.start),to:Math.max(last,v.interval.end),startClipped:v.interval.start>first,endClipped:v.interval.end<last}));
+   group.push({s,...packed,height,...(intervalEvents.length?{intervalEvents}:{})});weight+=height;
+  }
   if(group.length)pages.push({type:'chart',from:first,to:last,rows:group});first=last-1;
  }
  // A complete text index accompanies small bars and dense event markers.
@@ -42,13 +51,14 @@ function buildExportPlan(model,options={},measureText){
   }
  }
  items.push({text:'事件索引 · 同一编号在相关国家行中对应同一事件',kind:'heading'});
- for(const {e,number,refs,alternatives:opinions} of events){items.push({text:'E'+number+' · '+range(e.year,e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>model.stateNames?.[id]||states.find(s=>s.id===id)?.name||id).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+citations(refs)});items.push({text:e.description});items.push(...opinionItems(opinions));}
+ for(const {e,number,refs,alternatives:opinions,interval} of events){items.push({text:'E'+number+' · '+range(e.year,interval?interval.end:e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>model.stateNames?.[id]||states.find(s=>s.id===id)?.name||id).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+citations(refs)});items.push({text:e.description});items.push(...opinionItems(opinions));}
  if(!events.length)items.push({text:'当前范围与类别筛选下没有已收录事件。'});
  items.push({text:'图例与采用口径',kind:'heading'},{text:model.legend||'彩色条：采用年表的君主在位区间；细线：政权存续；E编号菱形：事件；红色端点：政权终止或资料标记的阶段边界；金色竖线：参考年份。'}, {text:'定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。'}, {text:model.scopeNote||'国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。'});
+ if(hasIntervals)items.push({text:'区间事件：E编号胶囊表示完整起讫；圆端为已记录起讫，平切端及续接线表示超出本页，不是新起讫。完整日期只在事件索引列出一次。'});
  items.push({text:'核查来源 · 原典记载与纪年汇编分别标注',kind:'heading'});sources.forEach((s,i)=>{items.push({text:'['+(i+1)+'] '+s.title,kind:'source'});items.push({text:s.url,kind:'url'});});
  let lines=[],used=0;const flush=()=>{if(lines.length)pages.push({type:'index',lines});lines=[];used=0;};
  for(let itemIndex=0;itemIndex<items.length;itemIndex++){const item=items[itemIndex];if((item.kind==='heading'&&used+68>630)||(item.kind==='source'&&used+92>630))flush();const wrapped=wrapExportText(text=>measureText(text,item.kind==='url'?15:18,item.kind==='heading'),item.text,1110);for(let i=0;i<wrapped.length;i++){const height=item.kind==='heading'?34:item.kind==='url'?24:27;if(used+height>630)flush();lines.push({text:wrapped[i],kind:item.kind,height});used+=height;}if(used+7>630)flush();else{lines.push({text:'',height:7});used+=7;}}
- flush();return {pages,states,events,sources,from,to,title:model.title||'历史对照图',cursor:model.cursor,category:model.category,updated:model.updated,date:new Date().toLocaleDateString('zh-CN'),query:options.query||''};
+ flush();return {pages,states,events,sources,from,to,...(hasIntervals?{hasIntervals:true}:{}),title:model.title||'历史对照图',cursor:model.cursor,category:model.category,updated:model.updated,date:new Date().toLocaleDateString('zh-CN'),query:options.query||''};
 }
  Object.assign(Zhou,{buildExportPlan,exportRulerLanes,wrapExportText});
 })(globalThis);
@@ -61,6 +71,19 @@ function buildExportPlan(model,options={},measureText){
  const exportWidth=1200,exportHeight=850;
  const fmt=y=>Zhou.Time.format(y),range=(a,b,approx=false)=>Zhou.Time.range(a,b,approx);
 function exportFont(ctx,size=18,bold=false){ctx.font=(bold?'600 ':'')+size+'px "Noto Sans CJK SC", system-ui, "PingFang SC", "Microsoft YaHei", sans-serif';}
+// Rounded caps only denote recorded endpoints. Page cuts stay flat, with
+// continuation strokes wholly inside the clipped year cells (never new dates).
+function drawIntervalEvent(ctx,segment,pos,scale,yy){
+ const xx=pos(segment.from),ww=(segment.from-segment.to+1)*scale,end=xx+ww,r=Math.min(5,ww/2),top=yy-5,bottom=yy+5;
+ ctx.fillStyle='#b68c47';ctx.strokeStyle='#73571e';ctx.lineWidth=1;ctx.beginPath();
+ ctx.moveTo(xx+(segment.startClipped?0:r),top);ctx.lineTo(end-(segment.endClipped?0:r),top);
+ if(segment.endClipped)ctx.lineTo(end,bottom);else{ctx.quadraticCurveTo(end,top,end,yy);ctx.quadraticCurveTo(end,bottom,end-r,bottom);}
+ ctx.lineTo(xx+(segment.startClipped?0:r),bottom);
+ if(segment.startClipped)ctx.lineTo(xx,top);else{ctx.quadraticCurveTo(xx,bottom,xx,yy);ctx.quadraticCurveTo(xx,top,xx+r,top);}
+ ctx.closePath();ctx.fill();ctx.stroke();
+ const mark=Math.min(3,ww/4);for(const x of [segment.startClipped?xx:null,segment.endClipped?end-mark:null])if(x!==null){ctx.beginPath();ctx.moveTo(x,yy+3);ctx.lineTo(x+mark,yy-3);ctx.stroke();}
+ return xx;
+}
 function drawExportPage(ctx,page,plan,index){
  const W=exportWidth,H=exportHeight;ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);ctx.textBaseline='alphabetic';ctx.fillStyle='#19343d';exportFont(ctx,30,true);ctx.fillText((plan.title||'历史对照图')+' · 历史对比笔记',40,54);exportFont(ctx,17);ctx.fillStyle='#65777c';ctx.fillText(range(plan.from,plan.to)+' · '+plan.states.map(s=>s.name).join('、'),40,86);ctx.fillText('事件类别：'+(plan.category==='all'?'全部':plan.category)+' · 参考年份：'+fmt(plan.cursor)+(plan.query?' · 按搜索结果所显示国家导出':''),40,112);
  if(page.type==='index'){let y=151;for(const line of page.lines){exportFont(ctx,line.kind==='url'?15:18,line.kind==='heading');ctx.fillStyle=line.kind==='url'?'#315f79':line.kind==='heading'?'#19343d':'#42585e';ctx.fillText(line.text,44,y);y+=line.height;}}
@@ -72,12 +95,12 @@ function drawExportPage(ctx,page,plan,index){
    // Draw continuity, including recorded interruptions and restorations.
    ctx.strokeStyle=s.color;ctx.lineWidth=4;ctx.setLineDash(s.approxStart||s.approxEnd?[7,4]:[]);const a=Math.min(page.from,s.start),b=Math.max(page.to,s.end);if(a>=b){const gaps=s.interruptions.filter(g=>g.start>=b&&g.end<=a).sort((g,h)=>h.start-g.start);let current=a;for(const gap of gaps){ctx.beginPath();ctx.moveTo(pos(current),y+14);ctx.lineTo(pos(Math.min(a,gap.start)),y+14);ctx.stroke();current=Math.max(b,gap.end);}ctx.beginPath();ctx.moveTo(pos(current),y+14);ctx.lineTo(pos(b)+scale,y+14);ctx.stroke();}ctx.setLineDash([]);ctx.lineWidth=1;
    for(const r of row.rulers){const xx=pos(Math.min(page.from,r.start)),ww=(Math.min(page.from,r.start)-Math.max(page.to,r.end)+1)*scale,yy=y+28+r.exportLane*22;ctx.fillStyle=s.color;ctx.fillRect(xx,yy,Math.max(1,ww-1),19);const level=r.dating?.level||'inferred';if(level!=='certain'){ctx.strokeStyle='#19343d';ctx.setLineDash(level==='inferred'?[4,3]:[]);ctx.strokeRect(xx,yy,Math.max(1,ww-1),19);if(level==='disputed')ctx.strokeRect(xx+2,yy+2,Math.max(1,ww-5),15);ctx.setLineDash([]);}exportFont(ctx,14);ctx.fillStyle='#fff';const label=Zhou.Presentation.rulerLabel(r);if(ww>ctx.measureText(label).width+8)ctx.fillText(label,xx+4,yy+15);}
-   const events=plan.events.filter(v=>v.e.states.includes(s.id)&&v.e.year<=page.from&&v.e.year>=page.to);let markerEnd=-1;for(const v of events){const xx=pos(v.e.year),yy=y+height-29;ctx.fillStyle='#b68c47';ctx.beginPath();ctx.moveTo(xx,yy-6);ctx.lineTo(xx+6,yy);ctx.lineTo(xx,yy+6);ctx.lineTo(xx-6,yy);ctx.closePath();ctx.fill();exportFont(ctx,14);const text='E'+v.number;if(xx>=markerEnd){ctx.fillStyle='#73571e';const tx=Math.min(xx+8,right-ctx.measureText(text).width);ctx.fillText(text,tx,yy+23);markerEnd=tx+ctx.measureText(text).width+8;}}
+   const events=plan.events.filter(v=>v.e.states.includes(s.id)&&(v.interval?row.intervalEvents?.some(segment=>segment.event.number===v.number):v.e.year<=page.from&&v.e.year>=page.to));let markerEnd=-1;for(const v of events){const yy=y+height-29;let xx;if(v.interval){const segment=row.intervalEvents.find(segment=>segment.event.number===v.number);xx=drawIntervalEvent(ctx,segment,pos,scale,yy);}else{xx=pos(v.e.year);ctx.fillStyle='#b68c47';ctx.beginPath();ctx.moveTo(xx,yy-6);ctx.lineTo(xx+6,yy);ctx.lineTo(xx,yy+6);ctx.lineTo(xx-6,yy);ctx.closePath();ctx.fill();}exportFont(ctx,14);const text='E'+v.number;if(xx>=markerEnd){ctx.fillStyle='#73571e';const tx=Math.min(xx+8,right-ctx.measureText(text).width);ctx.fillText(text,tx,yy+23);markerEnd=tx+ctx.measureText(text).width+8;}}
    if(s.end<=page.from&&s.end>=page.to){const xx=pos(s.end);ctx.strokeStyle='#a64139';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(xx,y+7);ctx.lineTo(xx,y+height-8);ctx.stroke();ctx.lineWidth=1;}
    if(!row.rulers.length){exportFont(ctx,14);ctx.fillStyle='#65777c';ctx.fillText(a>=b?'君主纪年待考':'本时间段未存续',left+10,y+51);}y+=height;
   }
   if(plan.cursor<=page.from&&plan.cursor>=page.to){ctx.strokeStyle='#b68c47';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(pos(plan.cursor),204);ctx.lineTo(pos(plan.cursor),y);ctx.stroke();ctx.lineWidth=1;}
-  exportFont(ctx,15);ctx.fillStyle='#42585e';ctx.fillText('彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份',40,760);ctx.fillText('定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。',40,785);
+  exportFont(ctx,15);ctx.fillStyle='#42585e';ctx.fillText(plan.hasIntervals?'彩条＝君主　细线＝国家　菱形E＝单点　胶囊E＝区间（平切续接非起讫）　红线＝终止　金线＝参考年':'彩条＝君主　细线＝国家存续　菱形E编号＝同一事件　红线＝终止 / 称帝　金线＝参考年份',40,760);ctx.fillText('定：较确定　推：推定（虚线）　异：存在异说（双框）。完整姓名、在位年份、事件与来源见后附索引。',40,785);
  }
  ctx.strokeStyle='#dce4e3';ctx.beginPath();ctx.moveTo(40,809);ctx.lineTo(1160,809);ctx.stroke();exportFont(ctx,14);ctx.fillStyle='#65777c';ctx.fillText((plan.title||'历史对照图')+' · 精选资料 / 年级精度 · 资料更新 '+plan.updated+' · 导出 '+plan.date,40,835);ctx.textAlign='right';ctx.fillText('第 '+(index+1)+' / '+plan.pages.length+' 页',1160,835);ctx.textAlign='left';
 }
@@ -113,6 +136,20 @@ function buildExportPlan(options,ctx){
  const model=historyService.comparison(options);
  return globalThis.Zhou.buildExportPlan(model,options,(text,size,bold)=>{exportFont(ctx,size,bold);return ctx.measureText(text).width;});
 }
+// A comparison snapshot is a research output, not an Atlas authoring document.
+// Keep every v1 field intact and disclose filters separately from visual layout.
+function buildComparisonSnapshot(options={}){
+ const model=historyService.comparison(options);
+ if(!model.states.length)throw new Error('当前没有显示的国家，请先筛选国家或清除搜索。');
+ const exportContext={version:1,kind:'comparison-snapshot',reimportableAsAtlas:false,
+  timeEncoding:globalThis.Zhou.Time.encoding,
+  filters:{stateIds:model.states.map(state=>state.id),from:model.from,to:model.to,eventCategory:model.category},referenceYear:model.cursor,
+  search:{query:typeof options.query==='string'?options.query:'',scope:options.searchScope==='selected'?'selected':'all',descriptions:Boolean(options.searchDescriptions),effect:'state-selection-only',filtersRecords:false},
+  display:{mode:options.mode||'both',density:options.density||'auto',filtersRecords:false},
+  records:{pixelClipping:false,tenures:'whole-overlapping-records',events:'state-range-category-matches',people:'whole-associated-records',polities:'whole-selected-records',sources:'snapshot-and-record-source-fields',unknownDates:'not-inferred'},
+  note:'按政权、范围与事件类别查询，完整保留命中记录及其来源，不按像素裁剪；人物与原生政权的完整关联记录可能含范围外信息。此 JSON 是对照快照，不是可重新导入 Atlas 的史料文件。'};
+ return {...model,exportContext};
+}
 function exportRulerLanes(s,from,to){return globalThis.Zhou.exportRulerLanes(s,from,to);}
 function wrapExportText(ctx,text,width){return globalThis.Zhou.wrapExportText(value=>ctx.measureText(value).width,text,width);}
 function concatExportBytes(chunks){return globalThis.Zhou.concatExportBytes(chunks);}
@@ -127,11 +164,11 @@ function clearExportDownload(){if(exportObjectURL){URL.revokeObjectURL(exportObj
 async function createComparisonExport(){
  if(exportBusy)return;exportBusy=true;$('#createExport').disabled=true;document.querySelectorAll('#exportForm input,#exportForm select').forEach(e=>e.disabled=true);clearExportDownload();$('#exportStatus').textContent='正在准备导出…';
  try{
-  const options={from:globalThis.Zhou.Time.encode({era:$('#exportFromEra').value||'BCE',year:Number($('#exportFrom').value)}),to:globalThis.Zhou.Time.encode({era:$('#exportToEra').value||'BCE',year:Number($('#exportTo').value)}),span:Number($('#exportSpan').value),states:exportStateIds,cursor:appState.conditions.cursor,category:appState.conditions.category,query:appState.search.query};
+  const options={from:globalThis.Zhou.Time.encode({era:$('#exportFromEra').value||'BCE',year:Number($('#exportFrom').value)}),to:globalThis.Zhou.Time.encode({era:$('#exportToEra').value||'BCE',year:Number($('#exportTo').value)}),span:Number($('#exportSpan').value),states:exportStateIds,cursor:appState.conditions.cursor,category:appState.conditions.category,query:appState.search.query,searchScope:appState.search.searchScope,searchDescriptions:appState.search.searchDescriptions,mode:appState.layout.mode,density:appState.layout.density};
   if($('#exportFormat').value==='json'){
-   const model=historyService.comparison(options);if(!model.states.length)throw new Error('当前没有显示的国家，请先筛选国家或清除搜索。');
+   const model=buildComparisonSnapshot(options);
    const blob=new Blob([JSON.stringify(model,null,2)],{type:'application/json'});exportObjectURL=URL.createObjectURL(blob);
-   const a=document.createElement('a');a.href=exportObjectURL;a.download='zhou-comparison-'+model.from+'-'+model.to+'.json';a.textContent='下载对照资料 JSON';$('#exportDownload').appendChild(a);$('#exportStatus').textContent='已生成对照资料，包含资料版本、纪年口径与来源。';return;
+   const a=document.createElement('a');a.href=exportObjectURL;a.download='zhou-comparison-'+model.from+'-'+model.to+'.json';a.textContent='下载对照资料 JSON';$('#exportDownload').appendChild(a);$('#exportStatus').textContent='已生成完整记录对照快照，含筛选条件、资料版本、纪年口径与来源；不是 Atlas 史料导入文件。';return;
   }
   await document.fonts?.ready;const measure=document.createElement('canvas').getContext('2d');if(!measure)throw new Error('当前浏览器无法生成图片。');const plan=buildExportPlan(options,measure),pdf=$('#exportFormat').value==='pdf',files=[];
   for(let i=0;i<plan.pages.length;i++){$('#exportStatus').textContent='正在生成 '+(i+1)+' / '+plan.pages.length+' 页…';await new Promise(resolve=>setTimeout(resolve,0));const canvas=exportCanvas(plan.pages[i],plan,i);const blob=await canvasExportBlob(canvas,pdf?'image/jpeg':'image/png');files.push(new Uint8Array(await blob.arrayBuffer()));canvas.width=canvas.height=0;}
@@ -142,5 +179,5 @@ $('#exportCompare').onclick=()=>{if(exportBusy){$('#exportDialog').showModal();r
 $('#closeExport').onclick=()=>$('#exportDialog').close();$('#exportForm').onsubmit=e=>{e.preventDefault();createComparisonExport();};
 window.addEventListener('pagehide',()=>{if(exportObjectURL)URL.revokeObjectURL(exportObjectURL);});
 
-Object.assign(root,{buildExportPlan,drawExportPage,exportCanvas,canvasExportBlob,exportFont,exportRulerLanes,wrapExportText,concatExportBytes,buildImagePDF,exportCRC32,buildImagesZIP,createComparisonExport});
+Object.assign(root,{buildComparisonSnapshot,buildExportPlan,drawExportPage,exportCanvas,canvasExportBlob,exportFont,exportRulerLanes,wrapExportText,concatExportBytes,buildImagePDF,exportCRC32,buildImagesZIP,createComparisonExport});
 })(globalThis);

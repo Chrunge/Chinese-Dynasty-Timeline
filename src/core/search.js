@@ -19,7 +19,7 @@ function buildSearchIndex(){
  for(const s of D.states)for(const r of s.rulers)for(const p of r.ministers||[]){if(!people.has(p.id))people.set(p.id,{...p,states:[],rulerKeys:[],eventIds:[]});const person=people.get(p.id);if(!person.states.includes(s.id))person.states.push(s.id);person.rulerKeys.push('ruler:'+r.id);}
  for(const e of D.events)for(const p of e.participants||[]){if(!people.has(p.id))people.set(p.id,{...p,states:[],rulerKeys:[],eventIds:[]});const person=people.get(p.id);if(!person.states.includes(p.state))person.states.push(p.state);if(!person.eventIds.includes(e.id))person.eventIds.push(e.id);}
  for(const p of people.values()){p.states=[...new Set(p.states)].filter(id=>byId(id));p.rulerKeys=[...new Set(p.rulerKeys)];const event=D.events.find(e=>p.eventIds.includes(e.id)),ruler=entries.find(e=>p.rulerKeys.includes(e.key));entries.push({key:'person:'+p.id,type:'person',title:p.name,aliases:[...personAliases(p.name,p.summary),...(p.aliases||[])],states:p.states,year:event?.year??ruler?.year,data:p,description:[p.summary,...(p.journey||[]).flatMap(j=>[j.label,j.text])].filter(Boolean).join(' ')});}
- for(const e of D.events)entries.push({key:'event:'+e.id,type:'event',title:e.name,aliases:[e.name],relatedNames:(e.participants||[]).flatMap(p=>personAliases(p.name)),states:e.states,year:e.year,data:e,description:narrativeText(e)});
+ for(const e of D.events)entries.push({key:'event:'+e.id,type:'event',title:e.name,aliases:[e.name],relatedNames:(e.participants||[]).flatMap(p=>personAliases(p.name)),states:e.states,year:e.year,...(Object.prototype.hasOwnProperty.call(e,'endYear')?{until:e.endYear}:{}),data:e,description:narrativeText(e)});
  return entries;
 }
 

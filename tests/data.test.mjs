@@ -9,11 +9,11 @@ test('完整迁移：覆盖数量、活动、正文和君臣关系保留', () =>
  const d=compileAtlas(fresh());
  assert.deepEqual([d.states.length,d.states.flatMap(s=>s.rulers).length,d.people.length,d.events.length],[18,465,116,105]);
  assert.equal(d.states.reduce((n,s)=>n+s.undated.length,0),80);
- assert.equal(d.people.reduce((n,p)=>n+(p.journey?.length||0),0),62);
+ assert.equal(d.people.reduce((n,p)=>n+(p.journey?.length||0),0),135);
  assert.equal(d.peopleCoverage.detailedRulerIntervals,129);
- assert.equal(d.peopleCoverage.rulerIntervalsWithMinisters,78);
- assert.equal(d.researchCoverage.journeys,12);
- assert.equal(d.events.filter(e=>e.participants.length).length,20);
+ assert.equal(d.peopleCoverage.rulerIntervalsWithMinisters,86);
+ assert.equal(d.researchCoverage.journeys,32);
+ assert.equal(d.events.filter(e=>e.participants.length).length,25);
 });
 test('构建不修改源数据，冻结输入可用且结果确定', () => {
  const a=freeze(fresh()), before=JSON.stringify(a);

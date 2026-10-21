@@ -1,18 +1,179 @@
 {
   "schemaVersion": 1,
-  "timeline": {"start":1046,"end":221,"defaultEnd":256,"cursor":770,"topic":"zhou"},
+  "timeline": {
+    "start": 1046,
+    "end": 221,
+    "defaultEnd": 256,
+    "cursor": 770,
+    "topic": "zhou"
+  },
   "periods": [
-    {"id":"all","name":"全部","start":1046,"end":221,"color":"#64796d","structure":"overview","polityIds":[],"display":false},
-    {"id":"west","name":"西周","start":1046,"end":771,"color":"#64796d","structure":"coexistence","polityIds":["zhou"]},
-    {"id":"spring","name":"春秋","start":770,"end":476,"color":"#355e68","structure":"coexistence","polityIds":["zhou"]},
-    {"id":"war","name":"战国","start":475,"end":256,"color":"#8d734c","structure":"coexistence","polityIds":["qin","qi","chu","yan","han","zhao","liang"],"extendToViewEnd":true,"note":"前256年为周王室终点；按钮可延伸至前221年秦统一，不代表各国均存续到区间终点。"},
-    {"id":"post-zhou","name":"周亡后 · 秦统一","start":255,"end":221,"color":"#79696a","structure":"transition","polityIds":["qin"],"button":false}
+    {
+      "id": "all",
+      "name": "全部",
+      "start": 1046,
+      "end": 221,
+      "color": "#64796d",
+      "structure": "overview",
+      "polityIds": [
+        "zhou",
+        "qin",
+        "jin",
+        "qi",
+        "chu",
+        "yan",
+        "lu",
+        "song",
+        "wei",
+        "zheng",
+        "chen",
+        "cai",
+        "cao",
+        "wu",
+        "yue",
+        "han",
+        "zhao",
+        "liang"
+      ],
+      "display": false
+    },
+    {
+      "id": "west",
+      "name": "西周",
+      "start": 1046,
+      "end": 771,
+      "color": "#64796d",
+      "structure": "coexistence",
+      "polityIds": [
+        "zhou",
+        "lu",
+        "qi",
+        "jin",
+        "qin",
+        "chu",
+        "song",
+        "wei",
+        "chen",
+        "cai",
+        "cao",
+        "yan",
+        "wu",
+        "yue",
+        "zheng"
+      ]
+    },
+    {
+      "id": "spring",
+      "name": "春秋",
+      "start": 770,
+      "end": 476,
+      "color": "#355e68",
+      "structure": "coexistence",
+      "polityIds": [
+        "zhou",
+        "lu",
+        "qi",
+        "jin",
+        "qin",
+        "chu",
+        "song",
+        "wei",
+        "chen",
+        "cai",
+        "cao",
+        "yan",
+        "wu",
+        "yue",
+        "zheng"
+      ]
+    },
+    {
+      "id": "war",
+      "name": "战国",
+      "start": 475,
+      "end": 256,
+      "color": "#8d734c",
+      "structure": "coexistence",
+      "polityIds": [
+        "qin",
+        "qi",
+        "chu",
+        "yan",
+        "han",
+        "zhao",
+        "liang"
+      ],
+      "extendToViewEnd": true,
+      "note": "前256年为周王室终点；按钮可延伸至前221年秦统一，不代表各国均存续到区间终点。"
+    },
+    {
+      "id": "post-zhou",
+      "name": "周亡后 · 秦统一",
+      "start": 255,
+      "end": 221,
+      "color": "#79696a",
+      "structure": "transition",
+      "polityIds": [
+        "qin"
+      ],
+      "button": false
+    }
   ],
   "combinations": [
-    {"id":"builtin-seven","name":"战国七雄","states":["qin","qi","chu","yan","han","zhao","liang"],"from":475,"to":221,"cursor":300,"timeEncoding":"bce-axis"},
-    {"id":"builtin-reform","name":"秦—魏变法","states":["qin","liang"],"from":453,"to":300,"cursor":453,"timeEncoding":"bce-axis"},
-    {"id":"builtin-hegemony","name":"晋—楚争霸","states":["jin","chu"],"from":700,"to":500,"cursor":700,"timeEncoding":"bce-axis"},
-    {"id":"builtin-confucius","name":"鲁—卫—齐","states":["lu","wei","qi"],"from":600,"to":450,"cursor":600,"timeEncoding":"bce-axis"}
+    {
+      "id": "builtin-seven",
+      "name": "战国七雄",
+      "states": [
+        "qin",
+        "qi",
+        "chu",
+        "yan",
+        "han",
+        "zhao",
+        "liang"
+      ],
+      "from": 475,
+      "to": 221,
+      "cursor": 300,
+      "timeEncoding": "bce-axis"
+    },
+    {
+      "id": "builtin-reform",
+      "name": "秦—魏变法",
+      "states": [
+        "qin",
+        "liang"
+      ],
+      "from": 453,
+      "to": 300,
+      "cursor": 453,
+      "timeEncoding": "bce-axis"
+    },
+    {
+      "id": "builtin-hegemony",
+      "name": "晋—楚争霸",
+      "states": [
+        "jin",
+        "chu"
+      ],
+      "from": 700,
+      "to": 500,
+      "cursor": 700,
+      "timeEncoding": "bce-axis"
+    },
+    {
+      "id": "builtin-confucius",
+      "name": "鲁—卫—齐",
+      "states": [
+        "lu",
+        "wei",
+        "qi"
+      ],
+      "from": 600,
+      "to": 450,
+      "cursor": 600,
+      "timeEncoding": "bce-axis"
+    }
   ],
   "metadata": {
     "title": "周代列国",
@@ -4876,7 +5037,7 @@
       "role": "曲沃君主（与翼并存）",
       "sourceId": "source-003",
       "sourceLine": 564,
-      "note": "",
+      "note": "曲沃武公前715—前678年在辅泳道与翼并存。前678年灭晋侯緡，周僖王命为晋君，代晋为晋武公并轨正统；前677年实由武公接续统治（晋武公二年卒），次年前676年献公即位元年，消除主泳道前677年视觉断口。",
       "id": "jin-r14",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -4899,11 +5060,21 @@
         "regnalStart": 715,
         "abdication": null,
         "death": null,
-        "changes": [],
+        "changes": [
+          {
+            "year": 678,
+            "label": "灭晋侯緡，以其器赂周僖王，命为晋君（晋武公）并轨正统"
+          },
+          {
+            "year": 677,
+            "label": "晋武公二年卒；前677年正统由曲沃武公在辅泳道接续，消除主泳道断档"
+          }
+        ],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
           "source-003"
-        ]
+        ],
+        "note": "前678年曲沃武公灭晋侯緡受周僖王命为晋武公并轨正统，至前677年卒，次年前676年献公改元接续。"
       },
       "stateId": "jin"
     },
@@ -4958,7 +5129,7 @@
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 561,
-      "note": "",
+      "note": "前678年曲沃武公灭晋侯緡。周僖王册命曲沃武公代晋为晋君（晋武公），前677年由武公在辅泳道接续正统。",
       "id": "jin-r11",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -4999,7 +5170,7 @@
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 565,
-      "note": "",
+      "note": "曲沃武公（晋武公）于前677年卒，献公继立，次年前676年改元晋献公元年。",
       "id": "jin-r15",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -10018,7 +10189,7 @@
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 1202,
-      "note": "前320—314年为本图比较区间，不代表全程亲政；让国子之另有纪年口径。",
+      "note": "前320—前314年在位。因让国于国相子之（person-062）引发内乱，前314年齐宣王乘虚破燕，燕王哙遇害，致前313年政权中断（关联e80齐破燕、e81燕昭王立）。",
       "id": "yan-r28",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -10089,7 +10260,7 @@
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 1203,
-      "note": "",
+      "note": "前312年即位。子之之乱与齐军破燕（前314—前313年中断）后，燕人共立昭王，招贤图强。",
       "id": "yan-r29",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -13421,7 +13592,7 @@
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 1013,
-      "note": "",
+      "note": "前634—前600年在位。前632年晋文公围曹伐卫，成公出奔楚、陈，公子瑕短暂被立（置于辅泳道）；同年冬成公复归复位，消除主泳道重叠。",
       "id": "wei-r14",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -13444,7 +13615,12 @@
         "regnalStart": 634,
         "abdication": null,
         "death": null,
-        "changes": [],
+        "changes": [
+          {
+            "year": 632,
+            "label": "晋伐卫出奔楚陈，公子瑕短暂被立于辅泳道；同年冬成公复位"
+          }
+        ],
         "endKind": "在位区间结束；具体性质待核实",
         "sourceIds": [
           "source-003"
@@ -13458,11 +13634,11 @@
       "start": 632,
       "end": 632,
       "approx": false,
-      "lane": 0,
+      "lane": 1,
       "role": "君主",
       "sourceId": "source-003",
       "sourceLine": 1014,
-      "note": "",
+      "note": "城濮之战期间卫成公出奔，公子瑕短暂被立（前632年），置于辅泳道；同年冬卫成公复归复位，瑕被杀。",
       "id": "wei-r15",
       "description": "",
       "exit": "在位终点按所列年表；退位、被废、遇害或去世的具体原因尚未逐条校勘。",
@@ -13476,7 +13652,7 @@
       },
       "dating": {
         "level": "certain",
-        "reason": "所采用年表的年份定位较稳定；“较确定”不表示人物生平与结局已全部核实。",
+        "reason": "据《史记·卫康叔世家》《左传·僖公二十八年》，前632年晋伐卫成公出奔，公子瑕短暂被立，同年冬成公复归，置于辅泳道以避免主泳道重叠。",
         "alternatives": [],
         "reviewStatus": "legacy"
       },
@@ -25909,6 +26085,1116 @@
         "source-020"
       ],
       "year": null
+    },
+    {
+      "id": "person-021-stage-01",
+      "personId": "person-021",
+      "stateId": "jin",
+      "sequence": 1,
+      "label": "随重耳出亡十九年",
+      "text": "晋献公骊姬之乱，赵衰随公子重耳出亡狄国及列国十九年，忠心赞划。",
+      "kind": "travel",
+      "kindLabel": "流亡 / 从重耳",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-045"
+      ],
+      "year": 655
+    },
+    {
+      "id": "person-021-stage-02",
+      "personId": "person-021",
+      "stateId": "jin",
+      "sequence": 2,
+      "label": "城濮之战从晋文公争霸",
+      "text": "任公胥、统新军，辅佐晋文公取得城濮之战大胜，列为重卿。",
+      "kind": "service",
+      "kindLabel": "任职 / 将领",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-045"
+      ],
+      "eventId": "e25",
+      "yearFromEvent": true
+    },
+    {
+      "id": "person-021-stage-03",
+      "personId": "person-021",
+      "stateId": "jin",
+      "sequence": 3,
+      "label": "晋襄公六年卒谥为成子",
+      "text": "前622年赵衰卒，谥为赵成子，子赵盾嗣立任正卿。",
+      "kind": "death",
+      "kindLabel": "生涯终点",
+      "approx": false,
+      "sourceIds": [
+        "source-045"
+      ],
+      "year": 622
+    },
+    {
+      "id": "person-023-stage-01",
+      "personId": "person-023",
+      "stateId": "jin",
+      "sequence": 1,
+      "label": "晋襄公托孤执政晋国",
+      "text": "前621年晋襄公卒，托孤于赵盾，赵盾为正卿执政掌中军。",
+      "kind": "politics",
+      "kindLabel": "执政 / 正卿",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-045"
+      ],
+      "year": 621
+    },
+    {
+      "id": "person-023-stage-02",
+      "personId": "person-023",
+      "stateId": "jin",
+      "sequence": 2,
+      "label": "晋灵公谋害与赵穿弑君",
+      "text": "前607年灵公欲杀赵盾，盾出亡未出境，从弟赵穿弑灵公，太史董狐书赵盾弑其君。",
+      "kind": "politics",
+      "kindLabel": "政治危机",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-045"
+      ],
+      "year": 607
+    },
+    {
+      "id": "person-023-stage-03",
+      "personId": "person-023",
+      "stateId": "jin",
+      "sequence": 3,
+      "label": "晋成公六年卒谥为宣子",
+      "text": "迎立晋成公复归正卿，前601年卒，谥为赵宣子。",
+      "kind": "death",
+      "kindLabel": "生涯终点",
+      "approx": false,
+      "sourceIds": [
+        "source-045"
+      ],
+      "year": 601
+    },
+    {
+      "id": "person-024-stage-01",
+      "personId": "person-024",
+      "stateId": "jin",
+      "sequence": 1,
+      "label": "自秦归晋受封随邑",
+      "text": "曾奔秦入秦军，后晋人以计召归，晋康公称善，封于随、范，号随会、范武子。",
+      "kind": "service",
+      "kindLabel": "归晋为卿",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "year": 615
+    },
+    {
+      "id": "person-024-stage-02",
+      "personId": "person-024",
+      "stateId": "jin",
+      "sequence": 2,
+      "label": "邲之战知敌保全右军",
+      "text": "任右军大夫，见楚庄王军势盛坚主勿轻战，晋中军溃退而士会所部独全。",
+      "kind": "activity",
+      "kindLabel": "将领 / 参战",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "eventId": "e31",
+      "yearFromEvent": true
+    },
+    {
+      "id": "person-024-stage-03",
+      "personId": "person-024",
+      "stateId": "jin",
+      "sequence": 3,
+      "label": "任中军将执掌晋政修晋刑",
+      "text": "前593年代郤缺为中军元帅、正卿，整饬刑政、安定百官，致晋国大治。",
+      "kind": "politics",
+      "kindLabel": "为正卿修法",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "year": 593
+    },
+    {
+      "id": "person-025-stage-01",
+      "personId": "person-025",
+      "stateId": "qi",
+      "sequence": 1,
+      "label": "使齐受辱誓报齐雠",
+      "text": "前592年使齐，齐顷公母妇人登楼窃笑其微伛，郤克惭愤誓伐齐以雪耻。",
+      "kind": "diplomacy",
+      "kindLabel": "出使受辱",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-021"
+      ],
+      "year": 592
+    },
+    {
+      "id": "person-025-stage-02",
+      "personId": "person-025",
+      "stateId": "jin",
+      "sequence": 2,
+      "label": "继士会后执掌晋政",
+      "text": "士会告老辞卿，郤克继任晋中军元帅、正卿主持国政。",
+      "kind": "politics",
+      "kindLabel": "任中军元帅",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "year": 591
+    },
+    {
+      "id": "person-025-stage-03",
+      "personId": "person-025",
+      "stateId": "qi",
+      "sequence": 3,
+      "label": "率晋鲁联军鞍之战破齐",
+      "text": "前589年率晋军八百乘伐齐援鲁卫，鞍之战箭穿肘流血及屦仍驰骋大破齐军，逼齐求和。",
+      "kind": "activity",
+      "kindLabel": "鞍之战大破齐军",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-021"
+      ],
+      "year": 589
+    },
+    {
+      "id": "person-026-stage-01",
+      "personId": "person-026",
+      "stateId": "jin",
+      "sequence": 1,
+      "label": "晋灵公时任司马严正执法",
+      "text": "由赵盾抚育举荐任司马，斩御臣而法不阿亲，赵盾大为称赏。",
+      "kind": "service",
+      "kindLabel": "任司马执法",
+      "approx": false,
+      "sourceIds": [
+        "source-043"
+      ],
+      "year": 615
+    },
+    {
+      "id": "person-026-stage-02",
+      "personId": "person-026",
+      "stateId": "jin",
+      "sequence": 2,
+      "label": "鄢陵之战佐厉公破楚郑",
+      "text": "任中军副将，鄢陵之战以锐阵突击大破楚郑联军，保卫晋室威灵。",
+      "kind": "activity",
+      "kindLabel": "鄢陵参战立功",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-043"
+      ],
+      "eventId": "e33",
+      "yearFromEvent": true
+    },
+    {
+      "id": "person-026-stage-03",
+      "personId": "person-026",
+      "stateId": "jin",
+      "sequence": 3,
+      "label": "辅迎晋悼公主持霸政",
+      "text": "前573年晋厉公见弑，韩厥与荀偃迎立悼公，继栾书为中军将执掌国政，后告老传子。",
+      "kind": "politics",
+      "kindLabel": "迎悼公相晋",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-043"
+      ],
+      "year": 573
+    },
+    {
+      "id": "person-027-stage-01",
+      "personId": "person-027",
+      "stateId": "chu",
+      "sequence": 1,
+      "label": "邲之战被俘九年后质归",
+      "text": "邲之战战败被楚所擒，囚居楚国九年，至前588年由楚晋换质释归。",
+      "kind": "activity",
+      "kindLabel": "邲之战被俘释归",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "eventId": "e31",
+      "yearFromEvent": true
+    },
+    {
+      "id": "person-027-stage-02",
+      "personId": "person-027",
+      "stateId": "jin",
+      "sequence": 2,
+      "label": "鄢陵之战御楚立功",
+      "text": "晋厉公伐楚，荀罃统下军突击楚师有功，晋军大捷。",
+      "kind": "activity",
+      "kindLabel": "鄢陵之战参战",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "eventId": "e33",
+      "yearFromEvent": true
+    },
+    {
+      "id": "person-027-stage-03",
+      "personId": "person-027",
+      "stateId": "jin",
+      "sequence": 3,
+      "label": "为正卿行三驾疲楚之策",
+      "text": "前566年代韩厥为中军元帅辅晋悼公，创立三军分番进攻的疲楚之策，使楚疲于奔命。",
+      "kind": "politics",
+      "kindLabel": "中军元帅辅悼公",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "year": 566
+    },
+    {
+      "id": "person-028-stage-01",
+      "personId": "person-028",
+      "stateId": "jin",
+      "sequence": 1,
+      "label": "任晋平公傅相兼掌词命",
+      "text": "羊舌肸（叔向）博闻洽通，晋平公时为大夫、帝傅，掌外交辞令与诸侯朝聘。",
+      "kind": "service",
+      "kindLabel": "仕晋平公",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "year": 558
+    },
+    {
+      "id": "person-028-stage-02",
+      "personId": "person-028",
+      "stateId": "song",
+      "sequence": 2,
+      "label": "宋之盟赞划赵武弭兵",
+      "text": "前546年随晋正卿赵武赴宋参与第二次弭兵会盟，调和晋楚争端，平息中原兵革。",
+      "kind": "diplomacy",
+      "kindLabel": "参与弭兵会盟",
+      "approx": false,
+      "sourceIds": [
+        "source-007"
+      ],
+      "eventId": "e37",
+      "yearFromEvent": true
+    },
+    {
+      "id": "person-028-stage-03",
+      "personId": "person-028",
+      "stateId": "jin",
+      "sequence": 3,
+      "label": "致书子产诤谏铸刑书",
+      "text": "前536年郑子产铸刑书，叔向致书诤谏，主张以德礼导民，成为先秦法礼之辩名篇。",
+      "kind": "politics",
+      "kindLabel": "争辩成文刑法",
+      "approx": false,
+      "sourceIds": [
+        "source-007",
+        "source-039"
+      ],
+      "year": 536
+    },
+    {
+      "id": "person-017-stage-01",
+      "personId": "person-017",
+      "stateId": "qi",
+      "sequence": 1,
+      "label": "承袭薛邑广招宾客",
+      "text": "袭封父田婴之薛邑，好客养士，门客数千人，名重诸侯。",
+      "kind": "service",
+      "kindLabel": "任职 / 封邑",
+      "approx": false,
+      "sourceIds": [
+        "source-025"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-017-stage-02",
+      "personId": "person-017",
+      "stateId": "qin",
+      "sequence": 2,
+      "label": "入秦为相与鸡鸣狗盗",
+      "text": "前299年入秦，秦昭王一度欲以为相，旋遭疑忌囚禁；赖门客鸡鸣狗盗之助出函谷关逃归。",
+      "kind": "service",
+      "kindLabel": "入秦为相 / 逃归",
+      "approx": false,
+      "sourceIds": [
+        "source-025"
+      ],
+      "year": 299
+    },
+    {
+      "id": "person-017-stage-03",
+      "personId": "person-017",
+      "stateId": "qi",
+      "sequence": 3,
+      "label": "执政相齐与合纵攻秦",
+      "text": "前298年联合韩、魏联军攻秦入函谷关，在齐湣王时相齐十余年。",
+      "kind": "politics",
+      "kindLabel": "为齐相国",
+      "approx": false,
+      "sourceIds": [
+        "source-025"
+      ],
+      "year": 298
+    },
+    {
+      "id": "person-017-stage-04",
+      "personId": "person-017",
+      "stateId": "liang",
+      "sequence": 4,
+      "label": "避祸奔魏与卒于薛",
+      "text": "因见疑奔魏任魏相，联合诸侯伐齐；齐湣王死后保持薛邑自立，前279年卒，谥为孟尝君。",
+      "kind": "travel",
+      "kindLabel": "奔魏为相 / 卒于薛",
+      "approx": false,
+      "sourceIds": [
+        "source-025"
+      ],
+      "year": 279
+    },
+    {
+      "id": "person-073-stage-01",
+      "personId": "person-073",
+      "stateId": "zhao",
+      "sequence": 1,
+      "label": "封于东武城与相赵",
+      "text": "号平原君，喜宾客，食客数千人，在赵惠文王、赵孝成王时三去相三复位。",
+      "kind": "politics",
+      "kindLabel": "任职 / 封邑",
+      "approx": false,
+      "sourceIds": [
+        "source-046"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-073-stage-02",
+      "personId": "person-073",
+      "stateId": "chu",
+      "sequence": 2,
+      "label": "如楚求救与毛遂定盟",
+      "text": "前257年秦围邯郸，平原君率毛遂等二十门客赴楚求援，歃血定盟，楚春申君出兵救赵。",
+      "kind": "diplomacy",
+      "kindLabel": "出使 / 乞师解围",
+      "approx": false,
+      "sourceIds": [
+        "source-046"
+      ],
+      "year": 257
+    },
+    {
+      "id": "person-073-stage-03",
+      "personId": "person-073",
+      "stateId": "zhao",
+      "sequence": 3,
+      "label": "散家财犒士解邯郸之围",
+      "text": "听从李同建议散尽家财犒劳军士，得敢死之士三千人退秦三十里，合魏楚救兵解邯郸之围。",
+      "kind": "activity",
+      "kindLabel": "散家财守邯郸",
+      "approx": false,
+      "sourceIds": [
+        "source-046"
+      ],
+      "year": 257
+    },
+    {
+      "id": "person-073-stage-04",
+      "personId": "person-073",
+      "stateId": "zhao",
+      "sequence": 4,
+      "label": "赵孝成王十五年卒",
+      "text": "前251年平原君卒，子孙世代继位，后在赵亡时断绝。",
+      "kind": "death",
+      "kindLabel": "生涯终点",
+      "approx": false,
+      "sourceIds": [
+        "source-046"
+      ],
+      "year": 251
+    },
+    {
+      "id": "person-086-stage-01",
+      "personId": "person-086",
+      "stateId": "liang",
+      "sequence": 1,
+      "label": "封信陵君与结纳门客",
+      "text": "魏安釐王封无忌于信陵，谦抑求贤，食客三千人，虚左迎侯嬴于夷门，威振诸侯。",
+      "kind": "service",
+      "kindLabel": "封邑 / 礼贤下士",
+      "approx": false,
+      "sourceIds": [
+        "source-047"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-086-stage-02",
+      "personId": "person-086",
+      "stateId": "zhao",
+      "sequence": 2,
+      "label": "窃符救赵解邯郸之围",
+      "text": "前257年秦围邯郸，安釐王畏秦命晋鄙壁邺；公子用侯嬴计请如姬窃虎符，击杀晋鄙夺兵权破秦军。",
+      "kind": "activity",
+      "kindLabel": "窃符救赵",
+      "approx": false,
+      "sourceIds": [
+        "source-047"
+      ],
+      "year": 257
+    },
+    {
+      "id": "person-086-stage-03",
+      "personId": "person-086",
+      "stateId": "zhao",
+      "sequence": 3,
+      "label": "留赵十年求贤结客",
+      "text": "救赵后不敢归魏，留居赵国十年；交接毛公、薛公于市井，赵孝成王德其功封鄗邑。",
+      "kind": "residence",
+      "kindLabel": "居赵十年",
+      "approx": false,
+      "sourceIds": [
+        "source-047"
+      ],
+      "year": 256
+    },
+    {
+      "id": "person-086-stage-04",
+      "personId": "person-086",
+      "stateId": "liang",
+      "sequence": 4,
+      "label": "率五国伐秦与病卒",
+      "text": "前247年归魏任上将军，率五国联军大破秦军于河外；后受秦反间遭魏王猜忌，于前243年疽发背卒。",
+      "kind": "death",
+      "kindLabel": "破秦与忧郁而卒",
+      "approx": false,
+      "sourceIds": [
+        "source-047"
+      ],
+      "year": 243
+    },
+    {
+      "id": "person-056-stage-01",
+      "personId": "person-056",
+      "stateId": "qin",
+      "sequence": 1,
+      "label": "入质咸阳与归国辅政",
+      "text": "前272年随太子完质于秦；前263年顷襄王病重，黄歇设奇计助太子脱身归国即位为楚考烈王。",
+      "kind": "diplomacy",
+      "kindLabel": "入质于秦",
+      "approx": false,
+      "sourceIds": [
+        "source-030"
+      ],
+      "year": 272
+    },
+    {
+      "id": "person-056-stage-02",
+      "personId": "person-056",
+      "stateId": "chu",
+      "sequence": 2,
+      "label": "拜相辅国与灭鲁拓地",
+      "text": "前262年拜相，封春申君，赐淮北十二县；后改封吴地，前256年率军灭鲁，楚国复兴。",
+      "kind": "politics",
+      "kindLabel": "任相封吴",
+      "approx": false,
+      "sourceIds": [
+        "source-030"
+      ],
+      "year": 262
+    },
+    {
+      "id": "person-056-stage-03",
+      "personId": "person-056",
+      "stateId": "zhao",
+      "sequence": 3,
+      "label": "率军救赵解邯郸围",
+      "text": "前257年应平原君之请，率楚军赴赵与魏信陵君合力击败秦军，解邯郸之围。",
+      "kind": "activity",
+      "kindLabel": "合纵救赵破秦",
+      "approx": false,
+      "sourceIds": [
+        "source-030"
+      ],
+      "year": 257
+    },
+    {
+      "id": "person-056-stage-04",
+      "personId": "person-056",
+      "stateId": "chu",
+      "sequence": 4,
+      "label": "棘门之变遇害",
+      "text": "前238年楚考烈王病卒，李园先入棘门设伏刺杀春申君，尽灭其家。",
+      "kind": "death",
+      "kindLabel": "幽王继位与遇害",
+      "approx": false,
+      "sourceIds": [
+        "source-030"
+      ],
+      "year": 238
+    },
+    {
+      "id": "person-039-stage-01",
+      "personId": "person-039",
+      "stateId": "qin",
+      "sequence": 1,
+      "label": "伊阙之战大破韩魏",
+      "text": "前293年任左更出兵伊阙，大破韩魏联军斩首二十四万，俘主将公孙喜，拔五城。",
+      "kind": "service",
+      "kindLabel": "伊阙之战成名",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 293
+    },
+    {
+      "id": "person-039-stage-02",
+      "personId": "person-039",
+      "stateId": "chu",
+      "sequence": 2,
+      "label": "鄢郢之战破楚拔都",
+      "text": "前279—前278年伐楚，决水灌鄢城，攻拔楚都郢并烧夷陵，楚顷襄王迁都于陈，白起封为武安君。",
+      "kind": "activity",
+      "kindLabel": "伐楚拔郢",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 278
+    },
+    {
+      "id": "person-039-stage-03",
+      "personId": "person-039",
+      "stateId": "zhao",
+      "sequence": 3,
+      "label": "长平之战坑杀赵卒",
+      "text": "前260年秘密接替王龁任上将军，奇兵绝赵括军后，围困四十六日，大破赵军并坑杀赵降卒四十万。",
+      "kind": "activity",
+      "kindLabel": "长平之战",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 260
+    },
+    {
+      "id": "person-039-stage-04",
+      "personId": "person-039",
+      "stateId": "qin",
+      "sequence": 4,
+      "label": "将相失和赐死杜邮",
+      "text": "长平战后与范雎交恶，屡次辞谢攻邯郸；前257年秦昭王免其官并贬迁，至杜邮遣使赐剑自裁。",
+      "kind": "death",
+      "kindLabel": "杜邮赐死",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 257
+    },
+    {
+      "id": "person-044-stage-01",
+      "personId": "person-044",
+      "stateId": "zhao",
+      "sequence": 1,
+      "label": "拔邺与初露锋芒",
+      "text": "前236年与桓齮、杨端和伐赵，攻拔阏与、邺九城，展现卓越用兵才干。",
+      "kind": "service",
+      "kindLabel": "攻赵拔地",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 236
+    },
+    {
+      "id": "person-044-stage-02",
+      "personId": "person-044",
+      "stateId": "zhao",
+      "sequence": 2,
+      "label": "反间去李牧攻灭赵国",
+      "text": "前229年将秦军攻赵，用反间计使赵杀李牧，前228年大破赵军，俘赵王迁，克邯郸灭赵。",
+      "kind": "activity",
+      "kindLabel": "灭赵之役",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 228
+    },
+    {
+      "id": "person-044-stage-03",
+      "personId": "person-044",
+      "stateId": "yan",
+      "sequence": 3,
+      "label": "荆轲刺秦后破燕取蓟",
+      "text": "前226年统率秦军破太子丹军于易水西，攻陷燕都蓟城，燕王喜逃往辽东。",
+      "kind": "activity",
+      "kindLabel": "破燕取蓟",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 226
+    },
+    {
+      "id": "person-044-stage-04",
+      "personId": "person-044",
+      "stateId": "chu",
+      "sequence": 4,
+      "label": "将六十万人破项燕灭楚",
+      "text": "前224年率秦军六十万大举伐楚，坚壁不战蓄锐，前223年大破楚军斩项燕，俘楚王负刍灭楚。",
+      "kind": "politics",
+      "kindLabel": "率六十万大军灭楚",
+      "approx": false,
+      "sourceIds": [
+        "source-016"
+      ],
+      "year": 223
+    },
+    {
+      "id": "person-070-stage-01",
+      "personId": "person-070",
+      "stateId": "qi",
+      "sequence": 1,
+      "label": "伐齐取阳晋拜为上卿",
+      "text": "前283年率赵军伐齐，大破之并取阳晋，以勇武闻于诸侯，拜为上卿。",
+      "kind": "service",
+      "kindLabel": "伐齐拜将",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 283
+    },
+    {
+      "id": "person-070-stage-02",
+      "personId": "person-070",
+      "stateId": "zhao",
+      "sequence": 2,
+      "label": "长平初战坚壁不战",
+      "text": "前260年接战秦军，因初战不利转而筑垒坚守不战；后受秦反间计被赵孝成王以赵括取代。",
+      "kind": "activity",
+      "kindLabel": "长平坚壁抗秦",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 260
+    },
+    {
+      "id": "person-070-stage-03",
+      "personId": "person-070",
+      "stateId": "yan",
+      "sequence": 3,
+      "label": "鄗代大破燕军封信平君",
+      "text": "前251年燕王喜乘长平后赵弱发兵攻赵，廉颇率军大破燕军于鄗，斩主将栗腹围燕都，封信平君。",
+      "kind": "activity",
+      "kindLabel": "鄗代之战大破燕军",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 251
+    },
+    {
+      "id": "person-070-stage-04",
+      "personId": "person-070",
+      "stateId": "chu",
+      "sequence": 4,
+      "label": "遭猜忌奔魏客死寿春",
+      "text": "赵悼襄王时被解除兵权奔魏大梁，后入楚任将无功，思赵不得复用，卒于楚都寿春。",
+      "kind": "death",
+      "kindLabel": "奔魏适楚客死寿春",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 243
+    },
+    {
+      "id": "person-071-stage-01",
+      "personId": "person-071",
+      "stateId": "qin",
+      "sequence": 1,
+      "label": "奉璧使秦完璧归赵",
+      "text": "前283年以舍人奉和氏璧使秦，在咸阳廷斥秦昭王不守信用，终使璧完好归赵，拜为上大夫。",
+      "kind": "diplomacy",
+      "kindLabel": "完璧归赵",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 283
+    },
+    {
+      "id": "person-071-stage-02",
+      "personId": "person-071",
+      "stateId": "qin",
+      "sequence": 2,
+      "label": "渑池之会折服秦王",
+      "text": "前279年随赵惠文王会秦昭王于渑池，以死请秦王击缶，挫秦尊严并全赵威，拜为上卿位在廉颇右。",
+      "kind": "diplomacy",
+      "kindLabel": "渑池相会",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 279
+    },
+    {
+      "id": "person-071-stage-03",
+      "personId": "person-071",
+      "stateId": "zhao",
+      "sequence": 3,
+      "label": "引车避匿与将相交欢",
+      "text": "廉颇不服其位居己右，相如引车避匿以先国家之急而后私仇，廉颇感佩负荆请罪，结为刎颈之交。",
+      "kind": "politics",
+      "kindLabel": "负荆请罪将相和",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 279
+    },
+    {
+      "id": "person-071-stage-04",
+      "personId": "person-071",
+      "stateId": "zhao",
+      "sequence": 4,
+      "label": "长平病谏勿任赵括",
+      "text": "前260年长平战起，蔺相如已病重，极力规谏赵孝成王勿用赵括代廉颇；战败后不久卒。",
+      "kind": "death",
+      "kindLabel": "长平谏易将而卒",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 260
+    },
+    {
+      "id": "person-076-stage-01",
+      "personId": "person-076",
+      "stateId": "zhao",
+      "sequence": 1,
+      "label": "守雁门大破匈奴十余万骑",
+      "text": "长居雁门防匈奴，厚遇军士诱敌深入，出奇兵大破匈奴十余万骑，此后匈奴十余岁不敢近赵塞。",
+      "kind": "service",
+      "kindLabel": "驻守雁门大破匈奴",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-076-stage-02",
+      "personId": "person-076",
+      "stateId": "zhao",
+      "sequence": 2,
+      "label": "肥之战大破秦军封武安君",
+      "text": "前233年秦将桓齮伐赵破赤丽，李牧自雁门南下迎战，在肥大破秦军斩桓齮，封为武安君。",
+      "kind": "activity",
+      "kindLabel": "肥之战破秦军",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 233
+    },
+    {
+      "id": "person-076-stage-03",
+      "personId": "person-076",
+      "stateId": "zhao",
+      "sequence": 3,
+      "label": "番吾之战再次阻击秦军",
+      "text": "前232年秦军分道两路大举伐赵，李牧率军于番吾大破南路秦军，南拒韩魏保卫赵境。",
+      "kind": "activity",
+      "kindLabel": "番吾之战击退秦军",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 232
+    },
+    {
+      "id": "person-076-stage-04",
+      "personId": "person-076",
+      "stateId": "zhao",
+      "sequence": 4,
+      "label": "受反间被赵王斩杀",
+      "text": "前229年王翦伐赵，秦以重金行反间于郭开，赵王迁听信谗言斩李牧，三月后邯郸陷落赵亡。",
+      "kind": "death",
+      "kindLabel": "中反间计遇害",
+      "approx": false,
+      "sourceIds": [
+        "source-033"
+      ],
+      "year": 229
+    },
+    {
+      "id": "person-102-stage-01",
+      "personId": "person-102",
+      "stateId": "zheng",
+      "sequence": 1,
+      "label": "初入郑政与事简公",
+      "text": "郑公子发之子，前554年子孔被诛后子产初入政坛任少正，辅佐子展，以清正博洽称。",
+      "kind": "service",
+      "kindLabel": "辅政与出使",
+      "approx": false,
+      "sourceIds": [
+        "source-039"
+      ],
+      "year": 554
+    },
+    {
+      "id": "person-102-stage-02",
+      "personId": "person-102",
+      "stateId": "zheng",
+      "sequence": 2,
+      "label": "子产执政相郑推行改革",
+      "text": "前543年子皮委政子产，推行都鄙有章、作丘赋之法，整饬田畴整肃纲纪，郑国大治。",
+      "kind": "politics",
+      "kindLabel": "为相执政",
+      "approx": false,
+      "sourceIds": [
+        "source-039"
+      ],
+      "year": 543
+    },
+    {
+      "id": "person-102-stage-03",
+      "personId": "person-102",
+      "stateId": "zheng",
+      "sequence": 3,
+      "label": "铸刑鼎创公布成文法先河",
+      "text": "前536年将法律条文铸于鼎上公布，开启成文法先河，晋叔向致书反对，子产以救世为由坚持。",
+      "kind": "politics",
+      "kindLabel": "铸刑书于鼎",
+      "approx": false,
+      "sourceIds": [
+        "source-039"
+      ],
+      "year": 536
+    },
+    {
+      "id": "person-102-stage-04",
+      "personId": "person-102",
+      "stateId": "zheng",
+      "sequence": 4,
+      "label": "卒于任内孔子哭之以爱人",
+      "text": "前522年子产卒，郑国人皆哭泣，孔子闻讯流涕称赞其为“古之遗爱也”。",
+      "kind": "death",
+      "kindLabel": "生涯终点",
+      "approx": false,
+      "sourceIds": [
+        "source-039"
+      ],
+      "year": 522
+    },
+    {
+      "id": "person-010-stage-01",
+      "personId": "person-010",
+      "stateId": "qi",
+      "sequence": 1,
+      "label": "嗣父位事齐庄公",
+      "text": "前556年父晏弱卒，婴嗣为大夫；庄公被弑时哭庄公尸而不死不走，展现独特臣道与节操。",
+      "kind": "service",
+      "kindLabel": "嗣卿位事庄公",
+      "approx": false,
+      "sourceIds": [
+        "source-022"
+      ],
+      "year": 556
+    },
+    {
+      "id": "person-010-stage-02",
+      "personId": "person-010",
+      "stateId": "qi",
+      "sequence": 2,
+      "label": "拜相辅佐齐景公推崇德治",
+      "text": "前547年齐景公即位，晏子为相数十载，生活节俭布衣蔬食，善于辞令犯颜直谏，齐国大治。",
+      "kind": "politics",
+      "kindLabel": "相齐景公",
+      "approx": false,
+      "sourceIds": [
+        "source-022"
+      ],
+      "year": 547
+    },
+    {
+      "id": "person-010-stage-03",
+      "personId": "person-010",
+      "stateId": "chu",
+      "sequence": 3,
+      "label": "使楚折辱楚王全齐国威",
+      "text": "奉命出使楚国，楚灵王以侏儒门及桔枳之事相戏，晏子机敏辩折，楚王敛衽敬之。",
+      "kind": "diplomacy",
+      "kindLabel": "使楚不辱国格",
+      "approx": false,
+      "sourceIds": [
+        "source-022"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-010-stage-04",
+      "personId": "person-010",
+      "stateId": "qi",
+      "sequence": 4,
+      "label": "齐景公四十八年卒",
+      "text": "前500年晏子病卒，景公伏尸痛哭“天降祸于齐，不舍夫子也”，谥为平仲。",
+      "kind": "death",
+      "kindLabel": "生涯终点",
+      "approx": false,
+      "sourceIds": [
+        "source-022"
+      ],
+      "year": 500
+    },
+    {
+      "id": "person-106-stage-01",
+      "personId": "person-106",
+      "stateId": "qi",
+      "sequence": 1,
+      "label": "齐田氏后裔与研习兵法",
+      "text": "齐国陈完之后田书孙，因齐乱避奔吴国，隐居穹窿山著述兵法十三篇。",
+      "kind": "origin",
+      "kindLabel": "出身齐地",
+      "approx": false,
+      "sourceIds": [
+        "source-024"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-106-stage-02",
+      "personId": "person-106",
+      "stateId": "wu",
+      "sequence": 2,
+      "label": "入吴得阖闾任用演兵",
+      "text": "前512年由伍子胥七荐于吴王阖闾，宫中斩美姬演兵布阵，阖闾服其能拜为将军。",
+      "kind": "service",
+      "kindLabel": "伍子胥举荐见阖闾",
+      "approx": false,
+      "sourceIds": [
+        "source-024"
+      ],
+      "year": 512
+    },
+    {
+      "id": "person-106-stage-03",
+      "personId": "person-106",
+      "stateId": "chu",
+      "sequence": 3,
+      "label": "柏举破楚五战入郢",
+      "text": "前506年与伍子胥统率吴军伐楚，柏举之战大破楚令尹囊瓦，五战五胜攻入楚都郢城。",
+      "kind": "activity",
+      "kindLabel": "柏举之战入郢",
+      "approx": false,
+      "sourceIds": [
+        "source-024"
+      ],
+      "year": 506
+    },
+    {
+      "id": "person-106-stage-04",
+      "personId": "person-106",
+      "stateId": "wu",
+      "sequence": 4,
+      "label": "功成身退与隐居著书",
+      "text": "见阖闾骄矜自满，吴国称霸西破强楚北威齐晋后，飘然隐退不知所终，后世尊为兵圣。",
+      "kind": "resignation",
+      "kindLabel": "功成隐退",
+      "approx": false,
+      "sourceIds": [
+        "source-024"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-094-stage-01",
+      "personId": "person-094",
+      "stateId": "han",
+      "sequence": 1,
+      "label": "从荀卿学与研读法术",
+      "text": "韩诸公子，喜刑名法术之学，与李斯俱事荀子，口吃不能道说而善著书。",
+      "kind": "teaching",
+      "kindLabel": "师从荀子",
+      "approx": false,
+      "sourceIds": [
+        "source-044"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-094-stage-02",
+      "personId": "person-094",
+      "stateId": "han",
+      "sequence": 2,
+      "label": "数谏韩王著孤愤说难",
+      "text": "见韩国削弱数上书谏韩王不用，退而著《孤愤》《五蠹》《说难》等十余万言。",
+      "kind": "persuasion",
+      "kindLabel": "著书谏韩王",
+      "approx": false,
+      "sourceIds": [
+        "source-044"
+      ],
+      "year": null
+    },
+    {
+      "id": "person-094-stage-03",
+      "personId": "person-094",
+      "stateId": "qin",
+      "sequence": 3,
+      "label": "秦王爱重其书使秦",
+      "text": "前233年秦王政读其书大悦，发兵急攻韩，韩王乃遣韩非出使秦国以求和。",
+      "kind": "diplomacy",
+      "kindLabel": "出使秦国",
+      "approx": false,
+      "sourceIds": [
+        "source-044"
+      ],
+      "year": 233
+    },
+    {
+      "id": "person-094-stage-04",
+      "personId": "person-094",
+      "stateId": "qin",
+      "sequence": 4,
+      "label": "李斯姚贾谗害狱中自鸩",
+      "text": "入秦后李斯、姚贾嫉其才，在秦王前谗言构陷下狱，李斯遣人送毒药逼令自杀，秦王悔已不及。",
+      "kind": "death",
+      "kindLabel": "李斯陷害饮毒而卒",
+      "approx": false,
+      "sourceIds": [
+        "source-044"
+      ],
+      "year": 233
     }
   ],
   "relations": {
@@ -27343,6 +28629,176 @@
         "sourceIds": [
           "source-019"
         ]
+      },
+      {
+        "eventId": "e80",
+        "personId": "person-062",
+        "kind": "participant",
+        "description": "燕王哙让国于子之引发燕国内乱，齐宣王乘乱攻入燕国并杀子之",
+        "sourceIds": [
+          "source-031"
+        ],
+        "stateId": "yan"
+      },
+      {
+        "eventId": "e81",
+        "personId": "person-062",
+        "kind": "related",
+        "description": "燕王哙让国于国相子之引发内乱及齐军破燕政权中断，乱平后燕人共立燕昭王",
+        "sourceIds": [
+          "source-031"
+        ]
+      },
+      {
+        "eventId": "e21",
+        "personId": "person-020",
+        "kind": "participant",
+        "description": "从公子重耳出亡十九年，辅佐重耳归晋返国",
+        "sourceIds": [
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e21",
+        "personId": "person-021",
+        "kind": "participant",
+        "description": "随重耳出亡避难狄国十九年",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e25",
+        "personId": "person-021",
+        "kind": "participant",
+        "description": "任公胥统新军，辅晋文公大破楚军成霸业",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e25",
+        "personId": "person-023",
+        "kind": "related",
+        "description": "赵氏宗族于城濮战功奠定赵盾后执晋政之基",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "eventId": "e28",
+        "personId": "person-023",
+        "kind": "related",
+        "description": "赵盾执政掌晋政时期，晋楚争霸抗衡",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "eventId": "e29",
+        "personId": "person-024",
+        "kind": "related",
+        "description": "晋楚争霸陈国内乱时期晋国重臣",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "eventId": "e31",
+        "personId": "person-024",
+        "kind": "participant",
+        "description": "任右军大夫，见楚庄王势盛力劝勿击，保全右军独还",
+        "sourceIds": [
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e30",
+        "personId": "person-025",
+        "kind": "related",
+        "description": "晋景公时期晋楚争衡中原之将",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "eventId": "e31",
+        "personId": "person-025",
+        "kind": "participant",
+        "description": "任上军大夫参战御楚",
+        "sourceIds": [
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e31",
+        "personId": "person-026",
+        "kind": "participant",
+        "description": "任晋司马，整饬军纪严正行法",
+        "sourceIds": [
+          "source-043",
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e33",
+        "personId": "person-026",
+        "kind": "participant",
+        "description": "任中军副将，辅晋厉公于鄢陵大破楚郑联军",
+        "sourceIds": [
+          "source-043",
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e31",
+        "personId": "person-027",
+        "kind": "participant",
+        "description": "任中军副将，战败被楚所擒质楚九年",
+        "sourceIds": [
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e33",
+        "personId": "person-027",
+        "kind": "participant",
+        "description": "任晋军大将参战破楚，洗雪邲战被俘之耻",
+        "sourceIds": [
+          "source-007"
+        ],
+        "stateId": "jin"
+      },
+      {
+        "eventId": "e33",
+        "personId": "person-028",
+        "kind": "related",
+        "description": "羊舌氏晋国公族重臣，历事悼公、平公",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "eventId": "e37",
+        "personId": "person-028",
+        "kind": "participant",
+        "description": "随晋正卿赵武赴宋参与弭兵之会，力全大局成天下弭兵",
+        "sourceIds": [
+          "source-007"
+        ],
+        "stateId": "jin"
       }
     ],
     "rulerPeople": [
@@ -28514,6 +29970,203 @@
         "description": "与魏安釐王（魏圉）相关的将领",
         "sourceIds": [
           "source-009"
+        ]
+      },
+      {
+        "rulerId": "jin-r18",
+        "personId": "person-020",
+        "kind": "associated",
+        "description": "晋文公重耳舅父与首要谋臣，辅佐文公十九年流亡与践土称霸",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r18",
+        "personId": "person-021",
+        "kind": "associated",
+        "description": "从重耳出亡十九年，辅佐文公返国任公胥、统新军，文公重臣",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "rulerId": "jin-r19",
+        "personId": "person-021",
+        "kind": "associated",
+        "description": "晋襄公即位任原伯，掌军政要职",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "rulerId": "jin-r18",
+        "personId": "person-022",
+        "kind": "associated",
+        "description": "文公时任中军元帅，城濮之战大胜楚军成中原霸业",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r19",
+        "personId": "person-022",
+        "kind": "associated",
+        "description": "襄公时设伏崤山全歼秦军，后箕之战殉国",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r19",
+        "personId": "person-023",
+        "kind": "associated",
+        "description": "晋襄公临终托孤任正卿执政掌中军",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "rulerId": "jin-r20",
+        "personId": "person-023",
+        "kind": "associated",
+        "description": "灵公年幼，赵盾执政，灵公欲杀盾，赵穿弑灵公",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "rulerId": "jin-r21",
+        "personId": "person-023",
+        "kind": "associated",
+        "description": "迎立晋成公，复位为正卿执掌晋政",
+        "sourceIds": [
+          "source-007",
+          "source-045"
+        ]
+      },
+      {
+        "rulerId": "jin-r19",
+        "personId": "person-024",
+        "kind": "associated",
+        "description": "初仕晋襄公参与军政",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r20",
+        "personId": "person-024",
+        "kind": "associated",
+        "description": "自秦归晋复任大夫、上军将",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r21",
+        "personId": "person-024",
+        "kind": "associated",
+        "description": "随晋成公征伐，任上军主将",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r22",
+        "personId": "person-024",
+        "kind": "associated",
+        "description": "景公时升中军元帅、正卿，范氏之祖",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r22",
+        "personId": "person-025",
+        "kind": "associated",
+        "description": "晋景公时为中军元帅、正卿，主持国政破齐于鞍",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r22",
+        "personId": "person-026",
+        "kind": "associated",
+        "description": "景公时为司马，执法严正从郤克破齐",
+        "sourceIds": [
+          "source-043",
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r23",
+        "personId": "person-026",
+        "kind": "associated",
+        "description": "厉公时鄢陵之战任中军副将大破楚郑",
+        "sourceIds": [
+          "source-043",
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r24",
+        "personId": "person-026",
+        "kind": "associated",
+        "description": "悼公即位，任韩厥为中军元帅主持霸政",
+        "sourceIds": [
+          "source-043",
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r22",
+        "personId": "person-027",
+        "kind": "associated",
+        "description": "邲之战被俘后归晋，景公任为上军佐",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r23",
+        "personId": "person-027",
+        "kind": "associated",
+        "description": "厉公时鄢陵之战任大将破楚郑",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r24",
+        "personId": "person-027",
+        "kind": "associated",
+        "description": "悼公时继韩厥为中军元帅，行三驾疲楚之策",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r24",
+        "personId": "person-028",
+        "kind": "associated",
+        "description": "悼公时羊舌肸为御士、佐司马，参与修政",
+        "sourceIds": [
+          "source-007"
+        ]
+      },
+      {
+        "rulerId": "jin-r25",
+        "personId": "person-028",
+        "kind": "associated",
+        "description": "平公时为大夫、帝傅，辅政平公参与宋之弭兵",
+        "sourceIds": [
+          "source-007"
         ]
       }
     ],

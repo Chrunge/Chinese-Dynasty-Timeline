@@ -6,6 +6,20 @@ function buildExportPlan(options,ctx){
  const model=historyService.comparison(options);
  return globalThis.Zhou.buildExportPlan(model,options,(text,size,bold)=>{exportFont(ctx,size,bold);return ctx.measureText(text).width;});
 }
+// A comparison snapshot is a research output, not an Atlas authoring document.
+// Keep every v1 field intact and disclose filters separately from visual layout.
+function buildComparisonSnapshot(options={}){
+ const model=historyService.comparison(options);
+ if(!model.states.length)throw new Error('当前没有显示的国家，请先筛选国家或清除搜索。');
+ const exportContext={version:1,kind:'comparison-snapshot',reimportableAsAtlas:false,
+  timeEncoding:globalThis.Zhou.Time.encoding,
+  filters:{stateIds:model.states.map(state=>state.id),from:model.from,to:model.to,eventCategory:model.category},referenceYear:model.cursor,
+  search:{query:typeof options.query==='string'?options.query:'',scope:options.searchScope==='selected'?'selected':'all',descriptions:Boolean(options.searchDescriptions),effect:'state-selection-only',filtersRecords:false},
+  display:{mode:options.mode||'both',density:options.density||'auto',filtersRecords:false},
+  records:{pixelClipping:false,tenures:'whole-overlapping-records',events:'state-range-category-matches',people:'whole-associated-records',polities:'whole-selected-records',sources:'snapshot-and-record-source-fields',unknownDates:'not-inferred'},
+  note:'按政权、范围与事件类别查询，完整保留命中记录及其来源，不按像素裁剪；人物与原生政权的完整关联记录可能含范围外信息。此 JSON 是对照快照，不是可重新导入 Atlas 的史料文件。'};
+ return {...model,exportContext};
+}
 function exportRulerLanes(s,from,to){return globalThis.Zhou.exportRulerLanes(s,from,to);}
 function wrapExportText(ctx,text,width){return globalThis.Zhou.wrapExportText(value=>ctx.measureText(value).width,text,width);}
 function concatExportBytes(chunks){return globalThis.Zhou.concatExportBytes(chunks);}
@@ -20,11 +34,11 @@ function clearExportDownload(){if(exportObjectURL){URL.revokeObjectURL(exportObj
 async function createComparisonExport(){
  if(exportBusy)return;exportBusy=true;$('#createExport').disabled=true;document.querySelectorAll('#exportForm input,#exportForm select').forEach(e=>e.disabled=true);clearExportDownload();$('#exportStatus').textContent='正在准备导出…';
  try{
-  const options={from:globalThis.Zhou.Time.encode({era:$('#exportFromEra').value||'BCE',year:Number($('#exportFrom').value)}),to:globalThis.Zhou.Time.encode({era:$('#exportToEra').value||'BCE',year:Number($('#exportTo').value)}),span:Number($('#exportSpan').value),states:exportStateIds,cursor:appState.conditions.cursor,category:appState.conditions.category,query:appState.search.query};
+  const options={from:globalThis.Zhou.Time.encode({era:$('#exportFromEra').value||'BCE',year:Number($('#exportFrom').value)}),to:globalThis.Zhou.Time.encode({era:$('#exportToEra').value||'BCE',year:Number($('#exportTo').value)}),span:Number($('#exportSpan').value),states:exportStateIds,cursor:appState.conditions.cursor,category:appState.conditions.category,query:appState.search.query,searchScope:appState.search.searchScope,searchDescriptions:appState.search.searchDescriptions,mode:appState.layout.mode,density:appState.layout.density};
   if($('#exportFormat').value==='json'){
-   const model=historyService.comparison(options);if(!model.states.length)throw new Error('当前没有显示的国家，请先筛选国家或清除搜索。');
+   const model=buildComparisonSnapshot(options);
    const blob=new Blob([JSON.stringify(model,null,2)],{type:'application/json'});exportObjectURL=URL.createObjectURL(blob);
-   const a=document.createElement('a');a.href=exportObjectURL;a.download='zhou-comparison-'+model.from+'-'+model.to+'.json';a.textContent='下载对照资料 JSON';$('#exportDownload').appendChild(a);$('#exportStatus').textContent='已生成对照资料，包含资料版本、纪年口径与来源。';return;
+   const a=document.createElement('a');a.href=exportObjectURL;a.download='zhou-comparison-'+model.from+'-'+model.to+'.json';a.textContent='下载对照资料 JSON';$('#exportDownload').appendChild(a);$('#exportStatus').textContent='已生成完整记录对照快照，含筛选条件、资料版本、纪年口径与来源；不是 Atlas 史料导入文件。';return;
   }
   await document.fonts?.ready;const measure=document.createElement('canvas').getContext('2d');if(!measure)throw new Error('当前浏览器无法生成图片。');const plan=buildExportPlan(options,measure),pdf=$('#exportFormat').value==='pdf',files=[];
   for(let i=0;i<plan.pages.length;i++){$('#exportStatus').textContent='正在生成 '+(i+1)+' / '+plan.pages.length+' 页…';await new Promise(resolve=>setTimeout(resolve,0));const canvas=exportCanvas(plan.pages[i],plan,i);const blob=await canvasExportBlob(canvas,pdf?'image/jpeg':'image/png');files.push(new Uint8Array(await blob.arrayBuffer()));canvas.width=canvas.height=0;}
@@ -35,5 +49,5 @@ $('#exportCompare').onclick=()=>{if(exportBusy){$('#exportDialog').showModal();r
 $('#closeExport').onclick=()=>$('#exportDialog').close();$('#exportForm').onsubmit=e=>{e.preventDefault();createComparisonExport();};
 window.addEventListener('pagehide',()=>{if(exportObjectURL)URL.revokeObjectURL(exportObjectURL);});
 
-Object.assign(root,{buildExportPlan,drawExportPage,exportCanvas,canvasExportBlob,exportFont,exportRulerLanes,wrapExportText,concatExportBytes,buildImagePDF,exportCRC32,buildImagesZIP,createComparisonExport});
+Object.assign(root,{buildComparisonSnapshot,buildExportPlan,drawExportPage,exportCanvas,canvasExportBlob,exportFont,exportRulerLanes,wrapExportText,concatExportBytes,buildImagePDF,exportCRC32,buildImagesZIP,createComparisonExport});
 })(globalThis);

@@ -1,0 +1,14 @@
+/* Optional intervals: full temporal extent, independently ellipsised caption. */
+.event.semanticEvent.intervalEvent{border-radius:9px;border-inline:1px solid currentColor;padding-inline:0}
+.event.semanticEvent.intervalClippedStart{border-start-start-radius:0;border-end-start-radius:0;border-inline-start-style:dashed}
+.event.semanticEvent.intervalClippedEnd{border-start-end-radius:0;border-end-end-radius:0;border-inline-end-style:dashed}
+/* Micro-slots are controls, not fractional dates. The stem preserves the anchor. */
+.ruler.subyearSlot{min-width:14px;padding-inline:1px;align-items:center}
+.ruler.subyearSlot .slotNumber{font-size:10px;line-height:1;font-weight:700}
+.tenureSlotConnector{position:absolute;border-top:1px dashed #19343d;pointer-events:none;opacity:.8}
+.tenureSlotTooltip{position:fixed;z-index:500;padding:10px 12px;border:1px solid #19343d;border-radius:6px;background:#fffdf7;color:#19343d;font-size:13px;line-height:1.6;overflow-wrap:anywhere;box-shadow:0 3px 12px #19343d22;pointer-events:none}
+.crossTopicLinks{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-block:8px 14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#f4f7f6}
+.crossTopicLinks a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding:6px 10px;overflow-wrap:anywhere;color:#19343d;background:white;border:1px solid var(--line);border-radius:6px}
+.crossTopicLinks small{flex-basis:100%;color:#19343d;line-height:1.6}
+.crossTopicLinks a:focus-visible{outline:3px solid #19343d;outline-offset:3px}
+.sameYearTenures .listitem:disabled{opacity:1;color:#19343d;background:#eef3f1;cursor:default}

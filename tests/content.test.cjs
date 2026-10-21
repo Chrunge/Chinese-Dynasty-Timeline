@@ -9,7 +9,7 @@ const {boot,attachStudy}=require('./helpers/browser.cjs');
  action('event','e91');assert.equal(run('currentDetailKey'),'event:e91');for(const h of ['背景','经过','结果','后续影响','前后事件'])assert(el('#detailBody').innerHTML.includes('<h4>'+h+'</h4>'));assert(el('#detailBody').innerHTML.includes('data-id="e92"'));assert(el('#detailBody').innerHTML.includes('data-action="person" data-id="person-039"'));
  assert(D.events.filter(e=>e.key).every(e=>e.narrative));assert(D.events.every(e=>!e.narrative||e.narrative.related.every(id=>D.events.some(v=>v.id===id))));assert.equal(D.researchCoverage.narratives,105);
 
- assert.equal(D.researchCoverage.journeys,12);assert(D.events.every(e=>e.narrative&&e.sources.length));
+ assert.equal(D.researchCoverage.journeys,32);assert(D.events.every(e=>e.narrative&&e.sources.length));
  for(const name of ['孔子','孟子','张仪','范蠡','范雎','李斯']){action('person',name);assert(el('#detailBody').innerHTML.includes('personJourney'));assert(!el('#detailBody').innerHTML.includes('undefined'));assert(!el('#detailBody').innerHTML.includes('完整活动轨迹尚待补充'));const p=D.people.find(p=>p.name===name);assert(p.journey.length>=3);assert(p.journey.every(j=>j.year===null||j.year>=221));assert(p.journey.every(j=>!j.event||p.relatedEvents.includes(j.event)));}
  for(const [q,name] of [['孔丘','孔子'],['孟轲','孟子'],['范睢','范雎'],['陶朱公','范蠡'],['張儀','张仪']])assert(run('searchMatches('+JSON.stringify(q)+').some(h=>h.entry.key==='+JSON.stringify('person:'+D.people.find(p=>p.name===name).id)+')'));
  run("searchDescriptions=true;query='王孙满';renderSearchResults()");assert(run("searchMatches().some(h=>h.entry.key==='event:e28'&&h.reason==='简介中提及')"));assert(el('#searchResults').innerHTML.includes('王孙满'));
@@ -27,5 +27,5 @@ const {boot,attachStudy}=require('./helpers/browser.cjs');
  const damaged=attachStudy(boot({'zhou-reading-v4':'{bad','zhou-visits-v4':JSON.stringify([{key:'person:<script>',view:{}},{key:'person:person-033',view:null}])}));assert.equal(damaged.run('studyVisits.length'),0);assert.equal(damaged.run('cursor'),770);
  run("closeDetail();for(const p of searchIndex.filter(e=>e.type==='person').slice(0,60))showPerson(p.title);closeDetail();saveReadingPosition()");assert.equal(run('studyVisits.length'),50);assert.equal(JSON.parse(app.store['zhou-visits-v4']).length,50);
  const narrow=attachStudy(boot({...app.store},390));assert.equal(narrow.run('cursor'),350);assert(narrow.run('px>=.8&&px<=24'));assert.equal(narrow.run('category'),'改革');
- console.log('PASS content: 105条事件、12人轨迹、别称/摘要搜索、父级返回与阅读恢复。');
+ console.log('PASS content: 105条事件、32人轨迹、别称/摘要搜索、父级返回与阅读恢复。');
 })().catch(e=>{console.error(e);process.exit(1)});

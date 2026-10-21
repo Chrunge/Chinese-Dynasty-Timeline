@@ -1,5 +1,6 @@
 'use strict';
 // Connect page modules only after every implementation has been loaded.
+if($('#eventKindLegend')?.innerHTML!==undefined)$('#eventKindLegend').innerHTML=['政治','战争','改革','外交','文化'].map(kind=>'<span class="eventLegendItem">'+Zhou.EventSemantics.glyph(kind)+' '+kind+'</span>').join('');
 $('.periods').innerHTML='<button data-period="all" class="active">全览</button>'+timelinePeriods.filter(p=>p.button!==false).map(p=>'<button data-period="'+escapeHTML(p.id)+'">'+escapeHTML(p.name)+'</button>').join('');
 document.querySelectorAll('[data-period]').forEach(b=>b.onclick=()=>setPeriod(b.dataset.period));
 $('#extensionLabel').textContent=isZhouTopic?'延伸至秦统一':'延伸至'+fmt(timelineBounds.end);
@@ -13,6 +14,13 @@ if(!isZhouTopic){
  $('#filters > p').textContent='已固定的政权始终参与对比，取消固定后可隐藏。';
 }
 document.querySelectorAll('[data-topic]').forEach(a=>{if(a.dataset.topic===(D.datasetId||'zhou'))a.setAttribute?.('aria-current','page');});
+detailSheet=Zhou.createDetailSheet({dialog:$('#detail'),body:$('#detailBody'),onDismiss:()=>closeDetail(),window,document});
+const interfaceExperience=Zhou.createInterfaceExperience({document,window,storage:Zhou.createStorage(()=>localStorage),datasetId:D.datasetId||'zhou'});
+const accessibility=Zhou.createAccessibility({document,window});
+const timeSlice=Zhou.createTimeSlice({container:$('#timeSlice'),trigger:$('#timeSliceToggle'),data:D,history:historyService,document,onOpen:key=>openDetailKey(key)});
+globalThis.ZhouExperienceHooks={cursorChanged(year){timeSlice.update(year);accessibility.cursorChanged(year);}};
+$('#exportCompare').setAttribute?.('aria-keyshortcuts','Alt+E');
+document.addEventListener('keydown',e=>{if(!e.altKey||e.ctrlKey||e.metaKey||document.querySelector('dialog[open]'))return;if(e.code==='KeyY'){e.preventDefault();$('.cursorHandle')?.focus({preventScroll:true});}else if(e.code==='KeyE'){e.preventDefault();$('#exportCompare').click();}});
 viewAdapter=Zhou.createViewAdapter({state:appState,viewport:vp,$,window,document,render,setCursor,updateRange,bounds:timelineBounds});
 viewAdapter.syncControls();
 pageEffects.renderPanels=()=>{updateCompare();renderEventFocus();renderSearchResults();};

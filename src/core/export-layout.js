@@ -19,10 +19,19 @@ function buildExportPlan(model,options={},measureText){
  const citations=refs=>refs.map(n=>'['+n+']').join('');
  const opinionItems=values=>values.map(({a,refs})=>({text:'异说：'+a.label+(a.year!=null?' '+fmt(a.year):'')+(a.explanation?' · '+a.explanation:'')+(refs.length?' · 来源'+citations(refs):'')}));
  const rulers=states.flatMap(s=>s.rulers.map(r=>({state:s,r,ref:addSource({title:(r.source||'').includes('wikisource')?'君主纪年表 · 原典':'君主纪年表 · 检索汇编，待逐条校勘',url:r.source}),refs:sourceRefs(r.sources),datingRefs:sourceRefs(r.dating?.sources),chronologyRefs:sourceRefs(r.chronology?.sources),alternatives:alternatives(r.dating)})));
- const events=model.events.map((e,i)=>({e,number:i+1,refs:sourceRefs(e.sources),alternatives:alternatives(e.dating)}));
+ const events=model.events.flatMap((e,i)=>{
+  const span=Zhou.Time.eventRange(e);
+  return span?[{e,number:i+1,refs:sourceRefs(e.sources),alternatives:alternatives(e.dating),...(span.start!==span.end?{interval:span}:{})}]:[];
+ });
+ const hasIntervals=events.some(v=>v.interval);
  for(const s of states){for(const ref of s.dating?.sources||[])addSource(ref);}
  const pages=[];for(let first=from;first>=to;){const last=Math.max(to,first-span+1);let group=[],weight=0;
-  for(const s of states){const packed=exportRulerLanes(s,first,last),height=80+packed.lanes*22;if(group.length&&weight+height>520){pages.push({type:'chart',from:first,to:last,rows:group});group=[];weight=0;}group.push({s,...packed,height});weight+=height;}
+  for(const s of states){
+   const packed=exportRulerLanes(s,first,last),height=80+packed.lanes*22;
+   if(group.length&&weight+height>520){pages.push({type:'chart',from:first,to:last,rows:group});group=[];weight=0;}
+   const intervalEvents=events.filter(v=>v.interval&&v.e.states.includes(s.id)&&Zhou.Time.overlaps(v.interval.start,v.interval.end,first,last)).map(v=>({event:v,from:Math.min(first,v.interval.start),to:Math.max(last,v.interval.end),startClipped:v.interval.start>first,endClipped:v.interval.end<last}));
+   group.push({s,...packed,height,...(intervalEvents.length?{intervalEvents}:{})});weight+=height;
+  }
   if(group.length)pages.push({type:'chart',from:first,to:last,rows:group});first=last-1;
  }
  // A complete text index accompanies small bars and dense event markers.
@@ -40,13 +49,14 @@ function buildExportPlan(model,options={},measureText){
   }
  }
  items.push({text:'事件索引 · 同一编号在相关国家行中对应同一事件',kind:'heading'});
- for(const {e,number,refs,alternatives:opinions} of events){items.push({text:'E'+number+' · '+range(e.year,e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>model.stateNames?.[id]||states.find(s=>s.id===id)?.name||id).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+citations(refs)});items.push({text:e.description});items.push(...opinionItems(opinions));}
+ for(const {e,number,refs,alternatives:opinions,interval} of events){items.push({text:'E'+number+' · '+range(e.year,interval?interval.end:e.year,e.approx)+' · '+e.name+' · '+e.states.map(id=>model.stateNames?.[id]||states.find(s=>s.id===id)?.name||id).join('、')+' · '+certaintyLabel[e.dating?.level||'inferred']+' · 来源'+citations(refs)});items.push({text:e.description});items.push(...opinionItems(opinions));}
  if(!events.length)items.push({text:'当前范围与类别筛选下没有已收录事件。'});
  items.push({text:'图例与采用口径',kind:'heading'},{text:model.legend||'彩色条：采用年表的君主在位区间；细线：政权存续；E编号菱形：事件；红色端点：政权终止或资料标记的阶段边界；金色竖线：参考年份。'}, {text:'定＝较确定，推＝推定，异＝存在异说。推定用虚线，异说用双边框。年级精度；同年更替不代表两人全年同时在位。'}, {text:model.scopeNote||'国家中断与复国分段显示；事件与生平为精选。实际即位、退位、去世与改元须查网站详情。'});
+ if(hasIntervals)items.push({text:'区间事件：E编号胶囊表示完整起讫；圆端为已记录起讫，平切端及续接线表示超出本页，不是新起讫。完整日期只在事件索引列出一次。'});
  items.push({text:'核查来源 · 原典记载与纪年汇编分别标注',kind:'heading'});sources.forEach((s,i)=>{items.push({text:'['+(i+1)+'] '+s.title,kind:'source'});items.push({text:s.url,kind:'url'});});
  let lines=[],used=0;const flush=()=>{if(lines.length)pages.push({type:'index',lines});lines=[];used=0;};
  for(let itemIndex=0;itemIndex<items.length;itemIndex++){const item=items[itemIndex];if((item.kind==='heading'&&used+68>630)||(item.kind==='source'&&used+92>630))flush();const wrapped=wrapExportText(text=>measureText(text,item.kind==='url'?15:18,item.kind==='heading'),item.text,1110);for(let i=0;i<wrapped.length;i++){const height=item.kind==='heading'?34:item.kind==='url'?24:27;if(used+height>630)flush();lines.push({text:wrapped[i],kind:item.kind,height});used+=height;}if(used+7>630)flush();else{lines.push({text:'',height:7});used+=7;}}
- flush();return {pages,states,events,sources,from,to,title:model.title||'历史对照图',cursor:model.cursor,category:model.category,updated:model.updated,date:new Date().toLocaleDateString('zh-CN'),query:options.query||''};
+ flush();return {pages,states,events,sources,from,to,...(hasIntervals?{hasIntervals:true}:{}),title:model.title||'历史对照图',cursor:model.cursor,category:model.category,updated:model.updated,date:new Date().toLocaleDateString('zh-CN'),query:options.query||''};
 }
  Object.assign(Zhou,{buildExportPlan,exportRulerLanes,wrapExportText});
 })(globalThis);

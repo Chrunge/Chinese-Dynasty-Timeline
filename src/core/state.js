@@ -10,10 +10,10 @@
   Zhou.createApplicationState = data => {
     const bounds=Zhou.Time.bounds(data);
     return {
-    conditions: {end:bounds.defaultEnd, selected:new Set(data.states.map(s=>s.id)), category:'all', cursor:bounds.cursor},
+    conditions: {end:bounds.defaultEnd, selected:new Set(data.states.map(s=>s.id)), category:'all', cursor:bounds.cursor, motif:'none'},
     layout: {stateOrder:data.states.map(s=>s.id), rowHeight:64, fitRows:false, viewHeight:560, expanded:false, rowHeights:{}, px:4, mode:'both', density:'auto', pinned:new Set()},
     search: {query:'', searchScope:'all', searchDescriptions:false, searchLimit:6, searchTarget:null},
-    session: {activeEventId:null, visibleStates:[], rowLayouts:new Map(), savedCombos:[]}
+    session: {activeEventId:null, activePersonId:null, visibleStates:[], rowLayouts:new Map(), savedCombos:[]}
   };};
   Zhou.readLayout = (saved, defaults, ids) => {
     if (!saved || typeof saved !== 'object') return {...defaults};

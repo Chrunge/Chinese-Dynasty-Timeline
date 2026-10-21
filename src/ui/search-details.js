@@ -1,4 +1,4 @@
-function resultMeta(entry){const states=entry.states.map(id=>byId(id).name).join('、');return [states,entry.undated?'在位起讫待考':entry.type==='ruler'?range(entry.year,entry.until,entry.data.approx):entry.type==='event'?range(entry.year,entry.year,entry.data.approx):entry.type==='person'?entry.data.role:'国家世系与事件'].filter(Boolean).join(' · ');}
+function resultMeta(entry){const states=entry.states.map(id=>byId(id).name).join('、');return [states,entry.undated?'在位起讫待考':entry.type==='ruler'?range(entry.year,entry.until,entry.data.approx):entry.type==='event'?range(entry.year,entry.until??entry.year,entry.data.approx):entry.type==='person'?entry.data.role:'国家世系与事件'].filter(Boolean).join(' · ');}
 function searchExcerpt(text){const value=String(text||''),offsets=[];let normalized='';for(let i=0;i<value.length;){const char=String.fromCodePoint(value.codePointAt(i)),part=normalizeSearch(char);normalized+=part;for(let k=0;k<part.length;k++)offsets.push(i);i+=char.length;}const at=normalized.indexOf(normalizeSearch(appState.search.query)),start=Math.max(0,(offsets[at]||0)-35),stop=Math.min(value.length,start+140);return (start?'…':'')+value.slice(start,stop)+(stop<value.length?'…':'');}
 function renderSearchResults(){
  const panel=$('#searchPanel');panel.hidden=!appState.search.query;if(!appState.search.query){$('#searchResults').innerHTML='';$('#searchCount').textContent='';return;}
@@ -11,8 +11,95 @@ function updateSearch(text){appState.search.query=text.trim();appState.search.se
 function scrollToSearchState(id){const layout=appState.session.rowLayouts.get(id);if(!layout||layout.pinned)return;const pinnedRows=(appState.session.visibleRows||[]).filter(r=>r.pinned),pinHeight=pinnedRows.reduce((n,r)=>n+(appState.session.rowLayouts.get(r.members[0].id)?.height||0),0);vp.scrollTop=Math.max(0,layout.offset-pinHeight);}
 function personButton(value,label){const entry=searchIndex.find(e=>e.key===normalizeDetailKey('person:'+value));label??=entry?.data.name||value;return entry?'<button class="personLink" data-action="person" data-id="'+escapeHTML(entry.data.id)+'">'+escapeHTML(label)+'</button>':escapeHTML(label);}
 function showSearchPerson(entry){showPerson(entry.data.id);}
+function renderBiographyReader(p,entry,events){
+ const bp=p.biographyPlan;
+ const goldBadge=bp.characterTag?'<span class="bioBadge goldBadge">'+escapeHTML(bp.characterTag)+'</span>':'';
+ const motifBadge=bp.motifCategory?'<span class="bioBadge motifBadge">'+escapeHTML(bp.motifCategory)+'</span>':'';
+ const tierBadge=bp.selectionTier?'<span class="bioBadge tierBadge">'+escapeHTML(bp.selectionTier)+'</span>':(bp.isCore26?'<span class="bioBadge tierBadge">核心入选人物（26人精选版）</span>':'<span class="bioBadge tierBadge">扩展人物矩阵</span>');
+ const volumeBadge=bp.volume?'<span class="bioBadge volumeBadge">'+escapeHTML(bp.volume)+'</span>':'';
+ const lifespan=bp.lifespan?'<div class="bioLifespan"><span class="bioMetaLabel">生卒享年：</span>'+escapeHTML(bp.lifespan)+'</div>':'';
+
+ let monarchChain='';
+ if(Array.isArray(p.servedMonarchs)&&p.servedMonarchs.length){
+  const list=p.servedMonarchs.map(m=>{
+   const kindLabel=m.kind==='associated'?'核心辅政':m.kind==='service'?'出仕':'交涉';
+   return '<button type="button" class="monarchBadge" data-action="focusRuler" data-id="'+escapeHTML(m.tenureId)+'" title="'+escapeHTML(m.description||m.monarchName)+'">'+
+    '<span class="monarchKind">'+escapeHTML(kindLabel)+'</span>'+
+    '<span class="monarchName">'+escapeHTML(m.monarchName)+'</span>'+
+    '</button>';
+  }).join('');
+  monarchChain='<div class="bioMonarchChain"><span class="bioMetaLabel">历仕君主：</span><div class="monarchList">'+list+'</div></div>';
+ }
+
+ const origin=p.origin?'<p class="notice">出身：'+escapeHTML(p.origin)+'</p>':'';
+
+ const heraldry='<div class="bioHeraldry">'+
+  '<h3 class="detailTitle bioName">'+escapeHTML(p.name)+'</h3>'+
+  '<div class="bioRole">'+escapeHTML(p.role||'传记代表人物')+'</div>'+
+  '<div class="bioBadges">'+goldBadge+motifBadge+tierBadge+volumeBadge+'</div>'+
+  lifespan+
+  origin+
+  monarchChain+
+  '</div>';
+
+ const quoteCard='<div class="bioQuoteCard">'+
+  '<div class="bioQuoteSection"><h5>【核心戏剧冲突与历史高潮】</h5><p>'+escapeHTML(bp.coreHighlights||'')+'</p></div>'+
+  '<div class="bioQuoteSection"><h5>【历仕帝王与跨政权轨迹】</h5><p>'+escapeHTML(bp.crossRegimeSpan||'')+'</p></div>'+
+  (bp.suggestedLength?'<div class="bioQuoteSection"><h5>【立传规划与篇幅】</h5><p>'+escapeHTML(bp.suggestedLength)+(bp.volume?' · '+escapeHTML(bp.volume):'')+'</p></div>':'')+
+  '<div class="bioQuoteSection"><h5>【传主小传纪略】</h5><p>'+escapeHTML(p.summary||'')+'</p></div>'+
+  '</div>';
+
+ const chapters=Array.isArray(bp.chapters)?bp.chapters:[];
+ const chapterCards=chapters.map(ch=>{
+  const rawYear=typeof ch.year==='object'&&ch.year?(ch.year.era==='BCE'?ch.year.year:1-ch.year.year):Number(ch.year);
+  const polity=byId(ch.polityId)||{name:ch.polityId};
+  return '<article class="bioChapterCard" data-action="bioChapter" data-id="'+rawYear+':'+escapeHTML(ch.polityId)+':'+ch.chapterNo+'" data-year="'+rawYear+'" data-polity-id="'+escapeHTML(ch.polityId)+'" data-chapter-no="'+ch.chapterNo+'">'+
+   '<div class="bioChapterHead">'+
+    '<span class="bioChapterNo">第 '+ch.chapterNo+' 章</span>'+
+    '<span class="bioChapterKind">'+escapeHTML(ch.kindLabel||'')+'</span>'+
+    '<span class="bioChapterPolity">'+escapeHTML(polity.name)+'</span>'+
+    '<span class="bioChapterYear">'+(ch.approx?'约 ':'')+fmt(rawYear)+'</span>'+
+   '</div>'+
+   '<h5 class="bioChapterTitle">'+escapeHTML(ch.title)+'</h5>'+
+   '<p class="bioChapterSummary">'+escapeHTML(ch.summary)+'</p>'+
+   '<div class="bioChapterFoot"><span class="bioChapterHint">联动左图定位 ➔</span></div>'+
+  '</article>';
+ }).join('');
+
+ const chapterSection='<div class="detailSection bioChapterSection">'+
+  '<h4>分章传记叙事流（共 '+chapters.length+' 章）</h4>'+
+  '<p class="notice">点击任意章节卡片，左侧主时间轴自动将金色参考线（Cursor）平滑移动至该年，并将所属政权泳道滚动居中高亮。</p>'+
+  '<div class="bioChapterFlow">'+chapterCards+'</div>'+
+  '</div>';
+
+ const countries=entry.states.map(id=>{
+  const s=byId(id);
+  return s?'<button data-action="state" data-id="'+id+'">'+escapeHTML(s.name)+'</button>':'';
+ }).join('');
+ const roles=events.flatMap(e=>(e.participants||[]).filter(v=>v.id===p.id).map(v=>'<p><b>'+escapeHTML(e.name)+'：</b>'+escapeHTML(v.relation)+'</p>')).join('');
+
+ const journey=p.journey?.length?'<ol class="personJourney">'+p.journey.map(j=>'<li><span class="journeyDate">'+(Zhou.Time.isYear(j.year)?(j.approx?'约 ':'')+fmt(j.year):'年份未定 · 依阶段记载')+'</span><h5>'+escapeHTML(j.label)+'</h5><span class="journeyKind">'+escapeHTML(j.kind)+' · '+(byId(j.state)?.name||j.state)+'</span><p>'+escapeHTML(j.text)+'</p><div class="related"><button data-action="state" data-id="'+j.state+'">查看'+(byId(j.state)?.name||j.state)+'</button>'+(j.event?'<button data-action="event" data-id="'+j.event+'">相关事件</button>':'')+'</div></li>').join('')+'</ol>':'';
+ const journeySection=journey?'<div class="detailSection"><h4>活动轨迹</h4>'+journey+'</div>':'';
+
+ const rulerSection=(p.rulerKeys&&p.rulerKeys.length)?'<div class="detailSection"><h4>已收录的君主关联</h4><p class="notice">这些是在位区间中的人物关联，不表示此人全程任职，也不是生卒年。</p>'+(p.rulerKeys.map(key=>{const r=searchIndex.find(e=>e.key===key);return r?'<button class="listitem" data-action="ruler" data-id="'+r.data.id+'">'+escapeHTML(r.title)+'<small>'+escapeHTML(resultMeta(r))+'</small></button>':'';}).join('')||'<p class="notice">尚未收录可定位的具体君主关联。</p>')+'</div>':'';
+
+ const relationsSection='<div class="detailSection"><h4>已收录任职 / 活动国家</h4><div class="related">'+countries+'</div><p class="notice">包含任职、辅政、游说、流亡及重大历史涉事政权。</p></div>'+
+  rulerSection+
+  journeySection+
+  (events.length?'<div class="detailSection"><h4>已收录相关事件</h4>'+roles+eventList(events)+'</div>':'');
+
+ return heraldry+quoteCard+chapterSection+relationsSection+links(p.sources||[]);
+}
+
 function showPerson(name){
  const entry=searchIndex.find(e=>e.key===normalizeDetailKey('person:'+name));if(!entry)return;const p=entry.data,events=D.events.filter(e=>p.eventIds.includes(e.id));
+ appState.session.activePersonId=p.id;
+ render();
+
+ if(p.biographyPlan && !appState.session.legacyShareV1){
+  show('传记档案 · '+(p.biographyPlan.dynastyGroup||entry.states.map(id=>byId(id)?.name||id).join('、')),renderBiographyReader(p,entry,events),'person:'+p.id);
+  return;
+ }
  const journey=p.journey?.length?'<ol class="personJourney">'+p.journey.map(j=>'<li><span class="journeyDate">'+(Zhou.Time.isYear(j.year)?(j.approx?'约 ':'')+fmt(j.year):'年份未定 · 依阶段记载')+'</span><h5>'+escapeHTML(j.label)+'</h5><span class="journeyKind">'+escapeHTML(j.kind)+' · '+byId(j.state).name+'</span><p>'+escapeHTML(j.text)+'</p><div class="related"><button data-action="state" data-id="'+j.state+'">查看'+byId(j.state).name+'</button>'+(j.event?'<button data-action="event" data-id="'+j.event+'">相关事件</button>':'')+'</div></li>').join('')+'</ol>':'<p class="notice">完整活动轨迹尚待补充。下方仅列已收录的君主关联和具体事件，不据君主在位年推算任期或生卒年。</p>';
  const countries=entry.states.map(id=>'<button data-action="state" data-id="'+id+'">'+byId(id).name+'</button>').join('');
  const roles=events.flatMap(e=>(e.participants||[]).filter(v=>v.id===p.id).map(v=>'<p><b>'+escapeHTML(e.name)+'：</b>'+escapeHTML(v.relation)+'</p>')).join('');

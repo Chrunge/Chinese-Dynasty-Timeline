@@ -18,7 +18,8 @@ for(const width of [1200,390]){
   const app=start('three-kingdoms',width);app.run("density='auto';px=6;rowHeight=128;fitRows=false;render()");
   const html=app.el('#chart').innerHTML;
   assert(html.includes('曹操</span>'));assert(!html.includes('基础期</span>'));assert(!html.includes('class="rulerYears'));
-  assert(html.includes('aria-label="'+app.run("historyService.tenure('tk-tenure-caocao-foundation').name")));
+  const caoTag=html.match(/<button[^>]*data-id="tk-tenure-caocao-foundation"[^>]*>/)?.[0],accessible=caoTag?.match(/aria-label="([^"]*)"/)?.[1];
+   assert(accessible?.includes(app.run("historyService.tenure('tk-tenure-caocao-foundation').name")),'full historical title remains in accessible name');assert(accessible.startsWith('曹操'),'voice-control name starts with the visible short label');
   app.run("density='full';px=24;render()");assert(app.el('#chart').innerHTML.includes('class="rulerYears'));
   for(const id of ['tk-tenure-liubei-hanzhong','tk-tenure-liu-bei']){app.action('ruler',id);assert.equal(app.run('navigation.key'),'ruler:'+id);assert(app.el('#detailBody').innerHTML.includes(app.run(`historyService.tenure('${id}').name`)));assert(app.el('#detailBody').innerHTML.includes('简要生平'));}
   app.run("updateSearch('刘备')");assert(app.run("searchMatches().filter(h=>h.entry.type==='ruler'&&h.entry.data.personId===historyService.tenure('tk-tenure-liu-bei').personId).length")>=2);

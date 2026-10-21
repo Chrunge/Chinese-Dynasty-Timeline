@@ -22,3 +22,612 @@
 /* Presentation groups retain independently actionable polity labels and inclusive lanes. */
 .memberLabel{display:flex;align-items:center;justify-content:space-between;gap:3px;width:100%;min-width:0}.groupedRow .stateLabel{flex-direction:column;align-items:stretch;justify-content:center;gap:0}.rowGroupTitle{font-size:13px;font-weight:600;padding:2px;color:var(--muted);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}.rowGroupTitle small{display:block;font-size:10px;font-weight:400}.groupedRow .stateName{font-size:15px;min-height:23px;letter-spacing:0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.groupedRow .pinState{min-height:21px;height:21px;min-width:21px;padding:1px}.politySegment{position:absolute;display:block;overflow:hidden;white-space:nowrap;text-align:center;text-overflow:ellipsis;color:#fff;font-size:12px;line-height:19px;height:19px;min-height:0;padding:0 3px;border:0;border-radius:2px;z-index:2}.politySegment:hover{filter:brightness(.9)}
 @media(max-width:680px){.groupedRow .stateName{font-size:13px}.rowGroupTitle{font-size:11px}.groupedRow .pinState{font-size:10px;min-width:18px}.politySegment{font-size:11px}}
+
+/* P0 interface only. Dense historical glyph geometry remains unchanged. */
+[hidden]{display:none!important}
+.primaryToolbar{gap:10px;align-items:center;padding:12px 16px}
+.primaryToolbar>*{min-width:0}
+.primaryToolbar .search{margin:0;flex:1 1 240px;min-height:44px}
+.primaryToolbar .search input{width:100%;min-width:0;background:transparent;border:0}
+.primaryToolbar .zooms{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin:0}
+.primaryToolbar .yearTools{display:flex;flex-direction:column;gap:3px;max-width:100%}
+#jump{flex-wrap:wrap;max-width:100%}#year{width:86px;min-width:0}#toolbarCursor{font-size:12px;color:var(--muted)}
+.topicTools{flex:1 0 100%;max-width:100%}.topicStrip{display:flex;align-items:center;gap:6px;min-width:0}
+.topicStrip .topicNav{min-width:0;flex:1;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-behavior:smooth;padding:3px;gap:6px;border:0;scroll-padding-inline:12px;-webkit-overflow-scrolling:touch}
+.topicNav a{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:44px;white-space:nowrap;padding:7px 12px}
+.topicNav span{display:none}.topicStep{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;max-width:70px;text-align:center;font-size:12px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:4px;flex-shrink:0}
+.topicStep[aria-disabled=true]{opacity:.4;pointer-events:none}.topicTools .periods{max-width:100%;overflow-x:auto;margin-top:6px;width:max-content;white-space:nowrap}.periods button{flex:0 0 auto}
+#advancedSettings{border-bottom:1px solid var(--line);background:#f7faf8}.helpbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:10px 20px;font-size:14px}#uiStatus{font-size:12px;color:var(--muted)}
+/* Override legacy ID-level compact-button minima, never the dense glyphs. */
+button:not(.ruler):not(.event):not(.politySegment):not(.stateName):not(.pinState):not(.lifeStart){min-height:44px!important;min-width:44px!important}
+.importButton{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}input:not([type=checkbox]):not([type=range]),select{min-height:44px;max-width:100%}.searchHead label,.extension,.layoutbar label,.researchbar label,#stateChecks label{min-height:44px}
+#advancedSettings .viewControl{margin-left:0}#advancedSettings .layoutbar,#advancedSettings .subtoolbar,#advancedSettings .researchbar,#advancedSettings .readingbar{gap:10px}
+.onboarding{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 18px;background:#fff9e9;border-bottom:1px solid #d6bc7d}.onboarding h3{font-size:17px;margin:4px 0}.onboarding p{margin:4px 0;font-size:14px}.onboarding .eyebrow{font-size:12px}.onboardingActions{display:flex;gap:8px;flex-shrink:0}.onboardingTarget{outline:2px solid var(--gold);outline-offset:2px}
+/* The 44px handle belongs in the axis, not over the first polity's controls.
+   Keep the line/relations at their original 64px origin; sticky+translation
+   retains the handle inside the axis when the chart scrolls vertically. */
+.cursorline{border-color:var(--gold);pointer-events:none;z-index:13}.cursorline .cursorHandle{pointer-events:auto;touch-action:none;position:sticky;top:44px;transform:translate(-50%,-100%);display:block;width:44px;height:44px;padding:0;color:transparent;background:transparent;border:0;font-size:0;white-space:nowrap;z-index:9;cursor:ew-resize}.cursorHandle::after{content:attr(data-year);position:absolute;top:0;left:50%;transform:translateX(-50%);padding:3px 5px;color:var(--ink);background:#f9e9bc;border:1px solid var(--gold);border-radius:4px;font-size:11px;line-height:18px;pointer-events:none}.cursorBadge{position:static;background:transparent;transform:none;padding:0;color:inherit}
+.primaryToolbar:focus-within{position:relative;z-index:11}.workspace.expanded .primaryToolbar{flex-shrink:0}.workspace.expanded #advancedSettings{max-height:45dvh;overflow:auto;flex-shrink:1}.workspace.expanded .onboarding{max-height:30dvh;overflow:auto;flex-shrink:1}
+@media(max-width:1000px){.primaryToolbar .search{flex-basis:200px}.primaryToolbar{gap:8px}}
+@media(max-width:767px){
+ header{padding:14px 16px}.brand h1{font-size:22px}.smallcaps{display:none}main{padding:16px 12px}.intro{margin-bottom:12px;gap:8px}.intro h2{font-size:23px;margin:6px 0}.intro .numbers{display:none}.intro p{font-size:12px;margin:4px 0}.intro .eyebrow{font-size:11px}
+ .primaryToolbar{padding:10px;gap:8px}.primaryToolbar .search{flex:1 1 155px}.primaryToolbar #advancedToggle{font-size:12px;padding:6px;order:0}.primaryToolbar .zooms{flex:1 0 100%;order:1;justify-content:center}.primaryToolbar .yearTools{flex:1 0 100%;order:2;align-items:center}.topicTools{order:3}.topicStep{max-width:44px}.topicNav a{padding:7px 10px}.topicTools .periods{width:100%}.onboarding{padding:12px;align-items:flex-start;flex-wrap:wrap;gap:8px}.onboardingActions{margin-left:auto}.helpbar{padding:10px 12px}.legend{padding:8px 10px;gap:8px}.legend .hint{display:none}.status{flex-wrap:wrap;gap:5px}#advancedSettings select{min-width:0}#advancedSettings .modes{flex-wrap:wrap}#advancedSettings .layoutbar label{flex-wrap:wrap}.referenceControl{flex-wrap:wrap}.referenceControl input{min-width:0;max-width:100%}
+ #detail>.dialogHead{flex-wrap:wrap;gap:6px}#detailTag{flex-basis:calc(100% - 70px);order:-1}#detail #close{order:-1}#detailBack,#shareDetail{flex:1}.searchHead select{max-width:100%}.exportFields label{min-width:0}.dialogHead{min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.topicStrip .topicNav{scroll-behavior:auto}.onboardingTarget{transition:none}}
+
+/* Gesture ownership stays on the timeline canvas. Dense buttons keep their
+   original rectangles; 44px touch hit regions exist only in gestures.js. */
+.timelineGestureCanvas{touch-action:none;overscroll-behavior:contain}
+.timelineGestureCanvas.dragging{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.timelineGestureCandidates{position:fixed;z-index:1000;box-sizing:border-box;width:min(360px,calc(100vw - 16px));max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);overflow:auto;overscroll-behavior:contain;padding:8px;border:1px solid #c5b695;border-radius:10px;background:#fffdf7;color:#342b20;box-shadow:0 6px 30px #0004;font:14px/1.45 system-ui,sans-serif}
+.timelineGestureCandidatesTitle{margin:4px 6px 8px;font-weight:700}
+.timelineGestureCandidate{display:block;box-sizing:border-box;width:100%;min-width:44px;min-height:44px;margin:4px 0;padding:10px 12px;border:1px solid #d9cfbc;border-radius:6px;background:#fffdf7;color:inherit;font:inherit;line-height:1.5;text-align:left;white-space:normal;overflow-wrap:anywhere;cursor:pointer;touch-action:manipulation}
+.timelineGestureCandidate:hover{background:#f3ecdc}
+.timelineGestureCandidate:focus-visible{outline:3px solid #79552b;outline-offset:1px}
+.timelineGestureCandidateClose{font-weight:700;text-align:center}
+
+/* Appended after the shared stylesheet. Native dialog modality and its original
+   scroll container/header/IDs remain intact; desktop layout is not replaced. */
+#detail > .detailSheetControls { display: none; }
+@media (max-width: 767px) {
+ #detail.hasDetailSheet {
+  position: fixed;
+  inset: auto 0 0;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: var(--detail-sheet-drag-height, var(--detail-sheet-height-fallback, 60vh));
+  max-height: 90vh;
+  padding: 0;
+  border: 1px solid var(--line, #dce4e3);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-padding-top: 132px;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 -8px 36px #19343d26;
+  transition: height 160ms ease-out;
+ }
+ @supports (height: 1dvh) {
+  #detail.hasDetailSheet {
+   height: var(--detail-sheet-drag-height, var(--detail-sheet-height, 60dvh));
+   max-height: 90dvh;
+  }
+ }
+ #detail.hasDetailSheet[open] { display: block; }
+ #detail.hasDetailSheet.isSheetDragging { transition: none; }
+ #detail.hasDetailSheet > .detailSheetControls {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 52px;
+  padding: 4px max(8px, env(safe-area-inset-right, 0px)) 4px max(8px, env(safe-area-inset-left, 0px));
+  background: #fff;
+  border-bottom: 1px solid var(--line, #dce4e3);
+ }
+ #detail.hasDetailSheet > .detailSheetControls[hidden] { display: none; }
+ #detail .detailSheetHandle {
+  display: grid;
+  place-items: center;
+  flex: 1 1 auto;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+ }
+ #detail .detailSheetHandle > span {
+  width: 36px;
+  height: 5px;
+  border-radius: 8px;
+  background: var(--muted, #65777c);
+  pointer-events: none;
+ }
+ #detail .detailSheetHandle:focus-visible { outline: 3px solid #b68c47; outline-offset: -3px; }
+ #detail .detailSheetSnap {
+  flex: 0 0 auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px 8px;
+  font-size: 13px;
+ }
+ #detail .detailSheetSnap[aria-pressed="true"] { background: var(--ink, #19343d); color: #fff; }
+ #detail.hasDetailSheet > .dialogHead {
+  top: 52px;
+  padding-left: max(12px, env(safe-area-inset-left, 0px));
+  padding-right: max(12px, env(safe-area-inset-right, 0px));
+ }
+ #detail.hasDetailSheet > #detailBody {
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  overflow-wrap: anywhere;
+ }
+ #detail.hasDetailSheet > #detailBody img { max-width: 100%; height: auto; }
+ #detail.hasDetailSheet > #detailBody pre { overflow-x: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+ #detail.hasDetailSheet { transition: none; scroll-behavior: auto; }
+}
+
+/* Event semantics are additive. Preserve 18px markers, 22px lane pitch and the
+   gesture module's separate 44px hit testing; never enlarge dense rectangles. */
+.event.semanticEvent{display:inline-flex;align-items:center;gap:3px;min-width:0;min-height:18px;height:18px;line-height:16px;padding:0 3px;overflow:hidden;white-space:nowrap;box-sizing:border-box}
+.event.semanticEvent .eventKindIcons{display:inline-flex;align-items:center;flex:0 0 auto;gap:1px;padding:0;overflow:visible}
+.eventKindIcon{display:inline-block;width:12px;height:12px;min-width:12px;flex:0 0 12px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.event.semanticEvent .eventShortTitle{display:block;min-width:0;flex:1 1 auto;padding:0;overflow:hidden;text-overflow:ellipsis}
+.event.semanticEvent .eventCertainty{flex:0 0 12px;padding:0;font-size:11px;text-align:center}
+.event.semanticEvent.compactEvent .eventShortTitle{display:none}
+.event.semanticEvent.keyEvent .eventShortTitle{font-weight:700}
+.event.semanticEvent .eventCount{flex:0 0 auto;padding:0 1px;font-variant-numeric:tabular-nums}
+.event.semanticEvent:focus-visible{z-index:15;outline:2px solid var(--accessible-ink,#243d41);outline-offset:2px}
+.event.undatedCapsule{height:18px;min-height:18px;max-width:128px;padding:0 6px;border:1px dashed currentColor;border-radius:10px;background:var(--paper,#fffdf7);color:var(--accessible-ink,#243d41);font-size:11px;line-height:16px;white-space:nowrap}
+/* Overlays do not receive clicks or affect scroll extents. The endpoint dots
+   identify related visible rows; the dashed stem may pass unrelated rows. */
+.eventRelations{position:absolute;top:-64px;bottom:0;pointer-events:none;z-index:12;overflow:clip}
+.eventRelationStem{position:absolute;width:0;border-left:2px dashed var(--accessible-ink,#243d41);opacity:.8}
+.eventRelationDot{position:absolute;width:7px;height:7px;border:2px solid var(--accessible-ink,#243d41);border-radius:50%;background:var(--paper,#fffdf7);transform:translate(-2.5px,-3.5px)}
+.eventRelationHint{position:absolute;max-width:260px;padding:2px 6px;border:1px solid var(--line,#cbd7d5);border-radius:4px;background:var(--paper,#fffdf7);color:var(--accessible-ink,#243d41);font-size:11px;line-height:16px;white-space:normal;box-shadow:0 1px 4px #0002}
+/* Inference softness stays strictly within the original tenure rectangle.
+   Certainty border patterns and contextual association markers remain intact. */
+.ruler.inferredBar::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#ffffff66 0,transparent 2px,transparent calc(100% - 2px),#ffffff66 100%)}
+
+.timeSlice{margin:12px 0;padding:12px;border:1px solid var(--line,#cbbda5);border-radius:8px;background:var(--panel,#fffdf7);color:var(--ink,#25201a);max-height:65vh;overflow:auto;scroll-margin-block:12px}.timeSliceHeader{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.timeSliceHeader h3{margin:0;font-size:1rem}.timeSliceBody h4{margin:16px 0 8px}.timeSliceBody ul{padding-inline-start:22px}.timeSliceBody li{margin-block:7px}.timeSliceState{padding-bottom:8px;border-bottom:1px solid var(--line,#cbbda5)}.timeSlice p{margin:7px 0;line-height:1.6}.timeSliceNote{font-size:.875rem;color:var(--muted,#625b51)}.timeSliceInterruption{font-weight:600}.timeSlice button{font:inherit;white-space:normal;min-height:32px}.timeSlice [data-time-slice-open]{text-align:start}.timeSlice button:focus-visible,.timeSlice h3:focus{outline:2px solid var(--accent,#8b3d25);outline-offset:3px}.timeSliceClose{flex:none}@media(max-width:600px){.timeSliceHeader{flex-wrap:wrap}.timeSlice{padding:10px;max-height:60vh}.timeSlice button{min-height:40px}}
+
+/* P1 detail-only presentation. Keep the native dialog and its scroll owner. */
+#detail .detailSectionNav { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+#detail .detailSectionNav input[type="button"] {
+ min-height: 44px; min-width: 44px; max-width: 100%; padding: 8px 12px;
+ border: 1px solid var(--line, #c9d4d3); border-radius: 6px;
+ background: #fff; color: var(--ink, #19343d); font: inherit; cursor: pointer;
+}
+#detail .detailSectionNav input:focus-visible,
+#detail .sourceLinks a:focus-visible,
+#detail #detail-dating:focus-visible,
+#detail #detail-sources:focus-visible,
+#detail #undated-lineage:focus-visible { outline: 3px solid var(--gold, #b68c47); outline-offset: 3px; }
+#detail #detail-dating, #detail #detail-sources, #detail #undated-lineage { scroll-margin-top: 100px; }
+#detail .chronologyComparison {
+ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 14px 0;
+}
+#detail .chronologyComparison article { min-width: 0; padding: 14px; border: 1px solid var(--line, #c9d4d3); border-radius: 8px; overflow-wrap: anywhere; }
+#detail .chronologyComparison h5 { margin: 0 0 8px; font-size: 15px; }
+#detail .chronologyAdopted { grid-column: 1 / -1; border-inline-start: 4px solid var(--gold, #b68c47) !important; background: #fffaf0; }
+#detail .chronologyDate { display: block; font-size: 17px; line-height: 1.5; }
+#detail .chronologyComparison p { margin: 8px 0; }
+#detail .chronologyCoverage { border-inline-start: 3px solid var(--gold, #b68c47); padding-inline-start: 12px; }
+#detail .dateOpinions summary { min-height: 44px; display: list-item; padding-block: 10px; cursor: pointer; }
+#detail .sourceLinks { flex-wrap: wrap; min-width: 0; }
+#detail .sourceLinks a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
+#detail .undatedLineage { padding-inline-start: 26px; }
+#detail .undatedLineage > li { margin-block: 8px; padding-inline-start: 4px; }
+#detail .undatedLineage .listitem { width: 100%; text-align: start; white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+ #detail .chronologyComparison { grid-template-columns: minmax(0, 1fr); }
+ #detail #detail-dating, #detail #detail-sources, #detail #undated-lineage { scroll-margin-top: 12px; }
+ #detail .detailSectionNav input[type="button"] { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+ #detail #detail-dating, #detail #detail-sources, #detail #undated-lineage { scroll-behavior: auto; }
+}
+
+/* P1 AA foregrounds and keyboard cues; polity/event hues and date geometry stay authored. */
+:root{--muted:#4e6268;--gold:#806025}
+#detail .relation,.eyebrow{color:#806025}.seal{color:#e5c68f}.onboarding .eyebrow{color:#71521d}
+a{color:#245777}.sourceLinks a{color:#245777!important;text-decoration:underline;text-underline-offset:3px}
+.era,.ruler,.ruler .rulerName,.ruler .rulerYears,.politySegment,.comparecard h4,.stateName,.orderRow strong,.event,.event span{color:var(--accessible-ink,#19343d)!important}
+.ruler{--accessible-ink:#fff;opacity:1!important}
+.eventDim,.eventDim .ruler,.eventDim .event{opacity:1!important}
+.ruler .rulerName,.ruler .rulerYears{background-color:inherit}.politySegment{--accessible-ink:#fff}
+/* Search uses the existing match outline, not low-opacity unreadable text. */
+.keyboardHint{font-size:12px;color:var(--muted)}
+:is(button,a,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid #174f9b!important;outline-offset:3px!important;box-shadow:0 0 0 2px #fff!important}
+.ruler:focus-visible,.event:focus-visible,.politySegment:focus-visible{z-index:15;outline-offset:1px!important}
+.srOnly{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+#skipToTimeline{position:fixed;top:8px;left:8px;z-index:200;background:#fff;padding:12px;transform:translateY(-180%)}#skipToTimeline:focus{transform:none}
+#advancedSettings:focus-visible{outline-offset:-4px!important}
+#advancedClose{margin:8px 16px}
+.cursorline{border-color:#806025}.cursorHandle::after{color:#19343d;border-color:#806025}
+#eventKindLegend{display:inline-flex;align-items:center;flex-wrap:wrap;gap:12px}.eventLegendItem{display:inline-flex;align-items:center;gap:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media(forced-colors:active){.ruler,.event,.politySegment{forced-color-adjust:auto;border:1px solid ButtonText}.eventKindIcon{fill:Canvas;stroke:CanvasText}.cursorline{border-color:Highlight}}
+
+/* Publication UI: retain P1 AA tokens and the existing dialog scroll owner. */
+.reviewStatus{padding:12px 18px;margin:12px 0;border:1px solid var(--line,#53666c);border-radius:8px;background:var(--panel,#17343d);color:var(--text,#e9eeee);font-size:13px;line-height:1.65}
+.reviewStatus p{margin:5px 0}.reviewStatus strong{color:#edd6a6}
+#shareText{display:block;width:100%;box-sizing:border-box;resize:vertical;min-height:112px;max-height:42vh;padding:12px;border:1px solid var(--line,#65747a);border-radius:6px;background:#102c36;color:#eff5f4;font:inherit;line-height:1.6;overflow-wrap:anywhere}
+#shareDialog label{display:block;margin-top:12px}#shareDialog button{margin-top:10px}
+.correctionFooter{margin-top:20px;padding-top:14px;border-top:1px solid var(--line,#53666c)}
+.noScriptReading{background:#15323b;color:#eef4f3;padding:20px;border:1px solid #6c8186;border-radius:8px;line-height:1.75;overflow-wrap:anywhere}
+.noScriptReading .notice{color:#cad9db}.noScriptReading nav{display:flex;flex-wrap:wrap;gap:8px}.noScriptReading nav a{display:inline-flex;align-items:center;min-height:32px;padding:4px 8px;border:1px solid #6c8186;border-radius:4px}.noScriptReading nav a[aria-current="page"]{font-weight:700;border-color:#edd6a6}.noScriptReading nav a,.noScriptReading a{color:#edd6a6}.noScriptReading section{margin-top:28px;scroll-margin-top:12px}.noScriptReading li{margin:10px 0}.noScriptReading li p{margin:4px 0;font-size:14px;color:#cad9db}
+@media(scripting:none){.workspace,.reference,.intro,footer button,#skipToTimeline{display:none}}
+@media(max-width:680px){.reviewStatus{margin:8px 10px;padding:10px;font-size:12px}.noScriptReading{margin:8px;padding:14px}#shareDialog{max-width:calc(100vw - 28px)}}
+
+/* Optional intervals: full temporal extent, independently ellipsised caption. */
+.event.semanticEvent.intervalEvent{border-radius:9px;border-inline:1px solid currentColor;padding-inline:0}
+.event.semanticEvent.intervalClippedStart{border-start-start-radius:0;border-end-start-radius:0;border-inline-start-style:dashed}
+.event.semanticEvent.intervalClippedEnd{border-start-end-radius:0;border-end-end-radius:0;border-inline-end-style:dashed}
+/* Micro-slots are controls, not fractional dates. The stem preserves the anchor. */
+.ruler.subyearSlot{min-width:14px;padding-inline:1px;align-items:center}
+.ruler.subyearSlot .slotNumber{font-size:10px;line-height:1;font-weight:700}
+.tenureSlotConnector{position:absolute;border-top:1px dashed #19343d;pointer-events:none;opacity:.8}
+.tenureSlotTooltip{position:fixed;z-index:500;padding:10px 12px;border:1px solid #19343d;border-radius:6px;background:#fffdf7;color:#19343d;font-size:13px;line-height:1.6;overflow-wrap:anywhere;box-shadow:0 3px 12px #19343d22;pointer-events:none}
+.crossTopicLinks{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-block:8px 14px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#f4f7f6}
+.crossTopicLinks a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding:6px 10px;overflow-wrap:anywhere;color:#19343d;background:white;border:1px solid var(--line);border-radius:6px}
+.crossTopicLinks small{flex-basis:100%;color:#19343d;line-height:1.6}
+.crossTopicLinks a:focus-visible{outline:3px solid #19343d;outline-offset:3px}
+.sameYearTenures .listitem:disabled{opacity:1;color:#19343d;background:#eef3f1;cursor:default}
+
+/* Biography Reader Mode & Trajectory Styles */
+.bioHeraldry {
+  background: linear-gradient(135deg, #fffdf7 0%, #f9f6ed 100%);
+  border: 1px solid #e8dec8;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(182, 140, 71, 0.08);
+}
+.bioHeraldry .bioName {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a2f3b;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.5px;
+}
+.bioHeraldry .bioRole {
+  font-size: 15px;
+  color: #4b6470;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.bioBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.bioBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+.bioBadge.goldBadge {
+  background: linear-gradient(135deg, #fffde6 0%, #fdefbd 100%);
+  border: 1px solid #d4af37;
+  color: #8c5b00;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.2);
+}
+.bioBadge.motifBadge {
+  background: #f5f3ff;
+  border: 1px solid #8b5cf6;
+  color: #6d28d9;
+  font-weight: 600;
+}
+.bioBadge.tierBadge {
+  background: #f0f9ff;
+  border: 1px solid #38bdf8;
+  color: #0369a1;
+  font-weight: 600;
+}
+.bioBadge.volumeBadge {
+  background: #f8fafc;
+  border: 1px solid #94a3b8;
+  color: #475569;
+}
+.bioLifespan {
+  font-size: 14px;
+  color: #334155;
+  margin-bottom: 12px;
+}
+.bioMetaLabel {
+  font-weight: 600;
+  color: #1e293b;
+}
+.bioMonarchChain {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e2d9c5;
+}
+.bioMonarchChain .monarchList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.monarchBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.monarchBadge:hover {
+  border-color: #b68c47;
+  background: #fffdf5;
+  box-shadow: 0 2px 6px rgba(182, 140, 71, 0.2);
+  transform: translateY(-1px);
+}
+.monarchBadge .monarchKind {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.monarchBadge .monarchName {
+  font-weight: 500;
+}
+
+/* Core Highlights Ancient Quote Card */
+.bioQuoteCard {
+  background: linear-gradient(to right, #fcfaf3, #f7f3e8);
+  border-left: 4px solid #b68c47;
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+.bioQuoteSection {
+  margin-bottom: 14px;
+}
+.bioQuoteSection:last-child {
+  margin-bottom: 0;
+}
+.bioQuoteSection h5 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #78350f;
+  letter-spacing: 0.3px;
+}
+.bioQuoteSection p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #292524;
+}
+
+/* Chapter Timeline Stream */
+.bioChapterSection h4 {
+  font-size: 17px;
+  color: #1a2f3b;
+  margin-bottom: 6px;
+}
+.bioChapterFlow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+.bioChapterCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.bioChapterCard:hover {
+  border-color: #b68c47;
+  background: #fffdf8;
+  box-shadow: 0 4px 14px rgba(182, 140, 71, 0.16);
+  transform: translateY(-2px);
+}
+.bioChapterCard.activeChapter {
+  border-color: #b68c47;
+  background: #fffbf0;
+  box-shadow: 0 0 0 2px rgba(182, 140, 71, 0.35);
+}
+.bioChapterHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.bioChapterNo {
+  background: #b68c47;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.bioChapterKind {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.bioChapterPolity {
+  color: #0369a1;
+  font-size: 13px;
+  font-weight: 600;
+}
+.bioChapterYear {
+  margin-left: auto;
+  color: #64748b;
+  font-size: 13px;
+  font-family: ui-monospace, monospace;
+  font-weight: 500;
+}
+.bioChapterTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+.bioChapterSummary {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+}
+.bioChapterFoot {
+  text-align: right;
+  font-size: 12px;
+  color: #b68c47;
+  font-weight: 600;
+}
+
+/* Timeline Trajectory Highlight */
+.trajectoryLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.trajectorySvg {
+  pointer-events: none;
+}
+.trajectoryPath {
+  stroke: #d4a017;
+  stroke-width: 3px;
+  stroke-dasharray: 8, 5;
+  fill: none;
+  stroke-linecap: round;
+}
+.trajectoryGlowPath {
+  stroke: rgba(212, 160, 23, 0.35);
+  stroke-width: 9px;
+  stroke-dasharray: 8, 5;
+  fill: none;
+  stroke-linecap: round;
+}
+.trajectoryBadge {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+  background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0;
+  z-index: 5;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.trajectoryBadge:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 4px 18px rgba(212, 160, 23, 0.65);
+}
+.trajectoryLabel {
+  display: none;
+}
+
+/* Row Pulse Animation for Linked Chapter */
+.rowPolityHighlight {
+  animation: rowPolityPulse 1.8s ease-out;
+}
+@keyframes rowPolityPulse {
+  0% {
+    background-color: rgba(212, 160, 23, 0.3);
+  }
+  50% {
+    background-color: rgba(212, 160, 23, 0.15);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* Motif Filter & Highlighting */
+.motifControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+.motifControl label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+.motifControl select {
+  padding: 4px 8px;
+  font-size: 13px;
+  border: 1px solid var(--line, #dce4e3);
+  border-radius: 4px;
+  background: #ffffff;
+}
+.comboMotifSection {
+  margin: 16px 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line, #dce4e3);
+}
+.comboMotifSection h4 {
+  font-size: 15px;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+.motifChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.motifChip {
+  padding: 5px 12px;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.motifChip:hover {
+  background: #e2e8f0;
+}
+.motifChip.active {
+  background: #b68c47;
+  color: #ffffff;
+  border-color: #b68c47;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(182, 140, 71, 0.3);
+}
+
+.ruler.motifMatch {
+  box-shadow: 0 0 0 2.5px #d4a017 !important;
+  opacity: 1 !important;
+  z-index: 2 !important;
+}
+.event.motifEvent {
+  box-shadow: 0 0 0 2.5px #d4a017 !important;
+  opacity: 1 !important;
+  z-index: 3 !important;
+}

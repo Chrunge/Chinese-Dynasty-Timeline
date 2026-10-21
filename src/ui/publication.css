@@ -1,0 +1,10 @@
+/* Publication UI: retain P1 AA tokens and the existing dialog scroll owner. */
+.reviewStatus{padding:12px 18px;margin:12px 0;border:1px solid var(--line,#53666c);border-radius:8px;background:var(--panel,#17343d);color:var(--text,#e9eeee);font-size:13px;line-height:1.65}
+.reviewStatus p{margin:5px 0}.reviewStatus strong{color:#edd6a6}
+#shareText{display:block;width:100%;box-sizing:border-box;resize:vertical;min-height:112px;max-height:42vh;padding:12px;border:1px solid var(--line,#65747a);border-radius:6px;background:#102c36;color:#eff5f4;font:inherit;line-height:1.6;overflow-wrap:anywhere}
+#shareDialog label{display:block;margin-top:12px}#shareDialog button{margin-top:10px}
+.correctionFooter{margin-top:20px;padding-top:14px;border-top:1px solid var(--line,#53666c)}
+.noScriptReading{background:#15323b;color:#eef4f3;padding:20px;border:1px solid #6c8186;border-radius:8px;line-height:1.75;overflow-wrap:anywhere}
+.noScriptReading .notice{color:#cad9db}.noScriptReading nav{display:flex;flex-wrap:wrap;gap:8px}.noScriptReading nav a{display:inline-flex;align-items:center;min-height:32px;padding:4px 8px;border:1px solid #6c8186;border-radius:4px}.noScriptReading nav a[aria-current="page"]{font-weight:700;border-color:#edd6a6}.noScriptReading nav a,.noScriptReading a{color:#edd6a6}.noScriptReading section{margin-top:28px;scroll-margin-top:12px}.noScriptReading li{margin:10px 0}.noScriptReading li p{margin:4px 0;font-size:14px;color:#cad9db}
+@media(scripting:none){.workspace,.reference,.intro,footer button,#skipToTimeline{display:none}}
+@media(max-width:680px){.reviewStatus{margin:8px 10px;padding:10px;font-size:12px}.noScriptReading{margin:8px;padding:14px}#shareDialog{max-width:calc(100vw - 28px)}}

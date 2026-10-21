@@ -53,7 +53,7 @@ async function observe(inputs){
  for(const hash of inputs.hashes){
   const shared=mountShare(attachStudy(boot({},1200)),hash);
   const codec=shared.run('Zhou.createViewLinkCodec(D,searchService)');
-  result.shares.push({hash,parsed:plain(codec.parse(hash)),view:shareView(shared),detailText:shared.el('#detailBody').innerHTML.replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()});
+  result.shares.push({hash,parsed:plain(codec.parse(hash)),view:shareView(shared),detailText:shared.el('#detailBody').innerHTML.replace(/<p class="notice" data-correction-entry="true">[\s\S]*?<\/p>/g,'').replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()});
   assert.equal(plain(codec.parse(codec.encode(codec.parse(hash)))).item,plain(codec.parse(hash)).item,'v1 detail key survives codec round trip');
  }
  result.reading={};
