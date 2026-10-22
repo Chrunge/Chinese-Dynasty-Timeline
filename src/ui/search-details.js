@@ -53,7 +53,7 @@ function renderBiographyReader(p,entry,events){
  const chapterCards=chapters.map(ch=>{
   const rawYear=typeof ch.year==='object'?Zhou.Time.encode(ch.year):ch.year;
   const local=byId(ch.polityId)&&(!ch.polityDatasetId||ch.polityDatasetId===(D.datasetId||D.timeline?.topic)),canLocate=local&&Zhou.Time.isYear(rawYear)&&rawYear<=timelineBounds.start&&rawYear>=timelineBounds.end;
-  const polity=byId(ch.polityId)||{name:(D.catalog?.find(t=>t.id===ch.polityDatasetId)?.name||'其他专题')+'专题背景'};
+  const polity=byId(ch.polityId)||{name:(Zhou.Branding.topicName(D.catalog?.find(t=>t.id===ch.polityDatasetId))||'其他专题')+'专题背景'};
   return '<article class="bioChapterCard'+(canLocate?'':' narrativeOnly')+'"'+(canLocate?' data-action="bioChapter" data-id="'+rawYear+':'+escapeHTML(ch.polityId)+':'+ch.chapterNo+'" data-year="'+rawYear+'" data-polity-id="'+escapeHTML(ch.polityId)+'"':'')+' data-chapter-no="'+ch.chapterNo+'">'+
    '<div class="bioChapterHead">'+
     '<span class="bioChapterNo">第 '+ch.chapterNo+' 章</span>'+

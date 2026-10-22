@@ -2444,7 +2444,7 @@ function renderBiographyReader(p,entry,events){
  const chapterCards=chapters.map(ch=>{
   const rawYear=typeof ch.year==='object'?Zhou.Time.encode(ch.year):ch.year;
   const local=byId(ch.polityId)&&(!ch.polityDatasetId||ch.polityDatasetId===(D.datasetId||D.timeline?.topic)),canLocate=local&&Zhou.Time.isYear(rawYear)&&rawYear<=timelineBounds.start&&rawYear>=timelineBounds.end;
-  const polity=byId(ch.polityId)||{name:(D.catalog?.find(t=>t.id===ch.polityDatasetId)?.name||'其他专题')+'专题背景'};
+  const polity=byId(ch.polityId)||{name:(Zhou.Branding.topicName(D.catalog?.find(t=>t.id===ch.polityDatasetId))||'其他专题')+'专题背景'};
   return '<article class="bioChapterCard'+(canLocate?'':' narrativeOnly')+'"'+(canLocate?' data-action="bioChapter" data-id="'+rawYear+':'+escapeHTML(ch.polityId)+':'+ch.chapterNo+'" data-year="'+rawYear+'" data-polity-id="'+escapeHTML(ch.polityId)+'"':'')+' data-chapter-no="'+ch.chapterNo+'">'+
    '<div class="bioChapterHead">'+
     '<span class="bioChapterNo">第 '+ch.chapterNo+' 章</span>'+
@@ -2755,7 +2755,7 @@ function refreshDetailCorrectionLink(){
 function detailCrossLinks(key){
  const entry=searchIndex.find(e=>e.key===normalizeDetailKey(key));if(!entry||!['country','person'].includes(entry.type)||typeof Zhou.createEntityLinks!=='function')return '';
  const entries=Zhou.createEntityLinks({index:window.ZHOU_ENTITY_LINKS,data:D,search:searchService}).links(entry.type,entry.data.id);if(!entries.length)return '';
- return '<nav class="crossTopicLinks" aria-label="此条目的其他专题收录"><strong>跨卷收录</strong>'+entries.map(link=>'<a data-cross-topic="'+escapeHTML(link.datasetId)+'" href="'+escapeHTML(link.href)+'">前往【'+escapeHTML(link.name)+'】 →</a>').join('')+'<small>同一稳定ID在各卷的独立记录；不合并事实，也不表示已确认的后续活动。</small></nav>';
+ return '<nav class="crossTopicLinks" aria-label="此条目的其他专题收录"><strong>跨卷收录</strong>'+entries.map(link=>'<a data-cross-topic="'+escapeHTML(link.datasetId)+'" href="'+escapeHTML(link.href)+'">前往【'+escapeHTML(Zhou.Branding.topicName({id:link.datasetId,name:link.name}))+'】 →</a>').join('')+'<small>同一稳定ID在各卷的独立记录；不合并事实，也不表示已确认的后续活动。</small></nav>';
 }
 function show(tag,html,key=null){
  prepareDetailNavigation();navigation.enter(key);

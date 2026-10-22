@@ -165,3 +165,13 @@ test('宋辽金：展示名称一致、原网址和数据身份不变；分组�
   const current=start(id);assert.doesNotMatch(current.el('#chart').innerHTML,/重叠分层/);assert.doesNotMatch(current.el('#densityHint').textContent,/重叠分层/);
  }
 });
+
+
+test('宋辽金：跨专题详情入口也采用展示名，内部目录与稳定链接保留',()=>{
+ const app=start('five-dynasties');app.ctx.URLSearchParams=URLSearchParams;
+ vm.runInContext(fs.readFileSync('dist/entity-links.js','utf8'),app.ctx);
+ app.action('state','northern-song');
+ assert.match(app.el('#detailBody').innerHTML,/前往【宋辽金】/);
+ assert.doesNotMatch(app.el('#detailBody').innerHTML,/前往【辽金宋】/);
+ assert.match(app.el('#detailBody').innerHTML,/liao-jin-song\.html/);
+});
