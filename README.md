@@ -6,7 +6,7 @@
 
 ## 使用
 
-- 首屏仅保留搜索、缩放／重置、年份定位／参考年、时期切换、高级设置五组工具。筛选、排序、行高、组合、阅读、分享与导出移入“高级 / 视图设置”，展开状态自动保存。
+- 首屏工具栏分为搜索、时间（年份与缩放）、政权与视图入口、导出／分享四个模块，专题切换条独立于工具栏。重点人物、选择政权与视图设置集中在第三模块，展开状态自动保存；行高、视窗、密度、研究组合、阅读与帮助保留在视图设置面板内。
 - 首次访问有三步引导，可用Tab／Enter操作、Esc或“跳过”退出；完成后不重复提示，可在高级帮助中重看。
 - 拖动、滚动和缩放时间轴，使用时代按钮或年份输入定位。触屏支持单指惯性拖动、双指中心缩放；金色参考线有独立44px拖动热区，可用左右键逐年调整。密集条目触控时先选择项目，不放大历史条带几何；768px以下详情有35／60／90%三档底部抽屉。
 - 五类事件以不同SVG图标配合原类别色区分；关键事件优先显示原标题短标签，悬停／键盘聚焦显示跨政权引导。起点“未定年世系”胶囊进入原序链条，不给先公补定年。
@@ -20,7 +20,7 @@
 
 内容密度可自动切换或手动设置：低于2.4px／年显示兴亡与关键事件，2.4—7px／年显示常规内容，更高缩放下在空间允许时显示详细年份。点击事件会联动相关国家、当年君主及已收录参与人物；在位不等于直接参与事件。
 
-秦汉的秦、西汉、新、玄汉、东汉共用接续主行；魏晋的两晋、南朝及北朝两条接续支系分别共行；隋唐主线、两宋、明与南明分别接续分组。并存政权独立显示，所有真实同年重叠分层，武周不吞并进唐行。新增专题君主条带优先短名号＋姓名，名号复杂时只显示姓名；完整称谓、任职、生平与来源保留在提示和详情。筛选、固定、排序、分享、阅读和导出始终保留原政权／任期身份，详见[原显示契约](<docs/PRESENTATION-CONTRACT.md>)与[四专题展示分组](<docs/DYNASTY-DISPLAY.md>)。
+秦汉的秦、西汉、新、玄汉、东汉共用接续主行；魏晋的两晋、南朝及北朝两条接续支系分别共行；唐与武周、两宋、明与南明分别接续分组，隋独立成行。并存政权独立显示，所有真实同年重叠分层，原实体、日期与身份不合并。新增专题君主条带优先短名号＋姓名，名号复杂时只显示姓名；完整称谓、任职、生平与来源保留在提示和详情。筛选、固定、排序、分享、阅读和导出始终保留原政权／任期身份，详见[原显示契约](<docs/PRESENTATION-CONTRACT.md>)与[四专题展示分组](<docs/DYNASTY-DISPLAY.md>)。
 
 浏览器提供原生WebMCP API时，周朝页面保留 `compare_zhou_year`，新增专题注册 `compare_history_year` 工具；其他浏览器正常使用网页功能。
 
@@ -38,13 +38,13 @@
 
 正式资料为 [秦汉](<data/qin-han.json>) 和 [三国](<data/three-kingdoms.json>)，逐字节保存用户提供的原文件，不以结构样例替代。秦汉包含8个政权、78个人物、74段任期、32条事件；三国包含5个政权、51个人物、17段任期、23条事件（跨专题共享ID不能直接相加作为独立实体总数）。[结构样例](<data/examples/README.md>) 仍仅供演示，不参与生产构建。
 
-新增正式资料：[魏晋南北朝](<data/wei-jin-nan-bei.json>)、[隋唐](<data/sui-tang.json>)、[辽金宋](<data/liao-jin-song.json>)、[明朝](<data/ming.json>)，均逐字节保留原件。对应政权／任期／人物／事件数量为28／99／140／21、10／36／67／16、8／58／97／12、6／31／54／9。跨卷共享ID保留原名，各卷描述或来源差异不互相覆盖；构建生成[统一出处索引](<dist/corpus.json>)，按类型与稳定ID列出所有原始位置及字段差异，不按姓名猜测合并。
+正式资料：[魏晋南北朝](<data/wei-jin-nan-bei.json>)、[隋唐](<data/sui-tang.json>)、[辽金宋](<data/liao-jin-song.json>)、[明朝](<data/ming.json>)，均逐字节保留原件。对应政权／任期／人物／事件数量为28／99／140／21、10／36／67／16、8／58／97／12、6／31／54／9。跨卷共享ID保留原名，各卷描述或来源差异不互相覆盖；构建生成[统一出处索引](<dist/corpus.json>)，按类型与稳定ID列出所有原始位置及字段差异，不按姓名猜测合并。
 
-新增正式原件：[夏商](<data/xia-shang.json>)、[五代十国](<data/five-dynasties.json>)、[元朝](<data/yuan.json>)、[清朝](<data/qing.json>)，政权／任期／人物／事件分别为6／53／67／13、17／59／69／7、11／25／39／8、7／19／39／9。夏商的夏→商、五代主线与杨吴→南唐、清卷明→南明接续共行，其他并存政权各自保留；元监国、称制及复位任期不合并，完整称谓和资料不因短标签省略。详见[新增四卷入库](<docs/EXPANSION-INTAKE.md>)与[展示契约](<docs/EXPANSION-DISPLAY.md>)。
+正式原件：[夏商](<data/xia-shang.json>)、[五代十国](<data/five-dynasties.json>)、[元朝](<data/yuan.json>)、[清朝](<data/qing.json>)，政权／任期／人物／事件分别为6／53／67／13、17／59／69／7、11／25／39／8、7／19／39／9。夏商的夏→商、五代主线与杨吴→南唐、清卷明→南明接续共行，其他并存政权各自保留；元监国、称制及复位任期不合并，完整称谓和资料不因短标签省略。详见[四卷入库](<docs/EXPANSION-INTAKE.md>)与[展示契约](<docs/EXPANSION-DISPLAY.md>)。
 
 夏商18条争议纪年未列足独立异说，投影明确按legacy继承并保留sourceDating；不编造第二观点。跨卷有两处不同政权复用ID（后凉／后梁、武周／吴周），索引显式标记dataset作用域，各卷查询、链接和存储严格隔离，不误并为同一实体。
 
-新专题入口：[夏商](https://chrunge.github.io/Zhou-Dynasty-Timeline/xia-shang.html)、[五代十国](https://chrunge.github.io/Zhou-Dynasty-Timeline/five-dynasties.html)、[元朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/yuan.html)、[清朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/qing.html)。此前专题入口为原站根路径、[秦汉](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)、[魏晋南北朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/wei-jin-nan-bei.html)、[隋唐](https://chrunge.github.io/Zhou-Dynasty-Timeline/sui-tang.html)、[辽金宋](https://chrunge.github.io/Zhou-Dynasty-Timeline/liao-jin-song.html)、[明朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/ming.html)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**本次没有联网核对史实**；原件中的“已校核”不代表本次入库背书。原文件散列、结构注释与限制见[原正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)及[四专题入库记录](<docs/DYNASTY-INTAKE.md>)，发布证据见[部署记录](<docs/DEPLOYMENT.md>)。
+专题入口：[夏商](https://chrunge.github.io/Zhou-Dynasty-Timeline/xia-shang.html)、[五代十国](https://chrunge.github.io/Zhou-Dynasty-Timeline/five-dynasties.html)、[元朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/yuan.html)、[清朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/qing.html)。既有专题入口为原站根路径、[秦汉](https://chrunge.github.io/Zhou-Dynasty-Timeline/qin-han.html)、[三国](https://chrunge.github.io/Zhou-Dynasty-Timeline/three-kingdoms.html)、[魏晋南北朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/wei-jin-nan-bei.html)、[隋唐](https://chrunge.github.io/Zhou-Dynasty-Timeline/sui-tang.html)、[辽金宋](https://chrunge.github.io/Zhou-Dynasty-Timeline/liao-jin-song.html)、[明朝](https://chrunge.github.io/Zhou-Dynasty-Timeline/ming.html)。全部共用同一套应用；布局、组合和阅读状态按专题隔离，周朝保留原存储键。来源声明沿用用户输入，**未联网复核史实**；原件中的“已校核”为作者原注，不构成本站核验结论。原文件散列、结构注释与限制见[原正式入库说明](<docs/FORMAL-DATA-IMPORT.md>)及[四专题入库记录](<docs/DYNASTY-INTAKE.md>)，发布证据见[部署记录](<docs/DEPLOYMENT.md>)。
 
 ## 维护与检查
 

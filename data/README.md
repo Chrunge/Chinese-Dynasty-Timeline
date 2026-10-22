@@ -62,7 +62,7 @@
 | polities | `id/name/kind/start/end/sourceIds/dating`；可选 `interruptions`、`undated` 及旧国家显示字段。政权延续不因改帝号、专题切换或人物更替而自动复制 |
 | people | `id/name/summary/sourceIds`；人物身份独立于任期；同名必须保留各自 ID，不按姓名猜测合并 |
 | tenures | `id/polityId/personId/name/role/start/end/chronology/sourceIds/dating`；同一人物可以有多个任期；`personId` 必须明确给出，未知可为 `null`，非空时必须引用已收录人物。默认须在对应政权存续内；显式 `polityAssociation:contextual` 表示关联任职/执政阶段而非君主统治，可有窗口外端点但必须与政权相交并提供 `associationNote`，不进入同年君主查询 |
-| events | `id/name/kind`、`year` 或 `yearRef`、`dating/sourceIds/narrative`；`kind` 限政治／战争／改革／外交／文化，兼容 `category` 别名，二者同给时须一致；仍兼容点事件，不引入未经定义的区间事件语义 |
+| events | `id/name/kind`、`year` 或 `yearRef`、`dating/sourceIds/narrative`；`kind` 限政治／战争／改革／外交／文化，兼容 `category` 别名，二者同给时须一致；可选 `endYear` 表示闭区间事件（起点不得晚于终点），缺省仍按旧点事件编译 |
 | activities | `id/personId/polityId/sequence/kind/kindLabel/year` 或 `yearFromEvent:true`；来源和事件继承规则沿用 schema 1 |
 | sources | `id/title/url`；URL 去重。样例的 `reviewStatus:pending` 表示书目待核，不是正文已证实 |
 

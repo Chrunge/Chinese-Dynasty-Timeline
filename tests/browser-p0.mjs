@@ -66,7 +66,7 @@ try{
   page.on('pageerror',e=>errors.push(e.message));page.on('request',request=>{if(/^https?:/.test(request.url()))requests.push(request.url());});
   try{
    await page.goto(pathToFileURL(resolve('dist',topic.page)).href);await page.locator('.stateRow').first().waitFor();await noOverflow(page,topic.id+' initial '+width);
-   assert.equal(await page.locator('[data-toolbar-group]').count(),5);assert.equal(await page.locator('#advancedSettings').isVisible(),false);assert.equal(await page.locator('#onboarding').isVisible(),true);
+   assert.equal(await page.locator('[data-toolbar-group]').count(),4,'four toolbar modules');assert.equal(await page.locator('#advancedSettings').isVisible(),false);assert.equal(await page.locator('#onboarding').isVisible(),true);
    await keyboardGuide(page);await page.reload();await page.locator('.stateRow').first().waitFor();assert.equal(await page.locator('#onboarding').isVisible(),false);
    const active=await page.locator('.topicNav [aria-current="page"]').boundingBox(),nav=await page.locator('.topicNav').boundingBox();assert.ok(active.x>=nav.x-1&&active.x+active.width<=nav.x+nav.width+1,'current topic centered into view');
    await page.locator('#advancedToggle').click();assert.equal(await page.locator('#advancedSettings').isVisible(),true);await noOverflow(page,'advanced '+topic.id+'/'+width);await page.reload();assert.equal(await page.locator('#advancedSettings').isVisible(),true,'persisted expansion');
