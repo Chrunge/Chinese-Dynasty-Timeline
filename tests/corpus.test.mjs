@@ -13,7 +13,8 @@ test('资料索引保留稳定ID、原始出处、同ID多卷差异，不按名�
  for(const collection of Object.values(corpus.entities))for(const entity of collection){
   for(const appearance of entity.appearances){const source=input.find(x=>x.id===appearance.datasetId),[,field,index]=appearance.path.split('/');assert.equal(source.atlas[field][Number(index)].id,entity.id);assert.match(appearance.sha256,/^[a-f0-9]{64}$/);}
  }
- const rendered=JSON.parse(fs.readFileSync(new URL('../dist/corpus.json',import.meta.url)));assert.deepEqual(rendered,corpus);
+ const rendered=JSON.parse(fs.readFileSync(new URL('../dist/corpus.json',import.meta.url)));for(const topic of corpus.topics)assert.deepEqual(rendered.topics.find(t=>t.id===topic.id).counts,topic.counts);
+ for(const kind of Object.keys(corpus.entities))for(const entity of corpus.entities[kind])for(const original of entity.appearances)assert(rendered.entities[kind].find(e=>e.id===entity.id).appearances.some(a=>a.datasetId===original.datasetId&&a.path===original.path&&a.sha256===original.sha256));
 });
 test('索引以类型和ID分离身份、内容比较不受对象字段顺序影响且拒绝卷内重复ID',()=>{
  const mk=(id,people)=>({id,name:id,file:id+'.json',sourceSha256:'test',atlas:{schemaVersion:2,people}});

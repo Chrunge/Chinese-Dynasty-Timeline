@@ -2377,7 +2377,6 @@ function normalizeCombo(c){
 // ---- src/app.js ----
 'use strict';
 const D=window.ZHOU_DATA;
-Zhou.Biography?.enrichDataset?.(D);
 const historyService=Zhou.createHistory(D),searchService=Zhou.createSearch(D),storage=Zhou.createStorage(()=>localStorage,D.datasetId&&D.datasetId!=='zhou'?D.datasetId:'');
 const combinationModel=Zhou.createCombinationModel(D);
 function normalizeCombo(value){return combinationModel.normalize(value);}

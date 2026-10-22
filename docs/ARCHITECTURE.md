@@ -6,7 +6,10 @@
 flowchart TB
   A["data/*.json 十一专题原始资料"] --> Q["lib/production.mjs 技术适配与专题目录"]
   Q --> B["lib/atlas.mjs 统一校验与资料投影"]
-  B --> C["dist/data*.js 各卷发布数据"]
+  BC --> C["dist/data*.js 各卷发布数据"]
+  BA["传记总集原件"] --> BC["lib/biography.mjs 构建期补充与关联诊断"]
+  B --> BC
+  BA --> I
   A --> I["lib/corpus.mjs 跨卷ID及原始出处索引"]
   I --> O["dist/corpus.json 不裁决字段差异"]
   C --> H["core/history.js 历史查询"]
@@ -160,3 +163,5 @@ CI和Pages的触发、权限及配置见 [部署说明](DEPLOYMENT.md)。
 ### 传记数据与算法
 
 `data/中国历代非君主人物传记全书.json` 由 `lib/biography-data.mjs` 投影为纯数据资源 `src/core/biography-data.js`；`tools/build-biography-core.mjs` 只生成该数据文件，`--check` 只读检查。手写筛选与轨迹算法位于 `src/core/biography.js`，构建按数据、算法的顺序加载，并检查原件与生成数据一致。
+
+传记由 `lib/biography.mjs` 在各专题发布数据生成前补充，页面启动只消费完成的资料。发布清单的统计与跨卷导航使用补充后的投影；出处索引同时保留专题原件和传记总集的文件、JSON 路径及散列，专题 `counts` 为原件数量，`supplements` 为补充来源数量。同一专题的多个出处不计为跨卷共享。`dist/biography-diagnostics.json` 记录未关联的事件、政权、任期与来源；原文和引用保留，不按姓名猜测关系。无效人物身份、重复记录及非法日期会中止构建。

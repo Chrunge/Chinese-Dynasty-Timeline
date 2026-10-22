@@ -1,6 +1,7 @@
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {renderBiographyData} from './lib/biography-data.mjs';
+import {createBiographyCompiler,biographySource} from './lib/biography.mjs';
 import {catalog,compileProduction} from './lib/production.mjs';
 import {buildCorpus} from './lib/corpus.mjs';
 import {buildEntityLinks} from './lib/entity-links.mjs';
@@ -28,10 +29,12 @@ const pngArg=process.argv.find(arg=>arg.startsWith('--social-png-dir='));
 const pngDir=pngArg?resolve(pngArg.slice('--social-png-dir='.length)):null;
 if(pngArg&&!pngArg.slice('--social-png-dir='.length))throw Error('PNG输入目录不能为空');
 const pngManifest=pngDir?JSON.parse(readFileSync(join(pngDir,'manifest.json'),'utf8')):null;
+const biographyBytes=read('./'+biographySource),biography=createBiographyCompiler(JSON.parse(biographyBytes)),biographyIssues=[];
 const outputs = new Map(), datasets=[], corpusEntries=[], projections=new Map();
 for(const topic of catalog){
-  const source=read('./data/'+topic.file), atlas=JSON.parse(source), data=compileProduction(atlas,topic.id);
-  corpusEntries.push({...topic,file:'data/'+topic.file,sourceSha256:hash(source),atlas});
+  const source=read('./data/'+topic.file), atlas=JSON.parse(source), data=biography.enrich(compileProduction(atlas,topic.id));
+  biographyIssues.push(...biography.diagnose(data,topic.id));
+  corpusEntries.push({...topic,file:'data/'+topic.file,sourceSha256:hash(source),atlas,supplements:biography.provenance(topic.id,hash(biographyBytes))});
   projections.set(topic.id,data);
   const svg=renderSocialSVG(topic,displayData(data,topic.id));outputs.set('social-'+topic.id+'.svg',svg);
   if(pngDir){
@@ -43,6 +46,7 @@ for(const topic of catalog){
   outputs.set(asset,'window.ZHOU_DATA = '+JSON.stringify(data)+';\n');
   datasets.push({...topic,asset,sourceSha256:hash(source),counts:Object.fromEntries(['polities','people','tenures','events','activities'].map(k=>[k,data[k].length]))});
 }
+outputs.set('biography-diagnostics.json',JSON.stringify({schemaVersion:1,source:biographySource,sourceSha256:hash(biographyBytes),issues:biographyIssues},null,2)+'\n');
 const corpus=buildCorpus(corpusEntries);
 outputs.set('corpus.json',JSON.stringify(corpus,null,2)+'\n');
 outputs.set('entity-links.js','window.ZHOU_ENTITY_LINKS = '+JSON.stringify(buildEntityLinks(corpus,catalog.map(topic=>({...topic,data:projections.get(topic.id)}))))+';\n');

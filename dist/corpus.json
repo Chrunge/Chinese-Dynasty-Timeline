@@ -3,6 +3,21 @@
   "purpose": "跨专题原始ID与出处索引，不是合并后的事实库。字段差异不裁决；已知异实体ID碰撞必须按identityScope及专题＋ID取值。不进行联网史实校验。",
   "topics": [
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 3,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 6
+          }
+        }
+      ],
       "id": "xia-shang",
       "name": "夏商",
       "file": "data/xia-shang.json",
@@ -44,6 +59,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 10,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 23
+          }
+        }
+      ],
       "id": "zhou",
       "name": "周朝",
       "file": "data/atlas.json",
@@ -74,6 +104,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 9,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 24
+          }
+        }
+      ],
       "id": "qin-han",
       "name": "秦汉",
       "file": "data/qin-han.json",
@@ -115,6 +160,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 3,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 9
+          }
+        }
+      ],
       "id": "three-kingdoms",
       "name": "三国",
       "file": "data/three-kingdoms.json",
@@ -156,6 +216,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 5,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 13
+          }
+        }
+      ],
       "id": "wei-jin-nan-bei",
       "name": "魏晋南北朝",
       "file": "data/wei-jin-nan-bei.json",
@@ -197,6 +272,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 9,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 26
+          }
+        }
+      ],
       "id": "sui-tang",
       "name": "隋唐",
       "file": "data/sui-tang.json",
@@ -238,6 +328,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 1,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 3
+          }
+        }
+      ],
       "id": "five-dynasties",
       "name": "五代十国",
       "file": "data/five-dynasties.json",
@@ -279,6 +384,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 7,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 19
+          }
+        }
+      ],
       "id": "liao-jin-song",
       "name": "辽金宋",
       "file": "data/liao-jin-song.json",
@@ -320,6 +440,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 5,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 14
+          }
+        }
+      ],
       "id": "yuan",
       "name": "元朝",
       "file": "data/yuan.json",
@@ -361,6 +496,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 6,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 14
+          }
+        }
+      ],
       "id": "ming",
       "name": "明朝",
       "file": "data/ming.json",
@@ -402,6 +552,21 @@
       }
     },
     {
+      "supplements": [
+        {
+          "file": "data/中国历代非君主人物传记全书.json",
+          "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+          "counts": {
+            "polities": 0,
+            "people": 6,
+            "tenures": 0,
+            "periods": 0,
+            "events": 0,
+            "activities": 0,
+            "sources": 20
+          }
+        }
+      ],
       "id": "qing",
       "name": "清朝",
       "file": "data/qing.json",
@@ -445,30 +610,30 @@
   ],
   "entityCounts": {
     "polities": 103,
-    "people": 771,
+    "people": 777,
     "tenures": 881,
     "periods": 58,
     "events": 255,
     "activities": 269,
-    "sources": 418
+    "sources": 440
   },
   "scopedEntityCounts": {
     "polities": 105,
-    "people": 771,
+    "people": 777,
     "tenures": 881,
     "periods": 58,
     "events": 255,
     "activities": 269,
-    "sources": 418
+    "sources": 440
   },
   "sharedEntityCounts": {
     "polities": 18,
-    "people": 46,
+    "people": 48,
     "tenures": 55,
     "periods": 0,
     "events": 0,
     "activities": 0,
-    "sources": 39
+    "sources": 40
   },
   "identityConflicts": [
     {
@@ -2512,9 +2677,25 @@
             "datasetId": "ming",
             "path": "/people/32",
             "sha256": "1b42dee3269115dce1da3888c67f426749e243e083efc2c4763efde83e61508b"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/5",
+            "sha256": "8d82310430127ad20a6ddb6b2f42e72d749322ec024b148d21f625627a3add2c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-person-xu-guangqi"
@@ -2527,9 +2708,25 @@
             "datasetId": "ming",
             "path": "/people/27",
             "sha256": "79abd48ff9e34b55d596b34ed33f969b5b607426d80e66cdd9ff48488ad072ba"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/3",
+            "sha256": "f769211af5682bb4fd6d35fc79ba93e9c2f930c5552dc8ee445f82694654647d"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-person-xu-jie"
@@ -2572,9 +2769,25 @@
             "datasetId": "ming",
             "path": "/people/20",
             "sha256": "adf54164c83dc1db1b91ef61f53cd43dd673d705ed0a03e58fe506d57b0eb509"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/0",
+            "sha256": "c2703cf5d54a5725c3acf3e213382f816b9b219a354fcfbe86d064566d20484f"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-person-yao-guangxiao"
@@ -2739,14 +2952,34 @@
             "sha256": "da9d906642c6922d3e4fd731405d885528ee44db856ef8c1f5f9711b5dc13e7a"
           },
           {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/2",
+            "sha256": "037f7c7a9c980d981a7d917b8c3f231c3bc2bc8774ec3fb7a2de38a479c105f3"
+          },
+          {
             "datasetId": "zhou",
             "path": "/people/0",
             "sha256": "dda9384ebed87a145289cdc93dd867d10290fe3049965acf7ab427448dbef357"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/0",
+            "sha256": "1e9cd1c464148c27fb7e99f406dd38f4c27d49cc7fe93d0f420849b8c187f89f"
           }
         ],
         "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
           "name",
           "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
           "summary"
         ],
         "identityScope": "stable-id",
@@ -2787,15 +3020,34 @@
             "sha256": "14eacb2f68126d1978317f40d5b2d9dafff777579a60dd314260e32fed15be50"
           },
           {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/1",
+            "sha256": "7eaf2b1166e86fa8c28921b2459eeceae0ae33c5c4180ad91dd6b4617cc7a7bd"
+          },
+          {
             "datasetId": "zhou",
             "path": "/people/2",
             "sha256": "6890245851915de049534e3bec0f2d4f4f2e3447897b38c52d5a096f3b0e60aa"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/1",
+            "sha256": "7d54fabf5471ebb5c126997982970d47e7eef6e0831b7c4ad605efec839fcad4"
           }
         ],
         "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
           "name",
           "role",
+          "servedMonarchs",
           "sourceIds",
+          "sources",
+          "stageActivities",
           "summary"
         ],
         "identityScope": "stable-id",
@@ -2855,9 +3107,27 @@
             "datasetId": "zhou",
             "path": "/people/6",
             "sha256": "fb6b68f6a09f13a177fa9ec519fad36e8acf57a8014b1e2c30956cbdad30156e"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/2",
+            "sha256": "b1f4f00e11980740431bb3ada3ed6d106aef0740683a1dfcd34159e187684bdf"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "aliases",
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "person-007"
@@ -3255,15 +3525,36 @@
             "sha256": "8b37e66975c4233b800bef970f07ce9f2e995f39f6caeff139a0eb8ae5c8abc2"
           },
           {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/3",
+            "sha256": "88e0c47abb23fa1cbb05c764449e1583498057e166401cde21cf4bfd8dd9b934"
+          },
+          {
             "datasetId": "qin-han",
             "path": "/people/1",
             "sha256": "ed9cd107086ba55fd2dd6e27cd1eec4a48c4d6ffd36b819ca515717b1b69aa70"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/0",
+            "sha256": "e96acbcd256fb4f72cd14942b8baa0db254d590a99fa23b99b8bf56c0c663bef"
           }
         ],
         "differingFields": [
           "aliases",
+          "associatedPolities",
+          "biographyPlan",
+          "name",
           "origin",
           "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
           "summary"
         ],
         "identityScope": "stable-id",
@@ -3444,13 +3735,33 @@
             "sha256": "85484657908f966b54cdd0519c339a7649ee37457454b2c7e3d1867ee6cd2b1b"
           },
           {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/4",
+            "sha256": "4fb817084915059a832b7c0d7b232f80c67c2ed9f7ffe46f9ae4a12286a21fde"
+          },
+          {
             "datasetId": "qin-han",
             "path": "/people/7",
             "sha256": "49acec0597c8833a446caf2a7bc87f05f7e8d079a00bc9bf7bf8891144b80926"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/1",
+            "sha256": "8e16764be386346a6837e2008fdfc34dd794dc2928e3da50932957dc84d1284f"
           }
         ],
         "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
           "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
           "summary"
         ],
         "identityScope": "stable-id",
@@ -3467,16 +3778,35 @@
             "sha256": "b0cc247b08d1e9682965b29106bfe660880ff7df5423a22e2fda5123c42cd991"
           },
           {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/5",
+            "sha256": "cd0f5d45d93f42fc8418198937c004356d1f5077a6c2a0fa674a64a979812924"
+          },
+          {
             "datasetId": "qin-han",
             "path": "/people/8",
             "sha256": "d876389cab053840bfc9b838009f0b2ed02f933d6b839ae43a043ca1b080a80f"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/2",
+            "sha256": "6e3eca7173e0962ff9c8c7b6b48f21ace96e31ecb3de9f2bfaee06505d234629"
           }
         ],
         "differingFields": [
           "aliases",
+          "associatedPolities",
+          "biographyPlan",
           "origin",
           "role",
+          "servedMonarchs",
           "sourceIds",
+          "sources",
+          "stageActivities",
           "summary"
         ],
         "identityScope": "stable-id",
@@ -3623,9 +3953,27 @@
             "datasetId": "zhou",
             "path": "/people/50",
             "sha256": "b3123edb5438579f6b51ac7394b0bcbd2eca3d1c3660aee5029eca6aaee09483"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/6",
+            "sha256": "a3a476b6fc8f142559e3c32cc4c44630ed53b87c074799fcfa2f52b2219fba96"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "aliases",
+          "associatedPolities",
+          "biographyPlan",
+          "origin",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "person-051"
@@ -3653,9 +4001,26 @@
             "datasetId": "zhou",
             "path": "/people/52",
             "sha256": "d1f8d8721164f8d8a588c50f2b2bd2e745e1c34e89d4c549e23237a913d38cb3"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/7",
+            "sha256": "a93e138ca2c3e25bb54689a61878ce7b7749a6d0809addfe03dd41397398a7c7"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "person-053"
@@ -4351,9 +4716,28 @@
             "datasetId": "zhou",
             "path": "/people/98",
             "sha256": "fa75b85f23f3243d4660d5918cbf0eaf5b15787fbc6a55d75e6cc63e12edef0b"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/8",
+            "sha256": "c9d5193029020a0f0765949a9b069476ec89c080ae96851b23e05e4887ac98f9"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "aliases",
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "origin",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "person-099"
@@ -4441,9 +4825,28 @@
             "datasetId": "zhou",
             "path": "/people/104",
             "sha256": "becf2b49b6c19ddf03b383b909f4523b5383c6853d736785d59a5e602e88d34e"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/9",
+            "sha256": "742722ff61b8c6fad655968ee668a3fd8b9ab028a1673d9290254d0f182bfbe7"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "aliases",
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "origin",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "person-105"
@@ -4630,9 +5033,25 @@
             "datasetId": "qin-han",
             "path": "/people/72",
             "sha256": "24ad215966b57cb07be613b4cd2366ce281171479e225ea780df19474098d156"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/8",
+            "sha256": "b51bbac533857d4b8b0076a6c870822e015a2020dcafbe45e5f980e56f579451"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-person-ban-chao"
@@ -4675,9 +5094,25 @@
             "datasetId": "qin-han",
             "path": "/people/61",
             "sha256": "5bd211c59f0ea7cded847c279ddd50b6452d5ea825b00209ddf9b7f93df6fdd7"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/5",
+            "sha256": "9344ba3ef37bf5fb33795babde5491a12cfd692a06e6089b05ec54dec2de83e0"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-person-chao-cuo"
@@ -4705,9 +5140,25 @@
             "datasetId": "qin-han",
             "path": "/people/59",
             "sha256": "e2991b5c9f7aa0441315796f13da78a391d85b32b146d7b7a49a280913182f43"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/4",
+            "sha256": "6107633a44f9224e28530f167390bfe8361bba3d143687239cf17d1482fe543a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-person-chen-ping"
@@ -4833,9 +5284,25 @@
             "datasetId": "qin-han",
             "path": "/people/68",
             "sha256": "6ce0acebc17307de6292c1aafdfa358f40c703e06f77ba888d640f4265913746"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/7",
+            "sha256": "c06572557cbe0291824658967f12df80d63cc2406eb7afc24a69b14cca33e2d6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-person-huo-guang"
@@ -5365,9 +5832,25 @@
             "datasetId": "qin-han",
             "path": "/people/67",
             "sha256": "f5c22f981fc1357eacdcfce83af800461964c0c5f2d327e7d499db3134b80de4"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/6",
+            "sha256": "a1745c3eb3d7dd6bfd84dc6ba4fe98af4bf2aa6b324037148db46797533a3a6d"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-person-sima-qian"
@@ -5515,9 +5998,26 @@
             "datasetId": "qin-han",
             "path": "/people/57",
             "sha256": "26a48dbc7d7662307308b9435c6fe72ce777284de0766249866e8ad68432dd55"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/3",
+            "sha256": "4e9627debddba836420740a14259abe5e77cb73ceead76cddc028eaebeb73578"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-person-zhang-liang"
@@ -5629,6 +6129,23 @@
         ]
       },
       {
+        "id": "qing-person-fan-wencheng",
+        "appearances": [
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/5",
+            "sha256": "a046f854e6ccbff62c5de9bd0a65de0d23737382312f406181a71d384c30e1ac"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "qing-person-fan-wencheng"
+        ]
+      },
+      {
         "id": "qing-person-galdan",
         "appearances": [
           {
@@ -5710,9 +6227,25 @@
             "datasetId": "qing",
             "path": "/people/19",
             "sha256": "2680b2d12d37da8d6cd14d4401c746d1cd56df65f8ddd4957f3721117b787be7"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/1",
+            "sha256": "f59e8af551e73a4a6225ecafa010aab15817ccc86c426e551acde6df6902e16b"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qing-person-ji-yun"
@@ -5830,9 +6363,25 @@
             "datasetId": "qing",
             "path": "/people/17",
             "sha256": "1ba38a9fa60e05486d58115b4960a205a62d95c2c931dde6bcab65de42d51685"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/0",
+            "sha256": "cb7e1064df3ea0de772d286076a0c5768a92fd719b063bb68728912ab08b1f77"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qing-person-zhang-tingyu"
@@ -6025,9 +6574,25 @@
             "datasetId": "liao-jin-song",
             "path": "/people/42",
             "sha256": "4fa30b074a4e83e24aa514daf2a39caf3fb12962b5c17a6a6255d3e7a3bd9b88"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/0",
+            "sha256": "f415dff69df85e686383c288bec58368783859a0ebf531725f57ef5932c51bfa"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-fan-zhongyan"
@@ -6040,9 +6605,25 @@
             "datasetId": "five-dynasties",
             "path": "/people/20",
             "sha256": "e46d282a8e4ca2df572694bfaa56603b0b28d7e7a5d2fd9f66641c68f3e8bb17"
+          },
+          {
+            "datasetId": "five-dynasties",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/6/figures/0",
+            "sha256": "e457326c888dbbbe043c95cc5088e826765861519944aefd7c48aa053e71e5f6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-feng-dao"
@@ -6520,9 +7101,25 @@
             "datasetId": "liao-jin-song",
             "path": "/people/85",
             "sha256": "adb4658bf9bd88ee6a53e559b986cd33297cd65a9090c1feb90f978e9553165a"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/5",
+            "sha256": "000a50f8f54ccc6b7fd3624862c1cc493faeed7cccc1db91bf39bb7d2c33061c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-lu-you"
@@ -6685,9 +7282,25 @@
             "datasetId": "liao-jin-song",
             "path": "/people/48",
             "sha256": "7719db2612a9ec694d821000969d30d691890fae228e946d51b91d0f87afd7e2"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/2",
+            "sha256": "93910b14e49e69b7c96ebff1373dbb4f8ae8652949f3634efd3f92f43375c8a6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-sima-guang"
@@ -6700,9 +7313,25 @@
             "datasetId": "liao-jin-song",
             "path": "/people/49",
             "sha256": "56b120bd296982090d3c0e8d4f337d8d9732251991b38173407b901fd9c2fd04"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/3",
+            "sha256": "0203d58de15908fcd1c877b4a9b92c3c5075e8fb8d78a4653a44e273d0debcd6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-su-shi"
@@ -6715,9 +7344,25 @@
             "datasetId": "liao-jin-song",
             "path": "/people/47",
             "sha256": "ef179a066a9d73580dc5c0775bc9eccafe8a8eb1938db97178a6ae4dd244aed2"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/1",
+            "sha256": "2c6e8d33fa87cd26c9a3790cadacfe4e265810d8ceee66da42e0714f5b92cf86"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-wang-anshi"
@@ -6970,9 +7615,25 @@
             "datasetId": "liao-jin-song",
             "path": "/people/84",
             "sha256": "f9fbd947cbb92c7238e03f40f2f4de1aabb7183e8ce8ea7f1be461fbe25fef05"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/4",
+            "sha256": "aacfe71a0304e65719defa984dba0a110858e0c4c314bd38f29e6bb8d34b25f9"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-person-xin-qiji"
@@ -7619,9 +8280,25 @@
             "datasetId": "sui-tang",
             "path": "/people/54",
             "sha256": "bf0615d24bf7b914df1700a8b4ce484132103c7137f10c75a6492c514984dfa1"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/5",
+            "sha256": "3ceb354d608c5239a755f6bbfee69805a7ea89afafc9d8636ff9d7d6a22b5f1e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-bai-juyi"
@@ -7634,9 +8311,25 @@
             "datasetId": "sui-tang",
             "path": "/people/27",
             "sha256": "483348a8ffa7f99f9f0c5f805ed8235268e18675a48fc9664dbb9d93893d83cc"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/1",
+            "sha256": "dda56e05b47e67300439f9db6e40c475e0645dc45b4c2b5e1b544fe1bee3edb5"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-di-renjie"
@@ -7664,9 +8357,25 @@
             "datasetId": "sui-tang",
             "path": "/people/37",
             "sha256": "51221ae295dfed01549b4be12200bdc38d93bd68597128c313fd4b04cd634a13"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/3",
+            "sha256": "df1fca253f0dcb42218aaa06d323b9ae07cf680b1058e439f9959a8ec0e15d5c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-du-fu"
@@ -7739,9 +8448,25 @@
             "datasetId": "sui-tang",
             "path": "/people/43",
             "sha256": "17a4554073e533e00b0d4dbd71ddc2cf73c0897204c111de053ff262bf4925b9"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/4",
+            "sha256": "f42eca0648fb2cfad60c16c383ae8888a629807f3c8e863912d43eee0d642521"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-guo-ziyi"
@@ -7844,9 +8569,25 @@
             "datasetId": "sui-tang",
             "path": "/people/36",
             "sha256": "850ab768b3e6b7b9d91997ee6aff2b0fd57fbaab88244111670ea1a636d0e9d2"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/2",
+            "sha256": "d89bb9089752cc143b2a6daa435d852e6bae409af3a6f735a076f1269be432d0"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-li-bai"
@@ -8048,6 +8789,23 @@
         ]
       },
       {
+        "id": "st-person-li-mi-tang",
+        "appearances": [
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/7",
+            "sha256": "3e0ac9f3035b0ea5a85bf05341b9ba4b08c65ce1742e3bfe880f3d40df4186fc"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "st-person-li-mi-tang"
+        ]
+      },
+      {
         "id": "st-person-li-shimin",
         "appearances": [
           {
@@ -8213,6 +8971,23 @@
         ]
       },
       {
+        "id": "st-person-liu-yuxi",
+        "appearances": [
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/8",
+            "sha256": "05fe0f6296a2776554ece89d280cef140f1d2f6b361b69a22ef0951c3dd30160"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "st-person-liu-yuxi"
+        ]
+      },
+      {
         "id": "st-person-pei-du",
         "appearances": [
           {
@@ -8225,6 +9000,23 @@
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-pei-du"
+        ]
+      },
+      {
+        "id": "st-person-pei-ju",
+        "appearances": [
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/6",
+            "sha256": "332fa9f22566dc0f7439c1714bb523905c674a091ca3e87112d8fe75ce601cb9"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "st-person-pei-ju"
         ]
       },
       {
@@ -8384,9 +9176,26 @@
             "datasetId": "sui-tang",
             "path": "/people/20",
             "sha256": "2b1d546361f238c319b8f3976fc1f090c5255bd6e927cd994f5862e084c69784"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/0",
+            "sha256": "486a0bd2ba8fd86c63f2f8e9de7622bd84656bbc4bba037cfa6f071b64ae872a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-person-xuan-zang"
@@ -8875,9 +9684,25 @@
             "datasetId": "three-kingdoms",
             "path": "/people/12",
             "sha256": "c7e1cbe19e75719cef0500533ed2856e227dcb8862369f5f71db8bead761f888"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/0",
+            "sha256": "755a66b33879b08173451b35fca8f2497675d850f06ac57a302cf68e79f87ea6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-person-jia-xu"
@@ -9092,9 +9917,32 @@
             "datasetId": "three-kingdoms",
             "path": "/people/45",
             "sha256": "ec67ed5f199c34757cd32d1df78363d4c3b9330325b0856110206383f4fc0c39"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/2",
+            "sha256": "6c9e9b33354a7344fddb64dc5eb02a313832a49d593963e77307243ab0245ff5"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/3",
+            "sha256": "a68d83196c446a0f5b24a429ed09980c8edc0e8309a5ae43c6b0a6b2507aab17"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-person-sima-yi"
@@ -9370,9 +10218,25 @@
             "datasetId": "three-kingdoms",
             "path": "/people/23",
             "sha256": "fa59aeb8b6ca91caa3a5114aace97059df740858540fde9b7b3d4e7ad31ef573"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/1",
+            "sha256": "9ebcecc5e4de2f0eaffe1b8b9dd3341e2fd663bf02717dbda2feabd8408b1f7f"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-person-zhuge-liang"
@@ -10097,9 +10961,25 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/people/105",
             "sha256": "ac1096de3f4a5e6784754f3c8ce0523fc1b09a595cae391cec804860f21092fa"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/2",
+            "sha256": "02571454f78934ac7368a556d13e459cbf80b69d9dcee387fd8e07929bcefd8c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-person-cui-hao"
@@ -11312,9 +12192,25 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/people/16",
             "sha256": "7f7f5a95f629f1dccaab57848c4fecb522305f7fd81305f6cbd8aef3687150a5"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/0",
+            "sha256": "8e3c7223bdc3fb1ce171febb995538675a5245e86b56761ce1c9803b503847c0"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-person-wang-dao"
@@ -11597,9 +12493,25 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/people/33",
             "sha256": "0fdee23e5ab6c13ea2d17d02076a2ea34b192a5a56918160b0483154f9af6ffb"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/1",
+            "sha256": "18d8cd79b56eaae713956dd8a783adfec7666ae4731d856069b1bb88a17ecfc1"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-person-xie-an"
@@ -11693,6 +12605,23 @@
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-person-yu-liang"
+        ]
+      },
+      {
+        "id": "wj-person-yu-xin",
+        "appearances": [
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/4",
+            "sha256": "44dcdf0ffd787c26dc06da3a03a1de7060866d3115cc584abcfb71596c0f4a87"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "wj-person-yu-xin"
         ]
       },
       {
@@ -12797,9 +13726,25 @@
             "datasetId": "xia-shang",
             "path": "/people/25",
             "sha256": "8bd3dbfac8a38fff127ac2fd62583f53e18616e1298914f5a7eb63c986dd8690"
+          },
+          {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/0",
+            "sha256": "a83de803040db42e01fc8e5f8ee8a84ba5b8694ae49601ca6e3f766fda43fab5"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "xs-person-yi-yin"
@@ -13085,9 +14030,25 @@
             "datasetId": "yuan",
             "path": "/people/26",
             "sha256": "2e12533f2d097848fc65fc43b2b5087cb057638b5789448e90094012acad9b1a"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/2",
+            "sha256": "effe26399d98cf7b5622fcca24b2fd7fe9a3dc2a22d8334d02eb6649234f479e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-guo-shoujing"
@@ -13194,9 +14155,25 @@
             "datasetId": "qing",
             "path": "/people/26",
             "sha256": "cd906a92f4ad727ceb73c9c082260d89cb16186edeb68b95dadaaf80e29032cb"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/3",
+            "sha256": "4e33d5a150acb6b36536ff7cecd4fa89ce139536708e744ee1aecfe37522e8f7"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-li-hongzhang"
@@ -13453,9 +14430,25 @@
             "datasetId": "ming",
             "path": "/people/26",
             "sha256": "05206aad27bf72eb768ee6d1187dc5bc42516102bea4f027d8a1cd8929765acc"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/2",
+            "sha256": "12ce83252d34a2dd7a5662931dea8e75c418790c01b5b9071982ac3a41409684"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-wang-shouren"
@@ -13503,12 +14496,35 @@
         "id": "ymq-person-yelv-chucai",
         "appearances": [
           {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/6",
+            "sha256": "f620e3519f574e332675b5ae561438015b986275492f6ce2cd5bbd7eb18bdbf9"
+          },
+          {
             "datasetId": "yuan",
             "path": "/people/20",
             "sha256": "9bbb69288488199fe83228e12b7c96f5020142dcef285709cae5010a3923bd72"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/0",
+            "sha256": "4eb6df4cb1e65808e4c21cfb305a836628294e1693c62b1b17da442e9cce1d7a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-yelv-chucai"
@@ -13566,9 +14582,25 @@
             "datasetId": "ming",
             "path": "/people/24",
             "sha256": "6c6516c0c069e7fa84e1cb961824a2947b7ba26b71d7cebfbd41e6682f2f5247"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/1",
+            "sha256": "db9fe79c9fcf9216a1e5d6797b182bf0933fec1c365e00615755eb0a256c5bf2"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-yu-qian"
@@ -13626,9 +14658,25 @@
             "datasetId": "qing",
             "path": "/people/25",
             "sha256": "4eb17cfa5cd1a8289d9fd6585f062775c5f9df33bf0e2c0b68681c627f9356dc"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/2",
+            "sha256": "f430e1f038b01637066d759d3cd5cd5296a6d516679887465b1e387828f413c7"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-zeng-guofan"
@@ -13664,9 +14712,25 @@
             "datasetId": "ming",
             "path": "/people/30",
             "sha256": "e4435ffa36afa505e0a35a652b372d159dac11ecc9e902e5fc2071a3b6fc2bc5"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/4",
+            "sha256": "b72403f3e98d4906dd160bc228c381bde1666ff906737b56336713ed2a94d8e5"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-zhang-juzheng"
@@ -13929,9 +14993,25 @@
             "datasetId": "qing",
             "path": "/people/27",
             "sha256": "bcfd960e84f9d063a258fb7fb61ceee54adf2224223cf2dda7979275815eac02"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/4",
+            "sha256": "14e9d113f8a8a0eb661e8ff8e368e21350e7fbdaf456c1cb443f52db15258a37"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-person-zuo-zongtang"
@@ -14019,9 +15099,26 @@
             "datasetId": "yuan",
             "path": "/people/21",
             "sha256": "a508d08713b791d786c3c72f2d1ab4cccf9f851691f42ed545e19cdb6996e6ec"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/1",
+            "sha256": "31448bdba4bfc1898140233462028ba2c7dce0b947ad120833db5002dd4e2b48"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "name",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "yuan-person-liu-bingzhong"
@@ -14268,15 +15365,48 @@
         ]
       },
       {
+        "id": "yuan-person-zhang-yanghao",
+        "appearances": [
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/4",
+            "sha256": "5200ef481b6467b75f492413c6f1d1414ed9ac328a27070c4a065de5f9ef6d1d"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "yuan-person-zhang-yanghao"
+        ]
+      },
+      {
         "id": "yuan-person-zhao-mengfu",
         "appearances": [
           {
             "datasetId": "yuan",
             "path": "/people/27",
             "sha256": "554bd7ad002f42c650571ef115b629001cebdd8b6ceb258ac0fe4c125f347e43"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/3",
+            "sha256": "c8357b1921df99d1a6e4618f8d346c38bb80d0d91181fbdaa02368c1914507d0"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "associatedPolities",
+          "biographyPlan",
+          "role",
+          "servedMonarchs",
+          "sourceIds",
+          "sources",
+          "stageActivities",
+          "summary"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "yuan-person-zhao-mengfu"
@@ -37295,9 +38425,19 @@
             "datasetId": "ming",
             "path": "/sources/16",
             "sha256": "363853e03b341f10dcbe26d4168b64c374bd9db64e98a20720db0adb584a171e"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/0/sources/0",
+            "sha256": "15a749cf019d45d853908fbce883030097a3d47c0edb03e0636b17e2ff8c1a4d"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-source-mingshi-145"
@@ -37325,9 +38465,26 @@
             "datasetId": "ming",
             "path": "/sources/9",
             "sha256": "e3d304a003799cc21ece3577a7f36dae76736f1779b28f90cda0737216047099"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/3/sources/2",
+            "sha256": "8817a8fce919ec05bb237cbe9eeb35bcd6e4192fd3297fbc71c08f8f2b33b3ee"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/4/sources/1",
+            "sha256": "8817a8fce919ec05bb237cbe9eeb35bcd6e4192fd3297fbc71c08f8f2b33b3ee"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-source-mingshi-19"
@@ -37355,9 +38512,19 @@
             "datasetId": "ming",
             "path": "/sources/11",
             "sha256": "110a693aa8d655321a1b2fe1e6d99d436c293b9275021dd1d24918a8e7cfa1d7"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/5/sources/1",
+            "sha256": "2fc0a00566f59669e2ec079934aadd90fdd0476f95f4c06d8e518b7047b1f59e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-source-mingshi-22"
@@ -37385,9 +38552,19 @@
             "datasetId": "ming",
             "path": "/sources/23",
             "sha256": "37df0ccac3bb6f4c7699d205601bb0697e4cd51b703e54ce2d46fb31ebfa81b3"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/5/sources/0",
+            "sha256": "314c17c218bf636b871aa2b9324dd63911bf491f569fe4ce3c1068687a12a779"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ming-source-mingshi-251"
@@ -37415,9 +38592,26 @@
             "datasetId": "qin-han",
             "path": "/sources/35",
             "sha256": "78f66be83523de98b3d3ca283cb26a7a3d3aa25f069407f85facf7f53144b635"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/3/sources/2",
+            "sha256": "c5a35bf21f7afaa9b86282bdac917fac384f1c94d66e13839d09c354e311f635"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/4/sources/2",
+            "sha256": "c5a35bf21f7afaa9b86282bdac917fac384f1c94d66e13839d09c354e311f635"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-001"
@@ -37475,9 +38669,19 @@
             "datasetId": "qin-han",
             "path": "/sources/39",
             "sha256": "80aad2c74b66b6bea1652f1f0ce46d5144d9cd5f90ffff119ca4ef3075e7b481"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/5/sources/2",
+            "sha256": "b104251116b07c074d30383f0423e59244a29a5e347eb632cb39a120bb01792a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-005"
@@ -37505,9 +38709,19 @@
             "datasetId": "qin-han",
             "path": "/sources/41",
             "sha256": "2ddf40f0155cb60e3d3628d9199f42a5d29048896faf31e79dd487d5f374160d"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/7/sources/1",
+            "sha256": "461ee2a181ab72f370dc9beacad86c2a683856f04d39bfe39bc833e90494f9e5"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-007"
@@ -37520,9 +38734,19 @@
             "datasetId": "qin-han",
             "path": "/sources/42",
             "sha256": "1a420565fdca6b940e25fdc2417bb8882cf6cebed37cfd2aad7762eafb8a8de4"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/7/sources/2",
+            "sha256": "b4e903406fa481e47d3191f19b50297363f7271e7461e8a8a225fe08c56c5833"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-008"
@@ -37604,15 +38828,42 @@
         ]
       },
       {
+        "id": "qh-source-hanshu-049",
+        "appearances": [
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/5/sources/1",
+            "sha256": "888c8f7d5c73dfb6994727748e77ac6c244b2193b12ec1c373f3597de15c1be2"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "qh-source-hanshu-049"
+        ]
+      },
+      {
         "id": "qh-source-hanshu-054",
         "appearances": [
           {
             "datasetId": "qin-han",
             "path": "/sources/48",
             "sha256": "3ca10a52520057bf6d8421739d9096381adb288564a6156e6a23ac1b5b92b028"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/6/sources/2",
+            "sha256": "abe9d397f45e3df08388a70779a26c2bf08b05bd28f8f4b823050c17efd188e4"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-054"
@@ -37631,6 +38882,23 @@
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-056"
+        ]
+      },
+      {
+        "id": "qh-source-hanshu-062",
+        "appearances": [
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/6/sources/1",
+            "sha256": "187cd05c3b9814b6d6684d94c668dd88c92747d61be493bad42c332af2b115c6"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "qh-source-hanshu-062"
         ]
       },
       {
@@ -37655,9 +38923,19 @@
             "datasetId": "qin-han",
             "path": "/sources/51",
             "sha256": "55198ab2edb7f1ec83fd4de370f5084babded6c411038bbe832492ecf64df5aa"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/7/sources/0",
+            "sha256": "ced7c2346cb052181dced00a203d2c8ef602ee60ffb0329bf628c31d40972b9f"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-hanshu-068"
@@ -37730,9 +39008,19 @@
             "datasetId": "qin-han",
             "path": "/sources/56",
             "sha256": "563967aea8a0ed1b34315876406eef8c3ead6373f9725f5328957586aebcfd2d"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/8/sources/1",
+            "sha256": "7a38e0deed6b5f30f9af716a9b0d5746181f90a57d3952930cf4a42f48e51c6b"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-houhanshu-002"
@@ -37760,9 +39048,19 @@
             "datasetId": "qin-han",
             "path": "/sources/58",
             "sha256": "c5aab8643ac54f516214408672ce67c39212810707574d7ede243ce18e07713c"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/8/sources/2",
+            "sha256": "f0270339beaefa28627f1737ff54aaeb5c0a321eab97da24a886e5a512217170"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-houhanshu-004"
@@ -37962,9 +39260,19 @@
             "datasetId": "qin-han",
             "path": "/sources/71",
             "sha256": "57956da69b9f78e604f586c3b7e0e9834c00c4dfee98aa069d6c4d542738f89f"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/8/sources/0",
+            "sha256": "5ab5db3afa235f4993e9497f6f96a8e8d65fafd0a64304fbb3b9df5458abd436"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-houhanshu-047"
@@ -38104,9 +39412,19 @@
             "datasetId": "qin-han",
             "path": "/sources/18",
             "sha256": "ef70969810e100470a99ad99ff3a47344b575849ef49695b6a3150966d0e6d9a"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/3/sources/1",
+            "sha256": "54544a0cbdff3f7dc6e9adaac1736f4655bdf6a56541874f0342d6fa71510104"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-shiji-008"
@@ -38119,9 +39437,19 @@
             "datasetId": "qin-han",
             "path": "/sources/19",
             "sha256": "4b10e78fdd3b37b2ed537a4f83163d51b87ba28e7618beae38d15aa6a574938c"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/4/sources/1",
+            "sha256": "fb3476d0d31cf4efbc155b4e853082b8c41194fc2a72242cda72fda7589ca26c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-shiji-009"
@@ -38224,9 +39552,19 @@
             "datasetId": "qin-han",
             "path": "/sources/26",
             "sha256": "87c2c894ed26f35ed40cc3ff65eb46c212fde2f2da80d5f8b030828f77ea8eca"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/3/sources/0",
+            "sha256": "ee109d2d78cdd26ef63f3796a597b5251a9a2b4ad18fe320fce62cdfecb8ed11"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-shiji-055"
@@ -38239,9 +39577,19 @@
             "datasetId": "qin-han",
             "path": "/sources/27",
             "sha256": "4eef851920f9793880ded085901c8733fa52417a5fcc987c19e8714c032c36e3"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/4/sources/0",
+            "sha256": "863fb3409852b23d2077034a1b9314e7cae41796b99d1c08bd07c536627fb949"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-shiji-056"
@@ -38299,9 +39647,19 @@
             "datasetId": "qin-han",
             "path": "/sources/31",
             "sha256": "b96d1842bed15526735627cd5414eaf39e00237ce1bf55bd735b223924784ecd"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/5/sources/0",
+            "sha256": "b3cae2cd19b08e795df30750acd9db7ffbdb0344eb12ce94dbbf79f13991f505"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-shiji-101"
@@ -38344,9 +39702,19 @@
             "datasetId": "qin-han",
             "path": "/sources/34",
             "sha256": "1f6fc5e7c2fd807cf7298d334895f62c54b21d1cb8c3e106cf2a2eddd5d046f0"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/6/sources/0",
+            "sha256": "963a6d1ef1a1e9603b8c3fbd448f54c1d5c3ad6883ec59b4bcd5f84ed38b5824"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qh-source-shiji-130"
@@ -38374,12 +39742,53 @@
             "datasetId": "qing",
             "path": "/sources/9",
             "sha256": "a2f5b7af695fa6ba41e0c7d2159dc1109c23f0d5b505dbb73d4c4f3ddd2b9b15"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/2/sources/2",
+            "sha256": "3a5b6f4d0b149d052aa94f93530b72107427f2b57275890ebbc7f1e78cef0ae8"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/3/sources/1",
+            "sha256": "3a5b6f4d0b149d052aa94f93530b72107427f2b57275890ebbc7f1e78cef0ae8"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/4/sources/1",
+            "sha256": "3a5b6f4d0b149d052aa94f93530b72107427f2b57275890ebbc7f1e78cef0ae8"
+          }
+        ],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "qing-source-qsg-21"
+        ]
+      },
+      {
+        "id": "qing-source-qsg-232",
+        "appearances": [
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/5/sources/0",
+            "sha256": "8ce4cf1e90d34eafd4156c1ac6479d207dc12c1ff2b2fd0d848d9cbc88309af9"
           }
         ],
         "differingFields": [],
         "identityScope": "stable-id",
         "identityKeys": [
-          "qing-source-qsg-21"
+          "qing-source-qsg-232"
         ]
       },
       {
@@ -38404,9 +39813,19 @@
             "datasetId": "qing",
             "path": "/sources/14",
             "sha256": "887b0e9733d4ec0ab204cd6b4fb5ce1012c84beb7cb66c137ecb64b551c47a58"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/0/sources/0",
+            "sha256": "b74ca5f927d887de6c1495f658a17797f9fed92d47a7c3497973dc79da25b02c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "qing-source-qsg-288"
@@ -38425,6 +39844,23 @@
         "identityScope": "stable-id",
         "identityKeys": [
           "qing-source-qsg-318"
+        ]
+      },
+      {
+        "id": "qing-source-qsg-320",
+        "appearances": [
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/1/sources/0",
+            "sha256": "c19b80477b78e24c83e153370156ca517c484494ec18af3231c055378c9409c9"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "qing-source-qsg-320"
         ]
       },
       {
@@ -38539,9 +39975,19 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/33",
             "sha256": "073a2e387173bc334ee5ac6a704c230a34c768fa0cb05f66c9517b336c512ef8"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/6/sources/2",
+            "sha256": "e6157e66b8471d185b4ae84d72394e2834da7b799f876cf1d500e2a5e06393f4"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-jinshi-13"
@@ -38720,9 +40166,19 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/9",
             "sha256": "dfbcf1224dc18a486d6cb2ce1022027ec5b912d51b30163342cf2e60d0df1bc0"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/0/sources/1",
+            "sha256": "87c1a88c8dff01b38b3a7fa753323ffec278e5a4c6f719adf87fc9a18c161aed"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-009"
@@ -38750,9 +40206,33 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/11",
             "sha256": "ab7012a1f74f072cf83cd6da3988d6708aadf0a7f2ea098128f2ada361e70f74"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/1/sources/1",
+            "sha256": "993820b97184b474d271f5ccd9fb94a68ba72301290e14c13d8f0ab77ec145de"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/2/sources/1",
+            "sha256": "993820b97184b474d271f5ccd9fb94a68ba72301290e14c13d8f0ab77ec145de"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/3/sources/1",
+            "sha256": "993820b97184b474d271f5ccd9fb94a68ba72301290e14c13d8f0ab77ec145de"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-014"
@@ -38765,9 +40245,33 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/12",
             "sha256": "e58f0dc2dd77142460b797b5b07e5e790358839696a410357a587c650cdc9099"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/1/sources/2",
+            "sha256": "d3c2b66fdedaa3bec747f9a6de15e34e0c0a24ee35748cd93be75e314f367ecf"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/2/sources/2",
+            "sha256": "d3c2b66fdedaa3bec747f9a6de15e34e0c0a24ee35748cd93be75e314f367ecf"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/3/sources/2",
+            "sha256": "d3c2b66fdedaa3bec747f9a6de15e34e0c0a24ee35748cd93be75e314f367ecf"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-017"
@@ -38780,9 +40284,19 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/13",
             "sha256": "411179ca74ad9614e1ec50d7be067fc280912623d9a260695d3d5913d4180ada"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/3/sources/3",
+            "sha256": "cd84e785415a7fc4285fce9e9739d2cb35846222807262cb9c7b85d4058e0ab6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-019"
@@ -38810,9 +40324,26 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/15",
             "sha256": "7ca8053546ef8d64c3e0bfa13a70a5faedfa14243ce2706207719c2cf7e80503"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/4/sources/1",
+            "sha256": "de825088627561a9fea7c808054471b466f55b5c17575ca09fee64670ff79ea8"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/5/sources/1",
+            "sha256": "de825088627561a9fea7c808054471b466f55b5c17575ca09fee64670ff79ea8"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-033"
@@ -38885,9 +40416,19 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/20",
             "sha256": "44c93b23f89c3a485d4a622296e2c44eae9688064af7e7e5fe36aacb8093f4c5"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/0/sources/0",
+            "sha256": "68b86296f8bc6fddf30b53ed64f26ff46ee741698f229693a0801a19c357d446"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-312"
@@ -38900,9 +40441,19 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/21",
             "sha256": "1085853e3859c13233ccaf98565533117bb172ff5d5b390b7accaf52d571567e"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/1/sources/0",
+            "sha256": "1705f13c0d10857b9386c783e8ef6fb4a6421b5c084ce91283d7e6aefe1575d5"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-327"
@@ -38915,9 +40466,26 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/22",
             "sha256": "07dd2087ce9bd1bcd92c15cde022941b22949658fb62a62a16ef29d9ae3f8525"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/2/sources/0",
+            "sha256": "278b13745a0be728a18d3ec4d8e2e3d1ccb028bb5e25e1cd733696117306f0c3"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/3/sources/0",
+            "sha256": "278b13745a0be728a18d3ec4d8e2e3d1ccb028bb5e25e1cd733696117306f0c3"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "sl-source-songshi-336"
@@ -38945,12 +40513,39 @@
             "datasetId": "liao-jin-song",
             "path": "/sources/24",
             "sha256": "d720e32908d9bc0edf54f4630b935d9b6901fc2502173aa961708852ca4a280f"
+          },
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/5/sources/0",
+            "sha256": "daddfeb29cdc4fa6003c96e94d68c0a9ffa5434cce29ea840eb4889e8271aea6"
+          }
+        ],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "sl-source-songshi-395"
+        ]
+      },
+      {
+        "id": "sl-source-songshi-401",
+        "appearances": [
+          {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/4/sources/0",
+            "sha256": "6e0104cd77b30f5cd451145abcc22bde3dd990ac3d1e2c6c32792c9135f2694e"
           }
         ],
         "differingFields": [],
         "identityScope": "stable-id",
         "identityKeys": [
-          "sl-source-songshi-395"
+          "sl-source-songshi-401"
         ]
       },
       {
@@ -39195,8 +40790,29 @@
             "sha256": "d759785613d55d59df94cccbc74ad268a91e2dc420dd71c168883d95a85b8200"
           },
           {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/1/sources/1",
+            "sha256": "7434bb4219f994229a1a85ead132d951c998c0e1dcd4a5550755ab286605ed55"
+          },
+          {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/2/sources/0",
+            "sha256": "7434bb4219f994229a1a85ead132d951c998c0e1dcd4a5550755ab286605ed55"
+          },
+          {
             "datasetId": "zhou",
             "path": "/sources/9",
+            "sha256": "2d34454530e4fedb76eb3bea0ad3e6585532aea0631cbf3a785645ebf594f45b"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/0/sources/0",
             "sha256": "2d34454530e4fedb76eb3bea0ad3e6585532aea0631cbf3a785645ebf594f45b"
           }
         ],
@@ -39222,6 +40838,13 @@
             "datasetId": "qin-han",
             "path": "/sources/2",
             "sha256": "9682e595e04e8ac65d0b939728b0339186bc31c998438a3fc2388d7dc6a1a5d3"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/0/sources/1",
+            "sha256": "6311a198db09ad117ed3ad869c3d3e81f76ea4026fe500f1dec3140bd95548aa"
           }
         ],
         "differingFields": [
@@ -39243,9 +40866,23 @@
             "sha256": "1559725aeeb7279c9c5fc7a8ada5ca2012495c43fa71b759c8dca0d22c2d3a8d"
           },
           {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/3/sources/0",
+            "sha256": "1559725aeeb7279c9c5fc7a8ada5ca2012495c43fa71b759c8dca0d22c2d3a8d"
+          },
+          {
             "datasetId": "qin-han",
             "path": "/sources/3",
             "sha256": "cfd31daa2e9bbf1026bab553c20c003108dce19fbb14f3db74deb5475034e275"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/0/sources/0",
+            "sha256": "bf9e4796d973f2cffb6167492cf5081516defeb54fddc1cff0baaaf8ccba63a6"
           }
         ],
         "differingFields": [
@@ -39387,9 +41024,23 @@
             "sha256": "399aae1c56827d37c2541307324e147fefdc35b09b845ae85b70099ea3544b2a"
           },
           {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/4/sources/0",
+            "sha256": "399aae1c56827d37c2541307324e147fefdc35b09b845ae85b70099ea3544b2a"
+          },
+          {
             "datasetId": "qin-han",
             "path": "/sources/9",
             "sha256": "2b4a2213a7c3e0a0f9e657edc84d59dbe3d7d8d6f2cb4c1f01a8e9b964473ff8"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/1/sources/0",
+            "sha256": "fcae5900e4b2e0fe99428c2b9baf697c789aa4a99cf3ef57454e64234e1e0b99"
           }
         ],
         "differingFields": [
@@ -39414,6 +41065,20 @@
             "datasetId": "qin-han",
             "path": "/sources/10",
             "sha256": "4e27c499490d62ccf23504d44da8e62b35f1df33ee10fdaa3ca162277968f74c"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/1/sources/1",
+            "sha256": "194d4b3806c28939c9dcebf2b957cfa559beb19cd47d077bae8c498597b8638a"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/2/sources/1",
+            "sha256": "194d4b3806c28939c9dcebf2b957cfa559beb19cd47d077bae8c498597b8638a"
           }
         ],
         "differingFields": [
@@ -39435,9 +41100,23 @@
             "sha256": "2035cf894ab974d2f46a390c30cfb1df6762143c81ec02172ec3a9b562601d77"
           },
           {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/5/sources/0",
+            "sha256": "2035cf894ab974d2f46a390c30cfb1df6762143c81ec02172ec3a9b562601d77"
+          },
+          {
             "datasetId": "qin-han",
             "path": "/sources/11",
             "sha256": "6d959f9a9c87096d6cf4a495d7b21e844b6fa5c249eac0a32dd5de970a916812"
+          },
+          {
+            "datasetId": "qin-han",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/2/figures/2/sources/0",
+            "sha256": "e5c1d80987b297f12bed07406ca672a7f5c7648fab585195cce2d4fb77b0de10"
           }
         ],
         "differingFields": [
@@ -39459,8 +41138,22 @@
             "sha256": "46b242612b2c607bd80191432ca5659e3f8d0ecbd52d56a97e1b1f9b522965e9"
           },
           {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/1/sources/0",
+            "sha256": "6157bf9ea25cf6046bb2a0198445ca7effccc214085f26bee38a01c57a979b2f"
+          },
+          {
             "datasetId": "zhou",
             "path": "/sources/20",
+            "sha256": "ef43b98238af74bf3024d5c9ec19dec2bf8cf28a601be5bfa578a8ebf00c3886"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/1/sources/0",
             "sha256": "ef43b98238af74bf3024d5c9ec19dec2bf8cf28a601be5bfa578a8ebf00c3886"
           }
         ],
@@ -39480,6 +41173,13 @@
           {
             "datasetId": "zhou",
             "path": "/sources/21",
+            "sha256": "031ef68ef30be67bb2c363c7b5a2792203729e1a3180d263add42ec839efcb25"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/2/sources/0",
             "sha256": "031ef68ef30be67bb2c363c7b5a2792203729e1a3180d263add42ec839efcb25"
           }
         ],
@@ -39510,6 +41210,13 @@
           {
             "datasetId": "zhou",
             "path": "/sources/23",
+            "sha256": "ec726d51d02c60698d3e6984caa11e11c7b32a2db0fd6ce2e336299901b25ccb"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/6/sources/0",
             "sha256": "ec726d51d02c60698d3e6984caa11e11c7b32a2db0fd6ce2e336299901b25ccb"
           }
         ],
@@ -39571,6 +41278,13 @@
             "datasetId": "zhou",
             "path": "/sources/27",
             "sha256": "fb16c49762554640621125c00f854bf2a3cf0def5396d753f17022fe5f4007b7"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/9/sources/0",
+            "sha256": "fb16c49762554640621125c00f854bf2a3cf0def5396d753f17022fe5f4007b7"
           }
         ],
         "differingFields": [],
@@ -39585,6 +41299,13 @@
           {
             "datasetId": "zhou",
             "path": "/sources/28",
+            "sha256": "68a0bab55d32bb6539ca549c0a0dc27d5c48cfbe532157cd06f6d738b001d40c"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/7/sources/0",
             "sha256": "68a0bab55d32bb6539ca549c0a0dc27d5c48cfbe532157cd06f6d738b001d40c"
           }
         ],
@@ -39699,6 +41420,13 @@
           {
             "datasetId": "zhou",
             "path": "/sources/35",
+            "sha256": "aceb167e562d8095e3e50321afa2f9c14e32c181105dc1614342fbcdb72434f3"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/8/sources/0",
             "sha256": "aceb167e562d8095e3e50321afa2f9c14e32c181105dc1614342fbcdb72434f3"
           }
         ],
@@ -40174,9 +41902,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/12",
             "sha256": "290e2197317186b0ac49b571979786fec90a51616c0da553b0cf4a2f03a85123"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/0/sources/1",
+            "sha256": "c9c635a21fb3b42781a187002447add3f7734a9de23b1fb0b6c83246a22ac39b"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-02"
@@ -40189,9 +41927,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/13",
             "sha256": "ae0f8b4b898042a6857cd8a521cb4bea173e12fd6a093298748530466d664bcc"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/0/sources/2",
+            "sha256": "8e9420427d3bce1f0c61836e610b93ef7fe7df7a26409b03c5ef5d9e6d9edb6a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-04"
@@ -40204,9 +41952,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/14",
             "sha256": "97b9934d71c1b200a740769becbb6fb6f5e1f9b98c23802ad7d6cf5157f80d67"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/1/sources/1",
+            "sha256": "bdabd55041ac6cc910e307ee8259107460284a4cebf33da0788faf663ff8719e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-06"
@@ -40234,9 +41992,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/16",
             "sha256": "920cd17c8c7224b22bc3441b1a2ea77959596c26b3ea0d7db0d187fd4b7d8d05"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/2/sources/1",
+            "sha256": "1d438a3f1ec332f3635ba7f8e85069a4b254b724363019779419f62aff78b4ea"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-08"
@@ -40249,9 +42017,40 @@
             "datasetId": "sui-tang",
             "path": "/sources/17",
             "sha256": "1b75161132068036772e74048804cfdd746d7969d411acd7a147be575fa4101b"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/2/sources/2",
+            "sha256": "a0ca0aa56e3689abc282a85a686986a205fdd04bd6378a03873fca13e42961f6"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/3/sources/1",
+            "sha256": "a0ca0aa56e3689abc282a85a686986a205fdd04bd6378a03873fca13e42961f6"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/4/sources/1",
+            "sha256": "a0ca0aa56e3689abc282a85a686986a205fdd04bd6378a03873fca13e42961f6"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/7/sources/1",
+            "sha256": "a0ca0aa56e3689abc282a85a686986a205fdd04bd6378a03873fca13e42961f6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-10"
@@ -40279,9 +42078,26 @@
             "datasetId": "sui-tang",
             "path": "/sources/18",
             "sha256": "5972b53318748e340a648d1f772d854248b7506712f8046187bd0c5e89873308"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/3/sources/2",
+            "sha256": "2182b79035e2319e56b379f77d9864e298aebce3eb900a66dab003e7c323608e"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/4/sources/2",
+            "sha256": "2182b79035e2319e56b379f77d9864e298aebce3eb900a66dab003e7c323608e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-11"
@@ -40309,9 +42125,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/19",
             "sha256": "aed4ac0d16c2f15562f3484451c7dc86e3d54051888156e9138447532371d9a7"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/7/sources/2",
+            "sha256": "c819210ea88baa8adf423b8ec8aeb78a74475eb4c61b1093666b15360d66b174"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-12"
@@ -40324,9 +42150,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/36",
             "sha256": "acda165510fd6788b307ac204ec702ad148a87cf607b245e3808baf7420c1c54"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/4/sources/0",
+            "sha256": "16156cb354782cbb883a7c5fa47611f06ea87141d3c7508fb99fa761154f5818"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-120"
@@ -40348,15 +42184,49 @@
         ]
       },
       {
+        "id": "st-source-jts-130",
+        "appearances": [
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/7/sources/0",
+            "sha256": "915ac59ed97b49be1decac2cd3f33b70105842f5af34bfb898ec4fb7d9491d20"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "st-source-jts-130"
+        ]
+      },
+      {
         "id": "st-source-jts-14",
         "appearances": [
           {
             "datasetId": "sui-tang",
             "path": "/sources/20",
             "sha256": "43f488534d0adede74a0ce17b9e5dd78b0749fda429312bd8ffc9a77cc3f4947"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/5/sources/1",
+            "sha256": "d4d07e22a426669098ff419938de8d4306c61815c7a48e7fd05a3c1fc202c910"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/8/sources/1",
+            "sha256": "d4d07e22a426669098ff419938de8d4306c61815c7a48e7fd05a3c1fc202c910"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-14"
@@ -40384,9 +42254,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/38",
             "sha256": "01c8ab7208e0973b61d38ee864db0a756c11823753ce7dac612c1d5ff3aca6b4"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/8/sources/0",
+            "sha256": "ccaf814d41ef1b71c59024c38a7372af88209e31c0c99fc344f21df5d3db9c67"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-160"
@@ -40399,9 +42279,26 @@
             "datasetId": "sui-tang",
             "path": "/sources/39",
             "sha256": "b3b3993587b6472d898eed9b8deb680204dbcca67042187db16e5573de64a5a0"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/5/sources/0",
+            "sha256": "2e600cdf1a68324596c86c3c7cffadc22e388f81b88ff8237eb523370213e95c"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/8/sources/2",
+            "sha256": "2e600cdf1a68324596c86c3c7cffadc22e388f81b88ff8237eb523370213e95c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-166"
@@ -40429,9 +42326,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/41",
             "sha256": "3a26fd50dab5a1d04857f5a42272fe47630da0aba45037c1554616664443374f"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/5/sources/2",
+            "sha256": "f2520ce87e43e0130a1faf26e451af23d72c1fe6bd8000cd16919a5c638e6895"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-174"
@@ -40489,9 +42396,26 @@
             "datasetId": "sui-tang",
             "path": "/sources/42",
             "sha256": "fc859b287b2813f205ffc976090a7eaaeeac8d7d56f564afd6bbb1a72fc71911"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/2/sources/0",
+            "sha256": "4a55f10b0778df79098baa89c17acb03cf3fbf997e543e7e570c30445212cb2b"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/3/sources/0",
+            "sha256": "4a55f10b0778df79098baa89c17acb03cf3fbf997e543e7e570c30445212cb2b"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-190c"
@@ -40504,9 +42428,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/43",
             "sha256": "b2b1dc05212113cece3c53c359ac8071e19acebe3a24303cdf92ddc11d6f04e2"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/0/sources/0",
+            "sha256": "ef8adc0343a685109b5e5689cd8385aa656a295906a1a7bdc74275a0d6576901"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-191"
@@ -40611,6 +42545,23 @@
         ]
       },
       {
+        "id": "st-source-jts-63",
+        "appearances": [
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/6/sources/1",
+            "sha256": "a643699046765ece356b3663e1998359e5aaf838a1445c570baa02308e049f4e"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "st-source-jts-63"
+        ]
+      },
+      {
         "id": "st-source-jts-65",
         "appearances": [
           {
@@ -40677,9 +42628,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/32",
             "sha256": "1b24eb50af64e045d9d4fb78e28189077e78daa1eaa852c41cfd03bcb10e98bb"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/1/sources/0",
+            "sha256": "a07a5e621119d55f396419b6568365a59e7ceee1b210aae64684f69f5554995f"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-jts-89"
@@ -40729,9 +42690,19 @@
             "datasetId": "sui-tang",
             "path": "/sources/3",
             "sha256": "e41ba02888a866626525e20f5de8189129d06a949357d66748ab79d416b2951d"
+          },
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/6/sources/2",
+            "sha256": "ee1b39d7e838d4e9d0a2bf2226d5cc930fa556cd6475bf0f3775f41b039645d3"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "st-source-suishu-03"
@@ -40820,6 +42791,23 @@
         ]
       },
       {
+        "id": "st-source-suishu-67",
+        "appearances": [
+          {
+            "datasetId": "sui-tang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/5/figures/6/sources/0",
+            "sha256": "2b0efdfbb37deefe40a55a52ec054ef60659ef629e36593841bdf851c0361749"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "st-source-suishu-67"
+        ]
+      },
+      {
         "id": "st-source-suishu-68",
         "appearances": [
           {
@@ -40888,13 +42876,28 @@
             "sha256": "7e4eac52fff70ed540aa9015666649f16d231ab8c35835d9b402bc2472a9b0a7"
           },
           {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/2/sources/0",
+            "sha256": "12ea6c136a8f9e0d200cd188bf87a0b228e64bdb90f1ff9842321fc24be4e990"
+          },
+          {
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/0",
             "sha256": "72ba22dfd6ffb1cbafaa599a0424ff6f9e43ff6f6a9f026ee5b43adced1a381f"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/3/sources/0",
+            "sha256": "12ea6c136a8f9e0d200cd188bf87a0b228e64bdb90f1ff9842321fc24be4e990"
           }
         ],
         "differingFields": [
-          "note"
+          "note",
+          "reviewStatus"
         ],
         "identityScope": "stable-id",
         "identityKeys": [
@@ -40935,10 +42938,18 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/2",
             "sha256": "fbe29f43824cb820c1f1673c14ef672f43d649e5392d440f577e7e09abf3f777"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/3/sources/1",
+            "sha256": "408fe5f2ed11a95170a61410673d843bb6ea0c743b1c29c2c594eed65aa26de7"
           }
         ],
         "differingFields": [
-          "note"
+          "note",
+          "reviewStatus"
         ],
         "identityScope": "stable-id",
         "identityKeys": [
@@ -40974,9 +42985,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/2",
             "sha256": "3d3b18e1912b5ee50f0c61b9d6e0563e4683727bd90a7c320187f14d63dd3f8f"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/0/sources/1",
+            "sha256": "bc3e518cbd46b904d9f489afa1d556735735e89096cc21dd86a80d0385da01fb"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-01"
@@ -40989,9 +43010,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/3",
             "sha256": "866f05cd2b8dd789c10b5a7411cff46d7dce1f3b58735759a16cbeafa1dc8cd1"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/0/sources/2",
+            "sha256": "d517ca45f4eebb77f1c0905d006393c3dbd06e02ad9deac6617492034d43cd57"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-02"
@@ -41004,9 +43035,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/4",
             "sha256": "70bf88623261bd28b27eb8e2f30a0f21a8a00bfd1f6fa1e1b189e98cb7aa3597"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/2/sources/1",
+            "sha256": "602115a49093f99838190db95989d42da48046049a4cfff528b48a566b8537e2"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-03"
@@ -41019,9 +43060,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/5",
             "sha256": "a043b7718d73289b448d9d7e02a4c23f5984f294ba6b099fdd69f5bec6ac3d7b"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/2/sources/2",
+            "sha256": "400b9cdbcdad597d52d5f3dfa036f5561a5ee706d1521432ee701ec2a9a706a0"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-04"
@@ -41079,9 +43130,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/9",
             "sha256": "556f49dc9a58f0c44efce67e2e7d7bc460df2e5078f80536b5a79a7b74c8d5a0"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/0/sources/0",
+            "sha256": "e280d487dbee314b1d6256976a196036cd7e6d025b10e7e7bf3178741ce51108"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-10"
@@ -41169,9 +43230,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/15",
             "sha256": "a398dd9db51712141a9f29202a4f9de095a7997cd0cf953df1322d36fab6dc0a"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/1/sources/1",
+            "sha256": "64e9ef7b4a96a980fe910e789ca22a94ec5205a21310ce5b55f09eb1f84d38bc"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-32"
@@ -41184,9 +43255,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/16",
             "sha256": "74d19438cbbcf2ecf4ad2c480ac746132ff339fe6a5341db5dafc3e22f9d30e4"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/1/sources/2",
+            "sha256": "034cc856c83a24bf54ec6ca76ea74d7f5f03c19fa24d5d72c5fc1042946ce573"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-33"
@@ -41199,9 +43280,19 @@
             "datasetId": "three-kingdoms",
             "path": "/sources/17",
             "sha256": "5eba0030b817e477ba82b09da1a3248c9fe23bdac75435f49c02bad9934dfa7f"
+          },
+          {
+            "datasetId": "three-kingdoms",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/3/figures/1/sources/0",
+            "sha256": "c82772939e98b390071608073f04a85b5f99747f515a86f83d0fcafcea2056e3"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "tk-source-sgz-35"
@@ -41379,9 +43470,19 @@
             "datasetId": "five-dynasties",
             "path": "/sources/5",
             "sha256": "5d427888efbce10fd8f6d6669b00c67b8091364fd4b7e1725f6318bdba667786"
+          },
+          {
+            "datasetId": "five-dynasties",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/6/figures/0/sources/0",
+            "sha256": "7ed6c98766aa0fd2e3822be4eefcf68ef9ed5b1c060a8a9da1b5b4c67d62dfff"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wd-source-jwds-110"
@@ -41394,9 +43495,19 @@
             "datasetId": "five-dynasties",
             "path": "/sources/2",
             "sha256": "ac3cf2dc66484ae64690095a29ecd76e5952d1e15c922c540f967efbdc511ac1"
+          },
+          {
+            "datasetId": "five-dynasties",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/6/figures/0/sources/2",
+            "sha256": "dcf02e6ffa7a077d55d4a5afdbf86051a6de57f28ff1e4c2ffa95797fed2667e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wd-source-jwds-25"
@@ -41529,9 +43640,19 @@
             "datasetId": "five-dynasties",
             "path": "/sources/12",
             "sha256": "7a633b31b39e3426aad1d973afe950a15813c1a7a05ce90571cb91ef5e0ebe3f"
+          },
+          {
+            "datasetId": "five-dynasties",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/6/figures/0/sources/1",
+            "sha256": "73e84b808b4859170b484b702bdd2d4f25bc2b85d1baa99bb6bec849526ead2b"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wd-source-xwds-54"
@@ -41821,9 +43942,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/6",
             "sha256": "2bf8baad413ca11645fd5f66665d9429ecbbb90d34d223b783a5ece295690461"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/0/sources/1",
+            "sha256": "f6adc7ea1f9f658a25c69cad61b93763416910e276afb26f2b7b9df47f2eb93c"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-jinshu-006"
@@ -41866,9 +43997,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/9",
             "sha256": "42c839eeffca3ffdd0e65ff02cc77c14195d07730d27b9b02dfefa88d1b41e32"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/1/sources/1",
+            "sha256": "79c1364f6685bc4b81da1187352c1e26cf7648d824f8d59743dc0a2047476479"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-jinshu-009"
@@ -42031,9 +44172,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/20",
             "sha256": "6c184ea3df8fac71e4bc89d18901a6746f13dbcc65f256ab044ad272dcd95a8d"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/0/sources/0",
+            "sha256": "5e0e1853517eb8fb068c29dc0dca7dad04da2c9f32707af13dab6d92732e9c84"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-jinshu-065"
@@ -42091,9 +44242,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/24",
             "sha256": "b39ad3c3a45cd30102ee98a7a33a74f11a5d607942f905d4542b428fb1b5bab0"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/1/sources/0",
+            "sha256": "3821c1e4c0be3c55005657a7090ff62b77aa1b3d665ecea023f0f165a7fc4d4f"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-jinshu-079"
@@ -42181,9 +44342,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/30",
             "sha256": "bddb8d70943c2bcee6ffc19e70040c89b85d2a3c1790af334eb0c2153608c0b3"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/0/sources/2",
+            "sha256": "a54c73f0e79539026ce49341e4ce9b5f445aec6caa6ee0f0d49369e44b251be7"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-jinshu-098"
@@ -42271,9 +44442,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/36",
             "sha256": "3539a5020deff0d43284265c17672637998e25e800381859658430a52f7cc7c4"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/1/sources/2",
+            "sha256": "960e6cbe592fefe8d664d46607f4c21214f851a0c08e215a13f2555f0b8a073a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-jinshu-113"
@@ -42436,9 +44617,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/57",
             "sha256": "efc1ec9363479cbdb8f481a7afa6dc27dfe14984938202f1494195d1e3172a86"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/4/sources/1",
+            "sha256": "736a57f221963d874232316b669697e304fcc4d6405d2b38be3f66238f27d066"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-liangshu-04"
@@ -42691,9 +44882,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/67",
             "sha256": "4971ba509ae423ed272d2aee60afac3848c6a81d9c6484fe8c0fa4ee3a7f682f"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/2/sources/1",
+            "sha256": "380807aa84755d66d76143aed82cad2822a9826d5b449b39aa552d4469ff62bb"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-weishu-04"
@@ -42796,9 +44997,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/74",
             "sha256": "ce865f38585669e94057e61eb6938889d1a6cb55619b3364c439b831bb24c5d6"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/2/sources/0",
+            "sha256": "98fa22a18bcd0d883e4c49c486d159799991444f3d16e56d671f3ae3baa9f900"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-weishu-35"
@@ -42841,9 +45052,19 @@
             "datasetId": "wei-jin-nan-bei",
             "path": "/sources/80",
             "sha256": "6d7cd9143e22c0a128d10aa72d60d111b482189585a246f3a2238f5ad1bcce6b"
+          },
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/4/sources/2",
+            "sha256": "f0eb0d86e702cbeb980648c5cd03df2e6473602057fbd2882f604de4283a76d1"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "wj-source-zhoushu-03"
@@ -42895,15 +45116,42 @@
         ]
       },
       {
+        "id": "wj-source-zhoushu-41",
+        "appearances": [
+          {
+            "datasetId": "wei-jin-nan-bei",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/4/figures/4/sources/0",
+            "sha256": "8ac7532810a8f10de889af33dd2eb78d4e13780e305c03d02cd7e86a7768bb51"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "wj-source-zhoushu-41"
+        ]
+      },
+      {
         "id": "xs-source-shangshu-mushi",
         "appearances": [
           {
             "datasetId": "xia-shang",
             "path": "/sources/12",
             "sha256": "7f54a79799d8cdcaca676c303393f71a31f699e8097f2df6e8db697c374e2455"
+          },
+          {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/2/sources/1",
+            "sha256": "55ad253bd43e19c8357cb46af87b8add5849729b7fcf0d4e3528fc05b1206b88"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "xs-source-shangshu-mushi"
@@ -42976,9 +45224,19 @@
             "datasetId": "xia-shang",
             "path": "/sources/2",
             "sha256": "983612f923e5bead8c52fd0d4f00417eded9397022ec5034b661d84b28a51ca3"
+          },
+          {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/0/sources/0",
+            "sha256": "32d4cbaad9b5f204e04c3908d95032ba26ed9102ec545cfde683f183bea843e4"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "xs-source-shiji-003"
@@ -43006,9 +45264,19 @@
             "datasetId": "xia-shang",
             "path": "/sources/8",
             "sha256": "a5c3c5c7ad403a5a47f0e131ef2fba2b341f3829de4fa4da23a51fd16f3c1cdb"
+          },
+          {
+            "datasetId": "xia-shang",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/0/figures/0/sources/1",
+            "sha256": "576b9abb8562d228438b012d990df11f42328dbfaa1a7e58473885617d190f9a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "xs-source-zhushu-gu"
@@ -43059,9 +45327,19 @@
             "datasetId": "ming",
             "path": "/sources/4",
             "sha256": "08d1318d59fdfc225069a9f163c65c91ef87a9a6df368683fee93e52f2dd9d5b"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/1/sources/1",
+            "sha256": "ad3096e2635470a27f066e36c39d54da71ef849664982660743bec149a55f80e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-10"
@@ -43127,9 +45405,26 @@
             "datasetId": "ming",
             "path": "/sources/8",
             "sha256": "f349fab26674e10b6de59c9c62c8cfbf378b823ed4197c268c2afd414c7872df"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/2/sources/1",
+            "sha256": "b190d5682b5b62b3b16eac23b1a49c7e0937a887a02bf8aadac058423c054b32"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/3/sources/1",
+            "sha256": "b190d5682b5b62b3b16eac23b1a49c7e0937a887a02bf8aadac058423c054b32"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-17"
@@ -43142,9 +45437,19 @@
             "datasetId": "ming",
             "path": "/sources/17",
             "sha256": "5753cce988546dee1e03a1bb61e3a641b4dc3e727f0f12b73bd3f6e7b712ac4b"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/1/sources/0",
+            "sha256": "a8f480e7bbc1aabc8f6113a77a93cb9a4ba6c4658bc3d2e5f064f634ae0bbcef"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-170"
@@ -43157,9 +45462,19 @@
             "datasetId": "ming",
             "path": "/sources/19",
             "sha256": "099608ea781d2cfac758ec676486e84f73a2e9b5adef0ae0e5a5f7ac7e719598"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/2/sources/0",
+            "sha256": "f7927115a40b6630df5f1de69c3d63f32af91c8282890545f3605103508423ef"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-195"
@@ -43172,9 +45487,19 @@
             "datasetId": "ming",
             "path": "/sources/10",
             "sha256": "2d301121d160a0424dcc68328b4ce47f2230e030e0f57db63dad50a3d114d143"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/4/sources/2",
+            "sha256": "f52e7a419a9ae3c3a36e6d3b932727308a3b4efeea1ce6cd0c680c80335aed87"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-20"
@@ -43202,9 +45527,26 @@
             "datasetId": "ming",
             "path": "/sources/21",
             "sha256": "739e3051e4f08e574faef2e177c24ee60d21c8a59741cca2b85ec443a7364dca"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/3/sources/0",
+            "sha256": "867688a2f687cc61f84ea4de1838cc8dc08a2d309340329e572dbeae52970231"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/4/sources/0",
+            "sha256": "867688a2f687cc61f84ea4de1838cc8dc08a2d309340329e572dbeae52970231"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-213"
@@ -43322,9 +45664,19 @@
             "datasetId": "ming",
             "path": "/sources/2",
             "sha256": "54771af77395dc7d067b78841afb1a96f5c6a2102e4d84d3a5cfd7554ea63136"
+          },
+          {
+            "datasetId": "ming",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/9/figures/0/sources/1",
+            "sha256": "41876e87b94de34952e8e650e04ed68694cd40acce14606b981730ba7697f1dc"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-mingshi-5"
@@ -43357,10 +45709,18 @@
             "datasetId": "qing",
             "path": "/sources/0",
             "sha256": "b45a5f7cdf5dec37ad3e119bfe058db421589c022e08b0e3bf2d01f9edce0633"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/5/sources/1",
+            "sha256": "c974342a1563761fe95234ffc03306fffc0cab1508fcefd28959721b224155a7"
           }
         ],
         "differingFields": [
           "note",
+          "reviewStatus",
           "title"
         ],
         "identityScope": "stable-id",
@@ -43375,9 +45735,26 @@
             "datasetId": "qing",
             "path": "/sources/5",
             "sha256": "1d0add520e1b3ad9fde019f02d84a694b9f5ca6ffedbeb57ec6dd69865782e2e"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/0/sources/2",
+            "sha256": "05c2c8374cefab0a70f91b528aece4aa78757b0c58734a95604dee114e5e9af2"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/1/sources/1",
+            "sha256": "05c2c8374cefab0a70f91b528aece4aa78757b0c58734a95604dee114e5e9af2"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-10"
@@ -43390,9 +45767,19 @@
             "datasetId": "qing",
             "path": "/sources/6",
             "sha256": "a25bdbeb68b001c643ee4642aa23935380a028aa5b2d290edc0356cb198af26b"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/1/sources/2",
+            "sha256": "77da773eb9781a3daf086b70d77cd768a56c3e8572eb1fe1c69c54539528a206"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-16"
@@ -43405,9 +45792,19 @@
             "datasetId": "qing",
             "path": "/sources/1",
             "sha256": "107b35ed5b21389248bc2c5d5d38a563e25435d4d6647a255dd5eb49ed28a640"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/5/sources/2",
+            "sha256": "5a5b2d4b0a70b79f155a58380f6b1bdc04b24b55ac66239b8ac21fb17aae646b"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-2"
@@ -43420,9 +45817,19 @@
             "datasetId": "qing",
             "path": "/sources/8",
             "sha256": "09ff1ec01a9f2d53422d2c78c24a6bdf0311d5ae644074be5336c413c30985e2"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/2/sources/1",
+            "sha256": "b823ba7c8366919e5740a932d765aafc4e15ce40aee67633b554ece7f23d664d"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-20"
@@ -43458,9 +45865,26 @@
             "datasetId": "qing",
             "path": "/sources/10",
             "sha256": "8d5554888803002a91adcdc40605bae47f7da367f6f97a86b756e32ae0ae4804"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/3/sources/2",
+            "sha256": "baa7bb03b71ff6cede590bd2aa2798b57979afe4c6e1a964413235164ea21c15"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/4/sources/2",
+            "sha256": "baa7bb03b71ff6cede590bd2aa2798b57979afe4c6e1a964413235164ea21c15"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-23"
@@ -43473,9 +45897,19 @@
             "datasetId": "qing",
             "path": "/sources/11",
             "sha256": "bb8c8855da9073b69827226b7363426bc95b1d26d7e2aa8f4a85ab50f3f7f824"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/3/sources/3",
+            "sha256": "1dbf3053282df831d59488bd64b7c03d25ea4f76d328c62fb862183c3c57f996"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-25"
@@ -43503,9 +45937,19 @@
             "datasetId": "qing",
             "path": "/sources/2",
             "sha256": "0606784c8ea82b638fbe1a168c5ecc422056cd843008406964206c89e7281999"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/5/sources/3",
+            "sha256": "5cf0daed17bae3126fb80d6871f018db8f3fd7d10e11c7c46e0e9912c5dbeec6"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-4"
@@ -43518,9 +45962,33 @@
             "datasetId": "qing",
             "path": "/sources/17",
             "sha256": "f3e72b8c416118b7a2c06c96a530945856e767aafc6ea18cd4de5221703af650"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/2/sources/0",
+            "sha256": "dd7de4330112c27ae990caad002e3d1845036088e5be3f56f6296eeed290b5c9"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/3/sources/0",
+            "sha256": "dd7de4330112c27ae990caad002e3d1845036088e5be3f56f6296eeed290b5c9"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/4/sources/0",
+            "sha256": "dd7de4330112c27ae990caad002e3d1845036088e5be3f56f6296eeed290b5c9"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-405"
@@ -43563,9 +46031,19 @@
             "datasetId": "qing",
             "path": "/sources/4",
             "sha256": "5427366a5b0d094ea06590fff8b03f57dde16303a323e24819bd1cf266cdc413"
+          },
+          {
+            "datasetId": "qing",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/10/figures/0/sources/1",
+            "sha256": "164e4335929ec782253504485bd82c7bcb245047b393e77a7aa9fa75de5546ec"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-qsg-9"
@@ -43580,13 +46058,28 @@
             "sha256": "5db09d9daf4cae68662d55dbc83b27f0eb418534f59f66ac702e95b06ea93e36"
           },
           {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/6/sources/1",
+            "sha256": "028e5856f162871ca25c0c261290f873728a1ecb6d6bd1a4d1cb431e5629f682"
+          },
+          {
             "datasetId": "yuan",
             "path": "/sources/0",
             "sha256": "c94c84c110d524a5f79defc2679cff22aa40954027b719ebfae87444458cacec"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/0/sources/1",
+            "sha256": "097ee6084d69204304f855a4c310e862c1a7a665ba16451049863dbf9b1ad536"
           }
         ],
         "differingFields": [
           "note",
+          "reviewStatus",
           "title"
         ],
         "identityScope": "stable-id",
@@ -43601,9 +46094,19 @@
             "datasetId": "yuan",
             "path": "/sources/1",
             "sha256": "b847a607f958f6863b2e3b8e0f05f1d9abd780c2d6226b288e446dd9bfe752e5"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/0/sources/2",
+            "sha256": "8c2474b0651657d2a03b70eb463fa00e0fe712ba04508b4412eb4c17dc5cf059"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-yuanshi-002"
@@ -43636,10 +46139,32 @@
             "datasetId": "yuan",
             "path": "/sources/3",
             "sha256": "c9ca19bac9fe9ca81299acaa4843a5697cf93ec61a59475fd7b5da782654ead8"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/1/sources/1",
+            "sha256": "4f80352e4e750b92971b5c3987635a9db2382690247cac9d9096ea60dba18737"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/2/sources/1",
+            "sha256": "4f80352e4e750b92971b5c3987635a9db2382690247cac9d9096ea60dba18737"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/3/sources/1",
+            "sha256": "4f80352e4e750b92971b5c3987635a9db2382690247cac9d9096ea60dba18737"
           }
         ],
         "differingFields": [
           "note",
+          "reviewStatus",
           "title"
         ],
         "identityScope": "stable-id",
@@ -43684,9 +46209,26 @@
             "datasetId": "yuan",
             "path": "/sources/6",
             "sha256": "e9218c354af8fff449fb7cb8bbf6200de4a94d2653b709075f68a7cbbe7c37d0"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/3/sources/2",
+            "sha256": "33679489c339593318aea4da8eb39683eda1fea432e29b6d1662beb4abcddb1a"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/4/sources/1",
+            "sha256": "33679489c339593318aea4da8eb39683eda1fea432e29b6d1662beb4abcddb1a"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-yuanshi-024"
@@ -43729,9 +46271,19 @@
             "datasetId": "yuan",
             "path": "/sources/9",
             "sha256": "8383f579c29f183a242447e814df5ac3a269fbbd19b4bf429953c965ad951c95"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/4/sources/2",
+            "sha256": "2f02b7ef7d22d69b0a5646ad0759cb985ae93af6525ef889de54452d0274da2e"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-yuanshi-031"
@@ -43759,9 +46311,19 @@
             "datasetId": "yuan",
             "path": "/sources/11",
             "sha256": "bedeee628a15e4831582e0932ae25090947d96ca480665d21a057f908d9886ee"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/1/sources/2",
+            "sha256": "e8f57b22e430d58151739df9f714cadc394afeeae32910e648d1ded2095e3bdd"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-yuanshi-058"
@@ -43816,12 +46378,29 @@
         "id": "ymq-source-yuanshi-146",
         "appearances": [
           {
+            "datasetId": "liao-jin-song",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/7/figures/6/sources/0",
+            "sha256": "0fe3aaa5bd427474edd547b759c331dd2a91cc5bf44ac7311e6665f7422b2efc"
+          },
+          {
             "datasetId": "yuan",
             "path": "/sources/15",
             "sha256": "bfc21ca21ba147351ac295d2b92f96ca37a2ce875f3b38859fb3c99a20e296cc"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/0/sources/0",
+            "sha256": "0fe3aaa5bd427474edd547b759c331dd2a91cc5bf44ac7311e6665f7422b2efc"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-yuanshi-146"
@@ -43834,9 +46413,19 @@
             "datasetId": "yuan",
             "path": "/sources/16",
             "sha256": "5a4ad400215703c4026ba85e823daefbc46e54bbbfe33ab7f8a2cc6254268733"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/1/sources/0",
+            "sha256": "2a4bd58eef5f57e35ed9122231e1f844426a0933156bd8e24e3970b1093c3b26"
           }
         ],
-        "differingFields": [],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
         "identityScope": "stable-id",
         "identityKeys": [
           "ymq-source-yuanshi-157"
@@ -43849,12 +46438,257 @@
             "datasetId": "yuan",
             "path": "/sources/17",
             "sha256": "85654a16341cefbf5e858cfaa8c4baaa7c70cbf1c25d0ad0653e889afb418bae"
+          },
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/2/sources/0",
+            "sha256": "f00b7e75b5a23dfc6e23f2f69650bce1fe044abda444d6853698f07091fce28d"
+          }
+        ],
+        "differingFields": [
+          "note",
+          "reviewStatus"
+        ],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "ymq-source-yuanshi-164"
+        ]
+      },
+      {
+        "id": "yuan-source-yuanshi-172",
+        "appearances": [
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/3/sources/0",
+            "sha256": "c023ad5c0c949dd9222c259854e3c3e61ab6e15bfd7bcf8cfe7de1cfb71dce90"
           }
         ],
         "differingFields": [],
         "identityScope": "stable-id",
         "identityKeys": [
-          "ymq-source-yuanshi-164"
+          "yuan-source-yuanshi-172"
+        ]
+      },
+      {
+        "id": "yuan-source-yuanshi-175",
+        "appearances": [
+          {
+            "datasetId": "yuan",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/8/figures/4/sources/0",
+            "sha256": "f2ef648a00874615aa3effe11de03177bce6e93f1332aca61e6c38cc7f1cdae2"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "yuan-source-yuanshi-175"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-004",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/0/sources/1",
+            "sha256": "876d023fa7d85e3cdd93e047d436107c617ced3a48652789f1e11a8be0dbdd6f"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/1/sources/2",
+            "sha256": "876d023fa7d85e3cdd93e047d436107c617ced3a48652789f1e11a8be0dbdd6f"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-004"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-032",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/1/sources/1",
+            "sha256": "e6e46a8371d894b1b012173bdc3a3634ffa88e46a96614c927a70189ba8916f7"
+          },
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/2/sources/2",
+            "sha256": "e6e46a8371d894b1b012173bdc3a3634ffa88e46a96614c927a70189ba8916f7"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-032"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-033",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/0/sources/2",
+            "sha256": "19e4cfaf7c52ecd156b9bf5c37afd858631cc9e54bef4cc1d0279120f56c6bf2"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-033"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-047",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/8/sources/1",
+            "sha256": "9c4950c15c21c6eb46969ebad1ddb99f56cde4d20c36ed7d32f098cb526e8666"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-047"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-062",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/2/sources/1",
+            "sha256": "463b1483109d8af66b559bcf315811c26c97d88ba4cbe493ef015d4d5dab3913"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-062"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-065",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/6/sources/1",
+            "sha256": "6d81c7051005c3df4efe15d6b118159d7c1041533d533ff143d8520a63dde01a"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-065"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-066",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/9/sources/1",
+            "sha256": "1edeeaec635d0cbba01c6bb2c6faee0d2ad6b86a360bec852a45289e6515af53"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-066"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-068",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/3/sources/1",
+            "sha256": "9ac554c73642f744ad70fa8829cc550a998b88c45435d61d810e2f4284c7641f"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-068"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-084",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/7/sources/1",
+            "sha256": "427b1ebfecee107b9e77551e3d85d33752c48f5a53badc87a82f3b8f3cf389ba"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-084"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-085",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/4/sources/1",
+            "sha256": "65e5abd9b710356f26c48d3ca5615a73711f91b4f48fa968bb19e0376ff18c22"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-085"
+        ]
+      },
+      {
+        "id": "zhou-source-shiji-087",
+        "appearances": [
+          {
+            "datasetId": "zhou",
+            "file": "data/中国历代非君主人物传记全书.json",
+            "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
+            "path": "/dynasties/1/figures/5/sources/1",
+            "sha256": "321d345086d297f15fc24491b8dde326996734e953d3a96429d459b10d757034"
+          }
+        ],
+        "differingFields": [],
+        "identityScope": "stable-id",
+        "identityKeys": [
+          "zhou-source-shiji-087"
         ]
       }
     ]
