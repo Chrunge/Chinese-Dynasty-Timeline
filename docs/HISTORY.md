@@ -276,3 +276,19 @@ GitHub Actions [第4次运行](https://github.com/Chrunge/Zhou-Dynasty-Timeline/
 本批提交为 `1839bc74d2a35be1a0cf27cf977d549054063299`，改动10份文档；提交前后 `node build.mjs --check` 与 `git diff --check` 通过，`node --test` 514项通过、0失败、0跳过。哈希由本次后续提交补记，未修改源码、测试或发布目录。
 
 未处理：C05、C06 未获批准；`docs/PRESENTATION-CONTRACT.md` 的阶段 A 验收段属于工作区尚未提交的阶段 A 改动，迁移会与待提交内容纠缠，故保留原样，C06 的 B/C/D 状态描述同样未改。审查观察（不属本轮修复）：`tests/browser-p0.mjs:69` 仍断言五个 `[data-toolbar-group]`，与当前四模块模板不一致；`tests/timeline-era.test.cjs:4-5` 手工维护的应用源清单少于 `build.mjs` 实际加载清单。
+
+## 2026-10-22 第三轮：当前职责措辞与测试观察
+
+用户就上一轮建议答复“根据你的建议实施”，据此处理 C05、E03、E04 与两项审查观察；C06 仍不动（原因见下）。基线：`node build.mjs --check` 通过，`node --test` 514项通过、0失败、0跳过。
+
+| 日期 | 清单编号 | 做了什么 | 原因 | 提交哈希 |
+|---|---|---|---|---|
+| 2026-10-22 | C05 | [时间与领域模型](TIME-DOMAIN-MIGRATION.md)去掉“第一轮迁移”的过程框架、126项旧验收数字与旧样例口径，改为当前编码、实体与兼容契约，并指向呈现契约的浏览器验收段 | 该文长期被当作当前说明引用，过程框架与现状混在一起 | `e9eadd4` |
+| 2026-10-22 | E04 | README 的“新增正式资料／原件／新专题入口”与“本次未联网”改为当前措辞；架构说明三处“不自动提交／部署”改为人工构建发布规则；“由 Lead 接入／本任务不修改生产入口”改为指向 `lib/production.mjs` 的实际接线 | 生产入口早已接通，文档仍写委派与未接入状态 | `e9eadd4` |
+| 2026-10-22 | E03（部分） | [四卷入库](DYNASTY-INTAKE.md)、[扩展入库](EXPANSION-INTAKE.md)、[正式入库](FORMAL-DATA-IMPORT.md)的委派分工与测试数字改为当前接线和基线指向 | “不提交、不构建、由 Lead 负责”已与事实相反 | `e9eadd4` |
+| 2026-10-22 | 观察1 | [P0 脚本](<../tests/browser-p0.mjs>) 的工具栏组断言由五个改为四个并附失败提示 | 模板在 BCD 后为四个 `data-toolbar-group`，旧断言必然失败 | `fb366d5` |
+| 2026-10-22 | 观察2 | [时间轴回归](<../tests/timeline-era.test.cjs>) 改为从 `build.mjs` 读取 `app.js` 源清单，不再手工维护25项 | 手工清单落后于构建实际加载的32项，测试成功不代表生产组合 | `fb366d5` |
+
+本批提交为 `e9eadd4`（8份文档）与 `fb366d5`（2份测试）；提交前后 `node build.mjs --check` 与 `git diff --check` 通过，`node --test` 514项通过、0失败、0跳过。`docs/DYNASTY-DISPLAY.md` 只提交了第8行这一处 hunk，其余阶段 A 改动仍留在工作区，未纳入任何清理提交。未修改源码、发布目录或史料。
+
+未处理：C06（[呈现契约](PRESENTATION-CONTRACT.md)的 B/C/D 状态句位于工作区尚未提交的阶段 A 验收段内，单独改写会与待提交内容纠缠，留待阶段 A 一并提交）；E03 的[扩展审计附录](EXPANSION-INTAKE.md)差异快照按审计价值原样保留，归档粒度仍未确认。新发现：真实浏览器 P0 脚本在本批修复断言后仍失败于“44px controls”检查，实测专题导航链接为 42×44，属既有布局差异而非本批引入，未修。
