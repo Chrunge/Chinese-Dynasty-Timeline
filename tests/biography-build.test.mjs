@@ -36,13 +36,16 @@ test('AR01: supplemental provenance resolves to exact authored figures and sourc
  const counts=buildCorpus([{id:'a',atlas:{people:[{id:'p'}]},supplements:[{file:'book.json',records:{people:[{record:{id:'p'},path:'/figures/0'}]}}]}]);
  assert.equal(counts.sharedEntityCounts.people,0,'two sources in one topic are not cross-topic sharing');
 });
-test('AR01: unresolved references retain their source text and expose reproducible diagnostics',()=>{
- const diagnostics=JSON.parse(readFileSync('dist/biography-diagnostics.json','utf8'));assert(diagnostics.issues.length>0);
- const input=JSON.stringify(book),issues=[];
- for(const topic of catalog){const data=compiler.enrich(compileProduction(JSON.parse(readFileSync('data/'+topic.file,'utf8')),topic.id));issues.push(...compiler.diagnose(data,topic.id));}
- assert.deepEqual(diagnostics.issues,issues);assert.equal(JSON.stringify(book),input);
- for(const issue of issues){assert.equal(resolvePath(book,issue.path),issue.id);assert.equal(issue.status,'unresolved');}
- assert(issues.some(i=>i.datasetId==='xia-shang'&&i.kind==='event'&&i.id==='xs-event-04-mingtiao-shang-founding'));
+test('AR01: all authored reference states are explicit and verified',()=>{
+ const diagnostics=JSON.parse(readFileSync('dist/biography-diagnostics.json','utf8'));
+ const data=new Map(catalog.map(topic=>[topic.id,compiler.enrich(compileProduction(JSON.parse(readFileSync('data/'+topic.file,'utf8')),topic.id))]));
+ const reports=catalog.map(topic=>compiler.inspectReferences(data.get(topic.id),topic.id,data));
+ assert.deepEqual(diagnostics.issues,reports.flatMap(r=>r.issues));assert.deepEqual(diagnostics.issues,[]);
+ assert.deepEqual(diagnostics.externalReferences,reports.flatMap(r=>r.externalReferences));
+ assert.deepEqual(diagnostics.unindexedReferences,reports.flatMap(r=>r.unindexedReferences));
+ assert.equal(diagnostics.externalReferences.length,7);assert.equal(diagnostics.unindexedReferences.length,2);
+ for(const reference of diagnostics.externalReferences)assert.equal(resolvePath(book,reference.path),reference.id);
+ for(const reference of diagnostics.unindexedReferences)assert.equal(resolvePath(book,reference.path).originalId,reference.originalId);
 });
 test('AR01: duplicate figures and invalid dates fail before publishing',()=>{
  const duplicate=structuredClone(book);duplicate.dynasties[0].figures.push(duplicate.dynasties[0].figures[0]);

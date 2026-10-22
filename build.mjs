@@ -33,7 +33,6 @@ const biographyBytes=read('./'+biographySource),biography=createBiographyCompile
 const outputs = new Map(), datasets=[], corpusEntries=[], projections=new Map();
 for(const topic of catalog){
   const source=read('./data/'+topic.file), atlas=JSON.parse(source), data=biography.enrich(compileProduction(atlas,topic.id));
-  biographyIssues.push(...biography.diagnose(data,topic.id));
   corpusEntries.push({...topic,file:'data/'+topic.file,sourceSha256:hash(source),atlas,supplements:biography.provenance(topic.id,hash(biographyBytes))});
   projections.set(topic.id,data);
   const svg=renderSocialSVG(topic,displayData(data,topic.id));outputs.set('social-'+topic.id+'.svg',svg);
@@ -46,7 +45,10 @@ for(const topic of catalog){
   outputs.set(asset,'window.ZHOU_DATA = '+JSON.stringify(data)+';\n');
   datasets.push({...topic,asset,sourceSha256:hash(source),counts:Object.fromEntries(['polities','people','tenures','events','activities'].map(k=>[k,data[k].length]))});
 }
-outputs.set('biography-diagnostics.json',JSON.stringify({schemaVersion:1,source:biographySource,sourceSha256:hash(biographyBytes),issues:biographyIssues},null,2)+'\n');
+const biographyReports=catalog.map(topic=>biography.inspectReferences(projections.get(topic.id),topic.id,projections));
+biographyIssues.push(...biographyReports.flatMap(report=>report.issues));
+if(biographyIssues.length)throw new Error('传记引用未处理：'+JSON.stringify(biographyIssues[0]));
+outputs.set('biography-diagnostics.json',JSON.stringify({schemaVersion:1,source:biographySource,sourceSha256:hash(biographyBytes),issues:biographyIssues,externalReferences:biographyReports.flatMap(report=>report.externalReferences),unindexedReferences:biographyReports.flatMap(report=>report.unindexedReferences)},null,2)+'\n');
 const corpus=buildCorpus(corpusEntries);
 outputs.set('corpus.json',JSON.stringify(corpus,null,2)+'\n');
 outputs.set('entity-links.js','window.ZHOU_ENTITY_LINKS = '+JSON.stringify(buildEntityLinks(corpus,catalog.map(topic=>({...topic,data:projections.get(topic.id)}))))+';\n');

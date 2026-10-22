@@ -309,3 +309,65 @@ AR05 验证过程：额外探测年份浮层时发现 390px 下浮层遮挡画�
 待后续处理：390px 下展开年份编辑浮层后，画廊按钮中心被 #yearEra 遮挡；可先按 Esc 收起年份浮层，再打开画廊。本轮未修复此范围外问题。
 
 | 2026-10-22 | AR02 复核 | 去重只依据显式 ID、事件和对应章节，不因文案相同合并不同活动；533 项 Node 测试、22 个真实浏览器场景、传记数据及构建检查通过 | 避免独立活动被误合并，原始专题及传记总集文件均未修改；本轮未合并、推送或部署 | `ff3ac49` |
+
+## 2026-10-22 传记引用核对
+
+仅调整引用 ID、显式专题作用域和未收录状态，章节叙述、日期、人物及来源保持不变；复合事件关联不令章节继承事件锚点年份。原 55 处诊断的逐项处置如下。
+
+| 专题 | 原路径 | 原引用 | 处理 | 目标 |
+|---|---|---|---|---|
+| xia-shang | `/dynasties/0/figures/0/biographyPlan/chapters/1/eventId` | `xs-event-04-mingtiao-shang-founding` | local | `xs-event-05-mingtiao-tang-founding-shang` |
+| xia-shang | `/dynasties/0/figures/0/biographyPlan/chapters/2/eventId` | `xs-event-05-yiyin-taijia-tonggong` | local | `xs-event-06-yiyin-taijia-taiwu` |
+| xia-shang | `/dynasties/0/figures/1/biographyPlan/chapters/2/eventId` | `xs-event-13-muye-fall-of-shang` | local | `xs-event-13-muye-zhou-conquest-shang` |
+| xia-shang | `/dynasties/0/figures/2/biographyPlan/chapters/0/eventId` | `xs-event-13-muye-fall-of-shang` | local | `xs-event-13-muye-zhou-conquest-shang` |
+| qin-han | `/dynasties/2/figures/2/biographyPlan/chapters/1/eventId` | `qh-event-02-jianzhuke` | local | `qh-event-03-jianzhuke` |
+| qin-han | `/dynasties/2/figures/2/biographyPlan/chapters/2/eventId` | `qh-event-03-qin-unification` | local | `qh-event-07-unification` |
+| qin-han | `/dynasties/2/figures/2/biographyPlan/chapters/3/eventId` | `qh-event-05-shaqiu-coup` | local | `qh-event-10-shaqiu` |
+| qin-han | `/dynasties/2/figures/3/biographyPlan/chapters/1/eventId` | `qh-event-07-hongmen-feast` | local | `qh-event-13-qin-fall` |
+| qin-han | `/dynasties/2/figures/4/biographyPlan/chapters/1/eventId` | `qh-event-10-baideng` | local | `qh-event-15-baideng` |
+| qin-han | `/dynasties/2/figures/4/biographyPlan/chapters/3/eventId` | `qh-event-11-zhulv-wendi` | local | `qh-event-16-zhulv` |
+| qin-han | `/dynasties/2/figures/5/biographyPlan/chapters/3/eventId` | `qh-event-12-seven-states` | local | `qh-event-17-qiguo` |
+| qin-han | `/dynasties/2/figures/7/biographyPlan/chapters/2/eventId` | `qh-event-15-huoguang-xuandi` | unindexed | 保留叙述，未单列事件 |
+| three-kingdoms | `/dynasties/3/figures/1/biographyPlan/chapters/0/eventId` | `tk-event-04-longzhong-chibi` | local | `tk-event-05-longzhong` |
+| three-kingdoms | `/dynasties/3/figures/1/biographyPlan/chapters/2/eventId` | `tk-event-10-yiling` | local | `tk-event-14-baidicheng` |
+| three-kingdoms | `/dynasties/3/figures/1/biographyPlan/chapters/4/eventId` | `tk-event-13-wuzhangyuan` | local | `tk-event-17-wuzhangyuan` |
+| three-kingdoms | `/dynasties/3/figures/2/biographyPlan/chapters/2/eventId` | `tk-event-13-wuzhangyuan` | local | `tk-event-17-wuzhangyuan` |
+| three-kingdoms | `/dynasties/3/figures/2/biographyPlan/chapters/4/eventId` | `tk-event-15-gaopingling` | local | `tk-event-19-gaopingling` |
+| wei-jin-nan-bei | `/dynasties/4/figures/0/biographyPlan/chapters/1/eventId` | `wj-event-04-eastern-jin-founding` | local | `wj-event-06-eastern-jin-founding` |
+| wei-jin-nan-bei | `/dynasties/4/figures/1/biographyPlan/chapters/2/eventId` | `wj-event-10-feishui` | local | `wj-event-10-battle-of-feishui` |
+| wei-jin-nan-bei | `/dynasties/4/figures/2/biographyPlan/chapters/2/eventId` | `wj-event-13-northern-wei-unification` | local | `wj-event-14-taiwudi-unify-north` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/0/polityId` | `eastern-han` | external | `eastern-han` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/1/polityId` | `cao-wei` | external | `cao-wei` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/2/eventId` | `tk-event-13-wuzhangyuan` | external | `tk-event-17-wuzhangyuan` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/2/polityId` | `cao-wei` | external | `cao-wei` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/3/polityId` | `cao-wei` | external | `cao-wei` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/4/eventId` | `tk-event-15-gaopingling` | external | `tk-event-19-gaopingling` |
+| wei-jin-nan-bei | `/dynasties/4/figures/3/biographyPlan/chapters/4/polityId` | `cao-wei` | external | `cao-wei` |
+| sui-tang | `/dynasties/5/figures/0/biographyPlan/chapters/3/eventId` | `st-event-06-taizong-khan-xuanzang` | local | `st-event-08-xuanzang-west-journey` |
+| sui-tang | `/dynasties/5/figures/1/biographyPlan/chapters/2/eventId` | `st-event-09-wu-zhou-shenlong` | local | `st-event-10-wuzhou-dianshi-shenlong` |
+| sui-tang | `/dynasties/5/figures/2/biographyPlan/chapters/3/eventId` | `st-event-11-an-shi-rebellion` | local | `st-event-12-talas-an-shi-rebellion` |
+| sui-tang | `/dynasties/5/figures/3/biographyPlan/chapters/2/eventId` | `st-event-11-an-shi-rebellion` | local | `st-event-12-talas-an-shi-rebellion` |
+| sui-tang | `/dynasties/5/figures/4/biographyPlan/chapters/0/eventId` | `st-event-11-an-shi-rebellion` | local | `st-event-12-talas-an-shi-rebellion` |
+| sui-tang | `/dynasties/5/figures/6/biographyPlan/chapters/1/eventId` | `st-event-03-yangdi-canal-western-regions` | unindexed | 保留叙述，未单列事件 |
+| sui-tang | `/dynasties/5/figures/7/biographyPlan/chapters/1/eventId` | `st-event-11-an-shi-rebellion` | local | `st-event-12-talas-an-shi-rebellion` |
+| five-dynasties | `/dynasties/6/figures/0/biographyPlan/chapters/2/eventId` | `wd-event-04-khitan-enter-bianliang` | local | `wd-event-04-yanyun-later-jin-khitan` |
+| liao-jin-song | `/dynasties/7/figures/0/biographyPlan/chapters/2/eventId` | `sl-event-04-western-xia-qingli` | local | `sl-event-04-yuanhao-xia-qingli-reforms` |
+| liao-jin-song | `/dynasties/7/figures/1/biographyPlan/chapters/1/eventId` | `sl-event-05-wang-anshi-reform` | local | `sl-event-05-wang-anshi-reforms-yuanyou` |
+| liao-jin-song | `/dynasties/7/figures/2/biographyPlan/chapters/1/eventId` | `sl-event-05-wang-anshi-reform` | local | `sl-event-05-wang-anshi-reforms-yuanyou` |
+| liao-jin-song | `/dynasties/7/figures/6/biographyPlan/chapters/3/eventId` | `sl-event-09-mongol-conquest-jin` | local | `sl-event-11-mongol-conquer-xia-jin` |
+| yuan | `/dynasties/8/figures/0/biographyPlan/chapters/3/eventId` | `sl-event-09-mongol-conquest-jin` | local | `yuan-event-02-ogedei-chucai-conquer-jin` |
+| yuan | `/dynasties/8/figures/1/biographyPlan/chapters/2/eventId` | `yuan-event-03-kublai-kaiping-yuan` | local | `yuan-event-04-kublai-found-yuan-unification` |
+| yuan | `/dynasties/8/figures/2/biographyPlan/chapters/2/eventId` | `yuan-event-05-shoushi-calendar` | local | `yuan-event-05-province-xuanzhengyuan-shoushili` |
+| yuan | `/dynasties/8/figures/4/biographyPlan/chapters/1/eventId` | `yuan-event-06-yanyou-civil-exams` | local | `yuan-event-06-yanyou-keju-zhizhi-tianli` |
+| ming | `/dynasties/9/figures/0/biographyPlan/chapters/1/eventId` | `ming-event-02-jingnan-yongle` | local | `ming-event-02-jingnan-yongle-beijing` |
+| ming | `/dynasties/9/figures/1/biographyPlan/chapters/1/eventId` | `ming-event-04-tumubao-beijing-defense` | local | `ming-event-04-tumu-crisis-beijing-defense` |
+| ming | `/dynasties/9/figures/2/biographyPlan/chapters/1/eventId` | `ming-event-05-wang-yangming-ningwang` | local | `ming-event-05-hongzhi-yangming-daliyi` |
+| ming | `/dynasties/9/figures/4/biographyPlan/chapters/1/eventId` | `ming-event-06-longqing-peace-wanli-reforms` | local | `ming-event-06-wokou-longqing-altan` |
+| ming | `/dynasties/9/figures/5/biographyPlan/chapters/1/eventId` | `ming-event-07-wanli-campaigns-donglin-liaodong` | local | `ming-event-08-sarhu-ningyuan-jiashen` |
+| qing | `/dynasties/10/figures/0/biographyPlan/chapters/1/eventId` | `qing-event-05-yongzheng-reforms-junjichu` | local | `qing-event-04-yongzheng-junjichu-tandingerumu` |
+| qing | `/dynasties/10/figures/2/biographyPlan/chapters/1/eventId` | `qing-event-07-taiping-tianguo-xiangjun` | local | `qing-event-07-taiping-second-opium-war-xinyou` |
+| qing | `/dynasties/10/figures/2/biographyPlan/chapters/4/eventId` | `qing-event-08-yangwu-xinjiang-sino-japanese` | local | `qing-event-08-yangwu-recover-xinjiang` |
+| qing | `/dynasties/10/figures/3/biographyPlan/chapters/1/eventId` | `qing-event-08-yangwu-xinjiang-sino-japanese` | local | `qing-event-08-yangwu-recover-xinjiang` |
+| qing | `/dynasties/10/figures/3/biographyPlan/chapters/4/eventId` | `qing-event-10-boxer-xinhai-abdication` | local | `qing-event-09-jiawu-wuxu-xinhai-abdication` |
+| qing | `/dynasties/10/figures/4/biographyPlan/chapters/3/eventId` | `qing-event-08-yangwu-xinjiang-sino-japanese` | local | `qing-event-08-yangwu-recover-xinjiang` |
+| qing | `/dynasties/10/figures/5/biographyPlan/chapters/2/eventId` | `qing-event-02-shanhaiguan-beijing-entry` | local | `qing-event-02-shanhaiguan-conquest` |

@@ -169,7 +169,7 @@
                 "kind": "military",
                 "kindLabel": "灭夏建商",
                 "approx": true,
-                "eventId": "xs-event-04-mingtiao-shang-founding",
+                "eventId": "xs-event-05-mingtiao-tang-founding-shang",
                 "summary": "亲赴夏都刺探情报，协助商汤剪除葛伯与韦、顾、昆吾三孽，于前1600年鸣条决战击败夏桀，奠定商朝三千诸侯会亳之局。"
               },
               {
@@ -183,7 +183,7 @@
                 "kind": "politics",
                 "kindLabel": "桐宫训政",
                 "approx": true,
-                "eventId": "xs-event-05-yiyin-taijia-tonggong",
+                "eventId": "xs-event-06-yiyin-taijia-taiwu",
                 "summary": "历经外丙、仲壬两代短祚后拥立嫡长孙太甲，针对太甲破坏汤法，作《伊训》《肆命》劝谏无效，果断将其放逐于成汤墓地桐宫，亲自摄政当国三年。"
               },
               {
@@ -398,7 +398,7 @@
                 "kind": "military",
                 "kindLabel": "牧野决胜",
                 "approx": true,
-                "eventId": "xs-event-13-muye-fall-of-shang",
+                "eventId": "xs-event-13-muye-zhou-conquest-shang",
                 "summary": "孟津观兵后力劝武王抓住战机，出征前夕雷雨暴至、龟卜不吉时力排众议焚龟断策，牧野决战亲率百夫长驰冲商阵，一战覆灭殷商。"
               },
               {
@@ -569,7 +569,7 @@
                 "kind": "service",
                 "kindLabel": "佐武定鼎",
                 "approx": true,
-                "eventId": "xs-event-13-muye-fall-of-shang",
+                "eventId": "xs-event-13-muye-zhou-conquest-shang",
                 "summary": "随武王姬发东伐商纣，执大钺夹辅王室；克商二年武王病危，周公设三坛自请以身代武王之死，将简策秘藏于金縢之匮。"
               },
               {
@@ -3489,7 +3489,7 @@
                 "kind": "politics",
                 "kindLabel": "谏逐客书",
                 "approx": false,
-                "eventId": "qh-event-02-jianzhuke",
+                "eventId": "qh-event-03-jianzhuke",
                 "summary": "前237年宗室借郑国渠案驱逐客卿，李斯呈《谏逐客书》力陈纳客之利，秦王政立废逐客令并采其连横兼并方略。"
               },
               {
@@ -3503,7 +3503,7 @@
                 "kind": "politics",
                 "kindLabel": "郡县同文",
                 "approx": false,
-                "eventId": "qh-event-03-qin-unification",
+                "eventId": "qh-event-07-unification",
                 "summary": "前221年力排王绾分封之议，确立全国三十六郡县制；升任左丞相，作《仓颉篇》统一小篆，规范货币、度量衡与驰道车轨。"
               },
               {
@@ -3517,7 +3517,7 @@
                 "kind": "politics",
                 "kindLabel": "沙丘政变",
                 "approx": false,
-                "eventId": "qh-event-05-shaqiu-coup",
+                "eventId": "qh-event-10-shaqiu",
                 "summary": "前210年七月秦始皇崩于沙丘，李斯为保相位与家族富贵，听从赵高之谋秘不发丧，伪造诏书赐死扶苏与蒙恬、立胡亥为帝。"
               },
               {
@@ -3714,7 +3714,7 @@
                 "kind": "diplomacy",
                 "kindLabel": "鸿门周旋",
                 "approx": false,
-                "eventId": "qh-event-07-hongmen-feast",
+                "eventId": "qh-event-13-qin-fall",
                 "summary": "留地遇刘邦叹“沛公殆天授”；劝刘邦封存秦宫室宝物、废秦苛法，鸿门宴上联络项伯、借樊哙闯帐掩护刘邦脱身，随后献计烧绝褒斜栈道以麻痹项羽。"
               },
               {
@@ -3932,7 +3932,7 @@
                 "kind": "military",
                 "kindLabel": "六出奇计",
                 "approx": false,
-                "eventId": "qh-event-10-baideng",
+                "eventId": "qh-event-15-baideng",
                 "summary": "主持黄金四万斤开展秘密情报战，成功离间项羽与亚父范增、钟离眜；献计蹑足封韩信齐王、伪游云梦不费一兵擒韩信，前200年白登之围向阏氏献奇计救刘邦脱险。"
               },
               {
@@ -3959,7 +3959,7 @@
                 "kind": "politics",
                 "kindLabel": "诛吕安刘",
                 "approx": false,
-                "eventId": "qh-event-11-zhulv-wendi",
+                "eventId": "qh-event-16-zhulv",
                 "summary": "采纳陆贾“将相和调”之策以五百金为太尉周勃祝寿结盟，前180年吕后崩后助周勃夺北军、诛灭诸吕，共同迎立代王刘恒为汉文帝，主动让周勃居右丞相，文帝二年善终。"
               }
             ]
@@ -4177,7 +4177,7 @@
                 "kind": "death",
                 "kindLabel": "东市腰斩",
                 "approx": false,
-                "eventId": "qh-event-12-seven-states",
+                "eventId": "qh-event-17-qiguo",
                 "summary": "其父自颍川来京痛叹“刘氏安矣，而晁氏危矣”后饮药自尽；十余日后吴楚七国打着“诛晁错”旗号叛乱，景帝采袁盎计骗晁错乘车行经东市，晁错身着御史大夫朝服被腰斩。"
               }
             ]
@@ -4578,8 +4578,13 @@
                 "kind": "politics",
                 "kindLabel": "废立天子",
                 "approx": false,
-                "eventId": "qh-event-15-huoguang-xuandi",
-                "summary": "前74年昭帝无嗣暴崩，霍光迎立昌邑王刘贺，见其二十七日内征调千余次、欲夺兵权，霍光效法伊尹放太甲故事，联合张安世、田延年集结百官，由外孙女上官太后穿盛服坐武帐中宣诏废黜刘贺。"
+                "eventId": null,
+                "summary": "前74年昭帝无嗣暴崩，霍光迎立昌邑王刘贺，见其二十七日内征调千余次、欲夺兵权，霍光效法伊尹放太甲故事，联合张安世、田延年集结百官，由外孙女上官太后穿盛服坐武帐中宣诏废黜刘贺。",
+                "eventReference": {
+                  "status": "unindexed",
+                  "originalId": "qh-event-15-huoguang-xuandi",
+                  "reason": "霍光废昌邑王、迎立汉宣帝尚未单列事件；不关联到前81年盐铁会议。"
+                }
               },
               {
                 "chapterNo": 4,
@@ -5188,7 +5193,7 @@
                 "kind": "service",
                 "kindLabel": "隆中对策",
                 "approx": false,
-                "eventId": "tk-event-04-longzhong-chibi",
+                "eventId": "tk-event-05-longzhong",
                 "summary": "躬耕隆中自比管仲乐毅，207年刘备三顾茅庐献《隆中对》；208年长坂坡败退之际奉命使吴，于柴桑剖析曹操强弩之末说服孙权联刘抗曹，奠定赤壁大捷与三分格局。"
               },
               {
@@ -5215,7 +5220,7 @@
                 "kind": "politics",
                 "kindLabel": "白帝托孤",
                 "approx": false,
-                "eventId": "tk-event-10-yiling",
+                "eventId": "tk-event-14-baidicheng",
                 "summary": "223年春刘备于永安白帝城病危，对诸葛亮泣言“君才十倍曹丕，若嗣子可辅，辅之；如其不才，君可自取”，诸葛亮涕泣立誓“竭股肱之力，效忠贞之节，继之以死”，受封武乡侯、领益州牧，迅速派邓芝使吴重修孙刘同盟。"
               },
               {
@@ -5242,7 +5247,7 @@
                 "kind": "death",
                 "kindLabel": "星落五丈原",
                 "approx": false,
-                "eventId": "tk-event-13-wuzhangyuan",
+                "eventId": "tk-event-17-wuzhangyuan",
                 "summary": "227年呈《出师表》北驻汉中，228—234年间五次北伐，历经街亭挥泪斩马谡、陈仓攻坚、卤城破司马懿、射杀张郃，234年出斜谷屯田五丈原，送巾帼妇人饰激司马懿出战未果，八月病逝于军中，蜀人巷祭野祀。"
               }
             ]
@@ -5461,7 +5466,7 @@
                 "kind": "military",
                 "kindLabel": "五丈原死守",
                 "approx": false,
-                "eventId": "tk-event-13-wuzhangyuan",
+                "eventId": "tk-event-17-wuzhangyuan",
                 "summary": "231年起接掌雍凉主力对决诸葛亮；234年五丈原对峙百余日，面对诸葛亮派使者送来巾帼妇人衣饰羞辱，司马懿微笑受衣并借辛毗持节勒军按兵不动，细问蜀使诸葛亮食少事繁，终将诸葛亮耗死于军中。"
               },
               {
@@ -5488,7 +5493,7 @@
                 "kind": "politics",
                 "kindLabel": "高平陵之变",
                 "approx": false,
-                "eventId": "tk-event-15-gaopingling",
+                "eventId": "tk-event-19-gaopingling",
                 "summary": "249年正月初六乘曹爽兄弟奉魏帝曹芳出城谒高平陵，71岁的司马懿拍案而起，假郭太后诏关闭洛阳城门、抢占武库，指洛水发誓骗曹爽交权后将其三族七千余人尽数诛灭；251年再平王凌淮南之叛，同年八月病逝，司马氏代魏大局自此锁定。"
               }
             ]
@@ -5726,7 +5731,7 @@
                 "kind": "politics",
                 "kindLabel": "王马共天下",
                 "approx": false,
-                "eventId": "wj-event-04-eastern-jin-founding",
+                "eventId": "wj-event-06-eastern-jin-founding",
                 "summary": "洛阳倾覆后，南渡名士于建康新亭饮宴感叹山河相异而泣，王导变色起立疾呼“当共戮力王室，克复神州，何至作楚囚相对”；318年拥立司马睿称帝，登基大典上元帝拉王导共坐御床，确立皇权与门阀共治体制。"
               },
               {
@@ -5951,7 +5956,7 @@
                 "kind": "military",
                 "kindLabel": "淝水大捷",
                 "approx": false,
-                "eventId": "wj-event-10-feishui",
+                "eventId": "wj-event-10-battle-of-feishui",
                 "summary": "377年内举不避亲，力荐侄子谢玄镇守广陵、京口招募北方流民组建精锐“北府兵”；383年苻坚率前秦号称百万大军南下，谢安拜征讨大都督，战前与张玄围棋赌别墅稳定建康人心，谢石、谢玄以八万北府兵在淝水大破秦军，捷报至时谢安看完默然下完棋局，仅淡然答“小儿辈遂已破贼”，过门槛时方喜极折断木屐齿。"
               },
               {
@@ -6163,7 +6168,7 @@
                 "kind": "military",
                 "kindLabel": "一统北方",
                 "approx": false,
-                "eventId": "wj-event-13-northern-wei-unification",
+                "eventId": "wj-event-14-taiwudi-unify-north",
                 "summary": "439年力主西征姑臧灭北凉沮渠牧犍，协助北魏终结五胡十六国分裂、统一黄河流域；尊奉道士寇谦之，推动446年太武帝灭佛，并试图按士族品第清整选举，引发皇太子拓跋晃与鲜卑勋贵强烈戒备。"
               },
               {
@@ -6328,7 +6333,8 @@
                 "kind": "origin",
                 "kindLabel": "装病韬晦",
                 "approx": false,
-                "summary": "201年以风痹不能起居拒绝曹操辟召，亲手杀婢女保守装病秘密；208年曹操任丞相后派人持刀逼召，司马懿入府后夜以继日处理牧马刍粮， closely 结好太子曹丕以化解曹操“狼顾之相”猜忌。"
+                "summary": "201年以风痹不能起居拒绝曹操辟召，亲手杀婢女保守装病秘密；208年曹操任丞相后派人持刀逼召，司马懿入府后夜以继日处理牧马刍粮， closely 结好太子曹丕以化解曹操“狼顾之相”猜忌。",
+                "polityDatasetId": "three-kingdoms"
               },
               {
                 "chapterNo": 2,
@@ -6341,7 +6347,8 @@
                 "kind": "military",
                 "kindLabel": "八日斩孟达",
                 "approx": false,
-                "summary": "226年受曹丕托孤后镇守宛城；227年底新城太守孟达勾结诸葛亮举兵反魏，司马懿一面写信稳住孟达，一面不待魏明帝诏令自宛城昼夜兼程，八日急行军千二百里围攻上庸，十六日斩孟达首级。"
+                "summary": "226年受曹丕托孤后镇守宛城；227年底新城太守孟达勾结诸葛亮举兵反魏，司马懿一面写信稳住孟达，一面不待魏明帝诏令自宛城昼夜兼程，八日急行军千二百里围攻上庸，十六日斩孟达首级。",
+                "polityDatasetId": "three-kingdoms"
               },
               {
                 "chapterNo": 3,
@@ -6354,8 +6361,10 @@
                 "kind": "military",
                 "kindLabel": "五丈原死守",
                 "approx": false,
-                "eventId": "tk-event-13-wuzhangyuan",
-                "summary": "231年起接掌雍凉主力对决诸葛亮；234年五丈原对峙百余日，面对诸葛亮派使者送来巾帼妇人衣饰羞辱，司马懿微笑受衣并借辛毗持节勒军按兵不动，细问蜀使诸葛亮食少事繁，终将诸葛亮耗死于军中。"
+                "eventId": "tk-event-17-wuzhangyuan",
+                "summary": "231年起接掌雍凉主力对决诸葛亮；234年五丈原对峙百余日，面对诸葛亮派使者送来巾帼妇人衣饰羞辱，司马懿微笑受衣并借辛毗持节勒军按兵不动，细问蜀使诸葛亮食少事繁，终将诸葛亮耗死于军中。",
+                "eventDatasetId": "three-kingdoms",
+                "polityDatasetId": "three-kingdoms"
               },
               {
                 "chapterNo": 4,
@@ -6368,7 +6377,8 @@
                 "kind": "politics",
                 "kindLabel": "装疯麻痹",
                 "approx": false,
-                "summary": "238年率四万军百日远征辽东诛灭公孙渊；239年与曹爽同受明帝曹叡托孤，被曹爽尊为太傅架空兵权，247年称病退居、暗中由长子司马师蓄养死士三千，248年冬在曹爽心腹李胜探病时佯装耳聋口漏汤药、错将“荆州”听作“并州”，彻底麻痹曹爽。"
+                "summary": "238年率四万军百日远征辽东诛灭公孙渊；239年与曹爽同受明帝曹叡托孤，被曹爽尊为太傅架空兵权，247年称病退居、暗中由长子司马师蓄养死士三千，248年冬在曹爽心腹李胜探病时佯装耳聋口漏汤药、错将“荆州”听作“并州”，彻底麻痹曹爽。",
+                "polityDatasetId": "three-kingdoms"
               },
               {
                 "chapterNo": 5,
@@ -6381,8 +6391,10 @@
                 "kind": "politics",
                 "kindLabel": "高平陵之变",
                 "approx": false,
-                "eventId": "tk-event-15-gaopingling",
-                "summary": "249年正月初六乘曹爽兄弟奉魏帝曹芳出城谒高平陵，71岁的司马懿拍案而起，假郭太后诏关闭洛阳城门、抢占武库，指洛水发誓骗曹爽交权后将其三族七千余人尽数诛灭；251年再平王凌淮南之叛，同年八月病逝，司马氏代魏大局自此锁定。"
+                "eventId": "tk-event-19-gaopingling",
+                "summary": "249年正月初六乘曹爽兄弟奉魏帝曹芳出城谒高平陵，71岁的司马懿拍案而起，假郭太后诏关闭洛阳城门、抢占武库，指洛水发誓骗曹爽交权后将其三族七千余人尽数诛灭；251年再平王凌淮南之叛，同年八月病逝，司马氏代魏大局自此锁定。",
+                "eventDatasetId": "three-kingdoms",
+                "polityDatasetId": "three-kingdoms"
               }
             ]
           },
@@ -6849,7 +6861,7 @@
                 "kind": "service",
                 "kindLabel": "译经著述",
                 "approx": false,
-                "eventId": "st-event-06-taizong-khan-xuanzang",
+                "eventId": "st-event-08-xuanzang-west-journey",
                 "summary": "645年携657部梵本归抵长安，洛阳宫面见唐太宗，婉拒太宗劝其还俗辅政之请，奉诏口述西域与天竺138国见闻编成《大唐西域记》；此后十九年主持大慈恩寺、玉华宫译场，独创“五不翻”译例，译完六百卷《大般若经》后于664年安然圆寂。"
               }
             ]
@@ -7036,7 +7048,7 @@
                 "kind": "politics",
                 "kindLabel": "迎立庐陵",
                 "approx": false,
-                "eventId": "st-event-09-wu-zhou-shenlong",
+                "eventId": "st-event-10-wuzhou-dianshi-shenlong",
                 "summary": "696年契丹孙万荣南下时起复为魏州刺史，下令百姓各自归田耕作，契丹闻风自退；697年再度入相，面对武则天欲立侄武三思为储，狄仁杰切陈“姑侄之与母子孰亲？陛下立子，则千秋万岁后配食太庙；立侄，则未闻侄为天子而祔姑于庙者也”，终使武则天于698年三月自房州秘迎庐陵王李显复立为皇太子。"
               },
               {
@@ -7252,7 +7264,7 @@
                 "kind": "exile",
                 "kindLabel": "永王附逆",
                 "approx": false,
-                "eventId": "st-event-11-an-shi-rebellion",
+                "eventId": "st-event-12-talas-an-shi-rebellion",
                 "summary": "安史之乱爆发后隐居庐山屏风叠，757年应玄宗第十六子永王李璘三次征聘下山入幕，赋《永王东巡歌》十一首；不料唐肃宗视永王为争位叛逆，永王兵败被杀，57岁的李白沦为附逆死囚系于寻阳狱。"
               },
               {
@@ -7484,7 +7496,7 @@
                 "kind": "service",
                 "kindLabel": "三吏三别",
                 "approx": false,
-                "eventId": "st-event-11-an-shi-rebellion",
+                "eventId": "st-event-12-talas-an-shi-rebellion",
                 "summary": "756年陷于安史叛军占领的长安作《春望》《哀江头》；757年夏冒死逃往凤翔行在，肘露麻鞋谒唐肃宗拜左拾遗，旋因上疏力救宰相房琯被贬华州司功参军，759年途经新安、石壕、潼关写下不朽名作“三吏”“三别”。"
               },
               {
@@ -7691,7 +7703,7 @@
                 "kind": "military",
                 "kindLabel": "收复两京",
                 "approx": false,
-                "eventId": "st-event-11-an-shi-rebellion",
+                "eventId": "st-event-12-talas-an-shi-rebellion",
                 "summary": "大器晚成，59岁于安史之乱爆发时拜朔方节度使，联合李光弼出井陉大破史思明；756年率军赴灵武稳固唐肃宗新朝，757年秋统兵十五万于香积寺、新店大破叛军，连克长安与洛阳，肃宗劳军称“吾之家国，由卿再造”。"
               },
               {
@@ -8127,8 +8139,13 @@
                 "kind": "diplomacy",
                 "kindLabel": "西域图记",
                 "approx": false,
-                "eventId": "st-event-03-yangdi-canal-western-regions",
-                "summary": "大业初年奉命赴张掖监管西域互市，详访西域胡商风俗道里，绘成《西域图记》三卷（勾勒北、中、南三道通往拂菻西海路线）；协助炀帝击灭吐谷浑、置西海等四郡，促成609年炀帝巡张掖二十七国朝贺与洛阳端门百戏盛况。"
+                "eventId": null,
+                "summary": "大业初年奉命赴张掖监管西域互市，详访西域胡商风俗道里，绘成《西域图记》三卷（勾勒北、中、南三道通往拂菻西海路线）；协助炀帝击灭吐谷浑、置西海等四郡，促成609年炀帝巡张掖二十七国朝贺与洛阳端门百戏盛况。",
+                "eventReference": {
+                  "status": "unindexed",
+                  "originalId": "st-event-03-yangdi-canal-western-regions",
+                  "reason": "裴矩张掖盛会与西域经营尚未单列事件；不关联到前后不同主题的大运河事件。"
+                }
               },
               {
                 "chapterNo": 3,
@@ -8351,7 +8368,7 @@
                 "kind": "military",
                 "kindLabel": "灵武白衣",
                 "approx": false,
-                "eventId": "st-event-11-an-shi-rebellion",
+                "eventId": "st-event-12-talas-an-shi-rebellion",
                 "summary": "756年赴灵武辅佐唐肃宗，坚辞宰相官爵，以白衣山人身份掌管四方章奏与军机符契，与肃宗同榻而眠，力主命郭子仪、李光弼先捣范阳老巢以绝安史之根；757年长安收复后，见李辅国、张皇后专权，决然请归衡山隐居。"
               },
               {
@@ -8819,7 +8836,7 @@
                 "kind": "diplomacy",
                 "kindLabel": "一言止杀",
                 "approx": false,
-                "eventId": "wd-event-04-khitan-enter-bianliang",
+                "eventId": "wd-event-04-yanyun-later-jin-khitan",
                 "summary": "947年辽太宗耶律德光灭后晋入据开封，契丹铁骑“打草谷”四处屠掠并欲尽杀汉人以牧马；66岁的冯道主动北上见耶律德光，面对“天下百姓如何救得”之问，以“此时佛出救不得，惟皇帝救得”一言打动耶律德光下令禁杀，救活中原百姓无数。"
               },
               {
@@ -9117,7 +9134,7 @@
                 "kind": "military",
                 "kindLabel": "经略西夏",
                 "approx": false,
-                "eventId": "sl-event-04-western-xia-qingli",
+                "eventId": "sl-event-04-yuanhao-xia-qingli-reforms",
                 "summary": "1040年三川口惨败后受命与韩琦同管勾陕西军马，整编延州一万八千军为六将、抢筑大顺城扼守要冲，拔擢狄青、种世衡；写下《渔家傲·秋思》“燕然未勒归无计”，西夏人为之传唱“小范老子胸中自有数万甲兵”。"
               },
               {
@@ -9301,7 +9318,7 @@
                 "kind": "politics",
                 "kindLabel": "熙宁变法",
                 "approx": false,
-                "eventId": "sl-event-05-wang-anshi-reform",
+                "eventId": "sl-event-05-wang-anshi-reforms-yuanyou",
                 "summary": "1068年与二十一岁的宋神宗越次入对，神宗拍案相托；1069年拜参知政事创设制置三司条例司，顶住满朝弹劾抛出“天变不足畏，祖宗不足法，人言不足恤”，密集颁行均输、青苗、农田水利、募役、市易、保甲诸法，并拔擢王韶收复熙河五州拓地两千余里。"
               },
               {
@@ -9540,7 +9557,7 @@
                 "kind": "politics",
                 "kindLabel": "拒拜枢密",
                 "approx": false,
-                "eventId": "sl-event-05-wang-anshi-reform",
+                "eventId": "sl-event-05-wang-anshi-reforms-yuanyou",
                 "summary": "神宗即位后赐书名《资治通鉴》；面对王安石强推青苗、均输诸法，司马光在御前与王安石、吕惠卿激辩“天地所生财货百物，不在民则在官”，连致王安石三封长信，并在神宗欲拜其为枢密副使时坚称“陛下果能罢制置条例司、不散青苗钱，臣虽不拜命亦荣”，愤而请判西京留司御史台。"
               },
               {
@@ -10442,7 +10459,7 @@
                 "kind": "politics",
                 "kindLabel": "汴梁救民",
                 "approx": false,
-                "eventId": "sl-event-09-mongol-conquest-jin",
+                "eventId": "sl-event-11-mongol-conquer-xia-jin",
                 "summary": "1233年速不台攻破金都汴梁，奏请按凡抗拒者屠城之旧例尽屠全城，楚材星夜入帐泣争，终使窝阔台下诏仅诛完颜氏一族，保全城中百四十万生灵；1237年举办戊戌选试解救被俘儒生四千余人，晚年因力阻奥都剌合蛮扑买包税遭乃马真后冷落，1244年悲愤病逝，死后有人诬其贪财，查验遗物唯琴阮十余张与古今书画数千卷。"
               }
             ]
@@ -10686,7 +10703,7 @@
                 "kind": "politics",
                 "kindLabel": "汴梁救民",
                 "approx": false,
-                "eventId": "sl-event-09-mongol-conquest-jin",
+                "eventId": "yuan-event-02-ogedei-chucai-conquer-jin",
                 "summary": "1233年速不台攻破金都汴梁，奏请按凡抗拒者屠城之旧例尽屠全城，楚材星夜入帐泣争，终使窝阔台下诏仅诛完颜氏一族，保全城中百四十万生灵；1237年举办戊戌选试解救被俘儒生四千余人，晚年因力阻奥都剌合蛮扑买包税遭乃马真后冷落，1244年悲愤病逝，死后有人诬其贪财，查验遗物唯琴阮十余张与古今书画数千卷。"
               }
             ]
@@ -10885,7 +10902,7 @@
                 "kind": "politics",
                 "kindLabel": "定号大元",
                 "approx": false,
-                "eventId": "yuan-event-03-kublai-kaiping-yuan",
+                "eventId": "yuan-event-04-kublai-found-yuan-unification",
                 "summary": "1260年助忽必烈在开平即位并确立“中统”建元；1264年奉诏还俗拜太保参领中书省事，与许衡制定中书省、枢密院、御史台及百官爵禄朝仪；1271年取《易经》“大哉乾元”奏请改国号为“大元”，完成由草原汗国向中华正统王朝的制度跃迁。"
               },
               {
@@ -11091,7 +11108,7 @@
                 "kind": "service",
                 "kindLabel": "授时历成",
                 "approx": false,
-                "eventId": "yuan-event-05-shoushi-calendar",
+                "eventId": "yuan-event-05-province-xuanzhengyuan-shoushili",
                 "summary": "1280年冬与王恂、许衡完成《授时历》，废除沿用千年的上元积年法，引入三次差内插法与球面三角“弧矢割圆术”，精确测定一回归年为365.2425日，与1582年欧洲格里高利历完全一致，自1281年颁行沿用达364年。"
               },
               {
@@ -11492,7 +11509,7 @@
                 "kind": "politics",
                 "kindLabel": "谏阻灯山",
                 "approx": false,
-                "eventId": "yuan-event-06-yanyou-civil-exams",
+                "eventId": "yuan-event-06-yanyou-keju-zhizhi-tianli",
                 "summary": "元仁宗朝参与推动停废八十年的科举恢复（1315年延祐开科）；1320年元英宗即位欲在宫内扎巨型鳌山灯会，张养浩即刻托拜住转呈谏疏，英宗读毕大悟曰“非张希孟不敢言”立罢灯山；张养浩却在盛宠之下洞悉铁木迭儿弄权危机，决然辞官归乡。"
               },
               {
@@ -11736,7 +11753,7 @@
                 "kind": "military",
                 "kindLabel": "靖难画策",
                 "approx": false,
-                "eventId": "ming-event-02-jingnan-yongle",
+                "eventId": "ming-event-02-jingnan-yongle-beijing",
                 "summary": "在燕王府后苑地下筑密室昼夜锻造甲胄兵器，养鹅鸭以掩盖打铁声；1399年建文削藩之际，狂风暴雨震落王府书房檐瓦，道衍贺曰“飞龙在天，从以风雨，瓦坠乃易黄瓦之兆”，促朱棣起兵，并在朱棣出征大宁时辅佐世子朱高炽动员北平妇女登城泼水成冰，击退李景隆五十万南军。"
               },
               {
@@ -11927,7 +11944,7 @@
                 "kind": "politics",
                 "kindLabel": "痛斥南迁",
                 "approx": false,
-                "eventId": "ming-event-04-tumubao-beijing-defense",
+                "eventId": "ming-event-04-tumu-crisis-beijing-defense",
                 "summary": "1449年八月十五土木堡惨败消息传至北京，二十万精锐尽墨、英宗被俘，朝堂哭声震天，徐珵（徐有贞）称星象有变力主南迁；于谦拍案怒喝“言南迁者，可斩也！”，说服孙太后命郕王朱祁钰即皇帝位（景泰帝），以“社稷为重，君为轻”斩断也先挟天子勒索之计，当场锤杀王振党羽马顺稳定朝局。"
               },
               {
@@ -12142,7 +12159,7 @@
                 "kind": "teaching",
                 "kindLabel": "龙场悟道",
                 "approx": false,
-                "eventId": "ming-event-05-wang-yangming-ningwang",
+                "eventId": "ming-event-05-hongzhi-yangming-daliyi",
                 "summary": "1508年抵达蛇虺横行、语言不通的贵州龙场驿，自筑草庵、栖居山洞石棺，随从皆病而亲自劈柴煮粥；在百死千难中彻夜默坐，忽于中夜大悟“圣人之道，吾性自足”，打破朱学外求之缚，在贵阳书院首揭“知行合一”。"
               },
               {
@@ -12570,7 +12587,7 @@
                 "kind": "politics",
                 "kindLabel": "封贡夺位",
                 "approx": false,
-                "eventId": "ming-event-06-longqing-peace-wanli-reforms",
+                "eventId": "ming-event-06-wokou-longqing-altan",
                 "summary": "1570年蒙古俺答汗之孙把汉那吉来降，张居正与高拱力排朝堂迂腐阻议，促成“俺答封贡”；1572年五月明穆宗驾崩，张居正联手司礼监冯保，借高拱一句“十岁太子如何治天下”由李太后降旨将高拱逐出京师，正式执掌内阁大权。"
               },
               {
@@ -12815,7 +12832,7 @@
                 "kind": "military",
                 "kindLabel": "火器练兵",
                 "approx": false,
-                "eventId": "ming-event-07-wanli-campaigns-donglin-liaodong",
+                "eventId": "ming-event-08-sarhu-ningyuan-jiashen",
                 "summary": "1619年萨尔浒之战四路明军覆没，58岁的徐光启毅然请缨赴通州练兵，排除兵部掣肘，派李之藻、张焘赴澳门重金购进葡萄牙“红夷大炮”（佛郎机长炮），系统提出以火炮敌台结合选练精锐车营克制满洲铁骑的军事近代化方案。"
               },
               {
@@ -13044,7 +13061,7 @@
                 "kind": "politics",
                 "kindLabel": "创军机处",
                 "approx": false,
-                "eventId": "qing-event-05-yongzheng-reforms-junjichu",
+                "eventId": "qing-event-04-yongzheng-junjichu-tandingerumu",
                 "summary": "雍正帝即位后将其视为头号心腹（尝言“朕在藩邸时并不识张廷玉，即位后用之，实乃天赐”）；1729年因西北准噶尔用兵，在隆宗门内设军机处，张廷玉任首席军机大臣，定军机处规制，每日口受圣旨立成廷寄，且“退直后片纸不留”，并总裁《明史》定稿。"
               },
               {
@@ -13437,7 +13454,7 @@
                 "kind": "military",
                 "kindLabel": "屡败屡战",
                 "approx": false,
-                "eventId": "qing-event-07-taiping-tianguo-xiangjun",
+                "eventId": "qing-event-07-taiping-second-opium-war-xinyou",
                 "summary": "1853年在长沙创办湘军，以四个月内斩杀痞匪二百余人号“曾剃头”，导致与湖南绿营官场水火不容；1854年发布《讨粤匪檄》出征，首战靖港惨败，曾国藩羞愤跳入湘江自尽被幕僚章寿麟捞起；1855年九江水战湘军水师被石达开截成两段，曾国藩再次纵身投江获救，困守江西沦为“客兵”。"
               },
               {
@@ -13477,7 +13494,7 @@
                 "kind": "death",
                 "kindLabel": "洋务与教案",
                 "approx": false,
-                "eventId": "qing-event-08-yangwu-xinjiang-sino-japanese",
+                "eventId": "qing-event-08-yangwu-recover-xinjiang",
                 "summary": "支持徐寿、华蘅芳造出“黄鹄号”蒸汽船，与李鸿章创办江南制造总局译书局，采纳容闳建议奏派詹天佑等120名留美幼童；1870年60岁带病且右目失明赴天津处理火烧望海楼教堂的“天津教案”，为避免与法英开战而处死肇事民团、革职天津知府，遭全国士林痛骂“卖国贼”、北京湖广会馆砸毁其匾额；他在“外惭清议，内疚神明”的痛苦中于1872年卒于两江总督署。"
               }
             ]
@@ -13683,7 +13700,7 @@
                 "kind": "politics",
                 "kindLabel": "洋务自强",
                 "approx": false,
-                "eventId": "qing-event-08-yangwu-xinjiang-sino-japanese",
+                "eventId": "qing-event-08-yangwu-recover-xinjiang",
                 "summary": "1870年接任直隶总督兼北洋大臣，痛感中国面临“三千余年一大变局”，从“自强”走向“求富”，一手创办轮船招商局（虎口夺食打破外资航运垄断）、开平煤矿、津榆铁路、天津电报局，并于1888年建成拥有定远、镇远铁甲舰的北洋水师。"
               },
               {
@@ -13723,7 +13740,7 @@
                 "kind": "death",
                 "kindLabel": "辛丑吐血",
                 "approx": false,
-                "eventId": "qing-event-10-boxer-xinhai-abdication",
+                "eventId": "qing-event-09-jiawu-wuxu-xinhai-abdication",
                 "summary": "1900年义和团与八国联军之役爆发，任两广总督的李鸿章断然宣称“此乱命也，粤不奉诏”促成东南互保；北京陷落后奉慈禧急诏北上，面对十一国公使的刀俎勒索折冲樽俎，1901年9月7日以“肃”字画押签完《辛丑条约》后紫黑大血喷涌而出，11月7日俄使犹逼签东北密约，李鸿章双目不瞑、泪流满面而逝，梁启超作专传叹“敬李鸿章之才，惜李鸿章之识，悲李鸿章之遇”。"
               }
             ]
@@ -13965,7 +13982,7 @@
                 "kind": "military",
                 "kindLabel": "抬棺收新疆",
                 "approx": false,
-                "eventId": "qing-event-08-yangwu-xinjiang-sino-japanese",
+                "eventId": "qing-event-08-yangwu-recover-xinjiang",
                 "summary": "1875年针对李鸿章放弃新疆之议，上万言《遵旨统筹全局折》力陈“重新疆者所以保蒙古，保蒙古者所以卫京师”，获军机大臣文祥与慈禧太后支持授钦差大臣；1876年采取“先北后南、缓进急战”，命刘锦棠用一年半摧枯拉朽消灭阿古柏收复南北疆；1880年68岁高龄命人抬棺自肃州进驻哈密，以必死决战姿态助曾纪泽签订《伊犁条约》收回伊犁，并于1884年促成新疆正式建省。"
               },
               {
@@ -14197,7 +14214,7 @@
                 "kind": "politics",
                 "kindLabel": "入关国策",
                 "approx": false,
-                "eventId": "qing-event-02-shanhaiguan-beijing-entry",
+                "eventId": "qing-event-02-shanhaiguan-conquest",
                 "summary": "1644年春李自成攻陷北京，摄政王多尔衮紧急召回正在盖州汤泉养病的范文程；范文程抱病乘车疾驰，上疏痛陈“昔日三次入塞只图财物子女，今当以义师为崇祯帝复仇，严禁杀无辜、掠财物、毁庐舍，录用明朝旧臣，免除三饷”，这一纸国策使清军在山海关大战后不刃而定北京。"
               },
               {

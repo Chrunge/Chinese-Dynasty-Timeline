@@ -51,9 +51,10 @@ function renderBiographyReader(p,entry,events){
 
  const chapters=Array.isArray(bp.chapters)?bp.chapters:[];
  const chapterCards=chapters.map(ch=>{
-  const rawYear=typeof ch.year==='object'&&ch.year?(ch.year.era==='BCE'?ch.year.year:1-ch.year.year):Number(ch.year);
-  const polity=byId(ch.polityId)||{name:ch.polityId};
-  return '<article class="bioChapterCard" data-action="bioChapter" data-id="'+rawYear+':'+escapeHTML(ch.polityId)+':'+ch.chapterNo+'" data-year="'+rawYear+'" data-polity-id="'+escapeHTML(ch.polityId)+'" data-chapter-no="'+ch.chapterNo+'">'+
+  const rawYear=typeof ch.year==='object'?Zhou.Time.encode(ch.year):ch.year;
+  const local=byId(ch.polityId)&&(!ch.polityDatasetId||ch.polityDatasetId===(D.datasetId||D.timeline?.topic)),canLocate=local&&Zhou.Time.isYear(rawYear)&&rawYear<=timelineBounds.start&&rawYear>=timelineBounds.end;
+  const polity=byId(ch.polityId)||{name:(D.catalog?.find(t=>t.id===ch.polityDatasetId)?.name||'其他专题')+'专题背景'};
+  return '<article class="bioChapterCard'+(canLocate?'':' narrativeOnly')+'"'+(canLocate?' data-action="bioChapter" data-id="'+rawYear+':'+escapeHTML(ch.polityId)+':'+ch.chapterNo+'" data-year="'+rawYear+'" data-polity-id="'+escapeHTML(ch.polityId)+'"':'')+' data-chapter-no="'+ch.chapterNo+'">'+
    '<div class="bioChapterHead">'+
     '<span class="bioChapterNo">第 '+ch.chapterNo+' 章</span>'+
     '<span class="bioChapterKind">'+escapeHTML(ch.kindLabel||'')+'</span>'+
@@ -62,13 +63,13 @@ function renderBiographyReader(p,entry,events){
    '</div>'+
    '<h5 class="bioChapterTitle">'+escapeHTML(ch.title)+'</h5>'+
    '<p class="bioChapterSummary">'+escapeHTML(ch.summary)+'</p>'+
-   '<div class="bioChapterFoot"><span class="bioChapterHint">联动左图定位 ➔</span></div>'+
+   '<div class="bioChapterFoot"><span class="bioChapterHint">'+(canLocate?'联动左图定位 ➔':Zhou.Time.isYear(rawYear)?'专题外背景，仅阅读叙述':'日期未定，仅阅读叙述')+'</span>'+(ch.eventReference?.status==='unindexed'?'<p class="notice">本章所述事件尚未单独收录。</p>':'')+'</div>'+
   '</article>';
  }).join('');
 
  const chapterSection='<div class="detailSection bioChapterSection">'+
   '<h4>分章传记叙事流（共 '+chapters.length+' 章）</h4>'+
-  '<p class="notice">点击任意章节卡片，左侧主时间轴自动将金色参考线（Cursor）平滑移动至该年，并将所属政权泳道滚动居中高亮。</p>'+
+  '<p class="notice">带定位提示的章节可联动时间轴；专题外背景和日期未定章节保留阅读内容。</p>'+
   '<div class="bioChapterFlow">'+chapterCards+'</div>'+
   '</div>';
 

@@ -1,7 +1,7 @@
 {
   "xia-shang": {
     "people": 67,
-    "sha256": "2b6fad12e51d46decd99252dd3e0cd80d252855a76fba875eda853c168350947"
+    "sha256": "70699c1a769c799d1443b9b88eb3e94e904d50f327015d9dcab88e8a83c99070"
   },
   "zhou": {
     "people": 116,
@@ -9,38 +9,38 @@
   },
   "qin-han": {
     "people": 78,
-    "sha256": "cc5ece2331a4e7a61bae05d9228bd0531882882e186fa426a9ce5dfc23d37e35"
+    "sha256": "040639c6d27f49370fe764ccf6504ef778624f65db05df319cb058376fe77ff9"
   },
   "three-kingdoms": {
     "people": 51,
-    "sha256": "77289fcc1e83c1cbebae133b9f759c043cc89902d1f903491ba3b192d8442b6a"
+    "sha256": "6e1400e5a1b5323a9aa4fd9d4e8c1440aa1f05615c08b4ab4762a37ac16ed072"
   },
   "wei-jin-nan-bei": {
     "people": 142,
-    "sha256": "258137e880c953f922c087c26321de22be6d74efbdbbe8d587ae81c3c1994d82"
+    "sha256": "ace06045cceea0b1c1af986d4ea15a0cef949812f8cc3cfec21d7b3e68c1f6cf"
   },
   "sui-tang": {
     "people": 70,
-    "sha256": "1a71379e286e613669aba60a917a548e98ea61b0251ddf86d54a5d8780d580a4"
+    "sha256": "9c72108a74a6b090b7e08b433532a7bee59c59d95bf128c33eede8e220260818"
   },
   "five-dynasties": {
     "people": 69,
-    "sha256": "fdd171d38711256c7ff1583ac576dfedfe37758226c34a95c1d05723be52dbbf"
+    "sha256": "86357834807c2b3a17ca32c5501d4ff45aa2dd48a7ce1bc8677bbe11593b58b9"
   },
   "liao-jin-song": {
     "people": 98,
-    "sha256": "9f983bbc458718c14b709572d6eb51d128475a0848f64ca16f41949a0e4dcf40"
+    "sha256": "9f392d08fd170df4bf25f2aa0d100cd855a19001a7ced496881f61381351c357"
   },
   "yuan": {
     "people": 40,
-    "sha256": "0b434211d281e44f7f270db5b35cabda9219062ed81010e4820f0454ca95ce38"
+    "sha256": "9053807474ff52a44a339785d838ed49f00574b1e0275e13d08df88d7c77f9eb"
   },
   "ming": {
     "people": 54,
-    "sha256": "8d34c0dfdb111302ba519efc98edc5e357d514e0347406b77820a9af5586ff31"
+    "sha256": "22bc381ebdaa99dc7c7b9e81851d05293eb60e2731601a0141951327c2f66588"
   },
   "qing": {
     "people": 40,
-    "sha256": "8f2616ba0c34b491115a35549f06fbaea1a825fc2f76b64161796eeeb065367e"
+    "sha256": "d8bbc0961acc150c2b5a54ce50646a421534bfcca6c948ca938f3c89a026b76e"
   }
 }

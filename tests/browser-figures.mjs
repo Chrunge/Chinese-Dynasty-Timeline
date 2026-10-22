@@ -22,6 +22,7 @@ try{
    const trigger=page.locator('#figuresToggle'),gallery=page.locator('#figuresGallery');
    assert.equal(await gallery.isVisible(),false);
    assert.equal(await trigger.getAttribute('aria-expanded'),'false');
+   await page.locator('#yearToggle').click();assert.equal(await page.locator('#yearEditor').isVisible(),true);
    await trigger.click();await gallery.waitFor({state:'visible'});
    assert.equal(await page.locator('#yearEditor').isVisible(),false);
    assert.equal(await trigger.getAttribute('aria-expanded'),'true');

@@ -1,188 +1,9 @@
 {
   "schemaVersion": 1,
   "source": "data/中国历代非君主人物传记全书.json",
-  "sourceSha256": "d8dbe8096a02e933ccb9729cce7fada5eda9e7de74b46588c2fffb7b7aa86eb5",
-  "issues": [
-    {
-      "datasetId": "xia-shang",
-      "personId": "xs-person-yi-yin",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/0/figures/0/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "xs-event-04-mingtiao-shang-founding",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "xia-shang",
-      "personId": "xs-person-yi-yin",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/0/figures/0/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "xs-event-05-yiyin-taijia-tonggong",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "xia-shang",
-      "personId": "person-003",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/0/figures/1/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "xs-event-13-muye-fall-of-shang",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "xia-shang",
-      "personId": "person-001",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/0/figures/2/biographyPlan/chapters/0/eventId",
-      "kind": "event",
-      "id": "xs-event-13-muye-fall-of-shang",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "person-043",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/2/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "qh-event-02-jianzhuke",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "person-043",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/2/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "qh-event-03-qin-unification",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "person-043",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/2/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "qh-event-05-shaqiu-coup",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "qh-person-zhang-liang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/3/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "qh-event-07-hongmen-feast",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "qh-person-chen-ping",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/4/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "qh-event-10-baideng",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "qh-person-chen-ping",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/4/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "qh-event-11-zhulv-wendi",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "qh-person-chao-cuo",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/5/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "qh-event-12-seven-states",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qin-han",
-      "personId": "qh-person-huo-guang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/2/figures/7/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "qh-event-15-huoguang-xuandi",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "three-kingdoms",
-      "personId": "tk-person-zhuge-liang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/3/figures/1/biographyPlan/chapters/0/eventId",
-      "kind": "event",
-      "id": "tk-event-04-longzhong-chibi",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "three-kingdoms",
-      "personId": "tk-person-zhuge-liang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/3/figures/1/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "tk-event-10-yiling",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "three-kingdoms",
-      "personId": "tk-person-zhuge-liang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/3/figures/1/biographyPlan/chapters/4/eventId",
-      "kind": "event",
-      "id": "tk-event-13-wuzhangyuan",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "three-kingdoms",
-      "personId": "tk-person-sima-yi",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/3/figures/2/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "tk-event-13-wuzhangyuan",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "three-kingdoms",
-      "personId": "tk-person-sima-yi",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/3/figures/2/biographyPlan/chapters/4/eventId",
-      "kind": "event",
-      "id": "tk-event-15-gaopingling",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "wei-jin-nan-bei",
-      "personId": "wj-person-wang-dao",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/4/figures/0/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "wj-event-04-eastern-jin-founding",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "wei-jin-nan-bei",
-      "personId": "wj-person-xie-an",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/4/figures/1/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "wj-event-10-feishui",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "wei-jin-nan-bei",
-      "personId": "wj-person-cui-hao",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/4/figures/2/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "wj-event-13-northern-wei-unification",
-      "status": "unresolved"
-    },
+  "sourceSha256": "4e21d2786368365816cce37c5d3cd8dd6e15ece57424d711a0e4b39ad91a3660",
+  "issues": [],
+  "externalReferences": [
     {
       "datasetId": "wei-jin-nan-bei",
       "personId": "tk-person-sima-yi",
@@ -190,7 +11,8 @@
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/0/polityId",
       "kind": "polity",
       "id": "eastern-han",
-      "status": "unresolved"
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
     },
     {
       "datasetId": "wei-jin-nan-bei",
@@ -199,7 +21,8 @@
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/1/polityId",
       "kind": "polity",
       "id": "cao-wei",
-      "status": "unresolved"
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
     },
     {
       "datasetId": "wei-jin-nan-bei",
@@ -207,8 +30,9 @@
       "file": "data/中国历代非君主人物传记全书.json",
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/2/eventId",
       "kind": "event",
-      "id": "tk-event-13-wuzhangyuan",
-      "status": "unresolved"
+      "id": "tk-event-17-wuzhangyuan",
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
     },
     {
       "datasetId": "wei-jin-nan-bei",
@@ -217,7 +41,8 @@
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/2/polityId",
       "kind": "polity",
       "id": "cao-wei",
-      "status": "unresolved"
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
     },
     {
       "datasetId": "wei-jin-nan-bei",
@@ -226,7 +51,8 @@
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/3/polityId",
       "kind": "polity",
       "id": "cao-wei",
-      "status": "unresolved"
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
     },
     {
       "datasetId": "wei-jin-nan-bei",
@@ -234,8 +60,9 @@
       "file": "data/中国历代非君主人物传记全书.json",
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/4/eventId",
       "kind": "event",
-      "id": "tk-event-15-gaopingling",
-      "status": "unresolved"
+      "id": "tk-event-19-gaopingling",
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
     },
     {
       "datasetId": "wei-jin-nan-bei",
@@ -244,259 +71,28 @@
       "path": "/dynasties/4/figures/3/biographyPlan/chapters/4/polityId",
       "kind": "polity",
       "id": "cao-wei",
-      "status": "unresolved"
-    },
+      "targetDatasetId": "three-kingdoms",
+      "status": "external"
+    }
+  ],
+  "unindexedReferences": [
     {
-      "datasetId": "sui-tang",
-      "personId": "st-person-xuan-zang",
+      "datasetId": "qin-han",
+      "personId": "qh-person-huo-guang",
       "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/0/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "st-event-06-taizong-khan-xuanzang",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "sui-tang",
-      "personId": "st-person-di-renjie",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/1/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "st-event-09-wu-zhou-shenlong",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "sui-tang",
-      "personId": "st-person-li-bai",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/2/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "st-event-11-an-shi-rebellion",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "sui-tang",
-      "personId": "st-person-du-fu",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/3/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "st-event-11-an-shi-rebellion",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "sui-tang",
-      "personId": "st-person-guo-ziyi",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/4/biographyPlan/chapters/0/eventId",
-      "kind": "event",
-      "id": "st-event-11-an-shi-rebellion",
-      "status": "unresolved"
+      "path": "/dynasties/2/figures/7/biographyPlan/chapters/2/eventReference",
+      "status": "unindexed",
+      "originalId": "qh-event-15-huoguang-xuandi",
+      "reason": "霍光废昌邑王、迎立汉宣帝尚未单列事件；不关联到前81年盐铁会议。"
     },
     {
       "datasetId": "sui-tang",
       "personId": "st-person-pei-ju",
       "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/6/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "st-event-03-yangdi-canal-western-regions",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "sui-tang",
-      "personId": "st-person-li-mi-tang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/5/figures/7/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "st-event-11-an-shi-rebellion",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "five-dynasties",
-      "personId": "sl-person-feng-dao",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/6/figures/0/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "wd-event-04-khitan-enter-bianliang",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "liao-jin-song",
-      "personId": "sl-person-fan-zhongyan",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/7/figures/0/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "sl-event-04-western-xia-qingli",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "liao-jin-song",
-      "personId": "sl-person-wang-anshi",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/7/figures/1/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "sl-event-05-wang-anshi-reform",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "liao-jin-song",
-      "personId": "sl-person-sima-guang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/7/figures/2/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "sl-event-05-wang-anshi-reform",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "liao-jin-song",
-      "personId": "ymq-person-yelv-chucai",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/7/figures/6/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "sl-event-09-mongol-conquest-jin",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "yuan",
-      "personId": "ymq-person-yelv-chucai",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/8/figures/0/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "sl-event-09-mongol-conquest-jin",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "yuan",
-      "personId": "yuan-person-liu-bingzhong",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/8/figures/1/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "yuan-event-03-kublai-kaiping-yuan",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "yuan",
-      "personId": "ymq-person-guo-shoujing",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/8/figures/2/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "yuan-event-05-shoushi-calendar",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "yuan",
-      "personId": "yuan-person-zhang-yanghao",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/8/figures/4/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "yuan-event-06-yanyou-civil-exams",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "ming",
-      "personId": "ming-person-yao-guangxiao",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/9/figures/0/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "ming-event-02-jingnan-yongle",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "ming",
-      "personId": "ymq-person-yu-qian",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/9/figures/1/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "ming-event-04-tumubao-beijing-defense",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "ming",
-      "personId": "ymq-person-wang-shouren",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/9/figures/2/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "ming-event-05-wang-yangming-ningwang",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "ming",
-      "personId": "ymq-person-zhang-juzheng",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/9/figures/4/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "ming-event-06-longqing-peace-wanli-reforms",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "ming",
-      "personId": "ming-person-xu-guangqi",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/9/figures/5/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "ming-event-07-wanli-campaigns-donglin-liaodong",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "qing-person-zhang-tingyu",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/0/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "qing-event-05-yongzheng-reforms-junjichu",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "ymq-person-zeng-guofan",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/2/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "qing-event-07-taiping-tianguo-xiangjun",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "ymq-person-zeng-guofan",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/2/biographyPlan/chapters/4/eventId",
-      "kind": "event",
-      "id": "qing-event-08-yangwu-xinjiang-sino-japanese",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "ymq-person-li-hongzhang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/3/biographyPlan/chapters/1/eventId",
-      "kind": "event",
-      "id": "qing-event-08-yangwu-xinjiang-sino-japanese",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "ymq-person-li-hongzhang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/3/biographyPlan/chapters/4/eventId",
-      "kind": "event",
-      "id": "qing-event-10-boxer-xinhai-abdication",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "ymq-person-zuo-zongtang",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/4/biographyPlan/chapters/3/eventId",
-      "kind": "event",
-      "id": "qing-event-08-yangwu-xinjiang-sino-japanese",
-      "status": "unresolved"
-    },
-    {
-      "datasetId": "qing",
-      "personId": "qing-person-fan-wencheng",
-      "file": "data/中国历代非君主人物传记全书.json",
-      "path": "/dynasties/10/figures/5/biographyPlan/chapters/2/eventId",
-      "kind": "event",
-      "id": "qing-event-02-shanhaiguan-beijing-entry",
-      "status": "unresolved"
+      "path": "/dynasties/5/figures/6/biographyPlan/chapters/1/eventReference",
+      "status": "unindexed",
+      "originalId": "st-event-03-yangdi-canal-western-regions",
+      "reason": "裴矩张掖盛会与西域经营尚未单列事件；不关联到前后不同主题的大运河事件。"
     }
   ]
 }
