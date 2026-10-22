@@ -21,7 +21,6 @@
    if(record.id)keys.push(scope+'/id/'+record.id);
    if(value.eventId)keys.push(scope+'/event/'+value.eventId);
    if(field!=='journey')keys.push(scope+'/chapter/'+value.sequence);
-   if(value.label||value.text)keys.push(scope+'/text/'+JSON.stringify([value.label,value.text]));
    let target=keys.map(key=>aliases.get(key)).find(Boolean);
    if(!target){target={...value,provenance:[]};result.push(target);}
    target.provenance.push({field,index,record});

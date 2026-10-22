@@ -29,3 +29,9 @@ test('AR02: Wang Anshi 1070 appears in the same-year board and trajectory',()=>{
  const points=app.run('Zhou.Biography.getTrajectoryPoints(historyService.person('+JSON.stringify(id)+'),new Map(D.states.map(s=>[s.id,{offset:0,height:60}])),y=>y,0)');
  assert(points.some(point=>point.year===year));
 });
+
+test('AR02: identical wording never merges distinct explicit activities',()=>{
+ const person={stageActivities:[{id:'one',year:356,polityId:'qin',label:'改革',text:'相同记述'}],journey:[{id:'two',year:356,state:'qin',label:'改革',text:'相同记述'}]};
+ const records=activities.records(person);assert.equal(records.length,2);
+ assert.deepEqual(plain(records.map(record=>record.id)),['one','two']);
+});

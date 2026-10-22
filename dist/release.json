@@ -1,5 +1,5 @@
 {
-  "releaseId": "a07588f63b4cb908b78a9011b1ed2fd41aa81c8683cfafbc359e8e99409ee275",
+  "releaseId": "fda757a60011ea9feda4334c1bf92fc869eab4e6353379e7071750814260fa7f",
   "socialImageFormat": "svg",
   "datasets": [
     {
@@ -194,21 +194,21 @@
     "biography-diagnostics.json": "97714f2820b598e0728cce9dec24501cf8278374e43ed2ab91933c42036d4d8d",
     "corpus.json": "b92fa5aaeaf997cc33f4aa7e276f9fea3f47f57fa8b26acdb4f0e95d17460b6f",
     "entity-links.js": "87dc52bfc2e897ba814de9b3aab4b1ddabc81ccd1701e32bf8b3a1c938fabcf6",
-    "app.js": "c9f41b2b7cc72b940cfaa669dcd6cc480399388331eca6be1bb43e4bcd1c3272",
+    "app.js": "bfc8c9fc6d10dec635a4f043f0b1828b2c47cd75bfbb364002b5e557a532c2fb",
     "study.js": "25ecb8e81f45b4bf4dcf316b294b1ac4d12aefd7e91c8fd1491a5c0c5fdfca66",
     "share.js": "42f69a53e88e5933f97a3f926d98f085a61db2da930c325c6bed6bd7de99715e",
     "export.js": "074f0bd15a8bf25f41064dab73c0a9ddec30b078d525e4c864383ba7e6c78aa8",
     "style.css": "3fc955aebae6d1d39d6d694c76a63564d93ca81582b79d0cda7d4c75cc483a26",
-    "xia-shang.html": "88ab0106dd824ec8b29a13707f43a53f71b18de69667b37a8e0379dcdb03574c",
-    "index.html": "b16b4b9d0cf2c169f9eccb770088e4a34b2cfa5ff8743c639c7fa1800c8c6915",
-    "qin-han.html": "9ca3b8f8167df344027280c562cdc9cad7be47032b737af3b23616c1aa162200",
-    "three-kingdoms.html": "312ab1e83953d36327c2b7c02da31d749411131c64991de2735e4231c562b695",
-    "wei-jin-nan-bei.html": "6152184b58e0f38ea2ff4a53fe6bbfc68d76b6c30d0b9d955a6ac11e67e060ab",
-    "sui-tang.html": "a78467f9d6358791ce97a7744647e6c0469e5d52a3d83a048255ae5715ab920f",
-    "five-dynasties.html": "fe9d087854f557260508072ab57ca780d7ad6b83abc57f46b7ea9f182a778612",
-    "liao-jin-song.html": "1de919be5568da34de8e3d39cf94f30aed2aecd8201c4eaa8368f525c62fe3b4",
-    "yuan.html": "84fe1a6c81616052309e42829685d7619cad72cddbe83045855380e70bf8d355",
-    "ming.html": "292362ae0bc2985690376e4d1b13848740990ed829fd7d36afbc70844f2068f5",
-    "qing.html": "8ac1318be08a6057040365ef2c01fd22365a150940a15030a302ebfe9a35fd74"
+    "xia-shang.html": "ad991fcd900353a97c263eb2da0cc25b8c15a2f309e7cfd9f10c5ca7e83c65b2",
+    "index.html": "9a9b96a845ad711be00dfea3fd389b3d204ee22a7713dc0ccee6ec28006718e8",
+    "qin-han.html": "edb03189af745969eaf8aa6b5da6488e41881cfea1cd61a06e81ce1030ee6144",
+    "three-kingdoms.html": "2924850437670b8fb560e7d4f4b70a4df3d8c3f01c97676227d5c408b6c58798",
+    "wei-jin-nan-bei.html": "d3f0f09996129ca530f0903628351107492d6b34c035a702cdf645f7e6c5347b",
+    "sui-tang.html": "adba5c2631c340b2158bc6fcced33db17195bf91f797ee9e304e49998fd1136b",
+    "five-dynasties.html": "4a62e2310aa6857fb530c79fee1fca0fceba4f9aaba125bcf6e27f93eb7d7160",
+    "liao-jin-song.html": "15b6a1134b7c4eaf96300eba013dd1eb8bd68ed612412158372af63173b83201",
+    "yuan.html": "164da3799645f3595a6c2316ab77e223680a64629e5e2c85a71c81e719e99fc7",
+    "ming.html": "7467da70438e997d53354ba0d747ea6645c4b3d88199b715e65b5be077836ebe",
+    "qing.html": "4f28030e9b3a07a89e83366bea43e3846c2b4884576dcece475e0a6301429240"
   }
 }
