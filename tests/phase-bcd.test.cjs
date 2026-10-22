@@ -104,7 +104,8 @@ test('阶段B：视图设置开关与偏好持久化（真实DOM契约）', () =
   assert.equal(store['zhou-ui-v1'].advanced, false);
 });
 
-test('阶段C：本朝重点人物画廊构建、高亮与清除签', () => {
+// The lightweight DOM covers model/topbar state; real gallery clicks run in browser-figures.mjs.
+test('阶段C：人物模型、高亮与清除状态集成', () => {
   const app = start('zhou', 1200);
   const count = app.run('topbar?.model?.count || 0');
   assert(count > 0);

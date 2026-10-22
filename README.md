@@ -62,6 +62,8 @@ node --test --test-isolation=none tests/*.test.mjs tests/*.test.cjs
 
 安装了Chrome的Windows环境可运行 `node tests/browser-presentation.mjs`，以真实浏览器验收十一页×两种宽度；传入原站HTTPS根地址可验收线上版本。浏览器只访问被测页面和资源，不打开历史来源链接。截图与执行报告位于忽略提交的 `.validation/`。
 
+人物画廊真实入口验收使用 `npm run test:figures`，离线覆盖十一专题的 390px／1200px 视口，通过实际点击检查画廊、人物详情、分类与清除、Esc 返回和主题持久化。先执行 `npm ci`，使用本机 Chrome 或 `npx playwright install chromium` 安装的 Chromium；结果位于 `.validation/figures/`，并纳入默认 CI。
+
 P0交互回归另提供 [Playwright脚本](<tests/browser-p0.mjs>)。安装开发依赖 `npm ci` 后，在已安装Chrome的环境执行 `node tests/browser-p0.mjs`：离线覆盖十一专题×375／390／768／1200／1440px、键盘引导与刷新、44px控件、实际触控与三档抽屉、存储拒绝。可用 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定Chrome兼容浏览器；依赖只用于开发测试，发布目录不包含Playwright或node_modules。交付与限制见 [P0界面说明](<docs/P0-INTERFACE.md>)。
 
 P1语义与无障碍验收见 [阶段说明](<docs/P1-SEMANTICS.md>)。安装开发依赖后运行 `node tests/browser-p1.mjs`（离线十一专题、axe默认全部启用规则且不覆盖规则配置、全键盘链）和 `node tests/lighthouse-p1.mjs`（临时回环服务上的Accessibility审计）；原始报告和额外WCAG 2.2图元尺寸提示均保留，不以自动分数声称完整标准认证。开发工具不进入发布包。

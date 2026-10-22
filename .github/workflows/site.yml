@@ -36,11 +36,15 @@ jobs:
         run: node --test tests/*.test.mjs tests/*.test.cjs
       - name: Build site
         run: node build.mjs
-      - name: Install optional social preview tools
-        if: github.event_name == 'workflow_dispatch' && inputs.social_png
+      - name: Install browser test tools
         run: |
           npm ci
           npx playwright install --with-deps chromium
+      - name: Check real figure entry points
+        run: npm run test:figures
+      - name: Install optional social preview fonts
+        if: github.event_name == 'workflow_dispatch' && inputs.social_png
+        run: |
           sudo apt-get update
           sudo apt-get install -y fonts-noto-cjk
       - name: Stage and publish optional PNG social cards
