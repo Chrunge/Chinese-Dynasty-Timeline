@@ -1,6 +1,6 @@
 'use strict';
 // Fixed expected values were captured from the user's pre-rebuild dist, not
-// calculated from the application under test. See docs/COMPATIBILITY-BASELINE.md.
+// calculated from the application under test. See docs/ARCHITECTURE.md#兼容与验收.
 const assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {boot,attachStudy}=require('./helpers/browser.cjs');
