@@ -1,15 +1,24 @@
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {renderBiographyData} from './lib/biography-data.mjs';
+import {createBiographyCompiler,biographySource} from './lib/biography.mjs';
 import {catalog,compileProduction} from './lib/production.mjs';
 import {buildCorpus} from './lib/corpus.mjs';
 import {buildEntityLinks} from './lib/entity-links.mjs';
 import {applyTopicTemplate,renderSocialSVG,validateTopicOutput} from './lib/site-presentation.mjs';
 import {resolve,join} from 'node:path';
+import {runInNewContext,Script} from 'node:vm';
 
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
+if(read('./src/core/biography-data.js')!==renderBiographyData(JSON.parse(read('./data/中国历代非君主人物传记全书.json'))))throw new Error('传记数据已过期，请运行 node tools/build-biography-core.mjs');
 const hash = content => createHash('sha256').update(content).digest('hex');
+const brandingContext={};runInNewContext(read('./src/core/branding.js'),brandingContext);
+const branding=brandingContext.Zhou.Branding;
+const escapeBrand=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const textSlot=(html,id,value)=>html.replace(new RegExp('(<[^>]+\\bid="'+id+'"[^>]*>)[\\s\\S]*?(</[^>]+>)'),(_,a,b)=>a+escapeBrand(value)+b);
+const displayData=(data,id)=>({...data,title:branding.resolve(data,id).title});
 const bundles = {
-  'app.js': ['src/core/time.js', 'src/core/correction.js', 'src/core/presentation.js', 'src/core/biography.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/core/entity-links.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/experience.js', 'src/ui/accessibility.js', 'src/core/time-slice.js', 'src/ui/time-slice.js', 'src/ui/gestures.js', 'src/ui/tenure-tooltip.js', 'src/ui/detail-sheet.js', 'src/ui/view.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/startup.js'],
+  'app.js': ['src/core/time.js', 'src/core/person-activities.js', 'src/core/branding.js', 'src/core/figures.js', 'src/core/correction.js', 'src/core/presentation.js', 'src/core/biography-data.js', 'src/core/biography.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/core/entity-links.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/experience.js', 'src/ui/accessibility.js', 'src/core/time-slice.js', 'src/ui/time-slice.js', 'src/ui/gestures.js', 'src/ui/tenure-tooltip.js', 'src/ui/detail-sheet.js', 'src/ui/view.js', 'src/ui/figures.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/ui/topbar.js', 'src/startup.js'],
   'study.js': ['src/study.js'],
   'share.js': ['src/core/share-summary.js', 'src/share.js'],
   'export.js': ['src/core/export-layout.js', 'src/outputs/canvas.js', 'src/adapters/export-files.js', 'src/export.js']
@@ -20,12 +29,13 @@ const pngArg=process.argv.find(arg=>arg.startsWith('--social-png-dir='));
 const pngDir=pngArg?resolve(pngArg.slice('--social-png-dir='.length)):null;
 if(pngArg&&!pngArg.slice('--social-png-dir='.length))throw Error('PNG输入目录不能为空');
 const pngManifest=pngDir?JSON.parse(readFileSync(join(pngDir,'manifest.json'),'utf8')):null;
+const biographyBytes=read('./'+biographySource),biography=createBiographyCompiler(JSON.parse(biographyBytes)),biographyIssues=[];
 const outputs = new Map(), datasets=[], corpusEntries=[], projections=new Map();
 for(const topic of catalog){
-  const source=read('./data/'+topic.file), atlas=JSON.parse(source), data=compileProduction(atlas,topic.id);
-  corpusEntries.push({...topic,file:'data/'+topic.file,sourceSha256:hash(source),atlas});
+  const source=read('./data/'+topic.file), atlas=JSON.parse(source), data=biography.enrich(compileProduction(atlas,topic.id));
+  corpusEntries.push({...topic,file:'data/'+topic.file,sourceSha256:hash(source),atlas,supplements:biography.provenance(topic.id,hash(biographyBytes))});
   projections.set(topic.id,data);
-  const svg=renderSocialSVG(topic,data);outputs.set('social-'+topic.id+'.svg',svg);
+  const svg=renderSocialSVG(topic,displayData(data,topic.id));outputs.set('social-'+topic.id+'.svg',svg);
   if(pngDir){
     const png=readFileSync(join(pngDir,'social-'+topic.id+'.png')),entry=pngManifest.images?.[topic.id];
     if(png.length<33||png.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||png.toString('ascii',12,16)!=='IHDR'||png.readUInt32BE(16)!==1200||png.readUInt32BE(20)!==630||entry?.svgSha256!==hash(svg)||entry?.pngSha256!==hash(png))throw Error('PNG预览无效或与本次SVG不一致：'+topic.id);
@@ -35,22 +45,32 @@ for(const topic of catalog){
   outputs.set(asset,'window.ZHOU_DATA = '+JSON.stringify(data)+';\n');
   datasets.push({...topic,asset,sourceSha256:hash(source),counts:Object.fromEntries(['polities','people','tenures','events','activities'].map(k=>[k,data[k].length]))});
 }
+const biographyReports=catalog.map(topic=>biography.inspectReferences(projections.get(topic.id),topic.id,projections));
+biographyIssues.push(...biographyReports.flatMap(report=>report.issues));
+if(biographyIssues.length)throw new Error('传记引用未处理：'+JSON.stringify(biographyIssues[0]));
+outputs.set('biography-diagnostics.json',JSON.stringify({schemaVersion:1,source:biographySource,sourceSha256:hash(biographyBytes),issues:biographyIssues,externalReferences:biographyReports.flatMap(report=>report.externalReferences),unindexedReferences:biographyReports.flatMap(report=>report.unindexedReferences)},null,2)+'\n');
 const corpus=buildCorpus(corpusEntries);
 outputs.set('corpus.json',JSON.stringify(corpus,null,2)+'\n');
 outputs.set('entity-links.js','window.ZHOU_ENTITY_LINKS = '+JSON.stringify(buildEntityLinks(corpus,catalog.map(topic=>({...topic,data:projections.get(topic.id)}))))+';\n');
-for (const [name, paths] of Object.entries(bundles)) outputs.set(name, '// Generated by build.mjs. Edit src/ instead.\n' + paths.map(path => `// ---- ${path} ----\n${read('./' + path).trim()}\n`).join('\n'));
-outputs.set('style.css', ['src/style.css','src/ui/experience.css','src/ui/gestures.css','src/ui/detail-sheet.css','src/ui/event-semantics.css','src/ui/time-slice.css','src/ui/chronology.css','src/ui/accessibility.css','src/ui/publication.css','src/ui/stage4.css','src/ui/biography.css'].map(path=>read('./'+path)).join('\n'));
+for (const [name, paths] of Object.entries(bundles)) {
+  const source='// Generated by build.mjs. Edit src/ instead.\n'+paths.map(path=>`// ---- ${path} ----\n${read('./'+path).trim()}\n`).join('\n');
+  new Script(source,{filename:name}); // Fail before publishing a syntactically invalid bundle.
+  outputs.set(name,source);
+}
+outputs.set('style.css', ['src/style.css','src/ui/experience.css','src/ui/gestures.css','src/ui/detail-sheet.css','src/ui/event-semantics.css','src/ui/time-slice.css','src/ui/chronology.css','src/ui/accessibility.css','src/ui/publication.css','src/ui/stage4.css','src/ui/biography.css','src/ui/figures.css','src/ui/study-room.css'].map(path=>read('./'+path)).join('\n'));
 // Every page and its assets use one deterministic release; file:// remains usable.
 for(const topic of datasets){
   let template=read('./src/index.html').replace('src="data.js"',`src="${topic.asset}"`);
   template=template.replace('<!-- topic-navigation -->','<nav class="topicNav" aria-label="历史时期">'+catalog.map(t=>`<a href="${t.page}" data-topic="${t.id}">${t.name}</a>`).join('')+'<span>同一资料库 · 各时期独立阅读与导出</span></nav>');
-  template=applyTopicTemplate(template,topic,projections.get(topic.id),pngDir?'png':'svg');
+  template=applyTopicTemplate(template,topic,displayData(projections.get(topic.id),topic.id),pngDir?'png':'svg');
+  const brand=branding.resolve(projections.get(topic.id),topic.id);
+  for(const [id,value] of Object.entries({logoChar:brand.logoChar,siteTitle:brand.title,siteSubtitle:brand.subtitle,siteSlogan:brand.slogan,siteIntro:brand.intro,dataStatusLabel:brand.statusLabel}))template=textSlot(template,id,value);
   const html=template.replace(/((?:src|href)=")([^"/?]+\.(?:js|css))"/g, (match, prefix, name) => {
     const asset = outputs.get(name);
     if (asset === undefined) throw new Error(`页面引用了未生成的文件：${name}`);
     return `${prefix}${name}?v=${hash(asset).slice(0,12)}"`;
   });
-  validateTopicOutput(html,outputs.get('social-'+topic.id+'.svg'),topic,projections.get(topic.id),pngDir?'png':'svg');
+  validateTopicOutput(html,outputs.get('social-'+topic.id+'.svg'),topic,displayData(projections.get(topic.id),topic.id),pngDir?'png':'svg');
   outputs.set(topic.page,html);
 }
 const assets=Object.fromEntries([...outputs].map(([name,content])=>[name,hash(content)]));

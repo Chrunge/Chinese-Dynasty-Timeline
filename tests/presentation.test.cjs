@@ -27,7 +27,7 @@ for(const width of [1200,390]){
 }
 test('显示契约逐任期显式标注，不按姓名合并；周朝回退原名',()=>{
  for(const id of ['qin-han','three-kingdoms']){const app=start(id);assert(app.run('D.tenures.filter(t=>t.personId).every(t=>t.display&&Object.hasOwn(t.display,"shortTitle")&&Object.hasOwn(t.display,"personalName"))'));for(const r of app.run('D.tenures.filter(t=>t.personId)')){assert(!app.run(`Zhou.Presentation.rulerLabel(historyService.tenure(${JSON.stringify(r.id)}))`).match(/[（(／/]|基础期|执政|在位|任职/));}}
- const app=start('zhou');assert.equal(app.run('appState.session.visibleRows.length'),18);assert.equal(app.run("Zhou.Presentation.rulerLabel(historyService.tenure('qin-r35'))"),'秦王政');
+ const app=start('zhou');assert.equal(app.run('appState.session.visibleRows.length'),12);app.run('selected=new Set(D.states.map(s=>s.id));render()');assert.equal(app.run('appState.session.visibleRows.length'),18);assert.equal(app.run("Zhou.Presentation.rulerLabel(historyService.tenure('qin-r35'))"),'秦王政');
 });
 test('显示投影仅增加元数据，全部原名称、日期、ID、关系与来源不变',async()=>{
  const {compileAtlas}=await import('../lib/atlas.mjs'),{compileProduction,prepareProduction}=await import('../lib/production.mjs');

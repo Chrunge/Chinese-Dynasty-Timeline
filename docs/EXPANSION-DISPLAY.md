@@ -2,7 +2,7 @@
 
 ## 集成契约
 
-新增模块 [expansion-display.mjs](../lib/expansion-display.mjs) 导出：
+模块 [expansion-display.mjs](../lib/expansion-display.mjs) 导出：
 
 ```js
 annotateExpansionDisplay(data, id)
@@ -81,4 +81,4 @@ return annotateExpansionDisplay(projection, id);
 node --test tests/expansion-display.test.mjs
 ```
 
-覆盖全部 156 条任期及其 ruler 副本、全部 41 个政权双投影的显式短名/原文支持、投影别名引用及嵌套 display 元数据独立性、冻结原稿不变性、全部日期与异说完整性、5/11/11/6 行、交接年和真实并存分层、分组规模、复位与监国身份、共享 ID 当前卷称谓、筛选与固定成员、详情/导出实体身份、幂等性、任一政权集合的未知 ID 写前原子失败和未知专题 no-op。测试不联网验证史实；构建与发布只由人工执行。
+覆盖全部 156 条任期及其 ruler 副本、全部 41 个政权双投影的显式短名/原文支持、投影别名引用及嵌套 display 元数据独立性、冻结原稿不变性、全部日期与异说完整性、5/11/11/6 行、交接年和真实并存分层、分组规模、复位与监国身份、共享 ID 当前卷称谓、筛选与固定成员、详情/导出实体身份、幂等性、任一政权集合的未知 ID 写前原子失败和未知专题 no-op。测试不联网验证史实；构建与发布流程见[部署说明](DEPLOYMENT.md)。

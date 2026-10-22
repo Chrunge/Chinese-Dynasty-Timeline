@@ -63,7 +63,7 @@ for (const [id,count,rowCount] of datasets) {
       const copy = copies.find(r => r.id === t.id);
       assert.deepEqual(copy.display,t.display,t.id);
       assert.notEqual(copy.display,t.display,'copies must not share mutable display objects');
-      assert.equal(P.rulerLabel(t),[t.display.shortTitle,t.display.personalName].filter(Boolean).join(' '));
+      assert.equal(P.rulerLabel(t),t.display.label || [t.display.shortTitle,t.display.personalName].filter(Boolean).join(' '));
     }
     assert.equal(P.rows(projection.states,projection.presentation).length,rowCount);
   });
@@ -188,16 +188,28 @@ test('Wei/Jin branches and the sixteen contemporaneous polities are not turned i
   assert.notEqual(regent.displayLane,emperor.displayLane,'regency and emperor remain simultaneous');
 });
 
-test('Sui/Tang succession preserves Wu Zhou and Tang overlap on independent rows',() => {
+test('Sui stays independent; Wu Zhou shares the Tang row without changing identities or inclusive overlaps',() => {
   const data = annotate('sui-tang'),tang = data.states.find(s => s.id === 'tang');
   const wu = data.states.find(s => s.id === 'wu-zhou');
-  assert.equal(rowOf(data,'sui').key,rowOf(data,'tang').key);
-  assert.notEqual(rowOf(data,'tang').key,rowOf(data,'wu-zhou').key);
-  assert.equal(rowOf(data,'wu-zhou').grouped,false);
+  assert.notEqual(rowOf(data,'sui').key,rowOf(data,'tang').key);
+  assert.equal(rowOf(data,'sui').grouped,false);
+  assert.equal(rowOf(data,'tang').key,rowOf(data,'wu-zhou').key);
+  assert.equal(rowOf(data,'wu-zhou').grouped,true);
   assert(tang.start >= wu.start && tang.end <= wu.end);
+  assert.equal(P.rows(data.states,data.presentation).length,9,'replacing Sui/Tang with Tang/Wu Zhou keeps the full row budget');
   const both = P.rows(data.states.filter(s => s.start >= toAxis({era:'CE',year:700}) && s.end <= toAxis({era:'CE',year:700})),data.presentation);
-  assert(both.some(row => row.members.some(s => s.id === 'tang')));
-  assert(both.some(row => row.members.some(s => s.id === 'wu-zhou')));
+  assert.equal(both.filter(row => row.members.some(s => s.id === 'tang' || s.id === 'wu-zhou')).length,1);
+  const record = ruler(data,'st-tenure-wuzhou-wuzetian');
+  assert.equal(record.display.label,'武周 · 武则天');
+  assert.equal(record.display.shortTitle,'圣神皇帝');
+  assert.equal(record.polityId,'wu-zhou');
+  assert.equal(P.rulerLabel(record),'武周 · 武则天');
+  const packed = lanes(data,rowOf(data,'tang').members.flatMap(s => s.rulers)).items;
+  const w = packed.find(r => r.id === record.id);
+  for (const id of ['st-tenure-tang-ruizong-1','st-tenure-tang-zhongzong-2']) {
+    const boundary = packed.find(r => r.id === id);
+    assert.notEqual(w.displayLane,boundary.displayLane,'690/705 inclusive boundary still overlaps: '+id);
+  }
   for (const id of ['southern-chen','wagang-wei','xia-dou','zheng-wang','tufan','yan-an-shi','qi-huang-chao']) assert.equal(rowOf(data,id).grouped,false,id);
 });
 

@@ -5,7 +5,8 @@ import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {spawn} from 'node:child_process';
 import {catalog} from '../lib/production.mjs';
-const rowCounts={'xia-shang':5,zhou:18,'qin-han':4,'three-kingdoms':5,'wei-jin-nan-bei':20,'sui-tang':9,'five-dynasties':11,'liao-jin-song':7,yuan:11,ming:5,qing:6};
+const rowCounts={'xia-shang':5,zhou:12,'qin-han':4,'three-kingdoms':5,'wei-jin-nan-bei':5,'sui-tang':2,'five-dynasties':1,'liao-jin-song':4,yuan:4,ming:2,qing:2};
+const defaultYears={'xia-shang':1600,zhou:770,'qin-han':140,'three-kingdoms':-228,'wei-jin-nan-bei':-382,'sui-tang':-617,'five-dynasties':-922,'liao-jin-song':-959,yuan:-1270,ming:-1367,qing:-1643};
 const additional=new Set(['wei-jin-nan-bei','sui-tang','liao-jin-song','ming','xia-shang','five-dynasties','yuan','qing']);
 const base=process.argv[2]||pathToFileURL(path.resolve('dist')+path.sep).href,live=base.startsWith('https:'),tag=live?'display-live':'display-local';
 const out=path.resolve('.validation'),profile=path.join(out,'chrome-display-'+Date.now());fs.mkdirSync(profile,{recursive:true});
@@ -22,12 +23,18 @@ try{
  ws.onmessage=event=>{const m=JSON.parse(event.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);if(m.error)p?.reject(Error(JSON.stringify(m.error)));else p?.resolve(m.result);}else if(m.method==='Runtime.exceptionThrown')errors.push({page,details:m.params.exceptionDetails});else if(m.method==='Runtime.consoleAPICalled'&&m.params.type==='error')errors.push({page,args:m.params.args});else if(m.method==='Network.loadingFailed')networkFailures.push({page,...m.params});};
  version=await send('Browser.getVersion',{},null);const target=await send('Target.createTarget',{url:'about:blank'},null);session=(await send('Target.attachToTarget',{targetId:target.targetId,flatten:true},null)).sessionId;
  for(const domain of ['Page','Runtime','Network'])await send(domain+'.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
+  if(!live)await send('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:0,uploadThroughput:0});
  await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.clear();sessionStorage.clear();'});
  for(const {id,page:file} of catalog)for(const width of [1200,390]){
   page=id+'-'+width;await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width===390});await send('Page.navigate',{url:new URL(file,base).href});let ready=false;
   for(let i=0;i<150;i++){try{ready=await evaluate(`document.readyState==='complete'&&typeof appState!=='undefined'&&document.querySelectorAll('#chart .stateRow').length>0`);}catch{}if(ready)break;await wait(100);}check(ready,'not initialized');await wait(100);
   const info=await evaluate(`({id:D.datasetId||'zhou',url:location.href,rows:document.querySelectorAll('#chart .stateRow').length,groups:document.querySelectorAll('.groupedRow').length,bars:document.querySelectorAll('#chart .ruler').length,segments:[...document.querySelectorAll('.politySegment')].map(e=>({id:e.dataset.id,text:e.textContent,top:e.style.top})),overflow:document.documentElement.scrollWidth>innerWidth+1})`);
   check(info.id===id&&info.rows===rowCounts[id]&&info.bars>0,'wrong timeline '+JSON.stringify(info));check(!info.overflow,'page horizontal overflow');
+   info.defaults=await evaluate(`({year:appState.conditions.cursor,selected:[...appState.conditions.selected],members:appState.session.visibleRows.map(r=>r.members.map(s=>s.id)),count:document.querySelector('#filterCount').textContent,left:vp.scrollLeft,expectedLeft:Math.max(0,Math.min(vp.scrollWidth-vp.clientWidth,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2))})`);
+   check(info.defaults.year===defaultYears[id],'wrong highlight year '+JSON.stringify(info.defaults));check(Math.abs(info.defaults.left-info.defaults.expectedLeft)<2,'default viewport not centered/clamped');
+   check(info.defaults.count.includes(info.defaults.selected.length+'/'+await evaluate('D.states.length')),'wrong entity count');
+   if(id==='liao-jin-song')check(JSON.stringify(info.defaults.members)===JSON.stringify([['northern-song','southern-song'],['liao'],['jin-jurchen'],['western-xia']]),'Song is not first');
+   if(id==='sui-tang')check(JSON.stringify(info.defaults.members)===JSON.stringify([['sui'],['tang','wu-zhou']]),'Sui/Tang/Wu Zhou wrong lanes');
   if(id==='qin-han'){check(info.groups===1&&info.segments.length===5,'missing succession segments');check(new Set(info.segments.map(s=>s.top)).size>1,'overlapping polities flattened');const bounds=await evaluate(`(()=>{const parent=document.querySelector('.groupedRow .stateLabel').getBoundingClientRect();return {parent:{top:parent.top,bottom:parent.bottom,height:parent.height},labels:[...document.querySelectorAll('.groupedRow .stateName')].map(e=>{const b=e.getBoundingClientRect();return {text:e.textContent,top:b.top,bottom:b.bottom};})};})()`);check(bounds.labels.every(b=>b.top>=bounds.parent.top-1&&b.bottom<=bounds.parent.bottom+1),'group country labels clipped '+JSON.stringify(bounds));}
   {info.groupBounds=await evaluate(`([...document.querySelectorAll('.stateRow .stateLabel')].map(parent=>{const p=parent.getBoundingClientRect();return [...parent.querySelectorAll('.stateName')].map(e=>{const r=e.getBoundingClientRect();return {text:e.textContent,inside:r.top>=p.top-1&&r.bottom<=p.bottom+1};});})).flat()`);check(info.groupBounds.every(b=>b.inside),'group labels clipped '+JSON.stringify(info.groupBounds));}
    await evaluate(`document.querySelector('#viewport').scrollIntoView({block:'center'})`);await screenshot(page+'-timeline');
@@ -35,6 +42,35 @@ try{
    // while remaining compatible with earlier deployed pages without this panel.
    if(await evaluate(`!!document.querySelector('#onboarding:not([hidden])')`))await click('#onboardingSkip');
    if(await evaluate(`document.querySelector('#advancedSettings')?.hidden===true`))await click('#advancedToggle');
+   // Stage A uses the actual modal, native checkboxes and real footer controls.
+   await click('#filter');
+   info.selection=await evaluate(`({title:document.querySelector('#filtersTitle').textContent,text:document.querySelector('#filters').textContent,checks:[...document.querySelectorAll('#stateChecks input')].map(c=>({id:c.value,checked:c.checked}))})`);
+   check(info.selection.title.includes('选择政权')&&info.selection.text.includes('主要（默认）')&&info.selection.text.includes('自定义')&&info.selection.text.includes('已显示'),'polity picker contract missing');
+   await click('#allStates');check(await evaluate(`[...document.querySelectorAll('#stateChecks input')].every(c=>c.checked)`),'all preset did not select every polity');
+   await click('#closeFilters');check(await evaluate(`JSON.stringify([...appState.conditions.selected])===${JSON.stringify(JSON.stringify(info.defaults.selected))}`),'cancelled picker changed selection');
+   await click('#filter');
+   await evaluate(`(()=>{const b=[...document.querySelectorAll('#filters button')].find(b=>b.textContent.trim()==='主要（默认）');if(!b)throw Error('missing core preset');b.setAttribute('data-phase-a-core','true');})()`);await click('[data-phase-a-core]');
+   check(await evaluate(`(()=>{const core=new Set(Zhou.Presentation.topic(D).coreIds);return [...document.querySelectorAll('#stateChecks input')].every(c=>c.checked===core.has(c.value));})()`),'core preset mismatch');
+   await evaluate(`(()=>{const b=[...document.querySelectorAll('#filters button')].find(b=>b.textContent.trim()==='自定义');if(!b)throw Error('missing custom preset');b.setAttribute('data-phase-a-custom','true');})()`);await click('[data-phase-a-custom]');
+   const custom=await evaluate(`(()=>{const core=new Set(Zhou.Presentation.topic(D).coreIds),checks=[...document.querySelectorAll('#stateChecks input')],c=checks.find(c=>!core.has(c.value))||checks.at(-1);c.click();return {id:c.value,checked:c.checked};})()`);
+   await click('#applyFilters');check(await evaluate(`appState.conditions.selected.has(${JSON.stringify(custom.id)})===${custom.checked}`),'custom check was not applied');
+   await click('#filter');await click('[data-phase-a-core]');await click('#applyFilters');
+   const minor=await evaluate(`D.states.length-Zhou.Presentation.topic(D).coreIds.length`);
+   if(minor){
+    info.disclosure=await evaluate(`(()=>{const find=()=>[...document.querySelectorAll('#chart button')].find(b=>/展开其余|收起.*割据/.test(b.textContent)),b=find();if(!b)throw Error('missing minor disclosure');const before={left:vp.scrollLeft,year:appState.conditions.cursor},label=b.textContent;b.click();const expanded=appState.session.visibleStates.length,expandedLabel=find()?.textContent;find().click();return {before,label,expanded,expandedLabel,collapsed:appState.session.visibleStates.length,left:vp.scrollLeft,year:appState.conditions.cursor};})()`);
+    check(info.disclosure.label.includes(String(minor))&&info.disclosure.expanded===await evaluate('D.states.length')&&info.disclosure.collapsed===info.defaults.selected.length,'minor disclosure counts mismatch '+JSON.stringify(info.disclosure));
+    check(info.disclosure.left===info.disclosure.before.left&&info.disclosure.year===info.disclosure.before.year,'disclosure reset viewport or cursor');
+   }
+   await evaluate(`document.querySelector('#viewport').scrollIntoView({block:'center'})`);await screenshot(page+'-core');
+   if(id==='sui-tang'){
+    info.wuZhou=await evaluate(`(()=>{const b=document.querySelector('[data-id="st-tenure-wuzhou-wuzetian"]'),row=b.closest('.stateRow');return {members:appState.session.visibleRows.find(r=>r.key===row.dataset.row).members.map(s=>s.id),className:b.className,border:getComputedStyle(b).borderColor,title:b.title};})()`);
+    check(info.wuZhou.className.includes('wuZhouBar')&&info.wuZhou.members.includes('tang')&&info.wuZhou.title.includes('武周 · 武则天'),'Wu Zhou highlight or original row identity missing');
+    await evaluate('setCursor(-699,true)');await screenshot(page+'-wu-zhou');await click('[data-id="st-tenure-wuzhou-wuzetian"]');
+    check(await evaluate(`navigation.key==='ruler:st-tenure-wuzhou-wuzetian'&&/690|天授/.test(document.querySelector('#detailBody').textContent)&&/705|神龙/.test(document.querySelector('#detailBody').textContent)`),'Wu Zhou historical detail lost');await click('#close');
+   }
+   // Audit every row after checking defaults; large succession groups may have
+   // an unchanged minimum height, so minor rows also exercise height expansion.
+   await evaluate('appState.conditions.selected=new Set(D.states.map(s=>s.id));render()');
    // Increasing row height spends spare space on events before clustering.
    // Audit real CSS rectangles: opaque-DOM tests cannot detect text overflow.
    info.events=await evaluate(`(()=>{

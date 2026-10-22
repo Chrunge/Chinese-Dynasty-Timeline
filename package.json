@@ -12,7 +12,8 @@
     "test:p1": "node tests/browser-p1.mjs",
     "test:p1:lighthouse": "node tests/lighthouse-p1.mjs",
     "test:publication": "node tests/browser-publication.mjs",
-    "social:png": "node tools/render-social-previews.mjs"
+    "social:png": "node tools/render-social-previews.mjs",
+    "test:figures": "node tests/browser-figures.mjs"
   },
   "devDependencies": {
     "axe-core": "4.14.0",

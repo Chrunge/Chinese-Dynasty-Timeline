@@ -8,10 +8,14 @@
   // Mutable application state has one owner. Renderers and persistence receive
   // explicit snapshots; no domain query reads this state implicitly.
   Zhou.createApplicationState = data => {
-    const bounds=Zhou.Time.bounds(data);
+    const policy = Zhou.Presentation?.topic ? Zhou.Presentation.topic(data) : null;
+    const bounds = Zhou.Time.bounds(data);
+    const defaultOrder = policy?.order || data.states.map(s=>s.id);
+    const defaultCore = policy?.coreIds || data.states.map(s=>s.id);
+    const defaultCursor = Zhou.Time.isYear(policy?.cursor) ? Math.max(bounds.defaultEnd,Math.min(bounds.start,policy.cursor)) : bounds.cursor;
     return {
-    conditions: {end:bounds.defaultEnd, selected:new Set(data.states.map(s=>s.id)), category:'all', cursor:bounds.cursor, motif:'none'},
-    layout: {stateOrder:data.states.map(s=>s.id), rowHeight:64, fitRows:false, viewHeight:560, expanded:false, rowHeights:{}, px:4, mode:'both', density:'auto', pinned:new Set()},
+    conditions: {end:bounds.defaultEnd, selected:new Set(defaultCore), category:'all', cursor:defaultCursor, motif:'none'},
+    layout: {stateOrder:[...defaultOrder], rowHeight:64, fitRows:false, viewHeight:560, expanded:false, rowHeights:{}, px:4, mode:'both', density:'auto', pinned:new Set()},
     search: {query:'', searchScope:'all', searchDescriptions:false, searchLimit:6, searchTarget:null},
     session: {activeEventId:null, activePersonId:null, visibleStates:[], rowLayouts:new Map(), savedCombos:[]}
   };};
@@ -20,7 +24,8 @@
     const number = (value, low, high, fallback) => (typeof value === 'number' || typeof value === 'string') && Number.isFinite(Number(value)) ? Math.max(low, Math.min(high, Number(value))) : fallback;
     const rowHeights = {};
     for (const id of ids) if ([40,56,64,96,128,160].includes(saved.rowHeights?.[id])) rowHeights[id] = saved.rowHeights[id];
-    return {...defaults, stateOrder:Array.isArray(saved.order)?[...new Set([...saved.order.filter(id=>ids.includes(id)),...ids])]:[...defaults.stateOrder],
+    const defaultOrder = defaults.stateOrder || ids;
+    return {...defaults, stateOrder:Array.isArray(saved.order)?[...new Set([...saved.order.filter(id=>ids.includes(id)),...defaultOrder.filter(id=>ids.includes(id))])]:[...defaultOrder],
       rowHeight:number(saved.rowHeight,36,160,defaults.rowHeight), viewHeight:number(saved.viewHeight,320,1000,defaults.viewHeight), fitRows:Boolean(saved.fitRows), rowHeights};
   };
 })(globalThis.Zhou ||= {});

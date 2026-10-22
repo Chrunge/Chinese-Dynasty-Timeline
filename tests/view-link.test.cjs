@@ -60,7 +60,7 @@ test('无Hash保留上次阅读位置，跨屏幕链接按范围适配',()=>{
 });
 test('非法字段被忽略，空国家列表有效，不允许未知详情或任意HTML',()=>{
  const app=share(attachStudy(boot()),'https://example.com/#year=NaN&states=bad&pinned=bad&zoom=Infinity&category=<script>&item=event:bad');
- assert.equal(app.run('cursor'),770);assert.equal(app.run('px'),4);assert.equal(app.run('selected.size'),18);assert(!app.el('#detail').open);
+ assert.equal(app.run('cursor'),770);assert.equal(app.run('px'),4);assert.equal(app.run('selected.size'),12);assert(!app.el('#detail').open);
  const codec=app.run('Zhou.createViewLinkCodec(D,searchService)');assert.equal(codec.parse('#v=900&year=632'),null);assert.equal(codec.parse('#unknown=1'),null);assert.equal(codec.parse('#'+'x'.repeat(10001)),null);
  app.location.hash='#states=&pinned=&year=632';assert.equal(app.run('visibleStates.length'),0);
 });

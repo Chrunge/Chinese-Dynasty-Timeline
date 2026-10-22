@@ -1,8 +1,239 @@
 (function(Zhou){
  'use strict';
+ const formalTopics = {
+  'xia-shang': {
+   order: ['xia','shang','zhou','youqiong-han','ancient-shu','guifang-qiang'],
+   coreIds: ['xia','shang','zhou','youqiong-han','ancient-shu','guifang-qiang'],
+   all: true,
+   cursor: 1600,
+   minorInfo: {
+    'youqiong-han': '东夷有穷氏 / 寒浞代夏政权',
+    'ancient-shu': '宝墩—三星堆青铜方国',
+    'guifang-qiang': '西北方国部落联盟'
+   }
+  },
+  'zhou': {
+   order: [
+    'zhou','qi','jin','qin','chu','yan','lu','wu','yue','han','zhao','liang',
+    'song','wei','zheng','chen','cai','cao'
+   ],
+   coreIds: ['zhou','qi','jin','qin','chu','yan','lu','wu','yue','han','zhao','liang'],
+   cursor: 770,
+   minorInfo: {
+    'song': '商丘 · 子姓宋国',
+    'wei': '朝歌/帝丘 · 卫国',
+    'zheng': '新郑 · 郑国',
+    'chen': '宛丘 · 陈国',
+    'cai': '上蔡/下蔡 · 蔡国',
+    'cao': '陶丘 · 曹国'
+   }
+  },
+  'qin-han': {
+   order: ['qin','western-han','xin','gengshi-han','eastern-han','western-chu','zhang-chu','wei'],
+   coreIds: ['qin','western-han','xin','gengshi-han','eastern-han','western-chu','zhang-chu','wei'],
+   all: true,
+   cursor: 140,
+   minorInfo: {
+    'western-chu': '西楚霸王项羽政权',
+    'zhang-chu': '陈胜起义大楚政权',
+    'wei': '战国末至秦末卫君角'
+   }
+  },
+  'three-kingdoms': {
+   order: ['cao-wei','shu-han','sun-wu','eastern-han','western-jin'],
+   coreIds: ['cao-wei','shu-han','sun-wu','eastern-han','western-jin'],
+   all: true,
+   cursor: -228,
+   minorInfo: {
+    'eastern-han': '汉末建安执政阶段',
+    'western-jin': '西晋受禅代魏'
+   }
+  },
+  'wei-jin-nan-bei': {
+   order: [
+    'western-jin','eastern-jin','liu-song','southern-qi','southern-liang-dynasty','southern-chen',
+    'northern-wei','eastern-wei','northern-qi','western-wei','northern-zhou','former-qin',
+    'former-liang','cheng-han','han-zhao','later-zhao','former-yan','later-yan','later-qin',
+    'western-qin','later-liang','southern-liang','northern-liang','southern-yan','western-liang',
+    'hu-xia','northern-yan','sui'
+   ],
+   coreIds: [
+    'western-jin','eastern-jin','liu-song','southern-qi','southern-liang-dynasty','southern-chen',
+    'northern-wei','eastern-wei','northern-qi','western-wei','northern-zhou','former-qin'
+   ],
+   cursor: -382,
+   minorInfo: {
+    'former-liang': '河西 · 张氏前凉',
+    'cheng-han': '巴蜀 · 李氏成汉',
+    'han-zhao': '平阳 · 刘氏汉赵',
+    'later-zhao': '襄国/邺城 · 石氏后赵',
+    'former-yan': '邺城 · 慕容前燕',
+    'later-yan': '中山 · 慕容后燕',
+    'later-qin': '关中长安 · 姚氏后秦',
+    'western-qin': '陇西 · 乞伏西秦',
+    'later-liang': '姑臧 · 吕氏后凉',
+    'southern-liang': '乐都 · 秃发南凉',
+    'northern-liang': '张掖 · 沮渠北凉',
+    'southern-yan': '广固 · 慕容南燕',
+    'western-liang': '酒泉 · 李氏西凉',
+    'hu-xia': '统万城 · 赫连胡夏',
+    'northern-yan': '龙城 · 冯氏北燕',
+    'sui': '杨坚受禅建立隋朝'
+   }
+  },
+  'sui-tang': {
+   order: [
+    'sui','tang','wu-zhou',
+    'southern-chen','wagang-wei','xia-dou','zheng-wang','tufan','yan-an-shi','qi-huang-chao'
+   ],
+   coreIds: ['sui','tang','wu-zhou'],
+   cursor: -617,
+   minorInfo: {
+    'southern-chen': '江南建康 · 南陈',
+    'wagang-wei': '瓦岗 · 李密魏公',
+    'xia-dou': '河北乐寿 · 窦建德夏',
+    'zheng-wang': '洛阳 · 王世充郑',
+    'tufan': '青藏高原 · 吐蕃赞普',
+    'yan-an-shi': '范阳 · 安史之乱大燕',
+    'qi-huang-chao': '长安 · 黄巢大齐'
+   }
+  },
+  'five-dynasties': {
+   order: [
+    'later-liang','later-tang','later-jin','later-han','later-zhou','northern-song',
+    'wu-yang','wuyue','former-shu','ma-chu','min','southern-han','jingnan','later-shu',
+    'southern-tang','northern-han','liao'
+   ],
+   coreIds: ['later-liang','later-tang','later-jin','later-han','later-zhou','northern-song'],
+   cursor: -922,
+   minorInfo: {
+    'wu-yang': '广陵 · 杨吴',
+    'wuyue': '钱塘 · 钱氏吴越',
+    'former-shu': '成都 · 王氏前蜀',
+    'ma-chu': '长沙 · 马楚',
+    'min': '福州 · 王氏闽',
+    'southern-han': '番禺 · 刘氏南汉',
+    'jingnan': '江陵 · 荆南（南平）',
+    'later-shu': '成都 · 孟氏后蜀',
+    'southern-tang': '金陵 · 李氏南唐',
+    'northern-han': '太原 · 刘氏北汉',
+    'liao': '塞北 · 契丹/辽朝'
+   }
+  },
+  'liao-jin-song': {
+   order: [
+    'northern-song','southern-song','liao','jin-jurchen','western-xia',
+    'dali','western-liao','mongol-yuan'
+   ],
+   coreIds: ['northern-song','southern-song','liao','jin-jurchen','western-xia'],
+   cursor: -959,
+   minorInfo: {
+    'dali': '大理城 · 段氏大理国',
+    'western-liao': '虎思斡耳朵 · 耶律大石西辽',
+    'mongol-yuan': '漠北/开平 · 大蒙古国与元朝'
+   }
+  },
+  'yuan': {
+   order: [
+    'mongol-yuan','southern-song','jin-jurchen','ming',
+    'western-xia','dali','tianwan-xu','zhang-zhou','red-turban-song','chen-han','ming-xia'
+   ],
+   coreIds: ['mongol-yuan','southern-song','jin-jurchen','ming'],
+   cursor: -1270,
+   minorInfo: {
+    'western-xia': '中兴府 · 西夏',
+    'dali': '大理城 · 大理国',
+    'tianwan-xu': '江州 · 徐寿辉天完',
+    'zhang-zhou': '平江 · 张士诚大周',
+    'red-turban-song': '安丰 · 韩林儿韩宋',
+    'chen-han': '江州 · 陈友谅大汉',
+    'ming-xia': '重庆 · 明玉珍大夏'
+   }
+  },
+  'ming': {
+   order: ['ming','southern-ming','later-jin-qing','northern-yuan','dashun','daxi'],
+   coreIds: ['ming','southern-ming','later-jin-qing'],
+   cursor: -1367,
+   minorInfo: {
+    'northern-yuan': '漠北草原 · 瓦剌与鞑靼北元政权',
+    'dashun': '西安/北京 · 李自成大顺',
+    'daxi': '成都 · 张献忠大西'
+   }
+  },
+  'qing': {
+   order: ['later-jin-qing','ming','southern-ming','dashun','wu-zhou','dzungar','taiping'],
+   coreIds: ['later-jin-qing','ming'],
+   cursor: -1643,
+   minorInfo: {
+    'southern-ming': '南明抗清诸王及明郑台湾东宁',
+    'dashun': '西安/北京 · 李自成大顺',
+    'wu-zhou': '云南/衡州 · 吴三桂吴周',
+    'dzungar': '伊犁河谷 · 准噶尔汗国',
+    'taiping': '金田/天京 · 洪秀全太平天国'
+   }
+  }
+ };
+
  // Explicit, additive presentation contract. It never changes domain records or IDs.
  Zhou.Presentation={
-  rulerLabel(r){return r.display?[r.display.shortTitle,r.display.personalName].filter(Boolean).join(' '):r.name;},
+  topic(data) {
+   const rawOrder = (data?.states || []).map(s => s.id);
+   const datasetId = data?.datasetId;
+   const isZhou = (!datasetId && data?.timeline?.topic === 'zhou') || datasetId === 'zhou';
+   const topicId = isZhou ? 'zhou' : datasetId;
+   const policy = (topicId && Object.hasOwn(formalTopics, topicId)) ? formalTopics[topicId] : null;
+    let defaultCursor=policy?.cursor;
+    const from=data?.timeline?.start,to=data?.timeline?.defaultEnd??data?.timeline?.end;
+    if(policy&&Number.isSafeInteger(from)&&Number.isSafeInteger(to)&&(defaultCursor>from||defaultCursor<to)){
+     const supplied=data?.timeline?.cursor;
+     defaultCursor=Number.isSafeInteger(supplied)&&supplied<=from&&supplied>=to?supplied:Math.max(to,Math.min(from,defaultCursor));
+    }
+
+   if (!policy) {
+    const rawCursor = data?.timeline?.cursor ?? (rawOrder.length ? Math.max(...data.states.map(s => s.start)) : 0);
+    return {
+     order: [...rawOrder],
+     coreIds: [...rawOrder],
+     cursor: rawCursor,
+     minorInfo: {}
+    };
+   }
+
+   let order;
+   let coreIds;
+   if (rawOrder.length > 0) {
+    const existing = new Set(rawOrder);
+    const matched = policy.order.filter(id => existing.has(id));
+    const rest = rawOrder.filter(id => !matched.includes(id));
+    order = [...matched, ...rest];
+    coreIds = policy.all ? [...order] : policy.coreIds.filter(id => existing.has(id));
+   } else {
+    order = []; // Empty projections must not gain invented polity IDs.
+    coreIds = [];
+   }
+
+   return {
+    order,
+    coreIds,
+    cursor: defaultCursor,
+    minorInfo: {...policy.minorInfo}
+   };
+  },
+  polityLabel(s,data){
+    const id=data?.datasetId||data?.timeline?.topic;
+    const names={zhou:{zhou:'周王室'},'xia-shang':{xia:'夏朝',shang:'商朝',zhou:'周'},'qin-han':{qin:'秦', 'western-han':'西汉',xin:'新','gengshi-han':'玄汉','eastern-han':'东汉'},'sui-tang':{sui:'隋朝',tang:'唐朝','wu-zhou':'武周'},'liao-jin-song':{'northern-song':'北宋','southern-song':'南宋',liao:'辽朝','jin-jurchen':'金朝','western-xia':'西夏'},ming:{ming:'明朝','southern-ming':'南明','later-jin-qing':'后金 / 清'},qing:{'later-jin-qing':'清朝',ming:'明朝','southern-ming':'南明'},yuan:{'mongol-yuan':'蒙元','southern-song':'南宋','jin-jurchen':'金朝',ming:'明朝'}};
+    return names[id]?.[s.id]||s.display?.shortName||s.name;
+   },
+   polityColor(s,data){
+    const id=data?.datasetId||data?.timeline?.topic;if(!Object.hasOwn(formalTopics,id||''))return s.color;
+    const core=this.topic(data).coreIds;if(!core.includes(s.id))return s.color;
+    const fixed={tang:'#C04851','wu-zhou':'#7a3028',ming:'#C04851','southern-ming':'#C04851','later-jin-qing':'#2C3E50','northern-song':'#355E68','southern-song':'#355E68','mongol-yuan':'#2C3E50'};
+    return fixed[s.id]||['#2C3E50','#C04851','#355E68','#A58444'][core.indexOf(s.id)%4];
+   },
+   rulerLabel(r){
+   if(r?.display?.label)return r.display.label;
+   return r?.display?[r.display.shortTitle,r.display.personalName].filter(Boolean).join(' '):r?.name;
+  },
   // Shapes, not colour alone, distinguish the five source categories. Unknown
   // categories stay unknown; this adapter never reclassifies a historical event.
   eventIcon(kind){

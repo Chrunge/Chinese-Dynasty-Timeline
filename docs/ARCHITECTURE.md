@@ -1,154 +1,131 @@
-# 解耦后的架构与维护边界
+# 当前架构与维护边界
 
-## 数据流
+## 总体结构
 
-```mermaid
+项目提供十一个独立静态专题，共享查询、呈现和输出程序。运行时无第三方依赖，完整 dist 目录可通过 file:// 打开；Playwright、axe-core 和 Lighthouse 只用于开发验收。
+
+~~~mermaid
 flowchart TB
-  A["data/*.json 十一专题原始资料"] --> Q["lib/production.mjs 技术适配与专题目录"]
-  Q --> B["lib/atlas.mjs 统一校验与资料投影"]
-  B --> C["dist/data*.js 各卷发布数据"]
-  A --> I["lib/corpus.mjs 跨卷ID及原始出处索引"]
-  I --> O["dist/corpus.json 不裁决字段差异"]
-  C --> H["core/history.js 历史查询"]
-  C --> S["core/search.js 搜索与稳定ID"]
-  U["core/state.js 对照条件、显示偏好、临时状态"] --> H
-  H --> M["comparison 对照内容快照"]
-  H --> W["ui/timeline.js 网页时间线 · 共享查询"]
-  W --> K["adapters/timeline-dom.js 按国家行复用DOM"]
-  M --> E["core/export-layout.js 分页与文字索引"]
-  M --> J["JSON 结构化导出"]
-  E --> P["outputs/canvas.js 图页绘制"]
-  P --> F["adapters/export-files.js PDF / ZIP 编码"]
-  H --> D["ui/*details.js 详情与同年对照"]
-  S --> D
-  N["core/navigation.js 返回路径"] --> D
-  R["core/reading.js 阅读记录校验、迁移、恢复"] <--> T["study.js 阅读控制器"]
-  T <--> U
-  T <--> L["adapters/storage.js 浏览器存储"]
-  U <--> V["share.js 链接同步与分享"]
-  V <--> X["core/view-link.js Hash编解码与浏览器历史"]
-```
+  subgraph authoring[维护资料]
+    A[十一专题原始 JSON]
+    B[传记总集 JSON]
+    C[页面模板、样式与手写代码]
+  end
+  subgraph build[确定性构建]
+    A --> P[production 技术适配]
+    P --> V[atlas 校验与领域投影]
+    V --> D[专题显示注解]
+    B --> G[biography-data 纯数据生成]
+    G --> GD[src/core/biography-data.js]
+    B --> BC[biography 构建期补充]
+    D --> BC
+    E[src/core/biography.js 手写算法] --> BC
+    BC --> R[本地、跨专题与未收录引用校验]
+    A --> I[corpus 原始出处索引]
+    B --> I
+    I --> L[entity-links 导航投影]
+    R --> L
+    R --> DATA[dist/data*.js]
+    R --> DIAG[biography-diagnostics.json]
+    I --> CORPUS[corpus.json]
+    L --> LINKS[entity-links.js]
+    C --> PACK[脚本、样式与静态页面构建]
+    GD --> PACK
+    E --> PACK
+    DATA --> PACK
+    PACK --> RELEASE[dist 页面、资源散列与 release.json]
+  end
+  subgraph runtime[浏览器运行]
+    DATA --> APP[app 创建服务与状态]
+    APP --> START[startup 连接界面与恢复顺序]
+    APP --> H[history 历史查询]
+    APP --> S[search 稳定 ID 搜索]
+    APP --> STATE[state 视图状态]
+    H --> T[时间线与同年看板]
+    S --> DETAIL[人物、事件和政权详情]
+    STATE --> T
+    ACT[PersonActivities 只读活动投影] --> T
+    ACT --> BIO[传记轨迹与人物定位]
+    E --> BIO
+    BIO --> T
+    T --> DOM[timeline-dom 按行复用 DOM]
+    DETAIL <--> NAV[navigation 返回栈]
+    START --> VIEW[view 统一视图采集与恢复]
+    STATE <--> VIEW
+    VIEW <--> READ[reading 与 study 阅读恢复]
+    READ <--> STORAGE[storage 本地存储]
+    VIEW <--> SHARE[share 与 view-link Hash]
+    LINKS --> DETAIL
+    H --> SNAPSHOT[comparison 独立内容快照]
+    SNAPSHOT --> JSON[JSON 导出]
+    SNAPSHOT --> LAYOUT[export-layout 分页与索引]
+    LAYOUT --> CANVAS[canvas 图页]
+    CANVAS --> FILES[export-files PDF 与 ZIP]
+  end
+~~~
 
-`src/app.js` 创建服务和共享状态，`src/startup.js` 在页面模块加载完成后连接视图适配、渲染回调和初始视图。`src/ui/` 负责页面呈现与交互；阅读与分享注册各自的保存回调，时间线通过明确的页面回调通知变化。历史查询、搜索、组合校验、视图字段、阅读校验与输出编码均可在没有 DOM 的环境中单独使用。
+## 文件与职责
 
-## 源码与成果
-
-- [周朝资料](<../data/atlas.json>)：周朝正文、关系、来源与纪年；其他十个专题从各自原件构建，不写入周朝库。
-- [生产专题目录](<../lib/production.mjs>)：统一登记十一个专题、标题、入口及数据资源；共用单一HTML模板，构建自动生成导航。
-- [四卷技术适配](<../lib/production-annotations.mjs>)：归一化不支持的类别，保留原值、全部注释及明朝重复逻辑边的原始出处，不修改源文件或放宽校验。
-- [跨卷出处索引](<../lib/corpus.mjs>)：按实体类型和稳定ID连接各卷原始JSON位置、源文件及记录散列，字段不同只列差异；不按姓名合并、不给任何卷覆盖优先级。[发布索引](<../dist/corpus.json>)与数据脚本一起纳入发布清单。
-- `lib/atlas.mjs`：schema 1/2资料校验与投影，保持纯函数；时期／政权／人物／任期独立集合，输出旧 `states/rulers` 兼容接口。
-- `lib/time.mjs`：构建期明确纪元日期与运行时坐标转换；`src/core/time.js`：浏览器时间计算与持久化边界。
-- `data/examples/`：独立结构样例，不自动合入周朝发布资料。
-- `src/core/`：查询、搜索、状态、导航、阅读校验、输出分页。
-- `src/ui/`：网页时间线、搜索详情、导航详情、页面控件。
-- `src/ui/view.js`：通过注入的状态、控件与浏览器接口采集和恢复完整视图；导航、阅读与分享共用该入口。
-- `src/startup.js`：创建视图适配，连接附属面板和页面生命周期，初始化页面及可选浏览器工具。
-- `src/outputs/`：独立图页绘制，只依赖画布与排版计划。
-- `src/adapters/`：时间线DOM协调、浏览器存储和文件编码。
-- `src/study.js`：通过显式 bridge 连接阅读控制器与页面。
-- `src/export.js`：导出对话框与下载流程，将当前条件传给内容模型。
-- `src/index.html`、`src/style.css`：页面模板与样式。
-- `dist/`：完整生成物。不要直接修改；可删除后重建、独立复制部署或直接打开 HTML。
-
-采用零第三方**运行时**依赖的确定性拼接构建，保留传统脚本以兼容 `file://`。模块工厂通过 `Zhou` 命名空间提供接口，核心模块不读取页面全局状态；无需引入前端框架或本地服务器。Playwright仅为开发验收依赖，不参与构建、不打入发布文件。
-
-## P0 界面与触控边界
-
-- [模板](<../src/index.html>) 的一级工具栏分为搜索、时间（年份与缩放）、政权与视图入口、导出／分享四个模块；专题切换条独立于工具栏。原有控件和ID保留，视图设置面板默认折叠，功能未删除。
-- [界面体验](<../src/ui/experience.js>) 管理三步非模态引导、键盘操作、专题标签居中与前后入口。独立全站偏好键 `zhou-ui-v1` 只写 `{advanced,onboardingVersion}`，不进入分享、研究组合或阅读视图；旧键及各专题隔离规则不变。存储拒绝时本次操作仍可用，并提示无法保存。
-- [手势模块](<../src/ui/gestures.js>) 由视口、画布、缩放／参考线回调注入，接管鼠标背景拖动、触屏惯性与双指中心缩放；rAF合帧，取消、失焦、新指针会终止旧惯性。缩放仍限0.8—24px／年，不修改历史日期。
-- 普通控件最低44×44px；[界面样式](<../src/ui/experience.css>) 保留细线和小年份徽标，金色参考线手柄有独立44px透明热区。密集君主／事件／分段／侧栏按钮不扩大视觉条带：手势模块收集虚拟44px候选，重叠时提供可键盘选择／Esc取消的列表，最终调用原按钮，避免邻项互相覆盖。
-- [详情抽屉](<../src/ui/detail-sheet.js>) 仍使用原生模态dialog，768px以下三档35／60／90dvh；独立手柄拖动或键盘／按钮换档、下拉关闭。保留原dialog滚动容器、详情导航、焦点和阅读记录；关闭回调经过既有 `closeDetail`，Esc仍逐级返回。桌面不替换详情布局。
-- [构建入口](<../build.mjs>) 显式排序加载新工厂，并拼接基础样式及构建入口显式列出的局部样式清单；所有十一页共用同一模板和应用。不改资料、显示分组／短标签、历史查询、导出或Hash字段契约。
-
-真实离线响应式检查由 [Playwright脚本](<../tests/browser-p0.mjs>) 覆盖十一专题×375／390／768／1200／1440px，额外检查真实双指、惯性、参考线、多候选、底部抽屉、键盘引导、刷新及拒绝存储。实际验收记录与限制见 [P0交付说明](<P0-INTERFACE.md>)。
-
-## P1 语义与可访问性边界
-
-- [展示模型](<../src/core/presentation.js>) 增加类别图标、原标题前缀和原关系的可见行连线；[时间线](<../src/ui/timeline.js>) 消费测宽布局，不改变历史 ID、日期、18px事件／22px车道或接续分组身份。未定年胶囊不生成伪任期。
-- [纯横截面模型](<../src/core/time-slice.js>) 重用历史服务，独立于当前可见勾选和视觉组，列全专题存续政权；年次只据显式元年，人物只据明确当年活动。[看板](<../src/ui/time-slice.js>) 是非模态region，使用原稳定详情键，不新增持久化／Hash字段。
-- [纪年详情](<../src/ui/navigation-details.js>) 将采用区间和原异说分卡对照，保留来源、原文及未定年原序。仍使用原dialog及scrollTop阅读恢复，不解析文字猜测新年份。
-- [可访问性工厂](<../src/ui/accessibility.js>) 负责已渲染前景对比、焦点边界和合并播报；减少动态效果时禁用惯性。普通可交互按钮、图元虚拟命中和原生模态语义仍按P0契约运行。axe/Lighthouse只为开发工具，构建与发布页面无运行时依赖。
-
-验收范围、命令与自动审计限制见 [P1说明](<P1-SEMANTICS.md>)。该阶段的展示渲染不改史料或此前两份显示契约；构建与发布只由人工执行。
-
-## 阶段三：构建期呈现与分享边界
-
-- [构建期呈现](<../lib/site-presentation.mjs>) 只消费编译投影，生成十一套独立SEO元信息、无脚本完整年表与SVG社交图，不重写史料。[可选PNG工具](<../tools/render-social-previews.mjs>) 只暂存图片；[构建入口](<../build.mjs>) 检查SVG／PNG散列及尺寸后统一发布元信息、图片与清单。普通构建仍零依赖。
-- [分享摘要](<../src/core/share-summary.js>) 是人读文本，不替代或扩充原Hash协议；[纠错纯函数](<../src/core/correction.js>) 使用固定仓库和专题白名单，原始实体ID不加显示分组前缀，不提交请求。
-- [导出控制器](<../src/export.js>) 在原对照快照之外添加透明的exportContext，不裁剪完整命中记录，不把对照快照宣称为可重新导入的Atlas资料。图片PDF编码与旧详情导航保持不变。
-
-流程、PNG开关、反馈表单及本地验收见 [阶段三说明](<STAGE3-PUBLICATION.md>)。构建期生成不引入运行时依赖或主题桥接；发布只由人工执行。
-
-## 查询与纪年口径
-
-`Zhou.createHistory(data)` 返回历史查询服务：
-
-| 接口 | 含义 |
+| 位置 | 当前职责 |
 |---|---|
-| `state(id)` / `event(id)` / `person(id)` | 按稳定ID查找，保留旧入口 |
-| `polity(id)` / `tenure(id)` / `period(id)` | 按独立实体ID查找 |
-| `tenuresForPerson(personId)` / `periodsInRange(from,to)` | 同一人物任期／相交专题查询 |
-| `rulersAt(stateOrId, year)` | 实际即位与条带起点取较早者，考虑国家范围和中断 |
-| `compareYear(year, stateIds)` | 返回国家、当年君主、事件和中断说明 |
-| `rulersInRange(stateOrId, from, to)` | 采用年表条带与指定范围的交集 |
-| `eventsInRange(options)` | 按时间范围、国家和事件类别查询 |
-| `comparison(options)` | 生成可序列化、与原始资料分离的对照快照 |
+| [生产目录](../lib/production.mjs) | 登记专题、原件和入口，连接技术适配、编译与显示注解 |
+| [资料编译](../lib/atlas.mjs)、[时间转换](../lib/time.mjs) | 纯校验与领域投影，不读写文件或修改作者输入 |
+| [传记数据](../lib/biography-data.mjs)、[生成工具](../tools/build-biography-core.mjs) | 只生成纯数据；手写轨迹和筛选算法不被生成器覆盖 |
+| [传记编译](../lib/biography.mjs) | 发布前补充资料，校验引用作用域，生成诊断；页面启动不再补入人物 |
+| [出处索引](../lib/corpus.mjs) | 保留原件及传记的文件、JSON 路径和散列，列出字段差异，不裁决史实 |
+| [实体导航](../lib/entity-links.mjs) | 据明确稳定 ID 生成本地专题链接，不按姓名合并 |
+| src/core/ | 历史查询、搜索、状态、活动投影、阅读、链接、展示与输出布局 |
+| src/ui/ | 时间线、详情、人物画廊、工具栏、触控、可访问性和主题 |
+| [app](../src/app.js)、[startup](../src/startup.js) | 创建服务、注入界面依赖、连接页面生命周期 |
+| src/adapters/、src/outputs/ | DOM 协调、浏览器存储、文件编码与画布绘制 |
+| [构建入口](../build.mjs) | 统一生成和检查 dist，维护资源版本与发布清单 |
 
-`options` 包含 `from`、`to`、`states`、`category`、`cursor`。运行时年份为 `bce-axis` 安全整数，`from >= to`：BCE y → y，CE y → 1-y，未知为null；0合法且表示公元1年。时间线边界来自资料 `timeline`，无配置的旧资料由国家日期推导，不回退到周朝常量。显示、导出、持久化和链接共用 `Zhou.Time`。
+## 资料与引用
 
-条带采用年表范围；同年查询纳入已核实实际即位年。两种口径有意分开：晋悼公前573年实际即位，但条带从前572年开始。页面对照、事件联动与浏览器工具共用同年查询。网页和导出共用区间查询口径；网页按需读取并缓存显示内容，导出使用独立快照。显示密度、分页、文字测量分别由呈现模块处理。
+专题原件、Schema 和技术适配以[资料约定](../data/README.md)为准。传记先与专题投影组合，再进入统计、导航和发布；发布人数包含传记补充。出处索引的专题 counts 表示原件数量，supplements 表示补充出处；同一专题的多个出处不计为跨专题共享。
 
-快照保留 `schemaVersion:1` 及既有字段，增补 `timeEncoding:'bce-axis'`、`timeline`、`polities/tenures/people/periods`。包含资料 `version/updated`、查询条件、纪年口径、国家顺序、区间内君主和事件、国家名称字典与来源。事件涉及的其他国家关系不会因为导出只选一个国家而丢失。修改输出快照不会修改资料或其他输出。
+传记事件和政权默认引用当前专题。明确的 eventDatasetId／polityDatasetId 指定跨专题目标，构建必须验证目标实体存在。未单列事件用 eventReference.status=unindexed、originalId 和 reason 保留说明，同时不生成 eventId。未声明或无效的引用会中止构建；已确认的跨专题及未收录状态分别列于 [诊断资源](../dist/biography-diagnostics.json)。引用关联不令章节继承复合事件的锚点年份。
 
-## 状态与旧记录
+PersonActivities 为章节、阶段活动和 journey 提供只读投影：同年看板读取全部明确记年的记录，轨迹和定位按阶段、章节、原活动选择叙事来源。只通过显式 ID、事件或对应章节合并重复项，全部原记录和来源保留于 provenance；不同日期、政权或仅文案相同的活动不合并。未知日期不变成公元元年，不据生卒和分散事迹推断连续活动。
 
-`appState` 分为 `conditions`（国家、结束年、类别、参考年）、`layout`（缩放、行高、顺序、固定等）、`search`、`session`。导航路径由独立 `navigation` 实例维护，浏览器适配保留临时详情 HTML/焦点以精确返回，但不将其写入存储。
+时间编码、实体和旧格式见[时间与领域模型](TIME-DOMAIN-MIGRATION.md)。运行时采用 bce-axis：前1年为1、公元1年为0、公元2年为-1，未知为 null。时期、政权、人物和任期相互独立；后凉／后梁、武周／吴周的 ID 碰撞按专题隔离。
 
-`core/state.js` 定义共享视图字段的采集和应用规则，以及布局快照入口。`ui/view.js` 补充滚动位置、页面坐标、时代按钮并同步控件；`openDetailKey` 为阅读和分享提供统一详情分派。原有页面全局函数作为兼容入口继续保留，状态字段和存储格式保持既有口径。
+## 查询与呈现
 
-阅读控制器只通过 bridge 读取或更新页面；存储适配只负责 JSON 读写。校验和旧记录迁移由阅读模型处理。周朝已有 `zhou-layout-v2`、`zhou-pins-v3`、`zhou-comparisons-v3`、`zhou-reading-v4`、`zhou-visits-v4` 键继续使用；其余专题由存储适配附加专题前缀隔离，分享与组合附datasetId并拒绝跨卷误读。新视图、阅读记录与组合显式带 `timeEncoding:'bce-axis'`；无标记旧记录只把正整数解释为BCE，旧0／负数不会误迁移成CE。
+history 提供 state／event／person、polity／tenure／period、rulersAt／compareYear、区间查询和 comparison。条带采用年表范围，同年查询考虑已明确的实际即位与中断；不把在位者推为事件参与者。快照与输入、其他输出深度分离。
 
-`core/combinations.js` 独立校验组合，不读取页面或存储。组合导入和本地组合恢复只接受已知国家的字符串ID，忽略未知或错误类型的国家与顺序项；没有有效国家的组合不予保存。`app.js` 创建组合模型后加载本地组合，控件层负责交互和存储提示。
+呈现分组只改变视觉行，不改变实体身份、日期或关系。接续、重叠、短标签与默认集合分别由[呈现契约](PRESENTATION-CONTRACT.md)、[四专题注解](DYNASTY-DISPLAY.md)、[扩展注解](EXPANSION-DISPLAY.md)定义。闭区间事件沿用真实起讫；短祚微槽仅分配像素，不编造年内日期或继承关系。
 
-新人物路由使用 `person:person-xxx`。旧 `person:姓名` 在名称或别称唯一时迁移到稳定ID；同名不猜测匹配。改名时若还需迁移从未打开过的旧姓名记录，应将旧名保留为别称。损坏 JSON、非法字段或不可用存储不应阻止页面启动。
+时间轴、国家行和参考线为独立节点。timeline-dom 按稳定行键复用、移动或替换节点；参考年与搜索分页不进入历史条带缓存键，缩放改变坐标时允许重建相关行。
 
-未定位君主路由使用 `undated:ID`，旧序号路由通过资料中的固定 `legacyKeys` 迁移。搜索目标、阅读记录和Hash详情共享同一规范化入口，不按当前列表顺序解释旧序号。
+## 页面交互
 
-## 渲染与分享
+工具栏分为搜索、年份与缩放、人物／政权／设置、导出与分享；专题导航独立。年份胶囊支持前后年和输入定位，窄屏编辑区在正常布局中展开，关闭后释放空间。人物画廊通过姓名打开详情、轨迹和高亮，分类与清除操作保留其他视图条件。
 
-秦汉／三国原有[显示契约](<PRESENTATION-CONTRACT.md>)扩展至[魏晋、隋唐、辽金宋、明朝](<DYNASTY-DISPLAY.md>)：投影附加 display 与 presentation.rowGroups；[呈现核心](<../src/core/presentation.js>)负责短标签、视觉分组及保真重叠分层，不改领域身份或日期。所有接续视觉行使用组键，分享／阅读／查询／导出继续使用政权和任期 ID。分支并存、武周与唐重叠、南明诸任期同时存在均不被合并或裁剪；长政权名称在侧栏单行省略，完整名称由提示、无障碍标签及详情保留。
+普通控件保留44px命中目标；密集图元采用虚拟命中和候选列表，不放大史料条带。手势支持单指惯性、双指中心缩放、取消与失焦终止；减少动态效果时关闭惯性。768px 以下详情采用35／60／90%底部抽屉，保持原生 dialog 与返回栈。
 
-时间线使用独立的时间轴、国家行和参考线节点。`adapters/timeline-dom.js` 按稳定国家ID协调节点：内容不变时保留，顺序变化时移动，内容变化时仅替换对应行。行内容缓存不包含参考年或搜索结果分页，因此这两类变化不会重新生成历史条带；同年对照仍独立更新。缩放会改变坐标，允许替换相关行。
+同年看板为非模态区域，读取专题全部存续政权，不受当前勾选或视觉行组限制。只有本专题内、明确记年且在时间范围内的传记章节可以联动左图；专题外背景保留阅读内容，不把外部政权加入本地选择。
 
-`core/view-link.js` 负责版本化Hash编解码、字段校验及浏览器历史同步，`share.js` 负责页面适配和复制链接。其脚本在 `study.js` 之后加载，确保恢复顺序为默认值、本地阅读记录、链接显式条件。
+主题为随系统、宣纸、玄青，单独持久化。Alt+Y 聚焦参考线，方向键逐年、Shift+方向键十年、Home／End 到边界；Alt+E 打开导出。搜索支持上下选择与 Enter；Esc 按当前面板边界收起或返回。
 
-纯BCE链接继续生成原有 `v=1` 格式，已有固定Hash可原样恢复。任一时间字段包含0或负坐标时生成 `v=2&time=bce-axis`；未知版本／时间编码拒绝恢复，不猜测解释。链接包含 `year`、`end`、`states`、`pinned`、`order`、`zoom`、`from/to/width`、`category`、`mode`、`density`、搜索字段以及可选的稳定详情ID。不同宽度的屏幕根据分享的可见范围调整缩放。临时详情HTML、浏览记录和来源正文不会写入URL。
+## 状态、阅读与分享
 
-连续操作在200毫秒防抖后通过 `replaceState` 更新当前历史项。手动Hash导航及前进后退会恢复相应条件，恢复过程中抑制反向写回。没有Hash时不改变本地恢复的滚动位置。文件模式仍支持Hash，但文件路径只能用于能够访问该文件的设备；跨设备分享应使用线上地址。
+state 分为 conditions、layout、search、session；navigation 独立保存返回路径。view 统一采集和恢复控件、滚动与详情入口。恢复顺序为默认视图、本地阅读、显式 Hash；恢复时抑制反向写回。
 
-CI和Pages的触发、权限及配置见 [部署说明](DEPLOYMENT.md)。
+周朝保留 zhou-layout-v2、zhou-pins-v3、zhou-comparisons-v3、zhou-reading-v4、zhou-visits-v4；其他专题附加命名空间。全站界面与主题偏好分别使用 zhou-ui-v1 和 zhou-theme-v1。不可用存储、损坏 JSON 或非法字段不阻止页面启动。
 
-## 构建与检查
+阅读横向偏移按专题起点、结束年和缩放校验；同宽保留合法像素位置，跨宽根据已保存范围重算。旧姓名路由只在名称或别称唯一时迁移到稳定 ID；未定位君主通过固定 legacyKeys 迁移，不按当前数组下标解释旧链接。
 
-构建入口、检查命令和受限Windows环境用法见 [维护与检查](../README.md#维护与检查)。`--check` 同时校验资料及所有发布文件是否与源码一致，不写入文件。
+纯 BCE 分享沿用 v1，包含0或负坐标时使用 v2 和 bce-axis 标记。Hash 保存参考年、范围、筛选、固定、顺序、缩放、显示、搜索和可选稳定详情 ID；不写临时 HTML、历史记录或来源正文。连续操作200ms防抖后 replaceState，手动 Hash 和前进后退恢复视图。分享摘要不扩充协议；离线文件链接只适用于可访问该路径的设备。
 
-测试包括原有内容/交互回归，以及无DOM的核心模块、同名人物、旧记录迁移、损坏存储、输出隔离、PDF/ZIP结构、JSON导出和浏览器工具一致性。DOM桩测试不能代替真实排版、鼠标触摸操作和打印验收。
+## 静态呈现与导出
 
-## 能力边界
+构建生成专题 SEO、无脚本完整年表、SVG 预览图与可选 PNG；十一页共用模板和应用，引用资源带内容散列。反馈入口只预填上下文，用户核对后自行提交。
 
-页面提供结构化JSON及图页导出。PDF为图片页面，文字不可选中。阅读位置与组合保存在本地浏览器；分享链接和组合文件可用于跨设备传递条件，没有后端或自动跨设备同步。
+JSON 是带时间编码和来源的对照快照，不是可重新导入的 Atlas 文件。图页由 export-layout、canvas、export-files 分层生成，保留完整命中记录与来源，跨页区间显示续接；PDF 为图片页面，文字不可选中。布局和编码不修改查询快照。
 
-图页文字索引收集君主基础年表、纪年节点、纪年说明及君主/事件异说引用；异说保留标签、年份和解释。来源按URL去重并通过编号对应正文，长文本继续分页。图页布局仅读取对照快照，不改变JSON导出的资料内容。
+## 构建、验证与部署
 
-网页支持直接打开发布目录中的HTML。离线打开、窄屏触控和打印效果须分别验收。浏览器定时器绑定到全局后注入阅读与分享控制器。
+常规构建与 Node 测试不需要第三方依赖；传记原件变更后先运行数据生成工具。命令与浏览器检查范围见 [README](../README.md#维护与检查)。Node 的轻量 DOM 只验证模型和状态，真实入口、排版、触控和打印须使用对应验收方式。
 
-`build.mjs` 为发布HTML引用的脚本与样式添加内容散列参数。数据与代码仍是独立文件；相同源码生成相同发布入口，更新资源则生成新的版本参数，以保持缓存中的资源与页面一致。
-
-## 阶段四的增量边界
-
-- 事件只新增可选 `endYear`；缺省保留原单点投影，不补造日期。作者端两种Schema各沿用原纪年类型，编译后统一到 `bce-axis`。浏览器 [Time](<../src/core/time.js>) 的 `eventRange` 为历史查询、同年看板和导出提供闭区间口径；活动仍只继承事件起点，不因此扩大人物活跃区间。
-- [构建期实体链接](<../lib/entity-links.mjs>) 从出处索引生成独立导航资源；[浏览器核心适配](<../src/core/entity-links.js>) 不读DOM或存储，不跨卷合并史料。只有安全的同类型稳定ID可生成本地深链接，已知异实体碰撞继续排除；链接沿用原v1/v2恢复契约。
-- [呈现模型](<../src/core/presentation.js>) 的 `tenureSlots` 只处理像素微槽，原 inclusive `pack`、史料数组和真实年份不变。短槽引线指向真实年代锚点，展示次序不冒充年内已证先后；独立 [提示适配器](<../src/ui/tenure-tooltip.js>) 管理悬停与键盘描述。
-- 说明、兼容策略及本地验收结果见 [阶段四说明](<STAGE4-ENTITIES.md>)。区间事件等阶段四功能不修改正式史料；构建与发布只由人工执行。
+默认 CI 检查已提交产物、运行 Node 测试、构建，再运行 Chromium 的人物入口回归。通过后上传 dist；只有 master 推送或 master 手动运行部署 Pages。工作流、权限与可选 PNG 见[部署说明](DEPLOYMENT.md)。操作、旧方案与历次验收记录只保存在[历史文档](HISTORY.md)。

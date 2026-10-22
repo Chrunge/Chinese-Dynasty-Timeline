@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const sources=['src/core/time.js','src/core/history.js','src/core/time-slice.js','src/ui/time-slice.js'];
+const sources=['src/core/time.js','src/core/person-activities.js','src/core/history.js','src/core/time-slice.js','src/ui/time-slice.js'];
 const text=name=>fs.readFileSync(path.join(__dirname,'..',name),'utf8');
 function services(){const ctx=vm.createContext({});for(const name of sources)vm.runInContext(text(name),ctx);return ctx.Zhou;}
 const Z=services(),plain=value=>JSON.parse(JSON.stringify(value));
@@ -49,7 +49,7 @@ test('年次只据显式regnalStart：跨公元无0年，元年前不冒充元�
  assert.deepEqual(plain(unknown),{status:'unknown',number:null,label:'元年未详'});
  assert.equal(model.at(-1).states[0].rulers[0].regnal.number,3);
 });
-test('当年事件去重，人物只列journey.year精确活动，不从生卒/分散事迹推断活跃',()=>{
+test('当年事件去重，人物只列明确年份活动，不从生卒/分散事迹推断活跃',()=>{
  const {model}=setup(),slice=model.at(0);
  assert.deepEqual(plain(slice.events.map(event=>event.id)),['e0']);
  assert.deepEqual(plain(slice.people.map(row=>row.person.id)),['p0']);

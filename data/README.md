@@ -1,8 +1,8 @@
 # 资料模型与维护约定
 
-[atlas.json](<./atlas.json>) 是周朝生产资料的唯一维护入口。正式秦汉与三国分别维护在 [qin-han.json](<./qin-han.json>) 和 [three-kingdoms.json](<./three-kingdoms.json>)；[入库说明](<../docs/FORMAL-DATA-IMPORT.md>) 记录其原文件散列和显式结构注释。新增[魏晋南北朝](<./wei-jin-nan-bei.json>)、[隋唐](<./sui-tang.json>)、[辽金宋](<./liao-jin-song.json>)、[明朝](<./ming.json>) 也均参与默认构建，原件字节不改；类别适配、全部偏差及限制见[四卷入库记录](<../docs/DYNASTY-INTAKE.md>)。十一卷原始ID的出处、内容散列与字段差异由[出处索引](<../dist/corpus.json>)登记，不按姓名合并，不用一卷覆盖另一卷。“唯一”指编辑入口，不指只采用一种史料；不同原典、年表和异说分别列出。周朝资料包含18行国家与王室、465个君主区间、80项未定位君主、116位独立人物、105条事件、62段活动及62项来源。[examples](./examples/README.md) 是独立 schema 2 结构演示，不是第二份生产资料，也不参与默认构建。
+十一个专题原件各自维护，入口由[生产目录](../lib/production.mjs)登记。周朝为 [atlas.json](atlas.json)，其他专题使用同名 JSON；[传记总集](中国历代非君主人物传记全书.json)为人物补充来源。构建将补充后的资料用于页面、统计和导航，并以[出处索引](../dist/corpus.json)保留所有原始位置、文件与散列；不同说明不互相覆盖，不按姓名合并。结构样例位于 [examples](examples/README.md)，不参与生产构建。
 
-夏商、五代十国、元、清新增原件分别维护在[夏商](<./xia-shang.json>)、[五代十国](<./five-dynasties.json>)、[元朝](<./yuan.json>)、[清朝](<./qing.json>)。原件不改；[入库记录](<../docs/EXPANSION-INTAKE.md>)列明全部技术投影、原字节散列及待考限制。夏商18条异说不足的纪年仅按legacy继承，不补造第二观点；`sourceDating`保留原标注。后凉／后梁与武周／吴周复用了ID但不是同一政权，出处索引明确以dataset作用域分开，不能仅按ID全局去重；原件的校核标签不代表本次联网验证。
+原件里的校核标签属于作者声明，结构检查不等于逐条史实认证。夏商18条争议纪年缺少独立异说，技术投影按 legacy 继承并保留 sourceDating，不补造观点。后凉／后梁、武周／吴周复用的 ID 必须按专题隔离。
 
 ## 集合与关系
 
@@ -107,3 +107,21 @@ schema 1 规范化严格保持 `states -> polities`、`rulers -> tenures` 的原
 - 实际即位与条带起点可以不同。人物活动、事件国家及参与者独立维护；未收录节点不等于历史不存在。
 
 结构校验不能代替史实校勘。早期推定纪年、若干君主起讫与结局及未收录的生涯节点仍需逐条查证，正文中的手写年份也须核对。已有校核过程及证据取舍存于[操作历史](../docs/HISTORY.md)。
+
+## 专题适配
+
+[生产准备](../lib/production.mjs)先深复制原件，调用专题适配，再执行基础校验和编译。未知类别、其他重复边、非法日期或未登记的证据变化仍会失败。
+
+| 模块 | 当前边界 |
+|---|---|
+| production-annotations | 魏晋、隋唐、辽金宋、明的明确枚举归一化，保留 sourceKind／sourceStructure 与 importNotes；明的重复事件政权边保留原 sourceEdges |
+| expansion-annotations | 夏商、五代、元、清的明确类别适配；十组复合边保留全部 sourceEdges；夏商单个重复 URL 以 sourceUrl 留原值，技术 fragment 不声称原典锚点有效；契的身份仅为 contextual |
+| 显示注解 | 编译后按明确 ID 添加短标签、视觉行，不更改历史身份与日期；详见 docs 中三份呈现契约 |
+
+夏商十八条 dating 适配由完整原证据守卫，sourceDating 保留原标注；采用值的复述不算独立异说。复合事件的 yearFromEvent 活动只继承单锚点，不代表所有子阶段发生于该年。原始全局关系顺序由作者 JSON 保全，不能把技术数组顺序解释为历史先后。原件字节散列、入库过程与差异审计见 [HISTORY](../docs/HISTORY.md)。
+
+## 传记维护与引用
+
+总集变更后运行 node tools/build-biography-core.mjs，再运行统一构建；生成器只写 src/core/biography-data.js，不覆盖手写算法。发布统计包含传记补充，原件自身数量仍单独记录。
+
+章节事件／政权默认属于本专题。跨专题引用明确给出 eventDatasetId／polityDatasetId，并须在目标专题存在。未单列事件使用 eventId:null 与 eventReference:{status:"unindexed",originalId,reason}，保留叙述但不伪造关系；错误或未声明的引用会阻止构建。章节日期不因主题关联自动替换为复合事件锚点。引用状态可查 [诊断文件](../dist/biography-diagnostics.json)。

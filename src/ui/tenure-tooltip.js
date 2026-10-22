@@ -23,7 +23,7 @@
   listen(chart,'focusout',event=>{if(slot(event.target)&&!slot(event.relatedTarget))close();});
   listen(doc,'pointerdown',close,true);listen(doc,'keydown',event=>{if(event.key==='Escape')close();});listen(view,'resize',close);// Native focus scrolls after focusin: retain and reposition the keyboard
   // description instead of immediately removing its aria-describedby target.
-  listen(doc,'scroll',()=>{if(target&&doc.activeElement===target)position();else close();},true);
+  listen(doc,'scroll',()=>{if(target&&(doc.activeElement===target||target.matches?.(':hover')))position();else close();},true);
   return {destroy(){close();listeners.forEach(remove=>remove());}};
  };
  if(typeof document!=='undefined')Zhou.createTenureTooltip(document.querySelector('#chart'));
