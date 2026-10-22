@@ -10,12 +10,12 @@ const executablePath=process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
 const browser=await chromium.launch({headless:true,...(executablePath?{executablePath}:existsSync(chromium.executablePath())?{}:{channel:'chrome'})});
 const results=[],layoutChecks=[];
 
-async function checkGroupLabels(page,topic,width){
+async function checkGroupLabels(page,topic,width,scenario='default'){
  const problems=await page.locator('.groupedRow .stateLabel').evaluateAll(labels=>{
   const issues=[];
   for(const label of labels){
    const outer=label.getBoundingClientRect(),title=label.querySelector('.rowGroupTitle'),members=[...label.querySelectorAll('.memberLabel')];
-   if(title.scrollHeight>title.clientHeight+1)issues.push('clipped title: '+title.textContent);
+   if(title.scrollHeight>title.clientHeight+1||title.getBoundingClientRect().top<outer.top-1)issues.push('clipped title: '+title.textContent);
    let bottom=title.getBoundingClientRect().bottom;
    for(const member of members){
     const rect=member.getBoundingClientRect(),name=member.querySelector('.stateName').getBoundingClientRect(),dates=member.querySelector('.memberDates').getBoundingClientRect();
@@ -27,7 +27,7 @@ async function checkGroupLabels(page,topic,width){
   return issues;
  });
  assert.deepEqual(problems,[],topic+'/'+width+' group labels');
- layoutChecks.push({topic,width,status:'pass'});
+ layoutChecks.push({topic,width,scenario,status:'pass'});
 }
 try{
  for(const width of [390,1200])for(const topic of catalog){
@@ -74,6 +74,8 @@ try{
    assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
    await page.locator('#themeMode').selectOption('light');await page.reload();await page.locator('.stateRow').first().waitFor();
    assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
+   await page.locator('#filter').click();await page.locator('#allStates').click();await page.locator('#applyFilters').click();
+   await checkGroupLabels(page,topic.id,width,'all');
    assert.deepEqual(errors,[]);assert.deepEqual(remoteRequests,[]);
    results.push({topic:topic.id,width,status:'pass',people:allCount,core});
    console.log('PASS figures',topic.id,width,'gallery -> person -> detail, clear/category, Escape, theme');
