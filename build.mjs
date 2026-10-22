@@ -1,6 +1,5 @@
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {renderBiographyData} from './lib/biography-data.mjs';
 import {createBiographyCompiler,biographySource} from './lib/biography.mjs';
 import {catalog,compileProduction} from './lib/production.mjs';
 import {buildCorpus} from './lib/corpus.mjs';
@@ -10,7 +9,6 @@ import {resolve,join} from 'node:path';
 import {runInNewContext,Script} from 'node:vm';
 
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
-if(read('./src/core/biography-data.js')!==renderBiographyData(JSON.parse(read('./data/中国历代非君主人物传记全书.json'))))throw new Error('传记数据已过期，请运行 node tools/build-biography-core.mjs');
 const hash = content => createHash('sha256').update(content).digest('hex');
 const brandingContext={};runInNewContext(read('./src/core/branding.js'),brandingContext);
 const branding=brandingContext.Zhou.Branding;
@@ -18,7 +16,7 @@ const escapeBrand=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','
 const textSlot=(html,id,value)=>html.replace(new RegExp('(<[^>]+\\bid="'+id+'"[^>]*>)[\\s\\S]*?(</[^>]+>)'),(_,a,b)=>a+escapeBrand(value)+b);
 const displayData=(data,id)=>({...data,title:branding.resolve(data,id).title});
 const bundles = {
-  'app.js': ['src/core/time.js', 'src/core/person-activities.js', 'src/core/branding.js', 'src/core/figures.js', 'src/core/correction.js', 'src/core/presentation.js', 'src/core/biography-data.js', 'src/core/biography.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/core/entity-links.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/experience.js', 'src/ui/accessibility.js', 'src/core/time-slice.js', 'src/ui/time-slice.js', 'src/ui/gestures.js', 'src/ui/tenure-tooltip.js', 'src/ui/detail-sheet.js', 'src/ui/view.js', 'src/ui/figures.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/ui/topbar.js', 'src/startup.js'],
+  'app.js': ['src/core/time.js', 'src/core/person-activities.js', 'src/core/branding.js', 'src/core/figures.js', 'src/core/correction.js', 'src/core/presentation.js', 'src/core/biography.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/core/entity-links.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/experience.js', 'src/ui/accessibility.js', 'src/core/time-slice.js', 'src/ui/time-slice.js', 'src/ui/gestures.js', 'src/ui/tenure-tooltip.js', 'src/ui/detail-sheet.js', 'src/ui/view.js', 'src/ui/figures.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/ui/topbar.js', 'src/startup.js'],
   'study.js': ['src/study.js'],
   'share.js': ['src/core/share-summary.js', 'src/share.js'],
   'export.js': ['src/core/export-layout.js', 'src/outputs/canvas.js', 'src/adapters/export-files.js', 'src/export.js']
@@ -59,9 +57,10 @@ for (const [name, paths] of Object.entries(bundles)) {
 }
 outputs.set('style.css', ['src/style.css','src/ui/experience.css','src/ui/gestures.css','src/ui/detail-sheet.css','src/ui/event-semantics.css','src/ui/time-slice.css','src/ui/chronology.css','src/ui/accessibility.css','src/ui/publication.css','src/ui/stage4.css','src/ui/biography.css','src/ui/figures.css','src/ui/study-room.css'].map(path=>read('./'+path)).join('\n'));
 // Every page and its assets use one deterministic release; file:// remains usable.
-for(const topic of datasets){
+for(const dataset of datasets){
+  const topic={...dataset,name:branding.topicName(dataset)};
   let template=read('./src/index.html').replace('src="data.js"',`src="${topic.asset}"`);
-  template=template.replace('<!-- topic-navigation -->','<nav class="topicNav" aria-label="历史时期">'+catalog.map(t=>`<a href="${t.page}" data-topic="${t.id}">${t.name}</a>`).join('')+'<span>同一资料库 · 各时期独立阅读与导出</span></nav>');
+  template=template.replace('<!-- topic-navigation -->','<nav class="topicNav" aria-label="历史时期">'+catalog.map(t=>`<a href="${t.page}" data-topic="${t.id}">${escapeBrand(branding.topicName(t))}</a>`).join('')+'<span>同一资料库 · 各时期独立阅读与导出</span></nav>');
   template=applyTopicTemplate(template,topic,displayData(projections.get(topic.id),topic.id),pngDir?'png':'svg');
   const brand=branding.resolve(projections.get(topic.id),topic.id);
   for(const [id,value] of Object.entries({logoChar:brand.logoChar,siteTitle:brand.title,siteSubtitle:brand.subtitle,siteSlogan:brand.slogan,siteIntro:brand.intro,dataStatusLabel:brand.statusLabel}))template=textSlot(template,id,value);

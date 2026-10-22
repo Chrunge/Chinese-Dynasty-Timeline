@@ -14,7 +14,7 @@ $('.periods').innerHTML='<button data-period="all" class="active">全景</button
  $('.workspace').setAttribute?.('aria-label',brand.title+'时间线');
  $('.searchHelp').textContent='按名称匹配，↑/↓ 选择结果，Enter 打开详情；全站范围包含本专题未选政权。简介中的提及会单独标注。';
  if($('#reportDataError')&&typeof URLSearchParams==='function'){
-  const topicName=D.catalog?.find(t=>t.id===topicId)?.name||({'zhou':'周朝'}[topicId])||topicId;
+  const topicName=Zhou.Branding.topicName(D.catalog?.find(t=>t.id===topicId)||{id:topicId,name:({'zhou':'周朝'}[topicId])});
   const params=new URLSearchParams({template:'data-correction.yml',topic:topicName,reference_year:fmt(timelineBounds.cursor)});
   $('#reportDataError').href='https://github.com/Chrunge/Zhou-Dynasty-Timeline/issues/new?'+params.toString();
  }

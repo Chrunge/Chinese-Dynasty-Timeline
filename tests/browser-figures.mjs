@@ -8,7 +8,27 @@ import {catalog} from '../lib/production.mjs';
 const out=resolve('.validation/figures');mkdirSync(out,{recursive:true});
 const executablePath=process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
 const browser=await chromium.launch({headless:true,...(executablePath?{executablePath}:existsSync(chromium.executablePath())?{}:{channel:'chrome'})});
-const results=[];
+const results=[],layoutChecks=[];
+
+async function checkGroupLabels(page,topic,width,scenario='default'){
+ const problems=await page.locator('.groupedRow .stateLabel').evaluateAll(labels=>{
+  const issues=[];
+  for(const label of labels){
+   const outer=label.getBoundingClientRect(),title=label.querySelector('.rowGroupTitle'),members=[...label.querySelectorAll('.memberLabel')];
+   if(title.scrollHeight>title.clientHeight+1||title.getBoundingClientRect().top<outer.top-1)issues.push('clipped title: '+title.textContent);
+   let bottom=title.getBoundingClientRect().bottom;
+   for(const member of members){
+    const rect=member.getBoundingClientRect(),name=member.querySelector('.stateName').getBoundingClientRect(),dates=member.querySelector('.memberDates').getBoundingClientRect();
+    if(rect.top<bottom-1||rect.bottom>outer.bottom+1)issues.push('overlapping member: '+member.textContent);
+    if(dates.top<name.bottom-1||dates.bottom>rect.bottom+1)issues.push('overlapping dates: '+member.textContent);
+    bottom=rect.bottom;
+   }
+  }
+  return issues;
+ });
+ assert.deepEqual(problems,[],topic+'/'+width+' group labels');
+ layoutChecks.push({topic,width,scenario,status:'pass'});
+}
 try{
  for(const width of [390,1200])for(const topic of catalog){
   const context=await browser.newContext({viewport:{width,height:900},offline:true,reducedMotion:'reduce',hasTouch:width<680});
@@ -18,6 +38,7 @@ try{
   try{
    await page.goto(pathToFileURL(resolve('dist',topic.page)).href);
    await page.locator('.stateRow').first().waitFor();
+   await checkGroupLabels(page,topic.id,width);
    if(await page.locator('#onboarding').isVisible())await page.locator('#onboardingSkip').click();
    const trigger=page.locator('#figuresToggle'),gallery=page.locator('#figuresGallery');
    assert.equal(await gallery.isVisible(),false);
@@ -53,6 +74,8 @@ try{
    assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
    await page.locator('#themeMode').selectOption('light');await page.reload();await page.locator('.stateRow').first().waitFor();
    assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
+   await page.locator('#filter').click();await page.locator('#allStates').click();await page.locator('#applyFilters').click();
+   await checkGroupLabels(page,topic.id,width,'all');
    assert.deepEqual(errors,[]);assert.deepEqual(remoteRequests,[]);
    results.push({topic:topic.id,width,status:'pass',people:allCount,core});
    console.log('PASS figures',topic.id,width,'gallery -> person -> detail, clear/category, Escape, theme');
@@ -61,5 +84,17 @@ try{
    throw new Error(topic.id+'/'+width+': '+error.message,{cause:error});
   }finally{await context.close();}
  }
- writeFileSync(resolve(out,'results.json'),JSON.stringify({browser:browser.version(),offline:true,cases:results},null,2)+'\n');
+ for(const width of [320,375,680,681])for(const id of ['qin-han','five-dynasties','liao-jin-song']){
+  const context=await browser.newContext({viewport:{width,height:900},offline:true,reducedMotion:'reduce'}),page=await context.newPage();
+  try{
+   await page.goto(pathToFileURL(resolve('dist',catalog.find(t=>t.id===id).page)).href);await page.locator('.stateRow').first().waitFor();
+   await checkGroupLabels(page,id,width);
+   if(width===375&&id!=='liao-jin-song'){
+    if(await page.locator('#onboarding').isVisible())await page.locator('#onboardingSkip').click();
+    await page.locator('#viewport').scrollIntoViewIfNeeded();
+    await page.screenshot({path:resolve(out,id+'-375-labels.png')});
+   }
+  }finally{await context.close();}
+ }
+ writeFileSync(resolve(out,'results.json'),JSON.stringify({browser:browser.version(),offline:true,cases:results,layoutChecks},null,2)+'\n');
 }finally{await browser.close();}

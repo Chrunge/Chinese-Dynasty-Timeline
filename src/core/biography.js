@@ -1,8 +1,6 @@
 (function (Zhou) {
   'use strict';
-  // Biography reader mode and trajectory engine for 57 historical figures.
-  const {topicToFile:TOPIC_TO_FILE,dynasties:BIOGRAPHY_DYNASTIES}=Zhou.BiographyData;
-
+  // Runtime projection uses only the active dataset supplied by the application.
   function toCoord(val) {
     if (val == null) return null;
     if (typeof val === 'number') return val;
@@ -13,74 +11,6 @@
   }
 
   const Biography = {
-    dynasties: BIOGRAPHY_DYNASTIES,
-
-    getFiguresForDataset(datasetId) {
-      const file = TOPIC_TO_FILE[datasetId] || (datasetId + '.json');
-      const entry = BIOGRAPHY_DYNASTIES.find(d => d.datasetFile === file);
-      return entry ? entry.figures : [];
-    },
-
-    getAllFigures() {
-      const map = new Map();
-      for (const d of BIOGRAPHY_DYNASTIES) {
-        for (const f of d.figures) {
-          if (!map.has(f.id)) map.set(f.id, f);
-        }
-      }
-      return Array.from(map.values());
-    },
-
-    enrichDataset(D) {
-      if (!D || !Array.isArray(D.people)) return;
-      const topicId = D.datasetId || D.timeline?.topic || 'zhou';
-      const figures = this.getFiguresForDataset(topicId);
-      const peopleMap = new Map((D.people || []).map(p => [p.id, p]));
-
-      for (const fig of figures) {
-        let p = peopleMap.get(fig.id);
-        if (p) {
-          p.biographyPlan = fig.biographyPlan;
-          p.servedMonarchs = fig.servedMonarchs;
-          p.associatedPolities = fig.associatedPolities;
-          p.stageActivities = fig.stageActivities;
-          if (!p.role || p.role === '已收录人物') p.role = fig.role;
-          if (!p.sources || !p.sources.length) {
-            p.sources = Array.isArray(fig.sources) ? fig.sources.slice() : [];
-          }
-        } else {
-          const newPerson = {
-            id: fig.id,
-            name: fig.name,
-            role: fig.role,
-            summary: fig.summary,
-            sourceIds: (fig.sources || []).map(s => s.id),
-            sources: fig.sources || [],
-            states: (fig.associatedPolities || []).map(ap => ap.polityId),
-            relatedEvents: (fig.biographyPlan?.chapters || []).map(c => c.eventId).filter(Boolean),
-            eventIds: (fig.biographyPlan?.chapters || []).map(c => c.eventId).filter(Boolean),
-            rulerKeys: (fig.servedMonarchs || []).map(m => 'ruler:' + m.tenureId),
-            biographyPlan: fig.biographyPlan,
-            servedMonarchs: fig.servedMonarchs,
-            associatedPolities: fig.associatedPolities,
-            stageActivities: fig.stageActivities,
-            journey: (fig.stageActivities || []).map(sa => ({
-              id: sa.id,
-              label: sa.label,
-              text: sa.text,
-              kind: sa.kindLabel,
-              kindCode: sa.kind,
-              state: sa.polityId,
-              year: toCoord(sa.year),
-              approx: sa.approx || false
-            }))
-          };
-          D.people.push(newPerson);
-          peopleMap.set(fig.id, newPerson);
-        }
-      }
-    },
-
     getMatchingEntities(motif, D) {
       if (!motif || motif === 'none' || !D) {
         return { active: false, personIds: new Set(), tenureIds: new Set(), eventIds: new Set(), stateIds: new Set() };

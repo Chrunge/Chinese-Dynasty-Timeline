@@ -9,7 +9,7 @@
 | 阶段 | 行为 |
 |---|---|
 | 检查 | PR、master 推送和手动运行检查已提交生成物，运行全部 Node 测试并构建 |
-| 浏览器 | 安装锁定的开发依赖与 Chromium，运行真实人物入口回归；含手机年份浮层展开后打开画廊 |
+| 浏览器 | 安装锁定的开发依赖与 Chromium，运行真实人物入口与分组左列边界回归，覆盖手机、桌面及关键响应式宽度 |
 | 可选 PNG | 手动 social_png 开启时安装中文字体、暂存 PNG 并由构建入口发布 |
 | 上传 | 检查全部成功后仅上传 dist |
 | 部署 | 仅 master 推送或 master 手动运行部署；PR 和其他分支不部署 |
@@ -18,7 +18,7 @@
 
 ## 仓库设置
 
-仓库 Settings → Pages → Build and deployment → Source 选择 GitHub Actions。账户、组织和 github-pages 环境策略须允许对应部署，环境分支限制与 master 一致。
+仓库 Settings → Pages → Build and deployment → Source 选择 GitHub Actions。账户、组织和 github-pages 环境策略须允许对应部署，环境分支限制与 master 一致。若 github-pages 设置了所需审批人，检查通过后由具备权限的身份批准该次发布；等待审批不表示构建失败。
 
 ## 本地准备与发布
 
@@ -46,7 +46,6 @@ node build.mjs --check --social-png-dir=.validation/social-png
 | 现象 | 检查方式 |
 |---|---|
 | dist 缺失或过期 | 重新构建并提交生成物 |
-| 传记生成数据过期 | 运行传记数据生成工具，再构建 |
 | 引用校验失败 | 修正稳定 ID、显式专题作用域或有依据的未收录声明 |
 | 浏览器验收失败 | 查看具体入口与 .validation/figures/ 报告，不使用强制点击掩盖遮挡 |
 | Pages 权限错误 | 检查来源、Actions 权限、组织策略和环境限制 |

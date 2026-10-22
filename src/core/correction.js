@@ -7,7 +7,7 @@
     'xia-shang':'夏商', 'zhou':'周朝', 'qin-han':'秦汉',
     'three-kingdoms':'三国', 'wei-jin-nan-bei':'魏晋南北朝',
     'sui-tang':'隋唐', 'five-dynasties':'五代十国',
-    'liao-jin-song':'辽金宋', 'yuan':'元朝', 'ming':'明朝', 'qing':'清朝'
+    'liao-jin-song':'宋辽金', 'yuan':'元朝', 'ming':'明朝', 'qing':'清朝'
   });
   Zhou.createCorrectionLink = function (options = {}) {
     // Legacy VM fixtures have no browser URL constructor; never break their

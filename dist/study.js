@@ -5,7 +5,7 @@
  const Zhou=root.Zhou||(root.Zhou={});
  // The controller owns persistence and UI wiring; the bridge owns application state.
  Zhou.createStudyController=function(b){
-  const model=Zhou.createReadingModel(b),storage=b.storage,$=b.$,bounds=Zhou.Time.bounds(b.data);
+  const model=Zhou.createReadingModel({...b,normalizeLayout:layout=>Zhou.Presentation.migrateLayout(b.data,layout)}),storage=b.storage,$=b.$,bounds=Zhou.Time.bounds(b.data);
   const readingKey='zhou-reading-v4',visitsKey='zhou-visits-v4';
   let ready=false,timer=null,visits=[];
   function publish(){b.onVisits?.(visits);}
@@ -14,7 +14,7 @@
   function saveReadingPosition(){
    if(!ready)return;rememberDetailProgress();
    const view=b.getRootView()||b.getView(),width=b.getWidth(),from=Math.min(bounds.start,Math.max(view.end,bounds.start-view.left/view.px)),to=Math.max(view.end,from-(width-b.labelWidth())/view.px);
-   const data={version:4,timeEncoding:'bce-axis',view:{...view,timeEncoding:'bce-axis'},range:{from,to},width,layout:b.getLayout(),at:b.now()};
+   const data={version:4,timeEncoding:'bce-axis',view:{...view,timeEncoding:'bce-axis'},range:{from,to},width,layout:{...b.getLayout(),orderVersion:1},at:b.now()};
    const savedReading=storage.write(readingKey,data),savedVisits=storage.write(visitsKey,visits);
    $('#readingStatus').textContent=savedReading&&savedVisits?'阅读位置已记住':'浏览器未允许保存阅读位置';
   }

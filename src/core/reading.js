@@ -1,7 +1,7 @@
 (function(root){
  'use strict';
  const Zhou=root.Zhou||(root.Zhou={});
- Zhou.createReadingModel=function({data,searchIndex,normalizeDetailKey=key=>key,now=()=>Date.now()}){
+ Zhou.createReadingModel=function({data,searchIndex,normalizeDetailKey=key=>key,normalizeLayout=layout=>layout,now=()=>Date.now()}){
   const time=Zhou.Time,bounds=time.bounds(data);
   const states=new Set(data.states.map(x=>x.id)),events=new Set(data.events.map(x=>x.id));
   const entries=new Map(searchIndex.map(x=>[x.key,x]));
@@ -32,7 +32,7 @@
    return result;
   }
   function sanitizeLayout(value={},defaults={}){
-   const l=value&&typeof value==='object'?value:{},rowHeights={};
+   const l=normalizeLayout(value&&typeof value==='object'?value:{}),rowHeights={};
    for(const [id,h] of Object.entries(l.rowHeights||{}))if(states.has(id)&&[40,56,64,96,128,160].includes(h))rowHeights[id]=h;
    return {order:Array.isArray(l.order)?[...new Set([...l.order.filter(id=>states.has(id)),...states])]:defaults.order,pins:Array.isArray(l.pins)?l.pins.filter(id=>states.has(id)):defaults.pins,rowHeight:number(l.rowHeight,36,160,defaults.rowHeight),viewHeight:number(l.viewHeight,320,1000,defaults.viewHeight),fitRows:Boolean(l.fitRows),rowHeights};
   }

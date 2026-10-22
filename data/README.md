@@ -82,7 +82,7 @@
 ### 日期、范围与投影
 
 - 作者日期：`{era:'BCE'|'CE',year:正整数}`（JSON 中使用双引号）；无公元零年，不接受运行时负数或 schema 1 裸年份。
-- 运行时：`timeEncoding:'bce-axis'`。BCE 年 `y` 原值保留；CE 年 `y` 转为 `1-y`。前1年为 `1`，公元1年为 `0`，公元2年为 `-1`。`0` 不是未知日期。
+- 运行时：`timeEncoding:'bce-axis'`。BCE 年 `y` 原值保留；CE 年 `y` 转为 `1-y`。前1年为 `1`，公元1年为 `0`，公元2年为 `-1`。`0` 不是未知日期；判断已知年份须用 Time.isYear 或显式 null 判断。
 - `timeline:{start,end,defaultEnd,cursor}` 是显式配置。schema 2 四个值均为作者日期，构建后均为运行时整数；`start >= defaultEnd >= end`，cursor 在总范围内。`topic` 等非日期元信息可选。
 - `periods.start/end` 是分组范围；`polities.start/end` 是政权采用的存续事实；`tenures.start/end` 是任期采用范围。三者不得混为一条“朝代记录”。
 - 周朝保留 `all/west/spring/war` 导航 ID；`post-zhou` 补足前255—221年延伸条带。`display:false` 不画条带、`button:false` 不生成按钮、`extendToViewEnd:true` 按当前终点定位，均只是 UI 提示。
@@ -94,7 +94,7 @@ schema 1 规范化严格保持 `states -> polities`、`rulers -> tenures` 的原
 
 ### 稳定 ID 与生产迁移边界
 
-同一政权或人物被多个时期、专题引用时应复用其实体 ID，只增引用或有证据的任期。不得因出现“帝国”专题复制一个秦政权或秦始皇人物。将来把生产周朝扩展至秦汉时，应复用既有 `qin` 和已发布任期 ID，依据史料区分阶段显示范围与政权真实结局；这次只补配置、说明，不批量改写既有历史事实。
+同一政权或人物被多个时期、专题引用时应复用其实体 ID，只增引用或有证据的任期。不得因出现“帝国”专题复制一个秦政权或秦始皇人物。周朝与秦汉共用的政权和任期使用既有 `qin` 和已发布任期 ID，依据史料区分阶段显示范围与政权真实结局；生产原件和已发布身份按来源分别保留，不批量改写历史事实。
 
 样例的 `ex3k-`、`exqh-` 前缀仅为独立文件的演示命名空间，**不是生产迁移 ID**。尤其不覆盖旧 `wei`（卫）、`jin`（晋）、`wu`（吴）、`han`（韩）、`liang`（魏）。三国的曹魏、孙吴与战国同名字政权必须按真实实体区别，不能按简称复用 ID。
 
@@ -114,14 +114,22 @@ schema 1 规范化严格保持 `states -> polities`、`rulers -> tenures` 的原
 
 | 模块 | 当前边界 |
 |---|---|
-| production-annotations | 魏晋、隋唐、辽金宋、明的明确枚举归一化，保留 sourceKind／sourceStructure 与 importNotes；明的重复事件政权边保留原 sourceEdges |
+| production-annotations | 魏晋、隋唐、宋辽金、明的明确枚举归一化，保留 sourceKind／sourceStructure 与 importNotes；明的重复事件政权边保留原 sourceEdges |
 | expansion-annotations | 夏商、五代、元、清的明确类别适配；十组复合边保留全部 sourceEdges；夏商单个重复 URL 以 sourceUrl 留原值，技术 fragment 不声称原典锚点有效；契的身份仅为 contextual |
-| 显示注解 | 编译后按明确 ID 添加短标签、视觉行，不更改历史身份与日期；详见 docs 中三份呈现契约 |
+| 显示注解 | 编译后按明确 ID 添加短标签、视觉行，不更改历史身份与日期；详见[架构展示规则](../docs/ARCHITECTURE.md#专题展示规则) |
 
 夏商十八条 dating 适配由完整原证据守卫，sourceDating 保留原标注；采用值的复述不算独立异说。复合事件的 yearFromEvent 活动只继承单锚点，不代表所有子阶段发生于该年。原始全局关系顺序由作者 JSON 保全，不能把技术数组顺序解释为历史先后。原件字节散列、入库过程与差异审计见 [HISTORY](../docs/HISTORY.md)。
 
 ## 传记维护与引用
 
-总集变更后运行 node tools/build-biography-core.mjs，再运行统一构建；生成器只写 src/core/biography-data.js，不覆盖手写算法。发布统计包含传记补充，原件自身数量仍单独记录。
+总集变更后直接运行统一构建。lib/biography.mjs 在构建期校验和补充人物，src/core/biography.js 只处理当前专题的筛选与轨迹；公共脚本不携带总集。发布统计包含传记补充，原件自身数量由出处索引单独记录。
 
 章节事件／政权默认属于本专题。跨专题引用明确给出 eventDatasetId／polityDatasetId，并须在目标专题存在。未单列事件使用 eventId:null 与 eventReference:{status:"unindexed",originalId,reason}，保留叙述但不伪造关系；错误或未声明的引用会阻止构建。章节日期不因主题关联自动替换为复合事件锚点。引用状态可查 [诊断文件](../dist/biography-diagnostics.json)。
+
+## 链接与存储的时间约定
+
+- 纯BCE分享沿用 v=1；时间字段包含0或负坐标时使用 v=2&time=bce-axis。未知版本或编码拒绝恢复。
+- 新视图、阅读、访问和组合写入 timeEncoding:bce-axis；无编码旧记录只接受正BCE坐标，旧0或负值按缺失回退，不猜测为公元年份。
+- 专题由 datasetId 隔离；带 dataset 标记的Hash仅在对应专题恢复。未带卷别的旧链接按当前专题解读，不作为跨专题引用。
+- 跨屏阅读根据专题起点和已保存可见范围重算滚动位置，视窗边界可含小数；历史事实年份仍要求安全整数。
+- 旧人名路由仅在姓名或别称唯一时迁移至稳定ID；未定年君主使用固定 legacyKeys，不按当前列表索引解读旧链接。
