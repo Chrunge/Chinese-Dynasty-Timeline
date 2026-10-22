@@ -86,7 +86,7 @@ function render(){
  const fitHeight=Math.max(36,Math.min(160,Math.floor(((vp.clientHeight||appState.layout.viewHeight)-64)/Math.max(1,rows.length))));
  $('#rowHeightValue').textContent=(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)+'px';
  chart.style.width=(w+labelWidth())+'px';chart.className=(appState.layout.mode==='overview'?'overview ':'')+'density-'+level+(focused?' hasFocus':'');
- $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件')+(D.presentation?.rowGroups?.length?' · 接续政权分段共用主行，同年重叠分层；并存政权另行。':'');
+ $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件');
  const descriptors=[],axisSignature=appState.conditions.end+':'+appState.layout.px;
  const step=appState.layout.px>=12?5:appState.layout.px>=5?10:appState.layout.px>=2?25:50;
  if(timelineAxis.signature!==axisSignature){
@@ -104,7 +104,7 @@ function render(){
   const members=row.members,grouped=row.grouped,isPinned=row.pinned,related=members.some(s=>focused?.states.includes(s.id));
   const requested=Math.max(...members.map(s=>Number(appState.layout.rowHeights[s.id])||(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)));
    const labelPolicy=Zhou.Presentation.topic(D),minorLabelCount=members.filter(s=>!labelPolicy.coreIds.includes(s.id)).length;
-   const labelMinHeight=grouped?38+members.length*36+minorLabelCount*12:minorLabelCount?56:36;
+   const labelMinHeight=grouped?30+members.length*40+minorLabelCount*12:minorLabelCount?56:36;
   const signature=rowSignature+JSON.stringify([members.map(s=>s.id),requested,isPinned,isPinned?pinTop:0,members.map(s=>appState.layout.pinned.has(s.id))]),cached=timelineRows.get(row.key);
   if(cached?.signature===signature){for(const s of members)appState.session.rowLayouts.set(s.id,{...cached.layout,offset:rowOffset});rowOffset+=cached.layout.height;descriptors.push({key:row.key,html:cached.html});if(isPinned)pinTop+=cached.layout.height;continue;}
   const records=members.flatMap(s=>historyService.rulersInRange(s,timelineBounds.start,appState.conditions.end).map(r=>({...r,stateId:s.id})));
@@ -125,7 +125,7 @@ function render(){
   const layout={height,eventTop,eventAreaTop,lanes,barHeight,level,pinned:isPinned,rowKey:row.key,offset:rowOffset};
   for(const s of members)appState.session.rowLayouts.set(s.id,layout);
   rowOffset+=height;
-  let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(height<56?'compactLabels ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.note)+'">'+row.name+'<small>重叠分层</small></strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
+  let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(height<56?'compactLabels ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.name)+'">'+escapeHTML(row.name)+'</strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
   if(isPinned)pinTop+=height;
   if(grouped){
    for(const s of segments.items){const start=Math.min(timelineBounds.start,s.start),end=Math.max(s.end,appState.conditions.end);html+='<button class="politySegment" data-action="state" data-id="'+s.id+'" style="left:'+x(start)+'px;width:'+Math.max(2,(start-end+1)*appState.layout.px)+'px;top:'+(s.displayLane*22+3)+'px;background:'+polityColor(s)+'" title="'+escapeHTML(s.name+' · '+range(s.start,s.end))+'" aria-label="'+escapeHTML((s.display?.shortName||s.name)+' · '+s.name+'，'+range(s.start,s.end))+'">'+escapeHTML(s.display?.shortName||s.name)+'</button>';}

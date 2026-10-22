@@ -134,3 +134,34 @@ test('模板提供选择政权、主要/全部/自定义及计数，样式标识
  for(const id of ['filter','filterCount','filters','stateChecks','allStates','seven'])assert(html.includes('id="'+id+'"'));
  assert.match(css,/\.wuZhouBar/);
 });
+
+
+test('宋辽金：旧默认布局与旧阅读顺序迁移，已标记和其他自定义顺序保持',()=>{
+ const initial=start('liao-jin-song'),former=plain(initial.run('D.states.map(s=>s.id)')),policy=plain(initial.run('Zhou.Presentation.topic(D).order'));
+ assert.notDeepEqual(former,policy);
+ const key='liao-jin-song:zhou-layout-v2';
+ const migrated=start('liao-jin-song',1200,{[key]:JSON.stringify({order:former})});
+ assert.deepEqual(plain(migrated.run('stateOrder')),policy);
+ const explicit=start('liao-jin-song',1200,{[key]:JSON.stringify({order:former,orderVersion:1})});
+ assert.deepEqual(plain(explicit.run('stateOrder')),former);
+ const custom=[...former].reverse(),customApp=start('liao-jin-song',1200,{[key]:JSON.stringify({order:custom})});
+ assert.deepEqual(plain(customApp.run('stateOrder')),custom);
+ const reading=attachStudy(initial);reading.run('saveReadingPosition()');
+ const store={...reading.store},readingKey='liao-jin-song:zhou-reading-v4',saved=JSON.parse(store[readingKey]);
+ saved.layout.order=former;delete saved.layout.orderVersion;store[readingKey]=JSON.stringify(saved);
+ assert.deepEqual(plain(attachStudy(start('liao-jin-song',1200,store)).run('stateOrder')),policy);
+ saved.layout.orderVersion=1;store[readingKey]=JSON.stringify(saved);
+ assert.deepEqual(plain(attachStudy(start('liao-jin-song',1200,store)).run('stateOrder')),former);
+});
+
+test('宋辽金：展示名称一致、原网址和数据身份不变；分组左列不显示实现文案',()=>{
+ const app=start('liao-jin-song');
+ assert.equal(app.run('D.datasetId'),'liao-jin-song');
+ assert.equal(app.run('Zhou.Branding.topicName({id:"liao-jin-song",name:"辽金宋"})'),'宋辽金');
+ assert.equal(app.run('document.title'),'宋辽金夏 · 历史对照图');
+ const html=fs.readFileSync('dist/liao-jin-song.html','utf8');
+ assert.match(html,/>宋辽金<\/a>/);assert.match(html,/liao-jin-song\.html/);
+ for(const id of ['qin-han','five-dynasties','liao-jin-song']){
+  const current=start(id);assert.doesNotMatch(current.el('#chart').innerHTML,/重叠分层/);assert.doesNotMatch(current.el('#densityHint').textContent,/重叠分层/);
+ }
+});

@@ -17,8 +17,8 @@ const polityColor=s=>Zhou.Presentation.polityColor?.(s,D)||s.color;
 const pageEffects={renderPanels(){},persist(){},share(){},rememberDetail(){},recordVisit(){},updateStudy(){}};
 function notifyViewChanged(){pageEffects.persist();pageEffects.share();}
 function syncViewControls(){viewAdapter.syncControls();}
-appState.layout=Zhou.readLayout(storage.read('zhou-layout-v2',null),appState.layout,D.states.map(s=>s.id));
-function saveLayout(){try{storage.write('zhou-layout-v2',{order:appState.layout.stateOrder,rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights});}catch{}}
+appState.layout=Zhou.readLayout(Zhou.Presentation.migrateLayout(D,storage.read('zhou-layout-v2',null)),appState.layout,D.states.map(s=>s.id));
+function saveLayout(){try{storage.write('zhou-layout-v2',{orderVersion:1,order:appState.layout.stateOrder,rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights});}catch{}}
 const builtInCombos=(D.combinations||[]).map(c=>{const normalized=normalizeCombo({...c,timeEncoding:'bce-axis'});return normalized?{...normalized,id:c.id}:null;}).filter(Boolean);
 try{const p=storage.read('zhou-pins-v3',[]);if(Array.isArray(p))appState.layout.pinned=new Set(p.filter(id=>byId(id)));const c=storage.read('zhou-comparisons-v3',[]);if(Array.isArray(c))appState.session.savedCombos=c.map(normalizeCombo).filter(Boolean).slice(0,30);}catch{}
 const vp=$('#viewport'),chart=$('#chart');

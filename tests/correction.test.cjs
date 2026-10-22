@@ -23,7 +23,7 @@ test('纠错纯函数与11专题目录逐一对应，稳定原始ID不加路由�
    const value=ctx.Zhou.createCorrectionLink(options),url=parse(value);
    assert.equal(url.origin,'https://github.com');assert.equal(url.pathname,'/Chrunge/Zhou-Dynasty-Timeline/issues/new');
    assert.equal(url.searchParams.get('template'),'data-correction.yml');
-   assert.equal(url.searchParams.get('topic'),topic.name);
+   assert.equal(url.searchParams.get('topic'),topic.id==='liao-jin-song'?'宋辽金':topic.name);
    assert.equal(url.searchParams.get('record_id'),entry.data.id);
    assert.equal(url.searchParams.get('record_name'),entry.data.name);
    assert.equal(url.searchParams.get('reference_year'),ctx.Zhou.Time.format(options.year));

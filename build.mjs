@@ -59,9 +59,10 @@ for (const [name, paths] of Object.entries(bundles)) {
 }
 outputs.set('style.css', ['src/style.css','src/ui/experience.css','src/ui/gestures.css','src/ui/detail-sheet.css','src/ui/event-semantics.css','src/ui/time-slice.css','src/ui/chronology.css','src/ui/accessibility.css','src/ui/publication.css','src/ui/stage4.css','src/ui/biography.css','src/ui/figures.css','src/ui/study-room.css'].map(path=>read('./'+path)).join('\n'));
 // Every page and its assets use one deterministic release; file:// remains usable.
-for(const topic of datasets){
+for(const dataset of datasets){
+  const topic={...dataset,name:branding.topicName(dataset)};
   let template=read('./src/index.html').replace('src="data.js"',`src="${topic.asset}"`);
-  template=template.replace('<!-- topic-navigation -->','<nav class="topicNav" aria-label="历史时期">'+catalog.map(t=>`<a href="${t.page}" data-topic="${t.id}">${t.name}</a>`).join('')+'<span>同一资料库 · 各时期独立阅读与导出</span></nav>');
+  template=template.replace('<!-- topic-navigation -->','<nav class="topicNav" aria-label="历史时期">'+catalog.map(t=>`<a href="${t.page}" data-topic="${t.id}">${escapeBrand(branding.topicName(t))}</a>`).join('')+'<span>同一资料库 · 各时期独立阅读与导出</span></nav>');
   template=applyTopicTemplate(template,topic,displayData(projections.get(topic.id),topic.id),pngDir?'png':'svg');
   const brand=branding.resolve(projections.get(topic.id),topic.id);
   for(const [id,value] of Object.entries({logoChar:brand.logoChar,siteTitle:brand.title,siteSubtitle:brand.subtitle,siteSlogan:brand.slogan,siteIntro:brand.intro,dataStatusLabel:brand.statusLabel}))template=textSlot(template,id,value);

@@ -117,7 +117,7 @@
   'wei-jin-nan-bei':{logoChar:'晋',title:'魏晋南北朝 · 历史对照图',subtitle:'两晋 · 十六国 · 南北朝',slogan:'衣冠南渡，五胡云扰；南北对峙，终归隋统。'},
   'sui-tang':{logoChar:'唐',title:'隋唐盛世 · 历史对照图',subtitle:'隋朝 · 唐朝（含武周）',slogan:'九天阊阖开宫殿，万国衣冠拜冕旒。'},
   'five-dynasties':{logoChar:'五',title:'五代十国 · 历史对照图',subtitle:'梁唐晋汉周 · 十国割据',slogan:'中原五姓更迭，十国保境安民。'},
-  'liao-jin-song':{logoChar:'宋',title:'辽金宋夏 · 历史对照图',subtitle:'北宋 · 南宋 · 辽 · 金 · 西夏',slogan:'两宋文治与辽金夏多极并立，盟战三百年。'},
+  'liao-jin-song':{logoChar:'宋',title:'宋辽金夏 · 历史对照图',subtitle:'北宋 · 南宋 · 辽 · 金 · 西夏',slogan:'两宋文治与辽金夏多极并立，盟战三百年。'},
   yuan:{logoChar:'元',title:'蒙元帝国 · 历史对照图',subtitle:'大蒙古国 · 元朝 · 宋金交替',slogan:'朔漠崛起，混一南北；行省立制，四海测验。'},
   ming:{logoChar:'明',title:'大明王朝 · 历史对照图',subtitle:'明朝 · 后金兴起',slogan:'驱逐胡元，永乐盛世；天子守国门，君王死社稷。'},
   qing:{logoChar:'清',title:'大清帝国 · 历史对照图',subtitle:'后金 · 清朝 · 近代转型',slogan:'康乾盛世奠定版图，晚清百年开启近代转型。'}
@@ -130,7 +130,8 @@
   const intro=text(custom.intro,99)||text(metadata.intro,99)||'沿共同年代对照政权兴替，点击君主、人物与事件阅读生平和史源；纪年异说可在详情中展开核对。';
   return {logoChar:read('logoChar',1),title:text(custom.title,32)||text(metadata.shortTitle,32)||fallback.title,subtitle:read('subtitle',60),slogan:read('slogan',80),intro,statusLabel:'ⓘ 资料状态：原典与年表整理 · 异说可展开核对'};
  }
- Zhou.Branding=Object.freeze({resolve});
+ const topicName=topic=>topic?.id==='liao-jin-song'?'宋辽金':topic?.name||topic?.id||'';
+ Zhou.Branding=Object.freeze({resolve,topicName});
 })(globalThis.Zhou ||= {});
 
 // ---- src/core/figures.js ----
@@ -483,7 +484,7 @@
     'xia-shang':'夏商', 'zhou':'周朝', 'qin-han':'秦汉',
     'three-kingdoms':'三国', 'wei-jin-nan-bei':'魏晋南北朝',
     'sui-tang':'隋唐', 'five-dynasties':'五代十国',
-    'liao-jin-song':'辽金宋', 'yuan':'元朝', 'ming':'明朝', 'qing':'清朝'
+    'liao-jin-song':'宋辽金', 'yuan':'元朝', 'ming':'明朝', 'qing':'清朝'
   });
   Zhou.createCorrectionLink = function (options = {}) {
     // Legacy VM fixtures have no browser URL constructor; never break their
@@ -725,6 +726,14 @@
     cursor: defaultCursor,
     minorInfo: {...policy.minorInfo}
    };
+  },
+  // Only an unversioned, exact former default is migrated. Explicit links and
+  // versioned custom orders retain their requested sequence.
+  migrateLayout(data,layout){
+   if(!layout||layout.orderVersion===1||(data.datasetId||data.timeline?.topic)!=='liao-jin-song')return layout;
+   const former=data.states.map(s=>s.id),order=layout.order;
+   if(!Array.isArray(order)||order.length!==former.length||order.some((id,i)=>id!==former[i]))return layout;
+   return {...layout,order:this.topic(data).order};
   },
   polityLabel(s,data){
     const id=data?.datasetId||data?.timeline?.topic;
@@ -1247,7 +1256,7 @@ function normalizeCombo(c){
 (function(root){
  'use strict';
  const Zhou=root.Zhou||(root.Zhou={});
- Zhou.createReadingModel=function({data,searchIndex,normalizeDetailKey=key=>key,now=()=>Date.now()}){
+ Zhou.createReadingModel=function({data,searchIndex,normalizeDetailKey=key=>key,normalizeLayout=layout=>layout,now=()=>Date.now()}){
   const time=Zhou.Time,bounds=time.bounds(data);
   const states=new Set(data.states.map(x=>x.id)),events=new Set(data.events.map(x=>x.id));
   const entries=new Map(searchIndex.map(x=>[x.key,x]));
@@ -1278,7 +1287,7 @@ function normalizeCombo(c){
    return result;
   }
   function sanitizeLayout(value={},defaults={}){
-   const l=value&&typeof value==='object'?value:{},rowHeights={};
+   const l=normalizeLayout(value&&typeof value==='object'?value:{}),rowHeights={};
    for(const [id,h] of Object.entries(l.rowHeights||{}))if(states.has(id)&&[40,56,64,96,128,160].includes(h))rowHeights[id]=h;
    return {order:Array.isArray(l.order)?[...new Set([...l.order.filter(id=>states.has(id)),...states])]:defaults.order,pins:Array.isArray(l.pins)?l.pins.filter(id=>states.has(id)):defaults.pins,rowHeight:number(l.rowHeight,36,160,defaults.rowHeight),viewHeight:number(l.viewHeight,320,1000,defaults.viewHeight),fitRows:Boolean(l.fitRows),rowHeights};
   }
@@ -2425,8 +2434,8 @@ const polityColor=s=>Zhou.Presentation.polityColor?.(s,D)||s.color;
 const pageEffects={renderPanels(){},persist(){},share(){},rememberDetail(){},recordVisit(){},updateStudy(){}};
 function notifyViewChanged(){pageEffects.persist();pageEffects.share();}
 function syncViewControls(){viewAdapter.syncControls();}
-appState.layout=Zhou.readLayout(storage.read('zhou-layout-v2',null),appState.layout,D.states.map(s=>s.id));
-function saveLayout(){try{storage.write('zhou-layout-v2',{order:appState.layout.stateOrder,rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights});}catch{}}
+appState.layout=Zhou.readLayout(Zhou.Presentation.migrateLayout(D,storage.read('zhou-layout-v2',null)),appState.layout,D.states.map(s=>s.id));
+function saveLayout(){try{storage.write('zhou-layout-v2',{orderVersion:1,order:appState.layout.stateOrder,rowHeight:appState.layout.rowHeight,viewHeight:appState.layout.viewHeight,fitRows:appState.layout.fitRows,rowHeights:appState.layout.rowHeights});}catch{}}
 const builtInCombos=(D.combinations||[]).map(c=>{const normalized=normalizeCombo({...c,timeEncoding:'bce-axis'});return normalized?{...normalized,id:c.id}:null;}).filter(Boolean);
 try{const p=storage.read('zhou-pins-v3',[]);if(Array.isArray(p))appState.layout.pinned=new Set(p.filter(id=>byId(id)));const c=storage.read('zhou-comparisons-v3',[]);if(Array.isArray(c))appState.session.savedCombos=c.map(normalizeCombo).filter(Boolean).slice(0,30);}catch{}
 const vp=$('#viewport'),chart=$('#chart');
@@ -2669,7 +2678,7 @@ function render(){
  const fitHeight=Math.max(36,Math.min(160,Math.floor(((vp.clientHeight||appState.layout.viewHeight)-64)/Math.max(1,rows.length))));
  $('#rowHeightValue').textContent=(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)+'px';
  chart.style.width=(w+labelWidth())+'px';chart.className=(appState.layout.mode==='overview'?'overview ':'')+'density-'+level+(focused?' hasFocus':'');
- $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件')+(D.presentation?.rowGroups?.length?' · 接续政权分段共用主行，同年重叠分层；并存政权另行。':'');
+ $('#densityHint').textContent=(level==='overview'?'远景：兴亡与关键事件':level==='standard'?'中景：君主姓名与事件摘要':'近景：君主姓名、在位年份与具体事件');
  const descriptors=[],axisSignature=appState.conditions.end+':'+appState.layout.px;
  const step=appState.layout.px>=12?5:appState.layout.px>=5?10:appState.layout.px>=2?25:50;
  if(timelineAxis.signature!==axisSignature){
@@ -2687,7 +2696,7 @@ function render(){
   const members=row.members,grouped=row.grouped,isPinned=row.pinned,related=members.some(s=>focused?.states.includes(s.id));
   const requested=Math.max(...members.map(s=>Number(appState.layout.rowHeights[s.id])||(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)));
    const labelPolicy=Zhou.Presentation.topic(D),minorLabelCount=members.filter(s=>!labelPolicy.coreIds.includes(s.id)).length;
-   const labelMinHeight=grouped?38+members.length*36+minorLabelCount*12:minorLabelCount?56:36;
+   const labelMinHeight=grouped?30+members.length*40+minorLabelCount*12:minorLabelCount?56:36;
   const signature=rowSignature+JSON.stringify([members.map(s=>s.id),requested,isPinned,isPinned?pinTop:0,members.map(s=>appState.layout.pinned.has(s.id))]),cached=timelineRows.get(row.key);
   if(cached?.signature===signature){for(const s of members)appState.session.rowLayouts.set(s.id,{...cached.layout,offset:rowOffset});rowOffset+=cached.layout.height;descriptors.push({key:row.key,html:cached.html});if(isPinned)pinTop+=cached.layout.height;continue;}
   const records=members.flatMap(s=>historyService.rulersInRange(s,timelineBounds.start,appState.conditions.end).map(r=>({...r,stateId:s.id})));
@@ -2708,7 +2717,7 @@ function render(){
   const layout={height,eventTop,eventAreaTop,lanes,barHeight,level,pinned:isPinned,rowKey:row.key,offset:rowOffset};
   for(const s of members)appState.session.rowLayouts.set(s.id,layout);
   rowOffset+=height;
-  let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(height<56?'compactLabels ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.note)+'">'+row.name+'<small>重叠分层</small></strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
+  let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(height<56?'compactLabels ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.name)+'">'+escapeHTML(row.name)+'</strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
   if(isPinned)pinTop+=height;
   if(grouped){
    for(const s of segments.items){const start=Math.min(timelineBounds.start,s.start),end=Math.max(s.end,appState.conditions.end);html+='<button class="politySegment" data-action="state" data-id="'+s.id+'" style="left:'+x(start)+'px;width:'+Math.max(2,(start-end+1)*appState.layout.px)+'px;top:'+(s.displayLane*22+3)+'px;background:'+polityColor(s)+'" title="'+escapeHTML(s.name+' · '+range(s.start,s.end))+'" aria-label="'+escapeHTML((s.display?.shortName||s.name)+' · '+s.name+'，'+range(s.start,s.end))+'">'+escapeHTML(s.display?.shortName||s.name)+'</button>';}
@@ -3163,7 +3172,7 @@ $('.periods').innerHTML='<button data-period="all" class="active">全景</button
  $('.workspace').setAttribute?.('aria-label',brand.title+'时间线');
  $('.searchHelp').textContent='按名称匹配，↑/↓ 选择结果，Enter 打开详情；全站范围包含本专题未选政权。简介中的提及会单独标注。';
  if($('#reportDataError')&&typeof URLSearchParams==='function'){
-  const topicName=D.catalog?.find(t=>t.id===topicId)?.name||({'zhou':'周朝'}[topicId])||topicId;
+  const topicName=Zhou.Branding.topicName(D.catalog?.find(t=>t.id===topicId)||{id:topicId,name:({'zhou':'周朝'}[topicId])});
   const params=new URLSearchParams({template:'data-correction.yml',topic:topicName,reference_year:fmt(timelineBounds.cursor)});
   $('#reportDataError').href='https://github.com/Chrunge/Zhou-Dynasty-Timeline/issues/new?'+params.toString();
  }

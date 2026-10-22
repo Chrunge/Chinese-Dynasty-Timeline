@@ -219,6 +219,14 @@
     minorInfo: {...policy.minorInfo}
    };
   },
+  // Only an unversioned, exact former default is migrated. Explicit links and
+  // versioned custom orders retain their requested sequence.
+  migrateLayout(data,layout){
+   if(!layout||layout.orderVersion===1||(data.datasetId||data.timeline?.topic)!=='liao-jin-song')return layout;
+   const former=data.states.map(s=>s.id),order=layout.order;
+   if(!Array.isArray(order)||order.length!==former.length||order.some((id,i)=>id!==former[i]))return layout;
+   return {...layout,order:this.topic(data).order};
+  },
   polityLabel(s,data){
     const id=data?.datasetId||data?.timeline?.topic;
     const names={zhou:{zhou:'周王室'},'xia-shang':{xia:'夏朝',shang:'商朝',zhou:'周'},'qin-han':{qin:'秦', 'western-han':'西汉',xin:'新','gengshi-han':'玄汉','eastern-han':'东汉'},'sui-tang':{sui:'隋朝',tang:'唐朝','wu-zhou':'武周'},'liao-jin-song':{'northern-song':'北宋','southern-song':'南宋',liao:'辽朝','jin-jurchen':'金朝','western-xia':'西夏'},ming:{ming:'明朝','southern-ming':'南明','later-jin-qing':'后金 / 清'},qing:{'later-jin-qing':'清朝',ming:'明朝','southern-ming':'南明'},yuan:{'mongol-yuan':'蒙元','southern-song':'南宋','jin-jurchen':'金朝',ming:'明朝'}};
