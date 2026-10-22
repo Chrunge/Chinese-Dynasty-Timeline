@@ -165,3 +165,7 @@ CI和Pages的触发、权限及配置见 [部署说明](DEPLOYMENT.md)。
 `data/中国历代非君主人物传记全书.json` 由 `lib/biography-data.mjs` 投影为纯数据资源 `src/core/biography-data.js`；`tools/build-biography-core.mjs` 只生成该数据文件，`--check` 只读检查。手写筛选与轨迹算法位于 `src/core/biography.js`，构建按数据、算法的顺序加载，并检查原件与生成数据一致。
 
 传记由 `lib/biography.mjs` 在各专题发布数据生成前补充，页面启动只消费完成的资料。发布清单的统计与跨卷导航使用补充后的投影；出处索引同时保留专题原件和传记总集的文件、JSON 路径及散列，专题 `counts` 为原件数量，`supplements` 为补充来源数量。同一专题的多个出处不计为跨卷共享。`dist/biography-diagnostics.json` 记录未关联的事件、政权、任期与来源；原文和引用保留，不按姓名猜测关系。无效人物身份、重复记录及非法日期会中止构建。
+
+### 人物活动读取
+
+`core/person-activities.js` 为章节、阶段活动和 `journey` 提供统一的只读活动投影。同年看板使用全部明确记年的记录；轨迹和人物定位按阶段活动、章节、原活动的顺序选择叙事来源。相同年份、政权与显式 ID／事件或章节槽的重复项合并，全部原始记录和来源保留于 `provenance`；不同日期或政权不合并。未知日期不解释为公元元年，不据生卒或前后事迹推断连续活动。

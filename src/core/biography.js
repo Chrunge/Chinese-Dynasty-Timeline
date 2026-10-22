@@ -145,17 +145,7 @@
 
     getTrajectoryPoints(person, rowLayouts, xFn, labelWidth) {
       if (!person) return [];
-      const stages = (person.stageActivities && person.stageActivities.length)
-        ? person.stageActivities
-        : (person.biographyPlan?.chapters || []).map(ch => ({
-            sequence: ch.chapterNo,
-            year: ch.year,
-            polityId: ch.polityId,
-            label: ch.title,
-            kindLabel: ch.kindLabel,
-            text: ch.summary
-          }));
-      if (!stages.length && Array.isArray(person.journey)) stages.push(...person.journey.map((j,i)=>({...j,sequence:i+1,polityId:j.state||j.polityId,label:j.label,kindLabel:j.kind})));
+      const stages = Zhou.PersonActivities.narrative(person);
       if (!stages.length) return [];
       const sorted = [...stages].sort((a, b) => a.sequence - b.sequence);
       const points = [];

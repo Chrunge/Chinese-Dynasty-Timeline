@@ -65,6 +65,48 @@
   Zhou.Time = Object.freeze({encoding, encode, decode, format, range, isYear, overlaps, eventRange, bounds, recordYear});
 })(globalThis.Zhou ||= {});
 
+// ---- src/core/person-activities.js ----
+(function(Zhou){
+ 'use strict';
+ const fields=person=>[
+  ['stageActivities',person?.stageActivities||[]],
+  ['chapters',person?.biographyPlan?.chapters||[]],
+  ['journey',person?.journey||[]]
+ ];
+ function normalize(record,index){
+  const year=typeof record.year==='object'?Zhou.Time.encode(record.year):record.year;
+  const stateId=record.polityId||record.stateId||record.state;
+  return {...record,year:Zhou.Time.isYear(year)?year:null,stateId,polityId:stateId,state:stateId,
+   sequence:record.sequence??record.chapterNo??index+1,eventId:record.eventId||record.event,
+   label:record.label||record.title||'',text:record.text||record.summary||'',kindLabel:record.kindLabel||record.kind||'',
+   sourceIds:[...(record.sourceIds||[])],sources:[...(record.sources||[])]};
+ }
+ function records(person){
+  const result=[],aliases=new Map();
+  for(const [field,items] of fields(person))for(const [index,record] of items.entries()){
+   const value=normalize(record,index),scope=JSON.stringify([value.year,value.stateId||null]);
+   const keys=[];
+   if(record.id)keys.push(scope+'/id/'+record.id);
+   if(value.eventId)keys.push(scope+'/event/'+value.eventId);
+   if(field!=='journey')keys.push(scope+'/chapter/'+value.sequence);
+   if(value.label||value.text)keys.push(scope+'/text/'+JSON.stringify([value.label,value.text]));
+   let target=keys.map(key=>aliases.get(key)).find(Boolean);
+   if(!target){target={...value,provenance:[]};result.push(target);}
+   target.provenance.push({field,index,record});
+   target.sourceIds=[...new Set([...target.sourceIds,...value.sourceIds])];
+   for(const source of value.sources)if(!target.sources.some(s=>JSON.stringify(s)===JSON.stringify(source)))target.sources.push(source);
+   for(const key of keys)aliases.set(key,target);
+  }
+  return result;
+ }
+ function narrative(person){
+  const preferred=fields(person).find(([,items])=>items.length)?.[0];
+  return records(person).filter(record=>record.provenance.some(source=>source.field===preferred));
+ }
+ function at(person,year){return records(person).filter(record=>Zhou.Time.isYear(record.year)&&record.year===year);}
+ Zhou.PersonActivities=Object.freeze({records,narrative,at});
+})(globalThis.Zhou ||= {});
+
 // ---- src/core/branding.js ----
 (function(Zhou){
  'use strict';
@@ -974,17 +1016,7 @@
 
     getTrajectoryPoints(person, rowLayouts, xFn, labelWidth) {
       if (!person) return [];
-      const stages = (person.stageActivities && person.stageActivities.length)
-        ? person.stageActivities
-        : (person.biographyPlan?.chapters || []).map(ch => ({
-            sequence: ch.chapterNo,
-            year: ch.year,
-            polityId: ch.polityId,
-            label: ch.title,
-            kindLabel: ch.kindLabel,
-            text: ch.summary
-          }));
-      if (!stages.length && Array.isArray(person.journey)) stages.push(...person.journey.map((j,i)=>({...j,sequence:i+1,polityId:j.state||j.polityId,label:j.label,kindLabel:j.kind})));
+      const stages = Zhou.PersonActivities.narrative(person);
       if (!stages.length) return [];
       const sorted = [...stages].sort((a, b) => a.sequence - b.sequence);
       const points = [];
@@ -1566,7 +1598,7 @@ function normalizeCombo(c){
    const events=history.eventsInRange({from:year,to:year,states:data.states.map(state=>state.id)});
    // Scattered journey records, birth/death dates and office associations never
    // establish a continuous active interval. Keep only explicitly dated records.
-   const people=(data.people||[]).map(person=>({person,activities:(person.journey||[]).filter(activity=>time.isYear(activity.year)&&activity.year===year),label:'当年有活动记载'})).filter(item=>item.activities.length);
+   const people=(data.people||[]).map(person=>({person,activities:Zhou.PersonActivities.at(person,year),label:'当年有活动记载'})).filter(item=>item.activities.length);
    return {year,label:time.format(year),states,events,people};
   }
   return Object.freeze({at});
@@ -3055,8 +3087,7 @@ if(typeof window!=='undefined'){
   }
   function clearHighlight(){state.session.figureHighlight=null;state.session.activePersonId=null;state.conditions.motif='none';b.render();}
   function stages(person){
-   const records=person.stageActivities?.length?person.stageActivities:person.biographyPlan?.chapters?.length?person.biographyPlan.chapters:person.journey||[];
-   return records.map((r,i)=>({year:typeof r.year==='object'?Zhou.Time.encode(r.year):r.year,stateId:r.polityId||r.stateId||r.state,sequence:r.sequence??r.chapterNo??i+1})).filter(r=>Zhou.Time.isYear(r.year)&&r.year<=bounds.start&&r.year>=bounds.end&&data.states.some(s=>s.id===r.stateId)).sort((a,c)=>a.sequence-c.sequence);
+   return Zhou.PersonActivities.narrative(person).filter(r=>Zhou.Time.isYear(r.year)&&r.year<=bounds.start&&r.year>=bounds.end&&data.states.some(s=>s.id===r.stateId)).sort((a,c)=>a.sequence-c.sequence);
   }
   function reveal(entities){for(const id of entities.stateIds)state.conditions.selected.add(id);state.search.query='';if($('#search'))$('#search').value='';state.search.searchTarget=null;state.session.activeEventId=null;}
   function openPerson(id){

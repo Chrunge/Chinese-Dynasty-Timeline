@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {createContext,runInContext} from 'node:vm';
 import {catalog,compileProduction} from '../lib/production.mjs';
 const ctx=createContext({});
-for(const file of ['src/core/biography-data.js','src/core/biography.js'])runInContext(readFileSync(file,'utf8'),ctx);
+for(const file of ['src/core/time.js','src/core/person-activities.js','src/core/biography-data.js','src/core/biography.js'])runInContext(readFileSync(file,'utf8'),ctx);
 const bio=ctx.Zhou.Biography,plain=value=>JSON.parse(JSON.stringify(value));
 const baseline=JSON.parse(readFileSync('tests/fixtures/biography-projections.json','utf8'));
 

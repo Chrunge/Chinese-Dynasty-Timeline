@@ -20,7 +20,7 @@
    const events=history.eventsInRange({from:year,to:year,states:data.states.map(state=>state.id)});
    // Scattered journey records, birth/death dates and office associations never
    // establish a continuous active interval. Keep only explicitly dated records.
-   const people=(data.people||[]).map(person=>({person,activities:(person.journey||[]).filter(activity=>time.isYear(activity.year)&&activity.year===year),label:'当年有活动记载'})).filter(item=>item.activities.length);
+   const people=(data.people||[]).map(person=>({person,activities:Zhou.PersonActivities.at(person,year),label:'当年有活动记载'})).filter(item=>item.activities.length);
    return {year,label:time.format(year),states,events,people};
   }
   return Object.freeze({at});

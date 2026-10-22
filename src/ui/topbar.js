@@ -24,8 +24,7 @@
   }
   function clearHighlight(){state.session.figureHighlight=null;state.session.activePersonId=null;state.conditions.motif='none';b.render();}
   function stages(person){
-   const records=person.stageActivities?.length?person.stageActivities:person.biographyPlan?.chapters?.length?person.biographyPlan.chapters:person.journey||[];
-   return records.map((r,i)=>({year:typeof r.year==='object'?Zhou.Time.encode(r.year):r.year,stateId:r.polityId||r.stateId||r.state,sequence:r.sequence??r.chapterNo??i+1})).filter(r=>Zhou.Time.isYear(r.year)&&r.year<=bounds.start&&r.year>=bounds.end&&data.states.some(s=>s.id===r.stateId)).sort((a,c)=>a.sequence-c.sequence);
+   return Zhou.PersonActivities.narrative(person).filter(r=>Zhou.Time.isYear(r.year)&&r.year<=bounds.start&&r.year>=bounds.end&&data.states.some(s=>s.id===r.stateId)).sort((a,c)=>a.sequence-c.sequence);
   }
   function reveal(entities){for(const id of entities.stateIds)state.conditions.selected.add(id);state.search.query='';if($('#search'))$('#search').value='';state.search.searchTarget=null;state.session.activeEventId=null;}
   function openPerson(id){
