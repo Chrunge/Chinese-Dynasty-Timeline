@@ -6,11 +6,11 @@ const vm=require('node:vm');
 const {createHash}=require('node:crypto');
 const {boot}=require('./helpers/browser.cjs');
 const baseline=JSON.parse(fs.readFileSync('tests/fixtures/seven-topic-projections.json','utf8'));
-test('七专题投影散列锁定（阶段A仅批准隋唐分组/武周显示注解变化，catalog除外）',()=>{
+test('七专题原件投影散列锁定（不含独立传记补充，catalog除外）',async()=>{
+ const {catalog,compileProduction}=await import('../lib/production.mjs');
  for(const [id,expected] of Object.entries(baseline.sha256)){
-  const context={window:{}};
-  vm.runInNewContext(fs.readFileSync('dist/'+(id==='zhou'?'data.js':'data-'+id+'.js'),'utf8'),context);
-  const data=context.window.ZHOU_DATA;delete data.catalog;
+  const topic=catalog.find(t=>t.id===id);
+  const data=compileProduction(JSON.parse(fs.readFileSync('data/'+topic.file,'utf8')),id);delete data.catalog;
   assert.equal(createHash('sha256').update(JSON.stringify(data)).digest('hex'),expected,id);
  }
 });
