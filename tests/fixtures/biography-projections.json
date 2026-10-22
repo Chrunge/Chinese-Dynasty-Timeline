@@ -1,0 +1,46 @@
+{
+  "xia-shang": {
+    "people": 67,
+    "sha256": "2b6fad12e51d46decd99252dd3e0cd80d252855a76fba875eda853c168350947"
+  },
+  "zhou": {
+    "people": 116,
+    "sha256": "dc08686fb928ae82a63fc8668bf1bba0571dadbf2cd6e5a621a7db5a8b39d7f1"
+  },
+  "qin-han": {
+    "people": 78,
+    "sha256": "cc5ece2331a4e7a61bae05d9228bd0531882882e186fa426a9ce5dfc23d37e35"
+  },
+  "three-kingdoms": {
+    "people": 51,
+    "sha256": "77289fcc1e83c1cbebae133b9f759c043cc89902d1f903491ba3b192d8442b6a"
+  },
+  "wei-jin-nan-bei": {
+    "people": 142,
+    "sha256": "258137e880c953f922c087c26321de22be6d74efbdbbe8d587ae81c3c1994d82"
+  },
+  "sui-tang": {
+    "people": 70,
+    "sha256": "1a71379e286e613669aba60a917a548e98ea61b0251ddf86d54a5d8780d580a4"
+  },
+  "five-dynasties": {
+    "people": 69,
+    "sha256": "fdd171d38711256c7ff1583ac576dfedfe37758226c34a95c1d05723be52dbbf"
+  },
+  "liao-jin-song": {
+    "people": 98,
+    "sha256": "9f983bbc458718c14b709572d6eb51d128475a0848f64ca16f41949a0e4dcf40"
+  },
+  "yuan": {
+    "people": 40,
+    "sha256": "0b434211d281e44f7f270db5b35cabda9219062ed81010e4820f0454ca95ce38"
+  },
+  "ming": {
+    "people": 54,
+    "sha256": "8d34c0dfdb111302ba519efc98edc5e357d514e0347406b77820a9af5586ff31"
+  },
+  "qing": {
+    "people": 40,
+    "sha256": "8f2616ba0c34b491115a35549f06fbaea1a825fc2f76b64161796eeeb065367e"
+  }
+}
