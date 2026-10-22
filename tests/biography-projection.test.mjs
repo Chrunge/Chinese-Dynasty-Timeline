@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {createContext,runInContext} from 'node:vm';
 import {catalog,compileProduction} from '../lib/production.mjs';
 const ctx=createContext({});
-for(const file of ['src/core/biography.js'])runInContext(readFileSync(file,'utf8'),ctx);
+for(const file of ['src/core/biography-data.js','src/core/biography.js'])runInContext(readFileSync(file,'utf8'),ctx);
 const bio=ctx.Zhou.Biography,plain=value=>JSON.parse(JSON.stringify(value));
 const baseline=JSON.parse(readFileSync('tests/fixtures/biography-projections.json','utf8'));
 
@@ -33,4 +33,11 @@ test('AR03: trajectories prefer explicit stages, then chapters, without inventin
  const fromStages=bio.getTrajectoryPoints({journey,biographyPlan:{chapters:[chapter]},stageActivities:stages},layouts,y=>y,0);
  assert.equal(fromStages.length,1);assert.equal(fromStages[0].year,-1070);
  assert.deepEqual(plain(bio.getTrajectoryPoints({journey:[{year:null,state:'song'}]},layouts,y=>y,0)),[]);
+});
+
+test('AR03: generated data is fresh and generation excludes runtime algorithms',async()=>{
+ const {renderBiographyData}=await import('../lib/biography-data.mjs');
+ const book=JSON.parse(readFileSync('data/中国历代非君主人物传记全书.json','utf8'));
+ assert.equal(readFileSync('src/core/biography-data.js','utf8'),renderBiographyData(book));
+ assert(!renderBiographyData(book).includes('getTrajectoryPoints'));
 });

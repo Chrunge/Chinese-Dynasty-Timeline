@@ -156,3 +156,7 @@ CI和Pages的触发、权限及配置见 [部署说明](DEPLOYMENT.md)。
 ### 阅读位置边界
 
 横向阅读偏移的校验上限由当前专题起点、视图结束年和缩放共同计算；同宽恢复保留有效像素位置，跨宽恢复按已保存的年份范围计算缩放与偏移。记录字段及旧格式兼容规则不变。
+
+### 传记数据与算法
+
+`data/中国历代非君主人物传记全书.json` 由 `lib/biography-data.mjs` 投影为纯数据资源 `src/core/biography-data.js`；`tools/build-biography-core.mjs` 只生成该数据文件，`--check` 只读检查。手写筛选与轨迹算法位于 `src/core/biography.js`，构建按数据、算法的顺序加载，并检查原件与生成数据一致。

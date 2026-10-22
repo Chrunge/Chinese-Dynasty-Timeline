@@ -197,6 +197,7 @@ test('11 朝代数据集人物传记双引擎全量挂载与富化验证', () =>
   const bioCode = fs.readFileSync(path.join(root, 'src', 'core', 'biography.js'), 'utf8');
   const ctx = { globalThis: {}, console, Set, Array, Object, Map, Number, String, Boolean };
   ctx.globalThis = ctx;
+  vm.runInNewContext(fs.readFileSync(path.join(root,'src/core/biography-data.js'),'utf8'),ctx);
   vm.runInNewContext(bioCode, ctx);
   const Bio = ctx.Zhou.Biography;
   assert(Bio, '独立上下文内应成功加载 Zhou.Biography');
