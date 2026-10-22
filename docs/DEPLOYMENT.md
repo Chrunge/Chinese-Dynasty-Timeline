@@ -46,7 +46,6 @@ node build.mjs --check --social-png-dir=.validation/social-png
 | 现象 | 检查方式 |
 |---|---|
 | dist 缺失或过期 | 重新构建并提交生成物 |
-| 传记生成数据过期 | 运行传记数据生成工具，再构建 |
 | 引用校验失败 | 修正稳定 ID、显式专题作用域或有依据的未收录声明 |
 | 浏览器验收失败 | 查看具体入口与 .validation/figures/ 报告，不使用强制点击掩盖遮挡 |
 | Pages 权限错误 | 检查来源、Actions 权限、组织策略和环境限制 |

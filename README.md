@@ -51,8 +51,6 @@
 需要Node.js 22或更高版本，无需安装第三方依赖。在项目根目录执行：
 
 ```sh
-node tools/build-biography-core.mjs --check
-# 传记原件变更时，先运行 node tools/build-biography-core.mjs
 node build.mjs
 node build.mjs --check
 node --test tests/*.test.mjs tests/*.test.cjs
@@ -77,7 +75,7 @@ node --test --test-isolation=none tests/*.test.mjs tests/*.test.cjs
 
 受限Windows环境如出现父目录realpath的EPERM，可为Node命令添加 `--preserve-symlinks --preserve-symlinks-main`。自动化测试覆盖资料校验、查询、组合、导航、渲染、分享及导出；DOM桩检查不替代真实浏览器排版、触控或打印验收。
 
-兼容命令 `sync-data.mjs`、`enrich-context.mjs`、`enrich-people.mjs` 均转调统一构建，不另外补写历史资料。
+兼容命令 `sync-data.mjs`、`enrich-context.mjs`、`enrich-people.mjs`、`tools/build-biography-core.mjs` 均转调统一构建，不另外补写历史资料。
 
 ## 文档
 

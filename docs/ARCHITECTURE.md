@@ -15,11 +15,9 @@ flowchart TB
     A --> P[production 技术适配]
     P --> V[atlas 校验与领域投影]
     V --> D[专题显示注解]
-    B --> G[biography-data 纯数据生成]
-    G --> GD[src/core/biography-data.js]
-    B --> BC[biography 构建期补充]
+    B --> G[biography-data 构建期输入投影]
+    G --> BC[biography 构建期补充]
     D --> BC
-    E[src/core/biography.js 手写算法] --> BC
     BC --> R[本地、跨专题与未收录引用校验]
     A --> I[corpus 原始出处索引]
     B --> I
@@ -30,8 +28,7 @@ flowchart TB
     I --> CORPUS[corpus.json]
     L --> LINKS[entity-links.js]
     C --> PACK[脚本、样式与静态页面构建]
-    GD --> PACK
-    E --> PACK
+    E[src/core/biography.js 轨迹与筛选] --> PACK
     DATA --> PACK
     PACK --> RELEASE[dist 页面、资源散列与 release.json]
   end
@@ -70,7 +67,7 @@ flowchart TB
 |---|---|
 | [生产目录](../lib/production.mjs) | 登记专题、原件和入口，连接技术适配、编译与显示注解 |
 | [资料编译](../lib/atlas.mjs)、[时间转换](../lib/time.mjs) | 纯校验与领域投影，不读写文件或修改作者输入 |
-| [传记数据](../lib/biography-data.mjs)、[生成工具](../tools/build-biography-core.mjs) | 只生成纯数据；手写轨迹和筛选算法不被生成器覆盖 |
+| [传记投影](../lib/biography-data.mjs) | 在构建期整理总集字段；全专题传记不进入公共脚本 |
 | [传记编译](../lib/biography.mjs) | 发布前补充资料，校验引用作用域，生成诊断；页面启动不再补入人物 |
 | [出处索引](../lib/corpus.mjs) | 保留原件及传记的文件、JSON 路径和散列，列出字段差异，不裁决史实 |
 | [实体导航](../lib/entity-links.mjs) | 据明确稳定 ID 生成本地专题链接，不按姓名合并 |
@@ -126,6 +123,6 @@ JSON 是带时间编码和来源的对照快照，不是可重新导入的 Atlas
 
 ## 构建、验证与部署
 
-常规构建与 Node 测试不需要第三方依赖；传记原件变更后先运行数据生成工具。命令与浏览器检查范围见 [README](../README.md#维护与检查)。Node 的轻量 DOM 只验证模型和状态，真实入口、排版、触控和打印须使用对应验收方式。
+常规构建与 Node 测试不需要第三方依赖；传记原件由统一构建直接读取与校验。命令与浏览器检查范围见 [README](../README.md#维护与检查)。Node 的轻量 DOM 只验证模型和状态，真实入口、排版、触控和打印须使用对应验收方式。
 
 默认 CI 检查已提交产物、运行 Node 测试、构建，再运行 Chromium 的人物入口回归。通过后上传 dist；只有 master 推送或 master 手动运行部署 Pages。工作流、权限与可选 PNG 见[部署说明](DEPLOYMENT.md)。操作、旧方案与历次验收记录只保存在[历史文档](HISTORY.md)。

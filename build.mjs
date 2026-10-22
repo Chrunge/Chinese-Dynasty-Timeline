@@ -1,6 +1,5 @@
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {renderBiographyData} from './lib/biography-data.mjs';
 import {createBiographyCompiler,biographySource} from './lib/biography.mjs';
 import {catalog,compileProduction} from './lib/production.mjs';
 import {buildCorpus} from './lib/corpus.mjs';
@@ -10,7 +9,6 @@ import {resolve,join} from 'node:path';
 import {runInNewContext,Script} from 'node:vm';
 
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
-if(read('./src/core/biography-data.js')!==renderBiographyData(JSON.parse(read('./data/中国历代非君主人物传记全书.json'))))throw new Error('传记数据已过期，请运行 node tools/build-biography-core.mjs');
 const hash = content => createHash('sha256').update(content).digest('hex');
 const brandingContext={};runInNewContext(read('./src/core/branding.js'),brandingContext);
 const branding=brandingContext.Zhou.Branding;
@@ -18,7 +16,7 @@ const escapeBrand=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','
 const textSlot=(html,id,value)=>html.replace(new RegExp('(<[^>]+\\bid="'+id+'"[^>]*>)[\\s\\S]*?(</[^>]+>)'),(_,a,b)=>a+escapeBrand(value)+b);
 const displayData=(data,id)=>({...data,title:branding.resolve(data,id).title});
 const bundles = {
-  'app.js': ['src/core/time.js', 'src/core/person-activities.js', 'src/core/branding.js', 'src/core/figures.js', 'src/core/correction.js', 'src/core/presentation.js', 'src/core/biography-data.js', 'src/core/biography.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/core/entity-links.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/experience.js', 'src/ui/accessibility.js', 'src/core/time-slice.js', 'src/ui/time-slice.js', 'src/ui/gestures.js', 'src/ui/tenure-tooltip.js', 'src/ui/detail-sheet.js', 'src/ui/view.js', 'src/ui/figures.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/ui/topbar.js', 'src/startup.js'],
+  'app.js': ['src/core/time.js', 'src/core/person-activities.js', 'src/core/branding.js', 'src/core/figures.js', 'src/core/correction.js', 'src/core/presentation.js', 'src/core/biography.js', 'src/core/history.js', 'src/core/search.js', 'src/core/state.js', 'src/core/combinations.js', 'src/core/navigation.js', 'src/core/reading.js', 'src/core/view-link.js', 'src/core/entity-links.js', 'src/adapters/storage.js', 'src/adapters/timeline-dom.js', 'src/ui/experience.js', 'src/ui/accessibility.js', 'src/core/time-slice.js', 'src/ui/time-slice.js', 'src/ui/gestures.js', 'src/ui/tenure-tooltip.js', 'src/ui/detail-sheet.js', 'src/ui/view.js', 'src/ui/figures.js', 'src/app.js', 'src/ui/search-details.js', 'src/ui/timeline.js', 'src/ui/navigation-details.js', 'src/ui/controls.js', 'src/ui/topbar.js', 'src/startup.js'],
   'study.js': ['src/study.js'],
   'share.js': ['src/core/share-summary.js', 'src/share.js'],
   'export.js': ['src/core/export-layout.js', 'src/outputs/canvas.js', 'src/adapters/export-files.js', 'src/export.js']

@@ -178,7 +178,7 @@ test('人物跨政权/跨国迁徙轨迹高亮（吴起、伍子胥）', () => {
   assert(ptsWuZiXu.length >= 3, '伍子胥应具备跨政权活动节点');
 });
 
-test('11 朝代数据集人物传记双引擎全量挂载与富化验证', () => {
+test('11 朝代数据集构建期传记全量挂载与富化验证', async () => {
   const catalog = [
     { id: 'xia-shang', file: 'xia-shang.json' },
     { id: 'zhou', file: 'atlas.json' },
@@ -193,11 +193,12 @@ test('11 朝代数据集人物传记双引擎全量挂载与富化验证', () =>
     { id: 'qing', file: 'qing.json' }
   ];
 
-  // 加载编译后的 Biography 核心库
+  const {createBiographyCompiler}=await import('../lib/biography.mjs');
+  const compiler=createBiographyCompiler(masterData);
+  // Runtime algorithms load without the biography book.
   const bioCode = fs.readFileSync(path.join(root, 'src', 'core', 'biography.js'), 'utf8');
   const ctx = { globalThis: {}, console, Set, Array, Object, Map, Number, String, Boolean };
   ctx.globalThis = ctx;
-  vm.runInNewContext(fs.readFileSync(path.join(root,'src/core/biography-data.js'),'utf8'),ctx);
   vm.runInNewContext(bioCode, ctx);
   const Bio = ctx.Zhou.Biography;
   assert(Bio, '独立上下文内应成功加载 Zhou.Biography');
@@ -205,9 +206,7 @@ test('11 朝代数据集人物传记双引擎全量挂载与富化验证', () =>
   let totalCoveredFigures = 0;
 
   for (const cat of catalog) {
-    const raw = JSON.parse(fs.readFileSync(path.join(root, 'data', cat.file), 'utf8'));
-    // 富化数据集
-    Bio.enrichDataset(raw);
+    const raw = compiler.enrich(JSON.parse(fs.readFileSync(path.join(root, 'data', cat.file), 'utf8')));
 
     const withPlan = (raw.people || []).filter(p => p.biographyPlan);
     assert(withPlan.length > 0, `专题 ${cat.id} (${cat.file}) 经 enrichDataset 后应包含传记人物`);

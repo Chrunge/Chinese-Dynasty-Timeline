@@ -4,15 +4,17 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {createContext,runInContext} from 'node:vm';
 import {catalog,compileProduction} from '../lib/production.mjs';
+import {createBiographyCompiler,biographySource} from '../lib/biography.mjs';
+const compiler=createBiographyCompiler(JSON.parse(readFileSync(biographySource,'utf8')));
 const ctx=createContext({});
-for(const file of ['src/core/time.js','src/core/person-activities.js','src/core/biography-data.js','src/core/biography.js'])runInContext(readFileSync(file,'utf8'),ctx);
+for(const file of ['src/core/time.js','src/core/person-activities.js','src/core/biography.js'])runInContext(readFileSync(file,'utf8'),ctx);
 const bio=ctx.Zhou.Biography,plain=value=>JSON.parse(JSON.stringify(value));
 const baseline=JSON.parse(readFileSync('tests/fixtures/biography-projections.json','utf8'));
 
 test('AR03: all eleven effective topic projections retain their characterized data',()=>{
  for(const topic of catalog){
   const input=JSON.parse(readFileSync('data/'+topic.file,'utf8')),before=JSON.stringify(input);
-  const data=compileProduction(input,topic.id);bio.enrichDataset(data);
+  const data=compiler.enrich(compileProduction(input,topic.id));
   assert.equal(JSON.stringify(input),before,topic.id+' source is immutable');
   assert.equal(data.people.length,baseline[topic.id].people,topic.id);
   assert.equal(createHash('sha256').update(JSON.stringify(data)).digest('hex'),baseline[topic.id].sha256,topic.id);
@@ -35,9 +37,12 @@ test('AR03: trajectories prefer explicit stages, then chapters, without inventin
  assert.deepEqual(plain(bio.getTrajectoryPoints({journey:[{year:null,state:'song'}]},layouts,y=>y,0)),[]);
 });
 
-test('AR03: generated data is fresh and generation excludes runtime algorithms',async()=>{
- const {renderBiographyData}=await import('../lib/biography-data.mjs');
- const book=JSON.parse(readFileSync('data/中国历代非君主人物传记全书.json','utf8'));
- assert.equal(readFileSync('src/core/biography-data.js','utf8'),renderBiographyData(book));
- assert(!renderBiographyData(book).includes('getTrajectoryPoints'));
+test('首屏仅保留活动专题轨迹与筛选，传记总集不进入运行时',()=>{
+ assert.equal(ctx.Zhou.BiographyData,undefined);
+ assert.equal(bio.enrichDataset,undefined);
+ assert.equal(typeof bio.getMatchingEntities,'function');
+ assert.equal(typeof bio.getTrajectoryPoints,'function');
+ const app=readFileSync('dist/app.js','utf8');
+ assert(!app.includes('BiographyData'));
+ assert(Buffer.byteLength(app)<300000,'public runtime bundle stays below 300 KB');
 });
