@@ -16,7 +16,7 @@ annotateExpansionDisplay(data, id)
 - 新增 `data.presentation = {...existing, version: 1, rowGroups: [...]}`。组与 `stateIds` 数组每次重建，不跨投影共享可变对象。重复调用幂等。
 - 不改变原名称、日期、ID、来源、异说 `alternatives`、角色、任期顺序、政权或关系；不创建、删除、合并任何历史实体。所有原字段仍供详情和导出使用。
 
-生产顺序由 Lead 接入，示意如下；本任务不修改生产入口或构建：
+生产入口 [lib/production.mjs](../lib/production.mjs) 的调用顺序示意如下；本模块不修改生产入口或构建：
 
 ```js
 const prepared = prepareExpansionProduction(input, id);
@@ -81,4 +81,4 @@ return annotateExpansionDisplay(projection, id);
 node --test tests/expansion-display.test.mjs
 ```
 
-覆盖全部 156 条任期及其 ruler 副本、全部 41 个政权双投影的显式短名/原文支持、投影别名引用及嵌套 display 元数据独立性、冻结原稿不变性、全部日期与异说完整性、5/11/11/6 行、交接年和真实并存分层、分组规模、复位与监国身份、共享 ID 当前卷称谓、筛选与固定成员、详情/导出实体身份、幂等性、任一政权集合的未知 ID 写前原子失败和未知专题 no-op。不联网验证史实，不构建，不提交。
+覆盖全部 156 条任期及其 ruler 副本、全部 41 个政权双投影的显式短名/原文支持、投影别名引用及嵌套 display 元数据独立性、冻结原稿不变性、全部日期与异说完整性、5/11/11/6 行、交接年和真实并存分层、分组规模、复位与监国身份、共享 ID 当前卷称谓、筛选与固定成员、详情/导出实体身份、幂等性、任一政权集合的未知 ID 写前原子失败和未知专题 no-op。测试不联网验证史实；构建与发布只由人工执行。

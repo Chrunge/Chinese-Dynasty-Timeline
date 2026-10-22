@@ -5,7 +5,7 @@
 - 2026-10-20 接收用户授权本地原件，未联网、未校勘史实、未改日期或实体 ID、未按姓名合并、未补造人物或关系。
 - 原件目录：`C:\Users\Yui\Downloads\drive-download-20261020T103621Z-1-001\`；以下四份采用字节复制，不重新序列化。
 - 直接校验原件均在首个不支持的活动类别处失败。仅通过独立技术投影兼容；基础校验器不修改。四份投影已通过 `validateAtlas` 和 `compileAtlas`。
-- 此工作只写四份新数据、[注解模块](../lib/production-annotations.mjs)、[针对性测试](../tests/dynasty-intake.test.mjs)与本文档。不提交、不构建；页面、导航、生产接入及部署由 Lead 负责。
+- 入库范围是四份新数据、[注解模块](../lib/production-annotations.mjs)、[针对性测试](../tests/dynasty-intake.test.mjs)与本文档；页面、导航与生产接入已在[生产入口](../lib/production.mjs)接通，构建与发布只由人工执行。
 
 ## 原件散列与计数
 

@@ -5,7 +5,7 @@
 - 模块：[dynasty-display.mjs](../lib/dynasty-display.mjs)，唯一导出 `annotateDynastyDisplay(data,id)`。
 - `id` 为 `wei-jin-nan-bei`、`sui-tang`、`liao-jin-song` 或 `ming`。其他专题原样返回，不接管原有展示模块。
 - `data` 必须是调用方拥有的、可变的 `compileAtlas` **projection**，具有 `tenures` 与 `states[].rulers`；不是原始 authoring JSON。函数原地添加注解并返回同一 projection。它不读取文件、不联网、不校验或修订史实。
-- 调用位置是生产规范化和 `compileAtlas` 之后；由 Lead 在生产入口接入。本模块不承担导入、规范化、日期转换或构建工作。
+- 调用位置是生产规范化和 `compileAtlas` 之后：[生产入口](../lib/production.mjs) 按专题 ID 调用 `annotateDynastyDisplay`。本模块不承担导入、规范化、日期转换或构建工作。
 - 所有任期使用**显式任期 ID**查表，对 `tenures` 和 `states[].rulers` 的独立记录副本分别添加 `display: {shortTitle,personalName}`。两处值相等，但对象不共享。原有其他 `display` 字段保留。
 - 不按姓名匹配或覆盖，不按 `personId` 合并任期，不从原名称猜标题。发现未登记任期 ID 时，在写任何注解之前抛出 `Missing explicit dynasty tenure display: <id>`；新增资料必须先逐 ID 审阅标签。
 - 添加 `presentation: {version:1,rowGroups:[{id,name,stateIds,note}]}`，保留既有其他 presentation 字段。每次调用复制分组及其 `stateIds`，调用方修改不会污染下一次投影。
