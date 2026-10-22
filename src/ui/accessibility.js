@@ -13,7 +13,7 @@
   function listen(node,type,fn,options){node?.addEventListener(type,fn,options);listeners.push(()=>node?.removeEventListener(type,fn,options));}
   function announce(message){if(!status||message===lastMessage)return;win.clearTimeout(timer);timer=win.setTimeout(()=>{status.textContent=message;lastMessage=message;},220);}
   const focusable=container=>[...container.querySelectorAll('a[href],button,input,select,textarea,summary,[tabindex]')].filter(el=>!el.disabled&&el.tabIndex>=0&&!el.closest('[hidden],[inert]')&&el.getClientRects().length);
-  function boundary(){const active=doc.activeElement,dialog=active?.closest('dialog[open]');if(dialog)return dialog;const dialogs=[...doc.querySelectorAll('dialog[open]')];if(dialogs.length)return dialogs[dialogs.length-1];const panel=$('#advancedSettings');return panel&&!panel.hidden&&panel.contains(active)?panel:null;}
+  function boundary(){const active=doc.activeElement,dialog=active?.closest('dialog[open]');if(dialog)return dialog;const dialogs=[...doc.querySelectorAll('dialog[open]')];if(dialogs.length)return dialogs[dialogs.length-1];return null; /* Non-modal settings never trap Tab away from their single toggle. */}
   listen(doc,'keydown',event=>{
    lastKeyboard=Date.now();
    if(event.key!=='Tab')return;
@@ -26,7 +26,7 @@
   listen($('#advancedSettings'),'zhou:panelopen',()=>focusable($('#advancedSettings'))[0]?.focus({preventScroll:true}));
   // Native dialogs own their Escape behavior (detail preserves its back stack).
   // This module only wraps Tab, including nested export/share/filter dialogs.
-  function cursorChanged(year){if(Date.now()-lastKeyboard<600)announce('参考年份：'+Zhou.Time.format(year)+'。可展开同年天下速览。');}
+  function cursorChanged(year){if(Date.now()-lastKeyboard<600)announce('参考年份：'+Zhou.Time.format(year)+'。可展开同年对照。');}
   function background(el){let color=[255,255,255],layers=[];for(let node=el;node&&node.nodeType===1;node=node.parentElement){const rgb=parseColor(win.getComputedStyle(node).backgroundColor);if(rgb)layers.push(rgb);}for(const layer of layers.reverse())color=composite(layer,color);return color;}
   function paint(){paintQueued=false;if(stopped)return;
    // Preserve every polity/event hue. Only choose an AA foreground for actual

@@ -8,7 +8,10 @@ function isIntervalEvent(e){return Zhou.Time.isYear(e?.endYear)&&e.endYear!==e.y
 function eventDateLabel(e){return isIntervalEvent(e)?range(e.year,e.endYear):fmt(e.year);}
 function eventReferenceYear(e){return isIntervalEvent(e)&&e.year>=appState.conditions.cursor&&appState.conditions.cursor>=e.endYear?appState.conditions.cursor:e.year;}
 function packRulers(s){const packed=Zhou.Presentation.pack(historyService.rulersInRange(s,timelineBounds.start,appState.conditions.end),timelineBounds.start,appState.conditions.end);return {rulers:packed.items,lanes:packed.lanes};}
-function stateRowLabel(s){const pinned=appState.layout.pinned.has(s.id);return '<div class="memberLabel"><button class="stateName" data-action="state" data-id="'+s.id+'" style="color:'+s.color+'" title="'+escapeHTML(s.name)+'" aria-label="'+escapeHTML(s.display?.shortName||s.name)+' · 查看'+escapeHTML(s.name)+'的历史">'+escapeHTML(s.display?.shortName||s.name)+'</button><button class="pinState '+(pinned?'isPinned':'')+'" data-action="pin" data-id="'+s.id+'" aria-pressed="'+pinned+'" aria-label="钉 · '+(pinned?'取消固定':'固定')+escapeHTML(s.name)+'" title="'+(pinned?'取消固定':'固定到上方，接续分段共用主行')+'">钉</button></div>';}
+function stateRowLabel(s){
+ const pinned=appState.layout.pinned.has(s.id),policy=Zhou.Presentation.topic(D),minor=!policy.coreIds.includes(s.id),note=minor?(policy.minorInfo[s.id]||s.region||'次要/周边政权'):'',dates=range(s.start,s.end,s.approxStart||s.approxEnd),label=Zhou.Presentation.polityLabel(s,D);
+ return '<div class="memberLabel memberWithDates '+(minor?'minorMemberLabel':'')+'" style="--polity-color:'+polityColor(s)+'"><button class="stateName" data-action="state" data-id="'+s.id+'" style="color:'+polityColor(s)+'" title="'+escapeHTML([s.name,note,dates].filter(Boolean).join(' · '))+'" aria-label="'+escapeHTML(label)+' · 查看'+escapeHTML(s.name)+'的历史">'+escapeHTML(label)+'</button><button class="pinState '+(pinned?'isPinned':'')+'" data-action="pin" data-id="'+s.id+'" aria-pressed="'+pinned+'" aria-label="钉 · '+(pinned?'取消固定':'固定')+escapeHTML(s.name)+'" title="'+(pinned?'取消固定':'固定到上方，接续分段共用主行')+'">钉</button>'+(minor?'<small class="minorStateNote" title="'+escapeHTML(note)+'">'+escapeHTML(note)+'</small>':'')+'<small class="memberDates '+(minor?'minorStateDates':'')+'" title="'+escapeHTML(dates)+'">'+escapeHTML(dates)+'</small></div>';
+}
 Zhou.EventSemantics={glyph(kind){const icon=Zhou.Presentation.eventIcon(kind);return '<svg class="eventKindIcon eventKind-'+icon.token+'" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="'+icon.path+'"></path></svg>';}};
 function eventMarkerWidth(group,level){
  const event=group.find(e=>e.key)||group.find(e=>e.id===appState.session.activeEventId)||group[0],expanded=level==='detail'||group.some(e=>e.key),kinds=Zhou.Presentation.eventKinds(group).length;
@@ -47,7 +50,7 @@ function renderTrajectoryLayer(){
  if(!activeId)return '';
  const p=historyService.person(activeId)||(D.people||[]).find(x=>x.id===activeId);
  if(!p)return '';
- const pts=Zhou.Biography?.getTrajectoryPoints(p,appState.session.rowLayouts,x,labelWidth())||[];
+ const pts=(Zhou.Biography?.getTrajectoryPoints(p,appState.session.rowLayouts,x,labelWidth())||[]).filter(pt=>pt.year<=timelineBounds.start&&pt.year>=appState.conditions.end).map(pt=>({...pt,y:pt.y+64}));
  if(!pts.length)return '';
 
  const pathD=Zhou.Biography.buildTrajectoryPath(pts);
@@ -74,7 +77,7 @@ function renderTrajectoryLayer(){
 }
 function render(){
  const oldScroll=vp.scrollLeft,w=(timelineBounds.start-appState.conditions.end+1)*appState.layout.px+160,level=densityLevel(),focused=activeEvent();
- const motifEntities=Zhou.Biography?.getMatchingEntities(appState.conditions.motif,D)||{active:false};
+ const motifEntities=appState.session.figureHighlight?.entities||Zhou.Biography?.getMatchingEntities(appState.conditions.motif,D)||{active:false};
  const ordered=appState.layout.stateOrder.map(byId).filter(Boolean);
  // Domain selection remains polity IDs. A display group is never a query identity.
  appState.session.visibleStates=[...ordered.filter(s=>appState.layout.pinned.has(s.id)),...ordered.filter(s=>!appState.layout.pinned.has(s.id)&&(appState.search.query&&appState.search.searchScope==='all'||appState.conditions.selected.has(s.id))&&matches(s))];
@@ -95,11 +98,13 @@ function render(){
  }
  descriptors.push({key:'axis',html:timelineAxis.html});
  appState.session.rowLayouts=new Map();let pinTop=64,rowOffset=0;
- const rowSignature=JSON.stringify([appState.conditions.end,appState.layout.px,level,appState.layout.mode,appState.conditions.category,appState.search.query,appState.search.searchDescriptions,appState.search.searchTarget,appState.session.activeEventId,appState.conditions.motif]);
+ const rowSignature=JSON.stringify([appState.conditions.end,appState.layout.px,level,appState.layout.mode,appState.conditions.category,appState.search.query,appState.search.searchDescriptions,appState.search.searchTarget,appState.session.activeEventId,appState.conditions.motif,appState.session.figureHighlight&&[appState.session.figureHighlight.kind,appState.session.figureHighlight.id,[...appState.session.figureHighlight.entities.personIds]]]);
  let events;
  for(const row of rows){
   const members=row.members,grouped=row.grouped,isPinned=row.pinned,related=members.some(s=>focused?.states.includes(s.id));
   const requested=Math.max(...members.map(s=>Number(appState.layout.rowHeights[s.id])||(appState.layout.fitRows?fitHeight:appState.layout.rowHeight)));
+   const labelPolicy=Zhou.Presentation.topic(D),minorLabelCount=members.filter(s=>!labelPolicy.coreIds.includes(s.id)).length;
+   const labelMinHeight=grouped?38+members.length*36+minorLabelCount*12:minorLabelCount?56:36;
   const signature=rowSignature+JSON.stringify([members.map(s=>s.id),requested,isPinned,isPinned?pinTop:0,members.map(s=>appState.layout.pinned.has(s.id))]),cached=timelineRows.get(row.key);
   if(cached?.signature===signature){for(const s of members)appState.session.rowLayouts.set(s.id,{...cached.layout,offset:rowOffset});rowOffset+=cached.layout.height;descriptors.push({key:row.key,html:cached.html});if(isPinned)pinTop+=cached.layout.height;continue;}
   const records=members.flatMap(s=>historyService.rulersInRange(s,timelineBounds.start,appState.conditions.end).map(r=>({...r,stateId:s.id})));
@@ -114,20 +119,20 @@ function render(){
    const capsuleBase=grouped?segments.lanes*22+6:undatedMembers.length&&(level==='overview'||appState.layout.mode==='overview')?26:compactSlots?2:6,lanes=rulerVisible?packed.lanes:1,rulerTop=capsuleBase+undatedMembers.length*22;
   const eventReserve=packed.lanes>basePacked.lanes?20:21;
    const minBarHeight=packed.items.some(r=>r.polityAssociation==='contextual'||r.dating?.level==='disputed')?4:2;
-  const height=Math.max(36,Math.min(160,requested),undatedMembers.length?rulerTop+(eventVisible?eventReserve:0):0,rulerVisible?rulerTop+Math.max(8,lanes*(minBarHeight+1))+(eventVisible?eventReserve:6):0,grouped?Math.max(38+members.length*23,rulerTop+(rulerVisible?lanes*19:0)+(eventVisible?27:12)):0);
+  const height=Math.max(labelMinHeight,Math.min(160,requested),undatedMembers.length?rulerTop+(eventVisible?eventReserve:0):0,rulerVisible?rulerTop+Math.max(8,lanes*(minBarHeight+1))+(eventVisible?eventReserve:6):0,grouped?Math.max(38+members.length*23,rulerTop+(rulerVisible?lanes*19:0)+(eventVisible?27:12)):0);
   const bandHeight=Math.max(8,height-rulerTop-(eventVisible?eventReserve:6)),barHeight=Math.max(.5,Math.min(44,bandHeight/lanes-1)),eventTop=height-eventReserve;
   const eventAreaTop=Math.min(eventTop,Math.max(grouped?rulerTop:26,rulerTop)),rulerObstacles=[];
   const layout={height,eventTop,eventAreaTop,lanes,barHeight,level,pinned:isPinned,rowKey:row.key,offset:rowOffset};
   for(const s of members)appState.session.rowLayouts.set(s.id,layout);
   rowOffset+=height;
-  let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.note)+'">'+row.name+'<small>重叠分层</small></strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
+  let html='<div class="stateRow '+(grouped?'groupedRow ':'')+(height<56?'compactLabels ':'')+(isPinned?'pinnedRow ':'')+(related?'eventRelated ':focused?'eventDim ':'')+'" data-state="'+members[0].id+'" data-row="'+row.key+'" style="height:'+height+'px;min-height:0;'+(isPinned?'position:sticky;top:'+pinTop+'px;z-index:10;':'')+'"><div class="stateLabel">'+(grouped?'<strong class="rowGroupTitle" title="'+escapeHTML(row.note)+'">'+row.name+'<small>重叠分层</small></strong>':'')+members.map(stateRowLabel).join('')+'</div><div class="track" style="width:'+w+'px;height:'+height+'px;min-height:0;background-size:'+(step*appState.layout.px)+'px 100%;background-position:'+x(Math.floor(timelineBounds.start/step)*step)+'px 0">';
   if(isPinned)pinTop+=height;
   if(grouped){
-   for(const s of segments.items){const start=Math.min(timelineBounds.start,s.start),end=Math.max(s.end,appState.conditions.end);html+='<button class="politySegment" data-action="state" data-id="'+s.id+'" style="left:'+x(start)+'px;width:'+Math.max(2,(start-end+1)*appState.layout.px)+'px;top:'+(s.displayLane*22+3)+'px;background:'+s.color+'" title="'+escapeHTML(s.name+' · '+range(s.start,s.end))+'" aria-label="'+escapeHTML((s.display?.shortName||s.name)+' · '+s.name+'，'+range(s.start,s.end))+'">'+escapeHTML(s.display?.shortName||s.name)+'</button>';}
+   for(const s of segments.items){const start=Math.min(timelineBounds.start,s.start),end=Math.max(s.end,appState.conditions.end);html+='<button class="politySegment" data-action="state" data-id="'+s.id+'" style="left:'+x(start)+'px;width:'+Math.max(2,(start-end+1)*appState.layout.px)+'px;top:'+(s.displayLane*22+3)+'px;background:'+polityColor(s)+'" title="'+escapeHTML(s.name+' · '+range(s.start,s.end))+'" aria-label="'+escapeHTML((s.display?.shortName||s.name)+' · '+s.name+'，'+range(s.start,s.end))+'">'+escapeHTML(s.display?.shortName||s.name)+'</button>';}
   }else{
    const s=members[0];let life=[{start:s.start,end:Math.max(s.end,appState.conditions.end)}];
    for(const gap of s.interruptions)life=life.flatMap(seg=>gap.start<=seg.start&&gap.end>=seg.end?[{start:seg.start,end:gap.start+1},{start:gap.end-1,end:seg.end}]:[seg]);
-   for(const seg of life){if(seg.start<appState.conditions.end)continue;html+='<div class="lifeline '+(s.approxStart?'uncertainLife':'')+'" style="left:'+x(seg.start)+'px;width:'+Math.max(0,(seg.start-seg.end+1)*appState.layout.px)+'px;background:'+s.color+'"></div>';}
+   for(const seg of life){if(seg.start<appState.conditions.end)continue;html+='<div class="lifeline '+(s.approxStart?'uncertainLife':'')+'" style="left:'+x(seg.start)+'px;width:'+Math.max(0,(seg.start-seg.end+1)*appState.layout.px)+'px;background:'+polityColor(s)+'"></div>';}
    if(level==='overview'||appState.layout.mode==='overview'){if(s.start>=appState.conditions.end)html+='<button class="lifeStart" data-action="state" data-id="'+s.id+'" style="left:'+x(s.start)+'px" title="'+escapeHTML(s.name+'起点 '+range(s.start,s.start,s.approxStart))+'">'+(s.approxStart?'约 ':'')+fmt(s.start).replace(/年$/,'')+' '+escapeHTML(s.startLabel||'起点')+'</button>';}
   }
   undatedMembers.forEach((s,index)=>{html+='<button type="button" class="event undatedCapsule" data-action="undated" data-id="'+s.id+'" data-undated-state="'+s.id+'" style="left:'+(x(s.start)+8)+'px;top:'+(capsuleBase+index*22)+'px" title="'+escapeHTML(s.name+' · '+s.undated.length+'项未定年君主或前期领袖，非定年条带；打开世系区')+'" aria-label="'+escapeHTML('未定年世系 · '+s.undated.length+' · '+s.name+' · 查看'+s.undated.length+'项未定年世系')+'">未定年世系 · '+s.undated.length+'</button>';});
@@ -139,19 +144,21 @@ function render(){
     // CSS border-box cannot shrink below padding + borders, even on short reigns.
     const borderSize=r.polityAssociation==='contextual'||r.dating?.level==='disputed'?4:2;
     rulerObstacles.push({left,right:left+Math.max(10+borderSize,width),top:rulerTop+r.displayLane*(barHeight+1),bottom:rulerTop+r.displayLane*(barHeight+1)+Math.max(borderSize,barHeight)});
-    const label=Zhou.Presentation.rulerLabel(r),labelNeeded=(label.length+(r.dating?.level!=='certain'?1:0))*14+14;
+    const isWuZhou=D.datasetId==='sui-tang'&&r.id==='st-tenure-wuzhou-wuzetian';
+     const label=Zhou.Presentation.rulerLabel(r),labelNeeded=isWuZhou?64:(label.length+(r.dating?.level!=='certain'?1:0))*14+14;
     let text='';
     if(width>=labelNeeded&&barHeight>=14){text='<span class="rulerName">'+escapeHTML(label)+(r.dating?.level!=='certain'?' · '+certaintyShort[r.dating?.level||'inferred']:'')+'</span>';if(level==='detail'&&width>=110&&barHeight>=30)text+=' <small class="rulerYears">'+range(r.start,r.end,r.approx)+'</small>';else if(level==='detail'&&width>=labelNeeded+145)text+=' <small class="rulerYears inlineYears">'+range(r.start,r.end,r.approx)+'</small>';}
     if(r.subyearSlot&&barHeight>=10&&!text)text='<span class="slotNumber">'+r.slotOrder+'</span>';
      const visibleText=r.subyearSlot&&text.includes('slotNumber')?String(r.slotOrder):text?label+(r.dating?.level!=='certain'?' · '+certaintyShort[r.dating?.level||'inferred']:'')+(text.includes('rulerYears')?' '+range(r.start,r.end,r.approx):''):'';
-     const accessible=[visibleText,r.name,r.role,range(r.start,r.end,r.approx),r.associationNote,slotNote,'生平与来源见点击详情',certaintyLabel[r.dating?.level||'inferred']].filter(Boolean).join(' · ');
+     const accessible=[visibleText||label,r.name,r.role,range(r.start,r.end,r.approx),r.associationNote,slotNote,'生平与来源见点击详情',certaintyLabel[r.dating?.level||'inferred']].filter(Boolean).join(' · ');
     if(r.subyearSlot&&left!==r.anchor)html+='<span class="tenureSlotConnector" aria-hidden="true" style="left:'+Math.min(left,r.anchor)+'px;top:'+(rulerTop+r.displayLane*(barHeight+1)+barHeight/2)+'px;width:'+Math.abs(left-r.anchor)+'px"></span>';
      const isMotifRuler=motifEntities.active&&motifEntities.tenureIds.has(r.id);
      const rulerMatchesSearch=appState.search.query&&matchRuler(r);
      const rulerIsTarget=appState.search.searchTarget==='ruler:'+r.id;
      const isRulerDimmed=(appState.search.query&&!rulerMatchesSearch&&!rulerIsTarget)||(motifEntities.active&&!isMotifRuler&&!rulerMatchesSearch&&!rulerIsTarget);
      const rulerOpacity=isRulerDimmed?'.35':'.94';
-     html+='<button class="ruler '+(r.subyearSlot?'subyearSlot ':'')+(r.polityAssociation==='contextual'?'contextualTenure ':'')+(r.approx?'approx ':'')+(r.dating?.level==='inferred'?'inferredBar ':'')+(r.dating?.level==='disputed'?'disputedBar ':'')+(rulerIsTarget||rulerMatchesSearch?'match ':'')+(isMotifRuler?'motifMatch ':'')+(isCurrent?'eventRuler':'')+'" data-action="ruler" data-id="'+r.id+'" data-state-id="'+s.id+'"'+(r.subyearSlot?' data-slot-order="'+r.slotOrder+'" data-slot-count="'+r.slotCount+'" data-anchor="'+r.anchor+'"':'')+' style="left:'+left+'px;width:'+width+'px;top:'+(rulerTop+r.displayLane*(barHeight+1))+'px;height:'+barHeight+'px;line-height:'+Math.min(18,barHeight)+'px;background-color:'+s.color+';opacity:'+rulerOpacity+'" title="'+escapeHTML(accessible)+'" aria-label="'+escapeHTML(accessible)+'">'+text+'</button>';
+
+     html+='<button class="ruler '+(isWuZhou?'wuZhouBar ':'')+(isRulerDimmed?'figureDim ':'')+(isMotifRuler?'figureMatch ':'')+(r.subyearSlot?'subyearSlot ':'')+(r.polityAssociation==='contextual'?'contextualTenure ':'')+(r.approx?'approx ':'')+(r.dating?.level==='inferred'?'inferredBar ':'')+(r.dating?.level==='disputed'?'disputedBar ':'')+(rulerIsTarget||rulerMatchesSearch?'match ':'')+(isMotifRuler?'motifMatch ':'')+(isCurrent?'eventRuler':'')+'" data-action="ruler" data-id="'+r.id+'" data-state-id="'+s.id+'" data-label="'+escapeHTML(label)+'"'+(r.subyearSlot?' data-slot-order="'+r.slotOrder+'" data-slot-count="'+r.slotCount+'" data-anchor="'+r.anchor+'"':'')+' style="left:'+left+'px;width:'+width+'px;top:'+(rulerTop+r.displayLane*(barHeight+1))+'px;height:'+barHeight+'px;line-height:'+Math.min(18,barHeight)+'px;background-color:'+polityColor(s)+';opacity:'+rulerOpacity+'" title="'+escapeHTML(accessible)+'" aria-label="'+escapeHTML(accessible)+'">'+text+'</button>';
    }
    if(!grouped){const s=members[0],first=packed.items.reduce((a,r)=>Math.max(a,r.start),-Infinity);if(!s.undated?.length&&Number.isFinite(first)&&first<s.start&&x(first)-x(s.start)>90)html+='<button class="event gap" data-action="state" data-id="'+s.id+'" style="left:'+(x(s.start)+8)+'px;top:6px">早期纪年待考</button>';}
   }
@@ -167,25 +174,34 @@ function render(){
     const isMotifEvent=motifEntities.active&&group.some(e=>motifEntities.eventIds.has(e.id));
     const isEventDimmed=(appState.search.query&&!matchEvent(ev))||(motifEntities.active&&!isMotifEvent);
     const eventOpacityStyle=isEventDimmed?'opacity:.35;':'';
-    html+='<button class="event semanticEvent '+(interval?'intervalEvent '+(ev.year>timelineBounds.start?'intervalClippedStart ':'')+(ev.endYear<appState.conditions.end?'intervalClippedEnd ':''):'')+'date-'+(ev.dating?.level||'inferred')+' '+(group.length>1?'cluster ':'')+(key?'keyEvent ':'')+(!expanded?'compactEvent ':'')+(highlight?'linkedEvent ':'')+(isMotifEvent?'motifEvent ':'')+'" data-action="'+(group.length>1?'cluster':'event')+'" data-id="'+ids+'" data-event-ids="'+ids+'" data-event-kinds="'+kinds.map(kind=>Zhou.Presentation.eventIcon(kind).token).join(' ')+'" data-event-lane="'+marker.lane+'"'+(interval?' data-interval-start="'+ev.year+'" data-interval-end="'+ev.endYear+'"':'')+' style="left:'+marker.left+'px;top:'+marker.top+'px;width:'+marker.width+'px;max-width:'+marker.width+'px;'+eventOpacityStyle+'" title="'+escapeHTML(title)+'" aria-label="'+escapeHTML(visibleLabel+' · '+(group.length>1?group.length+'条事件，':'')+'类别：'+kinds.join('、')+'；'+title)+'"><span class="eventKindIcons" aria-hidden="true">'+kinds.map(kind=>Zhou.EventSemantics.glyph(kind)).join('')+'</span><span class="eventCertainty">'+certainty+' </span>'+(expanded?'<span class="eventShortTitle">'+escapeHTML(label)+' </span>':'')+(group.length>1?'<span class="eventCount">'+group.length+'</span>':'')+'</button>';
+    html+='<button class="event semanticEvent '+(isEventDimmed?'figureDim ':'')+(isMotifEvent?'figureMatch ':'')+(interval?'intervalEvent '+(ev.year>timelineBounds.start?'intervalClippedStart ':'')+(ev.endYear<appState.conditions.end?'intervalClippedEnd ':''):'')+'date-'+(ev.dating?.level||'inferred')+' '+(group.length>1?'cluster ':'')+(key?'keyEvent ':'')+(!expanded?'compactEvent ':'')+(highlight?'linkedEvent ':'')+(isMotifEvent?'motifEvent ':'')+'" data-action="'+(group.length>1?'cluster':'event')+'" data-id="'+ids+'" data-event-ids="'+ids+'" data-event-kinds="'+kinds.map(kind=>Zhou.Presentation.eventIcon(kind).token).join(' ')+'" data-event-lane="'+marker.lane+'"'+(interval?' data-interval-start="'+ev.year+'" data-interval-end="'+ev.endYear+'"':'')+' style="left:'+marker.left+'px;top:'+marker.top+'px;width:'+marker.width+'px;max-width:'+marker.width+'px;'+eventOpacityStyle+'" title="'+escapeHTML(title)+'" aria-label="'+escapeHTML(visibleLabel+' · '+(group.length>1?group.length+'条事件，':'')+'类别：'+kinds.join('、')+'；'+title)+'"><span class="eventKindIcons" aria-hidden="true">'+kinds.map(kind=>Zhou.EventSemantics.glyph(kind)).join('')+'</span><span class="eventCertainty">'+certainty+' </span>'+(expanded?'<span class="eventShortTitle">'+escapeHTML(label)+' </span>':'')+(group.length>1?'<span class="eventCount">'+group.length+'</span>':'')+'</button>';
    }
   }
   if(!grouped){const s=members[0];if(s.end>=appState.conditions.end)html+='<button class="event termination" data-action="state" data-id="'+s.id+'" style="left:'+x(s.end)+'px;top:6px;height:'+Math.max(20,height-12)+'px">'+(s.approxEnd?'约 ':'')+fmt(s.end).replace(/年$/,'')+' '+escapeHTML(s.endLabel||'终止')+'</button>';else if(s.continuationNote&&appState.conditions.end===timelineBounds.end)html+='<div class="gap" style="left:'+(x(timelineBounds.end)+8)+'px">'+escapeHTML(s.continuationNote)+'</div>';}
   html+='</div></div>';
   timelineRows.set(row.key,{signature,html,layout});descriptors.push({key:row.key,html});
  }
- if(!appState.session.visibleStates.length)descriptors.push({key:'empty',html:'<div class="empty">没有匹配的国家、君主或事件。请修改关键词或国家筛选。</div>'});
+ const topicPolicy=Zhou.Presentation?.topic?.(D);
+ const minorIds=(topicPolicy?.order||[]).filter(id=>!topicPolicy.coreIds.includes(id));
+ if(minorIds.length>0){
+  const unselectedCount=minorIds.filter(id=>!appState.conditions.selected.has(id)&&!appState.layout.pinned.has(id)).length;
+  const toggleText=unselectedCount>0?`+ 展开其余${unselectedCount}个割据/周边政权 ▸`:'收起割据/周边政权 ◂';
+  descriptors.push({key:'minorToggle',html:'<div class="minorToggleRow" style="padding:10px 18px;margin-left:'+labelWidth()+'px"><button type="button" class="minorToggleBtn" data-action="toggleMinors" aria-controls="chart" aria-expanded="'+(unselectedCount===0)+'">'+escapeHTML(toggleText)+'</button></div>'});
+ }
+ if(!appState.session.visibleStates.length)descriptors.push({key:'empty',html:'<div class="empty">没有匹配的政权、君主或事件。请修改关键词或政权筛选。</div>'});
  const trajHtml=renderTrajectoryLayer();
  if(trajHtml)descriptors.push({key:'trajectory',html:trajHtml});
  descriptors.push({key:'cursor',html:'<div class="cursorline"><button type="button" class="cursorHandle" aria-label="拖动年份参考线，可用左右方向键逐年调整"></button><div class="eventRelations" aria-live="polite" aria-atomic="true"></div></div>',update:line=>{line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent=fmt(appState.conditions.cursor).replace(/年$/,'');line.firstChild.setAttribute?.('data-year',line.firstChild.textContent);line.firstChild.setAttribute?.('aria-label',line.firstChild.textContent+' · 拖动年份参考线，可用左右方向键逐年调整');}});
- reconcileTimeline(descriptors);vp.scrollLeft=oldScroll;syncEventRelations();$('#zoomLabel').textContent=Number(appState.layout.px.toFixed(1))+' px / 年';$('#filterCount').textContent=new Set([...appState.conditions.selected,...appState.layout.pinned]).size;
+ reconcileTimeline(descriptors);vp.scrollLeft=oldScroll;syncEventRelations();$('#zoomLabel').textContent=Math.round(appState.layout.px/4*100)+'%';$('#zoomLabel').title=Number(appState.layout.px.toFixed(1))+' px / 年（100% = 4 px / 年）';
+ const selectedCount=new Set([...appState.conditions.selected,...appState.layout.pinned].filter(id=>byId(id))).size;
+ $('#filterCount').textContent=selectedCount+'/'+D.states.length;
  $('#stats').innerHTML=[[D.states.length,'国家与王室'],[D.states.reduce((n,s)=>n+s.rulers.length,0),'在位区间'],[D.events.length,'精选事件']].map(([n,t])=>'<div class="number"><b>'+n+'</b><span>'+t+'</span></div>').join('');
  updateRange();pageEffects.renderPanels();notifyViewChanged();
 }
 function updateRange(){const left=Math.min(timelineBounds.start,Math.max(appState.conditions.end,timelineBounds.start-Math.floor(vp.scrollLeft/appState.layout.px)));const right=Math.max(appState.conditions.end,timelineBounds.start-Math.floor((vp.scrollLeft+vp.clientWidth-labelWidth())/appState.layout.px));$('#visibleRange').textContent='可见：'+range(left,right)+' · '+(appState.session.visibleRows?.length||0)+'行';notifyViewChanged();}
-function setCursor(y,scroll=false){appState.conditions.cursor=Math.round(Math.min(timelineBounds.start,Math.max(appState.conditions.end,y)));$('#cursorYear').value=0-appState.conditions.cursor;$('#cursorOutput').textContent=fmt(appState.conditions.cursor);$('#toolbarCursor').textContent='参考线：'+fmt(appState.conditions.cursor);$('#selectionYear').textContent='年份参考线：'+fmt(appState.conditions.cursor);$('#compareTitle').textContent=fmt(appState.conditions.cursor)+'的列国';const line=$('.cursorline');if(line){line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent=fmt(appState.conditions.cursor).replace(/年$/,'');line.firstChild.setAttribute?.('data-year',line.firstChild.textContent);line.firstChild.setAttribute?.('aria-label',line.firstChild.textContent+' · 拖动年份参考线，可用左右方向键逐年调整');}updateCompare();if(scroll)vp.scrollLeft=Math.max(0,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2);notifyViewChanged();syncEventRelations();globalThis.ZhouExperienceHooks?.cursorChanged?.(appState.conditions.cursor);}
+function setCursor(y,scroll=false){appState.conditions.cursor=Math.round(Math.min(timelineBounds.start,Math.max(appState.conditions.end,y)));$('#cursorYear').value=0-appState.conditions.cursor;$('#cursorOutput').textContent=fmt(appState.conditions.cursor);$('#toolbarCursor').textContent=fmt(appState.conditions.cursor);$('#selectionYear').textContent='年份参考线：'+fmt(appState.conditions.cursor);$('#compareTitle').textContent=fmt(appState.conditions.cursor)+'的列国';const line=$('.cursorline');if(line){line.style.left=(x(appState.conditions.cursor)+labelWidth())+'px';line.firstChild.textContent=fmt(appState.conditions.cursor).replace(/年$/,'');line.firstChild.setAttribute?.('data-year',line.firstChild.textContent);line.firstChild.setAttribute?.('aria-label',line.firstChild.textContent+' · 拖动年份参考线，可用左右方向键逐年调整');}updateCompare();if(scroll)vp.scrollLeft=Math.max(0,x(appState.conditions.cursor)-(vp.clientWidth-labelWidth())/2);notifyViewChanged();syncEventRelations();globalThis.ZhouExperienceHooks?.cursorChanged?.(appState.conditions.cursor);}
 function updateCompare(){
  $('#compare').innerHTML=historyService.compareYear(appState.conditions.cursor,appState.session.visibleStates.map(s=>s.id)).map(({state:s,interruption:gap,rulers,events:es})=>{
-  return '<button class="comparecard '+(activeEvent()?.states.includes(s.id)?'eventRelated':'')+'" data-action="state" data-id="'+s.id+'" style="--statecolor:'+s.color+'"><strong>'+s.name+'</strong><span>'+ (gap?escapeHTML(gap.note):rulers.length?rulers.map(r=>(r.approx?'约 · ':'')+escapeHTML(r.name)).join(' / '):'君主纪年待考')+'</span><small>'+ (es.length?escapeHTML(es.map(e=>e.name).join('；')):'该年无已收录大事')+'</small></button>';
+  return '<button class="comparecard '+(activeEvent()?.states.includes(s.id)?'eventRelated':'')+'" data-action="state" data-id="'+s.id+'" style="--statecolor:'+polityColor(s)+'"><strong>'+s.name+'</strong><span>'+ (gap?escapeHTML(gap.note):rulers.length?rulers.map(r=>(r.approx?'约 · ':'')+escapeHTML(r.name)).join(' / '):'君主纪年待考')+'</span><small>'+ (es.length?escapeHTML(es.map(e=>e.name).join('；')):'该年无已收录大事')+'</small></button>';
  }).join('')||'<p class="notice">该年没有符合当前筛选的国家。</p>';
 }

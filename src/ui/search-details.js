@@ -93,7 +93,7 @@ function renderBiographyReader(p,entry,events){
 
 function showPerson(name){
  const entry=searchIndex.find(e=>e.key===normalizeDetailKey('person:'+name));if(!entry)return;const p=entry.data,events=D.events.filter(e=>p.eventIds.includes(e.id));
- appState.session.activePersonId=p.id;
+ appState.session.activePersonId=appState.session.figureHighlight?.kind==='person'?appState.session.figureHighlight.id:p.id;
  render();
 
  if(p.biographyPlan && !appState.session.legacyShareV1){

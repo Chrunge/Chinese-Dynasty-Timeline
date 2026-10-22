@@ -1,0 +1,333 @@
+/* ==========================================================================
+   Figures Gallery Component Styles (Scoped with figures* prefix)
+   Theme Variables with robust fallbacks
+   ========================================================================== */
+
+.figuresGallery {
+  --figures-paper: var(--paper, #F7F5F0);
+  --figures-panel: var(--panel, #ffffff);
+  --figures-ink: var(--ink, #19343d);
+  --figures-muted: var(--muted, #4e6268);
+  --figures-line: var(--line, #cbd7d5);
+  --figures-gold: var(--gold, #806025);
+  --figures-gold-soft: rgba(128, 96, 37, 0.08);
+  --figures-gold-hover: rgba(128, 96, 37, 0.16);
+
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--figures-panel);
+  color: var(--figures-ink);
+  border: 1px solid var(--figures-line);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+
+.figuresGallery *,
+.figuresGallery *::before,
+.figuresGallery *::after {
+  box-sizing: border-box;
+}
+
+.figuresGallery[hidden] {
+  display: none !important;
+}
+
+/* Header */
+.figuresGalleryHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--figures-line);
+}
+
+.figuresGalleryTitle {
+  margin: 0;
+  font-family: 'Noto Serif SC', 'Songti SC', STSong, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--figures-ink);
+  letter-spacing: 0.02em;
+}
+
+.figuresHeadActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.figuresClearBtn {
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  color: var(--figures-muted);
+  background: transparent;
+  border: 1px solid var(--figures-line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.figuresClearBtn:hover {
+  background-color: var(--figures-gold-soft);
+  color: var(--figures-gold);
+  border-color: var(--figures-gold);
+}
+
+.figuresCloseBtn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--figures-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.figuresCloseBtn:hover {
+  color: var(--figures-ink);
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Standard notice callout */
+.figuresNotice {
+  font-size: 0.875rem;
+  color: var(--figures-gold);
+  background-color: var(--figures-gold-soft);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+  border-left: 3px solid var(--figures-gold);
+}
+
+/* Filter switcher */
+.figuresFilterBar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.figuresFilterBtn {
+  min-height: 44px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: var(--figures-paper);
+  color: var(--figures-ink);
+  border: 1px solid var(--figures-line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.figuresFilterBtn:hover {
+  background-color: var(--figures-gold-soft);
+  border-color: var(--figures-gold);
+}
+
+.figuresFilterBtn.active,
+.figuresFilterBtn[aria-pressed="true"] {
+  background-color: var(--figures-ink);
+  color: var(--figures-panel);
+  border-color: var(--figures-gold);
+}
+
+/* Card grid */
+.figuresCardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.figuresCard {
+  background-color: var(--figures-paper);
+  border: 1px solid var(--figures-line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.figuresCard:hover {
+  border-color: var(--figures-gold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.figuresCardHead {
+  margin-bottom: 8px;
+}
+
+.figuresCategoryBtn {
+  width: 100%;
+  min-height: 44px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', 'Songti SC', STSong, serif;
+  transition: background-color 0.15s ease;
+}
+
+.figuresCategoryBtn:hover {
+  background-color: var(--figures-gold-soft);
+}
+
+.figuresCategoryIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.figuresCategoryName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--figures-ink);
+  flex: 1;
+}
+
+.figuresCategoryCount {
+  font-size: 0.8rem;
+  color: var(--figures-gold);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.figuresCardIntro {
+  font-size: 0.825rem;
+  color: var(--figures-muted);
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--figures-line);
+}
+
+/* Pills */
+.figuresPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.figuresPersonPill {
+  min-height: 44px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--figures-ink);
+  background-color: var(--figures-panel);
+  border: 1px solid var(--figures-line);
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.figuresPersonPill:hover {
+  border-color: var(--figures-gold);
+  background-color: var(--figures-gold-soft);
+  color: var(--figures-gold);
+}
+
+.figuresPersonPill.isCore {
+  border-color: var(--figures-gold);
+  color: var(--figures-gold);
+  font-weight: 600;
+}
+
+.figuresPersonPill.isCore:hover {
+  background-color: var(--figures-gold-hover);
+}
+
+/* Empty state */
+.figuresEmpty {
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--figures-muted);
+  font-size: 0.95rem;
+  background-color: var(--figures-paper);
+  border: 1px dashed var(--figures-line);
+  border-radius: 8px;
+}
+
+/* Clear visible focus indicator */
+.figuresGallery button:focus-visible {
+  outline: 2px solid var(--figures-gold);
+  outline-offset: 2px;
+}
+
+/* 390px mobile responsiveness */
+@media (max-width: 600px) {
+  .figuresGallery {
+    padding: 12px 14px;
+    margin: 8px 0;
+  }
+  .figuresCardGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .figuresFilterBar {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .figuresFilterBtn {
+    width: 100%;
+    text-align: center;
+  }
+  .figuresGalleryHead {
+    flex-wrap: wrap;
+  }
+}
+
+/* Accessibility: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .figuresGallery,
+  .figuresGallery * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Accessibility: Forced colors (High Contrast) */
+@media (forced-colors: active) {
+  .figuresGallery,
+  .figuresCard,
+  .figuresPersonPill,
+  .figuresFilterBtn,
+  .figuresCategoryBtn,
+  .figuresClearBtn,
+  .figuresCloseBtn,
+  .figuresEmpty {
+    border: 1px solid ButtonText !important;
+  }
+
+  .figuresPersonPill.isCore,
+  .figuresPersonPill:hover,
+  .figuresFilterBtn.active,
+  .figuresFilterBtn[aria-pressed="true"] {
+    outline: 2px solid Highlight !important;
+  }
+}

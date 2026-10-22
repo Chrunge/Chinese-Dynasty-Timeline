@@ -47,7 +47,9 @@
     if (start < end) throw new RangeError('时间范围 start 必须大于或等于 end。');
     const clamp = value => Math.max(end, Math.min(start, value));
     const defaultEnd = isYear(timeline.defaultEnd) ? clamp(timeline.defaultEnd) : end;
-    const cursor = isYear(timeline.cursor) ? Math.max(defaultEnd, clamp(timeline.cursor)) : start;
+    // Time bounds remain domain-only; topic defaults belong to the UI.
+    const targetCursor = timeline.cursor;
+    const cursor = isYear(targetCursor) ? Math.max(defaultEnd, clamp(targetCursor)) : start;
     return {start, end, defaultEnd, cursor};
   }
   // Unmarked persisted records predate CE support: never reinterpret their zero

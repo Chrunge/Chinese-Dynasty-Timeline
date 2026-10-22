@@ -8,7 +8,7 @@ for(const width of [1200,390]){
  const cursor=()=>chart.children.find(node=>node.className==='cursorline');
  run("selected=new Set(['qin','qi','chu']);render();vp.scrollLeft=700;vp.scrollTop=90");
  const originals=new Map(['qin','qi','chu'].map(id=>[id,row(id)])),initialAxis=axis(),initialCursor=cursor(),writes=chart.innerHTMLWrites;
- assert.equal(chart.children.length,5);
+ assert.equal(chart.children.filter(node=>node.dataset.state).length,3);assert(axis());assert(cursor()); // Disclosure is a separate keyed footer, not a polity row.
  // This tracks row generation, not just DOM equality: cursor/list changes should
  // avoid ruler packing and event grouping entirely.
  run('globalThis.rowBuilds=0;globalThis.originalPackRulers=packRulers;packRulers=function(s){rowBuilds++;return originalPackRulers(s)}');
@@ -39,7 +39,7 @@ for(const width of [1200,390]){
  action('state','qin');assert.equal(run('navigation.key'),'country:qin');el('#close').onclick();
 
  run("pinned.clear();selected.clear();render()");
- assert.equal(chart.children.length,3);assert(chart.children[1].className==='empty');assert.strictEqual(cursor(),initialCursor);
+ assert.equal(chart.children.filter(node=>node.dataset.state).length,0);assert(chart.children.some(node=>node.className==='empty'));assert.strictEqual(cursor(),initialCursor);
  run("selected.add('qin');render()");assert(row('qin'));assert(!chart.children.some(node=>node.className==='empty'));
  const priorAxis=axis(),priorRow=row('qin');run('px=8;render()');
  assert.notStrictEqual(axis(),priorAxis);assert.notStrictEqual(row('qin'),priorRow);assert.strictEqual(cursor(),initialCursor);

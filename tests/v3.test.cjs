@@ -2,7 +2,7 @@ const assert=require('node:assert');
 const {boot}=require('./helpers/browser.cjs');
 (async()=>{
  const app=boot(),{el,run,action}=app;const D=app.ctx.window.ZHOU_DATA;
- assert.equal(run('visibleStates.length'),18);
+ assert.equal(run('visibleStates.length'),12);run("applyPolityPreset('all')");assert.equal(run('visibleStates.length'),18);
  run("px=1;query='';density='auto';render()");assert(el('#chart').className.includes('density-overview'));assert(!el('#chart').innerHTML.includes('data-action="ruler"'));assert(el('#chart').innerHTML.includes('class="lifeline'));assert(!el('#chart').innerHTML.includes('data-id="e78"'));
  run("px=4;render()");assert(el('#chart').innerHTML.includes('data-action="ruler"'));assert(el('#chart').className.includes('density-standard'));
  run('px=12;render()');assert(el('#chart').innerHTML.includes('rulerYears'));assert(el('#chart').innerHTML.includes('前306—251年'));

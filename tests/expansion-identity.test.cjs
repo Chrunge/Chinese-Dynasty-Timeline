@@ -6,7 +6,7 @@ const vm=require('node:vm');
 const {createHash}=require('node:crypto');
 const {boot}=require('./helpers/browser.cjs');
 const baseline=JSON.parse(fs.readFileSync('tests/fixtures/seven-topic-projections.json','utf8'));
-test('新增四卷不改变既有七专题编译资料（只排除根目录导航catalog）',()=>{
+test('七专题投影散列锁定（阶段A仅批准隋唐分组/武周显示注解变化，catalog除外）',()=>{
  for(const [id,expected] of Object.entries(baseline.sha256)){
   const context={window:{}};
   vm.runInNewContext(fs.readFileSync('dist/'+(id==='zhou'?'data.js':'data-'+id+'.js'),'utf8'),context);

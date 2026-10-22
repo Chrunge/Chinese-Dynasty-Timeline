@@ -40,9 +40,9 @@ function show(tag,html,key=null){
 function backDetail(){
  pageEffects.rememberDetail();const frame=navigation.back();if(!frame){closeDetail();return;}navigation.pending=null;restoreDetailView(frame.view);
  if(frame.detail){navigation.key=frame.detail.key;$('#detailTag').textContent=frame.detail.tag;$('#detailBody').innerHTML=frame.detail.html;refreshDetailCorrectionLink();updateDetailBack();restoreDetailFocus(frame);$('#detail').scrollTop=frame.detail.top;$('#detailBody').scrollTop=frame.detail.bodyTop;}
- else{navigation.key=null;appState.session.activePersonId=null;render();$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}pageEffects.updateStudy();pageEffects.share();detailSheet?.sync();
+ else{navigation.key=null;appState.session.activePersonId=appState.session.figureHighlight?.kind==='person'?appState.session.figureHighlight.id:null;render();$('#detail').close();navigation.frames=[];restoreDetailFocus(frame);}pageEffects.updateStudy();pageEffects.share();detailSheet?.sync();
 }
-function closeDetail(restore=true){pageEffects.rememberDetail();navigation.key=null;appState.session.activePersonId=null;render();const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});pageEffects.updateStudy();pageEffects.share();detailSheet?.sync();}
+function closeDetail(restore=true){pageEffects.rememberDetail();navigation.key=null;appState.session.activePersonId=appState.session.figureHighlight?.kind==='person'?appState.session.figureHighlight.id:null;render();const root=navigation.frames[0];navigation.pending=null;navigation.frames=[];if(restore&&root)restoreDetailView(root.view);$('#detail').close();if(root)restoreDetailFocus({...root,detail:null});pageEffects.updateStudy();pageEffects.share();detailSheet?.sync();}
 // Section jumps stay inside the existing dialog: no new route, history frame,
 // scroll owner or Escape handler. Native button inputs retain keyboard activation.
 function detailSectionNavigation(hasUndated=false){

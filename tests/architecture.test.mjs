@@ -46,7 +46,7 @@ test('搜索按人物ID关联，同名不合并，更名不破坏路由',()=>{
 test('浏览器工具与页面同年对照共用即位和中断规则',()=>{
  let tool;const app=boot({},1200,{registerTool(value){tool=value;}});
  let result=tool.execute({year_bce:573});assert(result.states.find(s=>s.state==='晋').rulers.includes('晋悼公'));assert(app.el('#compare').innerHTML.includes('晋悼公'));
- const gap=app.ctx.window.ZHOU_DATA.states.find(s=>s.id==='chen').interruptions[0];result=tool.execute({year_bce:gap.start});assert.equal(result.states.find(s=>s.state==='陈').rulers.length,0);assert(app.el('#compare').innerHTML.includes(gap.note));
+ app.run("selected.add('chen');render()");const gap=app.ctx.window.ZHOU_DATA.states.find(s=>s.id==='chen').interruptions[0];result=tool.execute({year_bce:gap.start});assert.equal(result.states.find(s=>s.state==='陈').rulers.length,0);assert(app.el('#compare').innerHTML.includes(gap.note));
 });
 test('旧姓名阅读记录及搜索目标迁移到ID，仍能返回与续读',()=>{
  const initial=boot(),view=plain(initial.run('captureDetailFrame().view')),person=initial.ctx.window.ZHOU_DATA.people.find(p=>p.name==='商鞅');

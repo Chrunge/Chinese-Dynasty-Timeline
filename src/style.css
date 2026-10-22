@@ -22,3 +22,22 @@
 /* Presentation groups retain independently actionable polity labels and inclusive lanes. */
 .memberLabel{display:flex;align-items:center;justify-content:space-between;gap:3px;width:100%;min-width:0}.groupedRow .stateLabel{flex-direction:column;align-items:stretch;justify-content:center;gap:0}.rowGroupTitle{font-size:13px;font-weight:600;padding:2px;color:var(--muted);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}.rowGroupTitle small{display:block;font-size:10px;font-weight:400}.groupedRow .stateName{font-size:15px;min-height:23px;letter-spacing:0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.groupedRow .pinState{min-height:21px;height:21px;min-width:21px;padding:1px}.politySegment{position:absolute;display:block;overflow:hidden;white-space:nowrap;text-align:center;text-overflow:ellipsis;color:#fff;font-size:12px;line-height:19px;height:19px;min-height:0;padding:0 3px;border:0;border-radius:2px;z-index:2}.politySegment:hover{filter:brightness(.9)}
 @media(max-width:680px){.groupedRow .stateName{font-size:13px}.rowGroupTitle{font-size:11px}.groupedRow .pinState{font-size:10px;min-width:18px}.politySegment{font-size:11px}}
+
+/* Phase A display and polity preset enhancements */
+.ruler.wuZhouBar{background:#7a3028!important;outline:2px solid #d4af37;outline-offset:-1px;box-shadow:0 0 0 1px #d4af37;padding-inline:1px;z-index:4}
+.wuZhouBar .rulerName{font-size:10px;line-height:12px}
+.minorToggleRow{display:flex;align-items:center;padding:12px 20px;border-top:1px dashed var(--line);background:#fafcfb}
+.minorToggleBtn{font-size:14px;color:#19343d;background:#fff;border:1px solid #cbd7d5;border-radius:6px;padding:6px 14px;cursor:pointer}
+.minorToggleBtn:hover{background:#edf4f2;border-color:#97adaa}
+.filterActions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0}
+.filterActions button.active{background:var(--ink);color:#fff}
+#filterSummary{margin-left:auto;font-size:13px;color:var(--muted)}
+.stateCheckItem{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f0f4f3}
+.stateCheckDates{color:var(--muted);font-size:12px}
+.stateCheckNote{color:#315f79;font-size:12px;background:#eef5f7;padding:1px 6px;border-radius:3px}
+.statePinnedHint{color:var(--muted);font-size:12px;margin-left:auto}
+.minorMemberLabel{display:grid;grid-template-columns:minmax(0,1fr) 26px;gap:0 3px}
+.minorMemberLabel .stateName{grid-column:1;grid-row:1}.minorMemberLabel .pinState{grid-column:2;grid-row:1}
+.stateLabel .minorStateNote,.stateLabel .minorStateDates{display:block;grid-column:1/-1;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:10px/12px system-ui,sans-serif;color:var(--muted)}
+.minorToggleBtn{position:sticky;left:136px;max-width:calc(100vw - 160px)}
+@media(max-width:680px){.minorToggleBtn{left:100px;max-width:calc(100vw - 112px)}.stateCheckItem{flex-wrap:wrap}.stateCheckNote{max-width:100%}}

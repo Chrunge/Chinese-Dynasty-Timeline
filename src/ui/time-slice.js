@@ -12,7 +12,7 @@
   const root=doc.createElement('div');root.className='timeSlice';
   const header=doc.createElement('div');header.className='timeSliceHeader';
   const title=doc.createElement('h3');title.id=generatedId+'-title';title.tabIndex=-1;header.appendChild(title);
-  const closeButton=doc.createElement('button');closeButton.type='button';closeButton.textContent='收起同年横截面';closeButton.className='timeSliceClose';header.appendChild(closeButton);
+  const closeButton=doc.createElement('button');closeButton.type='button';closeButton.textContent='收起同年对照';closeButton.className='timeSliceClose';header.appendChild(closeButton);
   const body=doc.createElement('div');body.className='timeSliceBody';root.appendChild(header);root.appendChild(body);container.appendChild(root);
   root.setAttribute('role','region');root.setAttribute('aria-labelledby',title.id);
   trigger.setAttribute('aria-controls',container.id);trigger.setAttribute('aria-expanded','false');container.hidden=true;
@@ -28,9 +28,9 @@
    const active=doc.activeElement,hadFocus=body.contains(active),activeKey=active?.getAttribute?.('data-time-slice-open');
    const scrollTop=container.scrollTop,rootScrollTop=root.scrollTop,next=new Map(),content=doc.createElement('div');
    if(!Zhou.Time.isYear(year)){
-    title.textContent='同年横截面';node('p','请选择有效的参考年份。',content);
+    title.textContent='同年对照';node('p','请选择有效的参考年份。',content);
    }else{
-    const slice=model.at(year);title.textContent=slice.label+' · 同年横截面';
+    const slice=model.at(year);title.textContent=slice.label+' · 同年对照';
     node('p','显示当前专题全部存续政权，不受时间轴勾选项影响。元年据明确的采用纪年计算；同年在位不等于参与当年事件。',content).className='timeSliceNote';
     const states=group('存续政权（'+slice.states.length+'）',content);
     if(!slice.states.length)node('p','资料中未记录当年存续的政权。',states);

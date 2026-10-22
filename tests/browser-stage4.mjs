@@ -9,7 +9,17 @@ import {catalog} from '../lib/production.mjs';
 const widths = [375,1200], results = [], collisions = new Set();
 const poison = '__stage4_old_reading_must_not_win__';
 const pageURL = topic => pathToFileURL(resolve('dist',topic.page)).href;
-const browser = await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? {executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH} : {channel:'chrome'})});
+async function launchBrowser() {
+  if (process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH) {
+    return chromium.launch({headless:true, executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH});
+  }
+  try {
+    return await chromium.launch({headless:true, channel:'chrome'});
+  } catch {
+    return await chromium.launch({headless:true, channel:'msedge'});
+  }
+}
+const browser = await launchBrowser();
 
 async function session(width,{fixture=null}={}) {
   const context = await browser.newContext({viewport:{width,height:900},offline:true,reducedMotion:'reduce'});
