@@ -371,3 +371,5 @@ AR05 验证过程：额外探测年份浮层时发现 390px 下浮层遮挡画�
 | qing | `/dynasties/10/figures/3/biographyPlan/chapters/4/eventId` | `qing-event-10-boxer-xinhai-abdication` | local | `qing-event-09-jiawu-wuxu-xinhai-abdication` |
 | qing | `/dynasties/10/figures/4/biographyPlan/chapters/3/eventId` | `qing-event-08-yangwu-xinjiang-sino-japanese` | local | `qing-event-08-yangwu-recover-xinjiang` |
 | qing | `/dynasties/10/figures/5/biographyPlan/chapters/2/eventId` | `qing-event-02-shanhaiguan-beijing-entry` | local | `qing-event-02-shanhaiguan-conquest` |
+
+| 2026-10-22 | 后续问题 | 46 处引用改为现有 ID，7 处显式跨专题，2 处保留叙述并声明未单列事件；构建阻止未处理引用；窄屏年份编辑区使用正常布局，专题外章节不联动本地时间轴 | 消除悬空关联及年份浮层遮挡；538 项测试、22 个含浮层开启步骤的真实浏览器场景及构建检查通过，叙述、日期与来源散列保持一致 | `83ae682` |
