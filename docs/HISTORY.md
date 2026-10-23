@@ -4578,3 +4578,23 @@ node --test tests/zhou-baseline.test.cjs
 原件JSON和周朝发布数据散列与基线一致；十一专题有效投影及七专题原件投影的固定样本保持，未重算预期。首屏公共脚本gzip减少约62.7%，不将文件体积减少等同于端到端加载耗时同比下降。未进一步改造兼容数据的传输结构，也未变更托管服务或新增依赖。
 
 本地证据位于忽略目录 .validation/final-unit.tap、.validation/figures/results.json、.validation/display-local-results.json 与 .validation/startup-slim.json。发布产物releaseId为 `d7c20d1e9179bdd02c3de89bcc07e3d622eacd196c7f3c41a6e8320532623d0b`；此处记录发布前状态，线上结果以后续实际验收记录为准。
+
+
+## 2026-10-23 显示、首屏与文档优化线上交付
+
+| 日期 | 操作 | 验证与结果 | 提交哈希 |
+|---|---|---|---|
+| 2026-10-23 | 主改动合并与发布 | [运行39816656217](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39816656217)的构建和Pages均成功 | `4dc4dffd8d9aef2fb49ab96c0e12f1c7dda2d4c2` |
+| 2026-10-23 | 跨专题详情名称统一 | 详情链接和外部背景同样使用宋辽金显示映射，原URL、ID和资料保留；[最终运行39817375649](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/39817375649)的构建和Pages成功，541项Node回归及Chromium入口/布局套件通过 | `a3aa0c48cf16b22368dab8baa7f70f5275121fa3` |
+
+两次工作流按既有并发规则依次完成，没有取消正常运行；依据用户部署授权，使用环境允许的仓库身份批准github-pages发布，未修改保护设置。
+
+线上资源核验于2026-10-23T00:07:51.584Z完成：根入口200，release.json与本地逐字节一致，全部41个资源SHA-256及HTML版本参数匹配。最终releaseId为 `b90d5c0ad9e47596be94abadc4d3080318b3ee3b41c6a21cd971f2c7de360e6d`。
+
+线上浏览器核验于2026-10-23T00:08:16.160Z完成，Chrome 155.0.8059.85共8项检查通过：当前脚本没有传记总集；秦汉、五代十国、宋辽金在375/1200px的默认与全部展开左列均不裁切或覆盖，宋默认第一行，五代北宋详情的跨专题链接显示宋辽金并实际跳转至正确专题与详情。
+
+最终app.js为252636字节，gzip为77535字节，较基线787025/207800字节分别减少约67.9%/62.7%。线上本次压缩传输77285字节；桌面冷启动单次抽测首字节447ms、DOM就绪1011ms、加载1012ms。网络等待也有变化，此样本不代表用户设备速度或仅由代码带来的耗时改善。
+
+首次线上核验命令因自动审批服务返回额度限制未执行，用户要求继续后已补齐。本地最终证据为 .validation/display-live-release.json 和 .validation/optimized-live.json；文件不进入发布目录。当前说明只保留架构、部署和历史三份docs文件，原资料及兼容投影保持。
+
+本记录提交仅保存真实验收证据，使用 [skip ci] 避免为记录再次发布相同资源；生产资源对应上表最终代码提交，未宣称记录提交运行了新CI。
