@@ -49,7 +49,7 @@ flowchart TB
 | dist/ | 自动生成的完整网站，供 file:// 或静态托管使用，不直接编辑 |
 | tests/、tests/fixtures/、tests/helpers/ | 规则回归、固定兼容样本、浏览器边界辅助器 |
 | .github/ | 自动检查、Pages 发布与资料纠错表单 |
-| docs/ | 当前架构、部署说明及统一历史记录 |
+| docs/ | 当前架构、项目管理与维护手册、统一历史记录 |
 | backups/、.openai/ | 原 Git 历史备份、发布截图及旧 Sites 配置；不参与 Pages 运行 |
 | node_modules/、.validation/ | 本机开发依赖及按需生成的验收结果，忽略提交与发布 |
 | arichive/ | [临时文件归档说明](../arichive/README.md)、本地压缩包和逐文件清单；只有说明随Git保存 |
@@ -113,4 +113,4 @@ JSON 是附带时间编码和来源的对照快照，不是可重新导入的原
 
 [传记固定投影](../tests/fixtures/biography-projections.json)和[七专题原件投影](../tests/fixtures/seven-topic-projections.json)保护资料及补充结果；输出隔离检查保证修改快照不污染原件或后续导出。Node 的 DOM/Canvas 边界验证不等于真实字体、像素或设备验收。
 
-浏览器脚本与命令见 [README](../README.md#维护与检查)。默认 CI 检查人物入口与分组左列实际边界；完整展示脚本覆盖筛选、搜索、阅读、分享、JSON与PDF。自动化不替代实体手机、读屏和打印检查。Pages 配置与排障见[部署说明](DEPLOYMENT.md)，操作与退役文档全文仅存于[历史记录](HISTORY.md)。
+浏览器脚本与命令见[项目手册](PROJECT-GUIDE.md#开发与测试)。默认 CI 检查人物入口与分组左列实际边界；完整展示脚本覆盖筛选、搜索、阅读、分享、JSON与PDF。自动化不替代实体手机、读屏和打印检查。Pages配置与排障见[项目手册](PROJECT-GUIDE.md#发布与部署)，操作与退役文档全文仅存于[历史记录](HISTORY.md)。
