@@ -26,35 +26,16 @@
 | tools/ | 可选预览图等维护工具 |
 | tests/ | 自动回归、浏览器验收与固定兼容样本 |
 | .github/ | 检查、Pages发布与反馈模板 |
-| docs/ | 架构、部署及统一历史；其他本地目录见[架构说明](docs/ARCHITECTURE.md#目录与模块) |
+| docs/ | 架构、项目管理与维护手册、统一历史；其他本地目录见[架构说明](docs/ARCHITECTURE.md#目录与模块) |
+| arichive/（按需创建） | 本地临时文件归档位置；操作见[项目手册](docs/PROJECT-GUIDE.md#临时文件归档与清理) |
 
 build.mjs 是统一构建入口；package.json 与锁文件管理开发工具。浏览器运行没有第三方依赖。
 
 ## 维护与检查
 
-需要 Node.js 22 或更高版本。编辑资料或源码后，从项目根目录运行：
+需要Node.js 22或更高版本。基线、开发、测试、验收、发布与回退统一见[项目管理与维护说明书](docs/PROJECT-GUIDE.md#开发与测试)。常规构建和Node测试无需第三方运行时依赖，真实浏览器另安装开发工具。
 
-~~~sh
-node build.mjs
-node build.mjs --check
-node --test tests/*.test.mjs tests/*.test.cjs
-~~~
-
-传记总集由统一构建直接校验与补充。常规构建和 Node 测试无需安装开发依赖；受限环境可使用 node --test --test-isolation=none。Windows 父目录 realpath 的 EPERM 可用 --preserve-symlinks --preserve-symlinks-main 参数处理。
-
-真实浏览器验收先安装开发依赖 npm ci，并使用本机 Chrome 或 npx playwright install chromium。可用 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH 指定浏览器；结果保存在忽略提交的 .validation/，工具不进入发布目录。
-
-| 检查 | 命令与范围 |
-|---|---|
-| 默认CI | npm run test:figures；所有专题手机/桌面人物入口、主题、年份编辑、分组左列边界与关键响应式宽度 |
-| 完整展示 | node tests/browser-presentation.mjs；时间线、筛选、搜索、阅读、分享、JSON和PDF |
-| 线上展示 | node tests/browser-presentation.mjs https://chrunge.github.io/Zhou-Dynasty-Timeline/ |
-| 发布一致性 | node tests/verify-release.mjs；线上清单、全部资源散列及根入口 |
-| 触控 | node tests/browser-p0.mjs；惯性、缩放、抽屉、键盘与拒绝存储 |
-| 语义与无障碍 | node tests/browser-p1.mjs；node tests/lighthouse-p1.mjs |
-| 静态呈现与导航 | node tests/browser-publication.mjs；node tests/browser-stage4.mjs |
-
-旧命令 sync-data.mjs、enrich-context.mjs、enrich-people.mjs、tools/build-biography-core.mjs 均转调统一构建，不维护平行资料副本。WebMCP 可用时注册 compare_history_year；适用的公元前专题保留 compare_zhou_year 接口。
+WebMCP可用时注册compare_history_year；适用的公元前专题保留compare_zhou_year接口。
 
 ## 文档
 
@@ -62,7 +43,7 @@ node --test tests/*.test.mjs tests/*.test.cjs
 |---|---|
 | [架构说明](docs/ARCHITECTURE.md) | 理解目录、模块边界、专题展示与兼容约束 |
 | [资料维护](data/README.md) | 修改历史资料、日期、关系、传记与出处 |
-| [部署说明](docs/DEPLOYMENT.md) | 配置或排查 GitHub Pages、生成可选PNG |
+| [项目管理与维护说明书](docs/PROJECT-GUIDE.md) | 从需求、开发、测试和验收到发布、回退及后期维护 |
 | [历史记录](docs/HISTORY.md) | 查找操作、评审、资料校核与退役文档原文 |
 
 [结构样例](data/examples/README.md)仅供理解模型，不参与生产构建。十一份正式原件各自维护，出处差异按专题保留；不按同名或共享ID猜测合并。

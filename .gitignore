@@ -3,3 +3,6 @@
 node_modules/
 Microsoft/
 scratch/
+
+# Local archive payloads and manifests
+arichive/
