@@ -50,9 +50,9 @@ flowchart TB
 | tests/、tests/fixtures/、tests/helpers/ | 规则回归、固定兼容样本、浏览器边界辅助器 |
 | .github/ | 自动检查、Pages 发布与资料纠错表单 |
 | docs/ | 当前架构、项目管理与维护手册、统一历史记录 |
-| backups/、.openai/ | 原 Git 历史备份、发布截图及旧 Sites 配置；不参与 Pages 运行 |
+| .openai/ | 旧Sites配置，不参与Pages运行 |
 | node_modules/、.validation/ | 本机开发依赖及按需生成的验收结果，忽略提交与发布 |
-| arichive/ | [临时文件归档说明](../arichive/README.md)、本地压缩包和逐文件清单；只有说明随Git保存 |
+| arichive/（按需创建） | 临时内容的本地归档位置；压缩包和清单忽略提交，规则见[项目手册](PROJECT-GUIDE.md#临时文件归档与清理) |
 | .git/ | Git 历史与仓库元数据 |
 
 ## 数据与查询边界

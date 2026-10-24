@@ -27,7 +27,7 @@
 | tests/ | 自动回归、浏览器验收与固定兼容样本 |
 | .github/ | 检查、Pages发布与反馈模板 |
 | docs/ | 架构、项目管理与维护手册、统一历史；其他本地目录见[架构说明](docs/ARCHITECTURE.md#目录与模块) |
-| arichive/ | [本地归档与清理说明](arichive/README.md)；压缩包和逐文件清单留在本机 |
+| arichive/（按需创建） | 本地临时文件归档位置；操作见[项目手册](docs/PROJECT-GUIDE.md#临时文件归档与清理) |
 
 build.mjs 是统一构建入口；package.json 与锁文件管理开发工具。浏览器运行没有第三方依赖。
 

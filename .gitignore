@@ -4,6 +4,5 @@ node_modules/
 Microsoft/
 scratch/
 
-# Local archive payloads and manifests; keep the recovery guide versioned
-arichive/*
-!arichive/README.md
+# Local archive payloads and manifests
+arichive/
