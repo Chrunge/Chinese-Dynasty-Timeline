@@ -4772,3 +4772,16 @@ Expand-Archive -LiteralPath '.\arichive\2026-10-23\one-off-scripts.zip' -Destina
 中文项目名统一为中国朝代时间线，GitHub目标仓库为Chinese-Dynasty-Timeline，本地目录保留编号并使用02-中国朝代时间线。统一十一专题品牌、SEO/canonical、社交图、反馈入口、当前说明和验证脚本；原始历史JSON、十一专题数据字节、固定ID、Hash协议和存储键保持。
 
 本地542项Node测试通过，人物入口22场景/56项布局检查通过，静态及交互出版44场景通过。保留旧URL的固定分享测试作为兼容输入。个人博客先准备十一专题旧址跳转，再迁移仓库并更新正式导航；外部更名与线上验收在后续实际记录中确认。
+
+
+## 2026-10-24 中国朝代时间线更名部署与验收完成
+
+本地目录从02-周朝历史线迁移至02-中国朝代时间线，Git已识别新工作目录。GitHub仓库更名为[Chrunge/Chinese-Dynasty-Timeline](https://github.com/Chrunge/Chinese-Dynasty-Timeline)，稳定仓库ID保持1409050442；origin与仓库主页同步更新，历史、议题、环境保护及Actions保留。更名分支以fast-forward合入master，生产提交为f99d3d8a872ea2e558668427b861aa8e0381bab8。
+
+[时间线Actions 40049363481](https://github.com/Chrunge/Chinese-Dynasty-Timeline/actions/runs/40049363481)构建与部署成功。按本次发布授权，在构建、测试与人物浏览器检查成功后批准既有github-pages环境发布；未修改保护规则或取消工作流。新站地址为 https://chrunge.github.io/Chinese-Dynasty-Timeline/ 。
+
+2026-10-24T01:24:23.392Z线上核验：根入口200，发布清单与本地字节一致，全部41个资源SHA-256及HTML版本引用一致；releaseId为5c03967e23513a58eb1138ce0ac8222b9c0fec1e14281f20de0fec24ac5b4c58。更名及目录迁移后，基线中的13份原始JSON和11份专题数据资源共24项散列保持。
+
+博客先以40d10c2发布十一专题旧址兼容页（Actions 40048846809成功），再以189c01b发布新导航与友链（[Actions 40049653133](https://github.com/Chrunge/Chrunge.github.io/actions/runs/40049653133)成功）。真实线上浏览器覆盖十一专题×375/1200像素共22项跳转，目标查询与Hash完整保留；原v1分享中的前300年、秦齐楚燕韩赵魏七国、分类及视图模式恢复。375、680、768、1200四种宽度下博客菜单和关于页友链均可实际打开新站，无页面横向溢出。内部Zhou命名空间、存储键、专题ID和历史资料保持兼容。
+
+本次历史补记使用[skip ci]，不重复部署相同网站资源；生产版本仍为上述f99d3d8。验收证据位于本地忽略目录.validation/，未作为运行依赖提交。
