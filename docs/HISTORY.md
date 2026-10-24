@@ -4755,3 +4755,13 @@ Expand-Archive -LiteralPath '.\arichive\2026-10-23\one-off-scripts.zip' -Destina
 
 
 </details>
+
+
+| 2026-10-24 | 当前工作区提交 | 保留并提交3项已有文件删除，归档/恢复规则合入项目手册，修正现行缺失链接；5份说明的49个本地链接检查通过，541项测试与构建检查通过 | `e8b379b` |
+| 2026-10-24 | 全部分支合并与推送 | cleanup归档/手册分支汇入master；fix显示/首屏分支与refactor重构分支已是master祖先，逐一确认所有本地分支均已包含；保留分支名称作为工作记录 | `90b2eb58a1b9268a6647350ecfc7f310970e2dd7` |
+
+[Actions运行40046589257](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions/runs/40046589257)的构建与Pages部署均成功，远端541项Node测试及22个人物浏览器场景和分组布局套件通过。按用户明确部署授权，使用环境允许的现有身份批准github-pages发布，未修改保护设置或取消运行。
+
+线上核验于2026-10-24T00:50:15.332Z完成：根入口200，发布清单逐字节一致，全部41个资源散列与HTML版本参数一致。releaseId为 `b90d5c0ad9e47596be94abadc4d3080318b3ee3b41c6a21cd971f2c7de360e6d`。本次仅汇总分支与维护当前说明，程序、原始JSON和发布资源保持。
+
+本记录提交仅保存实际部署证据，使用[skip ci]避免为同一批资源重复部署；生产资源对应合并提交90b2eb5，不宣称记录提交执行了新的CI。
