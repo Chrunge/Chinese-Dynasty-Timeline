@@ -16,7 +16,7 @@ $('.periods').innerHTML='<button data-period="all" class="active">全景</button
  if($('#reportDataError')&&typeof URLSearchParams==='function'){
   const topicName=Zhou.Branding.topicName(D.catalog?.find(t=>t.id===topicId)||{id:topicId,name:({'zhou':'周朝'}[topicId])});
   const params=new URLSearchParams({template:'data-correction.yml',topic:topicName,reference_year:fmt(timelineBounds.cursor)});
-  $('#reportDataError').href='https://github.com/Chrunge/Zhou-Dynasty-Timeline/issues/new?'+params.toString();
+  $('#reportDataError').href='https://github.com/Chrunge/Chinese-Dynasty-Timeline/issues/new?'+params.toString();
  }
  document.querySelectorAll('[data-topic]').forEach(a=>{if(a.dataset.topic===(D.datasetId||'zhou'))a.setAttribute?.('aria-current','page');});
 detailSheet=Zhou.createDetailSheet({dialog:$('#detail'),body:$('#detailBody'),onDismiss:()=>closeDetail(),window,document});

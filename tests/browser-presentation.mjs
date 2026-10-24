@@ -1,5 +1,5 @@
 // Real installed Chrome/CDP acceptance. No server, dependencies or historical-source requests.
-// node tests/browser-presentation.mjs [https://chrunge.github.io/Zhou-Dynasty-Timeline/]
+// node tests/browser-presentation.mjs [https://chrunge.github.io/Chinese-Dynasty-Timeline/]
 import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';

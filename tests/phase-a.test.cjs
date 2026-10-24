@@ -158,7 +158,7 @@ test('宋辽金：展示名称一致、原网址和数据身份不变；分组�
  const app=start('liao-jin-song');
  assert.equal(app.run('D.datasetId'),'liao-jin-song');
  assert.equal(app.run('Zhou.Branding.topicName({id:"liao-jin-song",name:"辽金宋"})'),'宋辽金');
- assert.equal(app.run('document.title'),'宋辽金夏 · 历史对照图');
+ assert.equal(app.run('document.title'),'宋辽金夏 · 中国朝代时间线');
  const html=fs.readFileSync('dist/liao-jin-song.html','utf8');
  assert.match(html,/>宋辽金<\/a>/);assert.match(html,/liao-jin-song\.html/);
  for(const id of ['qin-han','five-dynasties','liao-jin-song']){

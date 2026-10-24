@@ -5,23 +5,25 @@ import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
 import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
 import {catalog,compileProduction} from '../lib/production.mjs';
+import {runInNewContext} from 'node:vm';
+const brandContext={};runInNewContext(readFileSync('src/core/branding.js','utf8'),brandContext);
 const out=resolve('.validation/publication');mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH}:{channel:'chrome'})});
 const results=[];
 try{
  for(const width of [375,1200])for(const topic of catalog){
-  const data=compileProduction(JSON.parse(readFileSync(resolve('data',topic.file),'utf8')),topic.id);
+  const data=compileProduction(JSON.parse(readFileSync(resolve('data',topic.file),'utf8')),topic.id),displayTitle=brandContext.Zhou.Branding.resolve(data,topic.id).title;
   const url=pathToFileURL(resolve('dist',topic.page)).href;
   const staticContext=await browser.newContext({viewport:{width,height:900},javaScriptEnabled:false,offline:true});
   try{
    const page=await staticContext.newPage();await page.goto(url);
-   assert.equal(await page.title(),data.title);
-   assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'),data.title);
-   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://chrunge.github.io/Zhou-Dynasty-Timeline/'+topic.page);
+   assert.equal(await page.title(),displayTitle);
+   assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'),displayTitle);
+   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://chrunge.github.io/Chinese-Dynasty-Timeline/'+topic.page);
    assert.equal(await page.locator('[data-static-tenure]').count(),data.states.reduce((n,s)=>n+s.rulers.length,0));
    assert.equal(await page.locator('[data-static-undated]').count(),data.states.reduce((n,s)=>n+(s.undated?.length||0),0));
    assert.equal(await page.locator('.noScriptReading').isVisible(),true);
-   assert.equal(await page.locator('.seal').innerText(),topic.id==='zhou'?'周':'史');
+   assert.equal(await page.locator('.seal').innerText(),brandContext.Zhou.Branding.resolve(data,topic.id).logoChar);
    assert.equal(await page.locator('nav[aria-label="历史时期无脚本导航"] a').count(),catalog.length);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
    assert.equal(await page.locator('.workspace').isVisible(),false);
@@ -39,7 +41,7 @@ try{
    assert.equal(await page.locator('.noScriptReading').count(),0,'static fallback is not duplicate visible content with JS');
    await page.locator('#advancedToggle').click();await page.locator('#shareView').click();
    const shareLink=await page.locator('#shareLink').inputValue(),text=await page.locator('#shareText').inputValue();
-   assert.ok(text.startsWith(data.title+'｜所选政权组合：'));
+   assert.ok(text.startsWith(displayTitle+'｜所选政权组合：'));
    assert.ok(text.endsWith('\n'+shareLink));assert.match(text,/视窗范围：.+参考年份：/);
    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw Error('denied for acceptance');}}}));
    await page.locator('#copyShareText').click();
@@ -57,7 +59,7 @@ try{
    assert.match(await page.locator('#exportStatus').innerText(),/不是 Atlas/);await page.keyboard.press('Escape');
    const expected=await page.evaluate(()=>{const event=D.events[0];showEvent(event.id);return {id:event.id,name:event.name,year:Zhou.Time.format(appState.conditions.cursor)};});
    const correction=page.locator('#detail [data-correction-link]'),href=new URL(await correction.getAttribute('href'));
-   assert.equal(href.origin,'https://github.com');assert.equal(href.pathname,'/Chrunge/Zhou-Dynasty-Timeline/issues/new');
+   assert.equal(href.origin,'https://github.com');assert.equal(href.pathname,'/Chrunge/Chinese-Dynasty-Timeline/issues/new');
    assert.equal(href.searchParams.get('record_id'),expected.id);assert.equal(href.searchParams.get('record_name'),expected.name);assert.equal(href.searchParams.get('reference_year'),expected.year);
    assert.equal(await correction.getAttribute('target'),'_blank');assert.match(await correction.getAttribute('rel'),/noopener/);
    await correction.focus();await page.keyboard.press('Escape');

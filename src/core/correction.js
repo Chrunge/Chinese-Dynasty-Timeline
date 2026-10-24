@@ -24,6 +24,6 @@
       record_name:name,
       reference_year:Zhou.Time.format(year)
     });
-    return 'https://github.com/Chrunge/Zhou-Dynasty-Timeline/issues/new?' + params.toString();
+    return 'https://github.com/Chrunge/Chinese-Dynasty-Timeline/issues/new?' + params.toString();
   };
 })(globalThis.Zhou ||= {});

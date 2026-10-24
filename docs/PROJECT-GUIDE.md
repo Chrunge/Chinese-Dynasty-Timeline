@@ -1,4 +1,4 @@
-# 项目管理与维护说明书
+# 中国朝代时间线：项目管理与维护说明书
 
 本手册面向首次维护真实项目的个人开发者，说明一个需求从提出到上线、再到后期维护的完整流程。当前功能入口见[项目README](../README.md)，模块和展示边界见[架构说明](ARCHITECTURE.md)，历史资料字段见[资料维护](../data/README.md)。具体操作记录统一追加到[HISTORY](HISTORY.md)。
 
@@ -132,7 +132,7 @@ npx playwright install chromium
 | 触控 | node tests/browser-p0.mjs | 惯性、双指缩放、抽屉、键盘与拒绝存储 |
 | 语义与无障碍 | node tests/browser-p1.mjs；node tests/lighthouse-p1.mjs | 语义、键盘链及自动审计 |
 | 静态呈现与实体导航 | node tests/browser-publication.mjs；node tests/browser-stage4.mjs | 无脚本年表、输出、区间事件与跨卷链接 |
-| 线上完整展示 | node tests/browser-presentation.mjs https://chrunge.github.io/Zhou-Dynasty-Timeline/ | 实际HTTPS入口的展示和交互 |
+| 线上完整展示 | node tests/browser-presentation.mjs https://chrunge.github.io/Chinese-Dynasty-Timeline/ | 实际HTTPS入口的展示和交互 |
 | 发布一致性 | node tests/verify-release.mjs | 线上清单、全部资源散列、HTML版本引用及根入口 |
 
 按改动选择必要检查。排版和交互必须在浏览器检查；史料修订还需人工校核来源。说明文档和归档整理重点检查链接、完整性、恢复方式及原生成物保持。自动检查不能证明所有设备、字体、打印和史实均正确。
@@ -156,7 +156,9 @@ npx playwright install chromium
 
 ## 发布与部署
 
-线上地址：[历史时间线](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。个人博客使用域名根路径，时间线使用项目子路径，两者独立部署，无需复制源码到博客。
+线上地址：[中国朝代时间线](https://chrunge.github.io/Chinese-Dynasty-Timeline/)。个人博客使用域名根路径，时间线使用项目子路径，两者独立部署，无需复制源码到博客。
+
+旧的Zhou-Dynasty-Timeline页面入口由个人博客提供静态兼容跳转，保留查询、年份筛选及详情Hash；内部Zhou命名空间、浏览器存储键和历史ID保持兼容。
 
 ### 工作流
 
@@ -178,7 +180,7 @@ npx playwright install chromium
 
 ### 本地准备与发布
 
-按[开发与测试](#开发与测试)验证源码和生成物，将它们一起提交。合并到 master 并推送后，工作流自动执行；检查失败不会部署。运行状态见 [Actions](https://github.com/Chrunge/Zhou-Dynasty-Timeline/actions)，线上产物可与 [release.json](../dist/release.json) 的 releaseId 和资源散列核对。
+按[开发与测试](#开发与测试)验证源码和生成物，将它们一起提交。合并到 master 并推送后，工作流自动执行；检查失败不会部署。运行状态见 [Actions](https://github.com/Chrunge/Chinese-Dynasty-Timeline/actions)，线上产物可与 [release.json](../dist/release.json) 的 releaseId 和资源散列核对。
 
 页面、数据、代码和样式必须作为同一 dist 发布。资源版本参数由构建维护，相同源码生成相同入口；不要手动改 dist 或只复制某个脚本。
 

@@ -1,7 +1,7 @@
 {
-  "name": "zhou-history-timeline",
+  "name": "chinese-dynasty-timeline",
   "private": true,
-  "description": "Static history atlas; Playwright is a development-only test tool.",
+  "description": "中国朝代时间线；静态历史对照资料库，Playwright仅用于开发验收。",
   "engines": {
     "node": ">=22"
   },

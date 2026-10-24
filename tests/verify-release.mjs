@@ -1,7 +1,7 @@
 // Validate only the original deployed site, never historical source URLs.
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-const base='https://chrunge.github.io/Zhou-Dynasty-Timeline/';
+const base='https://chrunge.github.io/Chinese-Dynasty-Timeline/';
 const localBytes=fs.readFileSync('dist/release.json'),local=JSON.parse(localBytes);
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 async function get(file){const url=new URL(file,base);url.searchParams.set('acceptance',Date.now());const response=await fetch(url,{cache:'no-store',signal:AbortSignal.timeout(30000)});if(!response.ok)throw Error(file+': HTTP '+response.status);return {status:response.status,bytes:Buffer.from(await response.arrayBuffer())};}

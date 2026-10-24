@@ -36,7 +36,7 @@ if(window.location&&window.history){
  const shareText=$('#shareText'),copyShareText=$('#copyShareText');
  const showShare=()=>{
   const link=viewLinkController.flush();$('#shareLink').value=link;
-  if(shareText&&typeof Zhou.describeSharedView==='function')shareText.value=Zhou.describeSharedView(D,readSharedView())+'\n'+link;
+  if(shareText&&typeof Zhou.describeSharedView==='function')shareText.value=Zhou.describeSharedView({...D,title:document.title||D.title},readSharedView())+'\n'+link;
   $('#shareNotice').textContent=window.location.protocol==='file:'?'此链接用于当前文件；在线分享请使用网站地址。':'可复制纯链接，或复制带专题、政权组合与年份的摘要及链接。';
   $('#shareDialog').showModal();$('#shareLink').focus();$('#shareLink').select();
  };

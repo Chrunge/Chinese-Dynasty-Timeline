@@ -1,8 +1,10 @@
-# 历史时间线 · 同年对照
+# 中国朝代时间线
+
+仓库：[Chrunge/Chinese-Dynasty-Timeline](https://github.com/Chrunge/Chinese-Dynasty-Timeline)。本地项目目录为 `02-中国朝代时间线`。
 
 纯静态中文历史资料库，提供夏商、周朝、秦汉、三国、魏晋南北朝、隋唐、五代十国、宋辽金、元、明、清十一个专题，支持时间线、同年对照、搜索、人物传记、阅读恢复、分享和导出。
 
-[在线打开](https://chrunge.github.io/Zhou-Dynasty-Timeline/)。个人博客与本项目分别使用域名根路径和项目子路径，独立部署。离线直接打开 dist/index.html；复制或部署时使用完整 dist 目录。
+[中国朝代时间线在线入口](https://chrunge.github.io/Chinese-Dynasty-Timeline/)。个人博客与本项目分别使用域名根路径和项目子路径，独立部署。离线直接打开 dist/index.html；复制或部署时使用完整 dist 目录。
 
 ## 使用
 

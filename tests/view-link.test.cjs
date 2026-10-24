@@ -2,7 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {boot,attachStudy}=require('./helpers/browser.cjs');
 const base=require('node:path').resolve(__dirname,'..');
 const plain=value=>JSON.parse(JSON.stringify(value));
-function share(app,url='https://chrunge.github.io/Zhou-Dynasty-Timeline/'){
+function share(app,url='https://chrunge.github.io/Chinese-Dynasty-Timeline/'){
  let current=new URL(url),index=0,replacements=0,timerId=0;const stack=[current.href],listeners={},timers=new Map(),location={};
  const fire=type=>(listeners[type]||[]).forEach(fn=>fn());
  for(const key of ['href','pathname','search','protocol'])Object.defineProperty(location,key,{get:()=>current[key]});

@@ -40,3 +40,8 @@ test('发布清单记录每个专题SVG内容哈希；默认构建无需运行�
  assert.match(read('build.mjs'),/actual\.equals/);assert.doesNotMatch(read('build.mjs'),/from ['"](?:playwright|sharp|canvas|puppeteer)['"]/);
  assert.match(read('.github/workflows/site.yml'),/inputs\.social_png/);
 });
+
+
+test('中国朝代时间线：项目名称、canonical和反馈地址统一，十一专题保留独立入口',()=>{
+ for(const topic of catalog){const html=read('dist/'+topic.page);assert.match(html,/<title>[^<]*中国朝代时间线<\/title>/);assert.match(html,/property="og:site_name" content="中国朝代时间线"/);assert(html.includes('https://chrunge.github.io/Chinese-Dynasty-Timeline/'+topic.page));assert(!html.includes('github.com/Chrunge/Zhou-Dynasty-Timeline'));}
+});
